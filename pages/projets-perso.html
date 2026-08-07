@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projets personnels - Dorian Pachot</title>
+  <meta name="description" content="Projets de développement réalisés par Dorian Pachot : CRP-Assurance, SYNCRO, agent IA de candidature et Mission Orion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="topbar" role="banner">
+    <div class="topbar__inner">
+      <a class="brand" href="../index.html" aria-label="Accueil - Dorian Pachot">
+        <span class="brand__name">Dorian Pachot</span>
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="true" aria-controls="primary-nav">Menu</button>
+
+      <nav class="nav" id="primary-nav" data-nav aria-label="Navigation principale">
+        <a class="nav__link" href="../index.html">Accueil</a>
+        <a class="nav__link" href="cv.html">CV</a>
+        <a class="nav__link" href="projets-cours.html">Projets encadrés</a>
+        <a class="nav__link" href="projets-perso.html" aria-current="page">Projets personnels</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <header class="page-header">
+        <h1 class="page-header__title">Projets personnels</h1>
+        <p class="page-header__subtitle">
+          Ce que j'ai fait de mon côté : un site en production, une appli mobile
+          full-stack, un agent IA et un petit jeu en Python.
+        </p>
+      </header>
+
+      <section>
+        <div class="grid">
+
+          <a class="card" href="https://crp-assurance.com" target="_blank" rel="noopener noreferrer" aria-label="Voir le site CRP-Assurance.com (nouvel onglet)">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9Z"/></svg>
+            </span>
+            <h3 class="card__title">CRP-Assurance.com</h3>
+            <p class="card__desc">
+              Site pro fait de A à Z pour un cabinet d'assurance : conception, intégration,
+              mise en ligne, hébergement et nom de domaine.
+            </p>
+            <ul class="tags" aria-label="Technologies utilisées">
+              <li class="tag">HTML</li>
+              <li class="tag">CSS</li>
+              <li class="tag">JavaScript</li>
+              <li class="tag">Hébergement</li>
+              <li class="tag">DNS</li>
+            </ul>
+            <span class="card__link">Voir le site</span>
+          </a>
+
+          <a class="card" href="../assets/syncro/app-release.apk" download="SYNCRO.apk" aria-label="Télécharger l'APK SYNCRO">
+            <span class="card__icon card__icon--violet" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
+            </span>
+            <h3 class="card__title">SYNCRO</h3>
+            <p class="card__desc">
+              Appli mobile full-stack en cours de développement : front en Flutter, back
+              en Next.js relié à une base SQL, API REST. L'APK est disponible en téléchargement,
+              Android uniquement.
+            </p>
+            <ul class="tags" aria-label="Technologies utilisées">
+              <li class="tag">Flutter</li>
+              <li class="tag">Dart</li>
+              <li class="tag">Next.js</li>
+              <li class="tag">SQL</li>
+              <li class="tag">API REST</li>
+            </ul>
+            <span class="card__link">Télécharger l'APK</span>
+          </a>
+
+          <article class="card card--static">
+            <span class="card__icon card__icon--warm" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m7 10 2 2-2 2M12 14h5"/></svg>
+            </span>
+            <h3 class="card__title">Agent IA</h3>
+            <p class="card__desc">
+              Un outil qui automatise mes candidatures : il compare mon profil à une offre,
+              donne un score de compatibilité et génère une lettre de motivation adaptée.
+              Ça tourne sur l'API Claude d'Anthropic, avec une interface React.
+            </p>
+            <ul class="tags" aria-label="Technologies utilisées">
+              <li class="tag">React</li>
+              <li class="tag">API Claude</li>
+              <li class="tag">Anthropic</li>
+              <li class="tag">Automatisation</li>
+              <li class="tag">IA</li>
+            </ul>
+          </article>
+
+          <a class="card" href="mini-jeu.html" aria-label="Jouer à Mission Orion">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="20" height="9" rx="4"/><path d="M7 12.5h3M8.5 11v3"/><circle cx="16" cy="12" r="1"/><circle cx="18.5" cy="14.5" r="1"/></svg>
+            </span>
+            <h3 class="card__title">Mission Orion</h3>
+            <p class="card__desc">
+              Un jeu spatial fait en Python avec pygame, compilé en WebAssembly pour tourner
+              directement dans le navigateur, sans rien installer.
+            </p>
+            <ul class="tags" aria-label="Technologies utilisées">
+              <li class="tag">Python</li>
+              <li class="tag">pygame</li>
+              <li class="tag">pygbag</li>
+              <li class="tag">WebAssembly</li>
+            </ul>
+            <span class="card__link">Jouer</span>
+          </a>
+
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <span>Dorian Pachot - BTS SIO SLAM, IRIS Mediaschool</span>
+      <a href="https://www.linkedin.com/in/dorian-pachot-81299930a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

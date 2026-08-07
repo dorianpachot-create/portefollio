@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dorian Pachot - Portfolio BTS SIO SLAM</title>
+  <meta name="description" content="Portfolio de Dorian Pachot, étudiant en BTS SIO SLAM à IRIS Mediaschool. Projets web et mobile, CV et parcours." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="topbar" role="banner">
+    <div class="topbar__inner">
+      <a class="brand" href="index.html" aria-label="Accueil - Dorian Pachot">
+        <span class="brand__name">Dorian Pachot</span>
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="true" aria-controls="primary-nav">Menu</button>
+
+      <nav class="nav" id="primary-nav" data-nav aria-label="Navigation principale">
+        <a class="nav__link" href="index.html" aria-current="page">Accueil</a>
+        <a class="nav__link" href="pages/cv.html">CV</a>
+        <a class="nav__link" href="pages/projets-cours.html">Projets encadrés</a>
+        <a class="nav__link" href="pages/projets-perso.html">Projets personnels</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="container hero" aria-labelledby="hero-title">
+      <h1 class="hero__title" id="hero-title">
+        Dorian Pachot
+      </h1>
+      <p class="hero__subtitle">
+        Étudiant en BTS SIO SLAM à IRIS Mediaschool, à Rouen. Je cherche une alternance,
+        rythme 3 jours en entreprise et 2 jours de cours. Vous trouverez ici mon CV,
+        mes projets et où j'en suis dans mes études.
+      </p>
+    </section>
+
+    <section class="container" style="padding-top:0;">
+      <div class="grid grid--row">
+
+        <a class="card" href="pages/cv.html" aria-label="Ouvrir la page CV">
+          <span class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6M9 9h2"/></svg>
+          </span>
+          <h3 class="card__title">Curriculum Vitae</h3>
+          <p class="card__desc">Mon profil, ma formation à IRIS Mediaschool, mes expériences et mes compétences techniques.</p>
+        </a>
+
+        <a class="card" href="pages/projets-cours.html" aria-label="Ouvrir la page Projets encadrés">
+          <span class="card__icon card__icon--warm" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5v-13Z"/><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5v-13Z"/></svg>
+          </span>
+          <h3 class="card__title">Projets encadrés</h3>
+          <p class="card__desc">Les travaux pratiques faits en BTS SIO, publiés au fur et à mesure des semestres.</p>
+        </a>
+
+        <a class="card" href="pages/projets-perso.html" aria-label="Ouvrir la page Projets personnels">
+          <span class="card__icon card__icon--violet" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-3 3 3 3M16 9l3 3-3 3M13 6l-2 12"/></svg>
+          </span>
+          <h3 class="card__title">Projets personnels</h3>
+          <p class="card__desc">CRP-Assurance, SYNCRO, un agent IA et Mission Orion.</p>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <span>Dorian Pachot - BTS SIO SLAM, IRIS Mediaschool</span>
+      <a href="https://www.linkedin.com/in/dorian-pachot-81299930a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>
+      <a href="pages/mentions-legales.html">Mentions légales</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mission Orion - Dorian Pachot</title>
+  <meta name="description" content="Mission Orion, mini-jeu spatial développé en Python par Dorian Pachot, en cours de développement." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="topbar" role="banner">
+    <div class="topbar__inner">
+      <a class="brand" href="../index.html" aria-label="Accueil - Dorian Pachot">
+        <span class="brand__name">Dorian Pachot</span>
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="true" aria-controls="primary-nav">Menu</button>
+
+      <nav class="nav" id="primary-nav" data-nav aria-label="Navigation principale">
+        <a class="nav__link" href="../index.html">Accueil</a>
+        <a class="nav__link" href="cv.html">CV</a>
+        <a class="nav__link" href="projets-cours.html">Projets encadrés</a>
+        <a class="nav__link" href="projets-perso.html">Projets personnels</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Cadre arcade hors du container standard pour pouvoir prendre 90vw.
+         Le build pygbag est dans gradient/assets/mission-orion/web/. -->
+    <div class="arcade-frame" id="game-root" role="figure" aria-label="Mission Orion - jeu pygame">
+      <iframe
+        class="arcade-frame__screen"
+        src="../assets/mission-orion/web/index.html"
+        title="Mission Orion, jeu spatial en Python / pygame"
+        loading="lazy"
+        allow="autoplay; fullscreen; gamepad">
+      </iframe>
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <span>Dorian Pachot - BTS SIO SLAM, IRIS Mediaschool</span>
+      <a href="https://www.linkedin.com/in/dorian-pachot-81299930a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
