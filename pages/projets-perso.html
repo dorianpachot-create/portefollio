@@ -24,6 +24,7 @@
       <nav class="nav" id="primary-nav" data-nav aria-label="Navigation principale">
         <a class="nav__link" href="../index.html">Accueil</a>
         <a class="nav__link" href="cv.html">CV</a>
+        <a class="nav__link" href="documents.html">Documents</a>
         <a class="nav__link" href="projets-cours.html">Projets encadrés</a>
         <a class="nav__link" href="projets-perso.html" aria-current="page">Projets personnels</a>
       </nav>
@@ -62,15 +63,15 @@
             <span class="card__link">Voir le site</span>
           </a>
 
-          <a class="card" href="../assets/syncro/app-release.apk" download="SYNCRO.apk" aria-label="Télécharger l'APK SYNCRO">
+          <a class="card" href="#syncro" aria-label="Voir le détail du projet SYNCRO">
             <span class="card__icon card__icon--violet" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
             </span>
             <h3 class="card__title">SYNCRO</h3>
             <p class="card__desc">
-              Appli mobile full-stack en cours de développement : front en Flutter, back
-              en Next.js relié à une base SQL, API REST. L'APK est disponible en téléchargement,
-              Android uniquement.
+              Appli mobile full-stack publiée sur l'App Store et Google Play : front en
+              Flutter, back en Next.js relié à une base SQL, API REST. Son site vitrine
+              appsyncro.fr est aussi en production.
             </p>
             <ul class="tags" aria-label="Technologies utilisées">
               <li class="tag">Flutter</li>
@@ -79,7 +80,7 @@
               <li class="tag">SQL</li>
               <li class="tag">API REST</li>
             </ul>
-            <span class="card__link">Télécharger l'APK</span>
+            <span class="card__link">Voir le détail</span>
           </a>
 
           <article class="card card--static">
@@ -119,6 +120,52 @@
             <span class="card__link">Jouer</span>
           </a>
 
+        </div>
+      </section>
+
+      <section class="cv-block" id="syncro" aria-labelledby="syncro-title">
+        <h2 class="cv-block__heading" id="syncro-title">SYNCRO - en production sur les deux stores</h2>
+
+        <p class="doc-intro">
+          SYNCRO est une application de gestion de plannings d'équipe, développée pour
+          <strong>Suitime</strong> pendant mon stage de juillet-août 2026. Chaque membre saisit
+          ses disponibilités, le responsable valide et verrouille la semaine. Invitations
+          par QR code, notifications en temps réel, suivi des heures.
+        </p>
+        <p class="doc-intro">
+          J'ai travaillé sur toute la chaîne : l'application <strong>Flutter</strong> (Android et iOS),
+          le back-end <strong>Next.js</strong> avec sa base <strong>SQL</strong> et son API REST, le site vitrine
+          <strong>appsyncro.fr</strong>, et la mise en production - signature de la clé Android,
+          notifications push APNs et Firebase, déploiement serveur et publication sur
+          les deux stores.
+        </p>
+
+        <ul class="store-links">
+          <li>
+            <a class="store-link" href="https://apps.apple.com/fr/app/syncro/id6787898930" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.6 2.1-1.5 2.6-.4 6.5 1.1 8.7.7 1 1.6 2.2 2.7 2.2 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.8.7 1.2 0 1.9-1.1 2.6-2.1.8-1.2 1.2-2.4 1.2-2.5-.1 0-2.2-.9-2.2-3.3ZM14.3 5.9c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.7-.9 2.6 1 .1 2-.5 2.6-1.2Z"/></svg>
+              <span>App Store<span class="store-link__sub">iPhone &amp; iPad</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="store-link" href="https://play.google.com/store/apps/details?id=fr.appsyncro.mobile" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1 9.3-9.3v-.2L3.6 2.3Zm12.5 6.1L13.8 6 4.7 1.5c-.3-.2-.6-.2-.8-.1l12.2 7ZM17.9 9.5l-1.8-1-2.5 2.5 2.5 2.5 1.8-1c1-.6 1-1.8 0-2.4v-.6ZM3.9 22.6c.2 0 .5 0 .8-.2l9.1-4.5 2.3-2.4-12.2 7.1Z"/></svg>
+              <span>Google Play<span class="store-link__sub">Android</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="store-link" href="https://appsyncro.fr" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9Z"/></svg>
+              <span>appsyncro.fr<span class="store-link__sub">Site vitrine</span></span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="screens" aria-label="Captures d'écran de l'application SYNCRO">
+          <img class="screens__img" src="../assets/syncro/screens/screen-1.jpg" alt="Écran SYNCRO : planning de la semaine avec la couverture par jour et les disponibilités de chaque membre." loading="lazy" />
+          <img class="screens__img" src="../assets/syncro/screens/screen-2.jpg" alt="Écran SYNCRO : saisie des disponibilités par créneau, matin et après-midi." loading="lazy" />
+          <img class="screens__img" src="../assets/syncro/screens/screen-3.jpg" alt="Écran SYNCRO : gestion des groupes et des rôles des membres." loading="lazy" />
+          <img class="screens__img" src="../assets/syncro/screens/screen-4.jpg" alt="Écran SYNCRO : notifications en temps réel et suivi des heures." loading="lazy" />
         </div>
       </section>
     </div>
