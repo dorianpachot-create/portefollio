@@ -1,6 +1,50 @@
 # Etat d'avancement
 
-Dernière mise à jour : 2026-08-07
+Dernière mise à jour : 2026-08-09
+
+## Mise à jour du 2026-08-09 — page Stage
+
+Nouvelle page `pages/stage.html`, écrite à partir de `syncro/suivi/Suivi_stage_Syncro_journal.docx`
+(186 lignes, jour par jour sur 5 semaines).
+
+### Le journal brut n'est pas publiable tel quel
+
+Ce n'est **pas** le document d'origine qui est en ligne, mais une réécriture. Le journal
+contient des éléments qui appartiennent à Suitime, pas à Dorian :
+
+| Élément | Où | Traitement |
+|---|---|---|
+| IP du serveur de production | `Suivi_stage_Syncro_semaine.docx` | non repris |
+| Identifiant du projet Firebase | idem | non repris |
+| Adresses e-mail du staff | journal, semaine 1 | non repris |
+| Chemin du back-office `/admin` | les deux | remplacé par « back-office réservé à l'équipe » |
+| Détail de failles corrigées en production | journal, semaines 2 et 3 | reformulé sans le mode opératoire |
+| Nom de l'hébergeur | journal, semaine 1 | remplacé par « serveur Linux » |
+| Écran d'abonnement et paliers tarifaires | journal, semaine 5 | anonymisé — feuille de route non annoncée |
+| Nouveau mode de fonctionnement des groupes | journal, semaine 4 | décrit comme « une évolution importante », sans le nommer |
+
+Ce qui est conservé : la méthode de travail, les diagnostics, les chiffres vérifiables
+(53 routes migrées, 13 écrans maquettés, 259 lignes supprimées, 62 → 26 zones tactiles
+sans libellé, 100 combinaisons testées) et une section « Ce que j'en retiens ».
+
+**Un script d'audit** a été passé sur les 8 pages avant publication, cherchant : IP
+publiques, e-mails non personnels, identifiants de projet, chemins d'administration,
+mots-clés de failles, tarifs, identifiants techniques. Seuls deux résultats, tous deux
+inoffensifs et laissés en place :
+
+- `projets-cours.html` : plages RFC 1918 (`10.1.67.0/24` etc.) d'un TP GNS3, et le mot
+  « faille » à propos d'une clé de contrôle ISBN en mathématiques ;
+- `documents.html` : le nom de Valentin Javelaud, qui figure de toute façon sur la lettre
+  de recommandation publiée.
+
+### Autres changements
+
+- « Stage » ajouté au menu des 8 pages et carte sur l'accueil.
+- `documents.html` : la phrase « Lettre signée par Valentin Javelaud » était incohérente
+  avec la signature retirée juste en dessous — reformulée, avec un lien vers la page Stage.
+- CSS : frise `.weeks` / `.week` ajoutée avant l'encart d'actualité.
+
+## Mise à jour du 2026-08-07
 
 ## Mise à jour du 2026-08-07 — CV neutre, page Documents, SYNCRO en production
 

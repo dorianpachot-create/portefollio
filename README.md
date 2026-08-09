@@ -39,6 +39,7 @@ portefollio/
 │       └── app-release.apk       Ancien APK — non versionné, plus lié dans le site
 └── pages/
     ├── cv.html              CV en image + bouton télécharger
+    ├── stage.html           Stage chez Suitime, semaine par semaine
     ├── documents.html       Recommandation, bulletin, lettre de motivation
     ├── projets-cours.html   TP du BTS, avec fiches PDF
     ├── projets-perso.html   CRP-Assurance, SYNCRO, agent IA, Mission Orion
@@ -46,10 +47,13 @@ portefollio/
     └── mentions-legales.html
 ```
 
-## Contenu à jour au 7 août 2026
+## Contenu à jour au 9 août 2026
 
 - **CV** : version neutre (sans nom d'entreprise), à jour au 28/07/2026, mentionnant
   SYNCRO, CRP-Assurance.com et appsyncro.fr.
+- **Stage** : les cinq semaines chez Suitime, semaine par semaine. Page réécrite à
+  partir du journal de stage, sans les éléments techniques internes au client — voir
+  `PROGRESS.md` pour le détail de ce qui a été retiré et pourquoi.
 - **Documents** : lettre de recommandation Suitime (stage du 6 juillet au 7 août 2026),
   bulletin de 1<sup>re</sup> année (moyenne 15,55 pour 12,50 de promotion), lettre de
   motivation type.

@@ -825,6 +825,66 @@ body {
   text-transform: uppercase;
 }
 
+/* ---------- Frise des semaines de stage ---------- */
+.weeks {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.6rem;
+  border-left: 2px solid var(--border);
+}
+.week {
+  position: relative;
+  padding: 0 0 2rem 0.6rem;
+}
+.week:last-child { padding-bottom: 0; }
+.week::before {
+  content: "";
+  position: absolute;
+  left: -2.03rem;
+  top: 0.35rem;
+  width: 11px; height: 11px;
+  transform: rotate(45deg);
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(200,155,60,0.5);
+}
+.week__num {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+.week__title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 0.2rem;
+}
+.week__dates {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  margin: 0 0 0.8rem;
+}
+.week__list {
+  list-style: disc;
+  padding-left: 1.3rem;
+  margin: 0;
+  max-width: 75ch;
+}
+.week__list li {
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 0.6rem;
+}
+.week__list li:last-child { margin-bottom: 0; }
+.week__list strong { color: var(--gold-light); }
+.week__list--wide { padding-left: 1.3rem; }
+.week__list--wide li { margin-bottom: 0.9rem; }
+
 /* ---------- Encart d'actualité sur l'accueil ---------- */
 .hero__highlight {
   max-width: 60ch;

@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stage chez Suitime - Dorian Pachot</title>
+  <meta name="description" content="Journal du stage de Dorian Pachot chez Suitime, du 6 juillet au 7 août 2026 : développement et mise en production de l'application mobile SYNCRO, semaine par semaine." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="topbar" role="banner">
+    <div class="topbar__inner">
+      <a class="brand" href="../index.html" aria-label="Accueil - Dorian Pachot">
+        <span class="brand__name">Dorian Pachot</span>
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="true" aria-controls="primary-nav">Menu</button>
+
+      <nav class="nav" id="primary-nav" data-nav aria-label="Navigation principale">
+        <a class="nav__link" href="../index.html">Accueil</a>
+        <a class="nav__link" href="cv.html">CV</a>
+        <a class="nav__link" href="stage.html" aria-current="page">Stage</a>
+        <a class="nav__link" href="documents.html">Documents</a>
+        <a class="nav__link" href="projets-cours.html">Projets encadrés</a>
+        <a class="nav__link" href="projets-perso.html">Projets personnels</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <header class="page-header">
+        <h1 class="page-header__title">Stage chez Suitime</h1>
+        <p class="page-header__subtitle">
+          Du 6 juillet au 7 août 2026, cinq semaines de développement sur SYNCRO,
+          une application de plannings d'équipe. Mission confiée : concevoir
+          l'application à partir d'un cahier des charges. À la fin du stage, elle
+          était publiée sur l'App Store et Google Play.
+        </p>
+      </header>
+
+      <ul class="stat-list" aria-label="Le stage en chiffres">
+        <li class="stat">
+          <span class="stat__value">5</span>
+          <span class="stat__label">semaines<br />du 6 juillet au 7 août 2026</span>
+        </li>
+        <li class="stat">
+          <span class="stat__value">2</span>
+          <span class="stat__label">stores<br />App Store et Google Play</span>
+        </li>
+        <li class="stat">
+          <span class="stat__value">53</span>
+          <span class="stat__label">routes d'API<br />migrées en TypeScript</span>
+        </li>
+        <li class="stat">
+          <span class="stat__value">13</span>
+          <span class="stat__label">écrans maquettés<br />en versions claire et sombre</span>
+        </li>
+      </ul>
+
+      <p class="doc-intro">
+        J'ai travaillé sur toute la chaîne : l'application <strong>Flutter</strong> pour
+        Android et iOS, le back-end <strong>Next.js</strong> et sa base <strong>SQL</strong>,
+        le site vitrine, le déploiement serveur et la publication sur les deux magasins
+        d'applications. Le résumé ci-dessous est volontairement dépourvu des éléments
+        techniques internes à Suitime.
+      </p>
+
+      <p class="doc-intro">
+        <a href="documents.html#reco-title">Lire la lettre de recommandation</a> ·
+        <a href="projets-perso.html#syncro">Voir le projet SYNCRO</a>
+      </p>
+
+      <section class="cv-block" aria-labelledby="semaines-title">
+        <h2 class="cv-block__heading" id="semaines-title">Semaine par semaine</h2>
+
+        <ol class="weeks">
+
+          <li class="week">
+            <span class="week__num">Semaine 1</span>
+            <h3 class="week__title">Mise en ligne et notifications</h3>
+            <p class="week__dates">6 au 10 juillet</p>
+            <ul class="week__list">
+              <li>Site vitrine public mis en ligne : page d'accueil, quatre pages légales, identité visuelle.</li>
+              <li>Back-office d'administration réservé à l'équipe : tableau de bord, gestion des utilisateurs, des groupes et des invitations.</li>
+              <li>Mise en production sur un serveur Linux (Nginx, PM2, HTTPS) avec un déploiement automatisé et sans coupure de service.</li>
+              <li>Notifications push mises en place de bout en bout, côté serveur et côté application.</li>
+              <li>Bascule complète vers le nom de domaine définitif : site, application et liens d'invitation.</li>
+            </ul>
+          </li>
+
+          <li class="week">
+            <span class="week__num">Semaine 2</span>
+            <h3 class="week__title">Modernisation du back-end et sécurité</h3>
+            <p class="week__dates">13 au 17 juillet</p>
+            <ul class="week__list">
+              <li>Cartographie de l'ensemble du code et rédaction d'un guide de navigation, pour pouvoir intervenir vite et seul.</li>
+              <li>Migration complète du back-end de JavaScript vers <strong>TypeScript</strong> : 14 modules partagés puis 53 routes d'API, converties par lots et sans coupure. Les erreurs sont désormais détectées avant la mise en ligne plutôt qu'en production.</li>
+              <li>Audit des permissions sur les routes sensibles, relues une à une, et correction d'un défaut de cloisonnement entre groupes.</li>
+              <li>Validation stricte des champs de saisie, centralisée dans un outil réutilisable au lieu d'être réécrite route par route.</li>
+              <li>Protection contre les tentatives répétées de connexion.</li>
+            </ul>
+          </li>
+
+          <li class="week">
+            <span class="week__num">Semaine 3</span>
+            <h3 class="week__title">Refus de l'App Store, et ce qu'il a révélé</h3>
+            <p class="week__dates">20 au 24 juillet</p>
+            <ul class="week__list">
+              <li>Apple refuse l'application : ses testeurs n'arrivent pas à se connecter. Le diagnostic montre que la connexion était en réalité cassée en production depuis cinq jours, pour tout le monde et sur les deux plateformes. D'anciens fichiers restés sur le serveur après la migration étaient utilisés à la place des nouveaux.</li>
+              <li>Réparation, puis surtout correction du script de déploiement pour que le cas ne puisse plus se reproduire : suppression automatique des fichiers obsolètes et <strong>test de connexion exécuté à chaque mise en ligne</strong>.</li>
+              <li>Passage à un déploiement basé sur Git plutôt que sur un envoi manuel de fichiers.</li>
+              <li>Durcissement de la vérification des jetons pour les connexions Google et Apple, couvert par des tests.</li>
+              <li>Correction de l'adhésion par QR code : une ancienne fiche marquée « supprimée » bloquait silencieusement le retour d'un membre dans un groupe qu'il avait quitté.</li>
+              <li>Refonte des écrans de connexion et d'inscription.</li>
+            </ul>
+          </li>
+
+          <li class="week">
+            <span class="week__num">Semaine 4</span>
+            <h3 class="week__title">Conception, validation App Store et correctifs</h3>
+            <p class="week__dates">27 au 31 juillet</p>
+            <ul class="week__list">
+              <li>Refonte de la page de profil, maquette validée avant d'écrire la moindre ligne. Les éléments communs aux écrans refaits ont été regroupés dans un fichier partagé : un changement de style se fait maintenant à un seul endroit au lieu de quatre.</li>
+              <li>Étude de cadrage d'une évolution importante du produit, demandée par les responsables. Plutôt qu'un document, j'ai produit <strong>treize écrans maquettés</strong> en versions claire et sombre, avec un support de présentation : l'évolution envisagée inversait une logique centrale de l'application, et un texte seul risquait d'être mal compris.</li>
+              <li>Le cadrage remis proposait, pour chaque décision, plusieurs options avec leurs limites, plutôt qu'une solution unique — le choix revenait aux responsables.</li>
+              <li>Le travail portait aussi sur les cas limites et sur ce qui risquait de casser dans l'existant, points signalés avant tout développement.</li>
+              <li>Suppression de compte depuis l'application, obligatoire pour Apple, avec le cas particulier du propriétaire de groupe qui doit d'abord transmettre son groupe.</li>
+              <li>Validation de l'application sur l'App Store, puis série de correctifs : vue Couverture rendue lisible, limite de membres par groupe relevée, notifications iOS, ouverture des liens d'invitation directement dans l'application.</li>
+            </ul>
+          </li>
+
+          <li class="week">
+            <span class="week__num">Semaine 5</span>
+            <h3 class="week__title">Publication, accessibilité et dernier bug</h3>
+            <p class="week__dates">3 au 7 août</p>
+            <ul class="week__list">
+              <li>Un écran conçu et livré, mais volontairement rendu invisible derrière un interrupteur dans le code : un prérequis extérieur au développement manquait encore, et le publier en l'état aurait induit l'utilisateur en erreur. Le travail est prêt à être activé le jour venu plutôt que de dormir dans un coin du projet.</li>
+              <li>Notifications iPhone : elles n'avaient jamais fonctionné depuis le début du projet, sans qu'aucun message d'erreur n'apparaisse nulle part. Plutôt que d'inventer une solution, j'ai comparé méthodiquement avec une autre application de l'entreprise dont les notifications marchaient. Trois écarts trouvés, tous corrigés en reprenant la structure éprouvée.</li>
+              <li>Ajout d'un indicateur d'état lisible depuis l'application : le prochain diagnostic ne demandera plus ni accès serveur ni ordinateur Apple.</li>
+              <li>Unification des bandeaux de six écrans qui avaient dérivé à force d'être recopiés à la main : <strong>259 lignes de code en moins</strong> et une interface enfin cohérente.</li>
+              <li>Accessibilité : les zones tactiles sans libellé lu par les lecteurs d'écran passent de <strong>62 à 26</strong> en une journée, et les boutons atteignent la taille minimale recommandée par Apple et Google.</li>
+              <li>Dernier jour : un membre pouvait être bloqué sur le même créneau par deux groupes à la fois. La protection existait déjà côté serveur depuis des semaines — elle était simplement fausse pour tout horaire traversant minuit, typiquement une équipe de nuit. Nouvelle méthode de comparaison, vérifiée sur les <strong>cent combinaisons possibles</strong> de créneaux contre un calcul de référence, plutôt que sur quelques cas choisis à la main.</li>
+            </ul>
+          </li>
+
+        </ol>
+      </section>
+
+      <section class="cv-block" aria-labelledby="retenir-title">
+        <h2 class="cv-block__heading" id="retenir-title">Ce que j'en retiens</h2>
+
+        <ul class="week__list week__list--wide">
+          <li><strong>Un garde-fou qui existe n'est pas un garde-fou qui marche.</strong> Les deux bugs les plus sérieux du stage venaient de protections déjà présentes dans le code mais défaillantes. Chercher si la règle existe ne suffit pas, il faut vérifier qu'elle est vraie sur les cas limites.</li>
+          <li><strong>Corriger, puis empêcher la récidive.</strong> Réparer la connexion cassée n'aurait servi à rien sans ajouter un test automatique à chaque déploiement. La deuxième moitié du travail est celle qui compte.</li>
+          <li><strong>Comparer avec ce qui fonctionne déjà.</strong> Pour les notifications iPhone, reprendre la structure d'une application qui marchait a été plus rapide et plus sûr que d'inventer.</li>
+          <li><strong>Signaler plutôt que trancher.</strong> En trouvant trois valeurs contradictoires pour un même réglage selon l'endroit où on regardait, j'ai remonté le point sans le corriger de moi-même : l'arbitrage relevait d'une décision produit, pas d'un choix technique.</li>
+          <li><strong>Maquetter quand les mots ne suffisent pas.</strong> Présenter un changement qui inverse la logique de l'application sous forme d'écrans a évité de construire une fonctionnalité sur un malentendu.</li>
+          <li><strong>Se corriger à l'écrit.</strong> J'ai affirmé un matin que l'accessibilité était un motif de refus App Store. C'était faux, et je l'ai noté dans mon suivi l'après-midi même. Mieux vaut une correction visible qu'une erreur qui circule.</li>
+        </ul>
+      </section>
+
+      <section class="cv-block" aria-labelledby="suite-title">
+        <h2 class="cv-block__heading" id="suite-title">Et après</h2>
+        <p class="doc-intro">
+          SYNCRO est aujourd'hui disponible sur
+          <a href="https://apps.apple.com/fr/app/syncro/id6787898930" target="_blank" rel="noopener noreferrer">l'App Store</a> et
+          <a href="https://play.google.com/store/apps/details?id=fr.appsyncro.mobile" target="_blank" rel="noopener noreferrer">Google Play</a>,
+          et son site <a href="https://appsyncro.fr" target="_blank" rel="noopener noreferrer">appsyncro.fr</a> est en production.
+        </p>
+        <p>
+          <a class="btn btn--primary" href="documents.html">Voir la lettre de recommandation</a>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <span>Dorian Pachot - BTS SIO SLAM, IRIS Mediaschool</span>
+      <a href="https://www.linkedin.com/in/dorian-pachot-81299930a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
