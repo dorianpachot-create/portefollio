@@ -47,7 +47,7 @@ ok('palette : fermee au depart', box.hidden === true);
 d.querySelector('[data-palette-open]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
 ok('palette : ouverte au clic', box.hidden === false);
 const total = d.querySelectorAll('.palette__item').length;
-ok('palette : 24 entrees listees', total === 24, String(total));
+ok('palette : 25 entrees listees', total === 25, String(total));
 input.value = 'bulletin';
 input.dispatchEvent(new w.Event('input', { bubbles: true }));
 ok('palette : recherche filtre', d.querySelectorAll('.palette__item').length === 1);
@@ -66,14 +66,14 @@ d.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true })
 // Filtres
 const cards = () => Array.from(d.querySelectorAll('[data-tech]'));
 const visible = () => cards().filter(c => !c.classList.contains('is-hidden')).length;
-ok('filtres : 5 cartes visibles', visible() === 5, String(visible()));
+ok('filtres : 3 cartes visibles', visible() === 3, String(visible()));
 d.querySelector('[data-filter="python"]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-ok('filtres : Python en garde 2', visible() === 2, String(visible()));
+ok('filtres : Python en garde 1', visible() === 1, String(visible()));
 ok('filtres : bouton actif', d.querySelector('[data-filter="python"]').getAttribute('aria-pressed') === 'true');
 d.querySelector('[data-filter="flutter"]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
 ok('filtres : Flutter en garde 1', visible() === 1, String(visible()));
 d.querySelector('[data-filter="all"]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-ok('filtres : Tout remet les 5', visible() === 5);
+ok('filtres : Tout remet les 3', visible() === 3);
 ok('filtres : message masque', d.querySelector('[data-filters-empty]').hidden === true);
 
 // Carrousel
@@ -88,13 +88,18 @@ ok('copie : bouton present', !!copyBtn && copyBtn.dataset.copy === 'dorianpachot
 // Retour en haut
 ok('retour en haut : present', !!d.querySelector('[data-to-top]'));
 
+// Section Cours
+ok('cours : 8 matieres listees', d.querySelectorAll('.subject-card').length === 8,
+   String(d.querySelectorAll('.subject-card').length));
+ok('cours : agent IA retire', !d.body.textContent.includes('Agent IA'));
+
 console.log('\n--- pages/stage.html (chemins relatifs) ---');
 const w2 = boot('pages/stage.html');
 const d2 = w2.document;
 d2.querySelector('[data-palette-open]').dispatchEvent(new w2.MouseEvent('click', { bubbles: true }));
 const first = d2.querySelector('.palette__item');
 ok('palette : ouverte sur une sous-page', d2.querySelector('[data-palette]').hidden === false);
-ok('palette : 24 entrees aussi', d2.querySelectorAll('.palette__item').length === 24);
+ok('palette : 25 entrees aussi', d2.querySelectorAll('.palette__item').length === 25);
 ok('theme : bouton present', !!d2.querySelector('[data-theme-toggle]'));
 
 console.log('\n' + pass + ' reussis, ' + fail + ' echecs');

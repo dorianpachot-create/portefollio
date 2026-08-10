@@ -2,6 +2,35 @@
 
 Dernière mise à jour : 2026-08-10
 
+## Mise à jour du 2026-08-10 — agent IA retiré, section Cours créée
+
+### Agent IA de candidature retiré
+
+Supprimé de `index.html` et de `pages/projets-perso.html`, ainsi que des textes
+d'introduction qui le mentionnaient. Il ne figurait déjà pas sur le CV du 28/07, donc
+aucun PDF n'est à refaire.
+
+### Les cours ont leur propre section
+
+`pages/projets-cours.html` n'était qu'une carte perdue au milieu des projets personnels,
+alors que le contenu n'a rien à voir : d'un côté des réalisations, de l'autre des travaux
+scolaires. Nouvelle section `#cours` sur l'accueil, entre Projets et Documents, avec les
+huit matières en tuiles compactes, leur nombre de travaux et une icône.
+
+Chaque tuile pointe vers l'ancre de sa matière : des `id` ont été ajoutés aux huit
+`<details>` de `projets-cours.html` (`matiere-developpement`, `matiere-systemes`, etc.).
+Un clic depuis l'accueil ouvre donc la bonne matière directement.
+
+### Conséquences
+
+- Les projets passent de 5 à 3 cartes. Les filtres React et « Réseaux & systèmes »
+  n'auraient plus rien renvoyé : ils sont retirés, le compteur « Tout » passe à 3.
+- L'alternance des fonds a été refaite sur les sept sections pour rester régulière :
+  gris, blanc, gris, blanc, gris, blanc, gris.
+- « Cours » ajouté au menu des 8 pages et à la palette, qui passe à 25 entrées.
+- Les tests passent de 26 à 28 : ajout d'une vérification des 8 matières et d'un contrôle
+  que l'agent IA a bien disparu de la page.
+
 ## Aération du 2026-08-10 — une section par écran
 
 Demande : « rends le tout moins lourd, aère le site », en gardant le contenu intact.

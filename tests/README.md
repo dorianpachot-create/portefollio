@@ -11,7 +11,7 @@ npm install jsdom
 node tests/dom.test.js
 ```
 
-Sortie attendue : `26 reussis, 0 echecs`. Le script renvoie un code d'erreur
+Sortie attendue : `28 reussis, 0 echecs`. Le script renvoie un code d'erreur
 si un test échoue, ce qui permet de le brancher sur une intégration continue.
 
 ## Ce qui est couvert
@@ -23,6 +23,7 @@ si un test échoue, ce qui permet de le brancher sur une intégration continue.
 | Filtres | comptage par technologie, état des boutons, retour à « Tout » |
 | Carrousel | génération des pastilles, pastille active |
 | Copie e-mail | présence et valeur copiée |
+| Section Cours | 8 matières listées, agent IA bien retiré |
 | Chemins relatifs | la palette fonctionne aussi depuis `pages/` |
 
 `node_modules/` n'est pas versionné : `npm install jsdom` le recrée.

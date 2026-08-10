@@ -2,7 +2,8 @@
 
 Site vitrine personnel développé dans le cadre du BTS SIO option SLAM à IRIS MediaSchool.
 L'accueil est une page unique qui déroule : profil et compétences, stage chez Suitime,
-projets, documents de candidature, coulisses techniques et contact. Les contenus longs (journal de stage,
+projets personnels, projets encadrés du BTS, documents de candidature, coulisses
+techniques et contact. Les contenus longs (journal de stage,
 documents en grand, fiches de cours, mini-jeu) ont leur propre page.
 
 ## Structure
@@ -20,7 +21,7 @@ portefollio/
 ├── js/main.js           Thème, menu, palette Ctrl+K, filtres, carrousel (vanilla JS)
 ├── sitemap.xml
 ├── robots.txt
-├── tests/dom.test.js    26 tests des composants interactifs (jsdom)
+├── tests/dom.test.js    28 tests des composants interactifs (jsdom)
 ├── assets/
 │   ├── meta/                     Favicon, image de partage, vignettes WebP
 │   ├── stars.svg                 Champ d'étoiles tilable
@@ -46,7 +47,7 @@ portefollio/
     ├── stage.html           Stage chez Suitime, semaine par semaine
     ├── documents.html       Recommandation, bulletin, lettre de motivation
     ├── projets-cours.html   TP du BTS, avec fiches PDF
-    ├── projets-perso.html   CRP-Assurance, SYNCRO, agent IA, Mission Orion
+    ├── projets-perso.html   CRP-Assurance, SYNCRO, Mission Orion
     ├── mini-jeu.html        Mission Orion jouable en WebAssembly
     └── mentions-legales.html
 ```
@@ -95,7 +96,7 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
 
 - **Thème clair / sombre** mémorisé, aligné par défaut sur le réglage du système, sans
   flash au chargement (script inline dans le `<head>`).
-- **Recherche** dans l'en-tête ou au `Ctrl+K` : 24 destinations, recherche insensible aux
+- **Recherche** dans l'en-tête ou au `Ctrl+K` : 25 destinations, recherche insensible aux
   accents, navigation entièrement au clavier.
 - **Filtre des projets** par technologie.
 - **Frise du projet** et **histogramme d'activité** en CSS pur, sans bibliothèque.
@@ -119,7 +120,7 @@ npm install jsdom
 node tests/dom.test.js
 ```
 
-26 vérifications sur les composants interactifs, sans navigateur. Voir `tests/README.md`.
+28 vérifications sur les composants interactifs, sans navigateur. Voir `tests/README.md`.
 
 ## SEO
 
