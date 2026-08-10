@@ -2,6 +2,47 @@
 
 Dernière mise à jour : 2026-08-10
 
+## Correctifs du 2026-08-10 (tard) — visibilité et robustesse
+
+Retour de Dorian : « à quoi sert le Ctrl+K ? », « le bouton n'est pas beau », « je ne vois
+pas de carrousel ni d'éléments qui servent de démo ». Trois problèmes réels derrière.
+
+### Défaut corrigé : la page pouvait devenir invisible
+
+`.reveal { opacity: 0 }` était appliqué dans tous les cas, et c'est le JavaScript qui
+révélait les blocs. **Si `main.js` échouait ou était bloqué, 18 blocs de l'accueil
+restaient invisibles** — dont le carrousel, les compétences, les projets et le contact.
+C'est probablement ce que Dorian a vu.
+
+Le script inline du `<head>` pose maintenant une classe `js` sur `<html>`, et la règle est
+devenue `.js .reveal { opacity: 0 }`. Sans JavaScript, la page s'affiche entièrement,
+simplement sans animation. C'est le principe de l'amélioration progressive : la
+fonctionnalité de confort ne doit jamais pouvoir casser le contenu.
+
+### Le Ctrl+K était invisible
+
+Un raccourci clavier ne se découvre pas, et un recruteur RH ne le connaît pas. Le bouton
+`icon-btn kbd-btn` avec ses deux touches empilées est remplacé par un **faux champ de
+recherche** (`.search-btn`) : loupe, texte « Rechercher », et la mention `Ctrl K`
+discrète à droite. C'est un `<button>`, pas un `<input>` — il en a seulement l'apparence,
+pour que la fonction se comprenne sans connaître le raccourci.
+
+### Les démos n'étaient pas visibles
+
+- Le **carrousel** était en bas de la section Projets, après cinq cartes. Il remonte dans
+  la carte SYNCRO de l'accroche, visible sans défiler, en version compacte
+  (`.carousel--compact`, diapositives de 118 px).
+- Nouvelle section **« Ce site est aussi un projet »** (`#ce-site`) avant le contact :
+  quatre chiffres, une colonne « ce que vous pouvez essayer » qui invite explicitement à
+  tester le thème, la recherche, les filtres et le carrousel, une colonne sur les
+  décisions techniques, et un lien vers le dépôt GitHub.
+
+Le but est de transformer un travail invisible en argument lisible : sans cette section,
+personne ne remarque qu'il n'y a aucune dépendance ni que les images sont optimisées.
+
+La palette passe à 24 entrées (ajout de « Ce site » et du dépôt GitHub). Les 26 tests
+passent toujours.
+
 ## Mise à jour du 2026-08-10 (soir) — interactions et finitions
 
 Le site devient lui-même une démonstration de développement, sans casser le design sobre.

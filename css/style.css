@@ -702,23 +702,36 @@ a.card:hover .card__link::after { transform: translateX(3px); }
 [data-theme="dark"] .icon-btn .icon-sun { display: block; }
 [data-theme="dark"] .icon-btn .icon-moon { display: none; }
 
-.kbd-btn {
+/* Faux champ de recherche : c'est un bouton, mais il en a l'apparence
+   pour que l'utilisateur comprenne sa fonction sans connaître le raccourci. */
+.search-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  height: 38px;
   width: auto;
-  padding: 0 0.7rem;
-  font: inherit;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--text-3);
-}
-.kbd-btn kbd {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.78rem;
-  border: 1px solid var(--border-2);
-  border-bottom-width: 2px;
-  border-radius: 5px;
-  padding: 0.05rem 0.3rem;
-  color: var(--text-2);
+  padding: 0 0.7rem 0 0.75rem;
   background: var(--bg-soft);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--text-3);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+.search-btn:hover { border-color: var(--accent); color: var(--text-2); background: var(--bg); }
+.search-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+.search-btn__label { padding-right: 2.5rem; }
+.search-btn__kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.72rem;
+  border: 1px solid var(--border-2);
+  border-radius: 5px;
+  padding: 0.1rem 0.35rem;
+  color: var(--text-3);
+  background: var(--bg);
+  white-space: nowrap;
 }
 
 /* ---------- Palette de commandes ---------- */
@@ -812,6 +825,21 @@ a.card:hover .card__link::after { transform: translateX(3px); }
 
 /* ---------- Carrousel ---------- */
 .carousel { position: relative; margin-top: 1.6rem; }
+.carousel__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 0.6rem;
+}
+/* Version compacte pour la carte de l'accroche, plus étroite. */
+.carousel--compact { margin-top: 1.4rem; }
+.carousel--compact .carousel__slide { width: 118px; }
+.carousel--compact .carousel__track { gap: 0.6rem; }
+.carousel--compact .carousel__nav { margin-top: 0.7rem; }
+.carousel--compact .icon-btn { width: 30px; height: 30px; }
+.carousel--compact .icon-btn svg { width: 15px; height: 15px; }
 .carousel__track {
   display: flex;
   gap: 1rem;
@@ -890,9 +918,12 @@ a.card:hover .card__link::after { transform: translateX(3px); }
 .to-top:hover { color: var(--accent); border-color: var(--accent); }
 .to-top svg { width: 19px; height: 19px; }
 
-/* ---------- Apparition au défilement ---------- */
-.reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
-.reveal.is-in { opacity: 1; transform: none; }
+/* ---------- Apparition au défilement ----------
+   L'état masqué n'est appliqué QUE si le JavaScript tourne : la classe .js est
+   posée sur <html> par le script inline du <head>. Sans ça, une erreur de script
+   ou un navigateur qui bloque le JS rendrait invisible la moitié de la page. */
+.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.js .reveal.is-in { opacity: 1; transform: none; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {

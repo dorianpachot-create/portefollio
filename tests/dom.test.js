@@ -47,7 +47,7 @@ ok('palette : fermee au depart', box.hidden === true);
 d.querySelector('[data-palette-open]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
 ok('palette : ouverte au clic', box.hidden === false);
 const total = d.querySelectorAll('.palette__item').length;
-ok('palette : 22 entrees listees', total === 22, String(total));
+ok('palette : 24 entrees listees', total === 24, String(total));
 input.value = 'bulletin';
 input.dispatchEvent(new w.Event('input', { bubbles: true }));
 ok('palette : recherche filtre', d.querySelectorAll('.palette__item').length === 1);
@@ -94,7 +94,7 @@ const d2 = w2.document;
 d2.querySelector('[data-palette-open]').dispatchEvent(new w2.MouseEvent('click', { bubbles: true }));
 const first = d2.querySelector('.palette__item');
 ok('palette : ouverte sur une sous-page', d2.querySelector('[data-palette]').hidden === false);
-ok('palette : 22 entrees aussi', d2.querySelectorAll('.palette__item').length === 22);
+ok('palette : 24 entrees aussi', d2.querySelectorAll('.palette__item').length === 24);
 ok('theme : bouton present', !!d2.querySelector('[data-theme-toggle]'));
 
 console.log('\n' + pass + ' reussis, ' + fail + ' echecs');

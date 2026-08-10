@@ -2,7 +2,7 @@
 
 Site vitrine personnel développé dans le cadre du BTS SIO option SLAM à IRIS MediaSchool.
 L'accueil est une page unique qui déroule : profil et compétences, stage chez Suitime,
-projets, documents de candidature et contact. Les contenus longs (journal de stage,
+projets, documents de candidature, coulisses techniques et contact. Les contenus longs (journal de stage,
 documents en grand, fiches de cours, mini-jeu) ont leur propre page.
 
 ## Structure
@@ -91,10 +91,13 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
 
 - **Thème clair / sombre** mémorisé, aligné par défaut sur le réglage du système, sans
   flash au chargement (script inline dans le `<head>`).
-- **Palette de commandes** au `Ctrl+K` : 22 destinations, recherche insensible aux accents,
-  navigation au clavier.
+- **Recherche** dans l'en-tête ou au `Ctrl+K` : 24 destinations, recherche insensible aux
+  accents, navigation entièrement au clavier.
 - **Filtre des projets** par technologie.
-- **Carrousel** des captures de SYNCRO, en `scroll-snap`, utilisable sans JavaScript.
+- **Carrousel** des captures de SYNCRO dans l'accroche, en `scroll-snap`, utilisable sans
+  JavaScript.
+- Section **« Ce site est aussi un projet »** qui détaille les choix techniques et invite
+  à essayer les composants.
 - **Copie de l'e-mail** en un clic, avec repli pour les navigateurs anciens.
 - Apparition au défilement et compteurs animés, désactivés si `prefers-reduced-motion`.
 - Mini-jeu Python jouable dans le navigateur (build pygbag en WebAssembly).

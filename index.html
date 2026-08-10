@@ -21,6 +21,9 @@
       } catch (e) {
         document.documentElement.setAttribute('data-theme', 'light');
       }
+      // Signale que le JavaScript tourne : le CSS ne masque les blocs a
+      // reveler que dans ce cas, sinon la page reste lisible telle quelle.
+      document.documentElement.classList.add('js');
     })();
   </script>
 
@@ -75,13 +78,15 @@
         <a class="nav__link" href="#stage">Stage</a>
         <a class="nav__link" href="#projets">Projets</a>
         <a class="nav__link" href="#documents">Documents</a>
+        <a class="nav__link" href="#ce-site">Ce site</a>
         <a class="nav__link" href="#contact">Contact</a>
       </nav>
 
       <div class="topbar__tools">
-        <button class="icon-btn kbd-btn" type="button" data-palette-open aria-label="Rechercher dans le site">
+        <button class="search-btn" type="button" data-palette-open aria-label="Rechercher dans le site">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
-          <kbd>Ctrl</kbd><kbd>K</kbd>
+          <span class="search-btn__label">Rechercher</span>
+          <span class="search-btn__kbd" aria-hidden="true">Ctrl K</span>
         </button>
 
         <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="Passer en thème sombre">
@@ -165,6 +170,33 @@
             </a>
           </li>
         </ul>
+
+        <div class="carousel carousel--compact" data-carousel>
+          <p class="carousel__label">L'application en images</p>
+          <div class="carousel__track" data-carousel-track tabindex="0" role="group" aria-label="Captures d'écran de SYNCRO, faites défiler horizontalement">
+            <figure class="carousel__slide">
+              <img src="assets/syncro/screens/screen-1.jpg" alt="Écran SYNCRO : planning de la semaine avec la couverture par jour." loading="lazy" width="720" height="1280" />
+            </figure>
+            <figure class="carousel__slide">
+              <img src="assets/syncro/screens/screen-2.jpg" alt="Écran SYNCRO : saisie des disponibilités par créneau." loading="lazy" width="720" height="1280" />
+            </figure>
+            <figure class="carousel__slide">
+              <img src="assets/syncro/screens/screen-3.jpg" alt="Écran SYNCRO : gestion des groupes et des rôles." loading="lazy" width="720" height="1280" />
+            </figure>
+            <figure class="carousel__slide">
+              <img src="assets/syncro/screens/screen-4.jpg" alt="Écran SYNCRO : notifications en temps réel et suivi des heures." loading="lazy" width="720" height="1280" />
+            </figure>
+          </div>
+          <div class="carousel__nav">
+            <button class="icon-btn" type="button" data-carousel-prev aria-label="Capture précédente">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
+            </button>
+            <div class="carousel__dots" data-carousel-dots></div>
+            <button class="icon-btn" type="button" data-carousel-next aria-label="Capture suivante">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
       </article>
     </section>
 
@@ -353,34 +385,6 @@
 
         </div>
 
-        <div class="cv-block reveal">
-          <h3 class="cv-block__heading">SYNCRO en images</h3>
-          <div class="carousel" data-carousel>
-            <div class="carousel__track" data-carousel-track tabindex="0" role="group" aria-label="Captures d'écran de l'application SYNCRO, faites défiler horizontalement">
-              <figure class="carousel__slide">
-                <img src="assets/syncro/screens/screen-1.jpg" alt="Écran SYNCRO : planning de la semaine avec la couverture par jour et les disponibilités de chaque membre." loading="lazy" width="720" height="1280" />
-              </figure>
-              <figure class="carousel__slide">
-                <img src="assets/syncro/screens/screen-2.jpg" alt="Écran SYNCRO : saisie des disponibilités par créneau, matin et après-midi." loading="lazy" width="720" height="1280" />
-              </figure>
-              <figure class="carousel__slide">
-                <img src="assets/syncro/screens/screen-3.jpg" alt="Écran SYNCRO : gestion des groupes et des rôles des membres." loading="lazy" width="720" height="1280" />
-              </figure>
-              <figure class="carousel__slide">
-                <img src="assets/syncro/screens/screen-4.jpg" alt="Écran SYNCRO : notifications en temps réel et suivi des heures." loading="lazy" width="720" height="1280" />
-              </figure>
-            </div>
-            <div class="carousel__nav">
-              <button class="icon-btn" type="button" data-carousel-prev aria-label="Capture précédente">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
-              </button>
-              <div class="carousel__dots" data-carousel-dots></div>
-              <button class="icon-btn" type="button" data-carousel-next aria-label="Capture suivante">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -462,8 +466,73 @@
       </div>
     </section>
 
+    <!-- ============ Ce site ============ -->
+    <section class="section section--soft" id="ce-site" aria-labelledby="ce-site-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-head__eyebrow">Sous le capot</span>
+          <h2 class="section-head__title" id="ce-site-title">Ce site est aussi un projet</h2>
+          <p class="section-head__lead">
+            Il est écrit à la main, sans framework et sans aucune dépendance chargée par
+            le navigateur. Tout ce que vous venez d'utiliser est du HTML, du CSS et du
+            JavaScript natif.
+          </p>
+        </div>
+
+        <ul class="stat-list reveal" aria-label="Le site en chiffres">
+          <li class="stat">
+            <span class="stat__value" data-count>0</span>
+            <span class="stat__label">dépendance au chargement</span>
+          </li>
+          <li class="stat">
+            <span class="stat__value" data-count>26</span>
+            <span class="stat__label">tests automatisés, tous au vert</span>
+          </li>
+          <li class="stat">
+            <span class="stat__value" data-count>8</span>
+            <span class="stat__label">pages, un seul fichier de style</span>
+          </li>
+          <li class="stat">
+            <span class="stat__value" data-count>2</span>
+            <span class="stat__label">thèmes, sans une seule règle en double</span>
+          </li>
+        </ul>
+
+        <div class="skills reveal">
+          <div class="skill">
+            <h3 class="skill__title">Ce que vous pouvez essayer</h3>
+            <ul class="week__list">
+              <li>Le <strong>thème sombre</strong>, en haut à droite. Il suit votre réglage système par défaut, retient votre choix, et ne provoque aucun flash blanc au changement de page.</li>
+              <li>La <strong>recherche</strong>, au clic ou au <strong>Ctrl+K</strong>. Elle ignore les accents et se pilote entièrement au clavier.</li>
+              <li>Les <strong>filtres</strong> de la section Projets.</li>
+              <li>Le <strong>carrousel</strong> de SYNCRO, qui fonctionne au doigt même sans JavaScript.</li>
+              <li>Le <strong>jeu en Python</strong>, compilé en WebAssembly et jouable dans l'onglet.</li>
+            </ul>
+          </div>
+
+          <div class="skill">
+            <h3 class="skill__title">Les décisions techniques</h3>
+            <ul class="week__list">
+              <li>Le thème sombre ne redéfinit que des <strong>variables CSS</strong> : aucune règle n'existe en double entre les deux thèmes.</li>
+              <li>Les animations d'apparition ne s'activent que si le JavaScript tourne. En cas d'erreur de script, la page reste entièrement lisible plutôt que de disparaître.</li>
+              <li><code>prefers-reduced-motion</code> est respecté partout, et la copie de l'e-mail a un repli pour les navigateurs anciens.</li>
+              <li>Les vignettes sont en <strong>WebP</strong> avec repli JPEG et dimensions déclarées : 1,7 Mo économisés et aucun saut de mise en page.</li>
+              <li>Données structurées <strong>JSON-LD</strong>, Open Graph, <code>sitemap.xml</code> et feuille d'impression dédiée.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="actions reveal" style="margin-top:1.6rem">
+          <a class="btn btn--secondary" href="https://github.com/dorianpachot-create/portefollio" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            Voir le code sur GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ Contact ============ -->
-    <section class="section section--soft" id="contact" aria-labelledby="contact-title">
+    <section class="section" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="section-head reveal">
           <span class="section-head__eyebrow">Contact</span>

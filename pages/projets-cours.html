@@ -15,6 +15,9 @@
       } catch (e) {
         document.documentElement.setAttribute('data-theme', 'light');
       }
+      // Signale que le JavaScript tourne : le CSS ne masque les blocs a
+      // reveler que dans ce cas, sinon la page reste lisible telle quelle.
+      document.documentElement.classList.add('js');
     })();
   </script>
 
@@ -47,13 +50,15 @@
         <a class="nav__link" href="../index.html#stage">Stage</a>
         <a class="nav__link" href="../index.html#projets">Projets</a>
         <a class="nav__link" href="../index.html#documents">Documents</a>
+        <a class="nav__link" href="../index.html#ce-site">Ce site</a>
         <a class="nav__link" href="../index.html#contact">Contact</a>
       </nav>
 
       <div class="topbar__tools">
-        <button class="icon-btn kbd-btn" type="button" data-palette-open aria-label="Rechercher dans le site">
+        <button class="search-btn" type="button" data-palette-open aria-label="Rechercher dans le site">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
-          <kbd>Ctrl</kbd><kbd>K</kbd>
+          <span class="search-btn__label">Rechercher</span>
+          <span class="search-btn__kbd" aria-hidden="true">Ctrl K</span>
         </button>
 
         <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="Passer en thème sombre">
