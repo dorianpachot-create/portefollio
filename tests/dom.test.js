@@ -84,6 +84,9 @@ ok('carrousel : 1re pastille active', d.querySelector('.carousel__dot').getAttri
 // Copie
 const copyBtn = d.querySelector('[data-copy]');
 ok('copie : bouton present', !!copyBtn && copyBtn.dataset.copy === 'dorianpachot@gmail.com');
+ok('contact : e-mail hors de la grille', !!d.querySelector('.mail-row') && !d.querySelector('.contact .mail-row'));
+ok('contact : 3 tuiles dans la grille', d.querySelectorAll('.contact .contact__item').length === 3,
+   String(d.querySelectorAll('.contact .contact__item').length));
 
 // Retour en haut
 ok('retour en haut : present', !!d.querySelector('[data-to-top]'));

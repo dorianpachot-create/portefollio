@@ -2,6 +2,50 @@
 
 Dernière mise à jour : 2026-08-10
 
+## Mise à jour du 2026-08-10, ouverture des domaines et correctifs
+
+### Le portfolio n'est plus limité au développement
+
+Dorian ne se ferme pas aux systèmes, aux réseaux ni à la cybersécurité. Le site le disait
+implicitement, il le dit maintenant clairement, à cinq endroits :
+
+- le rôle sous le nom devient « Développeur full-stack, ouvert aux systèmes et réseaux » ;
+- l'accroche ajoute une phrase sur les trois domaines ;
+- la présentation gagne un paragraphe qui s'appuie sur un fait vérifiable, sa meilleure
+  note de l'année est un 20 en administration systèmes et réseaux ;
+- la preuve sur les résultats scolaires met ce 20 en avant plutôt que la moyenne seule ;
+- les sections Compétences et Cours rappellent que le BTS couvre les deux versants.
+
+Les métadonnées suivent, y compris le JSON-LD.
+
+### Plus de date de rentrée affichée
+
+« Septembre 2026 » disparaît du site. La formulation devient « je cherche une alternance
+pour poursuivre mes études ». Afficher une date passée ou proche fait perdre des
+opportunités, et Dorian a jusqu'à décembre.
+
+L'objectif d'études est précisé : au minimum un bachelor DevOps, davantage si l'entreprise
+le souhaite.
+
+### La lettre de recommandation n'est pas un avis client
+
+La carte de preuve disait « Un client satisfait ». C'est faux : Valentin Javelaud est le
+responsable de stage de Dorian chez Suitime, pas un client. Corrigé en « Une lettre de
+recommandation », avec la mention « écrite par mon responsable de stage ».
+
+### La ligne e-mail sort de la grille
+
+Le correctif précédent posait `grid-column: 1 / -1` sur la tuile e-mail, dans une grille
+en `repeat(auto-fit, minmax(230px, 1fr))`. Cette combinaison donne un résultat imprévisible
+selon la largeur : l'adresse continuait de passer à la ligne.
+
+La ligne e-mail est maintenant un bloc `.mail-row` **au-dessus** de la grille, pas dedans.
+Icône, libellé, adresse, puis le bouton poussé à droite, le tout sur une ligne. Plus aucune
+interaction avec la grille. Sous 560 px, le bouton passe en dessous.
+
+Deux tests ajoutés pour verrouiller ça : la ligne e-mail existe bien hors de la grille, et
+la grille contient exactement trois tuiles. Total : 33 tests.
+
 ## Mise à jour du 2026-08-10, code rangé et commenté
 
 Demande : retirer les tirets longs, ranger le code pour qu'il soit facile à reprendre,

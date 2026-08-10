@@ -22,7 +22,7 @@ portefollio/
 ├── js/main.js           Thème, menu, palette Ctrl+K, filtres, carrousel (vanilla JS)
 ├── sitemap.xml
 ├── robots.txt
-├── tests/dom.test.js    31 tests des composants interactifs (jsdom)
+├── tests/dom.test.js    33 tests des composants interactifs (jsdom)
 ├── assets/
 │   ├── meta/                     Favicon, image de partage, vignettes WebP
 │   ├── stars.svg                 Champ d'étoiles tilable
@@ -148,7 +148,7 @@ npm install jsdom
 node tests/dom.test.js
 ```
 
-31 vérifications sur les composants interactifs, sans navigateur. Voir `tests/README.md`.
+33 vérifications sur les composants interactifs, sans navigateur. Voir `tests/README.md`.
 
 ## SEO
 

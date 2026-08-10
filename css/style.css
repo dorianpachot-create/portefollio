@@ -874,18 +874,37 @@ a.card:hover .card__link::after { transform: translateX(3px); }
 .contact__label { display: block; font-size: 0.8rem; color: var(--text-3); }
 .contact__value { display: block; font-weight: 600; font-size: 0.97rem; }
 
-/* La tuile e-mail occupe toute la largeur de la grille. L'adresse tient donc
-   sur une seule ligne, et le bouton copier se pose au bout sans rien casser. */
-.contact__item--full { grid-column: 1 / -1; }
-.contact__item--full .copy-btn { margin-left: auto; }
-.contact__item--full .contact__value { white-space: nowrap; }
+/* Ligne e-mail, posee au-dessus de la grille et pas dedans. Tout sur une
+   seule ligne : icone, libelle, adresse, puis le bouton pousse a droite. */
+.mail-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+.mail-row svg { width: 21px; height: 21px; color: var(--accent); flex-shrink: 0; }
+.mail-row__label { font-size: 0.8rem; color: var(--text-3); flex-shrink: 0; }
+.mail-row__value {
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mail-row__value:hover { color: var(--accent); }
+.mail-row .copy-btn { margin-left: auto; flex-shrink: 0; }
 
-/* En dessous de 560px l'adresse ne rentre plus : on repasse le bouton en
-   dessous plutot que de laisser le texte deborder. */
+/* Sous 560px l'adresse ne rentre plus a cote du bouton : on passe le bouton
+   en dessous plutot que de couper l'adresse. */
 @media (max-width: 560px) {
-  .contact__item--full { flex-wrap: wrap; }
-  .contact__item--full .contact__value { white-space: normal; word-break: break-word; }
-  .contact__item--full .copy-btn { margin-left: 2.9rem; }
+  .mail-row { flex-wrap: wrap; gap: 0.5rem 0.7rem; }
+  .mail-row__value { flex-basis: 100%; white-space: normal; word-break: break-all; }
+  .mail-row .copy-btn { margin-left: 0; }
 }
 
 /* ---------- Pied de page ---------- */
