@@ -151,6 +151,26 @@
   --halo-2:      #0ea5e9;
   --halo-3:      #8b5cf6;
 
+  /* PALETTE SECONDAIRE
+     Cinq teintes utilisees pour differencier les sections, les familles
+     de competences et les matieres. Elles ne remplacent jamais l'accent,
+     elles s'ajoutent : l'accent reste la couleur des liens et des boutons,
+     donc on ne perd pas le reperage.
+
+     Chaque teinte a une version de fond tres pale, pour poser du texte
+     dessus sans probleme de contraste. */
+  --c-blue:      #1d4ed8;
+  --c-teal:      #0d9488;
+  --c-violet:    #7c3aed;
+  --c-amber:     #b45309;
+  --c-rose:      #be185d;
+
+  --c-blue-bg:   #eef3ff;
+  --c-teal-bg:   #e6f7f4;
+  --c-violet-bg: #f2ecff;
+  --c-amber-bg:  #fdf3e3;
+  --c-rose-bg:   #fdecf3;
+
   /* Formes */
   --radius:      10px;
   --radius-sm:   8px;
@@ -195,6 +215,20 @@
 
   --halo-2:      #38bdf8;
   --halo-3:      #a78bfa;
+
+  /* En sombre, les teintes sont eclaircies pour rester lisibles sur fond
+     noir, et les fonds pales deviennent des fonds sombres teintes. */
+  --c-blue:      #7aa2ff;
+  --c-teal:      #2dd4bf;
+  --c-violet:    #a78bfa;
+  --c-amber:     #fbbf24;
+  --c-rose:      #f472b6;
+
+  --c-blue-bg:   #17243f;
+  --c-teal-bg:   #0e2b2a;
+  --c-violet-bg: #221a3d;
+  --c-amber-bg:  #2e2412;
+  --c-rose-bg:   #2e1626;
 
   --shadow:    0 1px 2px rgba(0,0,0,.3), 0 1px 3px rgba(0,0,0,.35);
   --shadow-md: 0 4px 16px rgba(0,0,0,.45);
@@ -293,12 +327,17 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 .bg-fx__blob--2 {
   top: 18%; right: -16rem;
-  background: radial-gradient(circle, color-mix(in srgb, var(--halo-2) 32%, transparent), transparent 68%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--c-teal) 30%, transparent), transparent 68%);
   animation: blob-2 30s ease-in-out infinite;
+}
+.bg-fx__blob--4 {
+  top: 55%; left: -14rem;
+  background: radial-gradient(circle, color-mix(in srgb, var(--c-amber) 22%, transparent), transparent 68%);
+  animation: blob-2 33s ease-in-out infinite reverse;
 }
 .bg-fx__blob--3 {
   bottom: -18rem; left: 32%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--halo-3) 28%, transparent), transparent 68%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--c-rose) 24%, transparent), transparent 68%);
   animation: blob-3 27s ease-in-out infinite;
 }
 
@@ -1850,6 +1889,144 @@ a.card:hover .card__cover img { transform: scale(1.06); }
   transition-delay: var(--d, 0ms);
 }
 .js .stagger.is-in > * { opacity: 1; transform: none; }
+
+/* =========================================================
+   COULEURS PAR BLOC
+
+   Chaque composant lit une variable locale --c, qui vaut la
+   couleur d'accent par defaut. Il suffit de poser --c sur un
+   element parent pour recolorer tout ce qu'il contient.
+
+   Les couleurs servent a differencier, pas a decorer : une
+   famille de competences, une matiere et une section gardent
+   toujours la meme teinte d'un bout a l'autre du site.
+   ========================================================= */
+
+/* Une teinte par section, pour que le libelle et le filet du haut
+   changent au fil du defilement. */
+#profil       { --c: var(--c-blue); }
+#competences  { --c: var(--c-teal); }
+#stage        { --c: var(--c-violet); }
+#projets      { --c: var(--c-blue); }
+#cours        { --c: var(--c-amber); }
+#documents    { --c: var(--c-rose); }
+#ce-site      { --c: var(--c-teal); }
+#contact      { --c: var(--c-blue); }
+
+.section-head__eyebrow { color: var(--c, var(--accent)); }
+.section-head__eyebrow::after { background: linear-gradient(90deg, var(--c, var(--accent)), transparent); }
+
+/* Un filet colore en haut de chaque section, qui reprend sa teinte. */
+.section { position: relative; }
+.section::before {
+  content: "";
+  position: absolute;
+  top: -1px; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--c, var(--accent)), transparent);
+  opacity: 0.5;
+}
+
+/* Les quatre familles de competences, une couleur chacune. */
+.skill:nth-child(1) { --c: var(--c-blue); }
+.skill:nth-child(2) { --c: var(--c-violet); }
+.skill:nth-child(3) { --c: var(--c-amber); }
+.skill:nth-child(4) { --c: var(--c-teal); }
+.skill { border-top: 3px solid var(--c, var(--accent)); }
+.skill__title { color: var(--c, var(--text-3)); }
+.skill__list li:hover { border-color: var(--c, var(--accent)); color: var(--c, var(--accent)); }
+
+/* Les chiffres cles alternent les teintes. */
+.stat:nth-child(4n+1) { --c: var(--c-blue); }
+.stat:nth-child(4n+2) { --c: var(--c-teal); }
+.stat:nth-child(4n+3) { --c: var(--c-violet); }
+.stat:nth-child(4n+4) { --c: var(--c-amber); }
+.stat { border-left-color: var(--c, var(--accent)); }
+.stat__value { color: var(--c, var(--accent)); }
+
+/* Les quatre preuves, meme principe. */
+.proof li:nth-child(4n+1) { --c: var(--c-teal); }
+.proof li:nth-child(4n+2) { --c: var(--c-rose); }
+.proof li:nth-child(4n+3) { --c: var(--c-amber); }
+.proof li:nth-child(4n+4) { --c: var(--c-blue); }
+.proof li { border-top-color: var(--c, var(--accent)); }
+
+/* Les huit matieres : la couleur suit le domaine, pas l'ordre.
+   Developpement et cyber gardent les teintes des sections
+   correspondantes, pour que le lien se fasse tout seul. */
+.subjects li:nth-child(1) { --c: var(--c-blue); }   /* Developpement */
+.subjects li:nth-child(2) { --c: var(--c-teal); }   /* Systemes */
+.subjects li:nth-child(3) { --c: var(--c-violet); } /* Reseaux */
+.subjects li:nth-child(4) { --c: var(--c-rose); }   /* Cybersecurite */
+.subjects li:nth-child(5) { --c: var(--c-amber); }  /* Mathematiques */
+.subjects li:nth-child(6) { --c: var(--c-teal); }   /* CEJM */
+.subjects li:nth-child(7) { --c: var(--c-blue); }   /* Anglais */
+.subjects li:nth-child(8) { --c: var(--c-violet); } /* Culture generale */
+
+.subject-card__icon { background: var(--c-bg, var(--bg-tint)); color: var(--c, var(--accent)); }
+.subjects li:nth-child(1) .subject-card__icon { background: var(--c-blue-bg); }
+.subjects li:nth-child(2) .subject-card__icon { background: var(--c-teal-bg); }
+.subjects li:nth-child(3) .subject-card__icon { background: var(--c-violet-bg); }
+.subjects li:nth-child(4) .subject-card__icon { background: var(--c-rose-bg); }
+.subjects li:nth-child(5) .subject-card__icon { background: var(--c-amber-bg); }
+.subjects li:nth-child(6) .subject-card__icon { background: var(--c-teal-bg); }
+.subjects li:nth-child(7) .subject-card__icon { background: var(--c-blue-bg); }
+.subjects li:nth-child(8) .subject-card__icon { background: var(--c-violet-bg); }
+.subject-card:hover { border-color: var(--c, var(--accent)); }
+
+/* Les cinq mois de la frise passent du bleu au rose. */
+.timeline li:nth-child(1) { --c: var(--c-blue); }
+.timeline li:nth-child(2) { --c: var(--c-teal); }
+.timeline li:nth-child(3) { --c: var(--c-amber); }
+.timeline li:nth-child(4) { --c: var(--c-violet); }
+.timeline li:nth-child(5) { --c: var(--c-rose); }
+.phase { border-top-color: var(--c, var(--border-2)); }
+.phase__month { color: var(--c, var(--text-3)); }
+.phase--stage { background: color-mix(in srgb, var(--c) 9%, transparent); }
+.phase__badge { background: var(--c, var(--accent)); }
+
+/* Les icones des cartes projet suivent la teinte de leur carte. */
+.grid > *:nth-child(4n+1) { --c: var(--c-blue); }
+.grid > *:nth-child(4n+2) { --c: var(--c-teal); }
+.grid > *:nth-child(4n+3) { --c: var(--c-violet); }
+.grid > *:nth-child(4n+4) { --c: var(--c-amber); }
+.card__icon, .card__cover--tint { background: color-mix(in srgb, var(--c, var(--accent)) 12%, transparent); }
+.card__icon, .card__cover--tint svg { color: var(--c, var(--accent)); }
+.card__link { color: var(--c, var(--accent)); }
+a.card:hover, a.card:focus-visible {
+  border-color: color-mix(in srgb, var(--c, var(--accent)) 45%, var(--border));
+  box-shadow: 0 14px 34px color-mix(in srgb, var(--c, var(--accent)) 16%, transparent);
+}
+.card::after {
+  background: radial-gradient(
+    16rem 16rem at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--c, var(--accent)) 15%, transparent),
+    transparent 70%
+  );
+}
+
+/* Les quatre tuiles de documents. */
+.docs > *:nth-child(4n+1) { --c: var(--c-blue); }
+.docs > *:nth-child(4n+2) { --c: var(--c-rose); }
+.docs > *:nth-child(4n+3) { --c: var(--c-teal); }
+.docs > *:nth-child(4n+4) { --c: var(--c-amber); }
+.doc { border-top: 3px solid var(--c, var(--accent)); }
+.doc:hover { border-color: color-mix(in srgb, var(--c, var(--accent)) 40%, var(--border)); border-top-color: var(--c); }
+.doc__actions a { color: var(--c, var(--accent)); }
+
+/* Les tuiles de contact. */
+.contact > *:nth-child(4n+1) { --c: var(--c-teal); }
+.contact > *:nth-child(4n+2) { --c: var(--c-violet); }
+.contact > *:nth-child(4n+3) { --c: var(--c-amber); }
+.contact__item svg { color: var(--c, var(--accent)); }
+.contact__item:hover { border-color: var(--c, var(--accent)); }
+
+/* Les etiquettes de technologies du defile. */
+.marquee__item:nth-child(5n+1):hover { color: var(--c-blue); }
+.marquee__item:nth-child(5n+2):hover { color: var(--c-teal); }
+.marquee__item:nth-child(5n+3):hover { color: var(--c-violet); }
+.marquee__item:nth-child(5n+4):hover { color: var(--c-amber); }
+.marquee__item:nth-child(5n+5):hover { color: var(--c-rose); }
 
 /* =========================================================
    9. RESPONSIVE, IMPRESSION, ANIMATIONS

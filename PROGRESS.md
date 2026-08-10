@@ -2,6 +2,47 @@
 
 Dernière mise à jour : 2026-08-10
 
+## Mise à jour du 2026-08-10, palette élargie
+
+Une seule couleur d'accent, c'était sobre mais un peu pauvre. Cinq teintes ont été
+ajoutées : bleu, turquoise, violet, ambre et rose, chacune avec une version de fond très
+pâle pour poser du texte dessus sans perdre en contraste. Le thème sombre a ses propres
+valeurs, éclaircies.
+
+### Le mécanisme
+
+Chaque composant lit une variable locale `--c`, qui vaut l'accent par défaut :
+
+```css
+.stat__value { color: var(--c, var(--accent)); }
+```
+
+Il suffit alors de poser `--c` sur un parent pour recolorer tout ce qu'il contient. Les
+attributions se font au `:nth-child`, donc **sans toucher au HTML**.
+
+### Où la couleur sert à quelque chose
+
+Elle différencie, elle ne décore pas. Une matière, une famille de compétences ou une
+section garde la même teinte d'un bout à l'autre du site :
+
+| Bloc | Ce qui change |
+|---|---|
+| Sections | Le libellé et le filet du haut prennent la teinte de la section |
+| Compétences | Une couleur par famille : développement, frameworks, outils, systèmes |
+| Chiffres clés | Les quatre valeurs alternent, plus lisible qu'un bloc uniforme |
+| Frise du stage | Les cinq mois vont du bleu au rose, ce qui donne un sens de lecture |
+| Matières du BTS | Une couleur par domaine, reprise de la section correspondante |
+| Cartes projet | Icône, lien et halo au survol suivent la teinte de la carte |
+| Documents | Un liseré coloré par type de document |
+
+### Ce qui n'a pas bougé
+
+**L'accent reste la couleur des liens et des boutons.** C'est ce qui permet de continuer à
+repérer d'un coup d'œil ce sur quoi on peut cliquer : si tout était coloré, on perdrait ce
+repère.
+
+Le fond animé reprend les nouvelles teintes et gagne une quatrième tache, ambre.
+
 ## Mise à jour du 2026-08-10, défilement corrigé et fond animé
 
 ### Le défilement qui saute, c'était un vrai défaut

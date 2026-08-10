@@ -117,8 +117,14 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
 
 ## Design
 
-- Clair et sobre : fond blanc, une seule couleur d'accent (`--accent`, bleu `#1d4ed8`),
-  bordures fines et beaucoup d'espace. Lisible aussi à l'impression.
+- Clair et sobre : fond blanc, bordures fines et beaucoup d'espace. Lisible aussi à
+  l'impression.
+- Une couleur d'accent principale (`--accent`, bleu `#1d4ed8`) réservée aux liens et aux
+  boutons, plus cinq teintes secondaires (`--c-blue`, `--c-teal`, `--c-violet`,
+  `--c-amber`, `--c-rose`) qui différencient les sections, les matières et les familles
+  de compétences.
+- Chaque composant lit une variable locale `--c` : poser `--c` sur un parent recolore tout
+  ce qu'il contient, sans toucher au HTML.
 - Toutes les variables sont dans `:root`, en tête de `css/style.css`.
 - Une seule police, **Inter**, servie depuis `assets/fonts/`. Aucun appel à un
   service tiers au chargement.
