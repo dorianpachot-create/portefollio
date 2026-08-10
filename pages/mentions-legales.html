@@ -30,9 +30,8 @@
   <meta property="og:image" content="https://dorianpachot-create.github.io/portefollio/assets/meta/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="../assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../assets/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
@@ -153,21 +152,13 @@
               effacé.
             </p>
             <p>
-              Deux services tiers sont sollicités par le navigateur à l'affichage des pages,
-              ce qui leur transmet techniquement l'adresse IP du visiteur :
+              <strong>Le site n'appelle aucun service tiers.</strong> La police de caractères
+              est servie depuis ce site, pas depuis Google Fonts : le navigateur ne contacte
+              donc aucun serveur extérieur pour afficher les pages.
             </p>
-            <ul class="section__list">
-              <li>
-                <strong>Google Fonts</strong> (<code>fonts.googleapis.com</code> et
-                <code>fonts.gstatic.com</code>) pour le chargement de la police Inter.
-              </li>
-              <li>
-                <strong>GitHub Pages</strong>, l'hébergeur, qui journalise les connexions
-                selon sa propre politique de confidentialité.
-              </li>
-            </ul>
             <p>
-              Aucun de ces appels n'est fait à des fins de suivi par l'éditeur du site.
+              Seul l'hébergeur, GitHub Pages, voit passer les connexions et les journalise
+              selon sa propre politique de confidentialité, comme tout hébergeur.
             </p>
           </div>
         </section>
@@ -232,7 +223,7 @@
               bibliothèque chargée par le navigateur.
             </p>
             <ul class="section__list">
-              <li>Police <strong>Inter</strong>, de Rasmus Andersson, sous licence SIL Open Font License.</li>
+              <li>Police <strong>Inter</strong>, de Rasmus Andersson, sous licence SIL Open Font License. Les fichiers sont hébergés avec le site, dans <code>assets/fonts/</code>.</li>
               <li>Icônes dessinées en SVG pour ce site, aucune bibliothèque externe.</li>
               <li>Mini-jeu Mission Orion compilé en WebAssembly avec <strong>pygbag</strong>.</li>
             </ul>

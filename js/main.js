@@ -14,7 +14,9 @@
  *   5. Filtre des projets ...... les puces Flutter, Python, etc.
  *   6. Carrousel ............... les captures de SYNCRO
  *   7. Copie de l'e-mail ....... bouton Copier de la section Contact
- *   8. Animations .............. progression, retour en haut, apparition,
+ *   8. Lumiere a la souris ..... halo qui suit le curseur sur les cartes
+ *   9. Barre du haut ........... ombre au defilement
+ *  10. Animations .............. progression, retour en haut, apparition,
  *                              cascade, compteurs
  *
  * LE PRINCIPE A RETENIR
@@ -412,7 +414,51 @@
   })();
 
   /* =======================================================
-     8. ANIMATIONS
+     8. LUMIERE QUI SUIT LA SOURIS
+
+     On ecrit la position du curseur dans deux variables CSS,
+     --mx et --my, et le CSS s'en sert pour placer un halo.
+     Le JavaScript ne fait donc que poser deux nombres.
+
+     Deux precautions : on ne s'abonne qu'au survol des cartes,
+     pas de la page entiere, et on passe par requestAnimationFrame
+     pour ne pas ecrire mille fois par seconde.
+     ======================================================= */
+  (function spotlight() {
+    if (reduced) return;
+    if (!window.matchMedia('(hover: hover)').matches) return; // inutile au doigt
+
+    const cards = $$('.card, .promo--wide, .doc');
+    if (!cards.length) return;
+
+    cards.forEach((card) => {
+      let raf = null;
+      card.addEventListener('mousemove', (e) => {
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+          const r = card.getBoundingClientRect();
+          card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+          card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+          raf = null;
+        });
+      });
+    });
+  })();
+
+  /* =======================================================
+     9. BARRE DU HAUT AU DEFILEMENT
+     Ajoute une ombre des qu'on a quitte le haut de la page.
+     ======================================================= */
+  (function stickyBar() {
+    const bar = $('.topbar');
+    if (!bar) return;
+    const onScroll = () => bar.classList.toggle('is-stuck', window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+  /* =======================================================
+     10. ANIMATIONS
 
      Quatre choses ici : la barre de progression en haut de
      l'ecran, le bouton retour en haut, l'apparition des blocs

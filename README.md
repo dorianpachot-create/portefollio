@@ -24,6 +24,7 @@ portefollio/
 ├── robots.txt
 ├── tests/dom.test.js    42 tests des composants interactifs (jsdom)
 ├── assets/
+│   ├── fonts/                    Inter en woff2, servie localement
 │   ├── meta/                     Favicon, image de partage, vignettes WebP
 │   ├── stars.svg                 Champ d'étoiles tilable
 │   ├── cv/
@@ -113,7 +114,8 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
 - Clair et sobre : fond blanc, une seule couleur d'accent (`--accent`, bleu `#1d4ed8`),
   bordures fines et beaucoup d'espace. Lisible aussi à l'impression.
 - Toutes les variables sont dans `:root`, en tête de `css/style.css`.
-- Une seule police Google Fonts : **Inter**.
+- Une seule police, **Inter**, servie depuis `assets/fonts/`. Aucun appel à un
+  service tiers au chargement.
 - Les sections alternent `--bg` et `--bg-soft` pour donner du rythme sans ajouter de couleur.
 - Chaque section de l'accueil occupe au moins la hauteur d'un écran, contenu centré
   verticalement (`min-height: calc(100vh - 64px)`), et retombe à sa hauteur naturelle
@@ -135,7 +137,10 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
 - **Copie de l'e-mail** en un clic, avec repli pour les navigateurs anciens.
 - **Barre de contact fixe** en bas de chaque page : e-mail, téléphone et CV toujours
   accessibles.
-- **Halos diffus** derrière l'accroche et nom en dégradé, en CSS pur, sans image.
+- **Halos diffus** derrière l'accroche, qui dérivent lentement, et nom en dégradé
+  traversé par un reflet. En CSS pur, sans image.
+- **Halo qui suit le curseur** sur les cartes, désactivé au doigt et si
+  `prefers-reduced-motion`.
 - **Barre de progression** de lecture en haut de l'écran.
 - Apparition au défilement en cascade et compteurs animés, désactivés si
   `prefers-reduced-motion`.

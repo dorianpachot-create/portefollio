@@ -2,6 +2,46 @@
 
 Dernière mise à jour : 2026-08-10
 
+## Mise à jour du 2026-08-10, police locale et effets renforcés
+
+### Plus aucun appel à un service tiers
+
+La police Inter est maintenant servie depuis `assets/fonts/`. Les fichiers viennent du
+paquet npm `@fontsource/inter`, pas d'un téléchargement à la main, ce qui garantit la
+bonne version et la licence qui va avec (SIL Open Font License, copiée dans le dossier).
+
+Huit fichiers woff2, 248 Ko au total : quatre graisses en deux jeux de caractères. Le
+`unicode-range` fait que le navigateur ne télécharge que ce dont la page a besoin, donc
+en pratique il en charge la moitié. Les deux graisses les plus utilisées sont préchargées
+dans le `<head>`.
+
+`font-display: swap` affiche le texte immédiatement avec une police système, puis bascule
+sur Inter. Sans ça, le texte reste invisible une fraction de seconde au premier
+chargement.
+
+Les mentions légales sont mises à jour : elles annoncent maintenant qu'aucun service tiers
+n'est appelé, ce qui est vérifiable en ouvrant l'onglet réseau du navigateur.
+
+### Effets ajoutés
+
+| Effet | Comment |
+|---|---|
+| Halos qui dérivent | Animation de 26 s sur le pseudo-élément de l'accroche |
+| Reflet sur le nom | `background-size: 220%` et position animée, aucune couche en plus |
+| Pastille qui respire | `box-shadow` qui s'étend puis disparaît, 2,4 s |
+| Soulignement du menu | `transform: scaleX` depuis le centre, pas de recalcul de mise en page |
+| Reflet sur les boutons | Bande claire qui traverse au survol |
+| Halo qui suit la souris | Deux variables CSS posées par le JavaScript, le CSS place le dégradé |
+| Ombre de la barre du haut | Classe `is-stuck` dès qu'on quitte le haut de page |
+
+**Le point de performance :** pour le halo qui suit le curseur, c'est l'opacité qui est
+animée, pas le dégradé. Animer un `background` force le navigateur à repeindre en continu.
+Les écritures passent par `requestAnimationFrame`, et l'effet est coupé sur les écrans
+tactiles où il n'a aucun sens.
+
+Tout est neutralisé sous `prefers-reduced-motion`, y compris le reflet du titre et le halo
+au curseur.
+
 ## Mise à jour du 2026-08-10, habillage visuel
 
 Demande : rendre le visuel plus marqué, sans toucher au contenu. Niveau retenu, marqué

@@ -33,6 +33,88 @@
    ========================================================= */
 
 /* =========================================================
+   0. POLICE
+
+   Inter est servie depuis assets/fonts/ et non depuis Google
+   Fonts. Deux raisons : le navigateur n'envoie plus l'adresse IP
+   du visiteur a un tiers, et la police se charge en meme temps
+   que le reste du site au lieu d'attendre une connexion externe.
+
+   Deux fichiers par graisse : "latin" couvre le francais courant,
+   "latin-ext" les caracteres plus rares. Le navigateur ne
+   telecharge que ce dont la page a besoin, grace a unicode-range.
+
+   font-display: swap affiche tout de suite le texte avec une
+   police systeme, puis bascule sur Inter une fois chargee. Sans
+   ca, le texte reste invisible une fraction de seconde.
+   ========================================================= */
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/inter-400.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/inter-400-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/fonts/inter-500.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/fonts/inter-500-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../assets/fonts/inter-600.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../assets/fonts/inter-600-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/inter-700.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/inter-700-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* =========================================================
    1. REGLAGES GENERAUX
    ========================================================= */
 
@@ -1499,6 +1581,108 @@ a.card:hover .card__cover img { transform: scale(1.06); }
   background: linear-gradient(90deg, var(--accent), transparent);
 }
 
+/* ---------- Halos qui derivent lentement ----------
+   Le fond de l'accroche n'est plus fige : les trois taches de couleur
+   se deplacent tres lentement, sur 26 secondes. Assez lent pour ne pas
+   distraire, assez present pour qu'on remarque que ca bouge. */
+@keyframes halo-drift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  33%  { transform: translate3d(3%, -2%, 0) scale(1.06); }
+  66%  { transform: translate3d(-2%, 2%, 0) scale(0.97); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+.hero::before { animation: halo-drift 26s ease-in-out infinite; }
+
+/* ---------- Reflet qui traverse le nom ----------
+   Une bande claire passe sur le titre toutes les 7 secondes. L'effet
+   repose sur background-size: 200% et un decalage anime de la position :
+   aucune couche supplementaire, aucun element en plus. */
+@keyframes shine {
+  0%, 65% { background-position: 200% center; }
+  100%    { background-position: -60% center; }
+}
+.hero__title {
+  background-size: 220% auto;
+  animation: shine 7s ease-in-out infinite;
+}
+
+/* ---------- Pastille de production qui respire ---------- */
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok-dot) 55%, transparent); }
+  70%      { box-shadow: 0 0 0 7px transparent; }
+}
+.hero__eyebrow::before { animation: pulse-dot 2.4s ease-out infinite; }
+
+/* ---------- Soulignement anime du menu ----------
+   Un trait part du centre et s'ouvre vers les bords. transform: scaleX
+   plutot qu'une largeur : le navigateur n'a pas a recalculer la mise en
+   page a chaque image. */
+.nav__link { position: relative; }
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0.9rem; right: 0.9rem; bottom: 0.28rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.22s cubic-bezier(.2,.7,.3,1);
+}
+.nav__link:hover::after,
+.nav__link.is-active::after { transform: scaleX(1); }
+
+/* ---------- Reflet sur les boutons pleins ----------
+   Une bande lumineuse traverse le bouton au survol. Le pseudo-element est
+   en pointer-events: none pour ne jamais gener le clic. */
+.btn--primary { position: relative; overflow: hidden; isolation: isolate; }
+.btn--primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.32) 50%, transparent 65%);
+  transform: translateX(-130%);
+  transition: transform 0.55s ease;
+}
+.btn--primary:hover::after { transform: translateX(130%); }
+
+/* ---------- Lumiere qui suit la souris sur les cartes ----------
+   Le JavaScript ecrit la position du curseur dans --mx et --my. Le halo
+   n'apparait qu'au survol, et disparait proprement a la sortie.
+
+   L'opacite est animee plutot que le degrade lui-meme : animer un
+   background force le navigateur a repeindre en continu. */
+.card, .promo--wide, .doc, .subject-card, .stat { position: relative; }
+.card::after, .promo--wide::after, .doc::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  background: radial-gradient(
+    16rem 16rem at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--accent) 14%, transparent),
+    transparent 70%
+  );
+}
+.card:hover::after, .promo--wide:hover::after, .doc:hover::after { opacity: 1; }
+
+/* Le contenu de la carte doit rester au-dessus du halo. */
+.card > *, .promo--wide > *, .doc > * { position: relative; z-index: 1; }
+
+/* ---------- Frise : les etapes se soulevent ---------- */
+.phase { transition: background 0.2s ease, transform 0.2s ease; }
+.phase:hover { background: var(--bg-tint); }
+
+/* ---------- Barre du haut qui se densifie au defilement ----------
+   Une fois qu'on a quitte le haut de page, la barre gagne une ombre.
+   Ca la detache du contenu qui passe dessous. */
+.topbar { transition: box-shadow 0.25s ease; }
+.topbar.is-stuck { box-shadow: 0 4px 20px rgba(16,24,40,.07); }
+[data-theme="dark"] .topbar.is-stuck { box-shadow: 0 4px 20px rgba(0,0,0,.4); }
+
 /* ---------- Apparition au défilement ----------
    L'état masqué n'est appliqué QUE si le JavaScript tourne : la classe .js est
    posée sur <html> par le script inline du <head>. Sans ça, une erreur de script
@@ -1574,7 +1758,11 @@ a.card:hover .card__cover img { transform: scale(1.06); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
   .js .reveal, .js .stagger > * { opacity: 1 !important; transform: none !important; }
+  /* Les halos restent, mais figes et attenues. Le reflet du titre est
+     neutralise en remettant le degrade a sa position de depart. */
   .hero::before { filter: none; opacity: 0.5; }
+  .hero__title { background-size: 100% auto; background-position: 0 center; }
+  .card::after, .promo--wide::after, .doc::after { display: none; }
 }
 
 @media print {
