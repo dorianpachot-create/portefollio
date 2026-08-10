@@ -2,6 +2,51 @@
 
 Dernière mise à jour : 2026-08-10
 
+## Mise à jour du 2026-08-10, couleur assumée et scroll corrigé pour de bon
+
+### Le scroll qui accélère selon la section
+
+Cause trouvée : `backdrop-filter` sur la barre du haut et sur la barre de contact.
+
+Cette propriété oblige le navigateur à reflouter **tout ce qui passe derrière la barre**,
+à chaque image. Et le coût dépend de ce qu'il y a dessous : flouter du texte est léger,
+flouter des images est lourd. C'est exactement pour ça que la vitesse changeait d'une
+section à l'autre, les sections Documents et Projets contenant des images.
+
+Les deux `backdrop-filter` sont supprimés. Les fonds de barre passent de 88 à 97 %
+d'opacité : visuellement c'est le même résultat, sans le coût.
+
+Deuxième correction : le `mask-image` sur la grille animée plein écran. Masquer un élément
+animé oblige à recomposer le masque à chaque image. Le fondu des bords est maintenant fait
+par une couche fixe posée par-dessus, qui ne bouge jamais.
+
+Il reste un `mask-image` sur le défilé de technologies. Celui-là est conservé : la bande
+fait 40 px de haut et le masque lui-même ne bouge pas.
+
+### La couleur, vraiment cette fois
+
+La version précédente ne colorait que des détails, libellés et filets, ce qui ne se voyait
+pas. Cette fois la couleur est sur les **fonds** :
+
+- le fond de chaque section est teinté de sa couleur, en dégradé très dilué, au lieu de
+  l'ancienne alternance blanc et gris ;
+- les titres de section sont en dégradé vers la couleur du bloc ;
+- les cartes de compétences, les chiffres clés, les preuves, les matières, les étapes de
+  la frise, les tuiles de documents et de contact ont toutes un fond teinté, une bordure
+  colorée et un liseré de 4 px ;
+- les boutons pleins passent en dégradé bleu vers violet ;
+- les étiquettes du défilé sont colorées en permanence, plus seulement au survol.
+
+### Le contraste a été mesuré, pas estimé
+
+J'ai calculé le ratio WCAG de chaque combinaison texte sur fond, dans les deux thèmes.
+
+Le turquoise d'origine, `#0d9488`, ne passait pas : 3,38 sur son fond pâle et 3,74 pour du
+blanc dessus, là où il faut 4,5. Remplacé par `#0f766e`, qui donne 4,95 et 5,47.
+
+Après correction, les 25 combinaisons vérifiées sont au-dessus de 4,5. La plus basse est
+l'ambre sur son fond pâle, à 4,57.
+
 ## Mise à jour du 2026-08-10, palette élargie
 
 Une seule couleur d'accent, c'était sobre mais un peu pauvre. Cinq teintes ont été

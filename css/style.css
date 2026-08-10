@@ -144,7 +144,7 @@
   --ok-dot:      #16a34a;
 
   --overlay:     rgba(15, 20, 25, 0.45);
-  --topbar-bg:   rgba(255, 255, 255, 0.88);
+  --topbar-bg:   rgba(255, 255, 255, 0.97);
 
   /* Halos diffus de l'accroche. Deux teintes proches de l'accent, pour
      rester dans la meme famille de couleurs. */
@@ -160,7 +160,7 @@
      Chaque teinte a une version de fond tres pale, pour poser du texte
      dessus sans probleme de contraste. */
   --c-blue:      #1d4ed8;
-  --c-teal:      #0d9488;
+  --c-teal:      #0f766e;
   --c-violet:    #7c3aed;
   --c-amber:     #b45309;
   --c-rose:      #be185d;
@@ -211,7 +211,7 @@
   --ok-dot:      #34d399;
 
   --overlay:     rgba(0, 0, 0, 0.6);
-  --topbar-bg:   rgba(15, 19, 24, 0.88);
+  --topbar-bg:   rgba(16, 20, 26, 0.97);
 
   --halo-2:      #38bdf8;
   --halo-3:      #a78bfa;
@@ -363,10 +363,20 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
     linear-gradient(to right, color-mix(in srgb, var(--text) 5%, transparent) 1px, transparent 1px),
     linear-gradient(to bottom, color-mix(in srgb, var(--text) 5%, transparent) 1px, transparent 1px);
   background-size: 60px 60px;
-  mask-image: radial-gradient(80% 60% at 50% 30%, #000 30%, transparent 100%);
-  -webkit-mask-image: radial-gradient(80% 60% at 50% 30%, #000 30%, transparent 100%);
+  /* Pas de mask-image ici : masquer un element anime plein ecran oblige le
+     navigateur a recomposer le masque a chaque image. Le fondu des bords est
+     fait par .bg-fx__fade, une couche fixe posee par-dessus qui ne bouge
+     jamais et ne coute donc rien. */
+  opacity: 0.55;
   will-change: transform;
   animation: grid-drift 18s linear infinite;
+}
+
+/* Fondu des bords de la grille, statique. */
+.bg-fx__fade {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(90% 70% at 50% 30%, transparent 25%, var(--bg) 100%);
 }
 @keyframes grid-drift {
   from { transform: translate3d(0, 0, 0); }
@@ -394,8 +404,12 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   position: sticky;
   top: 0;
   z-index: 100;
+  /* Pas de backdrop-filter ici. Il oblige le navigateur a reflouter tout ce
+     qui passe derriere la barre, a chaque image. Le cout depend du contenu
+     situe dessous : leger sur du texte, lourd sur des images. C'est ce qui
+     faisait varier la vitesse du defilement d'une section a l'autre.
+     Un fond presque opaque donne le meme resultat visuel pour rien. */
   background: var(--topbar-bg);
-  backdrop-filter: saturate(180%) blur(12px);
   border-bottom: 1px solid var(--border);
 }
 .topbar__inner {
@@ -1618,8 +1632,8 @@ a.card:hover .card__link::after { transform: translateX(3px); }
   position: fixed;
   left: 0; right: 0; bottom: 0;
   z-index: 95;
+  /* Meme raison que la barre du haut : pas de backdrop-filter. */
   background: var(--topbar-bg);
-  backdrop-filter: saturate(180%) blur(12px);
   border-top: 1px solid var(--border);
 }
 .contact-bar__inner {
@@ -1902,131 +1916,200 @@ a.card:hover .card__cover img { transform: scale(1.06); }
    toujours la meme teinte d'un bout a l'autre du site.
    ========================================================= */
 
-/* Une teinte par section, pour que le libelle et le filet du haut
-   changent au fil du defilement. */
-#profil       { --c: var(--c-blue); }
-#competences  { --c: var(--c-teal); }
-#stage        { --c: var(--c-violet); }
-#projets      { --c: var(--c-blue); }
-#cours        { --c: var(--c-amber); }
-#documents    { --c: var(--c-rose); }
-#ce-site      { --c: var(--c-teal); }
-#contact      { --c: var(--c-blue); }
+/* Une teinte par section. La variable --c descend dans tout le contenu de
+   la section, donc il suffit de la poser ici pour que le libelle, le fond,
+   les cartes et les liens suivent. */
+#profil       { --c: var(--c-blue);   --c-bg: var(--c-blue-bg); }
+#competences  { --c: var(--c-teal);   --c-bg: var(--c-teal-bg); }
+#stage        { --c: var(--c-violet); --c-bg: var(--c-violet-bg); }
+#projets      { --c: var(--c-blue);   --c-bg: var(--c-blue-bg); }
+#cours        { --c: var(--c-amber);  --c-bg: var(--c-amber-bg); }
+#documents    { --c: var(--c-rose);   --c-bg: var(--c-rose-bg); }
+#ce-site      { --c: var(--c-teal);   --c-bg: var(--c-teal-bg); }
+#contact      { --c: var(--c-blue);   --c-bg: var(--c-blue-bg); }
 
-.section-head__eyebrow { color: var(--c, var(--accent)); }
-.section-head__eyebrow::after { background: linear-gradient(90deg, var(--c, var(--accent)), transparent); }
+/* LE FOND DE CHAQUE SECTION EST TEINTE.
+   C'est ce qui se voit le plus : au lieu d'alterner blanc et gris, on
+   alterne blanc et la couleur de la section, tres diluee. Le texte reste
+   sur un fond clair, donc le contraste ne bouge pas. */
+.section--soft {
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--c, var(--accent)) 11%, var(--bg)),
+      color-mix(in srgb, var(--c, var(--accent)) 5%, var(--bg)));
+}
+.section:not(.section--soft) {
+  background: color-mix(in srgb, var(--c, var(--accent)) 4%, var(--bg));
+}
 
-/* Un filet colore en haut de chaque section, qui reprend sa teinte. */
+/* Filet colore en haut de section, plus marque qu'avant. */
 .section { position: relative; }
 .section::before {
   content: "";
   position: absolute;
   top: -1px; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--c, var(--accent)), transparent);
-  opacity: 0.5;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--c, var(--accent)) 30%, var(--c, var(--accent)) 70%, transparent);
 }
 
-/* Les quatre familles de competences, une couleur chacune. */
-.skill:nth-child(1) { --c: var(--c-blue); }
-.skill:nth-child(2) { --c: var(--c-violet); }
-.skill:nth-child(3) { --c: var(--c-amber); }
-.skill:nth-child(4) { --c: var(--c-teal); }
-.skill { border-top: 3px solid var(--c, var(--accent)); }
-.skill__title { color: var(--c, var(--text-3)); }
-.skill__list li:hover { border-color: var(--c, var(--accent)); color: var(--c, var(--accent)); }
+.section-head__eyebrow { color: var(--c, var(--accent)); }
+.section-head__eyebrow::after { background: linear-gradient(90deg, var(--c, var(--accent)), transparent); }
 
-/* Les chiffres cles alternent les teintes. */
-.stat:nth-child(4n+1) { --c: var(--c-blue); }
-.stat:nth-child(4n+2) { --c: var(--c-teal); }
-.stat:nth-child(4n+3) { --c: var(--c-violet); }
-.stat:nth-child(4n+4) { --c: var(--c-amber); }
-.stat { border-left-color: var(--c, var(--accent)); }
-.stat__value { color: var(--c, var(--accent)); }
+/* Les titres de section prennent la couleur du bloc, en degrade. */
+.section-head__title {
+  color: var(--text);
+  background: linear-gradient(96deg, var(--text) 20%, var(--c, var(--accent)) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .section-head__title { color: transparent; }
+}
 
-/* Les quatre preuves, meme principe. */
-.proof li:nth-child(4n+1) { --c: var(--c-teal); }
-.proof li:nth-child(4n+2) { --c: var(--c-rose); }
-.proof li:nth-child(4n+3) { --c: var(--c-amber); }
-.proof li:nth-child(4n+4) { --c: var(--c-blue); }
-.proof li { border-top-color: var(--c, var(--accent)); }
+/* Les quatre familles de competences, une couleur chacune, fond compris. */
+.skill:nth-child(1) { --c: var(--c-blue);   --c-bg: var(--c-blue-bg); }
+.skill:nth-child(2) { --c: var(--c-violet); --c-bg: var(--c-violet-bg); }
+.skill:nth-child(3) { --c: var(--c-amber);  --c-bg: var(--c-amber-bg); }
+.skill:nth-child(4) { --c: var(--c-teal);   --c-bg: var(--c-teal-bg); }
+.skill {
+  border: 1px solid color-mix(in srgb, var(--c) 22%, var(--border));
+  border-top: 4px solid var(--c);
+  background: color-mix(in srgb, var(--c) 6%, var(--bg));
+}
+.skill__title { color: var(--c); }
+.skill__list li {
+  background: var(--c-bg, var(--bg-soft));
+  border-color: color-mix(in srgb, var(--c) 25%, transparent);
+  color: color-mix(in srgb, var(--c) 78%, var(--text));
+}
+.skill__list li:hover { border-color: var(--c); color: var(--c); }
 
-/* Les huit matieres : la couleur suit le domaine, pas l'ordre.
-   Developpement et cyber gardent les teintes des sections
-   correspondantes, pour que le lien se fasse tout seul. */
-.subjects li:nth-child(1) { --c: var(--c-blue); }   /* Developpement */
-.subjects li:nth-child(2) { --c: var(--c-teal); }   /* Systemes */
-.subjects li:nth-child(3) { --c: var(--c-violet); } /* Reseaux */
-.subjects li:nth-child(4) { --c: var(--c-rose); }   /* Cybersecurite */
-.subjects li:nth-child(5) { --c: var(--c-amber); }  /* Mathematiques */
-.subjects li:nth-child(6) { --c: var(--c-teal); }   /* CEJM */
-.subjects li:nth-child(7) { --c: var(--c-blue); }   /* Anglais */
-.subjects li:nth-child(8) { --c: var(--c-violet); } /* Culture generale */
+/* Chiffres cles : fond teinte et gros chiffre colore. */
+.stat:nth-child(4n+1) { --c: var(--c-blue);   --c-bg: var(--c-blue-bg); }
+.stat:nth-child(4n+2) { --c: var(--c-teal);   --c-bg: var(--c-teal-bg); }
+.stat:nth-child(4n+3) { --c: var(--c-violet); --c-bg: var(--c-violet-bg); }
+.stat:nth-child(4n+4) { --c: var(--c-rose);   --c-bg: var(--c-rose-bg); }
+.stat {
+  background: var(--c-bg, var(--bg));
+  border: 1px solid color-mix(in srgb, var(--c) 25%, var(--border));
+  border-left: 4px solid var(--c);
+}
+.stat__value { color: var(--c); }
+.stat__label { color: color-mix(in srgb, var(--c) 42%, var(--text-2)); }
 
-.subject-card__icon { background: var(--c-bg, var(--bg-tint)); color: var(--c, var(--accent)); }
-.subjects li:nth-child(1) .subject-card__icon { background: var(--c-blue-bg); }
-.subjects li:nth-child(2) .subject-card__icon { background: var(--c-teal-bg); }
-.subjects li:nth-child(3) .subject-card__icon { background: var(--c-violet-bg); }
-.subjects li:nth-child(4) .subject-card__icon { background: var(--c-rose-bg); }
-.subjects li:nth-child(5) .subject-card__icon { background: var(--c-amber-bg); }
-.subjects li:nth-child(6) .subject-card__icon { background: var(--c-teal-bg); }
-.subjects li:nth-child(7) .subject-card__icon { background: var(--c-blue-bg); }
-.subjects li:nth-child(8) .subject-card__icon { background: var(--c-violet-bg); }
-.subject-card:hover { border-color: var(--c, var(--accent)); }
+/* Les quatre preuves. */
+.proof li:nth-child(4n+1) { --c: var(--c-teal);   --c-bg: var(--c-teal-bg); }
+.proof li:nth-child(4n+2) { --c: var(--c-rose);   --c-bg: var(--c-rose-bg); }
+.proof li:nth-child(4n+3) { --c: var(--c-amber);  --c-bg: var(--c-amber-bg); }
+.proof li:nth-child(4n+4) { --c: var(--c-blue);   --c-bg: var(--c-blue-bg); }
+.proof li {
+  background: var(--c-bg);
+  border: 1px solid color-mix(in srgb, var(--c) 25%, var(--border));
+  border-top: 4px solid var(--c);
+}
+.proof h3 { color: var(--c); }
+
+/* Les huit matieres : la couleur suit le domaine. */
+.subjects li:nth-child(1) { --c: var(--c-blue);   --c-bg: var(--c-blue-bg); }
+.subjects li:nth-child(2) { --c: var(--c-teal);   --c-bg: var(--c-teal-bg); }
+.subjects li:nth-child(3) { --c: var(--c-violet); --c-bg: var(--c-violet-bg); }
+.subjects li:nth-child(4) { --c: var(--c-rose);   --c-bg: var(--c-rose-bg); }
+.subjects li:nth-child(5) { --c: var(--c-amber);  --c-bg: var(--c-amber-bg); }
+.subjects li:nth-child(6) { --c: var(--c-teal);   --c-bg: var(--c-teal-bg); }
+.subjects li:nth-child(7) { --c: var(--c-blue);   --c-bg: var(--c-blue-bg); }
+.subjects li:nth-child(8) { --c: var(--c-violet); --c-bg: var(--c-violet-bg); }
+.subject-card {
+  background: var(--c-bg);
+  border-color: color-mix(in srgb, var(--c) 28%, var(--border));
+}
+.subject-card__icon { background: var(--bg); color: var(--c); }
+.subject-card__name { color: color-mix(in srgb, var(--c) 72%, var(--text)); }
+.subject-card:hover { border-color: var(--c); }
 
 /* Les cinq mois de la frise passent du bleu au rose. */
-.timeline li:nth-child(1) { --c: var(--c-blue); }
-.timeline li:nth-child(2) { --c: var(--c-teal); }
-.timeline li:nth-child(3) { --c: var(--c-amber); }
-.timeline li:nth-child(4) { --c: var(--c-violet); }
-.timeline li:nth-child(5) { --c: var(--c-rose); }
-.phase { border-top-color: var(--c, var(--border-2)); }
-.phase__month { color: var(--c, var(--text-3)); }
-.phase--stage { background: color-mix(in srgb, var(--c) 9%, transparent); }
-.phase__badge { background: var(--c, var(--accent)); }
+.timeline li:nth-child(1) { --c: var(--c-blue);   --c-bg: var(--c-blue-bg); }
+.timeline li:nth-child(2) { --c: var(--c-teal);   --c-bg: var(--c-teal-bg); }
+.timeline li:nth-child(3) { --c: var(--c-amber);  --c-bg: var(--c-amber-bg); }
+.timeline li:nth-child(4) { --c: var(--c-violet); --c-bg: var(--c-violet-bg); }
+.timeline li:nth-child(5) { --c: var(--c-rose);   --c-bg: var(--c-rose-bg); }
+.phase { border-top: 4px solid var(--c); background: var(--c-bg); }
+.phase__month { color: var(--c); }
+.phase--stage { background: color-mix(in srgb, var(--c) 16%, var(--bg)); }
+.phase__badge { background: var(--c); color: #fff; }
+.phase:hover { background: color-mix(in srgb, var(--c) 20%, var(--bg)); }
 
-/* Les icones des cartes projet suivent la teinte de leur carte. */
-.grid > *:nth-child(4n+1) { --c: var(--c-blue); }
-.grid > *:nth-child(4n+2) { --c: var(--c-teal); }
-.grid > *:nth-child(4n+3) { --c: var(--c-violet); }
-.grid > *:nth-child(4n+4) { --c: var(--c-amber); }
-.card__icon, .card__cover--tint { background: color-mix(in srgb, var(--c, var(--accent)) 12%, transparent); }
+/* Les cartes projet : icone, lien, bordure et halo suivent leur teinte. */
+.grid > *:nth-child(4n+1) { --c: var(--c-blue);   --c-bg: var(--c-blue-bg); }
+.grid > *:nth-child(4n+2) { --c: var(--c-teal);   --c-bg: var(--c-teal-bg); }
+.grid > *:nth-child(4n+3) { --c: var(--c-violet); --c-bg: var(--c-violet-bg); }
+.grid > *:nth-child(4n+4) { --c: var(--c-amber);  --c-bg: var(--c-amber-bg); }
+.card { border-color: color-mix(in srgb, var(--c, var(--accent)) 22%, var(--border)); }
+.card__icon, .card__cover--tint { background: var(--c-bg, var(--bg-tint)); }
 .card__icon, .card__cover--tint svg { color: var(--c, var(--accent)); }
+.card__title { color: color-mix(in srgb, var(--c, var(--accent)) 62%, var(--text)); }
 .card__link { color: var(--c, var(--accent)); }
+.card .tag { background: var(--c-bg); border-color: color-mix(in srgb, var(--c) 24%, transparent); color: color-mix(in srgb, var(--c) 72%, var(--text-2)); }
 a.card:hover, a.card:focus-visible {
-  border-color: color-mix(in srgb, var(--c, var(--accent)) 45%, var(--border));
-  box-shadow: 0 14px 34px color-mix(in srgb, var(--c, var(--accent)) 16%, transparent);
+  border-color: var(--c, var(--accent));
+  box-shadow: 0 14px 34px color-mix(in srgb, var(--c, var(--accent)) 20%, transparent);
 }
 .card::after {
   background: radial-gradient(
     16rem 16rem at var(--mx, 50%) var(--my, 50%),
-    color-mix(in srgb, var(--c, var(--accent)) 15%, transparent),
+    color-mix(in srgb, var(--c, var(--accent)) 18%, transparent),
     transparent 70%
   );
 }
 
 /* Les quatre tuiles de documents. */
-.docs > *:nth-child(4n+1) { --c: var(--c-blue); }
-.docs > *:nth-child(4n+2) { --c: var(--c-rose); }
-.docs > *:nth-child(4n+3) { --c: var(--c-teal); }
-.docs > *:nth-child(4n+4) { --c: var(--c-amber); }
-.doc { border-top: 3px solid var(--c, var(--accent)); }
-.doc:hover { border-color: color-mix(in srgb, var(--c, var(--accent)) 40%, var(--border)); border-top-color: var(--c); }
-.doc__actions a { color: var(--c, var(--accent)); }
+.docs > *:nth-child(4n+1) { --c: var(--c-blue);  --c-bg: var(--c-blue-bg); }
+.docs > *:nth-child(4n+2) { --c: var(--c-rose);  --c-bg: var(--c-rose-bg); }
+.docs > *:nth-child(4n+3) { --c: var(--c-teal);  --c-bg: var(--c-teal-bg); }
+.docs > *:nth-child(4n+4) { --c: var(--c-amber); --c-bg: var(--c-amber-bg); }
+.doc {
+  border: 1px solid color-mix(in srgb, var(--c) 25%, var(--border));
+  border-top: 4px solid var(--c);
+}
+.doc__body { background: var(--c-bg); }
+.doc__title { color: color-mix(in srgb, var(--c) 68%, var(--text)); }
+.doc__actions a { color: var(--c); }
+.doc:hover { border-color: var(--c); }
 
 /* Les tuiles de contact. */
-.contact > *:nth-child(4n+1) { --c: var(--c-teal); }
-.contact > *:nth-child(4n+2) { --c: var(--c-violet); }
-.contact > *:nth-child(4n+3) { --c: var(--c-amber); }
-.contact__item svg { color: var(--c, var(--accent)); }
-.contact__item:hover { border-color: var(--c, var(--accent)); }
+.contact > *:nth-child(4n+1) { --c: var(--c-teal);   --c-bg: var(--c-teal-bg); }
+.contact > *:nth-child(4n+2) { --c: var(--c-violet); --c-bg: var(--c-violet-bg); }
+.contact > *:nth-child(4n+3) { --c: var(--c-amber);  --c-bg: var(--c-amber-bg); }
+.contact__item {
+  background: var(--c-bg);
+  border-color: color-mix(in srgb, var(--c) 26%, var(--border));
+}
+.contact__item svg { color: var(--c); }
+.contact__item:hover { border-color: var(--c); }
+.mail-row { background: var(--c-blue-bg); border-color: color-mix(in srgb, var(--c-blue) 26%, var(--border)); }
+
+/* Le projet mis en avant. */
+.promo--wide { border-color: color-mix(in srgb, var(--c-blue) 26%, var(--border)); }
 
 /* Les etiquettes de technologies du defile. */
-.marquee__item:nth-child(5n+1):hover { color: var(--c-blue); }
-.marquee__item:nth-child(5n+2):hover { color: var(--c-teal); }
-.marquee__item:nth-child(5n+3):hover { color: var(--c-violet); }
-.marquee__item:nth-child(5n+4):hover { color: var(--c-amber); }
-.marquee__item:nth-child(5n+5):hover { color: var(--c-rose); }
+.marquee__item:nth-child(5n+1) { color: var(--c-blue); }
+.marquee__item:nth-child(5n+2) { color: var(--c-teal); }
+.marquee__item:nth-child(5n+3) { color: var(--c-violet); }
+.marquee__item:nth-child(5n+4) { color: var(--c-amber); }
+.marquee__item:nth-child(5n+5) { color: var(--c-rose); }
+.marquee__item { opacity: 0.75; }
+.marquee__item:hover { opacity: 1; }
+
+/* Les boutons pleins prennent un degrade plutot qu'un aplat. */
+.btn--primary {
+  background: linear-gradient(120deg, var(--c-blue), var(--c-violet));
+  color: #fff;
+}
+.btn--primary:hover { filter: saturate(1.15) brightness(1.06); }
+[data-theme="dark"] .btn--primary { color: #0b1220; }
+
+/* La citation de la lettre de recommandation. */
+.doc-quote { background: var(--c-violet-bg); border-left-color: var(--c-violet); }
+.callout { border-left-color: var(--c-amber); background: var(--c-amber-bg); }
 
 /* =========================================================
    9. RESPONSIVE, IMPRESSION, ANIMATIONS
