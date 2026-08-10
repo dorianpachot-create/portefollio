@@ -72,6 +72,10 @@
   --shadow:    0 1px 2px rgba(16,24,40,.03);
   --shadow-md: 0 6px 24px rgba(16,24,40,.07);
 
+  /* Hauteur de la barre du haut. Les sections plein ecran s'en servent
+     pour calculer leur hauteur : ne pas la modifier a un seul endroit. */
+  --topbar-h: 76px;
+
   --maxw: 1080px;
   --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
@@ -110,7 +114,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--topbar-h) + 0.5rem); }
 
 body {
   margin: 0;
@@ -175,11 +179,11 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 0 1.5rem;
-  height: 64px;
+  height: var(--topbar-h);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 2rem;
 }
 .brand {
   font-weight: 700;
@@ -191,9 +195,10 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .brand:hover { text-decoration: none; color: var(--accent); }
 .brand__name { color: inherit; }
 
-.nav { display: flex; align-items: center; gap: 0.15rem; }
+.nav { display: flex; align-items: center; gap: 0.35rem; }
 .nav__link {
-  padding: 0.5rem 0.8rem;
+  padding: 0.55rem 0.9rem;
+  white-space: nowrap;
   border-radius: var(--radius-sm);
   font-size: 0.95rem;
   font-weight: 500;
@@ -235,8 +240,8 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
    et son contenu est centre verticalement. Une section plus riche que l'ecran
    s'etire naturellement : min-height, pas height. */
 .section {
-  scroll-margin-top: 4rem;
-  min-height: calc(100vh - 64px);
+  scroll-margin-top: var(--topbar-h);
+  min-height: calc(100vh - var(--topbar-h));
   display: flex;
   align-items: center;
   border-top: 1px solid var(--border);
@@ -271,7 +276,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 4rem 1.5rem;
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - var(--topbar-h));
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: 4rem;
@@ -933,7 +938,7 @@ a.card:hover .card__link::after { transform: translateX(3px); }
    ========================================================= */
 
 /* ---------- Boutons de la barre du haut ---------- */
-.topbar__tools { display: flex; align-items: center; gap: 0.4rem; }
+.topbar__tools { display: flex; align-items: center; gap: 0.5rem; }
 
 .icon-btn {
   display: inline-flex;
@@ -1078,45 +1083,63 @@ a.card:hover .card__link::after { transform: translateX(3px); }
 .filters__empty { color: var(--text-3); }
 .filters__empty[hidden] { display: none; }
 
-/* ---------- Carrousel ---------- */
-.carousel { position: relative; margin-top: 1.6rem; }
+/* ---------- Carrousel ----------
+   Une image a la fois, jamais plus. Le principe : une fenetre qui coupe
+   ce qui depasse (.carousel__viewport), et une bande d'images de la meme
+   largeur qu'on fait glisser au transform. Chaque image occupe 100% de
+   la fenetre, donc il est impossible d'en voir deux a moitie.
+
+   La hauteur est fixe et l'image est en object-fit: contain. Une capture
+   de telephone fait 720x1280, sans hauteur fixe elle ferait deborder la
+   carte de plusieurs centaines de pixels. */
+.carousel { position: relative; }
 .carousel__label {
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--text-3);
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.7rem;
 }
-/* Version compacte pour la carte de l'accroche, plus étroite. */
-.carousel--compact { margin-top: 1.4rem; }
-.carousel--compact .carousel__slide { width: 118px; }
-.carousel--compact .carousel__track { gap: 0.6rem; }
-.carousel--compact .carousel__nav { margin-top: 0.7rem; }
-.carousel--compact .icon-btn { width: 30px; height: 30px; }
-.carousel--compact .icon-btn svg { width: 15px; height: 15px; }
-.carousel__track {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  padding-bottom: 0.6rem;
-  scrollbar-width: thin;
-}
-.carousel__slide {
-  flex: 0 0 auto;
-  width: min(230px, 62vw);
-  scroll-snap-align: center;
-}
-.carousel__slide img {
-  width: 100%;
-  height: auto;
+.carousel__viewport {
+  overflow: hidden;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--bg-soft);
 }
-.carousel__nav { display: flex; justify-content: center; align-items: center; gap: 0.6rem; margin-top: 0.9rem; }
+.carousel__track {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: transform 0.35s ease;
+}
+.carousel__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  margin: 0;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 340px;
+}
+.carousel__slide img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+}
+
+.carousel__nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 0.9rem;
+}
 .carousel__dots { display: flex; gap: 0.4rem; }
 .carousel__dot {
   width: 8px; height: 8px;
@@ -1128,6 +1151,20 @@ a.card:hover .card__link::after { transform: translateX(3px); }
   transition: background 0.15s ease, transform 0.15s ease;
 }
 .carousel__dot[aria-current="true"] { background: var(--accent); transform: scale(1.35); }
+.carousel__count { font-size: 0.85rem; color: var(--text-3); min-width: 3.2rem; text-align: center; }
+
+/* Version compacte, utilisee dans la carte du projet mis en avant. */
+.carousel--compact .carousel__slide { height: 300px; padding: 0.8rem; }
+.carousel--compact .icon-btn { width: 32px; height: 32px; }
+.carousel--compact .icon-btn svg { width: 16px; height: 16px; }
+
+/* Sans JavaScript, le transform ne bouge jamais. On rend alors la bande
+   defilable a la main pour que les autres captures restent accessibles. */
+.carousel__viewport { overflow-x: auto; scroll-snap-type: x mandatory; }
+.js .carousel__viewport { overflow-x: hidden; }
+.carousel__slide { scroll-snap-align: center; }
+.js .carousel__nav { display: flex; }
+.carousel__nav { display: none; }
 
 /* ---------- Frise du projet ---------- */
 .timeline {
@@ -1253,6 +1290,48 @@ a.card:hover .card__link::after { transform: translateX(3px); }
 .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
 .copy-btn svg { width: 15px; height: 15px; }
 .copy-btn.is-done { color: var(--ok-text); border-color: var(--ok-text); background: var(--ok-bg); }
+
+/* ---------- Barre de contact permanente ----------
+   Collee en bas de l'ecran sur toutes les pages. Le but est simple :
+   qu'on n'ait jamais a chercher comment me joindre.
+
+   Le body recoit une marge basse de la meme hauteur, sinon la barre
+   recouvrirait la fin du pied de page. */
+.contact-bar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 95;
+  background: var(--topbar-bg);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-top: 1px solid var(--border);
+}
+.contact-bar__inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0.7rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.contact-bar__text { font-size: 0.95rem; color: var(--text-2); margin: 0; }
+.contact-bar__text strong { color: var(--text); font-weight: 600; }
+.contact-bar__actions { display: flex; gap: 0.5rem; margin-left: auto; flex-wrap: wrap; }
+.contact-bar .btn { padding: 0.5rem 1rem; font-size: 0.92rem; }
+.contact-bar .btn svg { width: 16px; height: 16px; }
+
+body { padding-bottom: 4.5rem; }
+
+/* Le bouton retour en haut se pose au-dessus de la barre, pas dessous. */
+.to-top { bottom: 5.5rem; }
+
+@media (max-width: 700px) {
+  .contact-bar__inner { padding: 0.6rem 1.25rem; gap: 0.6rem; }
+  .contact-bar__text { display: none; }
+  .contact-bar__actions { margin-left: 0; width: 100%; }
+  .contact-bar .btn { flex: 1; justify-content: center; }
+  body { padding-bottom: 4rem; }
+}
 
 /* ---------- Retour en haut ---------- */
 .to-top {

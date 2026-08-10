@@ -77,9 +77,20 @@ ok('filtres : Tout remet les 3', visible() === 3);
 ok('filtres : message masque', d.querySelector('[data-filters-empty]').hidden === true);
 
 // Carrousel
-ok('carrousel : 4 pastilles generees', d.querySelectorAll('.carousel__dot').length === 4,
-   String(d.querySelectorAll('.carousel__dot').length));
-ok('carrousel : 1re pastille active', d.querySelector('.carousel__dot').getAttribute('aria-current') === 'true');
+ok('carrousel : 4 images', d.querySelectorAll('.carousel__slide').length === 4,
+   String(d.querySelectorAll('.carousel__slide').length));
+ok('carrousel : demarre sur la 1re', d.querySelector('[data-carousel-count]').textContent === '1 / 4',
+   d.querySelector('[data-carousel-count]').textContent);
+ok('carrousel : une seule visible', d.querySelectorAll('.carousel__slide[aria-hidden="false"]').length === 1);
+d.querySelector('[data-carousel-next]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
+ok('carrousel : suivant avance', d.querySelector('[data-carousel-count]').textContent === '2 / 4',
+   d.querySelector('[data-carousel-count]').textContent);
+ok('carrousel : la bande a glisse', d.querySelector('[data-carousel-track]').style.transform === 'translateX(-100%)',
+   d.querySelector('[data-carousel-track]').style.transform);
+d.querySelector('[data-carousel-prev]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
+d.querySelector('[data-carousel-prev]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
+ok('carrousel : boucle en arriere', d.querySelector('[data-carousel-count]').textContent === '4 / 4',
+   d.querySelector('[data-carousel-count]').textContent);
 
 // Copie
 const copyBtn = d.querySelector('[data-copy]');
@@ -90,6 +101,9 @@ ok('contact : 3 tuiles dans la grille', d.querySelectorAll('.contact .contact__i
 
 // Retour en haut
 ok('retour en haut : present', !!d.querySelector('[data-to-top]'));
+ok('barre de contact : presente', !!d.querySelector('.contact-bar'));
+ok('barre de contact : e-mail et telephone', 
+   !!d.querySelector('.contact-bar a[href^="mailto:"]') && !!d.querySelector('.contact-bar a[href^="tel:"]'));
 
 // Section Cours
 ok('cours : 8 matieres listees', d.querySelectorAll('.subject-card').length === 8,

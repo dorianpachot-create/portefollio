@@ -22,7 +22,7 @@ portefollio/
 ├── js/main.js           Thème, menu, palette Ctrl+K, filtres, carrousel (vanilla JS)
 ├── sitemap.xml
 ├── robots.txt
-├── tests/dom.test.js    33 tests des composants interactifs (jsdom)
+├── tests/dom.test.js    39 tests des composants interactifs (jsdom)
 ├── assets/
 │   ├── meta/                     Favicon, image de partage, vignettes WebP
 │   ├── stars.svg                 Champ d'étoiles tilable
@@ -133,6 +133,8 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
 - Section **« Ce site est aussi un projet »** qui détaille les choix techniques et invite
   à essayer les composants.
 - **Copie de l'e-mail** en un clic, avec repli pour les navigateurs anciens.
+- **Barre de contact fixe** en bas de chaque page : e-mail, téléphone et CV toujours
+  accessibles.
 - Apparition au défilement et compteurs animés, désactivés si `prefers-reduced-motion`.
 - Mini-jeu Python jouable dans le navigateur (build pygbag en WebAssembly).
 
@@ -148,7 +150,7 @@ npm install jsdom
 node tests/dom.test.js
 ```
 
-33 vérifications sur les composants interactifs, sans navigateur. Voir `tests/README.md`.
+39 vérifications sur les composants interactifs, sans navigateur. Voir `tests/README.md`.
 
 ## SEO
 

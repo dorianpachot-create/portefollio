@@ -322,53 +322,55 @@
   /* =======================================================
      6. CARROUSEL
 
-     Le defilement lui-meme est fait en CSS avec scroll-snap.
-     Le JavaScript ne sert qu'aux fleches et aux pastilles. Si
-     ce fichier ne se charge pas, on peut toujours faire defiler
-     au doigt ou a la molette.
+     Une image a la fois. Le principe est volontairement bete :
+     on garde un index, et on fait glisser la bande d'images de
+     -index * 100%. Comme chaque image occupe exactement la
+     largeur de la fenetre, on ne peut jamais en voir deux a
+     moitie.
+
+     L'ancienne version reposait sur le defilement natif et la
+     position se calculait a partir de scrollLeft. Ca donnait des
+     resultats faux des que la largeur changeait.
      ======================================================= */
   (function carousel() {
     $$('[data-carousel]').forEach((root) => {
       const track = $('[data-carousel-track]', root);
-      const dots = $('[data-carousel-dots]', root);
-      const slides = $$('.carousel__slide', track);
-      if (!track || !slides.length) return;
+      const slides = $$('.carousel__slide', track || root);
+      const count = $('[data-carousel-count]', root);
+      if (!track || slides.length < 2) return;
 
-      slides.forEach((_, i) => {
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'carousel__dot';
-        b.setAttribute('aria-label', 'Aller à la capture ' + (i + 1));
-        b.setAttribute('aria-current', String(i === 0));
-        b.addEventListener('click', () => scrollTo(i));
-        dots.appendChild(b);
-      });
+      let index = 0;
 
-      const step = () => slides[0].offsetWidth + 16;
+      function show(i) {
+        // On boucle : apres la derniere image on revient a la premiere.
+        index = (i + slides.length) % slides.length;
+        track.style.transform = 'translateX(' + (-index * 100) + '%)';
+        if (count) count.textContent = (index + 1) + ' / ' + slides.length;
 
-      function scrollTo(i) {
-        track.scrollTo({ left: i * step(), behavior: reduced ? 'auto' : 'smooth' });
+        // Les images masquees sont retirees de l'ordre de tabulation,
+        // sinon le clavier navigue vers des liens qu'on ne voit pas.
+        slides.forEach((slide, k) => {
+          slide.setAttribute('aria-hidden', String(k !== index));
+        });
       }
-
-      function sync() {
-        const i = Math.round(track.scrollLeft / step());
-        $$('.carousel__dot', dots).forEach((d, k) =>
-          d.setAttribute('aria-current', String(k === i))
-        );
-      }
-
-      let raf;
-      track.addEventListener('scroll', () => {
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(sync);
-      });
 
       $$('[data-carousel-prev]', root).forEach((b) =>
-        b.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: reduced ? 'auto' : 'smooth' }))
+        b.addEventListener('click', () => show(index - 1))
       );
       $$('[data-carousel-next]', root).forEach((b) =>
-        b.addEventListener('click', () => track.scrollBy({ left: step(), behavior: reduced ? 'auto' : 'smooth' }))
+        b.addEventListener('click', () => show(index + 1))
       );
+
+      // Fleches du clavier quand le carrousel a le focus.
+      const viewport = $('[data-carousel-viewport]', root);
+      if (viewport) {
+        viewport.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') { e.preventDefault(); show(index - 1); }
+          if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1); }
+        });
+      }
+
+      show(0);
     });
   })();
 

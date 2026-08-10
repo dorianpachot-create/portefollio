@@ -2,6 +2,59 @@
 
 Dernière mise à jour : 2026-08-10
 
+## Mise à jour du 2026-08-10, carrousel refait, barre de contact, mentions légales
+
+### Le carrousel ne marchait pas
+
+L'ancienne version affichait plusieurs images côte à côte dans une bande défilante, et
+calculait la position à partir de `scrollLeft`. Dans la carte du projet mis en avant, la
+colonne était plus étroite que la bande : on voyait des morceaux d'images, elles
+débordaient du cadre, et les flèches tombaient à côté.
+
+Refait sur un principe volontairement bête : une fenêtre qui coupe ce qui dépasse, une
+bande d'images larges de 100 % chacune, et un `translateX(-index * 100%)` au clic. Il est
+donc impossible d'en voir deux à moitié. La hauteur est fixe et l'image en
+`object-fit: contain` : une capture de 720x1280 ne peut plus faire déborder la carte.
+
+Ajouté au passage : un compteur « 2 / 4 », les flèches du clavier, `aria-hidden` sur les
+images masquées pour que la tabulation ne parte pas dessus. Sans JavaScript, la fenêtre
+reste défilable à la main.
+
+Six tests couvrent ce composant, dont le bouclage à la fin et le retour en arrière.
+
+### Barre de contact permanente
+
+Une barre fixe en bas des 8 pages : « Une alternance à proposer ? », puis trois boutons,
+m'écrire, téléphoner, voir le CV. Le `body` a une marge basse de la même hauteur pour
+qu'elle ne recouvre pas le pied de page, et le bouton retour en haut a été remonté.
+
+Sur mobile, la phrase disparaît et les trois boutons prennent toute la largeur.
+
+### Header aéré
+
+Hauteur de 64 à 76 px, écart entre les groupes doublé, liens du menu un peu plus larges.
+La hauteur est devenue une variable `--topbar-h` : les sections plein écran, le
+`scroll-padding` et les ancres s'en servent, donc une seule valeur à changer.
+
+### Mentions légales refaites
+
+L'ancienne version datait du thème League of Legends et laissait un encadré « à compléter »
+à la place de l'hébergeur. Réécrites avec les informations réelles :
+
+- éditeur, avec e-mail et téléphone, et la raison pour laquelle l'adresse postale n'est pas
+  publiée ;
+- hébergeur GitHub Pages, avec l'adresse complète de GitHub, Inc. et le lien vers le dépôt ;
+- données personnelles : aucun cookie, aucune mesure d'audience, seul le choix du thème est
+  stocké localement. **Google Fonts est signalé** parce que le navigateur y envoie l'adresse
+  IP du visiteur, ce qui doit être dit ;
+- documents publiés : caviardage assumé, procédure de retrait pour toute personne citée ;
+- propriété intellectuelle : SYNCRO appartient à SUITIME SAS, CRP-Assurance au Cabinet
+  Romain Pachot, les fiches de cours s'appuient sur des supports d'IRIS MediaSchool ;
+- crédits techniques et liens externes.
+
+**Piste d'amélioration :** héberger la police Inter dans le dépôt supprimerait le seul
+appel à un tiers, et la page pourrait alors annoncer zéro service externe.
+
 ## Mise à jour du 2026-08-10, ouverture des domaines et correctifs
 
 ### Le portfolio n'est plus limité au développement
