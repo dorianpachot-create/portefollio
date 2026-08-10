@@ -86,6 +86,9 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
 - Toutes les variables sont dans `:root`, en tête de `css/style.css`.
 - Une seule police Google Fonts : **Inter**.
 - Les sections alternent `--bg` et `--bg-soft` pour donner du rythme sans ajouter de couleur.
+- Chaque section de l'accueil occupe au moins la hauteur d'un écran, contenu centré
+  verticalement (`min-height: calc(100vh - 64px)`), et retombe à sa hauteur naturelle
+  sous 900 px pour éviter les grands vides sur mobile.
 - Pas de framework CSS, JavaScript vanilla uniquement.
 
 ## Fonctionnalités

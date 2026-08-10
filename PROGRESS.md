@@ -2,6 +2,48 @@
 
 Dernière mise à jour : 2026-08-10
 
+## Aération du 2026-08-10 — une section par écran
+
+Demande : « rends le tout moins lourd, aère le site », en gardant le contenu intact.
+**Aucun texte n'a été modifié, uniquement `css/style.css`.**
+
+### Chaque section occupe la hauteur d'un écran
+
+```css
+.section {
+  min-height: calc(100vh - 64px);   /* 64px = hauteur de la barre du haut */
+  display: flex;
+  align-items: center;              /* contenu centré verticalement */
+  border-top: 1px solid var(--border);
+}
+```
+
+C'est un `min-height`, pas un `height` : une section plus riche que l'écran — la section
+Stage, avec sa frise et son histogramme — s'étire naturellement au lieu de déborder. Une
+section courte se centre au milieu de l'écran plutôt que de coller au haut.
+
+Le trait `border-top` remplace le `border-block` : chaque section est nettement séparée de
+la précédente, sans doubler les traits entre deux sections voisines.
+
+### Espaces augmentés
+
+| | Avant | Après |
+|---|---|---|
+| Padding vertical des sections | 4,5 rem | 5,5 rem |
+| Espace sous l'en-tête de section | 2,25 rem | 3 rem |
+| Écart entre les cartes | 1,1 rem | 1,6 rem |
+| Écart des documents | 1,1 rem | 1,6 rem |
+| Colonnes de l'accroche | 3,5 rem | 4 rem |
+
+Les ombres ont été adoucies (`--shadow` passe de deux couches à une, très légère) pour que
+la séparation vienne des espaces et des traits, pas de la profondeur.
+
+### Le point important : le mobile
+
+Forcer `100vh` sur un petit écran créerait de grands vides autour de contenus courts. Sous
+900 px, `min-height` retombe donc à `0` et chaque section reprend sa hauteur naturelle. La
+frise passe à deux colonnes, puis une seule sous 520 px, et l'histogramme se resserre.
+
 ## Mise à jour du 2026-08-10 (fin) — durée du projet corrigée et visuels
 
 ### La durée de SYNCRO était fausse

@@ -37,8 +37,8 @@
   --radius-sm:   8px;
   --radius-pill: 999px;
 
-  --shadow:    0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.06);
-  --shadow-md: 0 4px 16px rgba(16,24,40,.08);
+  --shadow:    0 1px 2px rgba(16,24,40,.03);
+  --shadow-md: 0 6px 24px rgba(16,24,40,.07);
 
   --maxw: 1080px;
   --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -78,7 +78,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
 
 body {
   margin: 0;
@@ -187,12 +187,23 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .container {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 4.5rem 1.5rem;
+  padding: 5.5rem 1.5rem;
+  width: 100%;
 }
-.section { scroll-margin-top: 5.5rem; }
-.section--soft { background: var(--bg-soft); border-block: 1px solid var(--border); }
 
-.section-head { margin-bottom: 2.25rem; max-width: 68ch; }
+/* Chaque section occupe au moins la hauteur de l'ecran, barre du haut deduite,
+   et son contenu est centre verticalement. Une section plus riche que l'ecran
+   s'etire naturellement : min-height, pas height. */
+.section {
+  scroll-margin-top: 4rem;
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--border);
+}
+.section--soft { background: var(--bg-soft); }
+
+.section-head { margin-bottom: 3rem; max-width: 66ch; }
 .section-head__eyebrow {
   display: block;
   font-size: 0.8rem;
@@ -215,11 +226,13 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .hero {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 4rem 1.5rem 3.5rem;
+  padding: 4rem 1.5rem;
+  min-height: calc(100vh - 64px);
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: 3.5rem;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 4rem;
   align-items: center;
+  align-content: center;
 }
 .hero__eyebrow {
   display: inline-flex;
@@ -294,8 +307,8 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   border: 1px solid var(--border);
   border-radius: 14px;
   background: var(--bg);
-  box-shadow: var(--shadow-md);
-  padding: 1.6rem;
+  box-shadow: var(--shadow);
+  padding: 1.8rem;
 }
 .promo__head { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 0.9rem; }
 .promo__logo {
@@ -351,7 +364,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 
 /* ---------- Grilles de cartes ---------- */
-.grid { display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid { display: grid; gap: 1.6rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 .grid--row { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 
 .card {
@@ -366,7 +379,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 a.card:hover, a.card:focus-visible {
   border-color: var(--border-2);
   box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   text-decoration: none;
 }
 .card--static { background: var(--bg-soft); }
@@ -434,7 +447,7 @@ a.card:hover .card__link::after { transform: translateX(3px); }
 }
 
 /* ---------- Compétences ---------- */
-.skills { display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.skills { display: grid; gap: 1.4rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 .skill {
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -464,9 +477,9 @@ a.card:hover .card__link::after { transform: translateX(3px); }
 .stat-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 1rem;
+  gap: 1.2rem;
   list-style: none;
-  margin: 0 0 2rem;
+  margin: 0 0 2.5rem;
   padding: 0;
 }
 .stat {
@@ -511,7 +524,7 @@ a.card:hover .card__link::after { transform: translateX(3px); }
 .week__list--wide li { margin-bottom: 0.85rem; }
 
 /* ---------- Documents ---------- */
-.docs { display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.docs { display: grid; gap: 1.6rem; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
 .doc {
   display: flex;
   flex-direction: column;
@@ -666,7 +679,7 @@ a.card:hover .card__link::after { transform: translateX(3px); }
 .section__list li { color: var(--text-2); margin-bottom: 0.45rem; }
 
 /* ---------- Contact ---------- */
-.contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+.contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.2rem; }
 .contact__item {
   display: flex;
   align-items: center;
@@ -905,7 +918,7 @@ a.card:hover .card__link::after { transform: translateX(3px); }
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 0;
-  margin: 0 0 1.6rem;
+  margin: 0 0 2rem;
   padding: 0;
   list-style: none;
   border: 1px solid var(--border);
@@ -914,7 +927,7 @@ a.card:hover .card__link::after { transform: translateX(3px); }
   background: var(--bg);
 }
 .phase {
-  padding: 1rem 1.05rem 1.15rem;
+  padding: 1.1rem 1.15rem 1.25rem;
   border-right: 1px solid var(--border);
   border-top: 3px solid var(--border-2);
 }
@@ -951,7 +964,7 @@ a.card:hover .card__link::after { transform: translateX(3px); }
   border-radius: var(--radius);
   background: var(--bg);
   padding: 1.3rem 1.5rem 1.1rem;
-  margin-bottom: 1.6rem;
+  margin-bottom: 2rem;
 }
 .chart__title { font-size: 1rem; margin-bottom: 0.25rem; }
 .chart__sub { font-size: 0.87rem; color: var(--text-3); margin: 0 0 1.2rem; }
@@ -960,7 +973,7 @@ a.card:hover .card__link::after { transform: translateX(3px); }
   grid-template-columns: repeat(5, 1fr);
   gap: 0.9rem;
   align-items: end;
-  height: 170px;
+  height: 140px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -1059,7 +1072,21 @@ a.card:hover .card__link::after { transform: translateX(3px); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; gap: 2.5rem; padding-top: 3rem; }
+  .hero { grid-template-columns: 1fr; gap: 2.5rem; }
+  /* Sur écran étroit, forcer la hauteur d'écran créerait de grands vides :
+     on laisse chaque section reprendre sa hauteur naturelle. */
+  .hero, .section { min-height: 0; }
+  .timeline { grid-template-columns: repeat(2, 1fr); }
+  .phase { border-bottom: 1px solid var(--border); }
+  .phase:nth-child(2n) { border-right: 0; }
+}
+
+@media (max-width: 520px) {
+  .timeline { grid-template-columns: 1fr; }
+  .phase { border-right: 0; }
+  .chart__bars { height: 130px; gap: 0.5rem; }
+  .chart__labels { gap: 0.5rem; }
+  .chart__labels li { font-size: 0.75rem; }
 }
 
 @media (max-width: 760px) {
