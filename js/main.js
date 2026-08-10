@@ -123,7 +123,8 @@
     const base = box.dataset.base || '';
 
     const ENTRIES = [
-      { label: 'Profil et compétences',      kind: 'Section',  href: base + 'index.html#profil' },
+      { label: 'Qui je suis',                kind: 'Section',  href: base + 'index.html#profil' },
+      { label: 'Compétences techniques',     kind: 'Section',  href: base + 'index.html#competences' },
       { label: 'Stage chez Suitime',         kind: 'Section',  href: base + 'index.html#stage' },
       { label: 'Projets',                    kind: 'Section',  href: base + 'index.html#projets' },
       { label: 'Projets encadrés du BTS',    kind: 'Section',  href: base + 'index.html#cours' },

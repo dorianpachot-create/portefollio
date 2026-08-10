@@ -1,7 +1,7 @@
 # Portfolio BTS SIO — Dorian Pachot
 
 Site vitrine personnel développé dans le cadre du BTS SIO option SLAM à IRIS MediaSchool.
-L'accueil est une page unique qui déroule : profil et compétences, stage chez Suitime,
+L'accueil est une page unique qui déroule : présentation, compétences, stage chez Suitime,
 projets personnels, projets encadrés du BTS, documents de candidature, coulisses
 techniques et contact. Les contenus longs (journal de stage,
 documents en grand, fiches de cours, mini-jeu) ont leur propre page.
@@ -16,12 +16,13 @@ portefollio/
 ├── README.md
 ├── PROGRESS.md          Etat d'avancement et points de reprise
 ├── .gitignore
-├── index.html           Accueil — page unique : profil, stage, projets, documents, contact
+├── index.html           Accueil — 8 sections : présentation, compétences, stage,
+│                        projets, cours, documents, coulisses, contact
 ├── css/style.css        Tout le style (variables en tête de fichier)
 ├── js/main.js           Thème, menu, palette Ctrl+K, filtres, carrousel (vanilla JS)
 ├── sitemap.xml
 ├── robots.txt
-├── tests/dom.test.js    28 tests des composants interactifs (jsdom)
+├── tests/dom.test.js    31 tests des composants interactifs (jsdom)
 ├── assets/
 │   ├── meta/                     Favicon, image de partage, vignettes WebP
 │   ├── stars.svg                 Champ d'étoiles tilable
@@ -96,7 +97,7 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
 
 - **Thème clair / sombre** mémorisé, aligné par défaut sur le réglage du système, sans
   flash au chargement (script inline dans le `<head>`).
-- **Recherche** dans l'en-tête ou au `Ctrl+K` : 25 destinations, recherche insensible aux
+- **Recherche** dans l'en-tête ou au `Ctrl+K` : 26 destinations, recherche insensible aux
   accents, navigation entièrement au clavier.
 - **Filtre des projets** par technologie.
 - **Frise du projet** et **histogramme d'activité** en CSS pur, sans bibliothèque.
@@ -120,7 +121,7 @@ npm install jsdom
 node tests/dom.test.js
 ```
 
-28 vérifications sur les composants interactifs, sans navigateur. Voir `tests/README.md`.
+31 vérifications sur les composants interactifs, sans navigateur. Voir `tests/README.md`.
 
 ## SEO
 

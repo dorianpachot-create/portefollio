@@ -2,6 +2,43 @@
 
 Dernière mise à jour : 2026-08-10
 
+## Mise à jour du 2026-08-10 — vraie présentation
+
+Le site présentait des projets mais pas la personne : trois lignes de profil, puis
+directement les compétences. Pour une recherche d'alternance, c'est ce qui manquait le
+plus.
+
+### Deux sections au lieu d'une
+
+`#profil` devient **« Qui je suis »** et ne contient plus les compétences, qui partent
+dans une section `#competences` dédiée. On passe de sept à huit sections sur l'accueil,
+et l'alternance des fonds a été refaite en conséquence.
+
+### Structure de la présentation
+
+Choix retenu avec Dorian : parcours précédent évoqué brièvement, ton en deux temps —
+un récit personnel, puis des blocs factuels.
+
+1. **Quatre paragraphes** en colonne large. Le premier explique d'où vient sa façon de
+   travailler sans détailler les postes précédents. Le deuxième liste ce qu'il a livré.
+   Le troisième raconte un problème concret — la connexion cassée en production qui
+   bloquait la validation App Store, et le réflexe d'ajouter un test à chaque déploiement
+   plutôt que de se contenter de réparer. Le quatrième dit ce qu'il cherche.
+2. **Six repères** en colonne étroite (`.facts`) : formation, résultats, recherche,
+   localisation, langues, certifications en cours.
+3. **Quatre preuves** (`.proof`) sous le texte : une application installable, un client
+   qui recommande, des résultats scolaires vérifiables, du code public. Chaque affirmation
+   renvoie à quelque chose de consultable sur le site.
+
+L'accroche du haut a aussi été durcie : « pas des exercices : une application publiée sur
+l'App Store et Google Play, et deux sites web utilisés au quotidien par leurs clients ».
+
+**Tout est vérifiable.** Les chiffres viennent du bulletin (15,55 contre 12,50, 17 en
+anglais), de la lettre de recommandation et du dépôt Git. Rien n'a été inventé pour
+enjoliver.
+
+La palette passe à 26 entrées, les tests à 31.
+
 ## Mise à jour du 2026-08-10 — agent IA retiré, section Cours créée
 
 ### Agent IA de candidature retiré

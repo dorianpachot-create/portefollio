@@ -75,6 +75,7 @@
 
       <nav class="nav" id="primary-nav" data-nav aria-label="Navigation principale">
         <a class="nav__link" href="#profil">Profil</a>
+        <a class="nav__link" href="#competences">Compétences</a>
         <a class="nav__link" href="#stage">Stage</a>
         <a class="nav__link" href="#projets">Projets</a>
         <a class="nav__link" href="#cours">Cours</a>
@@ -109,9 +110,10 @@
         <h1 class="hero__title" id="hero-title">Dorian Pachot</h1>
         <p class="hero__role">Développeur full-stack</p>
         <p class="hero__subtitle">
-          Étudiant en BTS SIO option SLAM à Rouen. Je conçois des applications
-          complètes, du besoin du client à la mise en production — une application
-          mobile sur les deux stores, deux sites web en production.
+          Étudiant en BTS SIO option SLAM à Rouen. Je conçois des applications complètes
+          et je les mets en production — pas des exercices : une application mobile
+          publiée sur l'App Store et Google Play, et deux sites web utilisés au
+          quotidien par leurs clients.
         </p>
 
         <ul class="hero__meta">
@@ -201,16 +203,104 @@
       </article>
     </section>
 
-    <!-- ============ Profil et compétences ============ -->
+    <!-- ============ Qui je suis ============ -->
     <section class="section section--soft" id="profil" aria-labelledby="profil-title">
       <div class="container">
         <div class="section-head reveal">
-          <span class="section-head__eyebrow">Profil</span>
-          <h2 class="section-head__title" id="profil-title">Ce que je sais faire</h2>
+          <span class="section-head__eyebrow">Qui je suis</span>
+          <h2 class="section-head__title" id="profil-title">Je livre des applications qui servent vraiment</h2>
+        </div>
+
+        <div class="about reveal">
+          <div class="about__text">
+            <p class="about__lead">
+              Je suis arrivé au développement après plusieurs années passées à encadrer des
+              équipes et à traiter avec des clients. C'est de là que vient ma façon de
+              travailler : commencer par comprendre le besoin réel, puis livrer quelque
+              chose qui tient en production.
+            </p>
+            <p>
+              En un an et demi de BTS SIO, j'ai développé et publié <strong>SYNCRO</strong>,
+              une application de plannings d'équipe, disponible aujourd'hui sur l'App Store
+              et Google Play. J'ai tout couvert : l'application mobile en Flutter, le
+              back-end Next.js et sa base de données, le serveur, le site vitrine et la
+              publication sur les deux magasins. J'ai aussi réalisé
+              <strong>CRP-Assurance.com</strong> de A à Z pour un cabinet d'assurance,
+              du recueil du besoin à l'hébergement.
+            </p>
+            <p>
+              Ce que j'aime dans ce métier, c'est le moment où on comprend pourquoi quelque
+              chose ne marche pas. Pendant mon stage, une connexion cassée en production a
+              bloqué la validation de l'application sur l'App Store. Le vrai travail n'a pas
+              été de la réparer, mais d'ajouter un test automatique à chaque mise en ligne
+              pour que le cas ne puisse plus se reproduire. C'est ce niveau-là qui
+              m'intéresse.
+            </p>
+            <p>
+              Je cherche une <strong>alternance à partir de septembre 2026</strong>, sur un
+              rythme de trois jours en entreprise et deux jours à l'école, dans la région de
+              Rouen. Je vise ensuite une poursuite d'études jusqu'au niveau Bac+5.
+            </p>
+          </div>
+
+          <dl class="facts">
+            <div>
+              <dt>Formation</dt>
+              <dd>BTS SIO option SLAM<small>IRIS MediaSchool, Rouen · 2025-2027</small></dd>
+            </div>
+            <div>
+              <dt>Résultats</dt>
+              <dd>15,55 de moyenne<small>Promotion : 12,50</small></dd>
+            </div>
+            <div>
+              <dt>Recherche</dt>
+              <dd>Alternance<small>Dès septembre 2026 · 3 j. / 2 j.</small></dd>
+            </div>
+            <div>
+              <dt>Localisation</dt>
+              <dd>Rouen, 76000<small>Mobile sur la métropole</small></dd>
+            </div>
+            <div>
+              <dt>Langues</dt>
+              <dd>Français, anglais B2+<small>17/20 en anglais cette année</small></dd>
+            </div>
+            <div>
+              <dt>En cours</dt>
+              <dd>GitLab 101<small>HashiCorp Terraform Associate</small></dd>
+            </div>
+          </dl>
+        </div>
+
+        <ul class="proof reveal" aria-label="Ce que je peux prouver">
+          <li>
+            <h3>Une application en production</h3>
+            <p>SYNCRO est publiée sur l'App Store et Google Play. Vous pouvez l'installer et la tester tout de suite.</p>
+          </li>
+          <li>
+            <h3>Un client satisfait</h3>
+            <p>« Je recommande sans réserve Dorian à toute entreprise souhaitant l'accueillir. » — Suitime, lettre consultable.</p>
+          </li>
+          <li>
+            <h3>Des résultats scolaires solides</h3>
+            <p>15,55 de moyenne pour 12,50 en promotion, avec 20/20 en administration systèmes et réseaux. Bulletin en ligne.</p>
+          </li>
+          <li>
+            <h3>Du code que vous pouvez lire</h3>
+            <p>Ce site est écrit à la main, sans framework ni dépendance, et testé. Le dépôt est public.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ Compétences ============ -->
+    <section class="section" id="competences" aria-labelledby="competences-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-head__eyebrow">Compétences</span>
+          <h2 class="section-head__title" id="competences-title">Mes outils de travail</h2>
           <p class="section-head__lead">
-            Je développe en autonomie, de la conception de la base de données à la mise
-            en ligne. Plusieurs années de management d'équipe m'ont appris l'écoute du
-            besoin réel et la gestion de la pression.
+            Ce que j'utilise réellement, sur des projets qui tournent — pas une liste de
+            technologies croisées une fois en cours.
           </p>
         </div>
 
@@ -247,7 +337,7 @@
     </section>
 
     <!-- ============ Stage ============ -->
-    <section class="section" id="stage" aria-labelledby="stage-title">
+    <section class="section section--soft" id="stage" aria-labelledby="stage-title">
       <div class="container">
         <div class="section-head reveal">
           <span class="section-head__eyebrow">Expérience</span>
@@ -340,7 +430,7 @@
     </section>
 
     <!-- ============ Projets ============ -->
-    <section class="section section--soft" id="projets" aria-labelledby="projets-title">
+    <section class="section" id="projets" aria-labelledby="projets-title">
       <div class="container">
         <div class="section-head reveal">
           <span class="section-head__eyebrow">Réalisations</span>
@@ -429,7 +519,7 @@
     </section>
 
     <!-- ============ Cours ============ -->
-    <section class="section" id="cours" aria-labelledby="cours-title">
+    <section class="section section--soft" id="cours" aria-labelledby="cours-title">
       <div class="container">
         <div class="section-head reveal">
           <span class="section-head__eyebrow">BTS SIO</span>
@@ -538,7 +628,7 @@
     </section>
 
     <!-- ============ Documents ============ -->
-    <section class="section section--soft" id="documents" aria-labelledby="documents-title">
+    <section class="section" id="documents" aria-labelledby="documents-title">
       <div class="container">
         <div class="section-head reveal">
           <span class="section-head__eyebrow">Dossier</span>
@@ -616,7 +706,7 @@
     </section>
 
     <!-- ============ Ce site ============ -->
-    <section class="section" id="ce-site" aria-labelledby="ce-site-title">
+    <section class="section section--soft" id="ce-site" aria-labelledby="ce-site-title">
       <div class="container">
         <div class="section-head reveal">
           <span class="section-head__eyebrow">Sous le capot</span>
@@ -681,7 +771,7 @@
     </section>
 
     <!-- ============ Contact ============ -->
-    <section class="section section--soft" id="contact" aria-labelledby="contact-title">
+    <section class="section" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="section-head reveal">
           <span class="section-head__eyebrow">Contact</span>

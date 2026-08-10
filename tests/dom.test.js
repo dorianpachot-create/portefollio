@@ -47,7 +47,7 @@ ok('palette : fermee au depart', box.hidden === true);
 d.querySelector('[data-palette-open]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
 ok('palette : ouverte au clic', box.hidden === false);
 const total = d.querySelectorAll('.palette__item').length;
-ok('palette : 25 entrees listees', total === 25, String(total));
+ok('palette : 26 entrees listees', total === 26, String(total));
 input.value = 'bulletin';
 input.dispatchEvent(new w.Event('input', { bubbles: true }));
 ok('palette : recherche filtre', d.querySelectorAll('.palette__item').length === 1);
@@ -93,13 +93,20 @@ ok('cours : 8 matieres listees', d.querySelectorAll('.subject-card').length === 
    String(d.querySelectorAll('.subject-card').length));
 ok('cours : agent IA retire', !d.body.textContent.includes('Agent IA'));
 
+// Presentation
+ok('presentation : 6 reperes', d.querySelectorAll('.facts div').length === 6,
+   String(d.querySelectorAll('.facts div').length));
+ok('presentation : 4 preuves', d.querySelectorAll('.proof li').length === 4);
+ok('presentation : 8 sections ancrees', d.querySelectorAll('main > section[id]').length === 8,
+   String(d.querySelectorAll('main > section[id]').length));
+
 console.log('\n--- pages/stage.html (chemins relatifs) ---');
 const w2 = boot('pages/stage.html');
 const d2 = w2.document;
 d2.querySelector('[data-palette-open]').dispatchEvent(new w2.MouseEvent('click', { bubbles: true }));
 const first = d2.querySelector('.palette__item');
 ok('palette : ouverte sur une sous-page', d2.querySelector('[data-palette]').hidden === false);
-ok('palette : 25 entrees aussi', d2.querySelectorAll('.palette__item').length === 25);
+ok('palette : 26 entrees aussi', d2.querySelectorAll('.palette__item').length === 26);
 ok('theme : bouton present', !!d2.querySelector('[data-theme-toggle]'));
 
 console.log('\n' + pass + ' reussis, ' + fail + ' echecs');

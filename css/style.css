@@ -446,6 +446,56 @@ a.card:hover .card__link::after { transform: translateX(3px); }
   padding: 0.18rem 0.65rem;
 }
 
+/* ---------- Présentation ---------- */
+.about { display: grid; grid-template-columns: 1.35fr 1fr; gap: 3rem; align-items: start; }
+.about__text { max-width: 62ch; }
+.about__text p { color: var(--text-2); margin-bottom: 1.1rem; }
+.about__text p:last-child { margin-bottom: 0; }
+.about__text strong { color: var(--text); font-weight: 600; }
+.about__lead { font-size: 1.12rem; color: var(--text) !important; }
+
+.facts {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  padding: 0.4rem 1.35rem;
+  margin: 0;
+}
+.facts div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.facts div:last-child { border-bottom: 0; }
+.facts dt { font-size: 0.88rem; color: var(--text-3); flex-shrink: 0; }
+.facts dd { margin: 0; font-size: 0.93rem; font-weight: 600; text-align: right; }
+.facts dd small { display: block; font-weight: 400; font-size: 0.82rem; color: var(--text-3); }
+
+.proof {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.1rem;
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+}
+.proof li {
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  padding: 1.1rem 1.2rem;
+}
+.proof h3 { font-size: 0.97rem; margin-bottom: 0.35rem; }
+.proof p { font-size: 0.9rem; color: var(--text-2); margin: 0; line-height: 1.55; }
+
+@media (max-width: 900px) {
+  .about { grid-template-columns: 1fr; gap: 2rem; }
+}
+
 /* ---------- Matières du BTS (accueil) ---------- */
 .subjects {
   display: grid;
