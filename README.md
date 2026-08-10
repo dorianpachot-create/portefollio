@@ -51,13 +51,14 @@ portefollio/
     └── mentions-legales.html
 ```
 
-## Contenu à jour au 9 août 2026
+## Contenu à jour au 10 août 2026
 
 - **CV** : version neutre (sans nom d'entreprise), à jour au 28/07/2026, mentionnant
   SYNCRO, CRP-Assurance.com et appsyncro.fr.
-- **Stage** : les cinq semaines chez Suitime, semaine par semaine. Page réécrite à
-  partir du journal de stage, sans les éléments techniques internes au client — voir
-  `PROGRESS.md` pour le détail de ce qui a été retiré et pourquoi.
+- **SYNCRO** : projet développé d'avril à août 2026 pour Suitime, dont cinq semaines de
+  stage à temps plein (6 juillet au 7 août). Frise du projet et histogramme des 84 commits
+  sur l'accueil ; journal détaillé du stage sur `pages/stage.html`, réécrit sans les
+  éléments techniques internes au client — voir `PROGRESS.md`.
 - **Documents** : lettre de recommandation Suitime (stage du 6 juillet au 7 août 2026),
   bulletin de 1<sup>re</sup> année (moyenne 15,55 pour 12,50 de promotion), lettre de
   motivation type.
@@ -94,6 +95,7 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
 - **Recherche** dans l'en-tête ou au `Ctrl+K` : 24 destinations, recherche insensible aux
   accents, navigation entièrement au clavier.
 - **Filtre des projets** par technologie.
+- **Frise du projet** et **histogramme d'activité** en CSS pur, sans bibliothèque.
 - **Carrousel** des captures de SYNCRO dans l'accroche, en `scroll-snap`, utilisable sans
   JavaScript.
 - Section **« Ce site est aussi un projet »** qui détaille les choix techniques et invite

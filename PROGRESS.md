@@ -2,6 +2,52 @@
 
 Dernière mise à jour : 2026-08-10
 
+## Mise à jour du 2026-08-10 (fin) — durée du projet corrigée et visuels
+
+### La durée de SYNCRO était fausse
+
+Le site laissait croire que l'application avait été faite en cinq semaines de stage. C'est
+inexact, et c'était même contre-productif : un recruteur technique n'y croit pas.
+
+Dates vérifiées dans `syncro/code/syncro/.git` :
+
+| | |
+|---|---|
+| Premier commit | 2 avril 2026 |
+| Dernier commit | 7 août 2026 |
+| Total | 84 commits |
+| Répartition | 6 en avril, 14 en mai, 9 en juin, **37 en juillet**, 18 en août |
+| Stage | 6 juillet au 7 août, soit la phase la plus dense |
+
+Aucun fichier antérieur au 2 avril dans `Boulot` — la piste « février ou mars » n'est pas
+étayée. Le CV indique aussi « Avril 2026 ». C'est donc avril qui est retenu.
+
+Formulation adoptée partout : le projet court d'avril à août 2026, **dont** cinq semaines
+de stage à temps plein, période pendant laquelle l'application est passée en production.
+Le titre de la section devient « SYNCRO, d'avril à août 2026 ». La statistique
+« 5 semaines de développement » devient « 5 mois de développement ».
+
+`pages/stage.html` gagne un encadré qui précise ce que couvre le journal : les cinq
+semaines de stage, les bases ayant été posées depuis avril.
+
+### Visuels ajoutés
+
+- **Frise du projet** (`.timeline`) dans la section Stage : cinq colonnes d'avril à août,
+  les deux colonnes de stage sur fond teinté avec un badge. C'est ce qui raconte la durée
+  réelle d'un seul coup d'œil.
+- **Histogramme d'activité** (`.chart`) : les 84 commits par mois, en barres CSS pures
+  (aucune bibliothèque). Les barres poussent quand le bloc entre à l'écran, via un
+  `IntersectionObserver` qui pose `.is-in`. Juillet et août sont en couleur d'accent.
+  La hauteur passe par une variable `--h` en ligne, donc les valeurs restent lisibles
+  dans le HTML.
+- **Vignettes sur les cartes projet** : les cinq cartes ont maintenant un bandeau visuel
+  de 132 px. Trois portent une vraie capture (SYNCRO, CRP-Assurance, Mission Orion), en
+  WebP avec repli JPEG ; les deux autres un aplat teinté avec leur icône, pour rester
+  homogènes. Badge « En production » sur les deux projets en ligne.
+
+Sans JavaScript, les barres et les vignettes s'affichent normalement — la règle
+`.js .bar__fill { height: 0 }` suit le même principe que `.reveal`.
+
 ## Correctifs du 2026-08-10 (tard) — visibilité et robustesse
 
 Retour de Dorian : « à quoi sert le Ctrl+K ? », « le bouton n'est pas beau », « je ne vois

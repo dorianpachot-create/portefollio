@@ -146,9 +146,9 @@
           </div>
         </div>
         <p class="promo__desc">
-          Application de plannings d'équipe développée pour Suitime pendant mon stage.
-          Front Flutter, back-end Next.js, base SQL. Publiée sur les deux magasins
-          d'applications.
+          Application de plannings d'équipe développée pour Suitime d'avril à août 2026,
+          dont cinq semaines de stage à temps plein. Front Flutter, back-end Next.js,
+          base SQL. Publiée sur les deux magasins d'applications.
         </p>
         <ul class="store-links">
           <li>
@@ -250,18 +250,65 @@
       <div class="container">
         <div class="section-head reveal">
           <span class="section-head__eyebrow">Expérience</span>
-          <h2 class="section-head__title" id="stage-title">Stage chez Suitime</h2>
+          <h2 class="section-head__title" id="stage-title">SYNCRO, d'avril à août 2026</h2>
           <p class="section-head__lead">
-            Cinq semaines, du 6 juillet au 7 août 2026. Mission : concevoir une
-            application mobile à partir d'un cahier des charges. À la fin du stage,
-            elle était publiée sur l'App Store et Google Play.
+            J'ai développé SYNCRO pour Suitime pendant cinq mois, d'abord en parallèle de
+            mes cours, puis à temps plein lors de mon stage du 6 juillet au 7 août. C'est
+            pendant ces cinq dernières semaines que l'application a été mise en production
+            et publiée sur l'App Store et Google Play.
           </p>
         </div>
 
-        <ul class="stat-list reveal" aria-label="Le stage en chiffres">
+        <ol class="timeline reveal" aria-label="Déroulé du projet SYNCRO">
+          <li class="phase">
+            <span class="phase__month">Avril</span>
+            <h3 class="phase__title">Démarrage</h3>
+            <p class="phase__desc">Cahier des charges, premières maquettes et socle de l'application.</p>
+          </li>
+          <li class="phase">
+            <span class="phase__month">Mai</span>
+            <h3 class="phase__title">Le cœur du produit</h3>
+            <p class="phase__desc">Comptes, groupes, planning, blocage des créneaux et notifications.</p>
+          </li>
+          <li class="phase">
+            <span class="phase__month">Juin</span>
+            <h3 class="phase__title">Retours et ergonomie</h3>
+            <p class="phase__desc">Refonte de l'interface et corrections issues des premiers tests.</p>
+          </li>
+          <li class="phase phase--stage">
+            <span class="phase__month">Juillet</span>
+            <span class="phase__badge">Stage</span>
+            <h3 class="phase__title">Mise en production</h3>
+            <p class="phase__desc">Serveur, site vitrine, migration TypeScript, sécurité et publication.</p>
+          </li>
+          <li class="phase phase--stage">
+            <span class="phase__month">Août</span>
+            <span class="phase__badge">Stage</span>
+            <h3 class="phase__title">Sur les deux stores</h3>
+            <p class="phase__desc">Notifications iOS, accessibilité et derniers correctifs.</p>
+          </li>
+        </ol>
+
+        <div class="chart reveal" data-chart>
+          <h3 class="chart__title">Activité sur le dépôt</h3>
+          <p class="chart__sub">84 commits entre le 2 avril et le 7 août 2026.</p>
+          <ul class="chart__bars">
+            <li class="bar"><span class="bar__value">6</span><span class="bar__fill" style="--h:16%"></span></li>
+            <li class="bar"><span class="bar__value">14</span><span class="bar__fill" style="--h:38%"></span></li>
+            <li class="bar"><span class="bar__value">9</span><span class="bar__fill" style="--h:24%"></span></li>
+            <li class="bar bar--peak"><span class="bar__value">37</span><span class="bar__fill" style="--h:100%"></span></li>
+            <li class="bar bar--peak"><span class="bar__value">18</span><span class="bar__fill" style="--h:49%"></span></li>
+          </ul>
+          <ul class="chart__labels">
+            <li>Avril</li><li>Mai</li><li>Juin</li><li>Juillet</li><li>Août</li>
+          </ul>
+          <p class="chart__legend">Période de stage, à temps plein</p>
+        </div>
+
+        <ul class="stat-list reveal" aria-label="Le projet en chiffres">
           <li class="stat">
             <span class="stat__value" data-count>5</span>
-            <span class="stat__label">semaines de développement</span>
+            <span class="stat__label">mois de développement</span>
           </li>
           <li class="stat">
             <span class="stat__value" data-count>2</span>
@@ -319,23 +366,34 @@
 
         <div class="grid">
 
-          <a class="card reveal" href="pages/projets-perso.html#syncro" data-tech="flutter|nextjs|sql">
-            <span class="card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
+          <a class="card card--visual reveal" href="pages/projets-perso.html#syncro" data-tech="flutter|nextjs|sql">
+            <span class="card__cover">
+              <picture>
+                <source srcset="assets/meta/cover-syncro.webp" type="image/webp" />
+                <img src="assets/meta/cover-syncro.jpg" alt="Capture de l'application SYNCRO : planning d'équipe de la semaine" loading="lazy" width="760" height="400" />
+              </picture>
+              <span class="card__flag">En production</span>
             </span>
+            <span class="card__body">
             <h3 class="card__title">SYNCRO</h3>
             <p class="card__desc">
-              Application mobile de plannings d'équipe pour Suitime. Développée de bout en
-              bout et publiée sur l'App Store et Google Play, avec son site vitrine.
+              Application mobile de plannings d'équipe pour Suitime, développée de bout en bout
+              sur cinq mois. Publiée sur l'App Store et Google Play, avec son site vitrine.
             </p>
             <ul class="tags"><li class="tag">Flutter</li><li class="tag">Next.js</li><li class="tag">SQL</li><li class="tag">API REST</li></ul>
             <span class="card__link">Voir le détail</span>
+            </span>
           </a>
 
-          <a class="card reveal" href="https://crp-assurance.com" target="_blank" rel="noopener noreferrer" data-tech="js">
-            <span class="card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9Z"/></svg>
+          <a class="card card--visual reveal" href="https://crp-assurance.com" target="_blank" rel="noopener noreferrer" data-tech="js">
+            <span class="card__cover">
+              <picture>
+                <source srcset="assets/meta/cover-crp.webp" type="image/webp" />
+                <img src="assets/meta/cover-crp.jpg" alt="Page d'accueil du site CRP-Assurance.com" loading="lazy" width="760" height="400" />
+              </picture>
+              <span class="card__flag">En production</span>
             </span>
+            <span class="card__body">
             <h3 class="card__title">CRP-Assurance.com</h3>
             <p class="card__desc">
               Site professionnel réalisé de A à Z pour un cabinet d'assurance : recueil du
@@ -343,24 +401,31 @@
             </p>
             <ul class="tags"><li class="tag">HTML</li><li class="tag">CSS</li><li class="tag">JavaScript</li><li class="tag">RGPD</li></ul>
             <span class="card__link">Voir le site</span>
+            </span>
           </a>
 
-          <article class="card card--static reveal" data-tech="react">
-            <span class="card__icon" aria-hidden="true">
+          <article class="card card--visual card--static reveal" data-tech="react">
+            <span class="card__cover card__cover--tint" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m7 10 2 2-2 2M12 14h5"/></svg>
             </span>
+            <span class="card__body">
             <h3 class="card__title">Agent IA de candidature</h3>
             <p class="card__desc">
               Outil qui compare mon profil à une offre d'emploi, donne un score de
               compatibilité et génère une lettre de motivation adaptée.
             </p>
             <ul class="tags"><li class="tag">React</li><li class="tag">API Anthropic</li><li class="tag">Automatisation</li></ul>
+            </span>
           </article>
 
-          <a class="card reveal" href="pages/mini-jeu.html" data-tech="python">
-            <span class="card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="20" height="9" rx="4"/><path d="M7 12.5h3M8.5 11v3"/><circle cx="16" cy="12" r="1"/><circle cx="18.5" cy="14.5" r="1"/></svg>
+          <a class="card card--visual reveal" href="pages/mini-jeu.html" data-tech="python">
+            <span class="card__cover">
+              <picture>
+                <source srcset="assets/meta/cover-orion.webp" type="image/webp" />
+                <img src="assets/meta/cover-orion.jpg" alt="Capture du jeu Mission Orion" loading="lazy" width="760" height="400" />
+              </picture>
             </span>
+            <span class="card__body">
             <h3 class="card__title">Mission Orion</h3>
             <p class="card__desc">
               Jeu spatial en Python avec pygame, compilé en WebAssembly. Jouable
@@ -368,12 +433,14 @@
             </p>
             <ul class="tags"><li class="tag">Python</li><li class="tag">pygame</li><li class="tag">WebAssembly</li></ul>
             <span class="card__link">Jouer maintenant</span>
+            </span>
           </a>
 
-          <a class="card reveal" href="pages/projets-cours.html" data-tech="reseau|python|sql|js">
-            <span class="card__icon" aria-hidden="true">
+          <a class="card card--visual reveal" href="pages/projets-cours.html" data-tech="reseau|python|sql|js">
+            <span class="card__cover card__cover--tint" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5v-13Z"/><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5v-13Z"/></svg>
             </span>
+            <span class="card__body">
             <h3 class="card__title">Projets encadrés</h3>
             <p class="card__desc">
               Les travaux pratiques du BTS SIO, classés par matière : réseaux, systèmes,
@@ -381,6 +448,7 @@
             </p>
             <ul class="tags"><li class="tag">GNS3</li><li class="tag">Active Directory</li><li class="tag">VLAN</li></ul>
             <span class="card__link">Parcourir les fiches</span>
+            </span>
           </a>
 
         </div>

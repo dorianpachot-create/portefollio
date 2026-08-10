@@ -353,7 +353,28 @@
       );
     }
 
-    if (!('IntersectionObserver' in window)) return;
+    if (!('IntersectionObserver' in window)) {
+      // Sans IntersectionObserver, on affiche tout immédiatement.
+      $$('.reveal').forEach((el) => el.classList.add('is-in'));
+      $$('[data-chart]').forEach((el) => el.classList.add('is-in'));
+      return;
+    }
+
+    // Histogramme : les barres poussent quand le bloc arrive à l'écran.
+    const charts = $$('[data-chart]');
+    if (charts.length) {
+      const ioChart = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((e) => {
+            if (!e.isIntersecting) return;
+            e.target.classList.add('is-in');
+            obs.unobserve(e.target);
+          });
+        },
+        { threshold: 0.25 }
+      );
+      charts.forEach((c) => ioChart.observe(c));
+    }
 
     const targets = $$('.reveal');
     if (targets.length) {
