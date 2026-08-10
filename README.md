@@ -95,6 +95,12 @@ Le tableau ci-dessous répond à la question « je veux modifier ça, je vais o�
   de devenir à moitié invisible.
 - **Un seul fichier de style et un seul fichier de script** pour les 8 pages. Chaque bloc
   de `main.js` s'arrête tout seul s'il ne trouve pas son HTML.
+- **Un seul écouteur de défilement** pour tout le site, dans le bloc `scrollEngine`. Ne
+  jamais en ajouter un autre, et ne jamais lire `scrollHeight` ou `getBoundingClientRect`
+  pendant le défilement : ça force un recalcul complet de la mise en page et fait sauter
+  le scroll.
+- **Ce qui couvre l'écran n'anime que `transform`.** Animer une couleur, une position de
+  fond ou une taille sur un grand élément coûte un repaint par image.
 - **Après une modification, lancer les tests** (voir plus bas). Ils prennent deux
   secondes et attrapent les liens cassés et les composants qui ne répondent plus.
 
@@ -142,6 +148,9 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
 - **Halo qui suit le curseur** sur les cartes, désactivé au doigt et si
   `prefers-reduced-motion`.
 - **Barre de progression** de lecture en haut de l'écran.
+- **Fond animé** sur tout le site : trois taches de couleur qui dérivent et une grille
+  fine, en `transform` uniquement pour ne rien coûter au défilement.
+- **Défilé de technologies** sous les compétences, en pause au survol.
 - Apparition au défilement en cascade et compteurs animés, désactivés si
   `prefers-reduced-motion`.
 - Mini-jeu Python jouable dans le navigateur (build pygbag en WebAssembly).

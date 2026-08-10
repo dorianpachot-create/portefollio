@@ -2,6 +2,60 @@
 
 Dernière mise à jour : 2026-08-10
 
+## Mise à jour du 2026-08-10, défilement corrigé et fond animé
+
+### Le défilement qui saute, c'était un vrai défaut
+
+Symptôme décrit par Dorian : « des fois on descend beaucoup plus vite ». Deux causes,
+toutes les deux de mon fait.
+
+**1. Une lecture de `scrollHeight` à chaque événement de défilement.** La barre de
+progression calculait `document.documentElement.scrollHeight - window.innerHeight` dans
+son gestionnaire. Lire `scrollHeight` force le navigateur à recalculer toute la mise en
+page immédiatement, avant de rendre la main. À plusieurs dizaines d'événements par
+seconde, des images sont perdues et le défilement devient irrégulier.
+
+**2. Trois écouteurs de défilement séparés**, un par fonctionnalité, chacun faisant son
+travail sans coordination.
+
+Corrigé par un bloc unique, `scrollEngine` :
+
+- un seul `addEventListener('scroll')` pour tout le site ;
+- le travail est repoussé dans `requestAnimationFrame`, donc au plus une fois par image
+  affichée, quel que soit le nombre d'événements ;
+- la hauteur du document est mesurée au chargement, au redimensionnement et à la fin du
+  chargement des images, jamais pendant le défilement.
+
+**3. Le flou du fond de l'accroche.** `filter: blur(18px)` sur un élément de la taille de
+l'écran, avec une animation infinie, oblige le navigateur à le repeindre en continu. Le
+flou a été retiré : les `radial-gradient` sont déjà doux, la différence visuelle est
+minime et le coût disparaît.
+
+### Fond animé sur tout le site
+
+Une couche fixe derrière le contenu, sur les 8 pages : trois taches de couleur qui
+dérivent sur 24 à 30 secondes, et une grille fine qui glisse en boucle.
+
+**La règle qui rend ça gratuit :** tout ce qui couvre l'écran n'anime que `transform`.
+Cette propriété est traitée par la carte graphique, le processeur n'a rien à recalculer.
+`will-change: transform` prévient le navigateur, et `contain: strict` isole la couche du
+reste de la mise en page.
+
+Deux animations font exception, `shine` sur le titre et `pulse-dot` sur la pastille : elles
+touchent `background-position` et `box-shadow`, qui demandent un repaint. C'est assumé,
+elles s'appliquent à un titre et à un point de 7 px.
+
+Les sections sont devenues légèrement transparentes pour laisser voir le fond, mais à 86
+et 90 % seulement : le contraste du texte ne doit pas bouger quand une couleur passe
+derrière.
+
+### Défilé de technologies
+
+Une bande qui glisse en continu sous les compétences, en pause au survol. La liste est
+écrite deux fois dans le HTML : quand la première moitié sort de l'écran, la seconde est
+exactement à sa place de départ, donc la boucle est invisible. La copie est en
+`aria-hidden` pour ne pas être lue deux fois par un lecteur d'écran.
+
 ## Mise à jour du 2026-08-10, police locale et effets renforcés
 
 ### Plus aucun appel à un service tiers

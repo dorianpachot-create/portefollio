@@ -15,9 +15,8 @@
  *   6. Carrousel ............... les captures de SYNCRO
  *   7. Copie de l'e-mail ....... bouton Copier de la section Contact
  *   8. Lumiere a la souris ..... halo qui suit le curseur sur les cartes
- *   9. Barre du haut ........... ombre au defilement
- *  10. Animations .............. progression, retour en haut, apparition,
- *                              cascade, compteurs
+ *   9. Moteur de defilement .... un seul ecouteur pour tout le site
+ *  10. Apparitions ............. reveal, cascade, histogramme, compteurs
  *
  * LE PRINCIPE A RETENIR
  * Chaque bloc commence par chercher son HTML et s'arrete tout de suite
@@ -446,52 +445,85 @@
   })();
 
   /* =======================================================
-     9. BARRE DU HAUT AU DEFILEMENT
-     Ajoute une ombre des qu'on a quitte le haut de la page.
+     9. UN SEUL ECOUTEUR DE DEFILEMENT
+
+     C'est le point le plus important du fichier pour la
+     fluidite. Avant, trois blocs ecoutaient le defilement
+     chacun de leur cote, et l'un d'eux lisait scrollHeight a
+     chaque evenement.
+
+     Lire scrollHeight force le navigateur a recalculer toute
+     la mise en page immediatement, avant de rendre la main.
+     A raison de plusieurs dizaines d'evenements par seconde,
+     ca fait sauter le defilement : c'est exactement le
+     symptome "des fois on descend beaucoup plus vite".
+
+     Trois corrections :
+       1. un seul ecouteur pour tout le monde ;
+       2. le travail est repousse dans requestAnimationFrame,
+          donc au plus une fois par image affichee ;
+       3. la hauteur du document est mesuree une seule fois et
+          remesuree seulement quand la fenetre change de taille.
      ======================================================= */
-  (function stickyBar() {
+  (function scrollEngine() {
     const bar = $('.topbar');
-    if (!bar) return;
-    const onScroll = () => bar.classList.toggle('is-stuck', window.scrollY > 8);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-  })();
+    const progress = $('[data-progress]');
+    const top = $('[data-to-top]');
+    if (!bar && !progress && !top) return;
 
-  /* =======================================================
-     10. ANIMATIONS
+    let docHeight = 0;
+    let ticking = false;
 
-     Quatre choses ici : la barre de progression en haut de
-     l'ecran, le bouton retour en haut, l'apparition des blocs
-     au defilement avec effet de cascade, et les compteurs.
-
-     Toutes sont desactivees si la personne a demande moins
-     d'animations dans les reglages de son systeme.
-     ======================================================= */
-  (function motion() {
-    // Barre de progression de lecture. On ne touche qu'a une variable CSS,
-    // le navigateur s'occupe du reste : pas de recalcul de mise en page.
-    const bar = $('[data-progress]');
-    if (bar) {
-      const update = () => {
-        const h = document.documentElement.scrollHeight - window.innerHeight;
-        const p = h > 0 ? window.scrollY / h : 0;
-        bar.style.setProperty('--p', Math.min(Math.max(p, 0), 1).toFixed(4));
-      };
-      update();
-      window.addEventListener('scroll', update, { passive: true });
-      window.addEventListener('resize', update);
+    // Mesure couteuse : on ne la fait qu'au chargement et au redimensionnement.
+    function measure() {
+      docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      apply();
     }
 
-    const top = $('[data-to-top]');
+    // Lecture peu couteuse (scrollY est mis en cache par le navigateur)
+    // et ecritures uniquement.
+    function apply() {
+      const y = window.scrollY;
+      if (bar) bar.classList.toggle('is-stuck', y > 8);
+      if (top) top.classList.toggle('is-visible', y > 600);
+      if (progress) {
+        const p = docHeight > 0 ? y / docHeight : 0;
+        progress.style.setProperty('--p', Math.min(Math.max(p, 0), 1).toFixed(4));
+      }
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(apply);
+    }, { passive: true });
+
+    window.addEventListener('resize', measure);
+    // Les images qui finissent de charger changent la hauteur du document.
+    window.addEventListener('load', measure);
+
     if (top) {
-      const onScroll = () => top.classList.toggle('is-visible', window.scrollY > 600);
-      onScroll();
-      window.addEventListener('scroll', onScroll, { passive: true });
       top.addEventListener('click', () =>
         window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' })
       );
     }
 
+    measure();
+  })();
+
+  /* =======================================================
+     10. APPARITIONS ET COMPTEURS
+
+     L'apparition des blocs au defilement, l'effet de cascade,
+     les barres de l'histogramme et les compteurs qui montent.
+     Tout passe par IntersectionObserver, jamais par un
+     ecouteur de defilement.
+
+     Toutes sont desactivees si la personne a demande moins
+     d'animations dans les reglages de son systeme.
+     ======================================================= */
+  (function motion() {
     if (!('IntersectionObserver' in window)) {
       // Sans IntersectionObserver, on affiche tout immédiatement.
       $$('.reveal').forEach((el) => el.classList.add('is-in'));

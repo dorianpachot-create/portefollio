@@ -37,6 +37,18 @@
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
 
+  <!-- Fond anime du site. Trois taches de couleur qui derivent et une grille
+       fine. Tout est decoratif, donc masque aux lecteurs d'ecran. Seules des
+       proprietes transform sont animees, ce qui laisse le travail a la carte
+       graphique et n'impacte pas le defilement. -->
+  <div class="bg-fx" aria-hidden="true">
+    <span class="bg-fx__blob bg-fx__blob--1"></span>
+    <span class="bg-fx__blob bg-fx__blob--2"></span>
+    <span class="bg-fx__blob bg-fx__blob--3"></span>
+    <span class="bg-fx__grid"></span>
+  </div>
+
+
   <!-- Barre de progression de lecture. Purement decorative, donc invisible
        pour les lecteurs d'ecran. Le JavaScript ne modifie qu'une variable
        CSS, le navigateur fait le reste. -->

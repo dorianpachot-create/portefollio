@@ -253,6 +253,100 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 
 /* =========================================================
+   FOND ANIME DU SITE
+
+   Une couche fixe derriere tout le contenu, avec trois taches
+   de couleur qui tournent lentement. Elle est posee une fois
+   dans le <body> et ne bouge jamais avec le defilement.
+
+   REGLE DE PERF : on n'anime que transform et opacity, jamais
+   une couleur ni une position de fond. Ces deux proprietes
+   sont traitees par la carte graphique, le processeur n'a rien
+   a recalculer. C'est ce qui permet d'avoir du mouvement en
+   permanence sans perdre une seule image.
+
+   contain: strict isole la couche : le navigateur sait qu'elle
+   ne peut pas influencer la mise en page du reste.
+   ========================================================= */
+.bg-fx {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+}
+.bg-fx__blob {
+  position: absolute;
+  width: 46rem;
+  height: 46rem;
+  border-radius: 50%;
+  will-change: transform;
+  opacity: 0.5;
+}
+[data-theme="dark"] .bg-fx__blob { opacity: 0.42; }
+
+.bg-fx__blob--1 {
+  top: -14rem; left: -10rem;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 34%, transparent), transparent 68%);
+  animation: blob-1 24s ease-in-out infinite;
+}
+.bg-fx__blob--2 {
+  top: 18%; right: -16rem;
+  background: radial-gradient(circle, color-mix(in srgb, var(--halo-2) 32%, transparent), transparent 68%);
+  animation: blob-2 30s ease-in-out infinite;
+}
+.bg-fx__blob--3 {
+  bottom: -18rem; left: 32%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--halo-3) 28%, transparent), transparent 68%);
+  animation: blob-3 27s ease-in-out infinite;
+}
+
+@keyframes blob-1 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(14vw, 10vh, 0) scale(1.18); }
+}
+@keyframes blob-2 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.1); }
+  50%      { transform: translate3d(-12vw, 14vh, 0) scale(0.92); }
+}
+@keyframes blob-3 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(0.95); }
+  50%      { transform: translate3d(10vw, -12vh, 0) scale(1.15); }
+}
+
+/* Grille fine qui derive, posee par-dessus les taches de couleur.
+   Un seul degrade repete, deplace en boucle : aucun cout de repaint. */
+.bg-fx__grid {
+  position: absolute;
+  inset: -60px;
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--text) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--text) 5%, transparent) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(80% 60% at 50% 30%, #000 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(80% 60% at 50% 30%, #000 30%, transparent 100%);
+  will-change: transform;
+  animation: grid-drift 18s linear infinite;
+}
+@keyframes grid-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(60px, 60px, 0); }
+}
+
+/* Les sections doivent laisser voir le fond : on remplace les aplats
+   opaques par des fonds legerement transparents. */
+/* Les sections laissent voir le fond, mais restent assez opaques pour que
+   le contraste du texte ne bouge pas quand une tache de couleur passe
+   derriere. C'est la lisibilite qui prime sur l'effet. */
+.section--soft { background: color-mix(in srgb, var(--bg-soft) 90%, transparent); }
+.section:not(.section--soft) { background: color-mix(in srgb, var(--bg) 86%, transparent); }
+
+@supports not (background: color-mix(in srgb, red 50%, blue)) {
+  .bg-fx { display: none; }
+}
+
+/* =========================================================
    2. HAUT DE PAGE
    ========================================================= */
 
@@ -380,8 +474,14 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
     radial-gradient(38rem 22rem at 22% 28%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%),
     radial-gradient(32rem 20rem at 80% 22%, color-mix(in srgb, var(--halo-2) 20%, transparent), transparent 70%),
     radial-gradient(26rem 18rem at 60% 85%, color-mix(in srgb, var(--halo-3) 16%, transparent), transparent 70%);
-  filter: blur(18px);
-  opacity: 0.85;
+  /* Pas de filter: blur() ici. Flouter un element de la taille de l'ecran
+     oblige le navigateur a le repeindre a chaque image, et c'est une des
+     causes des saccades au defilement. Les radial-gradient sont deja doux,
+     le flou n'apportait presque rien.
+     will-change previent le navigateur qu'il faut mettre ce calque sur la
+     carte graphique, ou l'animation ne coute plus rien. */
+  opacity: 0.9;
+  will-change: transform;
 }
 
 /* Repli pour les navigateurs sans color-mix : on garde des halos, juste
@@ -783,6 +883,47 @@ a.card:hover .card__link::after { transform: translateX(3px); }
   border-radius: var(--radius-pill);
   padding: 0.2rem 0.7rem;
   color: var(--text-2);
+}
+
+/* ---------- Defile de technologies ----------
+   Une bande qui glisse en continu. Le contenu est duplique une fois dans
+   le HTML : quand la premiere moitie a fini de sortir, la seconde est
+   exactement a sa place de depart, donc la boucle ne se voit pas.
+
+   L'animation ne touche que transform, comme le reste. Au survol elle se
+   met en pause, pour laisser lire.
+
+   La copie est en aria-hidden : un lecteur d'ecran ne doit pas entendre
+   la liste deux fois. */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  margin-top: 2rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  gap: 2.4rem;
+  will-change: transform;
+  animation: marquee 28s linear infinite;
+}
+.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee__item {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--text-3);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+.marquee__item:hover { color: var(--accent); }
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
 }
 
 /* ---------- Chiffres clés ---------- */
@@ -1597,6 +1738,11 @@ a.card:hover .card__cover img { transform: scale(1.06); }
    Une bande claire passe sur le titre toutes les 7 secondes. L'effet
    repose sur background-size: 200% et un decalage anime de la position :
    aucune couche supplementaire, aucun element en plus. */
+/* Ces deux animations touchent background-position et box-shadow, qui
+   demandent un repaint contrairement a transform. C'est assume : elles
+   ne s'appliquent qu'au titre et a une pastille de 7 px, donc la surface
+   repeinte est minuscule. Tout ce qui couvre l'ecran (fond, grille,
+   defile) n'anime que transform. */
 @keyframes shine {
   0%, 65% { background-position: 200% center; }
   100%    { background-position: -60% center; }
@@ -1758,6 +1904,8 @@ a.card:hover .card__cover img { transform: scale(1.06); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
   .js .reveal, .js .stagger > * { opacity: 1 !important; transform: none !important; }
+  /* Le fond reste, mais fige : on garde la couleur, on enleve le mouvement. */
+  .bg-fx__grid { display: none; }
   /* Les halos restent, mais figes et attenues. Le reflet du titre est
      neutralise en remettant le degrade a sa position de depart. */
   .hero::before { filter: none; opacity: 0.5; }

@@ -68,6 +68,18 @@
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
 
+  <!-- Fond anime du site. Trois taches de couleur qui derivent et une grille
+       fine. Tout est decoratif, donc masque aux lecteurs d'ecran. Seules des
+       proprietes transform sont animees, ce qui laisse le travail a la carte
+       graphique et n'impacte pas le defilement. -->
+  <div class="bg-fx" aria-hidden="true">
+    <span class="bg-fx__blob bg-fx__blob--1"></span>
+    <span class="bg-fx__blob bg-fx__blob--2"></span>
+    <span class="bg-fx__blob bg-fx__blob--3"></span>
+    <span class="bg-fx__grid"></span>
+  </div>
+
+
   <!-- Barre de progression de lecture. Purement decorative, donc invisible
        pour les lecteurs d'ecran. Le JavaScript ne modifie qu'une variable
        CSS, le navigateur fait le reste. -->
@@ -301,6 +313,16 @@
               <li>Windows</li><li>Linux</li><li>Nginx</li><li>SSH</li>
               <li>DHCP</li><li>DNS</li><li>VLAN</li>
             </ul>
+          </div>
+        </div>
+
+        <!-- Defile de technologies. La liste est ecrite deux fois : la copie
+             sert a boucler sans coupure visible, et elle est masquee aux
+             lecteurs d'ecran pour ne pas etre lue en double. -->
+        <div class="marquee reveal" aria-label="Technologies utilisées">
+          <div class="marquee__track">
+            <div style="display:flex; gap:2.4rem"><span class="marquee__item">Flutter</span><span class="marquee__item">Dart</span><span class="marquee__item">Next.js</span><span class="marquee__item">TypeScript</span><span class="marquee__item">JavaScript</span><span class="marquee__item">React</span><span class="marquee__item">PHP</span><span class="marquee__item">Python</span><span class="marquee__item">SQL</span><span class="marquee__item">API REST</span><span class="marquee__item">Git</span><span class="marquee__item">Linux</span><span class="marquee__item">Nginx</span><span class="marquee__item">Active Directory</span><span class="marquee__item">VLAN</span><span class="marquee__item">DHCP</span><span class="marquee__item">GNS3</span><span class="marquee__item">Packet Tracer</span><span class="marquee__item">WebAssembly</span><span class="marquee__item">RGPD</span></div>
+            <div style="display:flex; gap:2.4rem" aria-hidden="true"><span class="marquee__item">Flutter</span><span class="marquee__item">Dart</span><span class="marquee__item">Next.js</span><span class="marquee__item">TypeScript</span><span class="marquee__item">JavaScript</span><span class="marquee__item">React</span><span class="marquee__item">PHP</span><span class="marquee__item">Python</span><span class="marquee__item">SQL</span><span class="marquee__item">API REST</span><span class="marquee__item">Git</span><span class="marquee__item">Linux</span><span class="marquee__item">Nginx</span><span class="marquee__item">Active Directory</span><span class="marquee__item">VLAN</span><span class="marquee__item">DHCP</span><span class="marquee__item">GNS3</span><span class="marquee__item">Packet Tracer</span><span class="marquee__item">WebAssembly</span><span class="marquee__item">RGPD</span></div>
           </div>
         </div>
       </div>
