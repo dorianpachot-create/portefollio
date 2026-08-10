@@ -1,9 +1,9 @@
 # Portfolio BTS SIO — Dorian Pachot
 
-Site vitrine personnel développé dans le cadre du BTS SIO option SLAM à IRIS Mediaschool.
-Présente le CV, les documents de candidature (bulletin, lettre de recommandation, lettre
-de motivation), les projets de développement personnels, les projets de cours et un
-mini-jeu en Python jouable dans le navigateur.
+Site vitrine personnel développé dans le cadre du BTS SIO option SLAM à IRIS MediaSchool.
+L'accueil est une page unique qui déroule : profil et compétences, stage chez Suitime,
+projets, documents de candidature et contact. Les contenus longs (journal de stage,
+documents en grand, fiches de cours, mini-jeu) ont leur propre page.
 
 ## Structure
 
@@ -15,9 +15,9 @@ portefollio/
 ├── README.md
 ├── PROGRESS.md          Etat d'avancement et points de reprise
 ├── .gitignore
-├── index.html           Accueil
+├── index.html           Accueil — page unique : profil, stage, projets, documents, contact
 ├── css/style.css        Tout le style (variables en tête de fichier)
-├── js/main.js           Toggle du menu mobile (vanilla JS)
+├── js/main.js           Menu mobile + surlignage de la section lue (vanilla JS)
 ├── assets/
 │   ├── stars.svg                 Champ d'étoiles tilable
 │   ├── cv/
@@ -76,12 +76,11 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
 
 ## Design
 
-- Thème **Hextech** (bleu nuit + or), inspiré de l'identité graphique de League of
-  Legends, sans aucun logo ni visuel officiel Riot Games.
-- Palette : `--navy-0/1/2/3` pour les fonds, `--gold` et `--gold-light` pour les accents,
-  `--cyan` et `--bronze` en secondaire. Toutes les variables sont en tête de `style.css`.
-- Polices Google Fonts : **Rajdhani** (titres) et **Inter** (texte courant).
-- Cartes avec bordure or, losanges en coin, ombres dures.
+- Clair et sobre : fond blanc, une seule couleur d'accent (`--accent`, bleu `#1d4ed8`),
+  bordures fines et beaucoup d'espace. Lisible aussi à l'impression.
+- Toutes les variables sont dans `:root`, en tête de `css/style.css`.
+- Une seule police Google Fonts : **Inter**.
+- Les sections alternent `--bg` et `--bg-soft` pour donner du rythme sans ajouter de couleur.
 - Pas de framework CSS, JavaScript vanilla uniquement.
 
 ## Technologies

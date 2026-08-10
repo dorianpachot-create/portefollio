@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dorian Pachot - Portfolio BTS SIO SLAM</title>
-  <meta name="description" content="Portfolio de Dorian Pachot, étudiant en BTS SIO SLAM à IRIS Mediaschool. Projets web et mobile, CV et parcours." />
+  <title>Dorian Pachot - Développeur full-stack, alternance septembre 2026</title>
+  <meta name="description" content="Dorian Pachot, étudiant en BTS SIO SLAM à Rouen. Développeur full-stack : SYNCRO publiée sur l'App Store et Google Play, CRP-Assurance.com en production. Recherche une alternance pour septembre 2026." />
+  <meta name="theme-color" content="#1d4ed8" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -22,85 +23,380 @@
       <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="true" aria-controls="primary-nav">Menu</button>
 
       <nav class="nav" id="primary-nav" data-nav aria-label="Navigation principale">
-        <a class="nav__link" href="index.html" aria-current="page">Accueil</a>
-        <a class="nav__link" href="pages/cv.html">CV</a>
-        <a class="nav__link" href="pages/stage.html">Stage</a>
-        <a class="nav__link" href="pages/documents.html">Documents</a>
-        <a class="nav__link" href="pages/projets-cours.html">Projets encadrés</a>
-        <a class="nav__link" href="pages/projets-perso.html">Projets personnels</a>
+        <a class="nav__link" href="#profil">Profil</a>
+        <a class="nav__link" href="#stage">Stage</a>
+        <a class="nav__link" href="#projets">Projets</a>
+        <a class="nav__link" href="#documents">Documents</a>
+        <a class="nav__link" href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="container hero" aria-labelledby="hero-title">
-      <h1 class="hero__title" id="hero-title">
-        Dorian Pachot
-      </h1>
-      <p class="hero__subtitle">
-        Étudiant en BTS SIO SLAM à IRIS Mediaschool, à Rouen. Je cherche une alternance,
-        rythme 3 jours en entreprise et 2 jours de cours. Vous trouverez ici mon CV,
-        mes projets et où j'en suis dans mes études.
-      </p>
-      <p class="hero__highlight">
-        Dernière actu : <strong>SYNCRO</strong>, l'application de plannings d'équipe que j'ai
-        développée pour Suitime, est publiée sur
-        <a href="https://apps.apple.com/fr/app/syncro/id6787898930" target="_blank" rel="noopener noreferrer">l'App Store</a>,
-        <a href="https://play.google.com/store/apps/details?id=fr.appsyncro.mobile" target="_blank" rel="noopener noreferrer">Google Play</a>
-        et son site <a href="https://appsyncro.fr" target="_blank" rel="noopener noreferrer">appsyncro.fr</a>.
-      </p>
+
+    <!-- ============ Accroche ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <span class="hero__eyebrow">Disponible en alternance dès septembre 2026</span>
+        <h1 class="hero__title" id="hero-title">Dorian Pachot</h1>
+        <p class="hero__role">Développeur full-stack</p>
+        <p class="hero__subtitle">
+          Étudiant en BTS SIO option SLAM à Rouen. Je conçois des applications
+          complètes, du besoin du client à la mise en production — une application
+          mobile sur les deux stores, deux sites web en production.
+        </p>
+
+        <ul class="hero__meta">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Rouen, 76000
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-6 9 6v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><path d="M9 21V12h6v9"/></svg>
+            IRIS MediaSchool
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg>
+            3 jours entreprise / 2 jours école
+          </li>
+        </ul>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="assets/cv/CV_Dorian_Pachot.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M5 21h14"/></svg>
+            Télécharger mon CV
+          </a>
+          <a class="btn btn--secondary" href="#contact">Me contacter</a>
+        </div>
+      </div>
+
+      <article class="promo" aria-labelledby="promo-title">
+        <div class="promo__head">
+          <img class="promo__logo" src="assets/syncro/screens/logo.jpg" alt="" />
+          <div>
+            <h2 class="promo__name" id="promo-title">SYNCRO</h2>
+            <span class="promo__badge">En production</span>
+          </div>
+        </div>
+        <p class="promo__desc">
+          Application de plannings d'équipe développée pour Suitime pendant mon stage.
+          Front Flutter, back-end Next.js, base SQL. Publiée sur les deux magasins
+          d'applications.
+        </p>
+        <ul class="store-links">
+          <li>
+            <a class="store-link" href="https://apps.apple.com/fr/app/syncro/id6787898930" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.6 2.1-1.5 2.6-.4 6.5 1.1 8.7.7 1 1.6 2.2 2.7 2.2 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.8.7 1.2 0 1.9-1.1 2.6-2.1.8-1.2 1.2-2.4 1.2-2.5-.1 0-2.2-.9-2.2-3.3ZM14.3 5.9c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.7-.9 2.6 1 .1 2-.5 2.6-1.2Z"/></svg>
+              <span>App Store<span class="store-link__sub">iPhone &amp; iPad</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="store-link" href="https://play.google.com/store/apps/details?id=fr.appsyncro.mobile" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1 9.3-9.3v-.2L3.6 2.3Zm12.5 6.1L13.8 6 4.7 1.5c-.3-.2-.6-.2-.8-.1l12.2 7ZM17.9 9.5l-1.8-1-2.5 2.5 2.5 2.5 1.8-1c1-.6 1-1.8 0-2.4v-.6ZM3.9 22.6c.2 0 .5 0 .8-.2l9.1-4.5 2.3-2.4-12.2 7.1Z"/></svg>
+              <span>Google Play<span class="store-link__sub">Android</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="store-link" href="https://appsyncro.fr" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9Z"/></svg>
+              <span>appsyncro.fr<span class="store-link__sub">Site vitrine</span></span>
+            </a>
+          </li>
+        </ul>
+      </article>
     </section>
 
-    <section class="container" style="padding-top:0;">
-      <div class="grid grid--row">
+    <!-- ============ Profil et compétences ============ -->
+    <section class="section section--soft" id="profil" aria-labelledby="profil-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-head__eyebrow">Profil</span>
+          <h2 class="section-head__title" id="profil-title">Ce que je sais faire</h2>
+          <p class="section-head__lead">
+            Je développe en autonomie, de la conception de la base de données à la mise
+            en ligne. Plusieurs années de management d'équipe m'ont appris l'écoute du
+            besoin réel et la gestion de la pression.
+          </p>
+        </div>
 
-        <a class="card" href="pages/cv.html" aria-label="Ouvrir la page CV">
-          <span class="card__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6M9 9h2"/></svg>
-          </span>
-          <h3 class="card__title">Curriculum Vitae</h3>
-          <p class="card__desc">Mon profil, ma formation à IRIS Mediaschool, mes expériences et mes compétences techniques.</p>
-        </a>
-
-        <a class="card" href="pages/stage.html" aria-label="Ouvrir la page Stage">
-          <span class="card__icon card__icon--warm" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><path d="M3 12h18"/></svg>
-          </span>
-          <h3 class="card__title">Stage chez Suitime</h3>
-          <p class="card__desc">Cinq semaines sur SYNCRO, semaine par semaine : de la mise en production à la publication sur les deux stores.</p>
-        </a>
-
-        <a class="card" href="pages/documents.html" aria-label="Ouvrir la page Documents">
-          <span class="card__icon card__icon--violet" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12.5 11 15l4.5-5"/><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6l-8-3Z"/></svg>
-          </span>
-          <h3 class="card__title">Documents</h3>
-          <p class="card__desc">Ma lettre de recommandation de stage, mon bulletin de 1<sup>re</sup> année (15,55 de moyenne) et ma lettre de motivation.</p>
-        </a>
-
-        <a class="card" href="pages/projets-cours.html" aria-label="Ouvrir la page Projets encadrés">
-          <span class="card__icon card__icon--warm" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5v-13Z"/><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5v-13Z"/></svg>
-          </span>
-          <h3 class="card__title">Projets encadrés</h3>
-          <p class="card__desc">Les travaux pratiques faits en BTS SIO, publiés au fur et à mesure des semestres.</p>
-        </a>
-
-        <a class="card" href="pages/projets-perso.html" aria-label="Ouvrir la page Projets personnels">
-          <span class="card__icon card__icon--violet" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-3 3 3 3M16 9l3 3-3 3M13 6l-2 12"/></svg>
-          </span>
-          <h3 class="card__title">Projets personnels</h3>
-          <p class="card__desc">CRP-Assurance, SYNCRO, un agent IA et Mission Orion.</p>
-        </a>
-
+        <div class="skills">
+          <div class="skill">
+            <h3 class="skill__title">Développement</h3>
+            <ul class="skill__list">
+              <li>HTML / CSS</li><li>JavaScript</li><li>TypeScript</li><li>PHP</li>
+              <li>Python</li><li>SQL</li><li>Dart</li>
+            </ul>
+          </div>
+          <div class="skill">
+            <h3 class="skill__title">Frameworks</h3>
+            <ul class="skill__list">
+              <li>Flutter</li><li>Next.js</li><li>React</li><li>API REST</li>
+            </ul>
+          </div>
+          <div class="skill">
+            <h3 class="skill__title">Outils</h3>
+            <ul class="skill__list">
+              <li>Git / GitHub</li><li>VS Code</li><li>Android Studio</li>
+              <li>VMware</li><li>Packet Tracer</li>
+            </ul>
+          </div>
+          <div class="skill">
+            <h3 class="skill__title">Systèmes et réseaux</h3>
+            <ul class="skill__list">
+              <li>Windows</li><li>Linux</li><li>Nginx</li><li>SSH</li>
+              <li>DHCP</li><li>DNS</li><li>VLAN</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
+
+    <!-- ============ Stage ============ -->
+    <section class="section" id="stage" aria-labelledby="stage-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-head__eyebrow">Expérience</span>
+          <h2 class="section-head__title" id="stage-title">Stage chez Suitime</h2>
+          <p class="section-head__lead">
+            Cinq semaines, du 6 juillet au 7 août 2026. Mission : concevoir une
+            application mobile à partir d'un cahier des charges. À la fin du stage,
+            elle était publiée sur l'App Store et Google Play.
+          </p>
+        </div>
+
+        <ul class="stat-list" aria-label="Le stage en chiffres">
+          <li class="stat">
+            <span class="stat__value">5</span>
+            <span class="stat__label">semaines de développement</span>
+          </li>
+          <li class="stat">
+            <span class="stat__value">2</span>
+            <span class="stat__label">magasins d'applications</span>
+          </li>
+          <li class="stat">
+            <span class="stat__value">53</span>
+            <span class="stat__label">routes d'API migrées en TypeScript</span>
+          </li>
+          <li class="stat">
+            <span class="stat__value">13</span>
+            <span class="stat__label">écrans maquettés avant développement</span>
+          </li>
+        </ul>
+
+        <p class="doc-quote">
+          « Dorian a fait preuve d'application et de sérieux dans son travail. Sa capacité
+          d'écoute a été particulièrement appréciée. Je le recommande sans réserve à toute
+          entreprise souhaitant l'accueillir. »
+          <span class="doc-quote__author">Valentin Javelaud, Suitime — 20 juillet 2026</span>
+        </p>
+
+        <div class="actions">
+          <a class="btn btn--primary" href="pages/stage.html">Lire le détail, semaine par semaine</a>
+          <a class="btn btn--secondary" href="assets/recommandation/Lettre_recommandation_Suitime.pdf" target="_blank" rel="noopener">Voir la lettre de recommandation</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Projets ============ -->
+    <section class="section section--soft" id="projets" aria-labelledby="projets-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-head__eyebrow">Réalisations</span>
+          <h2 class="section-head__title" id="projets-title">Projets</h2>
+          <p class="section-head__lead">
+            Ce que j'ai construit, seul ou en entreprise. Deux sont en production et
+            utilisés au quotidien.
+          </p>
+        </div>
+
+        <div class="grid">
+
+          <a class="card" href="pages/projets-perso.html#syncro">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
+            </span>
+            <h3 class="card__title">SYNCRO</h3>
+            <p class="card__desc">
+              Application mobile de plannings d'équipe pour Suitime. Développée de bout en
+              bout et publiée sur l'App Store et Google Play, avec son site vitrine.
+            </p>
+            <ul class="tags"><li class="tag">Flutter</li><li class="tag">Next.js</li><li class="tag">SQL</li><li class="tag">API REST</li></ul>
+            <span class="card__link">Voir le détail</span>
+          </a>
+
+          <a class="card" href="https://crp-assurance.com" target="_blank" rel="noopener noreferrer">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9Z"/></svg>
+            </span>
+            <h3 class="card__title">CRP-Assurance.com</h3>
+            <p class="card__desc">
+              Site professionnel réalisé de A à Z pour un cabinet d'assurance : recueil du
+              besoin, conception, développement, hébergement et nom de domaine.
+            </p>
+            <ul class="tags"><li class="tag">HTML</li><li class="tag">CSS</li><li class="tag">JavaScript</li><li class="tag">RGPD</li></ul>
+            <span class="card__link">Voir le site</span>
+          </a>
+
+          <article class="card card--static">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m7 10 2 2-2 2M12 14h5"/></svg>
+            </span>
+            <h3 class="card__title">Agent IA de candidature</h3>
+            <p class="card__desc">
+              Outil qui compare mon profil à une offre d'emploi, donne un score de
+              compatibilité et génère une lettre de motivation adaptée.
+            </p>
+            <ul class="tags"><li class="tag">React</li><li class="tag">API Anthropic</li><li class="tag">Automatisation</li></ul>
+          </article>
+
+          <a class="card" href="pages/mini-jeu.html">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="20" height="9" rx="4"/><path d="M7 12.5h3M8.5 11v3"/><circle cx="16" cy="12" r="1"/><circle cx="18.5" cy="14.5" r="1"/></svg>
+            </span>
+            <h3 class="card__title">Mission Orion</h3>
+            <p class="card__desc">
+              Jeu spatial en Python avec pygame, compilé en WebAssembly pour tourner
+              directement dans le navigateur, sans rien installer.
+            </p>
+            <ul class="tags"><li class="tag">Python</li><li class="tag">pygame</li><li class="tag">WebAssembly</li></ul>
+            <span class="card__link">Jouer</span>
+          </a>
+
+          <a class="card" href="pages/projets-cours.html">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5v-13Z"/><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5v-13Z"/></svg>
+            </span>
+            <h3 class="card__title">Projets encadrés</h3>
+            <p class="card__desc">
+              Les travaux pratiques du BTS SIO, classés par matière : réseaux, systèmes,
+              cybersécurité, développement, mathématiques.
+            </p>
+            <span class="card__link">Parcourir les fiches</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Documents ============ -->
+    <section class="section" id="documents" aria-labelledby="documents-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-head__eyebrow">Dossier</span>
+          <h2 class="section-head__title" id="documents-title">Documents</h2>
+          <p class="section-head__lead">
+            Tout est consultable en ligne et téléchargeable en PDF, sans avoir à me le
+            demander.
+          </p>
+        </div>
+
+        <div class="docs">
+
+          <article class="doc">
+            <img class="doc__thumb" src="assets/cv/cv.png" alt="Aperçu du CV de Dorian Pachot" loading="lazy" />
+            <div class="doc__body">
+              <h3 class="doc__title">Curriculum vitae</h3>
+              <p class="doc__meta">Mis à jour le 7 août 2026</p>
+              <div class="doc__actions">
+                <a href="pages/cv.html">Voir en grand</a>
+                <a href="assets/cv/CV_Dorian_Pachot.pdf" target="_blank" rel="noopener">PDF</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="doc">
+            <img class="doc__thumb" src="assets/recommandation/reco.png" alt="Aperçu de la lettre de recommandation de Suitime" loading="lazy" />
+            <div class="doc__body">
+              <h3 class="doc__title">Lettre de recommandation</h3>
+              <p class="doc__meta">Suitime — 20 juillet 2026</p>
+              <div class="doc__actions">
+                <a href="pages/documents.html#reco-title">Voir en grand</a>
+                <a href="assets/recommandation/Lettre_recommandation_Suitime.pdf" target="_blank" rel="noopener">PDF</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="doc">
+            <img class="doc__thumb" src="assets/bulletin/bulletin.png" alt="Aperçu du bulletin de première année de BTS SIO" loading="lazy" />
+            <div class="doc__body">
+              <h3 class="doc__title">Bulletin de 1<sup>re</sup> année</h3>
+              <p class="doc__meta">15,55 de moyenne — promotion : 12,50</p>
+              <div class="doc__actions">
+                <a href="pages/documents.html#bulletin-title">Voir en grand</a>
+                <a href="assets/bulletin/Bulletin_1ere_annee_Dorian_Pachot.pdf" target="_blank" rel="noopener">PDF</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="doc">
+            <img class="doc__thumb" src="assets/lettre-motivation/lm.png" alt="Aperçu de la lettre de motivation" loading="lazy" />
+            <div class="doc__body">
+              <h3 class="doc__title">Lettre de motivation</h3>
+              <p class="doc__meta">Lettre type, adaptée à chaque entreprise</p>
+              <div class="doc__actions">
+                <a href="pages/documents.html#lm-title">Voir en grand</a>
+                <a href="assets/lettre-motivation/LM_Dorian_Pachot.pdf" target="_blank" rel="noopener">PDF</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Contact ============ -->
+    <section class="section section--soft" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-head__eyebrow">Contact</span>
+          <h2 class="section-head__title" id="contact-title">Parlons-en</h2>
+          <p class="section-head__lead">
+            Je cherche une alternance en développement pour septembre 2026, sur un rythme
+            de 3 jours en entreprise et 2 jours à l'école. Le plus simple est de m'écrire.
+          </p>
+        </div>
+
+        <div class="contact">
+          <a class="contact__item" href="mailto:dorianpachot@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <span>
+              <span class="contact__label">E-mail</span>
+              <span class="contact__value">dorianpachot@gmail.com</span>
+            </span>
+          </a>
+
+          <a class="contact__item" href="tel:+33771623228">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 12l5 2v4a2 2 0 0 1-2.2 2A17 17 0 0 1 3 5.2 2 2 0 0 1 5 3Z"/></svg>
+            <span>
+              <span class="contact__label">Téléphone</span>
+              <span class="contact__value">07 71 62 32 28</span>
+            </span>
+          </a>
+
+          <a class="contact__item" href="https://www.linkedin.com/in/dorian-pachot-81299930a/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 22 10.6 22 14.1V21h-4v-6.2c0-1.5-.03-3.4-2.07-3.4-2.07 0-2.39 1.62-2.39 3.3V21H9V9Z"/></svg>
+            <span>
+              <span class="contact__label">LinkedIn</span>
+              <span class="contact__value">Dorian Pachot</span>
+            </span>
+          </a>
+
+          <a class="contact__item" href="assets/cv/CV_Dorian_Pachot.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M5 21h14"/></svg>
+            <span>
+              <span class="contact__label">Document</span>
+              <span class="contact__value">Télécharger le CV</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer" role="contentinfo">
     <div class="footer__inner">
-      <span>Dorian Pachot - BTS SIO SLAM, IRIS Mediaschool</span>
+      <span>© 2026 Dorian Pachot — BTS SIO SLAM, IRIS MediaSchool</span>
       <a href="https://www.linkedin.com/in/dorian-pachot-81299930a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>
       <a href="pages/mentions-legales.html">Mentions légales</a>

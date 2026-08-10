@@ -1,6 +1,64 @@
 # Etat d'avancement
 
-Dernière mise à jour : 2026-08-09
+Dernière mise à jour : 2026-08-10
+
+## Mise à jour du 2026-08-10 — refonte complète du design
+
+Le thème « Hextech » (bleu nuit, or, losanges, ombres dures) est remplacé par un design
+clair et sobre, et l'accueil devient une page unique qui déroule.
+
+### Design
+
+`css/style.css` a été entièrement réécrit. Toutes les variables sont dans `:root` :
+
+| Rôle | Variable | Valeur |
+|---|---|---|
+| Fond | `--bg` / `--bg-soft` / `--bg-tint` | `#ffffff` / `#f7f8fa` / `#eef3ff` |
+| Texte | `--text` / `--text-2` / `--text-3` | `#0f1419` / `#4a5568` / `#78849b` |
+| Accent | `--accent` / `--accent-dark` | `#1d4ed8` / `#1740ae` |
+| Traits | `--border` / `--border-2` | `#e4e8ee` / `#cdd5e0` |
+
+Une seule police, **Inter** (Rajdhani supprimée). Une seule couleur d'accent. Les
+sections alternent `--bg` et `--bg-soft` pour donner du rythme sans ajouter de couleur.
+Ombres très légères, bordures fines, coins à 8-14 px.
+
+### Structure
+
+`index.html` est désormais une page unique avec cinq sections ancrées :
+accroche, `#profil`, `#stage`, `#projets`, `#documents`, `#contact`. L'accroche est en
+deux colonnes — pitch à gauche, carte SYNCRO avec les liens des stores à droite.
+
+Les pages secondaires restent pour le contenu long : `stage.html`, `documents.html`,
+`cv.html`, `projets-perso.html`, `projets-cours.html`, `mini-jeu.html`,
+`mentions-legales.html`. Leur menu pointe vers les ancres de l'accueil
+(`../index.html#stage`, etc.), identique sur les 7 pages.
+
+### JavaScript
+
+`js/main.js` réécrit : menu repliable sous 760 px (au lieu de 720), plus un
+`IntersectionObserver` qui surligne dans le menu la section en cours de lecture
+(classe `.is-active`). Le script sort proprement si les ancres n'existent pas, donc il
+ne fait rien sur les pages secondaires.
+
+### Vérifications passées
+
+- 0 lien cassé et 0 ancre cassée sur les 8 pages
+- HTML équilibré sur les 8 pages (parseur `html.parser`)
+- 0 classe utilisée sans style correspondant dans le CSS
+- CSS validé par WeasyPrint : aucune erreur de syntaxe
+- Rendu contrôlé visuellement
+
+### Points à savoir
+
+- `.hero__actions` ne servait qu'à l'accroche mais avait été réutilisée dans la section
+  Stage. Une classe `.actions` a été créée pour ce cas — les deux partagent le même
+  style, mais seule `.hero__actions` est masquée à l'impression.
+- `.card__icon--warm` et `.card__icon--violet` ont été retirées du HTML : dans le
+  nouveau design toutes les icônes de cartes partagent la même teinte d'accent.
+- Une feuille `@media print` masque le menu, le pied de page et les boutons de
+  l'accroche, pour qu'un recruteur puisse imprimer la page proprement.
+
+## Mise à jour du 2026-08-09
 
 ## Mise à jour du 2026-08-09 — page Stage
 
