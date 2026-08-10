@@ -1,25 +1,54 @@
 /**
- * Portfolio Dorian Pachot
+ * PORTFOLIO DORIAN PACHOT
+ * Tout le JavaScript du site tient dans ce fichier. Aucune dependance.
  *
- * 1. Thème clair / sombre    5. Filtre des projets par technologie
- * 2. Menu repliable          6. Carrousel de captures
- * 3. Section en cours        7. Copie de l'e-mail
- * 4. Palette de commandes    8. Retour en haut + apparition au défilement
+ * COMMENT C'EST ORGANISE
+ * Chaque fonctionnalite est une fonction anonyme qui s'execute tout de
+ * suite, dans son propre bloc numerote. Elles ne se parlent pas entre
+ * elles, donc on peut en supprimer une sans toucher aux autres.
  *
- * Aucune dépendance. Chaque bloc sort proprement si son HTML est absent,
- * ce qui permet de charger le même fichier sur toutes les pages.
+ *   1. Theme clair / sombre .... bouton lune, memorise dans le navigateur
+ *   2. Menu repliable .......... bouton Menu en dessous de 760px
+ *   3. Section en cours ........ surligne le lien de la section lue
+ *   4. Palette de commandes .... la recherche, au clic ou au Ctrl+K
+ *   5. Filtre des projets ...... les puces Flutter, Python, etc.
+ *   6. Carrousel ............... les captures de SYNCRO
+ *   7. Copie de l'e-mail ....... bouton Copier de la section Contact
+ *   8. Animations .............. retour en haut, apparition, compteurs
+ *
+ * LE PRINCIPE A RETENIR
+ * Chaque bloc commence par chercher son HTML et s'arrete tout de suite
+ * s'il ne le trouve pas. C'est ce qui permet de charger le meme fichier
+ * sur les 8 pages : la palette existe partout, les filtres seulement
+ * sur l'accueil, et rien ne casse.
+ *
+ * Le site doit rester lisible meme si ce fichier ne se charge pas. Les
+ * animations sont donc desactivees par defaut en CSS et n'apparaissent
+ * que si la classe "js" est posee sur <html>, ce que fait le petit
+ * script en haut de chaque page.
  */
 (function () {
   'use strict';
 
+  // Deux raccourcis pour eviter d'ecrire querySelector partout.
+  // $ renvoie le premier element trouve, $$ renvoie un vrai tableau.
   const $  = (sel, root) => (root || document).querySelector(sel);
   const $$ = (sel, root) => Array.from((root || document).querySelectorAll(sel));
+
+  // Certaines personnes reglent leur systeme pour limiter les animations,
+  // souvent pour des raisons de sante. On respecte ce choix partout.
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* =======================================================
-     1. Thème clair / sombre
-     Le thème initial est déjà posé par le script inline du <head>
-     pour éviter le flash. Ici on ne gère que la bascule.
+     1. THEME CLAIR / SOMBRE
+
+     Attention : ce n'est pas ici que le theme est choisi au
+     chargement. Le petit script en haut de chaque page s'en
+     charge, parce qu'il doit s'executer avant le premier
+     affichage. Sinon, quelqu'un en mode sombre verrait un
+     eclair blanc a chaque changement de page.
+
+     Ce bloc ne gere que le clic sur le bouton.
      ======================================================= */
   (function theme() {
     const btn = $('[data-theme-toggle]');
@@ -45,7 +74,9 @@
       try { localStorage.setItem('theme', next); } catch (e) { /* navigation privée */ }
     });
 
-    // Suit le réglage système tant que l'utilisateur n'a pas choisi lui-même.
+    // Tant que personne n'a clique sur le bouton, on suit le reglage du
+    // systeme, meme s'il change pendant la visite. Des qu'un choix est
+    // enregistre, il prend le dessus.
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
       let chosen = null;
       try { chosen = localStorage.getItem('theme'); } catch (err) { /* ignore */ }
@@ -54,7 +85,9 @@
   })();
 
   /* =======================================================
-     2. Menu repliable
+     2. MENU REPLIABLE
+     En dessous de 760px le menu est cache derriere un bouton.
+     Au-dessus il est toujours visible.
      ======================================================= */
   (function nav() {
     const toggle = $('[data-nav-toggle]');
@@ -84,7 +117,11 @@
   })();
 
   /* =======================================================
-     3. Surlignage de la section en cours de lecture
+     3. SECTION EN COURS DE LECTURE
+
+     Surligne dans le menu le lien de la section qu'on est en
+     train de lire. Ne s'active que sur l'accueil, puisque les
+     autres pages n'ont pas de liens en #ancre.
      ======================================================= */
   (function scrollSpy() {
     const links = $$('.nav__link[href^="#"]');
@@ -105,13 +142,23 @@
           a.classList.toggle('is-active', a.getAttribute('href') === '#' + seen.target.id)
         );
       },
+      // On retrecit volontairement la zone de detection a une bande
+      // au milieu de l'ecran. Sans ca, deux sections seraient
+      // considerees comme visibles en meme temps et le surlignage
+      // sauterait d'un lien a l'autre.
       { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
     );
     sections.forEach((s) => observer.observe(s));
   })();
 
   /* =======================================================
-     4. Palette de commandes (Ctrl+K / Cmd+K)
+     4. PALETTE DE COMMANDES
+
+     La recherche du site. S'ouvre au clic sur le bouton
+     Rechercher ou au Ctrl+K (Cmd+K sur Mac).
+
+     POUR AJOUTER UNE DESTINATION : une ligne dans le tableau
+     ENTRIES ci-dessous, et c'est tout. Le reste suit.
      ======================================================= */
   (function palette() {
     const box = $('[data-palette]');
@@ -120,6 +167,9 @@
     const input = $('[data-palette-input]', box);
     const list = $('[data-palette-list]', box);
     const empty = $('[data-palette-empty]', box);
+    // data-base vaut "" sur l'accueil et "../" sur les pages du dossier
+    // pages/. C'est ce qui permet au meme fichier de construire des liens
+    // corrects depuis les deux niveaux.
     const base = box.dataset.base || '';
 
     const ENTRIES = [
@@ -151,7 +201,9 @@
       { label: 'M’envoyer un e-mail',    kind: 'Contact',  href: 'mailto:dorianpachot@gmail.com' }
     ];
 
-    // Retire les accents pour que « recommandation » trouve « récupération ».
+    // On retire les accents des deux cotes de la comparaison. Comme ca
+    // "recommandation" trouve "recommandation" qu'on tape avec ou sans
+    // accent, et personne ne rate un resultat pour un accent oublie.
     const norm = (s) =>
       s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
@@ -229,7 +281,15 @@
   })();
 
   /* =======================================================
-     5. Filtre des projets par technologie
+     5. FILTRE DES PROJETS
+
+     Chaque carte porte un attribut data-tech du genre
+     "flutter|nextjs|sql". Un clic sur une puce compare cette
+     liste au filtre demande et masque les cartes qui ne
+     correspondent pas.
+
+     On se contente d'ajouter ou d'enlever une classe : le DOM
+     n'est jamais reconstruit, donc rien ne clignote.
      ======================================================= */
   (function filters() {
     const bar = $('[data-filters]');
@@ -260,7 +320,12 @@
   })();
 
   /* =======================================================
-     6. Carrousel
+     6. CARROUSEL
+
+     Le defilement lui-meme est fait en CSS avec scroll-snap.
+     Le JavaScript ne sert qu'aux fleches et aux pastilles. Si
+     ce fichier ne se charge pas, on peut toujours faire defiler
+     au doigt ou a la molette.
      ======================================================= */
   (function carousel() {
     $$('[data-carousel]').forEach((root) => {
@@ -308,7 +373,7 @@
   })();
 
   /* =======================================================
-     7. Copie de l'e-mail
+     7. COPIE DE L'E-MAIL
      ======================================================= */
   (function copy() {
     $$('[data-copy]').forEach((btn) => {
@@ -319,7 +384,9 @@
         try {
           await navigator.clipboard.writeText(text);
         } catch (err) {
-          // Repli pour les navigateurs sans API presse-papiers.
+          // L'API presse-papiers n'existe pas partout, et elle est bloquee
+          // sur les pages servies en http simple. On retombe alors sur la
+          // vieille methode : un champ texte invisible qu'on selectionne.
           const tmp = document.createElement('textarea');
           tmp.value = text;
           tmp.setAttribute('readonly', '');
@@ -342,7 +409,13 @@
   })();
 
   /* =======================================================
-     8. Retour en haut, apparition au défilement, compteurs
+     8. ANIMATIONS
+
+     Trois choses ici : le bouton retour en haut, l'apparition
+     des blocs au defilement, et les compteurs qui montent.
+
+     Toutes sont desactivees si la personne a demande moins
+     d'animations dans les reglages de son systeme.
      ======================================================= */
   (function motion() {
     const top = $('[data-to-top]');
@@ -397,8 +470,9 @@
       }
     }
 
-    // Compteurs : la valeur finale est déjà dans le HTML, on ne fait
-    // qu'animer l'affichage. Sans JS, le bon chiffre reste lisible.
+    // Les compteurs : le chiffre final est deja ecrit dans le HTML, on ne
+    // fait que le remplacer temporairement pendant l'animation. Sans
+    // JavaScript, le bon chiffre s'affiche quand meme.
     const counters = $$('[data-count]');
     if (!counters.length || reduced) return;
 

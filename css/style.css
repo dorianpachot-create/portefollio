@@ -1,7 +1,39 @@
 /* =========================================================
-   Portfolio Dorian Pachot
-   Design clair et sobre. Une seule couleur d'accent.
-   Toutes les valeurs réglables sont dans :root.
+   PORTFOLIO DORIAN PACHOT
+   Feuille de style unique, sans framework.
+
+   COMMENT M'Y RETROUVER
+   Le fichier suit l'ordre de lecture d'une page : d'abord les
+   reglages generaux, puis le haut de page, puis les blocs de
+   contenu dans l'ordre ou ils apparaissent, et le responsive
+   tout en bas.
+
+   Pour changer une couleur, une taille de coin ou la largeur
+   du site, tout est dans :root juste en dessous. Aucune valeur
+   n'est ecrite en dur ailleurs, donc une seule ligne a modifier
+   suffit et le theme sombre suit automatiquement.
+
+   SOMMAIRE
+     1. Reglages generaux ....... :root, theme sombre, base
+     2. Haut de page ............ barre, menu, boutons d'outils
+     3. Structure ............... sections, conteneurs, titres
+     4. Accueil ................. accroche, presentation, preuves
+     5. Blocs de contenu ........ cartes, competences, chiffres,
+                                  frise, histogramme, documents
+     6. Pages secondaires ....... CV, matieres depliables, mini-jeu
+     7. Bas de page ............. contact, pied de page
+     8. Composants interactifs .. palette, filtres, carrousel,
+                                  copie e-mail, retour en haut
+     9. Responsive .............. mobile, impression, animations
+
+   CONVENTION DE NOMMAGE
+   bloc__element--variante, comme .card__title ou .btn--primary.
+   Une classe qui commence par is- decrit un etat pose par le
+   JavaScript, par exemple .is-active ou .is-in.
+   ========================================================= */
+
+/* =========================================================
+   1. REGLAGES GENERAUX
    ========================================================= */
 
 :root {
@@ -126,6 +158,10 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   white-space: nowrap; border: 0;
 }
 
+/* =========================================================
+   2. HAUT DE PAGE
+   ========================================================= */
+
 /* ---------- Barre du haut ---------- */
 .topbar {
   position: sticky;
@@ -183,6 +219,10 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   cursor: pointer;
 }
 
+/* =========================================================
+   3. STRUCTURE DES PAGES
+   ========================================================= */
+
 /* ---------- Structure ---------- */
 .container {
   max-width: var(--maxw);
@@ -222,7 +262,11 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .page-header__title { font-size: 2.4rem; margin-bottom: 0.8rem; }
 .page-header__subtitle { color: var(--text-2); font-size: 1.05rem; margin: 0; }
 
-/* ---------- Accueil : accroche + carte projet ---------- */
+/* =========================================================
+   4. ACCUEIL
+   ========================================================= */
+
+/* ---------- Accroche ---------- */
 .hero {
   max-width: var(--maxw);
   margin: 0 auto;
@@ -394,6 +438,10 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   color: var(--text-3);
   letter-spacing: 0.02em;
 }
+
+/* =========================================================
+   5. BLOCS DE CONTENU
+   ========================================================= */
 
 /* ---------- Grilles de cartes ---------- */
 .grid { display: grid; gap: 1.6rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
@@ -671,7 +719,11 @@ a.card:hover .card__link::after { transform: translateX(3px); }
 .doc__actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; padding-top: 0.8rem; }
 .doc__actions a { font-size: 0.88rem; font-weight: 600; }
 
-/* ---------- Documents en grand (pages secondaires) ---------- */
+/* =========================================================
+   6. PAGES SECONDAIRES
+   ========================================================= */
+
+/* ---------- Documents en grand ---------- */
 .cv-block { margin-top: 3rem; }
 .cv-block:first-of-type { margin-top: 0; }
 .cv-block__heading { font-size: 1.5rem; margin-bottom: 0.9rem; }
@@ -800,6 +852,10 @@ a.card:hover .card__link::after { transform: translateX(3px); }
 .section__list { padding-left: 1.2rem; margin: 0; }
 .section__list li { color: var(--text-2); margin-bottom: 0.45rem; }
 
+/* =========================================================
+   7. BAS DE PAGE
+   ========================================================= */
+
 /* ---------- Contact ---------- */
 .contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.2rem; }
 .contact__item {
@@ -816,7 +872,21 @@ a.card:hover .card__link::after { transform: translateX(3px); }
 .contact__item:hover { border-color: var(--accent); box-shadow: var(--shadow-md); text-decoration: none; }
 .contact__item svg { width: 21px; height: 21px; color: var(--accent); flex-shrink: 0; }
 .contact__label { display: block; font-size: 0.8rem; color: var(--text-3); }
-.contact__value { display: block; font-weight: 600; font-size: 0.97rem; word-break: break-word; }
+.contact__value { display: block; font-weight: 600; font-size: 0.97rem; }
+
+/* La tuile e-mail occupe toute la largeur de la grille. L'adresse tient donc
+   sur une seule ligne, et le bouton copier se pose au bout sans rien casser. */
+.contact__item--full { grid-column: 1 / -1; }
+.contact__item--full .copy-btn { margin-left: auto; }
+.contact__item--full .contact__value { white-space: nowrap; }
+
+/* En dessous de 560px l'adresse ne rentre plus : on repasse le bouton en
+   dessous plutot que de laisser le texte deborder. */
+@media (max-width: 560px) {
+  .contact__item--full { flex-wrap: wrap; }
+  .contact__item--full .contact__value { white-space: normal; word-break: break-word; }
+  .contact__item--full .copy-btn { margin-left: 2.9rem; }
+}
 
 /* ---------- Pied de page ---------- */
 .footer { border-top: 1px solid var(--border); background: var(--bg-soft); }
@@ -836,6 +906,11 @@ a.card:hover .card__link::after { transform: translateX(3px); }
 
 /* =========================================================
    Composants interactifs
+   ========================================================= */
+
+/* =========================================================
+   8. COMPOSANTS INTERACTIFS
+   Tout ce qui a besoin de js/main.js pour fonctionner.
    ========================================================= */
 
 /* ---------- Boutons de la barre du haut ---------- */
@@ -1191,6 +1266,10 @@ a.card:hover .card__link::after { transform: translateX(3px); }
    ou un navigateur qui bloque le JS rendrait invisible la moitié de la page. */
 .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
 .js .reveal.is-in { opacity: 1; transform: none; }
+
+/* =========================================================
+   9. RESPONSIVE, IMPRESSION, ANIMATIONS
+   ========================================================= */
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {

@@ -9,8 +9,10 @@
   <link rel="canonical" href="https://dorianpachot-create.github.io/portefollio/" />
   <meta name="theme-color" content="#1d4ed8" />
 
-  <!-- Pose le thème avant le premier rendu : sans ça, un utilisateur en mode
-       sombre verrait un flash blanc au chargement de chaque page. -->
+  <!-- Ce script doit rester ici, en haut du <head>, avant la feuille de style.
+       Il pose le theme et la classe "js" avant le premier affichage.
+       Si on le deplace en bas de page, quelqu'un en mode sombre voit un
+       eclair blanc a chaque changement de page. -->
   <script>
     (function () {
       try {
@@ -103,7 +105,13 @@
 
   <main id="main">
 
-    <!-- ============ Accroche ============ -->
+    <!-- ================================================================
+         ACCROCHE
+         Seule section centree du site. Elle ne contient que l'essentiel :
+         qui je suis, ce que je cherche, et deux boutons. SYNCRO a ete
+         deplace plus bas, dans Projets, parce que les deux cote a cote
+         se marchaient dessus.
+         ================================================================ -->
     <section class="hero hero--center" aria-labelledby="hero-title">
       <div class="hero__inner">
         <span class="hero__eyebrow">Disponible en alternance dès septembre 2026</span>
@@ -111,7 +119,7 @@
         <p class="hero__role">Développeur full-stack</p>
         <p class="hero__subtitle">
           Étudiant en BTS SIO option SLAM à Rouen. Je conçois des applications complètes
-          et je les mets en production — pas des exercices : une application mobile
+          et je les mets en production. Pas des exercices : une application mobile
           publiée sur l'App Store et Google Play, et deux sites web utilisés au
           quotidien par leurs clients.
         </p>
@@ -141,7 +149,12 @@
       </div>
     </section>
 
-    <!-- ============ Qui je suis ============ -->
+    <!-- ================================================================
+         QUI JE SUIS
+         Trois blocs : le texte a gauche, les reperes a droite, et les
+         preuves en dessous. Chaque preuve renvoie a quelque chose de
+         consultable ailleurs sur le site.
+         ================================================================ -->
     <section class="section section--soft" id="profil" aria-labelledby="profil-title">
       <div class="container">
         <div class="section-head reveal">
@@ -216,7 +229,7 @@
           </li>
           <li>
             <h3>Un client satisfait</h3>
-            <p>« Je recommande sans réserve Dorian à toute entreprise souhaitant l'accueillir. » — Suitime, lettre consultable.</p>
+            <p>« Je recommande sans réserve Dorian à toute entreprise souhaitant l'accueillir. » Suitime, lettre consultable sur le site.</p>
           </li>
           <li>
             <h3>Des résultats scolaires solides</h3>
@@ -230,14 +243,17 @@
       </div>
     </section>
 
-    <!-- ============ Compétences ============ -->
+    <!-- ================================================================
+         COMPETENCES
+         Quatre familles. Pour en ajouter une, copier un bloc .skill.
+         ================================================================ -->
     <section class="section" id="competences" aria-labelledby="competences-title">
       <div class="container">
         <div class="section-head reveal">
           <span class="section-head__eyebrow">Compétences</span>
           <h2 class="section-head__title" id="competences-title">Mes outils de travail</h2>
           <p class="section-head__lead">
-            Ce que j'utilise réellement, sur des projets qui tournent — pas une liste de
+            Ce que j'utilise réellement, sur des projets qui tournent, et pas une liste de
             technologies croisées une fois en cours.
           </p>
         </div>
@@ -274,7 +290,13 @@
       </div>
     </section>
 
-    <!-- ============ Stage ============ -->
+    <!-- ================================================================
+         STAGE
+         La frise et l'histogramme servent a montrer que le projet a dure
+         cinq mois et pas cinq semaines. Les hauteurs des barres sont en
+         pourcentage dans l'attribut style, calculees sur le mois le plus
+         charge (juillet, 37 commits).
+         ================================================================ -->
     <section class="section section--soft" id="stage" aria-labelledby="stage-title">
       <div class="container">
         <div class="section-head reveal">
@@ -357,7 +379,7 @@
           « Dorian a fait preuve d'application et de sérieux dans son travail. Sa capacité
           d'écoute a été particulièrement appréciée. Je le recommande sans réserve à toute
           entreprise souhaitant l'accueillir. »
-          <span class="doc-quote__author">Valentin Javelaud, Suitime — 20 juillet 2026</span>
+          <span class="doc-quote__author">Valentin Javelaud, Suitime, le 20 juillet 2026</span>
         </p>
 
         <div class="actions reveal">
@@ -367,7 +389,12 @@
       </div>
     </section>
 
-    <!-- ============ Projets ============ -->
+    <!-- ================================================================
+         PROJETS
+         SYNCRO est mis en avant en pleine largeur, les autres suivent en
+         grille. Chaque carte porte un data-tech utilise par les filtres :
+         si on ajoute une carte, penser a renseigner cet attribut.
+         ================================================================ -->
     <section class="section" id="projets" aria-labelledby="projets-title">
       <div class="container">
         <div class="section-head reveal">
@@ -518,7 +545,12 @@
       </div>
     </section>
 
-    <!-- ============ Cours ============ -->
+    <!-- ================================================================
+         COURS
+         Les huit matieres du BTS. Chaque tuile pointe vers l'ancre de sa
+         matiere dans pages/projets-cours.html, donc la bonne matiere
+         s'ouvre directement.
+         ================================================================ -->
     <section class="section section--soft" id="cours" aria-labelledby="cours-title">
       <div class="container">
         <div class="section-head reveal">
@@ -627,7 +659,12 @@
       </div>
     </section>
 
-    <!-- ============ Documents ============ -->
+    <!-- ================================================================
+         DOCUMENTS
+         Les vignettes sont des versions allegees rangees dans
+         assets/meta/. Les images pleine taille servent aux pages de
+         detail, pas ici.
+         ================================================================ -->
     <section class="section" id="documents" aria-labelledby="documents-title">
       <div class="container">
         <div class="section-head reveal">
@@ -663,7 +700,7 @@
             </picture>
             <div class="doc__body">
               <h3 class="doc__title">Lettre de recommandation</h3>
-              <p class="doc__meta">Suitime — 20 juillet 2026</p>
+              <p class="doc__meta">Suitime, 20 juillet 2026</p>
               <div class="doc__actions">
                 <a href="pages/documents.html#reco-title">Voir en grand</a>
                 <a href="assets/recommandation/Lettre_recommandation_Suitime.pdf" target="_blank" rel="noopener">PDF</a>
@@ -678,7 +715,7 @@
             </picture>
             <div class="doc__body">
               <h3 class="doc__title">Bulletin de 1<sup>re</sup> année</h3>
-              <p class="doc__meta">15,55 de moyenne — promotion : 12,50</p>
+              <p class="doc__meta">15,55 de moyenne, promotion : 12,50</p>
               <div class="doc__actions">
                 <a href="pages/documents.html#bulletin-title">Voir en grand</a>
                 <a href="assets/bulletin/Bulletin_1ere_annee_Dorian_Pachot.pdf" target="_blank" rel="noopener">PDF</a>
@@ -705,7 +742,12 @@
       </div>
     </section>
 
-    <!-- ============ Ce site ============ -->
+    <!-- ================================================================
+         CE SITE
+         Rend visible le travail technique. Sans cette section, personne
+         ne remarque qu'il n'y a aucune dependance ni que les images sont
+         optimisees.
+         ================================================================ -->
     <section class="section section--soft" id="ce-site" aria-labelledby="ce-site-title">
       <div class="container">
         <div class="section-head reveal">
@@ -770,7 +812,9 @@
       </div>
     </section>
 
-    <!-- ============ Contact ============ -->
+    <!-- ================================================================
+         CONTACT
+         ================================================================ -->
     <section class="section" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="section-head reveal">
@@ -783,13 +827,16 @@
         </div>
 
         <div class="contact reveal">
-          <div class="contact__item">
+          <!-- L'e-mail prend toute la largeur : l'adresse est longue et le bouton
+               copier a besoin de place. Sur une tuile normale, tout se cassait
+               sur trois lignes. -->
+          <div class="contact__item contact__item--full">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
             <span>
               <span class="contact__label">E-mail</span>
               <a class="contact__value" href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>
             </span>
-            <button class="copy-btn" type="button" data-copy="dorianpachot@gmail.com" style="margin-left:auto">
+            <button class="copy-btn" type="button" data-copy="dorianpachot@gmail.com">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <span data-copy-label>Copier</span>
             </button>
@@ -826,7 +873,7 @@
 
   <footer class="footer" role="contentinfo">
     <div class="footer__inner">
-      <span>© 2026 Dorian Pachot — BTS SIO SLAM, IRIS MediaSchool</span>
+      <span>© 2026 Dorian Pachot, BTS SIO SLAM, IRIS MediaSchool</span>
       <a href="https://www.linkedin.com/in/dorian-pachot-81299930a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>
       <a href="pages/mentions-legales.html">Mentions légales</a>

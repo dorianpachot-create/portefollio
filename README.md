@@ -1,4 +1,4 @@
-# Portfolio BTS SIO — Dorian Pachot
+# Portfolio BTS SIO, Dorian Pachot
 
 Site vitrine personnel développé dans le cadre du BTS SIO option SLAM à IRIS MediaSchool.
 L'accueil est une page unique qui déroule : présentation, compétences, stage chez Suitime,
@@ -16,7 +16,7 @@ portefollio/
 ├── README.md
 ├── PROGRESS.md          Etat d'avancement et points de reprise
 ├── .gitignore
-├── index.html           Accueil — 8 sections : présentation, compétences, stage,
+├── index.html           Accueil, 8 sections : présentation, compétences, stage,
 │                        projets, cours, documents, coulisses, contact
 ├── css/style.css        Tout le style (variables en tête de fichier)
 ├── js/main.js           Thème, menu, palette Ctrl+K, filtres, carrousel (vanilla JS)
@@ -42,7 +42,7 @@ portefollio/
 │   ├── mission-orion/web/        Build pygbag du mini-jeu
 │   └── syncro/
 │       ├── screens/              Captures de l'app (galerie)
-│       └── app-release.apk       Ancien APK — non versionné, plus lié dans le site
+│       └── app-release.apk       Ancien APK, non versionné, plus lié dans le site
 └── pages/
     ├── cv.html              CV en image + bouton télécharger
     ├── stage.html           Stage chez Suitime, semaine par semaine
@@ -60,15 +60,42 @@ portefollio/
 - **SYNCRO** : projet développé d'avril à août 2026 pour Suitime, dont cinq semaines de
   stage à temps plein (6 juillet au 7 août). Frise du projet et histogramme des 84 commits
   sur l'accueil ; journal détaillé du stage sur `pages/stage.html`, réécrit sans les
-  éléments techniques internes au client — voir `PROGRESS.md`.
+  éléments techniques internes au client, voir `PROGRESS.md`.
 - **Documents** : lettre de recommandation Suitime (stage du 6 juillet au 7 août 2026),
   bulletin de 1<sup>re</sup> année (moyenne 15,55 pour 12,50 de promotion), lettre de
   motivation type.
 - **SYNCRO** : l'application est publiée sur les deux stores, le site vitrine est en
   production. Les trois liens sont dans `pages/projets-perso.html` :
-  - App Store — https://apps.apple.com/fr/app/syncro/id6787898930
-  - Google Play — https://play.google.com/store/apps/details?id=fr.appsyncro.mobile
-  - Site — https://appsyncro.fr
+  - App Store, https://apps.apple.com/fr/app/syncro/id6787898930
+  - Google Play, https://play.google.com/store/apps/details?id=fr.appsyncro.mobile
+  - Site, https://appsyncro.fr
+
+## Où toucher pour changer quoi
+
+Le tableau ci-dessous répond à la question « je veux modifier ça, je vais où ».
+
+| Ce que je veux changer | Fichier | Où exactement |
+|---|---|---|
+| Une couleur, la largeur du site, les coins arrondis | `css/style.css` | Le bloc `:root` tout en haut. Le thème sombre suit automatiquement |
+| Les couleurs du thème sombre | `css/style.css` | Le bloc `[data-theme="dark"]`, juste en dessous de `:root` |
+| Un texte de l'accueil | `index.html` | Chaque section a un gros commentaire qui la nomme |
+| Ajouter un projet | `index.html` | Copier une carte `.card` dans la section Projets, et renseigner son `data-tech` sinon les filtres l'ignorent |
+| Ajouter une destination à la recherche | `js/main.js` | Une ligne dans le tableau `ENTRIES`, bloc 4 |
+| Ajouter une matière | `index.html` + `pages/projets-cours.html` | Une tuile `.subject-card` sur l'accueil, un bloc `<details>` avec un `id` sur la page des fiches |
+| Le CV, le bulletin, les lettres | `assets/` | Remplacer le PDF et son image. Les vignettes allégées sont dans `assets/meta/` |
+
+### Bon à savoir avant de modifier
+
+- **Ne pas déplacer le script en haut des pages HTML.** Il pose le thème et la classe
+  `js` avant le premier affichage. Ailleurs, il y a un éclair blanc à chaque changement
+  de page en mode sombre.
+- **Les animations sont désactivées par défaut en CSS** et ne s'activent qu'avec la
+  classe `js`. C'est volontaire : si le JavaScript plante, le site reste lisible au lieu
+  de devenir à moitié invisible.
+- **Un seul fichier de style et un seul fichier de script** pour les 8 pages. Chaque bloc
+  de `main.js` s'arrête tout seul s'il ne trouve pas son HTML.
+- **Après une modification, lancer les tests** (voir plus bas). Ils prennent deux
+  secondes et attrapent les liens cassés et les composants qui ne répondent plus.
 
 ## Comment ouvrir le site
 
