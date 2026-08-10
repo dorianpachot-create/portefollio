@@ -101,8 +101,8 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
   accents, navigation entièrement au clavier.
 - **Filtre des projets** par technologie.
 - **Frise du projet** et **histogramme d'activité** en CSS pur, sans bibliothèque.
-- **Carrousel** des captures de SYNCRO dans l'accroche, en `scroll-snap`, utilisable sans
-  JavaScript.
+- **Carrousel** des captures de SYNCRO dans la carte du projet mis en avant, en
+  `scroll-snap`, utilisable sans JavaScript.
 - Section **« Ce site est aussi un projet »** qui détaille les choix techniques et invite
   à essayer les composants.
 - **Copie de l'e-mail** en un clic, avec repli pour les navigateurs anciens.

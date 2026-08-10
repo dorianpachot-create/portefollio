@@ -234,6 +234,13 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   align-items: center;
   align-content: center;
 }
+
+/* Accroche sur une seule colonne, centrée. */
+.hero--center { display: flex; justify-content: center; text-align: center; }
+.hero__inner { max-width: 660px; }
+.hero--center .hero__meta,
+.hero--center .hero__actions { justify-content: center; }
+.hero--center .hero__subtitle { margin-left: auto; margin-right: auto; }
 .hero__eyebrow {
   display: inline-flex;
   align-items: center;
@@ -330,6 +337,31 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   margin-top: 0.2rem;
 }
 .promo__desc { color: var(--text-2); font-size: 0.97rem; margin-bottom: 1.1rem; }
+
+/* Projet mis en avant, en pleine largeur en tête de la section Projets. */
+.promo--wide {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  padding: 2rem 2.2rem;
+  margin-bottom: 2.5rem;
+}
+.promo--wide .promo__head { margin-bottom: 1rem; }
+.promo--wide .promo__logo { width: 58px; height: 58px; }
+.promo--wide .promo__name { font-size: 1.45rem; }
+.promo--wide .promo__desc { font-size: 1rem; margin-bottom: 1.4rem; }
+/* Colonne de gauche : le texte et les liens. Colonne de droite : le carrousel,
+   qui s'étend sur les trois lignes. Sans ces placements explicites, le
+   remplissage automatique de la grille enverrait le texte en colonne 2. */
+.promo--wide > :not(.carousel) { grid-column: 1; }
+.promo--wide .carousel--compact { grid-column: 2; grid-row: 1 / span 3; margin-top: 0; align-self: center; }
+.promo--wide .carousel--compact .carousel__slide { width: 128px; }
+
+@media (max-width: 860px) {
+  .promo--wide { grid-template-columns: 1fr; gap: 1.6rem; padding: 1.6rem 1.7rem; }
+  .promo--wide .carousel--compact { grid-column: 1; grid-row: auto; }
+}
 
 /* ---------- Liens de stores ---------- */
 .store-links {

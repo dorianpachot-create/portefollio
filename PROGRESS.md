@@ -2,6 +2,36 @@
 
 Dernière mise à jour : 2026-08-10
 
+## Mise à jour du 2026-08-10 — accroche remise au propre
+
+Retour de Dorian : « moi + SYNCRO à côté, c'est brouillon ». L'accroche mettait en
+concurrence deux messages sur la même ligne — qui il est, et son projet phare — et le
+lecteur ne savait pas où regarder en premier.
+
+### Accroche sur une seule colonne, centrée
+
+`.hero--center` passe la grille à deux colonnes en `flex` centré, avec un
+`.hero__inner` limité à 660 px. Le nom, le rôle, l'accroche, les repères et les deux
+boutons sont désormais seuls à l'écran d'arrivée. Un seul message : qui il est et ce
+qu'il cherche.
+
+Les autres sections restent alignées à gauche : l'accroche est la seule exception, ce qui
+la distingue naturellement du reste sans effet particulier.
+
+### SYNCRO devient le projet mis en avant
+
+La carte n'est pas supprimée, elle est déplacée en tête de la section Projets, en pleine
+largeur (`.promo--wide`) : le texte et les liens des stores à gauche, le carrousel à
+droite sur toute la hauteur. Elle y gagne de la place, et c'est sa place logique — juste
+avant les filtres et les autres projets.
+
+**Le piège de la grille :** `.promo` a quatre enfants (en-tête, description, liens,
+carrousel). En laissant le placement automatique, la description partait en colonne 2 et
+se retrouvait sous le carrousel. Les trois premiers enfants sont donc explicitement en
+colonne 1, et le carrousel occupe la colonne 2 sur trois lignes.
+
+Sous 860 px, la carte repasse sur une seule colonne.
+
 ## Mise à jour du 2026-08-10 — vraie présentation
 
 Le site présentait des projets mais pas la personne : trois lignes de profil, puis
