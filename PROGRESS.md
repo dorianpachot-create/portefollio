@@ -2,6 +2,56 @@
 
 Dernière mise à jour : 2026-08-10
 
+## Mise à jour du 2026-08-10, habillage visuel
+
+Demande : rendre le visuel plus marqué, sans toucher au contenu. Niveau retenu, marqué
+mais maîtrisé. **Uniquement `css/style.css`, `js/main.js` et des classes ajoutées dans le
+HTML.**
+
+### Halos derrière l'accroche
+
+Trois `radial-gradient` très diffus posés en pseudo-élément derrière le nom, avec un flou.
+C'est du CSS pur, aucune image, donc zéro octet de plus au chargement. Les teintes
+viennent de deux variables `--halo-2` et `--halo-3`, déclinées en clair et en sombre.
+
+Deux précautions : `pointer-events: none` sur le pseudo-élément, sinon il intercepterait
+les clics des boutons posés au-dessus, et un `@supports` de repli pour les navigateurs
+sans `color-mix`.
+
+### Nom en dégradé
+
+`background-clip: text` peint le titre avec un dégradé. La couleur normale est déclarée
+d'abord et `color: transparent` seulement dans un `@supports` : un navigateur qui ne
+comprend pas la propriété affiche un titre noir lisible, pas un titre invisible.
+
+### Cartes plus vivantes
+
+Au survol : la carte se soulève un peu plus qu'avant, sa bordure prend la couleur d'accent
+via `color-mix`, l'ombre se teinte, et l'image de couverture zoome de 6 % dans son cadre.
+Le cadre étant en `overflow: hidden`, l'image ne déborde jamais.
+
+Les icônes de matières pivotent légèrement, les chiffres clés passent en couleur d'accent,
+et les puces de compétences réagissent au survol. Le projet mis en avant reçoit un liseré
+dégradé en haut de carte.
+
+### Barre de progression
+
+Un trait de 3 px en haut de l'écran, en dégradé. Le JavaScript ne touche qu'à une variable
+CSS `--p` entre 0 et 1, et le CSS s'en sert dans un `transform: scaleX()`. Pas de
+recalcul de mise en page à chaque pixel de défilement.
+
+### Apparitions en cascade
+
+Nouvelle classe `.stagger` posée sur neuf grilles. Le JavaScript pose un retard croissant
+dans une variable `--d` sur chaque enfant, plafonné à six : au-delà, une grille de dix
+cartes met deux secondes à finir d'apparaître et on croit que la page rame.
+
+### Ce qui n'a pas changé
+
+`prefers-reduced-motion` reste respecté : tout est neutralisé, y compris le flou des halos.
+Sans JavaScript, la page reste entièrement lisible, la cascade étant elle aussi sous la
+classe `js`. Trois tests ajoutés, total 42.
+
 ## Mise à jour du 2026-08-10, carrousel refait, barre de contact, mentions légales
 
 ### Le carrousel ne marchait pas

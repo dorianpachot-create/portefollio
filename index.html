@@ -69,6 +69,12 @@
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
 
+  <!-- Barre de progression de lecture. Purement decorative, donc invisible
+       pour les lecteurs d'ecran. Le JavaScript ne modifie qu'une variable
+       CSS, le navigateur fait le reste. -->
+  <div class="progress" aria-hidden="true"><span class="progress__bar" data-progress></span></div>
+
+
   <header class="topbar" role="banner">
     <div class="topbar__inner">
       <a class="brand" href="index.html" aria-label="Accueil - Dorian Pachot">
@@ -232,7 +238,7 @@
           </dl>
         </div>
 
-        <ul class="proof reveal" aria-label="Ce que je peux prouver">
+        <ul class="proof reveal stagger" aria-label="Ce que je peux prouver">
           <li>
             <h3>Une application en production</h3>
             <p>SYNCRO est publiée sur l'App Store et Google Play. Vous pouvez l'installer et la tester tout de suite.</p>
@@ -269,7 +275,7 @@
           </p>
         </div>
 
-        <div class="skills reveal">
+        <div class="skills reveal stagger">
           <div class="skill">
             <h3 class="skill__title">Développement</h3>
             <ul class="skill__list">
@@ -321,7 +327,7 @@
           </p>
         </div>
 
-        <ol class="timeline reveal" aria-label="Déroulé du projet SYNCRO">
+        <ol class="timeline reveal stagger" aria-label="Déroulé du projet SYNCRO">
           <li class="phase">
             <span class="phase__month">Avril</span>
             <h3 class="phase__title">Démarrage</h3>
@@ -367,7 +373,7 @@
           <p class="chart__legend">Période de stage, à temps plein</p>
         </div>
 
-        <ul class="stat-list reveal" aria-label="Le projet en chiffres">
+        <ul class="stat-list reveal stagger" aria-label="Le projet en chiffres">
           <li class="stat">
             <span class="stat__value" data-count>5</span>
             <span class="stat__label">mois de développement</span>
@@ -495,9 +501,9 @@
 
         <p class="filters__empty" data-filters-empty hidden>Aucun projet avec cette technologie pour l'instant.</p>
 
-        <div class="grid">
+        <div class="grid stagger reveal">
 
-          <a class="card card--visual reveal" href="pages/projets-perso.html#syncro" data-tech="flutter|nextjs|sql">
+          <a class="card card--visual" href="pages/projets-perso.html#syncro" data-tech="flutter|nextjs|sql">
             <span class="card__cover">
               <picture>
                 <source srcset="assets/meta/cover-syncro.webp" type="image/webp" />
@@ -516,7 +522,7 @@
             </span>
           </a>
 
-          <a class="card card--visual reveal" href="https://crp-assurance.com" target="_blank" rel="noopener noreferrer" data-tech="js">
+          <a class="card card--visual" href="https://crp-assurance.com" target="_blank" rel="noopener noreferrer" data-tech="js">
             <span class="card__cover">
               <picture>
                 <source srcset="assets/meta/cover-crp.webp" type="image/webp" />
@@ -536,7 +542,7 @@
           </a>
 
 
-          <a class="card card--visual reveal" href="pages/mini-jeu.html" data-tech="python">
+          <a class="card card--visual" href="pages/mini-jeu.html" data-tech="python">
             <span class="card__cover">
               <picture>
                 <source srcset="assets/meta/cover-orion.webp" type="image/webp" />
@@ -578,7 +584,7 @@
           </p>
         </div>
 
-        <ul class="subjects reveal">
+        <ul class="subjects reveal stagger">
           <li>
             <a class="subject-card" href="pages/projets-cours.html#matiere-developpement">
               <span class="subject-card__icon" aria-hidden="true">
@@ -692,7 +698,7 @@
           </p>
         </div>
 
-        <div class="docs reveal">
+        <div class="docs reveal stagger">
 
           <article class="doc">
             <picture>
@@ -776,7 +782,7 @@
           </p>
         </div>
 
-        <ul class="stat-list reveal" aria-label="Le site en chiffres">
+        <ul class="stat-list reveal stagger" aria-label="Le site en chiffres">
           <li class="stat">
             <span class="stat__value" data-count>0</span>
             <span class="stat__label">dépendance au chargement</span>
@@ -858,7 +864,7 @@
           </button>
         </div>
 
-        <div class="contact reveal">
+        <div class="contact reveal stagger">
           <a class="contact__item" href="tel:+33771623228">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 12l5 2v4a2 2 0 0 1-2.2 2A17 17 0 0 1 3 5.2 2 2 0 0 1 5 3Z"/></svg>
             <span>

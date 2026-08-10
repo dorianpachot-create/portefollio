@@ -102,6 +102,13 @@ ok('contact : 3 tuiles dans la grille', d.querySelectorAll('.contact .contact__i
 // Retour en haut
 ok('retour en haut : present', !!d.querySelector('[data-to-top]'));
 ok('barre de contact : presente', !!d.querySelector('.contact-bar'));
+ok('progression : barre presente', !!d.querySelector('[data-progress]'));
+ok('progression : variable posee', d.querySelector('[data-progress]').style.getPropertyValue('--p') !== '');
+ok('cascade : retards poses', (() => {
+  const g = d.querySelector('.stagger');
+  if (!g || !g.children.length) return false;
+  return g.children[1] && g.children[1].style.getPropertyValue('--d') === '70ms';
+})());
 ok('barre de contact : e-mail et telephone', 
    !!d.querySelector('.contact-bar a[href^="mailto:"]') && !!d.querySelector('.contact-bar a[href^="tel:"]'));
 

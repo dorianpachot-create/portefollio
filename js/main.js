@@ -14,7 +14,8 @@
  *   5. Filtre des projets ...... les puces Flutter, Python, etc.
  *   6. Carrousel ............... les captures de SYNCRO
  *   7. Copie de l'e-mail ....... bouton Copier de la section Contact
- *   8. Animations .............. retour en haut, apparition, compteurs
+ *   8. Animations .............. progression, retour en haut, apparition,
+ *                              cascade, compteurs
  *
  * LE PRINCIPE A RETENIR
  * Chaque bloc commence par chercher son HTML et s'arrete tout de suite
@@ -413,13 +414,28 @@
   /* =======================================================
      8. ANIMATIONS
 
-     Trois choses ici : le bouton retour en haut, l'apparition
-     des blocs au defilement, et les compteurs qui montent.
+     Quatre choses ici : la barre de progression en haut de
+     l'ecran, le bouton retour en haut, l'apparition des blocs
+     au defilement avec effet de cascade, et les compteurs.
 
      Toutes sont desactivees si la personne a demande moins
      d'animations dans les reglages de son systeme.
      ======================================================= */
   (function motion() {
+    // Barre de progression de lecture. On ne touche qu'a une variable CSS,
+    // le navigateur s'occupe du reste : pas de recalcul de mise en page.
+    const bar = $('[data-progress]');
+    if (bar) {
+      const update = () => {
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        const p = h > 0 ? window.scrollY / h : 0;
+        bar.style.setProperty('--p', Math.min(Math.max(p, 0), 1).toFixed(4));
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+    }
+
     const top = $('[data-to-top]');
     if (top) {
       const onScroll = () => top.classList.toggle('is-visible', window.scrollY > 600);
@@ -453,7 +469,9 @@
       charts.forEach((c) => ioChart.observe(c));
     }
 
-    const targets = $$('.reveal');
+    // Apparition au defilement. On ajoute .is-in une seule fois, puis on
+    // arrete d'observer : inutile de rejouer l'effet a chaque passage.
+    const targets = $$('.reveal, .stagger');
     if (targets.length) {
       if (reduced) {
         targets.forEach((el) => el.classList.add('is-in'));
@@ -471,6 +489,15 @@
         targets.forEach((el) => io.observe(el));
       }
     }
+
+    // Cascade : chaque enfant d'un bloc .stagger recoit un retard croissant.
+    // Plafonne a 6 enfants, sinon une grille de dix cartes met deux secondes
+    // a finir d'apparaitre et on a l'impression que la page rame.
+    $$('.stagger').forEach((group) => {
+      Array.from(group.children).forEach((child, i) => {
+        child.style.setProperty('--d', Math.min(i, 6) * 70 + 'ms');
+      });
+    });
 
     // Les compteurs : le chiffre final est deja ecrit dans le HTML, on ne
     // fait que le remplacer temporairement pendant l'animation. Sans

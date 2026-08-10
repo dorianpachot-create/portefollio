@@ -64,6 +64,11 @@
   --overlay:     rgba(15, 20, 25, 0.45);
   --topbar-bg:   rgba(255, 255, 255, 0.88);
 
+  /* Halos diffus de l'accroche. Deux teintes proches de l'accent, pour
+     rester dans la meme famille de couleurs. */
+  --halo-2:      #0ea5e9;
+  --halo-3:      #8b5cf6;
+
   /* Formes */
   --radius:      10px;
   --radius-sm:   8px;
@@ -105,6 +110,9 @@
 
   --overlay:     rgba(0, 0, 0, 0.6);
   --topbar-bg:   rgba(15, 19, 24, 0.88);
+
+  --halo-2:      #38bdf8;
+  --halo-3:      #a78bfa;
 
   --shadow:    0 1px 2px rgba(0,0,0,.3), 0 1px 3px rgba(0,0,0,.35);
   --shadow-md: 0 4px 16px rgba(0,0,0,.45);
@@ -271,6 +279,39 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
    4. ACCUEIL
    ========================================================= */
 
+/* ---------- Halos de l'accroche ----------
+   Deux taches de couleur tres diffuses derriere le nom. C'est du CSS pur,
+   aucune image : deux radial-gradient poses en fond, avec un flou. Ca donne
+   de la profondeur sans peser un octet de plus au chargement.
+
+   Le pseudo-element est en pointer-events: none, sinon il capterait les
+   clics des boutons places au-dessus. */
+.hero { position: relative; overflow: hidden; isolation: isolate; }
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -20% -10% auto -10%;
+  height: 120%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(38rem 22rem at 22% 28%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%),
+    radial-gradient(32rem 20rem at 80% 22%, color-mix(in srgb, var(--halo-2) 20%, transparent), transparent 70%),
+    radial-gradient(26rem 18rem at 60% 85%, color-mix(in srgb, var(--halo-3) 16%, transparent), transparent 70%);
+  filter: blur(18px);
+  opacity: 0.85;
+}
+
+/* Repli pour les navigateurs sans color-mix : on garde des halos, juste
+   avec des couleurs fixes plutot que derivees de l'accent. */
+@supports not (background: color-mix(in srgb, red 50%, blue)) {
+  .hero::before {
+    background:
+      radial-gradient(38rem 22rem at 22% 28%, rgba(29, 78, 216, 0.18), transparent 70%),
+      radial-gradient(32rem 20rem at 80% 22%, rgba(14, 165, 233, 0.16), transparent 70%);
+  }
+}
+
 /* ---------- Accroche ---------- */
 .hero {
   max-width: var(--maxw);
@@ -312,6 +353,20 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   font-size: 2.9rem; /* repli si clamp() n'est pas supporté */
   font-size: clamp(2.3rem, 5.5vw, 3.2rem);
   margin-bottom: 0.5rem;
+  letter-spacing: -0.035em;
+}
+
+/* Degrade sur le nom. background-clip: text peint le texte avec le degrade.
+   La couleur de repli est posee d'abord : un navigateur qui ne comprend pas
+   background-clip affiche un titre noir normal, pas un titre invisible. */
+.hero__title {
+  color: var(--text);
+  background: linear-gradient(100deg, var(--text) 0%, var(--accent) 55%, var(--halo-3) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .hero__title { color: transparent; }
 }
 .hero__role {
   font-size: 1.3rem;
@@ -1358,12 +1413,113 @@ body { padding-bottom: 4.5rem; }
 .to-top:hover { color: var(--accent); border-color: var(--accent); }
 .to-top svg { width: 19px; height: 19px; }
 
+/* ---------- Barre de progression de lecture ----------
+   Fin trait en haut de l'ecran qui avance avec le defilement. La largeur
+   est posee par le JavaScript via la variable --p, entre 0 et 1. */
+.progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  z-index: 110;
+  background: transparent;
+  pointer-events: none;
+}
+.progress__bar {
+  height: 100%;
+  width: 100%;
+  transform: scaleX(var(--p, 0));
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--accent), var(--halo-2) 55%, var(--halo-3));
+}
+
+/* ---------- Cartes plus vivantes au survol ----------
+   Trois choses en meme temps : la carte se souleve, sa bordure prend la
+   couleur d'accent, et l'image de couverture zoome legerement dans son
+   cadre. Le cadre est en overflow: hidden, donc l'image ne deborde pas. */
+a.card, .subject-card, .doc, .contact__item {
+  transition:
+    transform 0.22s cubic-bezier(.2,.7,.3,1),
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+a.card:hover, a.card:focus-visible {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  box-shadow: 0 14px 34px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+.card__cover img { transition: transform 0.45s cubic-bezier(.2,.7,.3,1); }
+a.card:hover .card__cover img { transform: scale(1.06); }
+
+.subject-card:hover, .subject-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+.subject-card__icon { transition: transform 0.22s cubic-bezier(.2,.7,.3,1); }
+.subject-card:hover .subject-card__icon { transform: scale(1.08) rotate(-4deg); }
+
+.doc:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+.doc__thumb { transition: transform 0.45s cubic-bezier(.2,.7,.3,1); }
+.doc:hover .doc__thumb { transform: scale(1.05); }
+
+.contact__item:hover { transform: translateY(-3px); }
+
+/* Le projet mis en avant a droit a un liseré coloré en haut. */
+.promo--wide {
+  position: relative;
+  overflow: hidden;
+}
+.promo--wide::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--halo-2) 55%, var(--halo-3));
+}
+
+/* Les chiffres cles prennent la couleur d'accent, plus vivant que du noir. */
+.stat__value { color: var(--accent); }
+.stat { transition: transform 0.22s cubic-bezier(.2,.7,.3,1), box-shadow 0.22s ease; }
+.stat:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+/* Les puces de competences reagissent aussi, plus discretement. */
+.skill__list li { transition: border-color 0.15s ease, color 0.15s ease; }
+.skill__list li:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Le trait d'oeil des en-tetes de section devient un petit filet colore. */
+.section-head__eyebrow { display: flex; align-items: center; gap: 0.6rem; }
+.section-head__eyebrow::after {
+  content: "";
+  height: 1px;
+  width: 3rem;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
 /* ---------- Apparition au défilement ----------
    L'état masqué n'est appliqué QUE si le JavaScript tourne : la classe .js est
    posée sur <html> par le script inline du <head>. Sans ça, une erreur de script
    ou un navigateur qui bloque le JS rendrait invisible la moitié de la page. */
-.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(.2,.7,.3,1);
+}
 .js .reveal.is-in { opacity: 1; transform: none; }
+
+/* Apparition en cascade : les enfants d'une grille arrivent l'un apres
+   l'autre. Le retard est pose par le JavaScript dans --d, en millisecondes.
+   Six enfants au maximum sont retardes, au dela ca devient long a regarder. */
+.js .stagger > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(.2,.7,.3,1);
+  transition-delay: var(--d, 0ms);
+}
+.js .stagger.is-in > * { opacity: 1; transform: none; }
 
 /* =========================================================
    9. RESPONSIVE, IMPRESSION, ANIMATIONS
@@ -1417,8 +1573,8 @@ body { padding-bottom: 4.5rem; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
-  .carousel__track { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; }
+  .js .reveal, .js .stagger > * { opacity: 1 !important; transform: none !important; }
+  .hero::before { filter: none; opacity: 0.5; }
 }
 
 @media print {

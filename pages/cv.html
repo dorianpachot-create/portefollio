@@ -38,6 +38,12 @@
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
 
+  <!-- Barre de progression de lecture. Purement decorative, donc invisible
+       pour les lecteurs d'ecran. Le JavaScript ne modifie qu'une variable
+       CSS, le navigateur fait le reste. -->
+  <div class="progress" aria-hidden="true"><span class="progress__bar" data-progress></span></div>
+
+
   <header class="topbar" role="banner">
     <div class="topbar__inner">
       <a class="brand" href="../index.html" aria-label="Accueil - Dorian Pachot">
