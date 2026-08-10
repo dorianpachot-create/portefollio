@@ -2,6 +2,91 @@
 
 Dernière mise à jour : 2026-08-10
 
+## Mise à jour du 2026-08-10 (soir) — interactions et finitions
+
+Le site devient lui-même une démonstration de développement, sans casser le design sobre.
+
+### Thème clair / sombre
+
+Le thème sombre est un simple bloc `[data-theme="dark"]` qui redéfinit les variables de
+`:root`. Aucune règle en double, aucune couleur écrite en dur — tout ce qui l'était
+(`#fff` des boutons, le vert du badge « En production », le fond de la barre du haut) est
+passé en variable au préalable.
+
+**Le point délicat, c'est le flash blanc.** Si le thème est appliqué par `main.js`, qui se
+charge en fin de page, un utilisateur en mode sombre voit un éclair blanc à chaque
+navigation. Un petit script inline est donc placé dans le `<head>` de chacune des 8 pages,
+avant la feuille de style : il lit `localStorage`, retombe sur `prefers-color-scheme` et
+pose l'attribut avant le premier rendu. Le `try/catch` est nécessaire — `localStorage`
+lève une exception en navigation privée sur certains navigateurs.
+
+Tant que l'utilisateur n'a pas cliqué sur le bouton, le site suit le réglage du système,
+même s'il change pendant la visite.
+
+### Palette de commandes (Ctrl+K)
+
+22 entrées : sections, pages, PDF, liens externes, contact. La recherche retire les
+accents des deux côtés (`normalize('NFD')`), donc « recommandation » se trouve sans
+accent et inversement. Navigation aux flèches, `Entrée` pour ouvrir, `Échap` pour fermer,
+et le focus revient sur l'élément d'origine à la fermeture.
+
+L'attribut `data-base` sur le conteneur vaut `""` sur l'accueil et `"../"` sur les pages
+secondaires : c'est ce qui permet au même fichier JavaScript de construire des liens
+corrects depuis les deux niveaux.
+
+### Filtres, carrousel, micro-interactions
+
+- **Filtres** : chaque carte porte `data-tech="flutter|nextjs|sql"`. Le filtrage est une
+  simple bascule de classe, sans reconstruction du DOM.
+- **Carrousel** : `scroll-snap` en CSS pour le défilement, le JavaScript ne sert qu'aux
+  pastilles et aux flèches. Il reste utilisable au doigt et au clavier sans JavaScript.
+- **Compteurs animés** : la valeur finale est écrite dans le HTML, l'animation ne fait que
+  la remplacer temporairement. Sans JavaScript, le bon chiffre s'affiche quand même.
+- **Copie de l'e-mail** : `navigator.clipboard` avec un repli `execCommand` pour les
+  navigateurs anciens ou les contextes non sécurisés.
+- `prefers-reduced-motion` est respecté partout : apparitions désactivées, défilements
+  instantanés, compteurs non animés.
+
+### SEO et partage
+
+- **JSON-LD** `schema.org/Person` sur l'accueil : poste, e-mail, ville, école,
+  technologies, LinkedIn, recherche d'alternance.
+- **Open Graph** + image `assets/meta/og-image.png` en 1200×630, générée avec Pillow.
+  Un lien partagé sur LinkedIn affiche maintenant une vraie carte.
+- **Favicon** en SVG avec repli PNG 32 et 180 px.
+- `sitemap.xml` (8 URL) et `robots.txt` à la racine.
+
+### Images
+
+Vignettes dédiées dans `assets/meta/`, en WebP avec repli JPEG via `<picture>`, et
+`width`/`height` déclarés pour éviter les sauts de mise en page :
+
+| Document | Avant | Après (WebP) |
+|---|---|---|
+| CV | 470 Ko | 24 Ko |
+| Bulletin | 686 Ko | 14 Ko |
+| Recommandation | 134 Ko | 13 Ko |
+| Lettre de motivation | 420 Ko | 20 Ko |
+
+Les images pleine taille restent utilisées sur les pages de détail.
+
+### Tests
+
+`tests/dom.test.js` charge les vraies pages dans jsdom et vérifie 26 comportements
+(thème, palette, filtres, carrousel, copie, chemins relatifs depuis `pages/`).
+
+```powershell
+npm install jsdom
+node tests/dom.test.js
+```
+
+`node_modules/` et `package-lock.json` sont dans le `.gitignore`.
+
+### Le mini-jeu
+
+`pages/mini-jeu.html` charge le build pygbag dans une `iframe` : il est indépendant du
+reste du site et n'a pas été touché. Vérifié après la refonte, il tourne toujours.
+
 ## Mise à jour du 2026-08-10 — refonte complète du design
 
 Le thème « Hextech » (bleu nuit, or, losanges, ombres dures) est remplacé par un design

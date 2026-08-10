@@ -17,8 +17,12 @@ portefollio/
 ├── .gitignore
 ├── index.html           Accueil — page unique : profil, stage, projets, documents, contact
 ├── css/style.css        Tout le style (variables en tête de fichier)
-├── js/main.js           Menu mobile + surlignage de la section lue (vanilla JS)
+├── js/main.js           Thème, menu, palette Ctrl+K, filtres, carrousel (vanilla JS)
+├── sitemap.xml
+├── robots.txt
+├── tests/dom.test.js    26 tests des composants interactifs (jsdom)
 ├── assets/
+│   ├── meta/                     Favicon, image de partage, vignettes WebP
 │   ├── stars.svg                 Champ d'étoiles tilable
 │   ├── cv/
 │   │   ├── cv.png                Image du CV (rendu 160 DPI du PDF)
@@ -83,10 +87,36 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
 - Les sections alternent `--bg` et `--bg-soft` pour donner du rythme sans ajouter de couleur.
 - Pas de framework CSS, JavaScript vanilla uniquement.
 
+## Fonctionnalités
+
+- **Thème clair / sombre** mémorisé, aligné par défaut sur le réglage du système, sans
+  flash au chargement (script inline dans le `<head>`).
+- **Palette de commandes** au `Ctrl+K` : 22 destinations, recherche insensible aux accents,
+  navigation au clavier.
+- **Filtre des projets** par technologie.
+- **Carrousel** des captures de SYNCRO, en `scroll-snap`, utilisable sans JavaScript.
+- **Copie de l'e-mail** en un clic, avec repli pour les navigateurs anciens.
+- Apparition au défilement et compteurs animés, désactivés si `prefers-reduced-motion`.
+- Mini-jeu Python jouable dans le navigateur (build pygbag en WebAssembly).
+
 ## Technologies
 
-HTML5 sémantique, CSS3 (variables, grid, flex), JavaScript vanilla. Aucun framework.
-Compatibilité navigateurs modernes.
+HTML5 sémantique, CSS3 (variables, grid, flex), JavaScript vanilla. Aucun framework,
+aucune dépendance au chargement. jsdom sert uniquement aux tests.
+
+## Tests
+
+```powershell
+npm install jsdom
+node tests/dom.test.js
+```
+
+26 vérifications sur les composants interactifs, sans navigateur. Voir `tests/README.md`.
+
+## SEO
+
+Données structurées JSON-LD (`schema.org/Person`), balises Open Graph avec image
+1200×630, favicon SVG, `sitemap.xml` et `robots.txt`.
 
 ## Accessibilité
 
@@ -96,7 +126,9 @@ Compatibilité navigateurs modernes.
 - `aria-current="page"` sur le lien de la page active
 - `aria-label` sur les éléments décoratifs ou compacts
 - Focus visible (outline 2px sur tous les éléments interactifs)
-- Contraste WCAG AA respecté
+- Contraste WCAG AA respecté dans les deux thèmes
+- `prefers-reduced-motion` respecté sur toutes les animations
+- Palette de commandes entièrement utilisable au clavier
 
 ## Mise en ligne
 

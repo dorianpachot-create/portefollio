@@ -5,3 +5,7 @@ Thumbs.db
 
 # APK obsolète (74 Mo) — l'app est sur les stores, le fichier n'est plus lié dans le site
 assets/syncro/app-release.apk
+
+# Dependances de test
+node_modules/
+package-lock.json

@@ -5,11 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dorian Pachot - Développeur full-stack, alternance septembre 2026</title>
   <meta name="description" content="Dorian Pachot, étudiant en BTS SIO SLAM à Rouen. Développeur full-stack : SYNCRO publiée sur l'App Store et Google Play, CRP-Assurance.com en production. Recherche une alternance pour septembre 2026." />
+  <meta name="author" content="Dorian Pachot" />
+  <link rel="canonical" href="https://dorianpachot-create.github.io/portefollio/" />
   <meta name="theme-color" content="#1d4ed8" />
+
+  <!-- Pose le thème avant le premier rendu : sans ça, un utilisateur en mode
+       sombre verrait un flash blanc au chargement de chaque page. -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        var dark = saved ? saved === 'dark'
+                         : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+
+  <meta property="og:type" content="profile" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Dorian Pachot - Développeur full-stack" />
+  <meta property="og:description" content="BTS SIO SLAM à Rouen. SYNCRO publiée sur l'App Store et Google Play, CRP-Assurance.com et appsyncro.fr en production. Alternance recherchée pour septembre 2026." />
+  <meta property="og:url" content="https://dorianpachot-create.github.io/portefollio/" />
+  <meta property="og:image" content="https://dorianpachot-create.github.io/portefollio/assets/meta/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="assets/meta/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="assets/meta/favicon-32.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="assets/meta/favicon-180.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Dorian Pachot",
+    "jobTitle": "Développeur full-stack",
+    "email": "mailto:dorianpachot@gmail.com",
+    "telephone": "+33771623228",
+    "url": "https://dorianpachot-create.github.io/portefollio/",
+    "image": "https://dorianpachot-create.github.io/portefollio/assets/meta/og-image.png",
+    "address": { "@type": "PostalAddress", "addressLocality": "Rouen", "postalCode": "76000", "addressCountry": "FR" },
+    "alumniOf": { "@type": "EducationalOrganization", "name": "IRIS MediaSchool, campus de Rouen" },
+    "knowsAbout": ["Flutter", "Dart", "Next.js", "TypeScript", "JavaScript", "PHP", "Python", "SQL", "API REST", "Nginx", "Linux"],
+    "sameAs": ["https://www.linkedin.com/in/dorian-pachot-81299930a/"],
+    "seeks": { "@type": "Demand", "name": "Alternance en développement, septembre 2026" }
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -20,8 +70,6 @@
         <span class="brand__name">Dorian Pachot</span>
       </a>
 
-      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="true" aria-controls="primary-nav">Menu</button>
-
       <nav class="nav" id="primary-nav" data-nav aria-label="Navigation principale">
         <a class="nav__link" href="#profil">Profil</a>
         <a class="nav__link" href="#stage">Stage</a>
@@ -29,6 +77,20 @@
         <a class="nav__link" href="#documents">Documents</a>
         <a class="nav__link" href="#contact">Contact</a>
       </nav>
+
+      <div class="topbar__tools">
+        <button class="icon-btn kbd-btn" type="button" data-palette-open aria-label="Rechercher dans le site">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+          <kbd>Ctrl</kbd><kbd>K</kbd>
+        </button>
+
+        <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="Passer en thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="true" aria-controls="primary-nav">Menu</button>
+      </div>
     </div>
   </header>
 
@@ -72,7 +134,7 @@
 
       <article class="promo" aria-labelledby="promo-title">
         <div class="promo__head">
-          <img class="promo__logo" src="assets/syncro/screens/logo.jpg" alt="" />
+          <img class="promo__logo" src="assets/syncro/screens/logo.jpg" alt="" width="52" height="52" />
           <div>
             <h2 class="promo__name" id="promo-title">SYNCRO</h2>
             <span class="promo__badge">En production</span>
@@ -109,7 +171,7 @@
     <!-- ============ Profil et compétences ============ -->
     <section class="section section--soft" id="profil" aria-labelledby="profil-title">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <span class="section-head__eyebrow">Profil</span>
           <h2 class="section-head__title" id="profil-title">Ce que je sais faire</h2>
           <p class="section-head__lead">
@@ -119,7 +181,7 @@
           </p>
         </div>
 
-        <div class="skills">
+        <div class="skills reveal">
           <div class="skill">
             <h3 class="skill__title">Développement</h3>
             <ul class="skill__list">
@@ -154,7 +216,7 @@
     <!-- ============ Stage ============ -->
     <section class="section" id="stage" aria-labelledby="stage-title">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <span class="section-head__eyebrow">Expérience</span>
           <h2 class="section-head__title" id="stage-title">Stage chez Suitime</h2>
           <p class="section-head__lead">
@@ -164,33 +226,33 @@
           </p>
         </div>
 
-        <ul class="stat-list" aria-label="Le stage en chiffres">
+        <ul class="stat-list reveal" aria-label="Le stage en chiffres">
           <li class="stat">
-            <span class="stat__value">5</span>
+            <span class="stat__value" data-count>5</span>
             <span class="stat__label">semaines de développement</span>
           </li>
           <li class="stat">
-            <span class="stat__value">2</span>
+            <span class="stat__value" data-count>2</span>
             <span class="stat__label">magasins d'applications</span>
           </li>
           <li class="stat">
-            <span class="stat__value">53</span>
+            <span class="stat__value" data-count>53</span>
             <span class="stat__label">routes d'API migrées en TypeScript</span>
           </li>
           <li class="stat">
-            <span class="stat__value">13</span>
+            <span class="stat__value" data-count>13</span>
             <span class="stat__label">écrans maquettés avant développement</span>
           </li>
         </ul>
 
-        <p class="doc-quote">
+        <p class="doc-quote reveal">
           « Dorian a fait preuve d'application et de sérieux dans son travail. Sa capacité
           d'écoute a été particulièrement appréciée. Je le recommande sans réserve à toute
           entreprise souhaitant l'accueillir. »
           <span class="doc-quote__author">Valentin Javelaud, Suitime — 20 juillet 2026</span>
         </p>
 
-        <div class="actions">
+        <div class="actions reveal">
           <a class="btn btn--primary" href="pages/stage.html">Lire le détail, semaine par semaine</a>
           <a class="btn btn--secondary" href="assets/recommandation/Lettre_recommandation_Suitime.pdf" target="_blank" rel="noopener">Voir la lettre de recommandation</a>
         </div>
@@ -200,18 +262,32 @@
     <!-- ============ Projets ============ -->
     <section class="section section--soft" id="projets" aria-labelledby="projets-title">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <span class="section-head__eyebrow">Réalisations</span>
           <h2 class="section-head__title" id="projets-title">Projets</h2>
           <p class="section-head__lead">
             Ce que j'ai construit, seul ou en entreprise. Deux sont en production et
-            utilisés au quotidien.
+            utilisés au quotidien. Filtrez par technologie pour retrouver ce qui vous
+            intéresse.
           </p>
         </div>
 
+        <div class="filters reveal" data-filters role="group" aria-label="Filtrer les projets par technologie">
+          <button class="filter" type="button" data-filter="all" aria-pressed="true">Tout <span class="filter__count">5</span></button>
+          <button class="filter" type="button" data-filter="flutter" aria-pressed="false">Flutter</button>
+          <button class="filter" type="button" data-filter="nextjs" aria-pressed="false">Next.js</button>
+          <button class="filter" type="button" data-filter="react" aria-pressed="false">React</button>
+          <button class="filter" type="button" data-filter="js" aria-pressed="false">JavaScript</button>
+          <button class="filter" type="button" data-filter="python" aria-pressed="false">Python</button>
+          <button class="filter" type="button" data-filter="sql" aria-pressed="false">SQL</button>
+          <button class="filter" type="button" data-filter="reseau" aria-pressed="false">Réseaux &amp; systèmes</button>
+        </div>
+
+        <p class="filters__empty" data-filters-empty hidden>Aucun projet avec cette technologie pour l'instant.</p>
+
         <div class="grid">
 
-          <a class="card" href="pages/projets-perso.html#syncro">
+          <a class="card reveal" href="pages/projets-perso.html#syncro" data-tech="flutter|nextjs|sql">
             <span class="card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
             </span>
@@ -224,7 +300,7 @@
             <span class="card__link">Voir le détail</span>
           </a>
 
-          <a class="card" href="https://crp-assurance.com" target="_blank" rel="noopener noreferrer">
+          <a class="card reveal" href="https://crp-assurance.com" target="_blank" rel="noopener noreferrer" data-tech="js">
             <span class="card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9Z"/></svg>
             </span>
@@ -237,7 +313,7 @@
             <span class="card__link">Voir le site</span>
           </a>
 
-          <article class="card card--static">
+          <article class="card card--static reveal" data-tech="react">
             <span class="card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m7 10 2 2-2 2M12 14h5"/></svg>
             </span>
@@ -249,20 +325,20 @@
             <ul class="tags"><li class="tag">React</li><li class="tag">API Anthropic</li><li class="tag">Automatisation</li></ul>
           </article>
 
-          <a class="card" href="pages/mini-jeu.html">
+          <a class="card reveal" href="pages/mini-jeu.html" data-tech="python">
             <span class="card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="20" height="9" rx="4"/><path d="M7 12.5h3M8.5 11v3"/><circle cx="16" cy="12" r="1"/><circle cx="18.5" cy="14.5" r="1"/></svg>
             </span>
             <h3 class="card__title">Mission Orion</h3>
             <p class="card__desc">
-              Jeu spatial en Python avec pygame, compilé en WebAssembly pour tourner
+              Jeu spatial en Python avec pygame, compilé en WebAssembly. Jouable
               directement dans le navigateur, sans rien installer.
             </p>
             <ul class="tags"><li class="tag">Python</li><li class="tag">pygame</li><li class="tag">WebAssembly</li></ul>
-            <span class="card__link">Jouer</span>
+            <span class="card__link">Jouer maintenant</span>
           </a>
 
-          <a class="card" href="pages/projets-cours.html">
+          <a class="card reveal" href="pages/projets-cours.html" data-tech="reseau|python|sql|js">
             <span class="card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5v-13Z"/><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5v-13Z"/></svg>
             </span>
@@ -271,9 +347,39 @@
               Les travaux pratiques du BTS SIO, classés par matière : réseaux, systèmes,
               cybersécurité, développement, mathématiques.
             </p>
+            <ul class="tags"><li class="tag">GNS3</li><li class="tag">Active Directory</li><li class="tag">VLAN</li></ul>
             <span class="card__link">Parcourir les fiches</span>
           </a>
 
+        </div>
+
+        <div class="cv-block reveal">
+          <h3 class="cv-block__heading">SYNCRO en images</h3>
+          <div class="carousel" data-carousel>
+            <div class="carousel__track" data-carousel-track tabindex="0" role="group" aria-label="Captures d'écran de l'application SYNCRO, faites défiler horizontalement">
+              <figure class="carousel__slide">
+                <img src="assets/syncro/screens/screen-1.jpg" alt="Écran SYNCRO : planning de la semaine avec la couverture par jour et les disponibilités de chaque membre." loading="lazy" width="720" height="1280" />
+              </figure>
+              <figure class="carousel__slide">
+                <img src="assets/syncro/screens/screen-2.jpg" alt="Écran SYNCRO : saisie des disponibilités par créneau, matin et après-midi." loading="lazy" width="720" height="1280" />
+              </figure>
+              <figure class="carousel__slide">
+                <img src="assets/syncro/screens/screen-3.jpg" alt="Écran SYNCRO : gestion des groupes et des rôles des membres." loading="lazy" width="720" height="1280" />
+              </figure>
+              <figure class="carousel__slide">
+                <img src="assets/syncro/screens/screen-4.jpg" alt="Écran SYNCRO : notifications en temps réel et suivi des heures." loading="lazy" width="720" height="1280" />
+              </figure>
+            </div>
+            <div class="carousel__nav">
+              <button class="icon-btn" type="button" data-carousel-prev aria-label="Capture précédente">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
+              </button>
+              <div class="carousel__dots" data-carousel-dots></div>
+              <button class="icon-btn" type="button" data-carousel-next aria-label="Capture suivante">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -281,7 +387,7 @@
     <!-- ============ Documents ============ -->
     <section class="section" id="documents" aria-labelledby="documents-title">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <span class="section-head__eyebrow">Dossier</span>
           <h2 class="section-head__title" id="documents-title">Documents</h2>
           <p class="section-head__lead">
@@ -290,10 +396,13 @@
           </p>
         </div>
 
-        <div class="docs">
+        <div class="docs reveal">
 
           <article class="doc">
-            <img class="doc__thumb" src="assets/cv/cv.png" alt="Aperçu du CV de Dorian Pachot" loading="lazy" />
+            <picture>
+              <source srcset="assets/meta/thumb-cv.webp" type="image/webp" />
+              <img class="doc__thumb" src="assets/meta/thumb-cv.jpg" alt="Aperçu du CV de Dorian Pachot" loading="lazy" width="368" height="520" />
+            </picture>
             <div class="doc__body">
               <h3 class="doc__title">Curriculum vitae</h3>
               <p class="doc__meta">Mis à jour le 7 août 2026</p>
@@ -305,7 +414,10 @@
           </article>
 
           <article class="doc">
-            <img class="doc__thumb" src="assets/recommandation/reco.png" alt="Aperçu de la lettre de recommandation de Suitime" loading="lazy" />
+            <picture>
+              <source srcset="assets/meta/thumb-reco.webp" type="image/webp" />
+              <img class="doc__thumb" src="assets/meta/thumb-reco.jpg" alt="Aperçu de la lettre de recommandation de Suitime" loading="lazy" width="402" height="520" />
+            </picture>
             <div class="doc__body">
               <h3 class="doc__title">Lettre de recommandation</h3>
               <p class="doc__meta">Suitime — 20 juillet 2026</p>
@@ -317,7 +429,10 @@
           </article>
 
           <article class="doc">
-            <img class="doc__thumb" src="assets/bulletin/bulletin.png" alt="Aperçu du bulletin de première année de BTS SIO" loading="lazy" />
+            <picture>
+              <source srcset="assets/meta/thumb-bulletin.webp" type="image/webp" />
+              <img class="doc__thumb" src="assets/meta/thumb-bulletin.jpg" alt="Aperçu du bulletin de première année de BTS SIO" loading="lazy" width="368" height="520" />
+            </picture>
             <div class="doc__body">
               <h3 class="doc__title">Bulletin de 1<sup>re</sup> année</h3>
               <p class="doc__meta">15,55 de moyenne — promotion : 12,50</p>
@@ -329,7 +444,10 @@
           </article>
 
           <article class="doc">
-            <img class="doc__thumb" src="assets/lettre-motivation/lm.png" alt="Aperçu de la lettre de motivation" loading="lazy" />
+            <picture>
+              <source srcset="assets/meta/thumb-lm.webp" type="image/webp" />
+              <img class="doc__thumb" src="assets/meta/thumb-lm.jpg" alt="Aperçu de la lettre de motivation" loading="lazy" width="368" height="520" />
+            </picture>
             <div class="doc__body">
               <h3 class="doc__title">Lettre de motivation</h3>
               <p class="doc__meta">Lettre type, adaptée à chaque entreprise</p>
@@ -347,7 +465,7 @@
     <!-- ============ Contact ============ -->
     <section class="section section--soft" id="contact" aria-labelledby="contact-title">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <span class="section-head__eyebrow">Contact</span>
           <h2 class="section-head__title" id="contact-title">Parlons-en</h2>
           <p class="section-head__lead">
@@ -356,14 +474,18 @@
           </p>
         </div>
 
-        <div class="contact">
-          <a class="contact__item" href="mailto:dorianpachot@gmail.com">
+        <div class="contact reveal">
+          <div class="contact__item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
             <span>
               <span class="contact__label">E-mail</span>
-              <span class="contact__value">dorianpachot@gmail.com</span>
+              <a class="contact__value" href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>
             </span>
-          </a>
+            <button class="copy-btn" type="button" data-copy="dorianpachot@gmail.com" style="margin-left:auto">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+              <span data-copy-label>Copier</span>
+            </button>
+          </div>
 
           <a class="contact__item" href="tel:+33771623228">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 12l5 2v4a2 2 0 0 1-2.2 2A17 17 0 0 1 3 5.2 2 2 0 0 1 5 3Z"/></svg>
@@ -402,6 +524,23 @@
       <a href="pages/mentions-legales.html">Mentions légales</a>
     </div>
   </footer>
+
+  <button class="to-top" type="button" data-to-top aria-label="Revenir en haut de la page">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+  </button>
+
+  <div class="palette" data-palette data-base="" hidden role="dialog" aria-modal="true" aria-label="Rechercher dans le site">
+    <div class="palette__box">
+      <div class="palette__field">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+        <input class="palette__input" data-palette-input type="text" placeholder="Rechercher une page, un document, un projet…"
+               role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" />
+      </div>
+      <ul class="palette__list" id="palette-list" data-palette-list role="listbox" aria-label="Résultats"></ul>
+      <p class="palette__empty" data-palette-empty hidden>Aucun résultat.</p>
+      <p class="palette__hint">↑ ↓ pour naviguer · Entrée pour ouvrir · Échap pour fermer</p>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>
