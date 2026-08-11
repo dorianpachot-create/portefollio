@@ -2517,7 +2517,12 @@ body::after {
 
 /* La derniere etape est celle qu'on veut faire lire : pastille pleine
    et titre en couleur, pour qu'on sache ou le parcours va. */
+/* La derniere etape n'a pas eu lieu : elle porte "Aujourd'hui" au lieu
+   d'une annee, et sa pastille est creuse pour qu'on voie tout de suite
+   que la frise s'arrete la et que la suite reste a ecrire. */
 .path__step--target .path__body h4 { color: var(--c); }
+.path__step--target .path__year { font-weight: 700; }
+.path__step--target::after { background: var(--bg); border-color: var(--c); border-width: 3px; }
 .path__step--target::after { width: 16px; height: 16px; left: calc(4.6rem + 0.8rem - 8px); top: 0.35rem; }
 
 @media (max-width: 700px) {
