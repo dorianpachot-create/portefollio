@@ -2487,14 +2487,16 @@ body::after {
 /* ---------- Une diapositive de projet ---------- */
 .project {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  /* La colonne visuelle est un peu plus large : le cadre est bas de
+     plafond (rapport 2.35), il a besoin de largeur pour exister. */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
   gap: 2.5rem;
   align-items: center;
   padding: 2rem 2.2rem;
   background: var(--c-bg, var(--bg-soft));
   border: 1px solid color-mix(in srgb, var(--c, var(--accent)) 25%, var(--border));
   border-radius: 14px;
-  min-height: 460px;
+  min-height: 440px;
 }
 .project__info { min-width: 0; }
 .project__head { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1rem; }
@@ -2544,40 +2546,50 @@ body::after {
 }
 .project__why p { font-size: 0.93rem; color: var(--text-2); margin: 0; }
 
-/* ---------- Visuel du projet ---------- */
-.project .tags { margin: 0 0 1.3rem; }
+/* ---------- Visuel du projet ----------
+   Les trois visuels occupent exactement le meme cadre, sinon un projet
+   parait plus important que les autres alors que rien ne le justifie.
 
-.project__visual picture { display: flex; max-width: 100%; }
-.project__visual { display: flex; justify-content: center; align-items: center; }
-/* width: auto plutot que 100% : la capture d'Orion est presque carree,
-   en pleine largeur elle depasserait la hauteur de l'ecran. On borne la
-   hauteur et la largeur suit toute seule, sans deformation. */
+   Le rapport 2.35 n'est pas choisi au hasard : c'est celui d'une rangee
+   de quatre captures de telephone en 9/16 avec leurs interstices, soit
+   4 x (9/16) + 3 x gap. Les deux captures de site ont ete recadrees a ce
+   meme rapport, donc elles remplissent le cadre a la hauteur pres.
+
+   Ne pas toucher au rapport sans recadrer les images de assets/meta/,
+   les trois sont liees. */
+.project__visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  aspect-ratio: 2.35 / 1;
+}
+.project__visual picture { display: block; width: 100%; height: 100%; }
+
+/* Une capture de site : elle remplit tout le cadre. */
 .project__shot {
-  width: auto;
-  max-width: 100%;
-  max-height: 480px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 12px;
   border: 1px solid color-mix(in srgb, var(--c) 22%, var(--border));
   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.18);
   display: block;
 }
 
-@media (max-width: 940px) {
-  .project { grid-template-columns: 1fr; gap: 1.8rem; padding: 1.6rem; min-height: 0; }
-  .project__visual { order: -1; }
-}
-
-/* Quatre captures de telephone cote a cote, legerement decalees
-   en hauteur pour que ca ne fasse pas catalogue. */
+/* Quatre captures de telephone : meme cadre, decoupe en quatre colonnes.
+   La hauteur est imposee a 100% pour que les quatre s'alignent au pixel,
+   quelle que soit la largeur d'ecran. */
 .project__shots {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.7rem;
   width: 100%;
+  height: 100%;
 }
 .project__shots img {
   width: 100%;
-  aspect-ratio: 9 / 16;
+  height: 100%;
   object-fit: cover;
   object-position: top center;
   border-radius: 10px;
@@ -2585,18 +2597,20 @@ body::after {
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
   display: block;
 }
-.project__shots img:nth-child(even) { transform: translateY(16px); }
+
+.project .tags { margin: 0 0 1.3rem; }
 .project .store-links { margin-top: 0; }
+
+@media (max-width: 940px) {
+  .project { grid-template-columns: 1fr; gap: 1.8rem; padding: 1.6rem; min-height: 0; }
+  .project__visual { order: -1; }
+  .project__shots { gap: 0.4rem; }
+}
 
 /* Liens secondaires sous le bloc, en texte simple pour ne pas
    concurrencer les boutons de telechargement au-dessus. */
 .project__more { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 1.1rem; }
 .project__more a { font-family: var(--mono); font-size: 0.82rem; color: var(--c, var(--accent)); }
-
-@media (max-width: 940px) {
-  .project__shots { grid-template-columns: repeat(4, 1fr); gap: 0.4rem; }
-  .project__shots img:nth-child(even) { transform: none; }
-}
 
 /* =========================================================
    9. RESPONSIVE, IMPRESSION, ANIMATIONS
