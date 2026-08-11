@@ -185,6 +185,20 @@
         </div>
 
         <div class="about reveal">
+          <!-- Portrait. Le cadre coloré décalé derrière est un pseudo-élément
+               en CSS, pas une image : rien de plus à charger. -->
+          <figure class="portrait">
+            <picture>
+              <source srcset="assets/meta/portrait.webp" type="image/webp" />
+              <img src="assets/meta/portrait.jpg" alt="Portrait de Dorian Pachot" width="720" height="720" />
+            </picture>
+            <figcaption class="portrait__caption">
+              Dorian Pachot<br />
+              <strong>Rouen, 76000</strong><br />
+              Disponible en alternance
+            </figcaption>
+          </figure>
+
           <div class="about__text">
             <p class="about__lead">
               Je suis arrivé au développement après plusieurs années passées à encadrer des

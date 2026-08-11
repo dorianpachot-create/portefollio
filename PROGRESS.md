@@ -2,6 +2,52 @@
 
 Dernière mise à jour : 2026-08-10
 
+## Mise à jour du 2026-08-10, largeurs et portrait
+
+Question de Dorian : pourquoi laisser des marges sur les côtés plutôt que prendre toute
+la page.
+
+### Deux largeurs, pas une
+
+Réponse courte : parce que le texte et les grilles n'ont pas les mêmes besoins.
+
+Au-delà d'environ 75 caractères par ligne, l'œil perd le début de la ligne suivante en
+revenant à la ligne. Un paragraphe étalé sur 1900 px est objectivement plus pénible à
+lire, même si l'écran le permet. C'est la raison pour laquelle les journaux et les livres
+sont en colonnes.
+
+En revanche, une grille de cartes, une frise ou un histogramme n'ont aucune longueur de
+ligne à respecter. Les brider n'apporte rien.
+
+D'où deux variables :
+
+| | Avant | Après | Pour quoi |
+|---|---|---|---|
+| `--maxw` | 1080 px | **1240 px** | Le texte courant |
+| `--maxw-wide` | néant | **1560 px** | Grilles, frise, histogramme, documents |
+
+Les sections Compétences, Stage, Projets, Cours et Documents passent en large. Les blocs
+de texte gardent une limite en `ch`, donc en caractères et non en pixels : la contrainte
+suit la taille de police.
+
+La largeur gagnée sert à afficher **plus de colonnes**, pas des cartes géantes. Les seuils
+des grilles ont été relevés en conséquence.
+
+### Portrait
+
+La section Qui je suis passe à trois colonnes : portrait, texte, repères. C'est ce qui
+occupe le mieux la largeur gagnée, et une photo sur un dossier de candidature n'a rien
+d'anecdotique.
+
+La photo vient de `alternance/profil.jpg`, réduite à 720 px, en WebP avec repli JPEG,
+30 Ko. Elle figure déjà sur le CV publié, donc elle était de toute façon en ligne.
+
+Le cadre coloré décalé derrière la photo est un pseudo-élément CSS, pas une image : rien
+de plus à charger.
+
+Pour la retirer : supprimer le bloc `<figure class="portrait">` dans `index.html`. La
+grille repasse d'elle-même à deux colonnes.
+
 ## Mise à jour du 2026-08-10, section Projets et mini-jeu
 
 ### Le carrousel affichait des timbres-poste

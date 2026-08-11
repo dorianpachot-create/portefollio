@@ -125,6 +125,9 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
   de compétences.
 - Chaque composant lit une variable locale `--c` : poser `--c` sur un parent recolore tout
   ce qu'il contient, sans toucher au HTML.
+- **Deux largeurs** : `--maxw` (1240 px) pour le texte, `--maxw-wide` (1560 px) pour les
+  grilles et les visuels. Les blocs de texte sont en plus limités en `ch`, donc en nombre
+  de caractères par ligne, ce qui reste lisible quelle que soit la taille d'écran.
 - Toutes les variables sont dans `:root`, en tête de `css/style.css`.
 - Deux polices, servies depuis `assets/fonts/`, aucun appel à un service tiers :
   **Inter** pour le texte courant, **JetBrains Mono** pour tout ce qui est technique

@@ -198,7 +198,21 @@
      pour calculer leur hauteur : ne pas la modifier a un seul endroit. */
   --topbar-h: 76px;
 
-  --maxw: 1080px;
+  /* DEUX LARGEURS, ET C'EST VOLONTAIRE.
+
+     --maxw sert au texte. Au-dela d'environ 75 caracteres par ligne,
+     l'oeil perd le debut de la ligne suivante et la lecture devient
+     penible. Un paragraphe etale sur 1900px est illisible, meme si
+     l'ecran le permet.
+
+     --maxw-wide sert a tout le reste : grilles de cartes, frise,
+     histogramme, documents, defile. Ces blocs n'ont pas de longueur de
+     ligne a respecter, donc autant leur donner la place.
+
+     C'est ce qui evite le choix binaire entre "tout etroit" et "tout
+     etale". */
+  --maxw:      1240px;
+  --maxw-wide: 1560px;
   --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Police technique. Elle sert aux libelles de section, aux chiffres, aux
@@ -908,7 +922,7 @@ a.card:hover, a.card:focus-visible {
 }
 
 /* ---------- Présentation ---------- */
-.about { display: grid; grid-template-columns: 1.35fr 1fr; gap: 3rem; align-items: start; }
+/* .about est redefini plus bas, dans la partie Largeurs. */
 .about__text { max-width: 62ch; }
 .about__text p { color: var(--text-2); margin-bottom: 1.1rem; }
 .about__text p:last-child { margin-bottom: 0; }
@@ -953,9 +967,7 @@ a.card:hover, a.card:focus-visible {
 .proof h3 { font-size: 0.97rem; margin-bottom: 0.35rem; }
 .proof p { font-size: 0.9rem; color: var(--text-2); margin: 0; line-height: 1.55; }
 
-@media (max-width: 900px) {
-  .about { grid-template-columns: 1fr; gap: 2rem; }
-}
+
 
 /* ---------- Matières du BTS (accueil) ---------- */
 .subjects {
@@ -2406,6 +2418,93 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 [data-theme="dark"] body::after { opacity: 0.05; }
+
+/* =========================================================
+   LARGEURS
+
+   Par defaut, un conteneur fait --maxw. Les blocs qui gagnent
+   a etre larges passent en pleine largeur via .container--wide
+   ou en ciblant directement le bloc.
+   ========================================================= */
+
+.container--wide { max-width: var(--maxw-wide); }
+
+/* Les grilles et les visuels prennent toute la largeur disponible. */
+#projets  > .container,
+#cours    > .container,
+#documents > .container,
+#competences > .container,
+#stage    > .container { max-width: var(--maxw-wide); }
+
+/* Le texte, lui, reste a une longueur de ligne lisible, meme dans un
+   conteneur large. */
+.section-head { max-width: 62ch; }
+.section-head__lead { max-width: 62ch; }
+.about__text { max-width: 60ch; }
+.week__list { max-width: 68ch; }
+.doc-intro, .doc-quote, .callout { max-width: 68ch; }
+
+/* Plus de largeur veut dire plus de colonnes, pas des cartes geantes. */
+.grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.skills { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.subjects { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.docs { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.stat-list { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+.proof { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+
+/* L'accroche respire davantage. */
+.hero { max-width: var(--maxw-wide); }
+.hero__inner { max-width: 1000px; }
+
+/* ---------- Portrait dans la presentation ----------
+   La section Qui je suis passe a trois colonnes : le portrait, le texte,
+   les reperes. C'est ce qui occupe le mieux la largeur gagnee, et une
+   photo sur un portfolio de candidature n'a rien d'anecdotique.
+
+   Le cadre decale en couleur derriere la photo est un decor, pas une
+   image : c'est un pseudo-element, donc zero fichier en plus. */
+.about {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+.portrait { position: relative; }
+.portrait::before {
+  content: "";
+  position: absolute;
+  inset: 14px -14px -14px 14px;
+  border: 2px solid var(--c, var(--accent));
+  border-radius: 14px;
+  z-index: 0;
+}
+.portrait img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  display: block;
+}
+.portrait__caption {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.6rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--text-3);
+}
+.portrait__caption strong { color: var(--c, var(--accent)); font-weight: 700; }
+
+@media (max-width: 1100px) {
+  .about { grid-template-columns: 220px minmax(0, 1fr); }
+  .about .facts { grid-column: 1 / -1; }
+}
+@media (max-width: 760px) {
+  .about { grid-template-columns: 1fr; gap: 2rem; }
+  .portrait { max-width: 240px; }
+}
 
 /* =========================================================
    9. RESPONSIVE, IMPRESSION, ANIMATIONS
