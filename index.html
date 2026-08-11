@@ -448,176 +448,260 @@
 
     <!-- ================================================================
          PROJETS
-         SYNCRO est mis en avant en pleine largeur, les autres suivent en
-         grille. Chaque carte porte un data-tech utilise par les filtres :
-         si on ajoute une carte, penser a renseigner cet attribut.
+
+         Un seul carrousel, trois projets, le meme gabarit pour les trois.
+         Avant, SYNCRO avait un grand bloc a lui et les deux autres se
+         contentaient d'une vignette : ca donnait l'impression que le reste
+         comptait moins, alors que ce n'est pas le cas.
+
+         Chaque diapositive dit la meme chose dans le meme ordre :
+         ce que c'est, pourquoi je l'ai fait, avec quoi, et ou aller voir.
+
+         Pour ajouter un projet : copier un <li class="carousel__slide">,
+         ajouter son onglet dans .projects__tabs avec le bon data-carousel-go
+         (les index partent de 0), et mettre a jour le total du compteur.
+         La couleur du bloc se pose en une ligne avec --c et --c-bg.
          ================================================================ -->
     <section class="section" id="projets" data-num="04" aria-labelledby="projets-title">
-      <div class="container">
+      <div class="container container--wide">
         <div class="section-head reveal">
           <span class="section-head__eyebrow">Réalisations</span>
           <h2 class="section-head__title" id="projets-title">Projets</h2>
           <p class="section-head__lead">
-            Ce que j'ai construit, seul ou en entreprise. Deux sont en production et
-            utilisés au quotidien. Filtrez par technologie pour retrouver ce qui vous
-            intéresse.
+            Trois projets menés jusqu'au bout, deux en production et utilisés tous les
+            jours. Pour chacun : ce que c'est, pourquoi je l'ai fait, et où aller voir
+            par vous-même.
           </p>
         </div>
 
-        <article class="promo promo--wide reveal" aria-labelledby="promo-title">
-      <div class="promo__head">
-        <img class="promo__logo" src="assets/syncro/screens/logo.jpg" alt="" width="52" height="52" />
-        <div>
-          <h2 class="promo__name" id="promo-title">SYNCRO</h2>
-          <span class="promo__badge">En production</span>
-        </div>
-      </div>
-      <p class="promo__desc">
-        Application de plannings d'équipe développée pour Suitime d'avril à août 2026,
-        dont cinq semaines de stage à temps plein. Front Flutter, back-end Next.js,
-        base SQL. Publiée sur les deux magasins d'applications.
-      </p>
-      <ul class="store-links">
-        <li>
-          <a class="store-link" href="https://apps.apple.com/fr/app/syncro/id6787898930" target="_blank" rel="noopener noreferrer" aria-label="Télécharger SYNCRO dans l'App Store, nouvel onglet">
-            <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M16.4 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.6 2.1-1.5 2.6-.4 6.5 1.1 8.7.7 1 1.6 2.2 2.7 2.2 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.8.7 1.2 0 1.9-1.1 2.6-2.1.8-1.2 1.2-2.4 1.2-2.5-.1 0-2.2-.9-2.2-3.3ZM14.3 5.9c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.7-.9 2.6 1 .1 2-.5 2.6-1.2Z"/></svg>
-            <span>
-              <span class="store-link__sub">Télécharger dans l'</span>
-              <span class="store-link__name">App Store</span>
-            </span>
-          </a>
-        </li>
-        <li>
-          <a class="store-link" href="https://play.google.com/store/apps/details?id=fr.appsyncro.mobile" target="_blank" rel="noopener noreferrer" aria-label="Télécharger SYNCRO sur Google Play, nouvel onglet">
-            <!-- Triangle Google Play, chaque face dans sa couleur d'origine. -->
-            <svg viewBox="0 0 512 512" aria-hidden="true">
-              <path fill="#00d3ff" d="M47 21c-7 7-11 18-11 33v404c0 15 4 26 11 33l2 2 226-226v-6L49 19z"/>
-              <path fill="#ffce00" d="M349 331 274 267v-6l75-64 2 1 89 51c26 14 26 38 0 52z"/>
-              <path fill="#ff3a44" d="M351 313 274 256 47 483c9 9 23 10 39 1z"/>
-              <path fill="#00c853" d="M351 199 86 28c-16-9-30-8-39 1l227 227z"/>
-            </svg>
-            <span>
-              <span class="store-link__sub">Disponible sur</span>
-              <span class="store-link__name">Google Play</span>
-            </span>
-          </a>
-        </li>
-        <li>
-          <a class="store-link store-link--site" href="https://appsyncro.fr" target="_blank" rel="noopener noreferrer" aria-label="Voir le site appsyncro.fr, nouvel onglet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9Z"/></svg>
-            <span>
-              <span class="store-link__sub">Site vitrine</span>
-              <span class="store-link__name">appsyncro.fr</span>
-            </span>
-          </a>
-        </li>
-      </ul>
+        <div class="projects carousel carousel--projects reveal" data-carousel>
 
-      <div class="carousel carousel--compact" data-carousel>
-        <p class="carousel__label">L'application en images</p>
-
-        <div class="carousel__viewport" data-carousel-viewport tabindex="0" role="group" aria-label="Captures d'écran de SYNCRO">
-          <ul class="carousel__track" data-carousel-track>
-          <li class="carousel__slide">
-            <img src="assets/syncro/screens/screen-1.jpg" alt="Écran SYNCRO : planning de la semaine avec la couverture par jour." loading="lazy" width="720" height="1280" />
-          </li>
-          <li class="carousel__slide">
-            <img src="assets/syncro/screens/screen-2.jpg" alt="Écran SYNCRO : saisie des disponibilités par créneau, matin et après-midi." loading="lazy" width="720" height="1280" />
-          </li>
-          <li class="carousel__slide">
-            <img src="assets/syncro/screens/screen-3.jpg" alt="Écran SYNCRO : gestion des groupes et des rôles des membres." loading="lazy" width="720" height="1280" />
-          </li>
-          <li class="carousel__slide">
-            <img src="assets/syncro/screens/screen-4.jpg" alt="Écran SYNCRO : notifications en temps réel et suivi des heures." loading="lazy" width="720" height="1280" />
-          </li>
+          <!-- Onglets nommes plutot que des pastilles : on sait ou on va
+               avant de cliquer. Ils pilotent le meme carrousel que les
+               fleches, via data-carousel-go. -->
+          <ul class="projects__tabs" data-carousel-tabs>
+            <li><button class="projects__tab" type="button" data-carousel-go="0" aria-selected="true">SYNCRO</button></li>
+            <li><button class="projects__tab" type="button" data-carousel-go="1" aria-selected="false">CRP-Assurance</button></li>
+            <li><button class="projects__tab" type="button" data-carousel-go="2" aria-selected="false">Mission Orion</button></li>
           </ul>
+
+          <div class="carousel__viewport" data-carousel-viewport tabindex="0" role="group" aria-label="Mes projets, un par un">
+            <ul class="carousel__track" data-carousel-track>
+
+              <!-- ---------- SYNCRO ---------- -->
+              <li class="carousel__slide">
+                <article class="project" style="--c: var(--c-blue); --c-bg: var(--c-blue-bg);">
+                  <div class="project__info">
+                    <div class="project__head">
+                      <img class="project__logo" src="assets/syncro/screens/logo.jpg" alt="" width="54" height="54" />
+                      <div>
+                        <h3 class="project__name">SYNCRO</h3>
+                        <p class="project__meta">// Avril à août 2026, pour Suitime</p>
+                        <span class="project__badge">En production</span>
+                      </div>
+                    </div>
+
+                    <p class="project__desc">
+                      Application mobile de plannings d'équipe. Front en Flutter, back-end en
+                      Next.js, base SQL. J'ai suivi le projet de la première maquette jusqu'à la
+                      publication sur les deux magasins, dont cinq semaines de stage à temps plein.
+                    </p>
+
+                    <div class="project__why">
+                      <h4>Pourquoi ce projet</h4>
+                      <p>
+                        L'équipe gérait ses plannings entre un tableau et des messages, et ça se
+                        perdait tout le temps. Le vrai enjeu n'était pas technique : il fallait que
+                        n'importe qui puisse l'ouvrir et comprendre en dix secondes, sans formation.
+                        C'est ce qui a guidé toutes les décisions d'interface.
+                      </p>
+                    </div>
+
+                    <ul class="tags">
+                      <li class="tag">Flutter</li><li class="tag">Next.js</li><li class="tag">SQL</li><li class="tag">API REST</li><li class="tag">Stores</li>
+                    </ul>
+
+                    <ul class="store-links">
+            <li>
+              <a class="store-link" href="https://apps.apple.com/fr/app/syncro/id6787898930" target="_blank" rel="noopener noreferrer" aria-label="Télécharger SYNCRO dans l'App Store, nouvel onglet">
+                <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M16.4 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.6 2.1-1.5 2.6-.4 6.5 1.1 8.7.7 1 1.6 2.2 2.7 2.2 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.8.7 1.2 0 1.9-1.1 2.6-2.1.8-1.2 1.2-2.4 1.2-2.5-.1 0-2.2-.9-2.2-3.3ZM14.3 5.9c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.7-.9 2.6 1 .1 2-.5 2.6-1.2Z"/></svg>
+                <span>
+                  <span class="store-link__sub">Télécharger dans l'</span>
+                  <span class="store-link__name">App Store</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="store-link" href="https://play.google.com/store/apps/details?id=fr.appsyncro.mobile" target="_blank" rel="noopener noreferrer" aria-label="Télécharger SYNCRO sur Google Play, nouvel onglet">
+                <!-- Triangle Google Play, chaque face dans sa couleur d'origine. -->
+                <svg viewBox="0 0 512 512" aria-hidden="true">
+                  <path fill="#00d3ff" d="M47 21c-7 7-11 18-11 33v404c0 15 4 26 11 33l2 2 226-226v-6L49 19z"/>
+                  <path fill="#ffce00" d="M349 331 274 267v-6l75-64 2 1 89 51c26 14 26 38 0 52z"/>
+                  <path fill="#ff3a44" d="M351 313 274 256 47 483c9 9 23 10 39 1z"/>
+                  <path fill="#00c853" d="M351 199 86 28c-16-9-30-8-39 1l227 227z"/>
+                </svg>
+                <span>
+                  <span class="store-link__sub">Disponible sur</span>
+                  <span class="store-link__name">Google Play</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="store-link store-link--site" href="https://appsyncro.fr" target="_blank" rel="noopener noreferrer" aria-label="Voir le site appsyncro.fr, nouvel onglet">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9Z"/></svg>
+                <span>
+                  <span class="store-link__sub">Site vitrine</span>
+                  <span class="store-link__name">appsyncro.fr</span>
+                </span>
+              </a>
+            </li>
+                    </ul>
+
+                    <p class="project__more">
+                      <a href="pages/projets-perso.html#syncro">Le détail du projet</a>
+                      <a href="pages/stage.html">Le journal de stage</a>
+                    </p>
+                  </div>
+
+                  <div class="project__visual">
+                    <div class="project__shots">
+                <img src="assets/syncro/screens/screen-1.jpg" alt="Écran SYNCRO : planning de la semaine avec la couverture par jour." loading="lazy" width="720" height="1280" />
+                <img src="assets/syncro/screens/screen-2.jpg" alt="Écran SYNCRO : saisie des disponibilités par créneau, matin et après-midi." loading="lazy" width="720" height="1280" />
+                <img src="assets/syncro/screens/screen-3.jpg" alt="Écran SYNCRO : gestion des groupes et des rôles des membres." loading="lazy" width="720" height="1280" />
+                <img src="assets/syncro/screens/screen-4.jpg" alt="Écran SYNCRO : notifications en temps réel et suivi des heures." loading="lazy" width="720" height="1280" />
+                    </div>
+                  </div>
+                </article>
+              </li>
+
+              <!-- ---------- CRP-Assurance ---------- -->
+              <li class="carousel__slide">
+                <article class="project" style="--c: var(--c-teal); --c-bg: var(--c-teal-bg);">
+                  <div class="project__info">
+                    <div class="project__head">
+                      <div>
+                        <h3 class="project__name">CRP-Assurance.com</h3>
+                        <p class="project__meta">// Client indépendant</p>
+                        <span class="project__badge">En production</span>
+                      </div>
+                    </div>
+
+                    <p class="project__desc">
+                      Site professionnel réalisé de A à Z pour un cabinet d'assurance : recueil du
+                      besoin, conception des pages, développement, hébergement, nom de domaine et
+                      mise en conformité RGPD. Il tourne encore aujourd'hui.
+                    </p>
+
+                    <div class="project__why">
+                      <h4>Pourquoi ce projet</h4>
+                      <p>
+                        C'était mon premier vrai client, et j'y ai appris que le plus dur n'est pas
+                        le code. Quand quelqu'un demande « un site sérieux », il faut d'abord
+                        comprendre ce qu'il met derrière ce mot. Depuis, je pose mes questions avant
+                        d'ouvrir l'éditeur.
+                      </p>
+                    </div>
+
+                    <ul class="tags">
+                      <li class="tag">HTML</li><li class="tag">CSS</li><li class="tag">JavaScript</li><li class="tag">Hébergement</li><li class="tag">RGPD</li>
+                    </ul>
+
+                    <ul class="store-links">
+                      <li>
+                        <a class="store-link store-link--site" href="https://crp-assurance.com" target="_blank" rel="noopener noreferrer" aria-label="Voir le site crp-assurance.com, nouvel onglet">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9Z"/></svg>
+                          <span>
+                            <span class="store-link__sub">Site en ligne</span>
+                            <span class="store-link__name">crp-assurance.com</span>
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+
+                    <p class="project__more">
+                      <a href="pages/projets-perso.html">Voir la fiche complète</a>
+                    </p>
+                  </div>
+
+                  <div class="project__visual">
+                    <picture>
+                      <source srcset="assets/meta/shot-crp.webp" type="image/webp" />
+                      <img class="project__shot" src="assets/meta/shot-crp.jpg" alt="Page d'accueil du site CRP-Assurance.com" loading="lazy" width="1100" height="528" />
+                    </picture>
+                  </div>
+                </article>
+              </li>
+
+              <!-- ---------- Mission Orion ---------- -->
+              <li class="carousel__slide">
+                <article class="project" style="--c: var(--c-violet); --c-bg: var(--c-violet-bg);">
+                  <div class="project__info">
+                    <div class="project__head">
+                      <div>
+                        <h3 class="project__name">Mission Orion</h3>
+                        <p class="project__meta">// Projet personnel, toujours en cours</p>
+                      </div>
+                    </div>
+
+                    <p class="project__desc">
+                      Un jeu spatial écrit en Python avec pygame, puis compilé en WebAssembly avec
+                      pygbag pour qu'il tourne dans le navigateur. Rien à installer : le bouton
+                      ci-dessous lance la partie directement.
+                    </p>
+
+                    <div class="project__why">
+                      <h4>Pourquoi ce projet</h4>
+                      <p>
+                        Commencé en cours pour pratiquer Python, continué chez moi parce que j'ai
+                        vraiment accroché. Il n'est pas fini, et c'est ma copine qui le teste et me
+                        dit ce qui ne va pas. Beaucoup d'idées viennent d'elle.
+                      </p>
+                    </div>
+
+                    <ul class="tags">
+                      <li class="tag">Python</li><li class="tag">pygame</li><li class="tag">pygbag</li><li class="tag">WebAssembly</li>
+                    </ul>
+
+                    <ul class="store-links">
+                      <li>
+                        <a class="store-link store-link--site" href="pages/mini-jeu.html" aria-label="Jouer à Mission Orion dans le navigateur">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5v17l14-8.5z"/></svg>
+                          <span>
+                            <span class="store-link__sub">Sans rien installer</span>
+                            <span class="store-link__name">Jouer maintenant</span>
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+
+                    <p class="project__more">
+                      <a href="pages/projets-perso.html">Voir la fiche complète</a>
+                    </p>
+                  </div>
+
+                  <div class="project__visual">
+                    <picture>
+                      <source srcset="assets/meta/shot-orion.webp" type="image/webp" />
+                      <img class="project__shot" src="assets/meta/shot-orion.jpg" alt="Capture du jeu Mission Orion en cours de partie" loading="lazy" width="1071" height="781" />
+                    </picture>
+                  </div>
+                </article>
+              </li>
+
+            </ul>
+          </div>
+
+          <div class="carousel__nav">
+            <button class="icon-btn" type="button" data-carousel-prev aria-label="Projet précédent">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
+            </button>
+            <span class="carousel__count" data-carousel-count aria-live="polite">1 / 3</span>
+            <button class="icon-btn" type="button" data-carousel-next aria-label="Projet suivant">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+            </button>
+          </div>
+
         </div>
-
-        <div class="carousel__nav">
-          <button class="icon-btn" type="button" data-carousel-prev aria-label="Capture précédente">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
-          </button>
-          <span class="carousel__count" data-carousel-count aria-live="polite">1 / 4</span>
-          <button class="icon-btn" type="button" data-carousel-next aria-label="Capture suivante">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
-          </button>
-        </div>
-      </div>
-      </article>
-
-        <div class="filters reveal" data-filters role="group" aria-label="Filtrer les projets par technologie">
-          <button class="filter" type="button" data-filter="all" aria-pressed="true">Tout <span class="filter__count">3</span></button>
-          <button class="filter" type="button" data-filter="flutter" aria-pressed="false">Flutter</button>
-          <button class="filter" type="button" data-filter="nextjs" aria-pressed="false">Next.js</button>
-          <button class="filter" type="button" data-filter="js" aria-pressed="false">JavaScript</button>
-          <button class="filter" type="button" data-filter="python" aria-pressed="false">Python</button>
-          <button class="filter" type="button" data-filter="sql" aria-pressed="false">SQL</button>
-        </div>
-
-        <p class="filters__empty" data-filters-empty hidden>Aucun projet avec cette technologie pour l'instant.</p>
-
-        <div class="grid stagger reveal">
-
-          <a class="card card--visual" href="pages/projets-perso.html#syncro" data-tech="flutter|nextjs|sql">
-            <span class="card__cover">
-              <picture>
-                <source srcset="assets/meta/cover-syncro.webp" type="image/webp" />
-                <img src="assets/meta/cover-syncro.jpg" alt="Capture de l'application SYNCRO : planning d'équipe de la semaine" loading="lazy" width="760" height="400" />
-              </picture>
-              <span class="card__flag">En production</span>
-            </span>
-            <span class="card__body">
-            <h3 class="card__title">SYNCRO</h3>
-            <p class="card__desc">
-              Application mobile de plannings d'équipe pour Suitime, développée de bout en bout
-              sur cinq mois. Publiée sur l'App Store et Google Play, avec son site vitrine.
-            </p>
-            <ul class="tags"><li class="tag">Flutter</li><li class="tag">Next.js</li><li class="tag">SQL</li><li class="tag">API REST</li></ul>
-            <span class="card__link">Voir le détail</span>
-            </span>
-          </a>
-
-          <a class="card card--visual" href="https://crp-assurance.com" target="_blank" rel="noopener noreferrer" data-tech="js">
-            <span class="card__cover">
-              <picture>
-                <source srcset="assets/meta/cover-crp.webp" type="image/webp" />
-                <img src="assets/meta/cover-crp.jpg" alt="Page d'accueil du site CRP-Assurance.com" loading="lazy" width="760" height="400" />
-              </picture>
-              <span class="card__flag">En production</span>
-            </span>
-            <span class="card__body">
-            <h3 class="card__title">CRP-Assurance.com</h3>
-            <p class="card__desc">
-              Site professionnel réalisé de A à Z pour un cabinet d'assurance : recueil du
-              besoin, conception, développement, hébergement et nom de domaine.
-            </p>
-            <ul class="tags"><li class="tag">HTML</li><li class="tag">CSS</li><li class="tag">JavaScript</li><li class="tag">RGPD</li></ul>
-            <span class="card__link">Voir le site</span>
-            </span>
-          </a>
-
-
-          <a class="card card--visual" href="pages/mini-jeu.html" data-tech="python">
-            <span class="card__cover">
-              <picture>
-                <source srcset="assets/meta/cover-orion.webp" type="image/webp" />
-                <img src="assets/meta/cover-orion.jpg" alt="Capture du jeu Mission Orion" loading="lazy" width="760" height="400" />
-              </picture>
-            </span>
-            <span class="card__body">
-            <h3 class="card__title">Mission Orion</h3>
-            <p class="card__desc">
-              Jeu spatial en Python avec pygame, compilé en WebAssembly. Jouable
-              directement dans le navigateur, sans rien installer.
-            </p>
-            <ul class="tags"><li class="tag">Python</li><li class="tag">pygame</li><li class="tag">WebAssembly</li></ul>
-            <span class="card__link">Jouer maintenant</span>
-            </span>
-          </a>
-
-
-        </div>
-
       </div>
     </section>
 

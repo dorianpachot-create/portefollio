@@ -11,18 +11,17 @@
  *   2. Menu repliable .......... bouton Menu en dessous de 760px
  *   3. Section en cours ........ surligne le lien de la section lue
  *   4. Palette de commandes .... la recherche, au clic ou au Ctrl+K
- *   5. Filtre des projets ...... les puces Flutter, Python, etc.
- *   6. Carrousel ............... les captures de SYNCRO
- *   7. Copie de l'e-mail ....... bouton Copier de la section Contact
- *   8. Lumiere a la souris ..... halo qui suit le curseur sur les cartes
- *   9. Moteur de defilement .... un seul ecouteur pour tout le site
- *  10. Apparitions ............. reveal, cascade, histogramme, compteurs
+ *   5. Carrousel ............... projets et captures, fleches et onglets
+ *   6. Copie de l'e-mail ....... bouton Copier de la section Contact
+ *   7. Lumiere a la souris ..... halo qui suit le curseur sur les cartes
+ *   8. Moteur de defilement .... un seul ecouteur pour tout le site
+ *   9. Apparitions ............. reveal, cascade, histogramme, compteurs
  *
  * LE PRINCIPE A RETENIR
  * Chaque bloc commence par chercher son HTML et s'arrete tout de suite
  * s'il ne le trouve pas. C'est ce qui permet de charger le meme fichier
- * sur les 8 pages : la palette existe partout, les filtres seulement
- * sur l'accueil, et rien ne casse.
+ * sur les 8 pages : la palette existe partout, le carrousel seulement
+ * la ou il y a des diapositives, et rien ne casse.
  *
  * Le site doit rester lisible meme si ce fichier ne se charge pas. Les
  * animations sont donc desactivees par defaut en CSS et n'apparaissent
@@ -283,76 +282,47 @@
   })();
 
   /* =======================================================
-     5. FILTRE DES PROJETS
+     5. CARROUSEL
 
-     Chaque carte porte un attribut data-tech du genre
-     "flutter|nextjs|sql". Un clic sur une puce compare cette
-     liste au filtre demande et masque les cartes qui ne
-     correspondent pas.
-
-     On se contente d'ajouter ou d'enlever une classe : le DOM
-     n'est jamais reconstruit, donc rien ne clignote.
-     ======================================================= */
-  (function filters() {
-    const bar = $('[data-filters]');
-    if (!bar) return;
-
-    const cards = $$('[data-tech]');
-    const empty = $('[data-filters-empty]');
-    if (!cards.length) return;
-
-    bar.addEventListener('click', (e) => {
-      const btn = e.target.closest('.filter');
-      if (!btn) return;
-
-      $$('.filter', bar).forEach((b) =>
-        b.setAttribute('aria-pressed', String(b === btn))
-      );
-
-      const want = btn.dataset.filter;
-      let visible = 0;
-      cards.forEach((card) => {
-        const techs = (card.dataset.tech || '').split('|');
-        const ok = want === 'all' || techs.indexOf(want) !== -1;
-        card.classList.toggle('is-hidden', !ok);
-        if (ok) visible++;
-      });
-      if (empty) empty.hidden = visible > 0;
-    });
-  })();
-
-  /* =======================================================
-     6. CARROUSEL
-
-     Une image a la fois. Le principe est volontairement bete :
-     on garde un index, et on fait glisser la bande d'images de
-     -index * 100%. Comme chaque image occupe exactement la
-     largeur de la fenetre, on ne peut jamais en voir deux a
+     Une diapositive a la fois. Le principe est volontairement
+     bete : on garde un index, et on fait glisser la bande de
+     -index * 100%. Comme chaque diapositive occupe exactement
+     la largeur du cadre, on ne peut jamais en voir deux a
      moitie.
 
-     L'ancienne version reposait sur le defilement natif et la
-     position se calculait a partir de scrollLeft. Ca donnait des
-     resultats faux des que la largeur changeait.
+     Le meme code sert aux captures de telephone et au grand
+     carrousel de projets. La seule difference est le HTML.
+
+     Trois facons d'avancer, qui pilotent toutes le meme index :
+     les fleches, les fleches du clavier, et les onglets nommes
+     (data-carousel-go="2" va a la troisieme diapositive).
      ======================================================= */
   (function carousel() {
     $$('[data-carousel]').forEach((root) => {
-      const track = $('[data-carousel-track]', root);
+      const track  = $('[data-carousel-track]', root);
       const slides = $$('.carousel__slide', track || root);
-      const count = $('[data-carousel-count]', root);
+      const count  = $('[data-carousel-count]', root);
+      const tabs   = $$('[data-carousel-go]', root);
       if (!track || slides.length < 2) return;
 
       let index = 0;
 
       function show(i) {
-        // On boucle : apres la derniere image on revient a la premiere.
+        // On boucle : apres la derniere diapositive on revient a la premiere.
         index = (i + slides.length) % slides.length;
         track.style.transform = 'translateX(' + (-index * 100) + '%)';
         if (count) count.textContent = (index + 1) + ' / ' + slides.length;
 
-        // Les images masquees sont retirees de l'ordre de tabulation,
-        // sinon le clavier navigue vers des liens qu'on ne voit pas.
+        // Ce qui est masque sort de l'ordre de tabulation, sinon le
+        // clavier part sur des liens qu'on ne voit pas a l'ecran.
         slides.forEach((slide, k) => {
-          slide.setAttribute('aria-hidden', String(k !== index));
+          const off = k !== index;
+          slide.setAttribute('aria-hidden', String(off));
+          if ('inert' in slide) slide.inert = off;
+        });
+
+        tabs.forEach((tab) => {
+          tab.setAttribute('aria-selected', String(Number(tab.dataset.carouselGo) === index));
         });
       }
 
@@ -362,12 +332,15 @@
       $$('[data-carousel-next]', root).forEach((b) =>
         b.addEventListener('click', () => show(index + 1))
       );
+      tabs.forEach((tab) =>
+        tab.addEventListener('click', () => show(Number(tab.dataset.carouselGo)))
+      );
 
       // Fleches du clavier quand le carrousel a le focus.
       const viewport = $('[data-carousel-viewport]', root);
       if (viewport) {
         viewport.addEventListener('keydown', (e) => {
-          if (e.key === 'ArrowLeft') { e.preventDefault(); show(index - 1); }
+          if (e.key === 'ArrowLeft')  { e.preventDefault(); show(index - 1); }
           if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1); }
         });
       }
@@ -377,7 +350,7 @@
   })();
 
   /* =======================================================
-     7. COPIE DE L'E-MAIL
+     6. COPIE DE L'E-MAIL
      ======================================================= */
   (function copy() {
     $$('[data-copy]').forEach((btn) => {
@@ -413,7 +386,7 @@
   })();
 
   /* =======================================================
-     8. LUMIERE QUI SUIT LA SOURIS
+     7. LUMIERE QUI SUIT LA SOURIS
 
      On ecrit la position du curseur dans deux variables CSS,
      --mx et --my, et le CSS s'en sert pour placer un halo.
@@ -427,7 +400,7 @@
     if (reduced) return;
     if (!window.matchMedia('(hover: hover)').matches) return; // inutile au doigt
 
-    const cards = $$('.card, .promo--wide, .doc');
+    const cards = $$('.card, .doc');
     if (!cards.length) return;
 
     cards.forEach((card) => {
@@ -445,7 +418,7 @@
   })();
 
   /* =======================================================
-     9. UN SEUL ECOUTEUR DE DEFILEMENT
+     8. UN SEUL ECOUTEUR DE DEFILEMENT
 
      C'est le point le plus important du fichier pour la
      fluidite. Avant, trois blocs ecoutaient le defilement
@@ -513,7 +486,7 @@
   })();
 
   /* =======================================================
-     10. APPARITIONS ET COMPTEURS
+     9. APPARITIONS ET COMPTEURS
 
      L'apparition des blocs au defilement, l'effet de cascade,
      les barres de l'histogramme et les compteurs qui montent.

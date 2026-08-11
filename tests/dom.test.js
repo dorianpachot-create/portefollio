@@ -63,34 +63,28 @@ d.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'k', ctrlKey: true, bubble
 ok('palette : Ctrl+K ouvre', box.hidden === false);
 d.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
 
-// Filtres
-const cards = () => Array.from(d.querySelectorAll('[data-tech]'));
-const visible = () => cards().filter(c => !c.classList.contains('is-hidden')).length;
-ok('filtres : 3 cartes visibles', visible() === 3, String(visible()));
-d.querySelector('[data-filter="python"]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-ok('filtres : Python en garde 1', visible() === 1, String(visible()));
-ok('filtres : bouton actif', d.querySelector('[data-filter="python"]').getAttribute('aria-pressed') === 'true');
-d.querySelector('[data-filter="flutter"]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-ok('filtres : Flutter en garde 1', visible() === 1, String(visible()));
-d.querySelector('[data-filter="all"]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-ok('filtres : Tout remet les 3', visible() === 3);
-ok('filtres : message masque', d.querySelector('[data-filters-empty]').hidden === true);
-
-// Carrousel
-ok('carrousel : 4 images', d.querySelectorAll('.carousel__slide').length === 4,
-   String(d.querySelectorAll('.carousel__slide').length));
-ok('carrousel : demarre sur la 1re', d.querySelector('[data-carousel-count]').textContent === '1 / 4',
-   d.querySelector('[data-carousel-count]').textContent);
-ok('carrousel : une seule visible', d.querySelectorAll('.carousel__slide[aria-hidden="false"]').length === 1);
-d.querySelector('[data-carousel-next]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-ok('carrousel : suivant avance', d.querySelector('[data-carousel-count]').textContent === '2 / 4',
-   d.querySelector('[data-carousel-count]').textContent);
-ok('carrousel : la bande a glisse', d.querySelector('[data-carousel-track]').style.transform === 'translateX(-100%)',
-   d.querySelector('[data-carousel-track]').style.transform);
-d.querySelector('[data-carousel-prev]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-d.querySelector('[data-carousel-prev]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-ok('carrousel : boucle en arriere', d.querySelector('[data-carousel-count]').textContent === '4 / 4',
-   d.querySelector('[data-carousel-count]').textContent);
+// Carrousel de projets
+const slides = d.querySelectorAll('.carousel--projects .carousel__slide');
+const track = d.querySelector('.carousel--projects [data-carousel-track]');
+const count = d.querySelector('.carousel--projects [data-carousel-count]');
+const tabs = d.querySelectorAll('[data-carousel-go]');
+ok('projets : 3 diapositives', slides.length === 3, String(slides.length));
+ok('projets : 3 onglets', tabs.length === 3, String(tabs.length));
+ok('projets : autant de blocs que d\'onglets', d.querySelectorAll('.project').length === tabs.length);
+ok('projets : chaque bloc a son pourquoi', d.querySelectorAll('.project__why').length === 3);
+ok('projets : chaque bloc a ses liens', d.querySelectorAll('.project .store-links').length === 3);
+ok('projets : demarre sur le 1er', count.textContent === '1 / 3', count.textContent);
+ok('projets : un seul visible', d.querySelectorAll('.carousel--projects .carousel__slide[aria-hidden="false"]').length === 1);
+d.querySelector('.carousel--projects [data-carousel-next]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
+ok('projets : suivant avance', count.textContent === '2 / 3', count.textContent);
+ok('projets : la bande a glisse', track.style.transform === 'translateX(-100%)', track.style.transform);
+ok('projets : l\'onglet suit', tabs[1].getAttribute('aria-selected') === 'true');
+tabs[2].dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
+ok('projets : l\'onglet pilote la bande', count.textContent === '3 / 3', count.textContent);
+d.querySelector('.carousel--projects [data-carousel-next]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
+ok('projets : boucle en avant', count.textContent === '1 / 3', count.textContent);
+d.querySelector('.carousel--projects [data-carousel-prev]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
+ok('projets : boucle en arriere', count.textContent === '3 / 3', count.textContent);
 
 // Copie
 const copyBtn = d.querySelector('[data-copy]');

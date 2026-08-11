@@ -682,60 +682,6 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .btn--secondary { background: var(--bg); color: var(--text); border-color: var(--border-2); }
 .btn--secondary:hover { background: var(--bg-soft); border-color: var(--text-3); }
 
-/* ---------- Carte projet mise en avant ---------- */
-.promo {
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: var(--bg);
-  box-shadow: var(--shadow);
-  padding: 1.8rem;
-}
-.promo__head { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 0.9rem; }
-.promo__logo {
-  width: 52px; height: 52px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  object-fit: cover;
-  flex-shrink: 0;
-}
-.promo__name { font-size: 1.2rem; }
-.promo__badge {
-  display: inline-block;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--ok-text);
-  background: var(--ok-bg);
-  border-radius: var(--radius-pill);
-  padding: 0.15rem 0.6rem;
-  margin-top: 0.2rem;
-}
-.promo__desc { color: var(--text-2); font-size: 0.97rem; margin-bottom: 1.1rem; }
-
-/* Projet mis en avant, en pleine largeur en tête de la section Projets. */
-.promo--wide {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  align-items: center;
-  padding: 2rem 2.2rem;
-  margin-bottom: 2.5rem;
-}
-.promo--wide .promo__head { margin-bottom: 1rem; }
-.promo--wide .promo__logo { width: 58px; height: 58px; }
-.promo--wide .promo__name { font-size: 1.45rem; }
-.promo--wide .promo__desc { font-size: 1rem; margin-bottom: 1.4rem; }
-/* Colonne de gauche : le texte et les liens. Colonne de droite : le carrousel,
-   qui s'étend sur les trois lignes. Sans ces placements explicites, le
-   remplissage automatique de la grille enverrait le texte en colonne 2. */
-.promo--wide > :not(.carousel) { grid-column: 1; }
-.promo--wide .carousel--compact { grid-column: 2; grid-row: 1 / span 3; margin-top: 0; align-self: center; }
-.promo--wide .carousel--compact .carousel__slide { width: 128px; }
-
-@media (max-width: 860px) {
-  .promo--wide { grid-template-columns: 1fr; gap: 1.6rem; padding: 1.6rem 1.7rem; }
-  .promo--wide .carousel--compact { grid-column: 1; grid-row: auto; }
-}
-
 /* ---------- Badges de magasins d'applications ----------
    Reproduction fidele des badges officiels : fond noir, coins arrondis,
    logo a gauche, petite ligne au-dessus du nom du magasin.
@@ -819,7 +765,6 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------- Grilles de cartes ---------- */
 .grid { display: grid; gap: 1.6rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-.grid--row { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 
 .card {
   display: block;
@@ -836,7 +781,6 @@ a.card:hover, a.card:focus-visible {
   transform: translateY(-3px);
   text-decoration: none;
 }
-.card--static { background: var(--bg-soft); }
 .card__icon {
   display: inline-flex;
   align-items: center;
@@ -850,46 +794,10 @@ a.card:hover, a.card:focus-visible {
 .card__icon svg { width: 21px; height: 21px; }
 
 /* Bandeau visuel en tête de carte, quand une image est disponible. */
-.card--visual { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
-.card--visual .card__body { padding: 1.3rem 1.4rem 1.4rem; display: flex; flex-direction: column; flex: 1; }
-.card__cover {
-  position: relative;
-  height: 132px;
-  background: var(--bg-tint);
-  border-bottom: 1px solid var(--border);
-  overflow: hidden;
-}
-.card__cover img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-.card__cover--tint { display: flex; align-items: center; justify-content: center; }
-.card__cover--tint svg { width: 46px; height: 46px; color: var(--accent); opacity: 0.55; }
 /* Le badge etait pose en haut a gauche de la vignette, en plein sur
    l'image. Il descend au ras du bas du cadre, sur la zone la moins
    chargee, et prend un fond opaque pour rester lisible quelle que soit
    l'image derriere. */
-.card__flag {
-  position: absolute;
-  left: 0.75rem;
-  bottom: 0.6rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.66rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ok-text);
-  background: var(--bg);
-  border: 1px solid color-mix(in srgb, var(--ok-text) 30%, transparent);
-  border-radius: var(--radius-pill);
-  padding: 0.2rem 0.6rem 0.2rem 0.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,.18);
-}
-.card__flag::before {
-  content: "";
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--ok-dot);
-}
 .card__title { font-size: 1.1rem; margin-bottom: 0.45rem; }
 .card__desc { color: var(--text-2); font-size: 0.95rem; margin: 0; }
 .card__link {
@@ -966,8 +874,6 @@ a.card:hover, a.card:focus-visible {
 }
 .proof h3 { font-size: 0.97rem; margin-bottom: 0.35rem; }
 .proof p { font-size: 0.9rem; color: var(--text-2); margin: 0; line-height: 1.55; }
-
-
 
 /* ---------- Matières du BTS (accueil) ---------- */
 .subjects {
@@ -1365,20 +1271,6 @@ a.card:hover, a.card:focus-visible {
   color: #6f7d9b;
   margin: 0 0 0.7rem;
 }
-.play__keys { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
-.play__keys li { display: flex; align-items: center; gap: 0.7rem; font-size: 0.86rem; color: #b6c1d8; }
-.play__keys kbd {
-  font-family: var(--mono);
-  font-size: 0.74rem;
-  min-width: 2.1rem;
-  text-align: center;
-  padding: 0.22rem 0.4rem;
-  border-radius: 5px;
-  background: #141b2b;
-  border: 1px solid #2a3348;
-  border-bottom-width: 2px;
-  color: #dbe4f5;
-}
 .play__stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .play__stack span {
   font-family: var(--mono);
@@ -1620,113 +1512,50 @@ a.card:hover, a.card:focus-visible {
   background: var(--bg-soft);
 }
 
-/* ---------- Filtres de projets ---------- */
-.filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.6rem; }
-.filter {
-  border: 1px solid var(--border-2);
-  background: var(--bg);
-  color: var(--text-2);
-  border-radius: var(--radius-pill);
-  padding: 0.4rem 0.9rem;
-  font: inherit;
-  font-size: 0.88rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-}
-.filter:hover { border-color: var(--accent); color: var(--accent); }
-.filter[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
-.filter__count { opacity: 0.7; font-size: 0.82rem; }
-
-.card.is-hidden { display: none; }
-.filters__empty { color: var(--text-3); }
-.filters__empty[hidden] { display: none; }
-
 /* ---------- Carrousel ----------
-   Une image a la fois, jamais plus. Le principe : une fenetre qui coupe
-   ce qui depasse (.carousel__viewport), et une bande d'images de la meme
-   largeur qu'on fait glisser au transform. Chaque image occupe 100% de
-   la fenetre, donc il est impossible d'en voir deux a moitie.
+   Une diapositive a la fois, jamais plus. Le principe : une fenetre qui
+   coupe ce qui depasse (.carousel__viewport) et une bande qu'on fait
+   glisser au transform. Chaque diapositive occupe 100% de la fenetre,
+   donc il est impossible d'en voir deux a moitie.
 
-   La hauteur est fixe et l'image est en object-fit: contain. Une capture
-   de telephone fait 720x1280, sans hauteur fixe elle ferait deborder la
-   carte de plusieurs centaines de pixels. */
+   Aucune hauteur n'est imposee ici : c'est le contenu le plus haut qui
+   la donne, et les autres diapositives s'alignent dessus. */
 .carousel { position: relative; }
-.carousel__label {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--text-3);
-  margin-bottom: 0.7rem;
-}
-.carousel__viewport {
-  overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg-soft);
-}
+.carousel__viewport { overflow: hidden; border-radius: 14px; }
 .carousel__track {
   display: flex;
+  align-items: stretch;
   margin: 0;
   padding: 0;
   list-style: none;
   transition: transform 0.35s ease;
 }
-/* Les captures font 1080x1920, soit du 9/16. Avant, elles etaient posees
-   dans un cadre large en object-fit: contain : l'image occupait un tiers
-   de la surface et le reste etait vide.
-
-   Maintenant le cadre lui-meme est en 9/16 et limite en largeur. L'image
-   le remplit entierement. */
-.carousel__viewport { max-width: 300px; margin-inline: auto; }
 .carousel__slide {
   flex: 0 0 100%;
   width: 100%;
   margin: 0;
   padding: 0;
-  aspect-ratio: 9 / 16;
+  display: flex;
 }
-.carousel__slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  display: block;
-}
+.carousel__slide > * { flex: 1; }
 
 .carousel__nav {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   gap: 0.7rem;
-  margin-top: 0.9rem;
+  margin-top: 1rem;
 }
-.carousel__dots { display: flex; gap: 0.4rem; }
-.carousel__dot {
-  width: 8px; height: 8px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: var(--border-2);
-  cursor: pointer;
-  transition: background 0.15s ease, transform 0.15s ease;
-}
-.carousel__dot[aria-current="true"] { background: var(--accent); transform: scale(1.35); }
 .carousel__count { font-size: 0.85rem; color: var(--text-3); min-width: 3.2rem; text-align: center; }
 
-/* Version compacte, utilisee dans la carte du projet mis en avant. */
-.carousel--compact .carousel__viewport { max-width: 260px; }
-.carousel--compact .icon-btn { width: 32px; height: 32px; }
-.carousel--compact .icon-btn svg { width: 16px; height: 16px; }
-
 /* Sans JavaScript, le transform ne bouge jamais. On rend alors la bande
-   defilable a la main pour que les autres captures restent accessibles. */
+   defilable a la main pour que les autres diapositives restent
+   accessibles, et on cache des fleches qui ne feraient rien. */
 .carousel__viewport { overflow-x: auto; scroll-snap-type: x mandatory; }
 .js .carousel__viewport { overflow-x: hidden; }
 .carousel__slide { scroll-snap-align: center; }
-.js .carousel__nav { display: flex; }
 .carousel__nav { display: none; }
+.js .carousel__nav { display: flex; }
 
 /* ---------- Frise du projet ---------- */
 .timeline {
@@ -1954,8 +1783,6 @@ a.card:hover, a.card:focus-visible {
   border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
   box-shadow: 0 14px 34px color-mix(in srgb, var(--accent) 14%, transparent);
 }
-.card__cover img { transition: transform 0.45s cubic-bezier(.2,.7,.3,1); }
-a.card:hover .card__cover img { transform: scale(1.06); }
 
 .subject-card:hover, .subject-card:focus-visible {
   transform: translateY(-4px);
@@ -1976,17 +1803,6 @@ a.card:hover .card__cover img { transform: scale(1.06); }
 .contact__item:hover { transform: translateY(-3px); }
 
 /* Le projet mis en avant a droit a un liseré coloré en haut. */
-.promo--wide {
-  position: relative;
-  overflow: hidden;
-}
-.promo--wide::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--halo-2) 55%, var(--halo-3));
-}
 
 /* Les chiffres cles prennent la couleur d'accent, plus vivant que du noir. */
 .stat__value { color: var(--accent); }
@@ -2082,8 +1898,8 @@ a.card:hover .card__cover img { transform: scale(1.06); }
 
    L'opacite est animee plutot que le degrade lui-meme : animer un
    background force le navigateur a repeindre en continu. */
-.card, .promo--wide, .doc, .subject-card, .stat { position: relative; }
-.card::after, .promo--wide::after, .doc::after {
+.card, .doc, .subject-card, .stat { position: relative; }
+.card::after, .doc::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -2097,10 +1913,10 @@ a.card:hover .card__cover img { transform: scale(1.06); }
     transparent 70%
   );
 }
-.card:hover::after, .promo--wide:hover::after, .doc:hover::after { opacity: 1; }
+.card:hover::after, .doc:hover::after { opacity: 1; }
 
 /* Le contenu de la carte doit rester au-dessus du halo. */
-.card > *, .promo--wide > *, .doc > * { position: relative; z-index: 1; }
+.card > *, .doc > * { position: relative; z-index: 1; }
 
 /* ---------- Frise : les etapes se soulevent ---------- */
 .phase { transition: background 0.2s ease, transform 0.2s ease; }
@@ -2275,8 +2091,8 @@ a.card:hover .card__cover img { transform: scale(1.06); }
 .grid > *:nth-child(4n+3) { --c: var(--c-violet); --c-bg: var(--c-violet-bg); }
 .grid > *:nth-child(4n+4) { --c: var(--c-amber);  --c-bg: var(--c-amber-bg); }
 .card { border-color: color-mix(in srgb, var(--c, var(--accent)) 22%, var(--border)); }
-.card__icon, .card__cover--tint { background: var(--c-bg, var(--bg-tint)); }
-.card__icon, .card__cover--tint svg { color: var(--c, var(--accent)); }
+.card__icon { background: var(--c-bg, var(--bg-tint)); }
+.card__icon svg { color: var(--c, var(--accent)); }
 .card__title { color: color-mix(in srgb, var(--c, var(--accent)) 62%, var(--text)); }
 .card__link { color: var(--c, var(--accent)); }
 .card .tag { background: var(--c-bg); border-color: color-mix(in srgb, var(--c) 24%, transparent); color: color-mix(in srgb, var(--c) 72%, var(--text-2)); }
@@ -2319,7 +2135,6 @@ a.card:hover, a.card:focus-visible {
 .mail-row { background: var(--c-blue-bg); border-color: color-mix(in srgb, var(--c-blue) 26%, var(--border)); }
 
 /* Le projet mis en avant. */
-.promo--wide { border-color: color-mix(in srgb, var(--c-blue) 26%, var(--border)); }
 
 /* Les etiquettes de technologies du defile. */
 .marquee__item:nth-child(5n+1) { color: var(--c-blue); }
@@ -2373,13 +2188,10 @@ a.card:hover, a.card:focus-visible {
 .bar__value,
 .chart__labels li,
 .carousel__count,
-.carousel__label,
 .tag,
 .skill__list li,
 .marquee__item,
 .search-btn__kbd,
-.promo__badge,
-.card__flag,
 .hero__eyebrow {
   font-family: var(--mono);
   font-feature-settings: "zero" 1;
@@ -2631,6 +2443,162 @@ body::after {
 }
 
 /* =========================================================
+   CARROUSEL DE PROJETS
+
+   Chaque projet occupe une diapositive entiere, avec le meme
+   gabarit : informations a gauche, visuel a droite. Avant,
+   SYNCRO avait un grand bloc a lui et les autres se
+   contentaient d'une vignette, ce qui donnait l'impression
+   que les deux autres projets comptaient moins.
+
+   La navigation se fait par onglets nommes plutot que par
+   pastilles : on sait ou on va avant de cliquer.
+   ========================================================= */
+
+.projects { margin-top: 0.5rem; }
+
+/* ---------- Onglets ---------- */
+.projects__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.6rem;
+  padding: 0;
+  list-style: none;
+}
+.projects__tab {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-pill);
+  background: var(--bg);
+  color: var(--text-2);
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.projects__tab:hover { border-color: var(--c, var(--accent)); color: var(--c, var(--accent)); }
+.projects__tab[aria-selected="true"] {
+  background: var(--c, var(--accent));
+  border-color: var(--c, var(--accent));
+  color: var(--on-accent);
+}
+
+/* ---------- Une diapositive de projet ---------- */
+.project {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 2.5rem;
+  align-items: center;
+  padding: 2rem 2.2rem;
+  background: var(--c-bg, var(--bg-soft));
+  border: 1px solid color-mix(in srgb, var(--c, var(--accent)) 25%, var(--border));
+  border-radius: 14px;
+  min-height: 460px;
+}
+.project__info { min-width: 0; }
+.project__head { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1rem; }
+.project__logo {
+  width: 54px; height: 54px;
+  border-radius: 13px;
+  border: 1px solid var(--border);
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--bg);
+}
+.project__name { font-size: 1.55rem; letter-spacing: -0.03em; color: var(--text); }
+/* --text-2 et pas --text-3 : sur un fond teinte, le gris le plus clair
+   tombe sous le seuil de contraste WCAG pour du texte de cette taille. */
+.project__meta { font-family: var(--mono); font-size: 0.76rem; color: var(--text-2); margin-top: 0.2rem; }
+.project__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ok-text);
+  background: var(--ok-bg);
+  border-radius: var(--radius-pill);
+  padding: 0.15rem 0.6rem;
+  margin-top: 0.35rem;
+}
+.project__badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ok-dot); }
+
+.project__desc { color: var(--text-2); margin-bottom: 1rem; max-width: 52ch; }
+.project__why {
+  border-left: 3px solid var(--c, var(--accent));
+  padding-left: 0.95rem;
+  margin-bottom: 1.2rem;
+  max-width: 52ch;
+}
+.project__why h4 {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c, var(--accent));
+  margin-bottom: 0.35rem;
+}
+.project__why p { font-size: 0.93rem; color: var(--text-2); margin: 0; }
+
+/* ---------- Visuel du projet ---------- */
+.project .tags { margin: 0 0 1.3rem; }
+
+.project__visual picture { display: flex; max-width: 100%; }
+.project__visual { display: flex; justify-content: center; align-items: center; }
+/* width: auto plutot que 100% : la capture d'Orion est presque carree,
+   en pleine largeur elle depasserait la hauteur de l'ecran. On borne la
+   hauteur et la largeur suit toute seule, sans deformation. */
+.project__shot {
+  width: auto;
+  max-width: 100%;
+  max-height: 480px;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--c) 22%, var(--border));
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.18);
+  display: block;
+}
+
+@media (max-width: 940px) {
+  .project { grid-template-columns: 1fr; gap: 1.8rem; padding: 1.6rem; min-height: 0; }
+  .project__visual { order: -1; }
+}
+
+/* Quatre captures de telephone cote a cote, legerement decalees
+   en hauteur pour que ca ne fasse pas catalogue. */
+.project__shots {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.7rem;
+  width: 100%;
+}
+.project__shots img {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--c) 25%, var(--border));
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+  display: block;
+}
+.project__shots img:nth-child(even) { transform: translateY(16px); }
+.project .store-links { margin-top: 0; }
+
+/* Liens secondaires sous le bloc, en texte simple pour ne pas
+   concurrencer les boutons de telechargement au-dessus. */
+.project__more { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 1.1rem; }
+.project__more a { font-family: var(--mono); font-size: 0.82rem; color: var(--c, var(--accent)); }
+
+@media (max-width: 940px) {
+  .project__shots { grid-template-columns: repeat(4, 1fr); gap: 0.4rem; }
+  .project__shots img:nth-child(even) { transform: none; }
+}
+
+/* =========================================================
    9. RESPONSIVE, IMPRESSION, ANIMATIONS
    ========================================================= */
 
@@ -2689,12 +2657,12 @@ body::after {
      neutralise en remettant le degrade a sa position de depart. */
   .hero::before { filter: none; opacity: 0.5; }
   .hero__title { background-size: 100% auto; background-position: 0 center; }
-  .card::after, .promo--wide::after, .doc::after { display: none; }
+  .card::after, .doc::after { display: none; }
 }
 
 @media print {
   .topbar, .footer, .skip-link, .hero__actions,
-  .to-top, .palette, .filters, .copy-btn, .carousel__nav { display: none !important; }
+  .to-top, .palette, .copy-btn, .carousel__nav { display: none !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
   body { font-size: 12pt; }
   .card, .doc, .stat, .skill { break-inside: avoid; }

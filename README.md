@@ -19,10 +19,10 @@ portefollio/
 ├── index.html           Accueil, 8 sections : présentation, compétences, stage,
 │                        projets, cours, documents, coulisses, contact
 ├── css/style.css        Tout le style (variables en tête de fichier)
-├── js/main.js           Thème, menu, palette Ctrl+K, filtres, carrousel (vanilla JS)
+├── js/main.js           Thème, menu, palette Ctrl+K, carrousel de projets (vanilla JS)
 ├── sitemap.xml
 ├── robots.txt
-├── tests/dom.test.js    42 tests des composants interactifs (jsdom)
+├── tests/dom.test.js    43 tests des composants interactifs (jsdom)
 ├── assets/
 │   ├── fonts/                    Inter en woff2, servie localement
 │   ├── meta/                     Favicon, image de partage, vignettes WebP
@@ -80,7 +80,7 @@ Le tableau ci-dessous répond à la question « je veux modifier ça, je vais o�
 | Une couleur, la largeur du site, les coins arrondis | `css/style.css` | Le bloc `:root` tout en haut. Le thème sombre suit automatiquement |
 | Les couleurs du thème sombre | `css/style.css` | Le bloc `[data-theme="dark"]`, juste en dessous de `:root` |
 | Un texte de l'accueil | `index.html` | Chaque section a un gros commentaire qui la nomme |
-| Ajouter un projet | `index.html` | Copier une carte `.card` dans la section Projets, et renseigner son `data-tech` sinon les filtres l'ignorent |
+| Ajouter un projet | `index.html` | Copier un `<li class="carousel__slide">` dans la section Projets, ajouter son onglet avec le bon `data-carousel-go` (index à partir de 0) et mettre à jour le total du compteur |
 | Ajouter une destination à la recherche | `js/main.js` | Une ligne dans le tableau `ENTRIES`, bloc 4 |
 | Ajouter une matière | `index.html` + `pages/projets-cours.html` | Une tuile `.subject-card` sur l'accueil, un bloc `<details>` avec un `id` sur la page des fiches |
 | Le CV, le bulletin, les lettres | `assets/` | Remplacer le PDF et son image. Les vignettes allégées sont dans `assets/meta/` |
@@ -148,10 +148,10 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
   flash au chargement (script inline dans le `<head>`).
 - **Recherche** dans l'en-tête ou au `Ctrl+K` : 26 destinations, recherche insensible aux
   accents, navigation entièrement au clavier.
-- **Filtre des projets** par technologie.
 - **Frise du projet** et **histogramme d'activité** en CSS pur, sans bibliothèque.
-- **Carrousel** des captures de SYNCRO dans la carte du projet mis en avant, en
-  `scroll-snap`, utilisable sans JavaScript.
+- **Carrousel de projets** : les trois projets partagent le même gabarit (ce que c'est,
+  pourquoi, avec quoi, où aller voir). Navigation par onglets nommés, flèches ou clavier,
+  et repli en `scroll-snap` si le JavaScript ne se charge pas.
 - Section **« Ce site est aussi un projet »** qui détaille les choix techniques et invite
   à essayer les composants.
 - **Copie de l'e-mail** en un clic, avec repli pour les navigateurs anciens.
@@ -181,7 +181,7 @@ npm install jsdom
 node tests/dom.test.js
 ```
 
-42 vérifications sur les composants interactifs, sans navigateur. Voir `tests/README.md`.
+43 vérifications sur les composants interactifs, sans navigateur. Voir `tests/README.md`.
 
 ## SEO
 
