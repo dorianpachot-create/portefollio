@@ -35,7 +35,7 @@
   <link rel="preload" href="../assets/fonts/mono-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="../css/style.css" />
 </head>
-<body>
+<body class="game-page">
   <a class="skip-link" href="#main">Aller au contenu</a>
 
   <!-- Fond anime du site. Trois taches de couleur qui derivent et une grille
@@ -94,16 +94,26 @@
   </header>
 
   <main id="main">
-    <!-- Cadre arcade hors du container standard pour pouvoir prendre 90vw.
-         Le build pygbag est dans gradient/assets/mission-orion/web/. -->
-    <div class="arcade-frame" id="game-root" role="figure" aria-label="Mission Orion - jeu pygame">
-      <iframe
-        class="arcade-frame__screen"
-        src="../assets/mission-orion/web/index.html"
-        title="Mission Orion, jeu spatial en Python / pygame"
-        loading="lazy"
-        allow="autoplay; fullscreen; gamepad">
-      </iframe>
+    <div class="game-stage">
+      <div class="game-head">
+        <h1>Mission Orion</h1>
+        <p>Python / pygame, compilé en WebAssembly</p>
+      </div>
+
+      <!-- Le jeu est le build pygbag, charge dans une iframe. Sa hauteur
+           suit celle de l'ecran, avec un plancher a 420px. -->
+      <div class="arcade-frame" role="figure" aria-label="Mission Orion, jeu jouable dans le navigateur">
+        <iframe
+          class="arcade-frame__screen"
+          src="../assets/mission-orion/web/index.html"
+          title="Mission Orion, jeu spatial en Python et pygame"
+          allow="autoplay; fullscreen; gamepad">
+        </iframe>
+      </div>
+
+      <p class="game-note">
+        Le chargement prend quelques secondes : Python entier est téléchargé dans le navigateur.
+      </p>
     </div>
   </main>
 

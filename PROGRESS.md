@@ -2,6 +2,57 @@
 
 Dernière mise à jour : 2026-08-10
 
+## Mise à jour du 2026-08-10, section Projets et mini-jeu
+
+### Le carrousel affichait des timbres-poste
+
+Les captures font 1080x1920, soit du 9/16. Elles étaient posées dans un cadre large en
+`object-fit: contain` : l'image occupait environ un tiers de la surface, le reste était du
+vide. Le cadre lui-même est maintenant en 9/16 et limité à 260 px de large, l'image le
+remplit entièrement.
+
+### Le badge « En production » masquait les vignettes
+
+Il était posé en haut à gauche de l'image de couverture, en plein sur le visuel. Il
+descend au ras du bas du cadre, sur la zone la moins chargée, avec un fond opaque et une
+pastille verte pour rester lisible quelle que soit l'image derrière.
+
+### Vrais badges de magasins
+
+Les trois liens deviennent de vrais badges : fond noir, coins arrondis, logo à gauche,
+petite ligne au-dessus du nom du magasin. Le triangle Google Play est dessiné en SVG avec
+ses quatre faces colorées.
+
+Les trois ont la même hauteur de 54 px et sont alignés sur la même rangée, y compris celui
+d'appsyncro.fr, qui garde la forme mais reste aux couleurs du site : c'est un lien maison,
+pas un badge de magasin.
+
+**À savoir :** ce sont des reproductions en SVG, pas les fichiers officiels d'Apple et de
+Google. Pour un usage commercial il faudrait télécharger les visuels sur leurs pages de
+ressources presse. Pour un portfolio personnel, ça ne pose pas de problème.
+
+### Le mini-jeu se fond dans la page
+
+Avant : un cadre de 860 px au milieu d'une page blanche. La fenêtre paraissait minuscule
+et le jeu semblait collé là sans raison.
+
+Maintenant, la page entière passe en fond sombre, comme une borne d'arcade, et le jeu
+occupe presque tout l'écran. Sa hauteur suit celle de la fenêtre,
+`clamp(420px, 100vh - barre - marges, 780px)`, donc il ne devient jamais minuscule ni
+démesuré. Le cadre n'a plus de bordure nette mais une lueur bleutée, ce qui le pose dans
+la page au lieu de le coller dessus.
+
+Là encore, la page bascule en sombre juste en redéfinissant les variables de couleur sur
+le `<body>`, sans réécrire un seul composant.
+
+Un mot sous le jeu prévient que le chargement prend quelques secondes, puisque c'est
+Python entier qui est téléchargé dans le navigateur.
+
+### Les flèches
+
+Il n'y en avait déjà plus dans le code : `content: "→"` avait été supprimé au commit
+précédent. Ce que Dorian voyait venait du cache de son navigateur.
+
 ## Mise à jour du 2026-08-10, parti pris visuel
 
 Demande : oser, sortir du rendu générique, et retirer les flèches des boutons.

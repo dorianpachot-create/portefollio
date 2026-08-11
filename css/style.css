@@ -722,36 +722,81 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   .promo--wide .carousel--compact { grid-column: 1; grid-row: auto; }
 }
 
-/* ---------- Liens de stores ---------- */
+/* ---------- Badges de magasins d'applications ----------
+   Reproduction fidele des badges officiels : fond noir, coins arrondis,
+   logo a gauche, petite ligne au-dessus du nom du magasin.
+
+   Les trois boutons ont la meme hauteur et le meme alignement, y compris
+   celui du site vitrine, qui reprend la meme forme pour ne pas casser
+   l'alignement de la rangee.
+
+   Note : ce sont des reproductions en SVG, pas les fichiers officiels
+   d'Apple et Google. Pour une utilisation commerciale il faudrait
+   telecharger les visuels sur leurs pages de ressources presse. */
 .store-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  align-items: stretch;
+  gap: 0.7rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
+.store-links > li { display: flex; }
+
 .store-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.6rem 0.95rem;
-  border: 1px solid var(--border-2);
-  border-radius: var(--radius-sm);
-  background: var(--bg);
-  color: var(--text);
-  font-size: 0.92rem;
-  font-weight: 600;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  gap: 0.65rem;
+  height: 54px;
+  padding: 0 1.05rem 0 0.9rem;
+  border-radius: 9px;
+  background: #000;
+  border: 1px solid #3d3d3d;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.18s cubic-bezier(.2,.7,.3,1), box-shadow 0.18s ease;
 }
-.store-link:hover { border-color: var(--accent); background: var(--bg-tint); text-decoration: none; }
-.store-link svg { width: 19px; height: 19px; flex-shrink: 0; }
+.store-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.28);
+  text-decoration: none;
+  color: #fff;
+}
+.store-link svg { width: 26px; height: 26px; flex-shrink: 0; }
+.store-link span { display: flex; flex-direction: column; line-height: 1.12; text-align: left; }
 .store-link__sub {
-  display: block;
-  font-size: 0.74rem;
-  font-weight: 500;
-  color: var(--text-3);
+  font-family: var(--font);
+  font-size: 0.62rem;
+  font-weight: 400;
   letter-spacing: 0.02em;
+  color: #d6d6d6;
+  text-transform: none;
+  order: -1;
+}
+.store-link__name {
+  font-family: var(--font);
+  font-size: 1.06rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+/* Le lien du site vitrine garde la meme forme mais reste en couleurs du
+   site : c'est un lien maison, pas un badge de magasin. */
+.store-link--site {
+  background: var(--bg);
+  border-color: var(--border-2);
+  color: var(--text);
+}
+.store-link--site .store-link__sub { color: var(--text-3); }
+.store-link--site .store-link__name { color: var(--text); }
+.store-link--site svg { color: var(--c-blue); }
+.store-link--site:hover { border-color: var(--c-blue); color: var(--text); }
+
+@media (max-width: 520px) {
+  .store-links { flex-direction: column; }
+  .store-links > li, .store-link { width: 100%; }
 }
 
 /* =========================================================
@@ -803,17 +848,33 @@ a.card:hover, a.card:focus-visible {
 .card__cover img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 .card__cover--tint { display: flex; align-items: center; justify-content: center; }
 .card__cover--tint svg { width: 46px; height: 46px; color: var(--accent); opacity: 0.55; }
+/* Le badge etait pose en haut a gauche de la vignette, en plein sur
+   l'image. Il descend au ras du bas du cadre, sur la zone la moins
+   chargee, et prend un fond opaque pour rester lisible quelle que soit
+   l'image derriere. */
 .card__flag {
   position: absolute;
-  top: 0.6rem; left: 0.7rem;
-  font-size: 0.7rem;
+  left: 0.75rem;
+  bottom: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.66rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ok-text);
-  background: var(--ok-bg);
+  background: var(--bg);
+  border: 1px solid color-mix(in srgb, var(--ok-text) 30%, transparent);
   border-radius: var(--radius-pill);
-  padding: 0.15rem 0.6rem;
+  padding: 0.2rem 0.6rem 0.2rem 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.18);
+}
+.card__flag::before {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--ok-dot);
 }
 .card__title { font-size: 1.1rem; margin-bottom: 0.45rem; }
 .card__desc { color: var(--text-2); font-size: 0.95rem; margin: 0; }
@@ -1185,19 +1246,74 @@ a.card:hover, a.card:focus-visible {
 .tp__fiche:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
 .tp__fiche svg { width: 15px; height: 15px; flex-shrink: 0; }
 
-/* ---------- Cadre du mini-jeu ---------- */
-.arcade-frame {
-  max-width: 860px;
-  margin: 0 auto;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: #0b0f17;
-  box-shadow: var(--shadow-md);
+/* ---------- Mini-jeu ----------
+   Avant, le jeu tenait dans un cadre de 860 px pose au milieu d'une page
+   blanche : la fenetre paraissait minuscule et le jeu semblait colle la
+   sans raison.
+
+   Maintenant la page entiere passe en fond sombre, comme une borne, et le
+   jeu occupe presque tout l'ecran. Le cadre n'a plus de bordure visible,
+   il se fond dans le fond. */
+.game-page {
+  --bg:       #080b12;
+  --bg-soft:  #0f141f;
+  --text:     #f2f5fa;
+  --text-2:   #b6c0d4;
+  --text-3:   #8590a8;
+  --border:   #1e2534;
+  --border-2: #303a4f;
+  --accent:   #8ab4ff;
+  --topbar-bg: rgba(8, 11, 18, 0.97);
+  color-scheme: dark;
+  background: var(--bg);
+  color: var(--text);
 }
-.arcade-frame__screen { display: block; width: 100%; aspect-ratio: 4 / 3; border: 0; }
-.device-frame { max-width: 340px; margin: 0 auto; }
-.device-frame__screen { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); }
+.game-page .bg-fx { opacity: 0.55; }
+
+.game-stage {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 2.5rem;
+}
+.game-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.2rem;
+  margin-bottom: 1rem;
+}
+.game-head h1 { font-size: 1.5rem; letter-spacing: -0.03em; }
+.game-head p { font-family: var(--mono); font-size: 0.85rem; color: var(--text-3); margin: 0; }
+
+.arcade-frame {
+  position: relative;
+  margin: 0 auto;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #05070c;
+  /* Une lueur coloree autour de l'ecran, plutot qu'une bordure nette :
+     c'est ce qui donne l'impression que le jeu est pose dans la page et
+     non colle dessus. */
+  box-shadow:
+    0 0 0 1px var(--border),
+    0 0 60px color-mix(in srgb, var(--c-blue) 22%, transparent),
+    0 30px 80px rgba(0, 0, 0, 0.55);
+}
+/* La hauteur suit celle de l'ecran, barre du haut et marges deduites,
+   avec un plancher pour ne jamais devenir minuscule. */
+.arcade-frame__screen {
+  display: block;
+  width: 100%;
+  height: clamp(420px, calc(100vh - var(--topbar-h) - 12rem), 780px);
+  border: 0;
+}
+.game-note {
+  margin-top: 1rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-3);
+  text-align: center;
+}
 
 /* ---------- Bloc de texte encadré (mentions légales) ---------- */
 .section__panel {
@@ -1470,23 +1586,26 @@ a.card:hover, a.card:focus-visible {
   list-style: none;
   transition: transform 0.35s ease;
 }
+/* Les captures font 1080x1920, soit du 9/16. Avant, elles etaient posees
+   dans un cadre large en object-fit: contain : l'image occupait un tiers
+   de la surface et le reste etait vide.
+
+   Maintenant le cadre lui-meme est en 9/16 et limite en largeur. L'image
+   le remplit entierement. */
+.carousel__viewport { max-width: 300px; margin-inline: auto; }
 .carousel__slide {
   flex: 0 0 100%;
   width: 100%;
   margin: 0;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 340px;
+  padding: 0;
+  aspect-ratio: 9 / 16;
 }
 .carousel__slide img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: var(--radius-sm);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
 }
 
 .carousel__nav {
@@ -1510,7 +1629,7 @@ a.card:hover, a.card:focus-visible {
 .carousel__count { font-size: 0.85rem; color: var(--text-3); min-width: 3.2rem; text-align: center; }
 
 /* Version compacte, utilisee dans la carte du projet mis en avant. */
-.carousel--compact .carousel__slide { height: 300px; padding: 0.8rem; }
+.carousel--compact .carousel__viewport { max-width: 260px; }
 .carousel--compact .icon-btn { width: 32px; height: 32px; }
 .carousel--compact .icon-btn svg { width: 16px; height: 16px; }
 
