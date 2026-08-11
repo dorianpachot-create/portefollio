@@ -118,12 +118,12 @@ ok('presentation : 4 preuves', d.querySelectorAll('.proof li').length === 4);
 
 // Frise du parcours
 ok('parcours : bloc ancre', !!d.querySelector('#parcours'));
-ok('parcours : 9 etapes', d.querySelectorAll('.path__step').length === 9,
+ok('parcours : 10 etapes', d.querySelectorAll('.path__step').length === 10,
    String(d.querySelectorAll('.path__step').length));
 ok('parcours : chaque etape a une annee et un titre',
    Array.from(d.querySelectorAll('.path__step')).every(s => s.querySelector('.path__year') && s.querySelector('h4')));
 ok('parcours : une famille de couleur par etape',
-   Array.from(d.querySelectorAll('.path__step')).every(s => /path__step--(tech|sport|terrain|now)/.test(s.className)));
+   Array.from(d.querySelectorAll('.path__step')).every(s => /path__step--(tech|sport|terrain|pause|now)/.test(s.className)));
 d.querySelector('[data-palette-open]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
 input.value = 'parcours';
 input.dispatchEvent(new w.Event('input', { bubbles: true }));
