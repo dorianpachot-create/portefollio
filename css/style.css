@@ -2508,11 +2508,10 @@ body::after {
 .path__body h4 { font-size: 1.02rem; margin-bottom: 0.3rem; color: var(--text); }
 .path__body p { font-size: 0.94rem; color: var(--text-2); margin: 0; max-width: 62ch; }
 
-/* Les cinq familles. Elles ne posent que --c, le reste suit. */
+/* Les quatre familles. Elles ne posent que --c, le reste suit. */
 .path__step--tech    { --c: var(--c-blue); }
 .path__step--sport   { --c: var(--c-rose); }
 .path__step--terrain { --c: var(--c-amber); }
-.path__step--pause   { --c: var(--c-violet); }
 .path__step--now     { --c: var(--c-teal); }
 
 /* La derniere etape est celle qu'on veut faire lire : pastille pleine
