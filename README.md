@@ -150,7 +150,7 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
 - **Recherche** dans l'en-tête ou au `Ctrl+K` : 26 destinations, recherche insensible aux
   accents, navigation entièrement au clavier.
 - **Frise du projet** et **histogramme d'activité** en CSS pur, sans bibliothèque.
-- **Frise du parcours** dans la section « Qui je suis » : neuf étapes de 2018 à
+- **Frise du parcours** dans la section « Qui je suis » : quatorze étapes de 2018 à
   l'alternance recherchée, colorées par famille (technique, sport, terrain, aujourd'hui).
 - **Carrousel de projets** : les trois projets partagent le même gabarit (ce que c'est,
   pourquoi, avec quoi, où aller voir). Navigation par onglets nommés, flèches ou clavier,

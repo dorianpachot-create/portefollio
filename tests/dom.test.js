@@ -118,7 +118,7 @@ ok('presentation : 4 preuves', d.querySelectorAll('.proof li').length === 4);
 
 // Frise du parcours
 ok('parcours : bloc ancre', !!d.querySelector('#parcours'));
-ok('parcours : 9 etapes', d.querySelectorAll('.path__step').length === 9,
+ok('parcours : 14 etapes', d.querySelectorAll('.path__step').length === 14,
    String(d.querySelectorAll('.path__step').length));
 ok('parcours : chaque etape a une annee et un titre',
    Array.from(d.querySelectorAll('.path__step')).every(s => s.querySelector('.path__year') && s.querySelector('h4')));

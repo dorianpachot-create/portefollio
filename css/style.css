@@ -2466,7 +2466,8 @@ body::after {
   grid-template-columns: 4.6rem 1fr;
   gap: 1.6rem;
   position: relative;
-  padding: 0 0 1.8rem 0;
+  /* 14 etapes : on resserre un peu, sinon la frise devient un mur. */
+  padding: 0 0 1.45rem 0;
 }
 /* Le trait qui relie les etapes. Il part de sous la pastille et
    s'arrete a la derniere, sinon il pendrait dans le vide. */
