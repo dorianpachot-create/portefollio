@@ -2396,6 +2396,44 @@ a.card:hover, a.card:focus-visible {
   --c-rose: #f88ec0;   --c-rose-bg: #331828;
 }
 .section--invert::after { opacity: 0.09; }
+
+/* EN THEME SOMBRE, L'INVERSION S'INVERSE.
+
+   Le principe de ces deux sections est de rompre avec le reste, pas
+   d'etre sombres. En theme clair, rompre veut dire passer au sombre. En
+   theme sombre, ca veut dire passer au clair.
+
+   Sans ca, les deux sections resteraient sombres dans les deux themes et
+   la bascule perdrait la moitie de son sens : on ne verrait plus de
+   difference sur un huitieme de la page.
+
+   Les valeurs ci-dessous ne sont pas le blanc pur du theme clair : un
+   aplat blanc au milieu d'une page sombre est agressif. On prend un gris
+   tres clair, legerement bleute, qui tranche sans eblouir. */
+[data-theme="dark"] .section--invert {
+  --bg:        #eef1f7;
+  --bg-soft:   #e2e7f0;
+  --bg-tint:   #dbe3f6;
+  --text:      #0d1220;
+  --text-2:    #3f4a63;
+  --text-3:    #5d6880;
+  --border:    #cbd3e2;
+  --border-2:  #aab5cb;
+  --accent:    #1d4ed8;
+  --on-accent: #ffffff;
+  color-scheme: light;
+
+  --c-blue:   #1d4ed8;  --c-blue-bg:   #e4ebff;
+  --c-teal:   #0f766e;  --c-teal-bg:   #dcf1ee;
+  --c-violet: #7c3aed;  --c-violet-bg: #ebe3ff;
+  --c-amber:  #92400e;  --c-amber-bg:  #fbeed8;
+  --c-rose:   #be185d;  --c-rose-bg:   #fbe4ee;
+}
+[data-theme="dark"] .section--invert .btn--secondary {
+  background: var(--bg);
+  color: var(--text);
+  border-color: var(--border-2);
+}
 .section--invert .btn--secondary { background: transparent; color: var(--text); border-color: var(--border-2); }
 .section--invert .btn--secondary:hover { background: var(--bg-soft); border-color: var(--text-3); }
 
@@ -2469,27 +2507,38 @@ body::after {
   gap: 2.5rem;
   align-items: start;
 }
-.portrait { position: relative; }
-.portrait::before {
+/* Le cadre decale doit entourer la photo, et rien d'autre. Il etait pose
+   sur la <figure> entiere, donc il descendait jusque sous la legende.
+   Il est maintenant sur .portrait__frame, qui ne contient que l'image. */
+.portrait { position: relative; margin: 0; }
+.portrait__frame {
+  position: relative;
+  display: block;
+  margin: 0 14px 14px 0;
+}
+.portrait__frame::before {
   content: "";
   position: absolute;
-  inset: 14px -14px -14px 14px;
+  inset: 0;
+  transform: translate(14px, 14px);
   border: 2px solid var(--c, var(--accent));
   border-radius: 14px;
   z-index: 0;
 }
-.portrait img {
+.portrait__frame img {
   position: relative;
   z-index: 1;
+  display: block;
   width: 100%;
   height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   border-radius: 14px;
-  display: block;
 }
 .portrait__caption {
   position: relative;
   z-index: 1;
-  margin-top: 1.6rem;
+  margin-top: 1.1rem;
   font-family: var(--mono);
   font-size: 0.78rem;
   line-height: 1.6;

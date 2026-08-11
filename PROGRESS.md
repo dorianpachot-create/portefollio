@@ -2,6 +2,42 @@
 
 Dernière mise à jour : 2026-08-10
 
+## Mise à jour du 2026-08-10, cadre du portrait et cohérence du thème
+
+### Le cadre du portrait était mal posé
+
+Le cadre décalé était un pseudo-élément de la `<figure>` entière, or celle-ci contient
+l'image **et** la légende. Le cadre descendait donc jusque sous le texte.
+
+Il est maintenant sur un `.portrait__frame` qui n'entoure que l'image, avec un décalage
+en `transform` plutôt qu'en `inset` négatif, ce qui évite qu'il déborde du conteneur.
+La photo est en plus contrainte en carré avec `object-fit: cover`.
+
+### La bascule de thème avait perdu son sens
+
+Remarque de Dorian, et elle est juste : avec deux sections sombres en permanence, changer
+de thème ne modifiait qu'une partie du site. Sur ces deux sections, la bascule ne faisait
+rien.
+
+**En thème sombre, l'inversion s'inverse.** Le principe de ces sections est de rompre avec
+le reste, pas d'être sombres. En thème clair, rompre veut dire passer au sombre ; en thème
+sombre, passer au clair.
+
+La règle tient en un bloc : `[data-theme="dark"] .section--invert` redéfinit les mêmes
+variables avec des valeurs claires. Rien d'autre à écrire.
+
+Les valeurs ne sont pas le blanc pur du thème clair : un aplat blanc au milieu d'une page
+sombre est agressif. C'est un gris très clair légèrement bleuté, qui tranche sans éblouir.
+
+### Contraste vérifié sur ce nouveau cas
+
+Deux valeurs ne passaient pas au premier jet : le texte tertiaire à 4,25 et l'ambre à 4,44.
+Corrigés en `#5d6880` et `#92400e`. Les 19 combinaisons de ce mode sont maintenant
+au-dessus de 4,5, la plus basse à 4,60.
+
+La section « Ce site » mentionne le comportement, puisqu'elle invite justement à essayer
+la bascule.
+
 ## Mise à jour du 2026-08-10, largeurs et portrait
 
 Question de Dorian : pourquoi laisser des marges sur les côtés plutôt que prendre toute

@@ -188,10 +188,12 @@
           <!-- Portrait. Le cadre coloré décalé derrière est un pseudo-élément
                en CSS, pas une image : rien de plus à charger. -->
           <figure class="portrait">
-            <picture>
-              <source srcset="assets/meta/portrait.webp" type="image/webp" />
-              <img src="assets/meta/portrait.jpg" alt="Portrait de Dorian Pachot" width="720" height="720" />
-            </picture>
+            <span class="portrait__frame">
+              <picture>
+                <source srcset="assets/meta/portrait.webp" type="image/webp" />
+                <img src="assets/meta/portrait.jpg" alt="Portrait de Dorian Pachot" width="720" height="720" />
+              </picture>
+            </span>
             <figcaption class="portrait__caption">
               Dorian Pachot<br />
               <strong>Rouen, 76000</strong><br />
@@ -858,7 +860,7 @@
           <div class="skill">
             <h3 class="skill__title">Ce que vous pouvez essayer</h3>
             <ul class="week__list">
-              <li>Le <strong>thème sombre</strong>, en haut à droite. Il suit votre réglage système par défaut, retient votre choix, et ne provoque aucun flash blanc au changement de page.</li>
+              <li>Le <strong>thème sombre</strong>, en haut à droite. Il suit votre réglage système par défaut, retient votre choix, et ne provoque aucun flash blanc au changement de page. Les deux sections à contre-courant, celle-ci et le stage, s'inversent aussi : sombres en thème clair, claires en thème sombre.</li>
               <li>La <strong>recherche</strong>, au clic ou au <strong>Ctrl+K</strong>. Elle ignore les accents et se pilote entièrement au clavier.</li>
               <li>Les <strong>filtres</strong> de la section Projets.</li>
               <li>Le <strong>carrousel</strong> de SYNCRO, qui fonctionne au doigt même sans JavaScript.</li>
