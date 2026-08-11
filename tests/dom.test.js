@@ -47,7 +47,7 @@ ok('palette : fermee au depart', box.hidden === true);
 d.querySelector('[data-palette-open]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
 ok('palette : ouverte au clic', box.hidden === false);
 const total = d.querySelectorAll('.palette__item').length;
-ok('palette : 26 entrees listees', total === 26, String(total));
+ok('palette : 27 entrees listees', total === 27, String(total));
 input.value = 'bulletin';
 input.dispatchEvent(new w.Event('input', { bubbles: true }));
 ok('palette : recherche filtre', d.querySelectorAll('.palette__item').length === 1);
@@ -115,6 +115,21 @@ ok('cours : agent IA retire', !d.body.textContent.includes('Agent IA'));
 ok('presentation : 6 reperes', d.querySelectorAll('.facts div').length === 6,
    String(d.querySelectorAll('.facts div').length));
 ok('presentation : 4 preuves', d.querySelectorAll('.proof li').length === 4);
+
+// Frise du parcours
+ok('parcours : bloc ancre', !!d.querySelector('#parcours'));
+ok('parcours : 9 etapes', d.querySelectorAll('.path__step').length === 9,
+   String(d.querySelectorAll('.path__step').length));
+ok('parcours : chaque etape a une annee et un titre',
+   Array.from(d.querySelectorAll('.path__step')).every(s => s.querySelector('.path__year') && s.querySelector('h4')));
+ok('parcours : une famille de couleur par etape',
+   Array.from(d.querySelectorAll('.path__step')).every(s => /path__step--(tech|sport|terrain|now)/.test(s.className)));
+d.querySelector('[data-palette-open]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
+input.value = 'parcours';
+input.dispatchEvent(new w.Event('input', { bubbles: true }));
+ok('parcours : atteignable depuis la recherche',
+   Array.from(d.querySelectorAll('.palette__item')).some(li => li.textContent.includes('Mon parcours')));
+d.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
 ok('presentation : 8 sections ancrees', d.querySelectorAll('main > section[id]').length === 8,
    String(d.querySelectorAll('main > section[id]').length));
 
@@ -124,7 +139,7 @@ const d2 = w2.document;
 d2.querySelector('[data-palette-open]').dispatchEvent(new w2.MouseEvent('click', { bubbles: true }));
 const first = d2.querySelector('.palette__item');
 ok('palette : ouverte sur une sous-page', d2.querySelector('[data-palette]').hidden === false);
-ok('palette : 26 entrees aussi', d2.querySelectorAll('.palette__item').length === 26);
+ok('palette : 27 entrees aussi', d2.querySelectorAll('.palette__item').length === 27);
 ok('theme : bouton present', !!d2.querySelector('[data-theme-toggle]'));
 
 console.log('\n' + pass + ' reussis, ' + fail + ' echecs');

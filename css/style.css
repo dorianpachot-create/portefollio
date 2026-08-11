@@ -2443,6 +2443,91 @@ body::after {
 }
 
 /* =========================================================
+   FRISE DU PARCOURS
+
+   Un parcours qui part de l'architecture, passe par le sport
+   et l'encadrement, et arrive au code. Il n'est pas lineaire
+   et la frise ne cherche pas a le lisser : elle le raconte.
+
+   Une colonne d'annees a gauche, un trait vertical, une pastille
+   par etape. La couleur de la pastille dit la famille : technique,
+   terrain, sport, aujourd'hui. Tout passe par --c, donc changer
+   une famille de couleur tient en une ligne.
+   ========================================================= */
+.path { margin-top: 3rem; }
+.path__title { font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 0.6rem; }
+.path__intro { color: var(--text-2); max-width: 62ch; margin-bottom: 2rem; }
+
+.path__list { list-style: none; margin: 0; padding: 0; }
+
+.path__step {
+  --c: var(--accent);
+  display: grid;
+  grid-template-columns: 4.6rem 1fr;
+  gap: 1.6rem;
+  position: relative;
+  padding: 0 0 1.8rem 0;
+}
+/* Le trait qui relie les etapes. Il part de sous la pastille et
+   s'arrete a la derniere, sinon il pendrait dans le vide. */
+.path__step::before {
+  content: "";
+  position: absolute;
+  left: calc(4.6rem + 0.8rem - 1px);
+  top: 1.5rem;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+.path__step:last-child { padding-bottom: 0; }
+.path__step:last-child::before { display: none; }
+
+/* La pastille, posee sur le trait. */
+.path__step::after {
+  content: "";
+  position: absolute;
+  left: calc(4.6rem + 0.8rem - 6px);
+  top: 0.45rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--c);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 18%, transparent);
+}
+
+.path__year {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--c);
+  text-align: right;
+  padding-top: 0.15rem;
+}
+.path__body { padding-left: 1.4rem; }
+.path__body h4 { font-size: 1.02rem; margin-bottom: 0.3rem; color: var(--text); }
+.path__body p { font-size: 0.94rem; color: var(--text-2); margin: 0; max-width: 62ch; }
+
+/* Les quatre familles. Elles ne posent que --c, le reste suit. */
+.path__step--tech    { --c: var(--c-blue); }
+.path__step--sport   { --c: var(--c-rose); }
+.path__step--terrain { --c: var(--c-amber); }
+.path__step--now     { --c: var(--c-teal); }
+
+/* La derniere etape est celle qu'on veut faire lire : pastille pleine
+   et titre en couleur, pour qu'on sache ou le parcours va. */
+.path__step--target .path__body h4 { color: var(--c); }
+.path__step--target::after { width: 16px; height: 16px; left: calc(4.6rem + 0.8rem - 8px); top: 0.35rem; }
+
+@media (max-width: 700px) {
+  .path__step { grid-template-columns: 3.4rem 1fr; gap: 1rem; }
+  .path__step::before { left: calc(3.4rem + 0.5rem - 1px); }
+  .path__step::after  { left: calc(3.4rem + 0.5rem - 6px); }
+  .path__step--target::after { left: calc(3.4rem + 0.5rem - 8px); }
+  .path__body { padding-left: 1rem; }
+}
+
+/* =========================================================
    CARROUSEL DE PROJETS
 
    Chaque projet occupe une diapositive entiere, avec le meme

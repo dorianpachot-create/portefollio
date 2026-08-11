@@ -175,6 +175,7 @@
 
     const ENTRIES = [
       { label: 'Qui je suis',                kind: 'Section',  href: base + 'index.html#profil' },
+      { label: 'Mon parcours',               kind: 'Section',  href: base + 'index.html#parcours' },
       { label: 'Compétences techniques',     kind: 'Section',  href: base + 'index.html#competences' },
       { label: 'Stage chez Suitime',         kind: 'Section',  href: base + 'index.html#stage' },
       { label: 'Projets',                    kind: 'Section',  href: base + 'index.html#projets' },
