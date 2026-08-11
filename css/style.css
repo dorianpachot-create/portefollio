@@ -114,6 +114,21 @@
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/mono-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/mono-700.woff2") format("woff2");
+}
+
 /* =========================================================
    1. REGLAGES GENERAUX
    ========================================================= */
@@ -185,6 +200,11 @@
 
   --maxw: 1080px;
   --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Police technique. Elle sert aux libelles de section, aux chiffres, aux
+     etiquettes et aux numeros. C'est ce qui donne au site son air de truc
+     fait par quelqu'un qui code, plutot que par un template. */
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 /* ---------- Thème sombre ----------
@@ -806,8 +826,13 @@ a.card:hover, a.card:focus-visible {
   font-weight: 600;
   color: var(--accent);
 }
-.card__link::after { content: "→"; transition: transform 0.15s ease; }
-a.card:hover .card__link::after { transform: translateX(3px); }
+/* Pas de fleche apres le libelle : le soulignement suffit a dire que c'est
+   cliquable, et une fleche sur chaque carte alourdit la grille. */
+.card__link {
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 2px;
+  width: fit-content;
+}
 
 /* ---------- Étiquettes ---------- */
 .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.9rem 0 0; padding: 0; list-style: none; }
@@ -2110,6 +2135,158 @@ a.card:hover, a.card:focus-visible {
 /* La citation de la lettre de recommandation. */
 .doc-quote { background: var(--c-violet-bg); border-left-color: var(--c-violet); }
 .callout { border-left-color: var(--c-amber); background: var(--c-amber-bg); }
+
+/* =========================================================
+   PARTI PRIS VISUEL
+
+   Trois idees, assumees :
+
+   1. Une police monospace pour tout ce qui est technique. Les
+      libelles, les chiffres, les etiquettes et les numeros de
+      section sont en JetBrains Mono. Le texte courant reste en
+      Inter. Ce contraste entre les deux fait l'identite du site.
+
+   2. Des numeros de section geants, poses en filigrane. Ils ne
+      sont pas lus par les lecteurs d'ecran, c'est du reperage
+      visuel : on sait toujours ou on est dans la page.
+
+   3. Deux sections entierement inversees, sur fond profond et
+      texte clair. C'est la que la variable --c prend tout son
+      sens : on redefinit --bg, --text et --border a l'interieur
+      de la section, et absolument tout suit, cartes comprises,
+      sans une seule regle en plus.
+   ========================================================= */
+
+/* ---------- Tout ce qui est technique passe en monospace ---------- */
+.section-head__eyebrow,
+.stat__value,
+.skill__title,
+.phase__month,
+.phase__badge,
+.week__num,
+.bar__value,
+.chart__labels li,
+.carousel__count,
+.carousel__label,
+.tag,
+.skill__list li,
+.marquee__item,
+.search-btn__kbd,
+.promo__badge,
+.card__flag,
+.hero__eyebrow {
+  font-family: var(--mono);
+  font-feature-settings: "zero" 1;
+}
+.section-head__eyebrow,
+.hero__eyebrow,
+.skill__title,
+.phase__month,
+.week__num { letter-spacing: 0.02em; }
+.tag, .skill__list li, .marquee__item { font-size: 0.86rem; }
+
+/* ---------- Numeros de section en filigrane ---------- */
+.section { position: relative; overflow: hidden; }
+.section::after {
+  content: attr(data-num);
+  position: absolute;
+  top: 50%;
+  right: -0.06em;
+  transform: translateY(-50%);
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: clamp(9rem, 26vw, 22rem);
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  color: var(--c, var(--accent));
+  opacity: 0.06;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+.section > .container { position: relative; z-index: 1; }
+
+/* ---------- Accroche : le nom prend toute la place ---------- */
+.hero__title {
+  font-size: 3.4rem;
+  font-size: clamp(3rem, 13vw, 8.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+  margin-bottom: 1rem;
+}
+.hero__role {
+  font-family: var(--mono);
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--text-2);
+  margin-bottom: 1.6rem;
+}
+.hero__role::before { content: "// "; color: var(--accent); font-weight: 700; }
+.hero__inner { max-width: 900px; }
+.hero__eyebrow { font-size: 0.8rem; letter-spacing: 0.04em; }
+
+/* ---------- Sections inversees ----------
+   On ne restyle rien : on redefinit les variables de couleur a
+   l'interieur de la section. Cartes, bordures, textes secondaires,
+   tout suit automatiquement. C'est le seul endroit du fichier ou
+   la discipline des variables paye vraiment. */
+.section--invert {
+  --bg:        #0b1020;
+  --bg-soft:   #121933;
+  --bg-tint:   #1a2244;
+  --text:      #f4f6fb;
+  --text-2:    #b9c2d8;
+  --text-3:    #8792ae;
+  --border:    #232c4d;
+  --border-2:  #36426e;
+  --accent:    #8ab4ff;
+  --on-accent: #0b1020;
+  color-scheme: dark;
+  background: var(--bg);
+  color: var(--text);
+}
+.section--invert .section-head__title {
+  color: var(--text);
+  background: linear-gradient(96deg, var(--text) 25%, var(--c, var(--accent)) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .section--invert .section-head__title { color: transparent; }
+}
+/* Sur fond profond, les teintes pales d'origine seraient illisibles :
+   on prend les versions eclaircies, les memes qu'en theme sombre. */
+.section--invert {
+  --c-blue: #8ab4ff;   --c-blue-bg: #16213f;
+  --c-teal: #4fd9c4;   --c-teal-bg: #10302e;
+  --c-violet: #b49bff; --c-violet-bg: #251d45;
+  --c-amber: #fcc350;  --c-amber-bg: #322614;
+  --c-rose: #f88ec0;   --c-rose-bg: #331828;
+}
+.section--invert::after { opacity: 0.09; }
+.section--invert .btn--secondary { background: transparent; color: var(--text); border-color: var(--border-2); }
+.section--invert .btn--secondary:hover { background: var(--bg-soft); border-color: var(--text-3); }
+
+/* ---------- Titres de section plus imposants ---------- */
+.section-head__title { font-size: clamp(2rem, 4.2vw, 3rem); letter-spacing: -0.035em; }
+.section-head { margin-bottom: 3.5rem; }
+.section-head__eyebrow { font-size: 0.78rem; }
+
+/* ---------- Grain, pour casser le trop lisse ----------
+   Un bruit fin sur toute la page. C'est un SVG en ligne, donc aucune
+   requete reseau. En fixed et pointer-events: none, il ne coute rien :
+   le navigateur le peint une fois et le garde. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+[data-theme="dark"] body::after { opacity: 0.05; }
 
 /* =========================================================
    9. RESPONSIVE, IMPRESSION, ANIMATIONS

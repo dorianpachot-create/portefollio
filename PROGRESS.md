@@ -2,6 +2,61 @@
 
 Dernière mise à jour : 2026-08-10
 
+## Mise à jour du 2026-08-10, parti pris visuel
+
+Demande : oser, sortir du rendu générique, et retirer les flèches des boutons.
+
+### Les flèches sont parties
+
+Le `→` après chaque libellé de carte est supprimé. À la place, un soulignement épais qui
+suffit à dire que c'est cliquable et qui alourdit moins la grille.
+
+### Une deuxième police, monospace
+
+**JetBrains Mono**, récupérée via npm comme Inter, 42 Ko pour deux graisses. Elle est
+réservée à ce qui est technique : libellés de section, chiffres clés, étiquettes de
+technologies, numéros de semaine, valeurs de l'histogramme, badges.
+
+Le texte courant reste en Inter. C'est ce contraste entre les deux qui donne au site son
+air de chose faite par quelqu'un qui code, plutôt que par un modèle. Le rôle sous le nom
+devient `// Développeur full-stack`, en monospace, comme un commentaire de code.
+
+### Le nom occupe l'écran
+
+De 3,2 rem au maximum à **8,5 rem**, avec un interlignage à 0,88 et un crénage négatif.
+L'accroche ne contient rien d'autre, autant que le nom en profite.
+
+### Numéros de section géants
+
+Chaque section porte un `data-num` de 01 à 08, affiché en filigrane à droite, en monospace,
+jusqu'à 22 rem. Posé en `::after` avec `attr()`, donc invisible pour les lecteurs d'écran :
+c'est du repérage visuel, pas du contenu.
+
+### Deux sections entièrement inversées
+
+Stage et Ce site passent sur fond bleu nuit profond avec texte clair.
+
+**C'est là que la discipline des variables paye.** La classe `.section--invert` ne restyle
+rien : elle redéfinit `--bg`, `--text`, `--border` et les cinq teintes à l'intérieur de la
+section. Tout suit automatiquement, cartes, bordures, textes secondaires, sans une seule
+règle supplémentaire. Sans cette rigueur depuis le début, il aurait fallu réécrire chaque
+composant.
+
+Les teintes y sont remplacées par leurs versions éclaircies, sinon les couleurs pâles
+seraient illisibles sur fond sombre.
+
+### Grain
+
+Un bruit fin sur toute la page, en SVG inline dans le CSS, donc aucune requête réseau.
+En `position: fixed` et `pointer-events: none` : le navigateur le peint une fois et le
+garde, ça ne coûte rien au défilement. À 3,5 % d'opacité, ça ne se voit pas
+consciemment, mais ça casse l'aspect trop lisse.
+
+### Contraste revérifié
+
+Les sections inversées ont été mesurées séparément. Les 20 combinaisons testées sont
+au-dessus de 4,5, la plus basse étant le texte tertiaire à 6,09.
+
 ## Mise à jour du 2026-08-10, couleur assumée et scroll corrigé pour de bon
 
 ### Le scroll qui accélère selon la section

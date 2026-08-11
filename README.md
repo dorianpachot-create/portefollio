@@ -126,8 +126,13 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
 - Chaque composant lit une variable locale `--c` : poser `--c` sur un parent recolore tout
   ce qu'il contient, sans toucher au HTML.
 - Toutes les variables sont dans `:root`, en tête de `css/style.css`.
-- Une seule police, **Inter**, servie depuis `assets/fonts/`. Aucun appel à un
-  service tiers au chargement.
+- Deux polices, servies depuis `assets/fonts/`, aucun appel à un service tiers :
+  **Inter** pour le texte courant, **JetBrains Mono** pour tout ce qui est technique
+  (libellés de section, chiffres, étiquettes, numéros).
+- Numéros de section de 01 à 08 en filigrane, posés par `data-num` et `attr()`.
+- Deux sections entièrement inversées, sur fond profond. La classe `.section--invert`
+  ne fait que redéfinir les variables de couleur : tout le contenu suit sans règle
+  supplémentaire.
 - Les sections alternent `--bg` et `--bg-soft` pour donner du rythme sans ajouter de couleur.
 - Chaque section de l'accueil occupe au moins la hauteur d'un écran, contenu centré
   verticalement (`min-height: calc(100vh - 64px)`), et retombe à sa hauteur naturelle
