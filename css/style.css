@@ -1258,73 +1258,148 @@ a.card:hover, a.card:focus-visible {
 .tp__fiche:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
 .tp__fiche svg { width: 15px; height: 15px; flex-shrink: 0; }
 
-/* ---------- Mini-jeu ----------
-   Avant, le jeu tenait dans un cadre de 860 px pose au milieu d'une page
-   blanche : la fenetre paraissait minuscule et le jeu semblait colle la
-   sans raison.
+/* ---------- Page de jeu ----------
+   Cette page ne ressemble a aucune autre du site, et c'est voulu :
+   quand on arrive ici, on veut jouer. Pas de barre de navigation, pas
+   de pied de page, pas de barre de contact. Tout l'ecran pour le jeu,
+   et les informations sur le cote.
 
-   Maintenant la page entiere passe en fond sombre, comme une borne, et le
-   jeu occupe presque tout l'ecran. Le cadre n'a plus de bordure visible,
-   il se fond dans le fond. */
-.game-page {
-  --bg:       #080b12;
-  --bg-soft:  #0f141f;
-  --text:     #f2f5fa;
-  --text-2:   #b6c0d4;
-  --text-3:   #8590a8;
-  --border:   #1e2534;
-  --border-2: #303a4f;
+   Le canvas du build pygbag fait 1280x720, donc du 16/9. Si on lui donne
+   un cadre d'un autre rapport, il se contente de se centrer dedans et
+   ajoute des bandes noires : c'est ce qui donnait l'impression d'un jeu
+   minuscule dans un grand cadre. Le cadre est donc lui aussi en 16/9 et
+   prend la plus grande taille possible dans l'espace disponible. */
+.play-page {
+  /* On redefinit aussi --text et --accent : le lien d'evitement et les
+     boutons les utilisent, et sans ca ils seraient sombres sur sombre. */
+  --bg:       #05070d;
+  --text:     #eef2fa;
+  --text-2:   #b6c1d8;
+  --text-3:   #7f8dab;
+  --border:   #1b2233;
+  --border-2: #2a3348;
   --accent:   #8ab4ff;
-  --topbar-bg: rgba(8, 11, 18, 0.97);
   color-scheme: dark;
   background: var(--bg);
   color: var(--text);
-}
-.game-page .bg-fx { opacity: 0.55; }
-
-.game-stage {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1.5rem 1.25rem 2.5rem;
-}
-.game-head {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0.6rem 1.2rem;
-  margin-bottom: 1rem;
-}
-.game-head h1 { font-size: 1.5rem; letter-spacing: -0.03em; }
-.game-head p { font-family: var(--mono); font-size: 0.85rem; color: var(--text-3); margin: 0; }
-
-.arcade-frame {
-  position: relative;
-  margin: 0 auto;
-  border-radius: 14px;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
   overflow: hidden;
-  background: #05070c;
-  /* Une lueur coloree autour de l'ecran, plutot qu'une bordure nette :
-     c'est ce qui donne l'impression que le jeu est pose dans la page et
-     non colle dessus. */
-  box-shadow:
-    0 0 0 1px var(--border),
-    0 0 60px color-mix(in srgb, var(--c-blue) 22%, transparent),
-    0 30px 80px rgba(0, 0, 0, 0.55);
 }
-/* La hauteur suit celle de l'ecran, barre du haut et marges deduites,
-   avec un plancher pour ne jamais devenir minuscule. */
-.arcade-frame__screen {
-  display: block;
+.play-page::after { display: none; } /* pas de grain ici, l'ecran est deja charge */
+
+.play {
+  display: flex;
+  height: 100vh;
   width: 100%;
-  height: clamp(420px, calc(100vh - var(--topbar-h) - 12rem), 780px);
-  border: 0;
 }
-.game-note {
-  margin-top: 1rem;
+
+/* Zone de jeu : elle prend toute la place restante et centre le cadre. */
+.play__stage {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  place-items: center;
+  padding: 1.1rem;
+  background:
+    radial-gradient(60% 50% at 50% 40%, rgba(60, 90, 190, 0.16), transparent 70%),
+    #05070d;
+}
+
+/* aspect-ratio combine a max-height : le navigateur reduit la largeur
+   tout seul quand c'est la hauteur qui contraint. Le jeu est donc
+   toujours au maximum de ce que l'ecran permet, sans bande noire. */
+.play__frame {
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  box-shadow:
+    0 0 0 1px rgba(120, 150, 220, 0.22),
+    0 0 70px rgba(60, 100, 210, 0.22);
+}
+.play__frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+
+/* Colonne d'informations. */
+.play__side {
+  width: 300px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding: 1.6rem 1.5rem;
+  overflow-y: auto;
+  background: #0a0e18;
+  border-left: 1px solid #1b2233;
+}
+.play__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--mono);
-  font-size: 0.8rem;
-  color: var(--text-3);
+  font-size: 0.82rem;
+  color: #9fb0d0;
+  text-decoration: none;
+}
+.play__back:hover { color: #fff; text-decoration: none; }
+.play__back svg { width: 15px; height: 15px; }
+
+.play__title { font-size: 1.55rem; letter-spacing: -0.03em; margin: 0; }
+.play__tag {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: #7f8dab;
+  margin: 0.3rem 0 0;
+}
+.play__text { font-size: 0.9rem; line-height: 1.65; color: #b6c1d8; margin: 0; }
+
+.play__block h2 {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6f7d9b;
+  margin: 0 0 0.7rem;
+}
+.play__keys { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.play__keys li { display: flex; align-items: center; gap: 0.7rem; font-size: 0.86rem; color: #b6c1d8; }
+.play__keys kbd {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  min-width: 2.1rem;
   text-align: center;
+  padding: 0.22rem 0.4rem;
+  border-radius: 5px;
+  background: #141b2b;
+  border: 1px solid #2a3348;
+  border-bottom-width: 2px;
+  color: #dbe4f5;
+}
+.play__stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.play__stack span {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: #121a2b;
+  border: 1px solid #232d44;
+  color: #9fb0d0;
+}
+.play__note { font-size: 0.8rem; color: #7f8dab; margin: 0; line-height: 1.6; }
+.play__side .btn { width: 100%; justify-content: center; }
+
+/* Sous 900px la colonne passe sous le jeu et la page redevient
+   defilante : sur un telephone, un ecran coupe en deux ne sert a rien. */
+@media (max-width: 900px) {
+  .play-page { height: auto; overflow: auto; }
+  .play { flex-direction: column; height: auto; }
+  .play__stage { padding: 0.8rem; }
+  .play__frame { max-height: none; }
+  .play__side { width: 100%; border-left: 0; border-top: 1px solid #1b2233; }
 }
 
 /* ---------- Bloc de texte encadré (mentions légales) ---------- */

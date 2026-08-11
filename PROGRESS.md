@@ -2,6 +2,47 @@
 
 Dernière mise à jour : 2026-08-10
 
+## Mise à jour du 2026-08-10, page de jeu en plein écran
+
+### Pourquoi le jeu paraissait petit
+
+Le canvas du build pygbag fait **1280x720**, soit du 16/9. Je lui donnais un cadre pleine
+largeur mais peu haut, d'un rapport tout autre. Le jeu ne s'étire pas : il se centre dans
+le cadre et remplit le reste de noir. D'où les grosses bandes noires de part et d'autre,
+et l'impression d'un jeu minuscule dans un grand cadre.
+
+Deux conséquences : élargir le cadre n'agrandissait pas le jeu, ça agrandissait les bandes.
+
+### La page ne ressemble plus au reste du site
+
+Choix de Dorian, et il a raison : quand on arrive sur cette page, on vient jouer.
+
+Plus de barre de navigation, plus de pied de page, plus de barre de contact, plus de barre
+de progression. La page occupe exactement la hauteur de l'écran, sans défilement, et se
+partage en deux :
+
+- à gauche, le jeu, dans un cadre en 16/9 qui prend la plus grande taille possible ;
+- à droite, une colonne de 300 px : lien de retour, titre, description, commandes,
+  technologies, note sur le temps de chargement.
+
+Le cadre combine `aspect-ratio: 16/9` avec `max-height: 100%`. Quand c'est la hauteur qui
+contraint, le navigateur réduit la largeur tout seul en conservant le rapport. Le jeu est
+donc toujours au maximum de ce que l'écran permet, et il n'y a plus une seule bande noire.
+
+Sur un écran de 1920x1080, le jeu passe d'environ 1030x580 à **1450x815**, soit deux fois
+plus de surface.
+
+### Sur mobile
+
+Sous 900 px, la colonne passe sous le jeu et la page redevient défilante. Couper un écran
+de téléphone en deux n'aurait aucun sens.
+
+### Détail
+
+La page ne charge plus `main.js` : elle n'a ni menu, ni recherche, ni animation. Elle
+redéfinit ses propres variables de couleur, y compris `--text` et `--accent`, sinon le lien
+d'évitement et le bouton de bas de colonne seraient sombres sur fond sombre.
+
 ## Mise à jour du 2026-08-10, cadre du portrait et cohérence du thème
 
 ### Le cadre du portrait était mal posé

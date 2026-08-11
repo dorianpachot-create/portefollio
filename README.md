@@ -50,7 +50,7 @@ portefollio/
     ├── documents.html       Recommandation, bulletin, lettre de motivation
     ├── projets-cours.html   TP du BTS, avec fiches PDF
     ├── projets-perso.html   CRP-Assurance, SYNCRO, Mission Orion
-    ├── mini-jeu.html        Mission Orion jouable en WebAssembly
+    ├── mini-jeu.html        Mission Orion en plein écran, sans en-tête ni pied de page
     └── mentions-legales.html
 ```
 
