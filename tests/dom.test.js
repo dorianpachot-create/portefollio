@@ -47,7 +47,7 @@ ok('palette : fermee au depart', box.hidden === true);
 d.querySelector('[data-palette-open]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
 ok('palette : ouverte au clic', box.hidden === false);
 const total = d.querySelectorAll('.palette__item').length;
-ok('palette : 27 entrees listees', total === 27, String(total));
+ok('palette : 29 entrees listees', total === 29, String(total));
 input.value = 'bulletin';
 input.dispatchEvent(new w.Event('input', { bubbles: true }));
 ok('palette : recherche filtre', d.querySelectorAll('.palette__item').length === 1);
@@ -68,23 +68,23 @@ const slides = d.querySelectorAll('.carousel--projects .carousel__slide');
 const track = d.querySelector('.carousel--projects [data-carousel-track]');
 const count = d.querySelector('.carousel--projects [data-carousel-count]');
 const tabs = d.querySelectorAll('[data-carousel-go]');
-ok('projets : 3 diapositives', slides.length === 3, String(slides.length));
-ok('projets : 3 onglets', tabs.length === 3, String(tabs.length));
+ok('projets : 4 diapositives', slides.length === 4, String(slides.length));
+ok('projets : 4 onglets', tabs.length === 4, String(tabs.length));
 ok('projets : autant de blocs que d\'onglets', d.querySelectorAll('.project').length === tabs.length);
-ok('projets : chaque bloc a son pourquoi', d.querySelectorAll('.project__why').length === 3);
-ok('projets : chaque bloc a ses liens', d.querySelectorAll('.project .store-links').length === 3);
-ok('projets : demarre sur le 1er', count.textContent === '1 / 3', count.textContent);
+ok('projets : chaque bloc a son pourquoi', d.querySelectorAll('.project__why').length === 4);
+ok('projets : chaque bloc a ses liens', d.querySelectorAll('.project .store-links').length === 4);
+ok('projets : demarre sur le 1er', count.textContent === '1 / 4', count.textContent);
 ok('projets : un seul visible', d.querySelectorAll('.carousel--projects .carousel__slide[aria-hidden="false"]').length === 1);
 d.querySelector('.carousel--projects [data-carousel-next]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-ok('projets : suivant avance', count.textContent === '2 / 3', count.textContent);
+ok('projets : suivant avance', count.textContent === '2 / 4', count.textContent);
 ok('projets : la bande a glisse', track.style.transform === 'translateX(-100%)', track.style.transform);
 ok('projets : l\'onglet suit', tabs[1].getAttribute('aria-selected') === 'true');
-tabs[2].dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-ok('projets : l\'onglet pilote la bande', count.textContent === '3 / 3', count.textContent);
+tabs[3].dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
+ok('projets : l\'onglet pilote la bande', count.textContent === '4 / 4', count.textContent);
 d.querySelector('.carousel--projects [data-carousel-next]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-ok('projets : boucle en avant', count.textContent === '1 / 3', count.textContent);
+ok('projets : boucle en avant', count.textContent === '1 / 4', count.textContent);
 d.querySelector('.carousel--projects [data-carousel-prev]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-ok('projets : boucle en arriere', count.textContent === '3 / 3', count.textContent);
+ok('projets : boucle en arriere', count.textContent === '4 / 4', count.textContent);
 
 // Copie
 const copyBtn = d.querySelector('[data-copy]');
@@ -118,7 +118,7 @@ ok('presentation : 4 preuves', d.querySelectorAll('.proof li').length === 4);
 
 // Frise du parcours
 ok('parcours : bloc ancre', !!d.querySelector('#parcours'));
-ok('parcours : 14 etapes', d.querySelectorAll('.path__step').length === 14,
+ok('parcours : 15 etapes', d.querySelectorAll('.path__step').length === 15,
    String(d.querySelectorAll('.path__step').length));
 ok('parcours : chaque etape a une annee et un titre',
    Array.from(d.querySelectorAll('.path__step')).every(s => s.querySelector('.path__year') && s.querySelector('h4')));
@@ -130,8 +130,22 @@ input.dispatchEvent(new w.Event('input', { bubbles: true }));
 ok('parcours : atteignable depuis la recherche',
    Array.from(d.querySelectorAll('.palette__item')).some(li => li.textContent.includes('Mon parcours')));
 d.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
-ok('presentation : 8 sections ancrees', d.querySelectorAll('main > section[id]').length === 8,
+ok('presentation : 9 sections ancrees', d.querySelectorAll('main > section[id]').length === 9,
    String(d.querySelectorAll('main > section[id]').length));
+
+// Veille technologique
+ok('veille : section ancree', !!d.querySelector('section#veille'));
+ok('veille : lien dans le menu', !!d.querySelector('.nav a[href="#veille"]'));
+ok('veille : 3 etapes de methode', d.querySelectorAll('.watch-method li').length === 3);
+ok('veille : 6 themes', d.querySelectorAll('.watch-card').length === 6,
+   String(d.querySelectorAll('.watch-card').length));
+ok('veille : chaque theme relie a un projet ou un cours',
+   Array.from(d.querySelectorAll('.watch-card')).every(c => c.querySelectorAll('.watch-card__links li').length > 0));
+ok('veille : articles en lien externe, nouvel onglet securise',
+   d.querySelectorAll('.watch-feed a').length >= 3 &&
+   Array.from(d.querySelectorAll('.watch-feed a')).every(a => /^https:/.test(a.getAttribute('href')) && a.target === '_blank' && /noopener/.test(a.rel)));
+ok('titre : etudiant, plus developpeur full-stack', !/full-stack/i.test(d.querySelector('.hero__role').textContent + d.title));
+ok('projets : Pla\'Net present', Array.from(tabs).some(t => t.textContent.includes("Pla'Net")));
 
 console.log('\n--- pages/stage.html (chemins relatifs) ---');
 const w2 = boot('pages/stage.html');
@@ -139,7 +153,7 @@ const d2 = w2.document;
 d2.querySelector('[data-palette-open]').dispatchEvent(new w2.MouseEvent('click', { bubbles: true }));
 const first = d2.querySelector('.palette__item');
 ok('palette : ouverte sur une sous-page', d2.querySelector('[data-palette]').hidden === false);
-ok('palette : 27 entrees aussi', d2.querySelectorAll('.palette__item').length === 27);
+ok('palette : 29 entrees aussi', d2.querySelectorAll('.palette__item').length === 29);
 ok('theme : bouton present', !!d2.querySelector('[data-theme-toggle]'));
 
 console.log('\n' + pass + ' reussis, ' + fail + ' echecs');

@@ -1,6 +1,26 @@
 # Etat d'avancement
 
-Dernière mise à jour : 2026-08-10
+Dernière mise à jour : 2026-09-24
+
+## Mise à jour du 2026-09-24, veille technologique, Pla'Net et titre
+
+- **Titre** : « Développeur full-stack » remplacé par « Étudiant en BTS SIO SLAM » (accroche,
+  `<title>`, description, Open Graph, JSON-LD, texte alternatif du CV). Dorian est étudiant,
+  le site ne doit pas laisser croire le contraire.
+- **Pla'Net** ajouté : 2e diapositive du carrousel (4 projets, compteur 1 / 4), étape
+  « Sept. 2026 » dans la frise (15 étapes), fiche `#planet` dans `pages/projets-perso.html`,
+  Symfony, Twig et MariaDB dans les compétences et le défilé, deux entrées dans la recherche.
+  Capture générée depuis le prototype `Bureau/mediaschool-planning` (compte admin de démo,
+  vue semaine), rangée dans `assets/meta/shot-planet.jpg|webp`.
+- **Veille technologique** : section 06 `#veille`, lien « Veille » dans le menu de toutes
+  les pages. Documents passe en 07 (fond teinté), Ce site en 08, Contact en 09.
+  Sources : les 5 alertes Google hebdomadaires de Dorian (cybersécurité, NIS2, ransomware et
+  phishing, Wi-Fi 7 / 6G, IA). Articles à renouveler régulièrement.
+- **Tests** : 56 au vert (8 nouveaux sur la veille, le titre et Pla'Net).
+
+**À vérifier par Dorian** : le cadre exact de Pla'Net (projet de cours ou projet perso ?),
+et les formulations de la veille qui parlent de ses habitudes (notes de version suivies,
+certifications en préparation).
 
 ## Mise à jour du 2026-08-10, page de jeu en plein écran
 

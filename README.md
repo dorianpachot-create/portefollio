@@ -2,7 +2,7 @@
 
 Site vitrine personnel développé dans le cadre du BTS SIO option SLAM à IRIS MediaSchool.
 L'accueil est une page unique qui déroule : présentation, compétences, stage chez Suitime,
-projets personnels, projets encadrés du BTS, documents de candidature, coulisses
+projets personnels, projets encadrés du BTS, veille technologique, documents de candidature, coulisses
 techniques et contact. Les contenus longs (journal de stage,
 documents en grand, fiches de cours, mini-jeu) ont leur propre page.
 
@@ -16,13 +16,13 @@ portefollio/
 ├── README.md
 ├── PROGRESS.md          Etat d'avancement et points de reprise
 ├── .gitignore
-├── index.html           Accueil, 8 sections : présentation, compétences, stage,
-│                        projets, cours, documents, coulisses, contact
+├── index.html           Accueil, 9 sections : présentation, compétences, stage,
+│                        projets, cours, veille, documents, coulisses, contact
 ├── css/style.css        Tout le style (variables en tête de fichier)
 ├── js/main.js           Thème, menu, palette Ctrl+K, carrousel de projets (vanilla JS)
 ├── sitemap.xml
 ├── robots.txt
-├── tests/dom.test.js    48 tests des composants interactifs (jsdom)
+├── tests/dom.test.js    56 tests des composants interactifs (jsdom)
 ├── assets/
 │   ├── fonts/                    Inter en woff2, servie localement
 │   ├── meta/                     Favicon, image de partage, vignettes WebP
@@ -49,12 +49,25 @@ portefollio/
     ├── stage.html           Stage chez Suitime, semaine par semaine
     ├── documents.html       Recommandation, bulletin, lettre de motivation
     ├── projets-cours.html   TP du BTS, avec fiches PDF
-    ├── projets-perso.html   CRP-Assurance, SYNCRO, Mission Orion
+    ├── projets-perso.html   CRP-Assurance, SYNCRO, Pla'Net, Mission Orion
     ├── mini-jeu.html        Mission Orion en plein écran, sans en-tête ni pied de page
     └── mentions-legales.html
 ```
 
-## Contenu à jour au 10 août 2026
+## Contenu à jour au 24 septembre 2026
+
+- **Titre** : « Étudiant en BTS SIO SLAM » sous le nom (et dans le `<title>`, l'Open Graph
+  et le JSON-LD), à la place de « Développeur full-stack ».
+- **Pla'Net** : application web de planning pour les écoles MediaSchool (IRIS, ECS, IEJ),
+  commencée en septembre 2026. Prototype HTML/CSS/JS (dossier `Bureau/mediaschool-planning`)
+  puis application Symfony + Twig sur MariaDB (dossier `Bureau/planet-app`, 11 tables).
+  Diapositive dans le carrousel, étape dans la frise, fiche détaillée sur
+  `pages/projets-perso.html#planet`. Capture du prototype : `assets/meta/shot-planet.*`.
+- **Veille technologique** : nouvelle section 06 de l'accueil (`#veille`). Méthode en trois
+  temps, six thèmes rattachés chacun à un projet ou un cours, et les derniers articles
+  repérés via les alertes Google. **À tenir à jour** : copier un `<li>` dans `.watch-feed`
+  et changer la date « Mis à jour le ».
+
 
 - **CV** : version neutre (sans nom d'entreprise), à jour au 28/07/2026, mentionnant
   SYNCRO, CRP-Assurance.com et appsyncro.fr.
@@ -133,7 +146,7 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
 - Deux polices, servies depuis `assets/fonts/`, aucun appel à un service tiers :
   **Inter** pour le texte courant, **JetBrains Mono** pour tout ce qui est technique
   (libellés de section, chiffres, étiquettes, numéros).
-- Numéros de section de 01 à 08 en filigrane, posés par `data-num` et `attr()`.
+- Numéros de section de 01 à 09 en filigrane, posés par `data-num` et `attr()`.
 - Deux sections entièrement inversées, sur fond profond. La classe `.section--invert`
   ne fait que redéfinir les variables de couleur : tout le contenu suit sans règle
   supplémentaire.
@@ -147,12 +160,12 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
 
 - **Thème clair / sombre** mémorisé, aligné par défaut sur le réglage du système, sans
   flash au chargement (script inline dans le `<head>`).
-- **Recherche** dans l'en-tête ou au `Ctrl+K` : 26 destinations, recherche insensible aux
+- **Recherche** dans l'en-tête ou au `Ctrl+K` : 29 destinations, recherche insensible aux
   accents, navigation entièrement au clavier.
 - **Frise du projet** et **histogramme d'activité** en CSS pur, sans bibliothèque.
-- **Frise du parcours** dans la section « Qui je suis » : quatorze étapes de 2018 à
+- **Frise du parcours** dans la section « Qui je suis » : quinze étapes de 2017 à
   l'alternance recherchée, colorées par famille (technique, sport, terrain, aujourd'hui).
-- **Carrousel de projets** : les trois projets partagent le même gabarit (ce que c'est,
+- **Carrousel de projets** : les quatre projets partagent le même gabarit (ce que c'est,
   pourquoi, avec quoi, où aller voir). Navigation par onglets nommés, flèches ou clavier,
   et repli en `scroll-snap` si le JavaScript ne se charge pas.
 - Section **« Ce site est aussi un projet »** qui détaille les choix techniques et invite
@@ -184,7 +197,7 @@ npm install jsdom
 node tests/dom.test.js
 ```
 
-48 vérifications sur les composants interactifs, sans navigateur. Voir `tests/README.md`.
+56 vérifications sur les composants interactifs, sans navigateur. Voir `tests/README.md`.
 
 ## SEO
 
