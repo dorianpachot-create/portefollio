@@ -9,3 +9,6 @@ assets/syncro/app-release.apk
 # Dependances de test
 node_modules/
 package-lock.json
+
+# Captures envoyees par Claude, pas du site
+Claude outputs/

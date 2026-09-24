@@ -7,15 +7,13 @@
  * suite, dans son propre bloc numerote. Elles ne se parlent pas entre
  * elles, donc on peut en supprimer une sans toucher aux autres.
  *
- *   1. Theme clair / sombre .... bouton lune, memorise dans le navigateur
- *   2. Menu repliable .......... bouton Menu en dessous de 760px
- *   3. Section en cours ........ surligne le lien de la section lue
- *   4. Palette de commandes .... la recherche, au clic ou au Ctrl+K
- *   5. Carrousel ............... projets et captures, fleches et onglets
- *   6. Copie de l'e-mail ....... bouton Copier de la section Contact
- *   7. Lumiere a la souris ..... halo qui suit le curseur sur les cartes
- *   8. Moteur de defilement .... un seul ecouteur pour tout le site
- *   9. Apparitions ............. reveal, cascade, histogramme, compteurs
+ *   1. Menu repliable .......... bouton Menu en dessous de 760px
+ *   2. Section en cours ........ surligne le lien de la section lue
+ *   3. Palette de commandes .... la recherche, au clic ou au Ctrl+K
+ *   4. Carrousel ............... projets et captures, fleches et onglets
+ *   5. Copie de l'e-mail ....... bouton Copier de la section Contact
+ *   6. Moteur de defilement .... un seul ecouteur pour tout le site
+ *   7. Apparitions ............. reveal, cascade, histogramme, compteurs
  *
  * LE PRINCIPE A RETENIR
  * Chaque bloc commence par chercher son HTML et s'arrete tout de suite
@@ -41,52 +39,7 @@
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* =======================================================
-     1. THEME CLAIR / SOMBRE
-
-     Attention : ce n'est pas ici que le theme est choisi au
-     chargement. Le petit script en haut de chaque page s'en
-     charge, parce qu'il doit s'executer avant le premier
-     affichage. Sinon, quelqu'un en mode sombre verrait un
-     eclair blanc a chaque changement de page.
-
-     Ce bloc ne gere que le clic sur le bouton.
-     ======================================================= */
-  (function theme() {
-    const btn = $('[data-theme-toggle]');
-    if (!btn) return;
-
-    const apply = (mode) => {
-      document.documentElement.setAttribute('data-theme', mode);
-      btn.setAttribute('aria-pressed', String(mode === 'dark'));
-      btn.setAttribute(
-        'aria-label',
-        mode === 'dark' ? 'Passer en thème clair' : 'Passer en thème sombre'
-      );
-      const meta = $('meta[name="theme-color"]');
-      if (meta) meta.setAttribute('content', mode === 'dark' ? '#0f1318' : '#1d4ed8');
-    };
-
-    apply(document.documentElement.getAttribute('data-theme') || 'light');
-
-    btn.addEventListener('click', () => {
-      const next =
-        document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      apply(next);
-      try { localStorage.setItem('theme', next); } catch (e) { /* navigation privée */ }
-    });
-
-    // Tant que personne n'a clique sur le bouton, on suit le reglage du
-    // systeme, meme s'il change pendant la visite. Des qu'un choix est
-    // enregistre, il prend le dessus.
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      let chosen = null;
-      try { chosen = localStorage.getItem('theme'); } catch (err) { /* ignore */ }
-      if (!chosen) apply(e.matches ? 'dark' : 'light');
-    });
-  })();
-
-  /* =======================================================
-     2. MENU REPLIABLE
+     1. MENU REPLIABLE
      En dessous de 760px le menu est cache derriere un bouton.
      Au-dessus il est toujours visible.
      ======================================================= */
@@ -118,7 +71,7 @@
   })();
 
   /* =======================================================
-     3. SECTION EN COURS DE LECTURE
+     2. SECTION EN COURS DE LECTURE
 
      Surligne dans le menu le lien de la section qu'on est en
      train de lire. Ne s'active que sur l'accueil, puisque les
@@ -153,7 +106,7 @@
   })();
 
   /* =======================================================
-     4. PALETTE DE COMMANDES
+     3. PALETTE DE COMMANDES
 
      La recherche du site. S'ouvre au clic sur le bouton
      Rechercher ou au Ctrl+K (Cmd+K sur Mac).
@@ -285,7 +238,7 @@
   })();
 
   /* =======================================================
-     5. CARROUSEL
+     4. CARROUSEL
 
      Une diapositive a la fois. Le principe est volontairement
      bete : on garde un index, et on fait glisser la bande de
@@ -314,7 +267,7 @@
         // On boucle : apres la derniere diapositive on revient a la premiere.
         index = (i + slides.length) % slides.length;
         track.style.transform = 'translateX(' + (-index * 100) + '%)';
-        if (count) count.textContent = (index + 1) + ' / ' + slides.length;
+        if (count) count.textContent = (index + 1) + ' sur ' + slides.length;
 
         // Ce qui est masque sort de l'ordre de tabulation, sinon le
         // clavier part sur des liens qu'on ne voit pas a l'ecran.
@@ -353,7 +306,7 @@
   })();
 
   /* =======================================================
-     6. COPIE DE L'E-MAIL
+     5. COPIE DE L'E-MAIL
      ======================================================= */
   (function copy() {
     $$('[data-copy]').forEach((btn) => {
@@ -389,39 +342,7 @@
   })();
 
   /* =======================================================
-     7. LUMIERE QUI SUIT LA SOURIS
-
-     On ecrit la position du curseur dans deux variables CSS,
-     --mx et --my, et le CSS s'en sert pour placer un halo.
-     Le JavaScript ne fait donc que poser deux nombres.
-
-     Deux precautions : on ne s'abonne qu'au survol des cartes,
-     pas de la page entiere, et on passe par requestAnimationFrame
-     pour ne pas ecrire mille fois par seconde.
-     ======================================================= */
-  (function spotlight() {
-    if (reduced) return;
-    if (!window.matchMedia('(hover: hover)').matches) return; // inutile au doigt
-
-    const cards = $$('.card, .doc');
-    if (!cards.length) return;
-
-    cards.forEach((card) => {
-      let raf = null;
-      card.addEventListener('mousemove', (e) => {
-        if (raf) return;
-        raf = requestAnimationFrame(() => {
-          const r = card.getBoundingClientRect();
-          card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
-          card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
-          raf = null;
-        });
-      });
-    });
-  })();
-
-  /* =======================================================
-     8. UN SEUL ECOUTEUR DE DEFILEMENT
+     6. UN SEUL ECOUTEUR DE DEFILEMENT
 
      C'est le point le plus important du fichier pour la
      fluidite. Avant, trois blocs ecoutaient le defilement
@@ -489,7 +410,7 @@
   })();
 
   /* =======================================================
-     9. APPARITIONS ET COMPTEURS
+     7. APPARITIONS ET COMPTEURS
 
      L'apparition des blocs au defilement, l'effet de cascade,
      les barres de l'histogramme et les compteurs qui montent.

@@ -19,12 +19,12 @@ portefollio/
 ├── index.html           Accueil, 9 sections : présentation, compétences, stage,
 │                        projets, cours, veille, documents, coulisses, contact
 ├── css/style.css        Tout le style (variables en tête de fichier)
-├── js/main.js           Thème, menu, palette Ctrl+K, carrousel de projets (vanilla JS)
+├── js/main.js           Menu, palette Ctrl+K, carrousel de projets (vanilla JS)
 ├── sitemap.xml
 ├── robots.txt
-├── tests/dom.test.js    56 tests des composants interactifs (jsdom)
+├── tests/dom.test.js    55 tests des composants interactifs (jsdom)
 ├── assets/
-│   ├── fonts/                    Inter en woff2, servie localement
+│   ├── fonts/                    DM Sans en woff2, servie localement
 │   ├── meta/                     Favicon, image de partage, vignettes WebP
 │   ├── stars.svg                 Champ d'étoiles tilable
 │   ├── cv/
@@ -90,8 +90,8 @@ Le tableau ci-dessous répond à la question « je veux modifier ça, je vais o�
 
 | Ce que je veux changer | Fichier | Où exactement |
 |---|---|---|
-| Une couleur, la largeur du site, les coins arrondis | `css/style.css` | Le bloc `:root` tout en haut. Le thème sombre suit automatiquement |
-| Les couleurs du thème sombre | `css/style.css` | Le bloc `[data-theme="dark"]`, juste en dessous de `:root` |
+| Une couleur, la largeur du site, les coins arrondis | `css/style.css` | Le bloc `:root` tout en haut |
+| Le style général (accroche, boutons, survols) | `css/style.css` | Le bloc « 10. IDENTITE VISUELLE », tout en bas |
 | Un texte de l'accueil | `index.html` | Chaque section a un gros commentaire qui la nomme |
 | Une étape du parcours | `index.html` | Un `<li class="path__step">` dans le bloc `#parcours`, avec sa famille de couleur : `--tech`, `--sport`, `--terrain` ou `--now` |
 | Ajouter un projet | `index.html` | Copier un `<li class="carousel__slide">` dans la section Projets, ajouter son onglet avec le bon `data-carousel-go` (index à partir de 0) et mettre à jour le total du compteur |
@@ -101,9 +101,8 @@ Le tableau ci-dessous répond à la question « je veux modifier ça, je vais o�
 
 ### Bon à savoir avant de modifier
 
-- **Ne pas déplacer le script en haut des pages HTML.** Il pose le thème et la classe
-  `js` avant le premier affichage. Ailleurs, il y a un éclair blanc à chaque changement
-  de page en mode sombre.
+- **Ne pas déplacer le script en haut des pages HTML.** Il pose la classe `js` avant le
+  premier affichage, ce qui évite un saut des blocs animés au chargement.
 - **Les animations sont désactivées par défaut en CSS** et ne s'activent qu'avec la
   classe `js`. C'est volontaire : si le JavaScript plante, le site reste lisible au lieu
   de devenir à moitié invisible.
@@ -131,26 +130,37 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
 
 ## Design
 
-- Clair et sobre : fond blanc, bordures fines et beaucoup d'espace. Lisible aussi à
-  l'impression.
-- Une couleur d'accent principale (`--accent`, bleu `#1d4ed8`) réservée aux liens et aux
-  boutons, plus cinq teintes secondaires (`--c-blue`, `--c-teal`, `--c-violet`,
-  `--c-amber`, `--c-rose`) qui différencient les sections, les matières et les familles
-  de compétences.
+- **Sobre mais coloré, en aplats.** Cinq couleurs, jamais de dégradé, de halo ni de flou :
+  papier `#f9fbfc`, marine `#203961`, menthe `#a2cdb8`, corail `#e1755e`, taupe `#5d554b`
+  (variables `--c-paper`, `--c-navy`, `--c-mint`, `--c-coral`, `--c-taupe`). La bande des
+  cinq couleurs sous l'accroche et au-dessus du pied de page sert de signature.
+- Liens en marine, boutons pleins en corail avec texte encre (`--ink`), boutons secondaires
+  en contour. Au survol, les cartes se décalent avec une ombre franche de leur couleur,
+  sans flou.
+- Les teintes `--c-blue`, `--c-teal`, `--c-violet`, `--c-amber`, `--c-rose` gardent leurs
+  noms historiques mais sont dérivées de la palette (marine, menthe foncée, taupe, corail
+  foncé) pour rester lisibles en texte. Elles différencient sections, matières et
+  familles de compétences.
 - Chaque composant lit une variable locale `--c` : poser `--c` sur un parent recolore tout
   ce qu'il contient, sans toucher au HTML.
 - **Deux largeurs** : `--maxw` (1240 px) pour le texte, `--maxw-wide` (1560 px) pour les
   grilles et les visuels. Les blocs de texte sont en plus limités en `ch`, donc en nombre
   de caractères par ligne, ce qui reste lisible quelle que soit la taille d'écran.
 - Toutes les variables sont dans `:root`, en tête de `css/style.css`.
-- Deux polices, servies depuis `assets/fonts/`, aucun appel à un service tiers :
-  **Inter** pour le texte courant, **JetBrains Mono** pour tout ce qui est technique
-  (libellés de section, chiffres, étiquettes, numéros).
+- Une seule police, **DM Sans** (400 à 700), servie depuis `assets/fonts/`, aucun appel à
+  un service tiers. Pas de police « code » : tout le site parle la même langue.
+- Pas de thème sombre : la palette est pensée pour un seul fond clair.
+- Pas d'icônes décoratives ni de séparateurs typographiques (`//`, `/`, tirets). Les
+  seules icônes restantes sont fonctionnelles : loupe de recherche, flèches du carrousel,
+  retour en haut, et les logos des badges App Store et Google Play.
 - Numéros de section de 01 à 09 en filigrane, posés par `data-num` et `attr()`.
-- Deux sections entièrement inversées, sur fond profond. La classe `.section--invert`
-  ne fait que redéfinir les variables de couleur : tout le contenu suit sans règle
-  supplémentaire.
-- Les sections alternent `--bg` et `--bg-soft` pour donner du rythme sans ajouter de couleur.
+- L'accroche et deux sections (Stage, Ce site) en marine plein. La
+  classe `.section--invert` ne fait que redéfinir les variables de couleur : tout le
+  contenu suit sans règle supplémentaire.
+- Une section sur deux prend un aplat très clair de sa couleur, l'autre reste sur le fond
+  de page.
+- Tout le parti pris visuel est regroupé dans le bloc « 10. IDENTITE VISUELLE », à la fin
+  de `css/style.css`.
 - Chaque section de l'accueil occupe au moins la hauteur d'un écran, contenu centré
   verticalement (`min-height: calc(100vh - 64px)`), et retombe à sa hauteur naturelle
   sous 900 px pour éviter les grands vides sur mobile.
@@ -158,8 +168,6 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
 
 ## Fonctionnalités
 
-- **Thème clair / sombre** mémorisé, aligné par défaut sur le réglage du système, sans
-  flash au chargement (script inline dans le `<head>`).
 - **Recherche** dans l'en-tête ou au `Ctrl+K` : 29 destinations, recherche insensible aux
   accents, navigation entièrement au clavier.
 - **Frise du projet** et **histogramme d'activité** en CSS pur, sans bibliothèque.
@@ -173,13 +181,7 @@ Puis ouvrir [http://localhost:8000/](http://localhost:8000/).
 - **Copie de l'e-mail** en un clic, avec repli pour les navigateurs anciens.
 - **Barre de contact fixe** en bas de chaque page : e-mail, téléphone et CV toujours
   accessibles.
-- **Halos diffus** derrière l'accroche, qui dérivent lentement, et nom en dégradé
-  traversé par un reflet. En CSS pur, sans image.
-- **Halo qui suit le curseur** sur les cartes, désactivé au doigt et si
-  `prefers-reduced-motion`.
 - **Barre de progression** de lecture en haut de l'écran.
-- **Fond animé** sur tout le site : trois taches de couleur qui dérivent et une grille
-  fine, en `transform` uniquement pour ne rien coûter au défilement.
 - **Défilé de technologies** sous les compétences, en pause au survol.
 - Apparition au défilement en cascade et compteurs animés, désactivés si
   `prefers-reduced-motion`.
@@ -197,7 +199,7 @@ npm install jsdom
 node tests/dom.test.js
 ```
 
-56 vérifications sur les composants interactifs, sans navigateur. Voir `tests/README.md`.
+55 vérifications sur les composants interactifs, sans navigateur. Voir `tests/README.md`.
 
 ## SEO
 
@@ -212,7 +214,7 @@ Données structurées JSON-LD (`schema.org/Person`), balises Open Graph avec ima
 - `aria-current="page"` sur le lien de la page active
 - `aria-label` sur les éléments décoratifs ou compacts
 - Focus visible (outline 2px sur tous les éléments interactifs)
-- Contraste WCAG AA respecté dans les deux thèmes
+- Contraste WCAG AA respecté
 - `prefers-reduced-motion` respecté sur toutes les animations
 - Palette de commandes entièrement utilisable au clavier
 

@@ -2,6 +2,37 @@
 
 Dernière mise à jour : 2026-09-24
 
+## Mise à jour du 2026-09-24 (3), police, thème sombre, icônes
+
+- **Police** : DM Sans partout (choix de Dorian parmi Figtree, DM Sans, Manrope et
+  l'ancienne Archivo + Inter). Plus de JetBrains Mono : `--mono` pointe sur la même police.
+- **Thème sombre supprimé** : bouton, bloc JS, variables `[data-theme="dark"]`, script du
+  `<head>` réduit à la pose de la classe `js`. Plus rien n'est stocké dans le navigateur
+  (mentions légales mises à jour).
+- **Séparateurs retirés** du texte : `//` devant les dates de projets et le rôle, ` / `,
+  tirets et cadratins dans les titres d'onglet, le pied de page et les documents. Le
+  compteur du carrousel affiche « 1 sur 4 ».
+- **Icônes retirées** : tuiles de matières, cartes de projets, boutons, coordonnées,
+  contact, lien GitHub, fiches de cours. Restent la loupe, les flèches du carrousel, le
+  retour en haut et les logos App Store et Google Play des badges.
+- Tests : 55 au vert (thème retiré, sobriété vérifiée).
+
+## Mise à jour du 2026-09-24 (2), nouvelle identité visuelle
+
+Demande de Dorian : garder un site sobre mais coloré, sans l'effet « généré par IA ».
+Référence donnée : un site en aplats avec la palette #f9fbfc, #203961, #a2cdb8, #e1755e,
+#5d554b.
+
+- **Supprimé** : fond animé (taches et grille), halos de l'accroche, nom en dégradé et son
+  reflet, reflet des boutons, lumière qui suit la souris (CSS et bloc JS), grain, titres de
+  section en dégradé, fondus du défilé, pastille qui respire, ombres floues colorées.
+- **Ajouté** : accroche en marine plein avec le nom en capitales (Archivo), boutons corail,
+  bande des cinq couleurs sous l'accroche et au-dessus du pied de page, carré corail devant
+  le nom dans la barre, ombres franches décalées au survol, sections Stage et Ce site en
+  marine dans les deux thèmes, portrait posé sur un aplat menthe.
+- Tout est dans le bloc « 10. IDENTITE VISUELLE » en fin de `css/style.css`.
+- Police Archivo ajoutée dans `assets/fonts/` (licence OFL, mention dans LICENSE.txt).
+
 ## Mise à jour du 2026-09-24, veille technologique, Pla'Net et titre
 
 - **Titre** : « Développeur full-stack » remplacé par « Étudiant en BTS SIO SLAM » (accroche,

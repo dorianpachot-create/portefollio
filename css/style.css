@@ -35,98 +35,78 @@
 /* =========================================================
    0. POLICE
 
-   Inter est servie depuis assets/fonts/ et non depuis Google
-   Fonts. Deux raisons : le navigateur n'envoie plus l'adresse IP
-   du visiteur a un tiers, et la police se charge en meme temps
-   que le reste du site au lieu d'attendre une connexion externe.
+   Une seule police pour tout le site : DM Sans, servie depuis
+   assets/fonts/ et non depuis Google Fonts (le navigateur ne
+   contacte aucun serveur exterieur). Ronde, legere, tres lisible.
 
    Deux fichiers par graisse : "latin" couvre le francais courant,
    "latin-ext" les caracteres plus rares. Le navigateur ne
    telecharge que ce dont la page a besoin, grace a unicode-range.
-
-   font-display: swap affiche tout de suite le texte avec une
-   police systeme, puis bascule sur Inter une fois chargee. Sans
-   ca, le texte reste invisible une fraction de seconde.
    ========================================================= */
 
 @font-face {
-  font-family: "Inter";
+  font-family: "DM Sans";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../assets/fonts/inter-400.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: url("../assets/fonts/dm-sans-400.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
-  font-family: "Inter";
+  font-family: "DM Sans";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../assets/fonts/inter-400-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  src: url("../assets/fonts/dm-sans-400-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+20A0-20AB, U+20AD-20C0, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
-  font-family: "Inter";
+  font-family: "DM Sans";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("../assets/fonts/inter-500.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: url("../assets/fonts/dm-sans-500.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
-  font-family: "Inter";
+  font-family: "DM Sans";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("../assets/fonts/inter-500-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  src: url("../assets/fonts/dm-sans-500-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+20A0-20AB, U+20AD-20C0, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
-  font-family: "Inter";
+  font-family: "DM Sans";
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("../assets/fonts/inter-600.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: url("../assets/fonts/dm-sans-600.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
-  font-family: "Inter";
+  font-family: "DM Sans";
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("../assets/fonts/inter-600-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  src: url("../assets/fonts/dm-sans-600-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+20A0-20AB, U+20AD-20C0, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
-  font-family: "Inter";
+  font-family: "DM Sans";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("../assets/fonts/inter-700.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: url("../assets/fonts/dm-sans-700.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
-  font-family: "Inter";
+  font-family: "DM Sans";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("../assets/fonts/inter-700-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-@font-face {
-  font-family: "JetBrains Mono";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("../assets/fonts/mono-400.woff2") format("woff2");
-}
-@font-face {
-  font-family: "JetBrains Mono";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("../assets/fonts/mono-700.woff2") format("woff2");
+  src: url("../assets/fonts/dm-sans-700-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+20A0-20AB, U+20AD-20C0, U+2C60-2C7F, U+A720-A7FF;
 }
 
 /* =========================================================
@@ -134,37 +114,44 @@
    ========================================================= */
 
 :root {
+
+  /* LES CINQ COULEURS DU SITE, en aplats, jamais en degrade.
+     Papier, marine, menthe, corail, taupe. Les teintes --c-* plus bas en
+     sont derivees : versions plus foncees pour du texte lisible, versions
+     claires pour les fonds. */
+  --c-paper:     #f9fbfc;
+  --c-navy:      #203961;
+  --c-mint:      #a2cdb8;
+  --c-coral:     #e1755e;
+  --c-taupe:     #5d554b;
+  --ink:         #1c2638;
   /* Fonds */
-  --bg:          #ffffff;
-  --bg-soft:     #f7f8fa;
-  --bg-tint:     #eef3ff;
+  --bg:          #f9fbfc;
+  --bg-soft:     #eef2f1;
+  --bg-tint:     #e2e8f1;
 
   /* Texte */
-  --text:        #0f1419;
-  --text-2:      #4a5568;
-  --text-3:      #78849b;
+  --text:        #1c2638;
+  --text-2:      #5d554b;
+  --text-3:      #736a60;
 
   /* Traits */
-  --border:      #e4e8ee;
-  --border-2:    #cdd5e0;
+  --border:      #e1e3df;
+  --border-2:    #c8c4bb;
 
   /* Accent */
-  --accent:      #1d4ed8;
-  --accent-dark: #1740ae;
+  --accent:      #203961;
+  --accent-dark: #152845;
   --on-accent:   #ffffff;
 
   /* Statut « en production » */
-  --ok-bg:       #eafbef;
-  --ok-text:     #15803d;
-  --ok-dot:      #16a34a;
+  --ok-bg:       #dcede4;
+  --ok-text:     #2f6f55;
+  --ok-dot:      #4f9a7b;
 
   --overlay:     rgba(15, 20, 25, 0.45);
-  --topbar-bg:   rgba(255, 255, 255, 0.97);
+  --topbar-bg:   rgba(249, 251, 252, 0.97);
 
-  /* Halos diffus de l'accroche. Deux teintes proches de l'accent, pour
-     rester dans la meme famille de couleurs. */
-  --halo-2:      #0ea5e9;
-  --halo-3:      #8b5cf6;
 
   /* PALETTE SECONDAIRE
      Cinq teintes utilisees pour differencier les sections, les familles
@@ -174,25 +161,25 @@
 
      Chaque teinte a une version de fond tres pale, pour poser du texte
      dessus sans probleme de contraste. */
-  --c-blue:      #1d4ed8;
-  --c-teal:      #0f766e;
-  --c-violet:    #7c3aed;
-  --c-amber:     #b45309;
-  --c-rose:      #be185d;
+  --c-blue:      #203961;
+  --c-teal:      #2f6f55;
+  --c-violet:    #5d554b;
+  --c-amber:     #9f432d;
+  --c-rose:      #9f432d;
 
-  --c-blue-bg:   #eef3ff;
-  --c-teal-bg:   #e6f7f4;
-  --c-violet-bg: #f2ecff;
-  --c-amber-bg:  #fdf3e3;
-  --c-rose-bg:   #fdecf3;
+  --c-blue-bg:   #e2e8f1;
+  --c-teal-bg:   #dcede4;
+  --c-violet-bg: #ece8e2;
+  --c-amber-bg:  #fae3dc;
+  --c-rose-bg:   #f6dcd4;
 
   /* Formes */
-  --radius:      10px;
-  --radius-sm:   8px;
+  --radius:      6px;
+  --radius-sm:   4px;
   --radius-pill: 999px;
 
-  --shadow:    0 1px 2px rgba(16,24,40,.03);
-  --shadow-md: 0 6px 24px rgba(16,24,40,.07);
+  --shadow:    none;
+  --shadow-md: 0 2px 0 rgba(28, 38, 56, 0.08);
 
   /* Hauteur de la barre du haut. Les sections plein ecran s'en servent
      pour calculer leur hauteur : ne pas la modifier a un seul endroit. */
@@ -213,62 +200,15 @@
      etale". */
   --maxw:      1240px;
   --maxw-wide: 1560px;
-  --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --display: "DM Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font: "DM Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
 
   /* Police technique. Elle sert aux libelles de section, aux chiffres, aux
      etiquettes et aux numeros. C'est ce qui donne au site son air de truc
      fait par quelqu'un qui code, plutot que par un template. */
-  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --mono: var(--font);
 }
 
-/* ---------- Thème sombre ----------
-   Appliqué par data-theme="dark" sur <html>. Le script inline dans le <head>
-   le pose avant le premier rendu, ce qui évite le flash blanc. */
-[data-theme="dark"] {
-  --bg:          #0f1318;
-  --bg-soft:     #161b23;
-  --bg-tint:     #17243f;
-
-  --text:        #e9edf3;
-  --text-2:      #a7b2c0;
-  --text-3:      #7c8898;
-
-  --border:      #242c37;
-  --border-2:    #3a4450;
-
-  --accent:      #7aa2ff;
-  --accent-dark: #9dbaff;
-  --on-accent:   #0b1220;
-
-  --ok-bg:       #10291a;
-  --ok-text:     #6ee7a0;
-  --ok-dot:      #34d399;
-
-  --overlay:     rgba(0, 0, 0, 0.6);
-  --topbar-bg:   rgba(16, 20, 26, 0.97);
-
-  --halo-2:      #38bdf8;
-  --halo-3:      #a78bfa;
-
-  /* En sombre, les teintes sont eclaircies pour rester lisibles sur fond
-     noir, et les fonds pales deviennent des fonds sombres teintes. */
-  --c-blue:      #7aa2ff;
-  --c-teal:      #2dd4bf;
-  --c-violet:    #a78bfa;
-  --c-amber:     #fbbf24;
-  --c-rose:      #f472b6;
-
-  --c-blue-bg:   #17243f;
-  --c-teal-bg:   #0e2b2a;
-  --c-violet-bg: #221a3d;
-  --c-amber-bg:  #2e2412;
-  --c-rose-bg:   #2e1626;
-
-  --shadow:    0 1px 2px rgba(0,0,0,.3), 0 1px 3px rgba(0,0,0,.35);
-  --shadow-md: 0 4px 16px rgba(0,0,0,.45);
-
-  color-scheme: dark;
-}
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -320,114 +260,6 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   white-space: nowrap; border: 0;
 }
 
-/* =========================================================
-   FOND ANIME DU SITE
-
-   Une couche fixe derriere tout le contenu, avec trois taches
-   de couleur qui tournent lentement. Elle est posee une fois
-   dans le <body> et ne bouge jamais avec le defilement.
-
-   REGLE DE PERF : on n'anime que transform et opacity, jamais
-   une couleur ni une position de fond. Ces deux proprietes
-   sont traitees par la carte graphique, le processeur n'a rien
-   a recalculer. C'est ce qui permet d'avoir du mouvement en
-   permanence sans perdre une seule image.
-
-   contain: strict isole la couche : le navigateur sait qu'elle
-   ne peut pas influencer la mise en page du reste.
-   ========================================================= */
-.bg-fx {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  overflow: hidden;
-  pointer-events: none;
-  contain: strict;
-}
-.bg-fx__blob {
-  position: absolute;
-  width: 46rem;
-  height: 46rem;
-  border-radius: 50%;
-  will-change: transform;
-  opacity: 0.5;
-}
-[data-theme="dark"] .bg-fx__blob { opacity: 0.42; }
-
-.bg-fx__blob--1 {
-  top: -14rem; left: -10rem;
-  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 34%, transparent), transparent 68%);
-  animation: blob-1 24s ease-in-out infinite;
-}
-.bg-fx__blob--2 {
-  top: 18%; right: -16rem;
-  background: radial-gradient(circle, color-mix(in srgb, var(--c-teal) 30%, transparent), transparent 68%);
-  animation: blob-2 30s ease-in-out infinite;
-}
-.bg-fx__blob--4 {
-  top: 55%; left: -14rem;
-  background: radial-gradient(circle, color-mix(in srgb, var(--c-amber) 22%, transparent), transparent 68%);
-  animation: blob-2 33s ease-in-out infinite reverse;
-}
-.bg-fx__blob--3 {
-  bottom: -18rem; left: 32%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--c-rose) 24%, transparent), transparent 68%);
-  animation: blob-3 27s ease-in-out infinite;
-}
-
-@keyframes blob-1 {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-  50%      { transform: translate3d(14vw, 10vh, 0) scale(1.18); }
-}
-@keyframes blob-2 {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1.1); }
-  50%      { transform: translate3d(-12vw, 14vh, 0) scale(0.92); }
-}
-@keyframes blob-3 {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(0.95); }
-  50%      { transform: translate3d(10vw, -12vh, 0) scale(1.15); }
-}
-
-/* Grille fine qui derive, posee par-dessus les taches de couleur.
-   Un seul degrade repete, deplace en boucle : aucun cout de repaint. */
-.bg-fx__grid {
-  position: absolute;
-  inset: -60px;
-  background-image:
-    linear-gradient(to right, color-mix(in srgb, var(--text) 5%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in srgb, var(--text) 5%, transparent) 1px, transparent 1px);
-  background-size: 60px 60px;
-  /* Pas de mask-image ici : masquer un element anime plein ecran oblige le
-     navigateur a recomposer le masque a chaque image. Le fondu des bords est
-     fait par .bg-fx__fade, une couche fixe posee par-dessus qui ne bouge
-     jamais et ne coute donc rien. */
-  opacity: 0.55;
-  will-change: transform;
-  animation: grid-drift 18s linear infinite;
-}
-
-/* Fondu des bords de la grille, statique. */
-.bg-fx__fade {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(90% 70% at 50% 30%, transparent 25%, var(--bg) 100%);
-}
-@keyframes grid-drift {
-  from { transform: translate3d(0, 0, 0); }
-  to   { transform: translate3d(60px, 60px, 0); }
-}
-
-/* Les sections doivent laisser voir le fond : on remplace les aplats
-   opaques par des fonds legerement transparents. */
-/* Les sections laissent voir le fond, mais restent assez opaques pour que
-   le contraste du texte ne bouge pas quand une tache de couleur passe
-   derriere. C'est la lisibilite qui prime sur l'effet. */
-.section--soft { background: color-mix(in srgb, var(--bg-soft) 90%, transparent); }
-.section:not(.section--soft) { background: color-mix(in srgb, var(--bg) 86%, transparent); }
-
-@supports not (background: color-mix(in srgb, red 50%, blue)) {
-  .bg-fx { display: none; }
-}
 
 /* =========================================================
    2. HAUT DE PAGE
@@ -542,45 +374,6 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
    4. ACCUEIL
    ========================================================= */
 
-/* ---------- Halos de l'accroche ----------
-   Deux taches de couleur tres diffuses derriere le nom. C'est du CSS pur,
-   aucune image : deux radial-gradient poses en fond, avec un flou. Ca donne
-   de la profondeur sans peser un octet de plus au chargement.
-
-   Le pseudo-element est en pointer-events: none, sinon il capterait les
-   clics des boutons places au-dessus. */
-.hero { position: relative; overflow: hidden; isolation: isolate; }
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: -20% -10% auto -10%;
-  height: 120%;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(38rem 22rem at 22% 28%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%),
-    radial-gradient(32rem 20rem at 80% 22%, color-mix(in srgb, var(--halo-2) 20%, transparent), transparent 70%),
-    radial-gradient(26rem 18rem at 60% 85%, color-mix(in srgb, var(--halo-3) 16%, transparent), transparent 70%);
-  /* Pas de filter: blur() ici. Flouter un element de la taille de l'ecran
-     oblige le navigateur a le repeindre a chaque image, et c'est une des
-     causes des saccades au defilement. Les radial-gradient sont deja doux,
-     le flou n'apportait presque rien.
-     will-change previent le navigateur qu'il faut mettre ce calque sur la
-     carte graphique, ou l'animation ne coute plus rien. */
-  opacity: 0.9;
-  will-change: transform;
-}
-
-/* Repli pour les navigateurs sans color-mix : on garde des halos, juste
-   avec des couleurs fixes plutot que derivees de l'accent. */
-@supports not (background: color-mix(in srgb, red 50%, blue)) {
-  .hero::before {
-    background:
-      radial-gradient(38rem 22rem at 22% 28%, rgba(29, 78, 216, 0.18), transparent 70%),
-      radial-gradient(32rem 20rem at 80% 22%, rgba(14, 165, 233, 0.16), transparent 70%);
-  }
-}
-
 /* ---------- Accroche ---------- */
 .hero {
   max-width: var(--maxw);
@@ -625,18 +418,6 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   letter-spacing: -0.035em;
 }
 
-/* Degrade sur le nom. background-clip: text peint le texte avec le degrade.
-   La couleur de repli est posee d'abord : un navigateur qui ne comprend pas
-   background-clip affiche un titre noir normal, pas un titre invisible. */
-.hero__title {
-  color: var(--text);
-  background: linear-gradient(100deg, var(--text) 0%, var(--accent) 55%, var(--halo-3) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-@supports (-webkit-background-clip: text) or (background-clip: text) {
-  .hero__title { color: transparent; }
-}
 .hero__role {
   font-size: 1.3rem;
   font-weight: 600;
@@ -959,8 +740,6 @@ a.card:hover, a.card:focus-visible {
   padding: 0.9rem 0;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
 }
 .marquee__track {
   display: flex;
@@ -1208,9 +987,7 @@ a.card:hover, a.card:focus-visible {
   display: grid;
   place-items: center;
   padding: 1.1rem;
-  background:
-    radial-gradient(60% 50% at 50% 40%, rgba(60, 90, 190, 0.16), transparent 70%),
-    #05070d;
+  background: #05070d;
 }
 
 /* aspect-ratio combine a max-height : le navigateur reduit la largeur
@@ -1409,9 +1186,6 @@ a.card:hover, a.card:focus-visible {
 .icon-btn svg { width: 18px; height: 18px; }
 
 /* Le soleil et la lune : une seule des deux est visible selon le thème. */
-.icon-btn .icon-sun { display: none; }
-[data-theme="dark"] .icon-btn .icon-sun { display: block; }
-[data-theme="dark"] .icon-btn .icon-moon { display: none; }
 
 /* Faux champ de recherche : c'est un bouton, mais il en a l'apparence
    pour que l'utilisateur comprenne sa fonction sans connaître le raccourci. */
@@ -1765,7 +1539,7 @@ body { padding-bottom: 4.5rem; }
   width: 100%;
   transform: scaleX(var(--p, 0));
   transform-origin: 0 50%;
-  background: linear-gradient(90deg, var(--accent), var(--halo-2) 55%, var(--halo-3));
+  background: var(--c-coral);
 }
 
 /* ---------- Cartes plus vivantes au survol ----------
@@ -1819,45 +1593,9 @@ a.card:hover, a.card:focus-visible {
   content: "";
   height: 1px;
   width: 3rem;
-  background: linear-gradient(90deg, var(--accent), transparent);
+  background: var(--accent);
 }
 
-/* ---------- Halos qui derivent lentement ----------
-   Le fond de l'accroche n'est plus fige : les trois taches de couleur
-   se deplacent tres lentement, sur 26 secondes. Assez lent pour ne pas
-   distraire, assez present pour qu'on remarque que ca bouge. */
-@keyframes halo-drift {
-  0%   { transform: translate3d(0, 0, 0) scale(1); }
-  33%  { transform: translate3d(3%, -2%, 0) scale(1.06); }
-  66%  { transform: translate3d(-2%, 2%, 0) scale(0.97); }
-  100% { transform: translate3d(0, 0, 0) scale(1); }
-}
-.hero::before { animation: halo-drift 26s ease-in-out infinite; }
-
-/* ---------- Reflet qui traverse le nom ----------
-   Une bande claire passe sur le titre toutes les 7 secondes. L'effet
-   repose sur background-size: 200% et un decalage anime de la position :
-   aucune couche supplementaire, aucun element en plus. */
-/* Ces deux animations touchent background-position et box-shadow, qui
-   demandent un repaint contrairement a transform. C'est assume : elles
-   ne s'appliquent qu'au titre et a une pastille de 7 px, donc la surface
-   repeinte est minuscule. Tout ce qui couvre l'ecran (fond, grille,
-   defile) n'anime que transform. */
-@keyframes shine {
-  0%, 65% { background-position: 200% center; }
-  100%    { background-position: -60% center; }
-}
-.hero__title {
-  background-size: 220% auto;
-  animation: shine 7s ease-in-out infinite;
-}
-
-/* ---------- Pastille de production qui respire ---------- */
-@keyframes pulse-dot {
-  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok-dot) 55%, transparent); }
-  70%      { box-shadow: 0 0 0 7px transparent; }
-}
-.hero__eyebrow::before { animation: pulse-dot 2.4s ease-out infinite; }
 
 /* ---------- Soulignement anime du menu ----------
    Un trait part du centre et s'ouvre vers les bords. transform: scaleX
@@ -1877,46 +1615,8 @@ a.card:hover, a.card:focus-visible {
 .nav__link:hover::after,
 .nav__link.is-active::after { transform: scaleX(1); }
 
-/* ---------- Reflet sur les boutons pleins ----------
-   Une bande lumineuse traverse le bouton au survol. Le pseudo-element est
-   en pointer-events: none pour ne jamais gener le clic. */
-.btn--primary { position: relative; overflow: hidden; isolation: isolate; }
-.btn--primary::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.32) 50%, transparent 65%);
-  transform: translateX(-130%);
-  transition: transform 0.55s ease;
-}
-.btn--primary:hover::after { transform: translateX(130%); }
 
-/* ---------- Lumiere qui suit la souris sur les cartes ----------
-   Le JavaScript ecrit la position du curseur dans --mx et --my. Le halo
-   n'apparait qu'au survol, et disparait proprement a la sortie.
-
-   L'opacite est animee plutot que le degrade lui-meme : animer un
-   background force le navigateur a repeindre en continu. */
 .card, .doc, .subject-card, .stat { position: relative; }
-.card::after, .doc::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  border-radius: inherit;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  background: radial-gradient(
-    16rem 16rem at var(--mx, 50%) var(--my, 50%),
-    color-mix(in srgb, var(--accent) 14%, transparent),
-    transparent 70%
-  );
-}
-.card:hover::after, .doc:hover::after { opacity: 1; }
-
-/* Le contenu de la carte doit rester au-dessus du halo. */
-.card > *, .doc > * { position: relative; z-index: 1; }
 
 /* ---------- Frise : les etapes se soulevent ---------- */
 .phase { transition: background 0.2s ease, transform 0.2s ease; }
@@ -1927,7 +1627,6 @@ a.card:hover, a.card:focus-visible {
    Ca la detache du contenu qui passe dessous. */
 .topbar { transition: box-shadow 0.25s ease; }
 .topbar.is-stuck { box-shadow: 0 4px 20px rgba(16,24,40,.07); }
-[data-theme="dark"] .topbar.is-stuck { box-shadow: 0 4px 20px rgba(0,0,0,.4); }
 
 /* ---------- Apparition au défilement ----------
    L'état masqué n'est appliqué QUE si le JavaScript tourne : la classe .js est
@@ -1972,47 +1671,29 @@ a.card:hover, a.card:focus-visible {
 #projets      { --c: var(--c-blue);   --c-bg: var(--c-blue-bg); }
 #cours        { --c: var(--c-amber);  --c-bg: var(--c-amber-bg); }
 #veille       { --c: var(--c-violet); --c-bg: var(--c-violet-bg); }
-#documents    { --c: var(--c-rose);   --c-bg: var(--c-rose-bg); }
+#documents    { --c: var(--c-teal);   --c-bg: var(--c-teal-bg); }
 #ce-site      { --c: var(--c-teal);   --c-bg: var(--c-teal-bg); }
 #contact      { --c: var(--c-blue);   --c-bg: var(--c-blue-bg); }
 
-/* LE FOND DE CHAQUE SECTION EST TEINTE.
-   C'est ce qui se voit le plus : au lieu d'alterner blanc et gris, on
-   alterne blanc et la couleur de la section, tres diluee. Le texte reste
-   sur un fond clair, donc le contraste ne bouge pas. */
-.section--soft {
-  background:
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--c, var(--accent)) 11%, var(--bg)),
-      color-mix(in srgb, var(--c, var(--accent)) 5%, var(--bg)));
-}
-.section:not(.section--soft) {
-  background: color-mix(in srgb, var(--c, var(--accent)) 4%, var(--bg));
-}
+/* FONDS DE SECTION : DES APLATS, JAMAIS DE DEGRADE.
+   Une section sur deux prend la couleur de son bloc, tres claire mais
+   unie. L'autre reste sur le fond de page. */
+.section--soft { background: color-mix(in srgb, var(--c, var(--accent)) 7%, var(--bg)); }
+.section:not(.section--soft) { background: var(--bg); }
 
-/* Filet colore en haut de section, plus marque qu'avant. */
+/* Bande de couleur unie en haut de chaque section. */
 .section { position: relative; }
 .section::before {
   content: "";
   position: absolute;
   top: -1px; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, transparent, var(--c, var(--accent)) 30%, var(--c, var(--accent)) 70%, transparent);
+  background: var(--c, var(--accent));
 }
 
 .section-head__eyebrow { color: var(--c, var(--accent)); }
-.section-head__eyebrow::after { background: linear-gradient(90deg, var(--c, var(--accent)), transparent); }
+.section-head__eyebrow::after { background: var(--c, var(--accent)); }
 
-/* Les titres de section prennent la couleur du bloc, en degrade. */
-.section-head__title {
-  color: var(--text);
-  background: linear-gradient(96deg, var(--text) 20%, var(--c, var(--accent)) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-@supports (-webkit-background-clip: text) or (background-clip: text) {
-  .section-head__title { color: transparent; }
-}
 
 /* Les quatre familles de competences, une couleur chacune, fond compris. */
 .skill:nth-child(1) { --c: var(--c-blue);   --c-bg: var(--c-blue-bg); }
@@ -2099,14 +1780,6 @@ a.card:hover, a.card:focus-visible {
 .card .tag { background: var(--c-bg); border-color: color-mix(in srgb, var(--c) 24%, transparent); color: color-mix(in srgb, var(--c) 72%, var(--text-2)); }
 a.card:hover, a.card:focus-visible {
   border-color: var(--c, var(--accent));
-  box-shadow: 0 14px 34px color-mix(in srgb, var(--c, var(--accent)) 20%, transparent);
-}
-.card::after {
-  background: radial-gradient(
-    16rem 16rem at var(--mx, 50%) var(--my, 50%),
-    color-mix(in srgb, var(--c, var(--accent)) 18%, transparent),
-    transparent 70%
-  );
 }
 
 /* Les quatre tuiles de documents. */
@@ -2146,13 +1819,6 @@ a.card:hover, a.card:focus-visible {
 .marquee__item { opacity: 0.75; }
 .marquee__item:hover { opacity: 1; }
 
-/* Les boutons pleins prennent un degrade plutot qu'un aplat. */
-.btn--primary {
-  background: linear-gradient(120deg, var(--c-blue), var(--c-violet));
-  color: #fff;
-}
-.btn--primary:hover { filter: saturate(1.15) brightness(1.06); }
-[data-theme="dark"] .btn--primary { color: #0b1220; }
 
 /* La citation de la lettre de recommandation. */
 .doc-quote { background: var(--c-violet-bg); border-left-color: var(--c-violet); }
@@ -2234,14 +1900,13 @@ a.card:hover, a.card:focus-visible {
   margin-bottom: 1rem;
 }
 .hero__role {
-  font-family: var(--mono);
-  font-size: 1.05rem;
-  font-weight: 400;
+  font-family: var(--font);
+  font-size: 1.25rem;
+  font-weight: 500;
   letter-spacing: 0.01em;
   color: var(--text-2);
   margin-bottom: 1.6rem;
 }
-.hero__role::before { content: "// "; color: var(--accent); font-weight: 700; }
 .hero__inner { max-width: 900px; }
 .hero__eyebrow { font-size: 0.8rem; letter-spacing: 0.04em; }
 
@@ -2265,15 +1930,6 @@ a.card:hover, a.card:focus-visible {
   background: var(--bg);
   color: var(--text);
 }
-.section--invert .section-head__title {
-  color: var(--text);
-  background: linear-gradient(96deg, var(--text) 25%, var(--c, var(--accent)) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-@supports (-webkit-background-clip: text) or (background-clip: text) {
-  .section--invert .section-head__title { color: transparent; }
-}
 /* Sur fond profond, les teintes pales d'origine seraient illisibles :
    on prend les versions eclaircies, les memes qu'en theme sombre. */
 .section--invert {
@@ -2284,44 +1940,6 @@ a.card:hover, a.card:focus-visible {
   --c-rose: #f88ec0;   --c-rose-bg: #331828;
 }
 .section--invert::after { opacity: 0.09; }
-
-/* EN THEME SOMBRE, L'INVERSION S'INVERSE.
-
-   Le principe de ces deux sections est de rompre avec le reste, pas
-   d'etre sombres. En theme clair, rompre veut dire passer au sombre. En
-   theme sombre, ca veut dire passer au clair.
-
-   Sans ca, les deux sections resteraient sombres dans les deux themes et
-   la bascule perdrait la moitie de son sens : on ne verrait plus de
-   difference sur un huitieme de la page.
-
-   Les valeurs ci-dessous ne sont pas le blanc pur du theme clair : un
-   aplat blanc au milieu d'une page sombre est agressif. On prend un gris
-   tres clair, legerement bleute, qui tranche sans eblouir. */
-[data-theme="dark"] .section--invert {
-  --bg:        #eef1f7;
-  --bg-soft:   #e2e7f0;
-  --bg-tint:   #dbe3f6;
-  --text:      #0d1220;
-  --text-2:    #3f4a63;
-  --text-3:    #5d6880;
-  --border:    #cbd3e2;
-  --border-2:  #aab5cb;
-  --accent:    #1d4ed8;
-  --on-accent: #ffffff;
-  color-scheme: light;
-
-  --c-blue:   #1d4ed8;  --c-blue-bg:   #e4ebff;
-  --c-teal:   #0f766e;  --c-teal-bg:   #dcf1ee;
-  --c-violet: #7c3aed;  --c-violet-bg: #ebe3ff;
-  --c-amber:  #92400e;  --c-amber-bg:  #fbeed8;
-  --c-rose:   #be185d;  --c-rose-bg:   #fbe4ee;
-}
-[data-theme="dark"] .section--invert .btn--secondary {
-  background: var(--bg);
-  color: var(--text);
-  border-color: var(--border-2);
-}
 .section--invert .btn--secondary { background: transparent; color: var(--text); border-color: var(--border-2); }
 .section--invert .btn--secondary:hover { background: var(--bg-soft); border-color: var(--text-3); }
 
@@ -2330,20 +1948,6 @@ a.card:hover, a.card:focus-visible {
 .section-head { margin-bottom: 3.5rem; }
 .section-head__eyebrow { font-size: 0.78rem; }
 
-/* ---------- Grain, pour casser le trop lisse ----------
-   Un bruit fin sur toute la page. C'est un SVG en ligne, donc aucune
-   requete reseau. En fixed et pointer-events: none, il ne coute rien :
-   le navigateur le peint une fois et le garde. */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-[data-theme="dark"] body::after { opacity: 0.05; }
 
 /* =========================================================
    LARGEURS
@@ -2410,8 +2014,8 @@ body::after {
   position: absolute;
   inset: 0;
   transform: translate(14px, 14px);
-  border: 2px solid var(--c, var(--accent));
-  border-radius: 14px;
+  background: var(--c-mint);
+  border-radius: var(--radius);
   z-index: 0;
 }
 .portrait__frame img {
@@ -2755,13 +2359,6 @@ body::after {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
   .js .reveal, .js .stagger > * { opacity: 1 !important; transform: none !important; }
-  /* Le fond reste, mais fige : on garde la couleur, on enleve le mouvement. */
-  .bg-fx__grid { display: none; }
-  /* Les halos restent, mais figes et attenues. Le reflet du titre est
-     neutralise en remettant le degrade a sa position de depart. */
-  .hero::before { filter: none; opacity: 0.5; }
-  .hero__title { background-size: 100% auto; background-position: 0 center; }
-  .card::after, .doc::after { display: none; }
 }
 
 @media print {
@@ -2888,4 +2485,159 @@ body::after {
 
 @media print {
   .watch-card, .watch-method li, .watch-feed__item { break-inside: avoid; }
+}
+
+
+/* =========================================================
+   10. IDENTITE VISUELLE
+
+   Le parti pris : sobre mais colore. Cinq couleurs posees en
+   aplats (papier, marine, menthe, corail, taupe), aucun degrade,
+   aucun halo, aucun flou. Les ombres sont franches et decalees,
+   comme un tampon, plutot que diffuses.
+
+   Ce bloc est volontairement en dernier : il a le dernier mot
+   sur tout ce qui precede.
+   ========================================================= */
+
+/* ---------- Titres ---------- */
+h1, h2, h3,
+.page-header__title,
+.section-head__title,
+.brand {
+  font-family: var(--display);
+  letter-spacing: -0.015em;
+}
+.section-head__title { font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+.section-head__eyebrow::after { height: 3px; width: 2.2rem; }
+
+/* ---------- Barre du haut ---------- */
+.brand { text-transform: uppercase; font-weight: 700; font-size: 1.02rem; letter-spacing: 0.02em; display: inline-flex; align-items: center; gap: 0.55rem; }
+.brand::before { content: ""; width: 12px; height: 12px; background: var(--c-coral); flex-shrink: 0; }
+.brand:hover { color: var(--text); }
+.nav__link.is-active, .nav__link[aria-current="page"] { background: transparent; color: var(--text); }
+.nav__link::after { border-radius: 0; height: 3px; background: var(--c-coral); }
+.topbar.is-stuck { box-shadow: 0 1px 0 var(--border); }
+
+/* ---------- Accroche : un bloc marine plein cadre ---------- */
+.hero {
+  max-width: none;
+  margin: 0;
+  background: var(--c-navy);
+  color: var(--c-paper);
+  padding: 5rem 1.5rem 6rem;
+  position: relative;
+}
+.hero__inner { max-width: 1100px; margin: 0 auto; }
+.hero__eyebrow {
+  background: transparent;
+  color: var(--c-mint);
+  border: 1px solid var(--c-mint);
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+}
+.hero__eyebrow::before { background: var(--c-mint); border-radius: 0; }
+.hero__title {
+  color: var(--c-paper);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 3rem;
+  font-size: clamp(2.5rem, 9vw, 7rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+.hero__role { color: var(--c-mint); }
+.hero__subtitle, .hero__meta { color: #c9d3e3; }
+.hero__subtitle { max-width: 64ch; }
+.hero__meta { gap: 0.5rem 2.2rem; }
+.hero__meta svg { color: var(--c-mint); }
+
+/* Les cinq aplats sous l'accroche : la palette du site, montree telle
+   quelle. Des arrets nets, donc cinq bandes et pas un fondu. */
+.hero::after,
+.footer::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 10px;
+  background: linear-gradient(90deg,
+    var(--c-paper) 0 20%, var(--c-navy) 20% 40%, var(--c-mint) 40% 60%,
+    var(--c-coral) 60% 80%, var(--c-taupe) 80% 100%);
+}
+.hero::after { background: linear-gradient(90deg,
+    var(--c-paper) 0 20%, #2d4d80 20% 40%, var(--c-mint) 40% 60%,
+    var(--c-coral) 60% 80%, var(--c-taupe) 80% 100%); }
+.footer { position: relative; padding-top: 10px; }
+.footer::before { top: 0; bottom: auto; }
+
+/* ---------- Boutons ---------- */
+.btn { border-radius: var(--radius-sm); border-width: 2px; }
+.btn--primary {
+  background: var(--c-coral);
+  color: var(--ink);
+  border-color: var(--c-coral);
+}
+.btn--primary:hover { background: #e98a76; border-color: #e98a76; color: var(--ink); }
+.btn--secondary { background: transparent; color: var(--text); border-color: var(--text); }
+.btn--secondary:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
+.hero .btn--secondary { color: var(--c-paper); border-color: var(--c-paper); }
+.hero .btn--secondary:hover { background: var(--c-paper); color: var(--c-navy); }
+
+/* ---------- Survols : une ombre franche, decalee, sans flou ---------- */
+a.card, .subject-card, .doc, .contact__item, .stat, .watch-feed__item, .store-link--site {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+a.card:hover, a.card:focus-visible,
+.subject-card:hover, .subject-card:focus-visible,
+.doc:hover, .contact__item:hover, .stat:hover,
+.watch-feed__item:hover, .watch-feed__item:focus-visible {
+  transform: translate(-3px, -3px);
+  box-shadow: 4px 4px 0 var(--c, var(--accent));
+  border-color: var(--c, var(--accent));
+}
+.subject-card:hover .subject-card__icon { transform: none; }
+.doc:hover .doc__thumb { transform: none; }
+.to-top { box-shadow: none; border-radius: var(--radius-sm); }
+
+/* ---------- Coins plus droits partout ---------- */
+.project, .portrait__frame img, .screens__img, .project__shot { border-radius: var(--radius); }
+
+/* ---------- Sections marines ----------
+   Stage et Ce site passent en marine plein. */
+.section--invert {
+  --bg:        #203961;
+  --bg-soft:   #294573;
+  --bg-tint:   #2e4b7c;
+  --text:      #f9fbfc;
+  --text-2:    #c9d3e3;
+  --text-3:    #a9b7cf;
+  --border:    #37538a;
+  --border-2:  #4f6b9e;
+  --accent:    #a2cdb8;
+  --accent-dark: #bfdecf;
+  --on-accent: #1c2638;
+  --c-blue:   #b9c8e3;  --c-blue-bg:   #294573;
+  --c-teal:   #a2cdb8;  --c-teal-bg:   #26475f;
+  --c-violet: #d9cfc2;  --c-violet-bg: #33446a;
+  --c-amber:  #f0a08d;  --c-amber-bg:  #3a3f63;
+  --c-rose:   #f0a08d;  --c-rose-bg:   #3a3f63;
+  color-scheme: dark;
+}
+.section--invert .btn--secondary { background: transparent; color: var(--c-paper); border-color: var(--c-paper); }
+.section--invert .btn--secondary:hover { background: var(--c-paper); color: var(--c-navy); }
+.section--invert::before { background: var(--c-coral); }
+
+/* ---------- Petits reglages ---------- */
+.section::after { opacity: 0.07; }
+.section--invert::after { opacity: 0.1; }
+.progress { height: 4px; }
+a:hover { text-decoration-color: var(--c-coral); text-decoration-thickness: 2px; }
+
+@media (max-width: 760px) {
+  .hero { padding: 3.2rem 1.25rem 4rem; }
+  /* Sur telephone, la recherche devient une simple loupe : sinon la
+     barre du haut deborde et le bouton Menu sort de l'ecran. */
+  .search-btn__label, .search-btn__kbd { display: none; }
+  .topbar__inner { gap: 0.75rem; }
+  .contact-bar .btn { white-space: nowrap; padding: 0.5rem 0.6rem; font-size: 0.86rem; }
 }
