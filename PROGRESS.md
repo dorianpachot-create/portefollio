@@ -2,6 +2,13 @@
 
 Dernière mise à jour : 2026-10-13
 
+## Mise à jour du 2026-10-13 (3), parties remises sur l'accueil
+
+Les parties de l'ancienne accueil absentes de la nouvelle sont revenues, dans le style sombre :
+projets encadrés (2e année et matières de 1re année), parcours en frise horizontale, outils
+(coder, coder avec l'IA, découverts en cours), veille en format journal et documents.
+Menu : Projets, Cours, Parcours, Outils, Veille, Documents, Contact. Tests : 23 au vert.
+
 ## Mise à jour du 2026-10-13 (2), nouvelle page d'accueil
 
 - `index.html` est maintenant la version sombre et rouge (Archivo, Inter, IBM Plex Mono via

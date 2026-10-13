@@ -17,12 +17,17 @@ const d = load('index.html');
 d.querySelectorAll('script').forEach((x) => x.remove());
 const text = d.body.textContent;
 ok('un seul h1', d.querySelectorAll('h1').length === 1);
-['competences', 'projets', 'personnel', 'contact'].forEach((id) => ok('section #' + id, !!d.getElementById(id)));
+['projets', 'cours', 'parcours', 'outils', 'competences', 'veille', 'documents', 'personnel', 'contact'].forEach((id) => ok('section #' + id, !!d.getElementById(id)));
 ok('présentation simple en accroche', /Je m'appelle Dorian Pachot/.test(d.querySelector('h1').textContent));
 ok('aucune moyenne ni note affichée', !/15,55|20\/20|\/ 100/.test(text));
 ok('pas d\'émojis', !/[\u{1F300}-\u{1FAFF}☀-➿]/u.test(text));
 ok('liens externes en noopener', [...d.querySelectorAll('a[target="_blank"]')].every((a) => /noopener/.test(a.rel)));
 ok('images avec alt', [...d.querySelectorAll('img')].every((i) => i.hasAttribute('alt')));
+ok('frise horizontale avec 15 étapes', d.querySelectorAll('[data-rail] > li').length === 15);
+ok('TP de 2e année présents', /DHCP et DNS/.test(text) && /VitaSport/.test(text));
+ok('outils : coder, avec l\'IA, en cours', /Pour coder/.test(text) && /avec l'IA/.test(text) && /Découverts en cours/.test(text));
+ok('veille : une + articles repérés', !!d.getElementById('une') && d.querySelectorAll('.brief').length >= 4);
+ok('4 documents', d.querySelectorAll('#documents article').length === 4);
 
 console.log('\n--- version-doree.html ---');
 const g = load('version-doree.html');
