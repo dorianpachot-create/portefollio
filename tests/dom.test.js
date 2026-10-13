@@ -1,157 +1,49 @@
+// Tests de structure du portfolio (version "Digital Jewelry", octobre 2026).
+// Lancer avec : node tests/dom.test.js
 const { JSDOM } = require('jsdom');
 const fs = require('fs');
-const ROOT = require('path').resolve(__dirname, '..');
+const path = require('path');
+const ROOT = path.resolve(__dirname, '..');
 
 let pass = 0, fail = 0;
 const ok = (name, cond, extra) => {
-  if (cond) { pass++; console.log('  OK   ' + name); }
+  if (cond) { pass++; console.log('  OK    ' + name); }
   else { fail++; console.log('  ECHEC ' + name + (extra ? ' -> ' + extra : '')); }
 };
-
-function boot(file) {
-  const dom = new JSDOM(fs.readFileSync(ROOT + '/' + file, 'utf8'), {
-    runScripts: 'dangerously', pretendToBeVisual: true, url: 'https://example.org/' + file
-  });
-  const w = dom.window;
-  w.matchMedia = w.matchMedia || ((q) => ({
-    matches: false, media: q, addEventListener() {}, removeEventListener() {}, addListener() {}, removeListener() {}
-  }));
-  if (!w.IntersectionObserver) {
-    w.IntersectionObserver = class { constructor(cb){this.cb=cb;} observe(){} unobserve(){} disconnect(){} };
-  }
-  const el = w.document.createElement('script');
-  el.textContent = fs.readFileSync(ROOT + '/js/main.js', 'utf8');
-  w.document.body.appendChild(el);
-  return w;
-}
+const load = (f) => new JSDOM(fs.readFileSync(path.join(ROOT, f), 'utf8')).window.document;
 
 console.log('\n--- index.html ---');
-const w = boot('index.html');
-const d = w.document;
+const d = load('index.html');
+d.querySelectorAll('script').forEach((x) => x.remove());
+const text = d.body.textContent;
+ok('un seul h1', d.querySelectorAll('h1').length === 1);
+['competences', 'projets', 'personnel', 'contact'].forEach((id) => ok('section #' + id, !!d.getElementById(id)));
+ok('présentation simple en accroche', /Je m'appelle Dorian Pachot/.test(d.querySelector('h1').textContent));
+ok('aucune moyenne ni note affichée', !/15,55|20\/20|\/ 100/.test(text));
+ok('pas d\'émojis', !/[\u{1F300}-\u{1FAFF}☀-➿]/u.test(text));
+ok('liens externes en noopener', [...d.querySelectorAll('a[target="_blank"]')].every((a) => /noopener/.test(a.rel)));
+ok('images avec alt', [...d.querySelectorAll('img')].every((i) => i.hasAttribute('alt')));
 
-// Plus de theme sombre
-ok('theme : plus de bouton de theme', !d.querySelector('[data-theme-toggle]'));
-ok('theme : aucun attribut data-theme pose', !d.documentElement.hasAttribute('data-theme'));
+console.log('\n--- version-doree.html ---');
+const g = load('version-doree.html');
+ok('frise horizontale avec 15 étapes', g.querySelectorAll('[data-rail] > li').length === 15);
+ok('TP de 2e année présents', /DHCP et DNS/.test(g.body.textContent) && /VitaSport/.test(g.body.textContent));
 
-// Palette
-const box = d.querySelector('[data-palette]');
-const input = d.querySelector('[data-palette-input]');
-ok('palette : fermee au depart', box.hidden === true);
-d.querySelector('[data-palette-open]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-ok('palette : ouverte au clic', box.hidden === false);
-const total = d.querySelectorAll('.palette__item').length;
-ok('palette : 29 entrees listees', total === 29, String(total));
-input.value = 'bulletin';
-input.dispatchEvent(new w.Event('input', { bubbles: true }));
-ok('palette : recherche filtre', d.querySelectorAll('.palette__item').length === 1);
-input.value = 'recommandation';
-input.dispatchEvent(new w.Event('input', { bubbles: true }));
-ok('palette : trouve malgre les accents', d.querySelectorAll('.palette__item').length === 1);
-input.value = 'zzzz';
-input.dispatchEvent(new w.Event('input', { bubbles: true }));
-ok('palette : message si vide', d.querySelector('[data-palette-empty]').hidden === false);
-d.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
-ok('palette : Echap ferme', box.hidden === true);
-d.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'k', ctrlKey: true, bubbles: true }));
-ok('palette : Ctrl+K ouvre', box.hidden === false);
-d.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+console.log('\n--- liens internes ---');
+const pages = ['index.html', 'version-doree.html', ...fs.readdirSync(path.join(ROOT, 'pages')).map((f) => 'pages/' + f)];
+let broken = [];
+pages.forEach((p) => {
+  const doc = load(p);
+  doc.querySelectorAll('a[href], img[src], source[srcset], link[href], script[src], iframe[src]').forEach((el) => {
+    const raw = el.getAttribute('href') || el.getAttribute('src') || el.getAttribute('srcset');
+    if (!raw || /^(https?:|mailto:|tel:|#|data:)/.test(raw)) return;
+    const [file, hash] = raw.split('#');
+    const target = path.resolve(path.dirname(path.join(ROOT, p)), file);
+    if (!fs.existsSync(target)) { broken.push(p + ' -> ' + raw); return; }
+    if (hash && target.endsWith('.html') && !load(path.relative(ROOT, target)).getElementById(hash)) broken.push(p + ' -> ' + raw + ' (ancre)');
+  });
+});
+ok('aucun lien interne cassé', broken.length === 0, broken.join(', '));
 
-// Carrousel de projets
-const slides = d.querySelectorAll('.carousel--projects .carousel__slide');
-const track = d.querySelector('.carousel--projects [data-carousel-track]');
-const count = d.querySelector('.carousel--projects [data-carousel-count]');
-const tabs = d.querySelectorAll('[data-carousel-go]');
-ok('projets : 4 diapositives', slides.length === 4, String(slides.length));
-ok('projets : 4 onglets', tabs.length === 4, String(tabs.length));
-ok('projets : autant de blocs que d\'onglets', d.querySelectorAll('.project').length === tabs.length);
-ok('projets : chaque bloc a son pourquoi', d.querySelectorAll('.project__why').length === 4);
-ok('projets : chaque bloc a ses liens', d.querySelectorAll('.project .store-links').length === 4);
-ok('projets : demarre sur le 1er', count.textContent === '1 sur 4', count.textContent);
-ok('projets : un seul visible', d.querySelectorAll('.carousel--projects .carousel__slide[aria-hidden="false"]').length === 1);
-d.querySelector('.carousel--projects [data-carousel-next]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-ok('projets : suivant avance', count.textContent === '2 sur 4', count.textContent);
-ok('projets : la bande a glisse', track.style.transform === 'translateX(-100%)', track.style.transform);
-ok('projets : l\'onglet suit', tabs[1].getAttribute('aria-selected') === 'true');
-tabs[3].dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-ok('projets : l\'onglet pilote la bande', count.textContent === '4 sur 4', count.textContent);
-d.querySelector('.carousel--projects [data-carousel-next]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-ok('projets : boucle en avant', count.textContent === '1 sur 4', count.textContent);
-d.querySelector('.carousel--projects [data-carousel-prev]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-ok('projets : boucle en arriere', count.textContent === '4 sur 4', count.textContent);
-
-// Copie
-const copyBtn = d.querySelector('[data-copy]');
-ok('copie : bouton present', !!copyBtn && copyBtn.dataset.copy === 'dorianpachot@gmail.com');
-ok('contact : e-mail hors de la grille', !!d.querySelector('.mail-row') && !d.querySelector('.contact .mail-row'));
-ok('contact : 3 tuiles dans la grille', d.querySelectorAll('.contact .contact__item').length === 3,
-   String(d.querySelectorAll('.contact .contact__item').length));
-
-// Retour en haut
-ok('retour en haut : present', !!d.querySelector('[data-to-top]'));
-ok('barre de contact : presente', !!d.querySelector('.contact-bar'));
-ok('progression : barre presente', !!d.querySelector('[data-progress]'));
-ok('progression : variable posee', d.querySelector('[data-progress]').style.getPropertyValue('--p') !== '');
-ok('cascade : retards poses', (() => {
-  const g = d.querySelector('.stagger');
-  if (!g || !g.children.length) return false;
-  return g.children[1] && g.children[1].style.getPropertyValue('--d') === '70ms';
-})());
-ok('barre de contact : e-mail et telephone', 
-   !!d.querySelector('.contact-bar a[href^="mailto:"]') && !!d.querySelector('.contact-bar a[href^="tel:"]'));
-
-// Section Cours
-ok('cours : 8 matieres listees', d.querySelectorAll('.subject-card').length === 8,
-   String(d.querySelectorAll('.subject-card').length));
-ok('cours : agent IA retire', !d.body.textContent.includes('Agent IA'));
-
-// Presentation
-ok('presentation : 6 reperes', d.querySelectorAll('.facts div').length === 6,
-   String(d.querySelectorAll('.facts div').length));
-ok('presentation : 4 preuves', d.querySelectorAll('.proof li').length === 4);
-
-// Frise du parcours
-ok('parcours : bloc ancre', !!d.querySelector('#parcours'));
-ok('parcours : 15 etapes', d.querySelectorAll('.path__step').length === 15,
-   String(d.querySelectorAll('.path__step').length));
-ok('parcours : chaque etape a une annee et un titre',
-   Array.from(d.querySelectorAll('.path__step')).every(s => s.querySelector('.path__year') && s.querySelector('h4')));
-ok('parcours : une famille de couleur par etape',
-   Array.from(d.querySelectorAll('.path__step')).every(s => /path__step--(tech|sport|terrain|now)/.test(s.className)));
-d.querySelector('[data-palette-open]').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-input.value = 'parcours';
-input.dispatchEvent(new w.Event('input', { bubbles: true }));
-ok('parcours : atteignable depuis la recherche',
-   Array.from(d.querySelectorAll('.palette__item')).some(li => li.textContent.includes('Mon parcours')));
-d.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
-ok('presentation : 9 sections ancrees', d.querySelectorAll('main > section[id]').length === 9,
-   String(d.querySelectorAll('main > section[id]').length));
-
-// Veille technologique
-ok('veille : section ancree', !!d.querySelector('section#veille'));
-ok('veille : lien dans le menu', !!d.querySelector('.nav a[href="#veille"]'));
-ok('veille : 3 etapes de methode', d.querySelectorAll('.watch-method li').length === 3);
-ok('veille : 6 themes', d.querySelectorAll('.watch-card').length === 6,
-   String(d.querySelectorAll('.watch-card').length));
-ok('veille : chaque theme relie a un projet ou un cours',
-   Array.from(d.querySelectorAll('.watch-card')).every(c => c.querySelectorAll('.watch-card__links li').length > 0));
-ok('veille : articles en lien externe, nouvel onglet securise',
-   d.querySelectorAll('.watch-feed a').length >= 3 &&
-   Array.from(d.querySelectorAll('.watch-feed a')).every(a => /^https:/.test(a.getAttribute('href')) && a.target === '_blank' && /noopener/.test(a.rel)));
-ok('titre : etudiant, plus developpeur full-stack', !/full-stack/i.test(d.querySelector('.hero__role').textContent + d.title));
-ok('sobriete : aucune icone dans les tuiles et boutons',
-   !d.querySelector('.subject-card svg, .contact__item svg, .hero svg, .btn svg, .mail-row svg'));
-ok('sobriete : aucun // ni tiret de separation dans le texte',
-   !/\/\/|\s[-–—]\s/.test(d.querySelector('main').textContent));
-ok('projets : Pla\'Net present', Array.from(tabs).some(t => t.textContent.includes("Pla'Net")));
-
-console.log('\n--- pages/stage.html (chemins relatifs) ---');
-const w2 = boot('pages/stage.html');
-const d2 = w2.document;
-d2.querySelector('[data-palette-open]').dispatchEvent(new w2.MouseEvent('click', { bubbles: true }));
-const first = d2.querySelector('.palette__item');
-ok('palette : ouverte sur une sous-page', d2.querySelector('[data-palette]').hidden === false);
-ok('palette : 29 entrees aussi', d2.querySelectorAll('.palette__item').length === 29);
-ok('theme : pas de bouton sur les sous-pages', !d2.querySelector('[data-theme-toggle]'));
-
-console.log('\n' + pass + ' reussis, ' + fail + ' echecs');
+console.log(`\n${pass} OK, ${fail} en échec`);
 process.exit(fail ? 1 : 0);

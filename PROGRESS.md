@@ -1,6 +1,39 @@
 # Etat d'avancement
 
-Dernière mise à jour : 2026-09-24
+Dernière mise à jour : 2026-10-13
+
+## Mise à jour du 2026-10-13 (2), nouvelle page d'accueil
+
+- `index.html` est maintenant la version sombre et rouge (Archivo, Inter, IBM Plex Mono via
+  Google Fonts, Tailwind par CDN), en un seul fichier. Accroche réduite à une présentation
+  simple, sans moyenne ni note chiffrée.
+- L'ancienne accueil "Digital Jewelry" est conservée dans `version-doree.html` (elle contient la
+  frise du parcours et la veille technologique, liée depuis le menu des pages secondaires).
+- Menus des pages secondaires repointés vers les sections de la nouvelle accueil.
+- Mentions légales : ajout de Google Fonts dans les services extérieurs.
+- Tests : 13 au vert.
+
+## Mise à jour du 2026-10-13, refonte "Digital Jewelry"
+
+- **Nouveau design** : fond obsidienne #0A0A0C avec grain, titres dorés (Cormorant Garamond),
+  texte en Plus Jakarta Sans (polices servies depuis `assets/fonts/`), halo doré qui suit la
+  souris, cartes "lingots" à bordure métal, boutons verre fumé. Tailwind v4 chargé par CDN
+  (jsDelivr, version figée 4.1.11), le reste dans `css/style.css` et `js/main.js`.
+- **Textes réécrits** partout sur un ton plus simple et direct.
+- **Retiré** : la section "Ce site est aussi un projet" et toute mention d'un site écrit à la
+  main, le paragraphe "Ce que j'aime", la barre de contact collée en bas, la recherche Ctrl+K,
+  la barre de progression.
+- **Stage** : n'est plus une section à part, il est intégré à la carte SYNCRO dans Projets
+  (le journal détaillé reste sur `pages/stage.html`).
+- **Parcours** : frise horizontale qui défile (doigt, flèches, clavier, glisser à la souris).
+- **Outils** : trois blocs, "Pour coder", "Pour vibe coder" (Claude, Claude Code, à vérifier),
+  "Vu en cours".
+- **Projets encadrés** : ajout de la 2e année (Linux avancé TP0 à TP5 avec comptes rendus dans
+  `assets/fiches-cours/linux-avance/`, TP VitaSport en bases de données avancées, Pla'Net).
+- **Veille** : mise en page façon journal (à la une, brèves, articles en colonnes).
+- **Mentions légales** : mises à jour (Tailwind chargé depuis jsDelivr, nouvelles polices).
+- Tests réécrits (`node tests/dom.test.js`) : 20 au vert, dont la vérification des liens internes.
+  Vérifié sans débordement horizontal à 390 px et 1440 px sur toutes les pages.
 
 ## Mise à jour du 2026-09-24 (3), police, thème sombre, icônes
 

@@ -3,272 +3,196 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Stage de Dorian Pachot chez Suitime</title>
-  <meta name="description" content="Journal du stage de Dorian Pachot chez Suitime, du 6 juillet au 7 août 2026 : développement et mise en production de l'application mobile SYNCRO, semaine par semaine." />
-  <!-- Ce script doit rester ici, en haut du <head>. Il pose la classe
-       "js" avant le premier affichage : le CSS ne masque les blocs a
-       reveler que dans ce cas. -->
+  <title>Stage chez Suitime sur SYNCRO, Dorian Pachot</title>
+  <meta name="description" content="Le stage de Dorian Pachot chez Suitime, du 6 juillet au 7 août 2026 : SYNCRO mise en production et publiée sur l'App Store et Google Play, semaine par semaine." />
+  <meta name="author" content="Dorian Pachot" />
+  <link rel="canonical" href="https://dorianpachot-create.github.io/portefollio/pages/stage.html" />
+  <meta name="theme-color" content="#0A0A0C" />
   <script>document.documentElement.classList.add('js');</script>
 
-  <meta name="theme-color" content="#203961" />
-  <link rel="icon" href="../assets/meta/favicon.svg" type="image/svg+xml" />
-  <link rel="icon" href="../assets/meta/favicon-32.png" sizes="32x32" />
-  <link rel="apple-touch-icon" href="../assets/meta/favicon-180.png" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Stage chez Suitime sur SYNCRO, Dorian Pachot" />
+  <meta property="og:description" content="Le stage de Dorian Pachot chez Suitime, du 6 juillet au 7 août 2026 : SYNCRO mise en production et publiée sur l'App Store et Google Play, semaine par semaine." />
+  <meta property="og:url" content="https://dorianpachot-create.github.io/portefollio/pages/stage.html" />
   <meta property="og:image" content="https://dorianpachot-create.github.io/portefollio/assets/meta/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="preload" href="../assets/fonts/dm-sans-400.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="../assets/fonts/dm-sans-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="icon" href="../assets/meta/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="../assets/meta/favicon-32.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="../assets/meta/favicon-180.png" />
+
+  <link rel="preload" href="../assets/fonts/cormorant-garamond-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../assets/fonts/plus-jakarta-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="../css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-obsidian: #0A0A0C;
+      --color-panel: #111115;
+      --color-gold: #E6C687;
+      --color-gold-deep: #D4AF37;
+      --color-gold-hi: #FFF3D1;
+      --color-chrome: #CBD5E1;
+      --color-chrome-hi: #F8FAFC;
+      --color-mist: #A1A1AA;
+      --font-display: "Cormorant Garamond", Georgia, serif;
+      --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+  </style>
 </head>
-<body>
+<body id="top">
   <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="spotlight-layer" aria-hidden="true"><div class="spotlight" data-spotlight></div></div>
 
-
-
-  <!-- Barre de progression de lecture. Purement decorative, donc invisible
-       pour les lecteurs d'ecran. Le JavaScript ne modifie qu'une variable
-       CSS, le navigateur fait le reste. -->
-  <div class="progress" aria-hidden="true"><span class="progress__bar" data-progress></span></div>
-
-
-  <header class="topbar" role="banner">
-    <div class="topbar__inner">
-      <a class="brand" href="../index.html" aria-label="Dorian Pachot, retour à l'accueil">
-        <span class="brand__name">Dorian Pachot</span>
+  <header class="topbar fixed inset-x-0 top-0 z-50" data-topbar>
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:h-[4.5rem] md:px-8">
+      <a href="../index.html" class="flex items-center gap-3" aria-label="Dorian Pachot, retour à l'accueil">
+        <span class="monogram"><span class="foil">DP</span></span>
+        <span class="hidden font-display text-xl font-semibold tracking-wide text-chrome-hi sm:inline">Dorian Pachot</span>
       </a>
 
-
-      <nav class="nav" id="primary-nav" data-nav aria-label="Navigation principale">
-        <a class="nav__link" href="../index.html">Accueil</a>
-        <a class="nav__link" href="../index.html#competences">Compétences</a>
-        <a class="nav__link" href="../index.html#stage">Stage</a>
-        <a class="nav__link" href="../index.html#projets">Projets</a>
-        <a class="nav__link" href="../index.html#cours">Cours</a>
-        <a class="nav__link" href="../index.html#veille">Veille</a>
-        <a class="nav__link" href="../index.html#documents">Documents</a>
-        <a class="nav__link" href="../index.html#ce-site">Ce site</a>
-        <a class="nav__link" href="../index.html#contact">Contact</a>
+      <nav class="hidden items-center gap-7 text-sm lg:flex" data-nav aria-label="Navigation principale">
+          <a class="nav-link" href="../index.html#projets">Projets</a>
+          <a class="nav-link" href="projets-cours.html">Cours</a>
+          <a class="nav-link" href="../index.html#competences">Compétences</a>
+          <a class="nav-link" href="../index.html#personnel">En dehors du travail</a>
+          <a class="nav-link" href="../version-doree.html#veille">Veille</a>
+          <a class="nav-link" href="documents.html">Documents</a>
       </nav>
 
-      <div class="topbar__tools">
-        <button class="search-btn" type="button" data-palette-open aria-label="Rechercher dans le site">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
-          <span class="search-btn__label">Rechercher</span>
-          <span class="search-btn__kbd" aria-hidden="true">Ctrl K</span>
-        </button>
-
-
-        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="true" aria-controls="primary-nav">Menu</button>
+      <div class="flex items-center gap-2">
+        <a class="status" href="../index.html#contact">
+          <span class="status__dot" aria-hidden="true"></span>
+          <span class="hidden min-[400px]:inline">Dispo pour une alternance</span><span class="min-[400px]:hidden">Dispo</span>
+        </a>
+        <button class="btn-lux btn-sm lg:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu-mobile"><span data-menu-label>Menu</span></button>
       </div>
+    </div>
+
+    <div class="mobile-menu border-t border-white/5 bg-obsidian/95 backdrop-blur-xl lg:hidden" id="menu-mobile" data-menu>
+      <nav class="mx-auto max-w-6xl px-5 pb-5 pt-1 text-[15px]" aria-label="Navigation mobile">
+        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="../index.html#projets">Projets<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="projets-cours.html">Cours<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="../index.html#competences">Compétences<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="../index.html#personnel">En dehors du travail<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="../version-doree.html#veille">Veille<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="documents.html">Documents<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+        <a class="flex items-center justify-between py-3 text-chrome-hi" href="../index.html#contact">Contact<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+      </nav>
     </div>
   </header>
 
-  <main id="main">
-    <div class="container">
-      <header class="page-header">
-        <h1 class="page-header__title">Stage chez Suitime</h1>
-        <p class="page-header__subtitle">
-          Du 6 juillet au 7 août 2026, cinq semaines à temps plein sur SYNCRO, une
-          application de plannings d'équipe que je développais déjà pour Suitime
-          depuis avril, en parallèle de mes cours. C'est pendant ce stage qu'elle
-          est passée en production et qu'elle a été publiée sur l'App Store et
-          Google Play.
-        </p>
-      </header>
+  <main id="main" class="relative">
+    <header class="px-5 pb-10 pt-32 md:px-8 md:pt-40">
+      <div class="mx-auto max-w-6xl">
+        <a class="link-gold inline-flex items-center gap-2 text-sm" href="../index.html"><span class="w-4 h-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></span>Retour à l'accueil</a>
+        <p class="eyebrow mt-8">Stage · Suitime</p>
+        <h1 class="mt-4 font-display text-5xl font-semibold leading-[1.02] md:text-7xl"><span class="foil">Mon stage sur SYNCRO</span></h1>
+        <div class="mt-6 max-w-2xl text-[15px] leading-relaxed text-mist md:text-base"><p>Du 6 juillet au 7 août 2026, cinq semaines à temps plein sur SYNCRO, une appli que je développais déjà pour Suitime depuis avril, à côté des cours. C'est pendant ce stage qu'elle est passée en prod et qu'elle est sortie sur l'App Store et Google Play.</p></div>
+      </div>
+    </header>
 
-      <ul class="stat-list" aria-label="Le stage en chiffres">
-        <li class="stat">
-          <span class="stat__value">5</span>
-          <span class="stat__label">semaines à temps plein<br />du 6 juillet au 7 août 2026</span>
-        </li>
-        <li class="stat">
-          <span class="stat__value">2</span>
-          <span class="stat__label">stores<br />App Store et Google Play</span>
-        </li>
-        <li class="stat">
-          <span class="stat__value">53</span>
-          <span class="stat__label">routes d'API<br />migrées en TypeScript</span>
-        </li>
-        <li class="stat">
-          <span class="stat__value">13</span>
-          <span class="stat__label">écrans maquettés<br />en versions claire et sombre</span>
-        </li>
-      </ul>
-
-      <p class="doc-intro">
-        J'ai travaillé sur toute la chaîne : l'application <strong>Flutter</strong> pour
-        Android et iOS, le back-end <strong>Next.js</strong> et sa base <strong>SQL</strong>,
-        le site vitrine, le déploiement serveur et la publication sur les deux magasins
-        d'applications. Le résumé ci-dessous est volontairement dépourvu des éléments
-        techniques internes à Suitime.
-      </p>
-
-      <p class="callout">
-        <strong>Ce que couvre cette page.</strong> Le journal ci-dessous porte sur les cinq
-        semaines de stage, du 6 juillet au 7 août. Le projet avait démarré en avril 2026 :
-        les fonctionnalités de base (comptes, groupes, planning, notifications) étaient
-        déjà en place, développées en parallèle de mes cours. Le stage a servi à passer de
-        l'application qui fonctionne à l'application publiée.
-      </p>
-
-      <p class="doc-intro">
-        <a href="documents.html#reco-title">Lire la lettre de recommandation</a> ·
-        <a href="projets-perso.html#syncro">Voir le projet SYNCRO</a>
-      </p>
-
-      <section class="cv-block" aria-labelledby="semaines-title">
-        <h2 class="cv-block__heading" id="semaines-title">Semaine par semaine</h2>
-
-        <ol class="weeks">
-
-          <li class="week">
-            <span class="week__num">Semaine 1</span>
-            <h3 class="week__title">Mise en ligne et notifications</h3>
-            <p class="week__dates">6 au 10 juillet</p>
-            <ul class="week__list">
-              <li>Site vitrine public mis en ligne : page d'accueil, quatre pages légales, identité visuelle.</li>
-              <li>Back-office d'administration réservé à l'équipe : tableau de bord, gestion des utilisateurs, des groupes et des invitations.</li>
-              <li>Mise en production sur un serveur Linux (Nginx, PM2, HTTPS) avec un déploiement automatisé et sans coupure de service.</li>
-              <li>Notifications push mises en place de bout en bout, côté serveur et côté application.</li>
-              <li>Bascule complète vers le nom de domaine définitif : site, application et liens d'invitation.</li>
-            </ul>
-          </li>
-
-          <li class="week">
-            <span class="week__num">Semaine 2</span>
-            <h3 class="week__title">Modernisation du back-end et sécurité</h3>
-            <p class="week__dates">13 au 17 juillet</p>
-            <ul class="week__list">
-              <li>Cartographie de l'ensemble du code et rédaction d'un guide de navigation, pour pouvoir intervenir vite et seul.</li>
-              <li>Migration complète du back-end de JavaScript vers <strong>TypeScript</strong> : 14 modules partagés puis 53 routes d'API, converties par lots et sans coupure. Les erreurs sont désormais détectées avant la mise en ligne plutôt qu'en production.</li>
-              <li>Audit des permissions sur les routes sensibles, relues une à une, et correction d'un défaut de cloisonnement entre groupes.</li>
-              <li>Validation stricte des champs de saisie, centralisée dans un outil réutilisable au lieu d'être réécrite route par route.</li>
-              <li>Protection contre les tentatives répétées de connexion.</li>
-            </ul>
-          </li>
-
-          <li class="week">
-            <span class="week__num">Semaine 3</span>
-            <h3 class="week__title">Refus de l'App Store, et ce qu'il a révélé</h3>
-            <p class="week__dates">20 au 24 juillet</p>
-            <ul class="week__list">
-              <li>Apple refuse l'application : ses testeurs n'arrivent pas à se connecter. Le diagnostic montre que la connexion était en réalité cassée en production depuis cinq jours, pour tout le monde et sur les deux plateformes. D'anciens fichiers restés sur le serveur après la migration étaient utilisés à la place des nouveaux.</li>
-              <li>Réparation, puis surtout correction du script de déploiement pour que le cas ne puisse plus se reproduire : suppression automatique des fichiers obsolètes et <strong>test de connexion exécuté à chaque mise en ligne</strong>.</li>
-              <li>Passage à un déploiement basé sur Git plutôt que sur un envoi manuel de fichiers.</li>
-              <li>Durcissement de la vérification des jetons pour les connexions Google et Apple, couvert par des tests.</li>
-              <li>Correction de l'adhésion par QR code : une ancienne fiche marquée « supprimée » bloquait silencieusement le retour d'un membre dans un groupe qu'il avait quitté.</li>
-              <li>Refonte des écrans de connexion et d'inscription.</li>
-            </ul>
-          </li>
-
-          <li class="week">
-            <span class="week__num">Semaine 4</span>
-            <h3 class="week__title">Conception, validation App Store et correctifs</h3>
-            <p class="week__dates">27 au 31 juillet</p>
-            <ul class="week__list">
-              <li>Refonte de la page de profil, maquette validée avant d'écrire la moindre ligne. Les éléments communs aux écrans refaits ont été regroupés dans un fichier partagé : un changement de style se fait maintenant à un seul endroit au lieu de quatre.</li>
-              <li>Étude de cadrage d'une évolution importante du produit, demandée par les responsables. Plutôt qu'un document, j'ai produit <strong>treize écrans maquettés</strong> en versions claire et sombre, avec un support de présentation : l'évolution envisagée inversait une logique centrale de l'application, et un texte seul risquait d'être mal compris.</li>
-              <li>Le cadrage remis proposait, pour chaque décision, plusieurs options avec leurs limites, plutôt qu'une solution unique. Le choix revenait aux responsables.</li>
-              <li>Le travail portait aussi sur les cas limites et sur ce qui risquait de casser dans l'existant, points signalés avant tout développement.</li>
-              <li>Suppression de compte depuis l'application, obligatoire pour Apple, avec le cas particulier du propriétaire de groupe qui doit d'abord transmettre son groupe.</li>
-              <li>Validation de l'application sur l'App Store, puis série de correctifs : vue Couverture rendue lisible, limite de membres par groupe relevée, notifications iOS, ouverture des liens d'invitation directement dans l'application.</li>
-            </ul>
-          </li>
-
-          <li class="week">
-            <span class="week__num">Semaine 5</span>
-            <h3 class="week__title">Publication, accessibilité et dernier bug</h3>
-            <p class="week__dates">3 au 7 août</p>
-            <ul class="week__list">
-              <li>Un écran conçu et livré, mais volontairement rendu invisible derrière un interrupteur dans le code : un prérequis extérieur au développement manquait encore, et le publier en l'état aurait induit l'utilisateur en erreur. Le travail est prêt à être activé le jour venu plutôt que de dormir dans un coin du projet.</li>
-              <li>Notifications iPhone : elles n'avaient jamais fonctionné depuis le début du projet, sans qu'aucun message d'erreur n'apparaisse nulle part. Plutôt que d'inventer une solution, j'ai comparé méthodiquement avec une autre application de l'entreprise dont les notifications marchaient. Trois écarts trouvés, tous corrigés en reprenant la structure éprouvée.</li>
-              <li>Ajout d'un indicateur d'état lisible depuis l'application : le prochain diagnostic ne demandera plus ni accès serveur ni ordinateur Apple.</li>
-              <li>Unification des bandeaux de six écrans qui avaient dérivé à force d'être recopiés à la main : <strong>259 lignes de code en moins</strong> et une interface enfin cohérente.</li>
-              <li>Accessibilité : les zones tactiles sans libellé lu par les lecteurs d'écran passent de <strong>62 à 26</strong> en une journée, et les boutons atteignent la taille minimale recommandée par Apple et Google.</li>
-              <li>Dernier jour : un membre pouvait être bloqué sur le même créneau par deux groupes à la fois. La protection existait déjà côté serveur depuis des semaines. Elle était simplement fausse pour tout horaire traversant minuit, typiquement une équipe de nuit. Nouvelle méthode de comparaison, vérifiée sur les <strong>cent combinaisons possibles</strong> de créneaux contre un calcul de référence, plutôt que sur quelques cas choisis à la main.</li>
-            </ul>
-          </li>
-
-        </ol>
+    <div class="px-5 pb-10 md:px-8"><div class="mx-auto max-w-6xl">
+      <dl class="reveal grid grid-cols-2 gap-3 md:grid-cols-4">
+        <div class="rounded-2xl border border-white/8 bg-white/[.02] p-5"><dd class="font-display text-4xl font-semibold"><span class="foil">5</span></dd><dt class="text-xs text-mist">semaines à temps plein</dt></div>
+        <div class="rounded-2xl border border-white/8 bg-white/[.02] p-5"><dd class="font-display text-4xl font-semibold text-chrome-hi">2</dd><dt class="text-xs text-mist">stores, App Store et Google Play</dt></div>
+        <div class="rounded-2xl border border-white/8 bg-white/[.02] p-5"><dd class="font-display text-4xl font-semibold text-chrome-hi">53</dd><dt class="text-xs text-mist">routes d'API passées en TypeScript</dt></div>
+        <div class="rounded-2xl border border-white/8 bg-white/[.02] p-5"><dd class="font-display text-4xl font-semibold text-chrome-hi">13</dd><dt class="text-xs text-mist">écrans maquettés</dt></div>
+      </dl>
+      <div class="reveal prose-dark mt-8 max-w-3xl">
+        <p>Quand le stage a commencé, la base de l'appli existait déjà (comptes, groupes, planning, notifications). Le stage a servi à passer d'une appli qui marche à une appli publiée. J'ai volontairement laissé de côté les détails techniques internes à Suitime.</p>
+        <p><a href="documents.html#reco">Lire la lettre de recommandation</a> · <a href="projets-perso.html#syncro">Voir la fiche SYNCRO</a></p>
+      </div>
+      <h2 class="reveal mt-12 font-display text-4xl font-semibold text-chrome-hi">Semaine par semaine</h2>
+      <ol class="mt-6 grid gap-4">
+      <li class="ingot reveal">
+        <div class="ingot__inner prose-dark grid gap-4 p-6 md:grid-cols-[12rem_1fr] md:p-8">
+          <div><p class="!mb-1 font-display text-3xl font-semibold"><span class="foil">Semaine 1</span></p><p class="!mb-0 text-sm text-mist">6 au 10 juillet</p></div>
+          <div><h3 class="!mt-0 text-lg">Mise en ligne et notifications</h3><ul class="!mb-0"><li>Mise en ligne du site vitrine : accueil, quatre pages légales, identité visuelle.</li><li>Un back-office réservé à l'équipe : tableau de bord, utilisateurs, groupes et invitations.</li><li>Mise en prod sur un serveur Linux (Nginx, PM2, HTTPS), avec un déploiement automatique et sans coupure.</li><li>Les notifications push, côté serveur et côté appli.</li><li>Passage au nom de domaine définitif pour le site, l'appli et les liens d'invitation.</li></ul></div>
+        </div>
+      </li>
+      <li class="ingot reveal">
+        <div class="ingot__inner prose-dark grid gap-4 p-6 md:grid-cols-[12rem_1fr] md:p-8">
+          <div><p class="!mb-1 font-display text-3xl font-semibold"><span class="foil">Semaine 2</span></p><p class="!mb-0 text-sm text-mist">13 au 17 juillet</p></div>
+          <div><h3 class="!mt-0 text-lg">Back-end en TypeScript et sécurité</h3><ul class="!mb-0"><li>J'ai fait le tour de tout le code et écrit un petit guide pour m'y retrouver vite.</li><li>Passage du back-end de JavaScript à <strong>TypeScript</strong> : 14 modules partagés puis 53 routes d'API, par petits lots et sans coupure. Les erreurs se voient maintenant avant la mise en ligne.</li><li>Relecture des permissions des routes sensibles, une par une, et correction d'un souci de cloisonnement entre groupes.</li><li>Une validation des champs centralisée dans un seul outil au lieu d'être recopiée partout.</li><li>Une protection contre les tentatives de connexion à répétition.</li></ul></div>
+        </div>
+      </li>
+      <li class="ingot reveal">
+        <div class="ingot__inner prose-dark grid gap-4 p-6 md:grid-cols-[12rem_1fr] md:p-8">
+          <div><p class="!mb-1 font-display text-3xl font-semibold"><span class="foil">Semaine 3</span></p><p class="!mb-0 text-sm text-mist">20 au 24 juillet</p></div>
+          <div><h3 class="!mt-0 text-lg">Le refus d'Apple, et ce qu'il a montré</h3><ul class="!mb-0"><li>Apple refuse l'appli : ses testeurs n'arrivent pas à se connecter. En cherchant, je découvre que la connexion était cassée en prod depuis cinq jours pour tout le monde. De vieux fichiers restés sur le serveur après la migration étaient utilisés à la place des nouveaux.</li><li>Je répare, puis je corrige le script de déploiement : suppression automatique des vieux fichiers et <strong>test de connexion à chaque mise en ligne</strong>.</li><li>Déploiement par Git au lieu d'envoyer les fichiers à la main.</li><li>Vérification des jetons Google et Apple renforcée, avec des tests.</li><li>Correction de l'invitation par QR code, qui bloquait sans rien dire le retour d'un membre dans un groupe qu'il avait quitté.</li><li>Nouveaux écrans de connexion et d'inscription.</li></ul></div>
+        </div>
+      </li>
+      <li class="ingot reveal">
+        <div class="ingot__inner prose-dark grid gap-4 p-6 md:grid-cols-[12rem_1fr] md:p-8">
+          <div><p class="!mb-1 font-display text-3xl font-semibold"><span class="foil">Semaine 4</span></p><p class="!mb-0 text-sm text-mist">27 au 31 juillet</p></div>
+          <div><h3 class="!mt-0 text-lg">Maquettes, validation Apple et correctifs</h3><ul class="!mb-0"><li>Nouvelle page de profil, maquettée et validée avant de coder. Les éléments communs sont regroupés dans un seul fichier : un changement de style se fait à un endroit au lieu de quatre.</li><li>Une grosse évolution du produit à cadrer. Au lieu d'un long texte, j'ai fait <strong>treize écrans maquettés</strong> en clair et en sombre, parce que le changement inversait une logique centrale de l'appli et qu'un texte risquait d'être mal compris.</li><li>Pour chaque décision, je proposais plusieurs options avec leurs limites. Le choix revenait aux responsables.</li><li>J'ai aussi listé les cas limites et ce qui risquait de casser dans l'existant.</li><li>Suppression de compte depuis l'appli (obligatoire chez Apple), avec le cas du propriétaire de groupe qui doit d'abord transmettre son groupe.</li><li>L'appli est validée sur l'App Store, puis une série de correctifs : vue Couverture plus lisible, limite de membres relevée, notifications iOS, liens d'invitation qui ouvrent directement l'appli.</li></ul></div>
+        </div>
+      </li>
+      <li class="ingot reveal">
+        <div class="ingot__inner prose-dark grid gap-4 p-6 md:grid-cols-[12rem_1fr] md:p-8">
+          <div><p class="!mb-1 font-display text-3xl font-semibold"><span class="foil">Semaine 5</span></p><p class="!mb-0 text-sm text-mist">3 au 7 août</p></div>
+          <div><h3 class="!mt-0 text-lg">Publication, accessibilité et dernier bug</h3><ul class="!mb-0"><li>Un écran prêt mais caché derrière un interrupteur dans le code, parce qu'il manquait encore un prérequis côté entreprise. Il sera prêt à activer le moment venu.</li><li>Les notifications iPhone n'avaient jamais marché, sans aucun message d'erreur. J'ai comparé point par point avec une autre appli de l'entreprise où elles marchaient : trois différences, toutes corrigées.</li><li>Un indicateur d'état visible dans l'appli, pour que le prochain diagnostic ne demande ni serveur ni Mac.</li><li>Les bandeaux de six écrans, qui avaient dérivé à force de copier-coller, réunis en un seul : <strong>259 lignes de code en moins</strong>.</li><li>Accessibilité : les zones tactiles sans libellé pour les lecteurs d'écran passent de <strong>62 à 26</strong>, et les boutons atteignent la taille minimale conseillée par Apple et Google.</li><li>Dernier jour : un membre pouvait être bloqué sur le même créneau par deux groupes. La protection existait, mais elle était fausse pour les horaires qui passent minuit (une équipe de nuit, par exemple). Nouvelle méthode de comparaison, testée sur les <strong>cent combinaisons possibles</strong> plutôt que sur quelques cas.</li></ul></div>
+        </div>
+      </li>
+      </ol>
+      
+      <section class="ingot reveal mt-6 scroll-mt-24 ">
+        <div class="ingot__inner prose-dark p-6 md:p-10">
+          <h2>Ce que j'en retiens</h2>
+          <ul>
+            <li><strong>Une protection qui existe n'est pas forcément une protection qui marche.</strong> Les deux plus gros bugs venaient de garde-fous déjà là, mais faux. Il faut vérifier qu'ils tiennent sur les cas limites.</li>
+            <li><strong>Réparer, puis empêcher que ça revienne.</strong> Corriger la connexion n'aurait servi à rien sans le test automatique à chaque déploiement.</li>
+            <li><strong>Comparer avec ce qui marche déjà.</strong> Pour les notifications iPhone, partir d'une appli qui fonctionnait a été plus rapide et plus sûr que d'inventer.</li>
+            <li><strong>Remonter le problème plutôt que trancher seul.</strong> Quand j'ai trouvé trois valeurs différentes pour un même réglage, je l'ai signalé : c'était une décision produit, pas technique.</li>
+            <li><strong>Maquetter quand les mots ne suffisent pas.</strong> Montrer des écrans a évité de construire une fonctionnalité sur un malentendu.</li>
+            <li><strong>Assumer mes erreurs.</strong> Un matin j'ai affirmé un truc faux sur les règles d'Apple. Je l'ai corrigé par écrit l'après-midi même.</li>
+          </ul>
+        </div>
       </section>
+    </div></div>
 
-      <section class="cv-block" aria-labelledby="retenir-title">
-        <h2 class="cv-block__heading" id="retenir-title">Ce que j'en retiens</h2>
+    <section id="contact" class="relative px-5 pb-16 pt-24 md:px-8 md:pt-32" aria-labelledby="contact-title">
+      <div class="mx-auto max-w-6xl">
+        <div class="reveal text-center">
+          <span class="eyebrow justify-center">Contact</span>
+          <h2 id="contact-title" class="cta-title mx-auto mt-6 max-w-4xl text-[2.9rem] sm:text-6xl md:text-7xl lg:text-[5.6rem]">
+            <span class="foil">On construit</span><br class="hidden sm:block" />
+            <span class="foil-chrome italic pr-[.12em]"> quelque chose ensemble&nbsp;?</span>
+          </h2>
+          <p class="mx-auto mt-6 max-w-xl text-[15px] text-mist md:text-base">
+            Si vous avez une alternance à proposer, ou juste une question sur un projet,
+            écrivez-moi. Je réponds vite, promis.
+          </p>
+        </div>
 
-        <ul class="week__list week__list--wide">
-          <li><strong>Un garde-fou qui existe n'est pas un garde-fou qui marche.</strong> Les deux bugs les plus sérieux du stage venaient de protections déjà présentes dans le code mais défaillantes. Chercher si la règle existe ne suffit pas, il faut vérifier qu'elle est vraie sur les cas limites.</li>
-          <li><strong>Corriger, puis empêcher la récidive.</strong> Réparer la connexion cassée n'aurait servi à rien sans ajouter un test automatique à chaque déploiement. La deuxième moitié du travail est celle qui compte.</li>
-          <li><strong>Comparer avec ce qui fonctionne déjà.</strong> Pour les notifications iPhone, reprendre la structure d'une application qui marchait a été plus rapide et plus sûr que d'inventer.</li>
-          <li><strong>Signaler plutôt que trancher.</strong> En trouvant trois valeurs contradictoires pour un même réglage selon l'endroit où on regardait, j'ai remonté le point sans le corriger de moi-même : l'arbitrage relevait d'une décision produit, pas d'un choix technique.</li>
-          <li><strong>Maquetter quand les mots ne suffisent pas.</strong> Présenter un changement qui inverse la logique de l'application sous forme d'écrans a évité de construire une fonctionnalité sur un malentendu.</li>
-          <li><strong>Se corriger à l'écrit.</strong> J'ai affirmé un matin que l'accessibilité était un motif de refus App Store. C'était faux, et je l'ai noté dans mon suivi l'après-midi même. Mieux vaut une correction visible qu'une erreur qui circule.</li>
+        <div class="reveal mx-auto mt-10 flex max-w-2xl flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center">
+          <a class="btn-gold" href="mailto:dorianpachot@gmail.com"><span class="w-4 h-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>dorianpachot@gmail.com</a>
+          <button class="btn-lux" type="button" data-copy="dorianpachot@gmail.com"><span data-copy-label>Copier l'adresse</span></button>
+        </div>
+
+        <ul class="reveal mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm">
+          <li><a class="social" href="tel:+33771623228"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>07 71 62 32 28</a></li>
+          <li><a class="social" href="https://www.linkedin.com/in/dorian-pachot-81299930a/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>LinkedIn</a></li>
+          <li><a class="social" href="../assets/cv/CV_Dorian_Pachot.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 12v6"/><path d="m9 15 3 3 3-3"/></svg>Mon CV en PDF</a></li>
         </ul>
-      </section>
-
-      <section class="cv-block" aria-labelledby="suite-title">
-        <h2 class="cv-block__heading" id="suite-title">Et après</h2>
-        <p class="doc-intro">
-          SYNCRO est aujourd'hui disponible sur
-          <a href="https://apps.apple.com/fr/app/syncro/id6787898930" target="_blank" rel="noopener noreferrer">l'App Store</a> et
-          <a href="https://play.google.com/store/apps/details?id=fr.appsyncro.mobile" target="_blank" rel="noopener noreferrer">Google Play</a>,
-          et son site <a href="https://appsyncro.fr" target="_blank" rel="noopener noreferrer">appsyncro.fr</a> est en production.
-        </p>
-        <p>
-          <a class="btn btn--primary" href="documents.html">Voir la lettre de recommandation</a>
-        </p>
-      </section>
-    </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer" role="contentinfo">
-    <div class="footer__inner">
-      <span>&copy; 2026 Dorian Pachot, BTS SIO SLAM, IRIS MediaSchool</span>
-      <a href="https://www.linkedin.com/in/dorian-pachot-81299930a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>
-      <a href="mentions-legales.html">Mentions l&eacute;gales</a>
+  <footer class="px-5 pb-10 md:px-8" role="contentinfo">
+    <div class="mx-auto max-w-6xl">
+      <hr class="rule-gold" />
+      <div class="flex flex-col gap-3 pt-6 text-xs text-mist sm:flex-row sm:items-center sm:justify-between">
+        <span>© <span data-year>2026</span> Dorian Pachot · BTS SIO SLAM · IRIS MediaSchool, Rouen</span>
+        <span class="flex gap-5">
+          <a class="link-gold" href="../pages/mentions-legales.html">Mentions légales</a>
+          <a class="link-gold" href="../index.html">Accueil</a>
+        </span>
+      </div>
     </div>
   </footer>
-
-  <!-- Barre de contact collee en bas de l'ecran, sur toutes les pages.
-       Le body a une marge basse equivalente pour qu'elle ne recouvre pas
-       la fin du pied de page. -->
-  <aside class="contact-bar" aria-label="Me contacter">
-    <div class="contact-bar__inner">
-      <p class="contact-bar__text">
-        <strong>Une alternance à proposer ?</strong>
-        Je réponds sous 24 heures.
-      </p>
-      <div class="contact-bar__actions">
-        <a class="btn btn--primary" href="mailto:dorianpachot@gmail.com">
-          M'écrire
-        </a>
-        <a class="btn btn--secondary" href="tel:+33771623228">
-          07 71 62 32 28
-        </a>
-        <a class="btn btn--secondary" href="../assets/cv/CV_Dorian_Pachot.pdf" target="_blank" rel="noopener">Mon CV</a>
-      </div>
-    </div>
-  </aside>
-
-  <button class="to-top" type="button" data-to-top aria-label="Revenir en haut de la page">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
-  </button>
-
-  <div class="palette" data-palette data-base="../" hidden role="dialog" aria-modal="true" aria-label="Rechercher dans le site">
-    <div class="palette__box">
-      <div class="palette__field">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
-        <input class="palette__input" data-palette-input type="text" placeholder="Rechercher une page, un document, un projet…"
-               role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" />
-      </div>
-      <ul class="palette__list" id="palette-list" data-palette-list role="listbox" aria-label="Résultats"></ul>
-      <p class="palette__empty" data-palette-empty hidden>Aucun résultat.</p>
-      <p class="palette__hint">↑ ↓ pour naviguer · Entrée pour ouvrir · Échap pour fermer</p>
-    </div>
-  </div>
 
   <script src="../js/main.js"></script>
 </body>

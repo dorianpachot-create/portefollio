@@ -4,90 +4,116 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mission Orion, un jeu Python de Dorian Pachot</title>
-  <meta name="description" content="Mission Orion, jeu spatial écrit en Python avec pygame et compilé en WebAssembly. Jouable directement dans le navigateur, sans rien installer." />
-  <meta name="theme-color" content="#05070d" />
+  <meta name="description" content="Mission Orion, un jeu spatial en Python et pygame compilé en WebAssembly, jouable dans le navigateur." />
+  <meta name="author" content="Dorian Pachot" />
+  <link rel="canonical" href="https://dorianpachot-create.github.io/portefollio/pages/mini-jeu.html" />
+  <meta name="theme-color" content="#0A0A0C" />
+  <script>document.documentElement.classList.add('js');</script>
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Mission Orion, un jeu Python de Dorian Pachot" />
+  <meta property="og:description" content="Mission Orion, un jeu spatial en Python et pygame compilé en WebAssembly, jouable dans le navigateur." />
+  <meta property="og:url" content="https://dorianpachot-create.github.io/portefollio/pages/mini-jeu.html" />
+  <meta property="og:image" content="https://dorianpachot-create.github.io/portefollio/assets/meta/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" href="../assets/meta/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="../assets/meta/favicon-32.png" sizes="32x32" />
   <link rel="apple-touch-icon" href="../assets/meta/favicon-180.png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="fr_FR" />
-  <meta property="og:image" content="https://dorianpachot-create.github.io/portefollio/assets/meta/og-image.png" />
-  <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="preload" href="../assets/fonts/dm-sans-400.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="../assets/fonts/dm-sans-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../assets/fonts/cormorant-garamond-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../assets/fonts/plus-jakarta-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="../css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-obsidian: #0A0A0C;
+      --color-panel: #111115;
+      --color-gold: #E6C687;
+      --color-gold-deep: #D4AF37;
+      --color-gold-hi: #FFF3D1;
+      --color-chrome: #CBD5E1;
+      --color-chrome-hi: #F8FAFC;
+      --color-mist: #A1A1AA;
+      --font-display: "Cormorant Garamond", Georgia, serif;
+      --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+  </style>
 </head>
+<body id="top">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="spotlight-layer" aria-hidden="true"><div class="spotlight" data-spotlight></div></div>
 
-<!-- Cette page n'a volontairement ni barre de navigation, ni pied de page,
-     ni barre de contact. Quand on arrive ici, on vient jouer : tout
-     l'espace va au jeu, les informations sont dans la colonne de droite.
-     Le retour au site se fait par le lien en haut de cette colonne. -->
-<body class="play-page">
-  <a class="skip-link" href="#jeu">Aller au jeu</a>
+  <header class="topbar fixed inset-x-0 top-0 z-50" data-topbar>
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:h-[4.5rem] md:px-8">
+      <a href="../index.html" class="flex items-center gap-3" aria-label="Dorian Pachot, retour à l'accueil">
+        <span class="monogram"><span class="foil">DP</span></span>
+        <span class="hidden font-display text-xl font-semibold tracking-wide text-chrome-hi sm:inline">Dorian Pachot</span>
+      </a>
 
-  <div class="play">
+      <nav class="hidden items-center gap-7 text-sm lg:flex" data-nav aria-label="Navigation principale">
+          <a class="nav-link" href="../index.html#projets">Projets</a>
+          <a class="nav-link" href="projets-cours.html">Cours</a>
+          <a class="nav-link" href="../index.html#competences">Compétences</a>
+          <a class="nav-link" href="../index.html#personnel">En dehors du travail</a>
+          <a class="nav-link" href="../version-doree.html#veille">Veille</a>
+          <a class="nav-link" href="documents.html">Documents</a>
+      </nav>
 
-    <!-- Le cadre est en 16/9, comme le canvas du build pygbag (1280x720).
-         Lui donner un autre rapport ajouterait des bandes noires. -->
-    <div class="play__stage">
-      <div class="play__frame" id="jeu">
-        <iframe
-          src="../assets/mission-orion/web/index.html"
-          title="Mission Orion, jeu spatial en Python et pygame"
-          allow="autoplay; fullscreen; gamepad"></iframe>
+      <div class="flex items-center gap-2">
+        <a class="status" href="../index.html#contact">
+          <span class="status__dot" aria-hidden="true"></span>
+          <span class="hidden min-[400px]:inline">Dispo pour une alternance</span><span class="min-[400px]:hidden">Dispo</span>
+        </a>
+        <button class="btn-lux btn-sm lg:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu-mobile"><span data-menu-label>Menu</span></button>
       </div>
     </div>
 
-    <aside class="play__side">
-      <a class="play__back" href="../index.html#projets">
-        Retour au portfolio
-      </a>
+    <div class="mobile-menu border-t border-white/5 bg-obsidian/95 backdrop-blur-xl lg:hidden" id="menu-mobile" data-menu>
+      <nav class="mx-auto max-w-6xl px-5 pb-5 pt-1 text-[15px]" aria-label="Navigation mobile">
+        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="../index.html#projets">Projets<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="projets-cours.html">Cours<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="../index.html#competences">Compétences<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="../index.html#personnel">En dehors du travail<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="../version-doree.html#veille">Veille<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="documents.html">Documents<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+        <a class="flex items-center justify-between py-3 text-chrome-hi" href="../index.html#contact">Contact<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+      </nav>
+    </div>
+  </header>
 
+  <main id="main" class="relative px-5 pb-16 pt-28 md:px-8 md:pt-32">
+    <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_20rem]">
       <div>
-        <h1 class="play__title">Mission Orion</h1>
-        <p class="play__tag">Python, pygame, WebAssembly</p>
+        <div class="ingot"><div class="ingot__inner p-1.5"><div class="game-frame" id="jeu"><iframe src="../assets/mission-orion/web/index.html" title="Mission Orion, jeu spatial en Python et pygame" allow="autoplay; fullscreen; gamepad"></iframe></div></div></div>
+        <p class="mt-3 text-xs text-mist">Le premier chargement prend quelques secondes, le temps que Python se télécharge. Si l'écran reste noir, rechargez la page. Le jeu se joue au clavier, donc plutôt sur ordinateur.</p>
       </div>
+      <aside class="prose-dark">
+        <a class="link-gold inline-flex items-center gap-2 text-sm !no-underline" href="../index.html#projets"><span class="w-4 h-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></span>Retour au portfolio</a>
+        <h1 class="mt-6 font-display text-5xl font-semibold leading-none"><span class="foil">Mission Orion</span></h1>
+        <ul class="mt-4 flex flex-wrap gap-2 !p-0"><li class="chip">Python</li><li class="chip">pygame</li><li class="chip">pygbag</li><li class="chip">WebAssembly</li></ul>
+        <p class="mt-5">Au départ c'était un exercice de cours pour pratiquer Python. Sauf que j'ai accroché, et je ne me suis pas arrêté quand le TP était fini. Je le reprends chez moi dès que j'ai un moment.</p>
+        <p>Il n'est pas fini, je préfère le dire. Il reste des trucs en chantier et des idées que je n'arrive pas encore à faire marcher comme je veux. Mais c'est le projet où j'apprends le plus, parce que personne ne m'oblige à le faire.</p>
+        <p>Ma copine le teste depuis le début. C'est elle qui joue, qui me dit quand un truc n'est pas clair, et pas mal d'idées viennent d'elle. Je code, elle casse, on recommence.</p>
+      </aside>
+    </div>
 
-      <p class="play__text">
-        Ce jeu a commencé comme un exercice de cours, juste pour pratiquer
-        Python. Sauf que j'ai accroché tout de suite, et que je ne me suis
-        jamais arrêté quand le TP était fini. Depuis, je le reprends chez moi
-        dès que j'ai un moment.
-      </p>
+  </main>
 
-      <p class="play__text">
-        Il n'est pas terminé, et je préfère le dire franchement. Il reste des
-        choses en chantier et des idées que je n'ai pas encore réussi à faire
-        tourner comme je voudrais. Mais c'est le projet sur lequel j'apprends
-        le plus, parce que rien ne m'oblige à le faire.
-      </p>
-
-      <p class="play__text">
-        Ma copine est ma testeuse depuis le début. C'est elle qui joue, qui me
-        dit quand quelque chose n'est pas clair, et une bonne partie des idées
-        viennent d'elle. Je code, elle casse, on recommence.
-      </p>
-
-      <div class="play__block">
-        <h2>Technologies</h2>
-        <div class="play__stack">
-          <span>Python</span>
-          <span>pygame</span>
-          <span>pygbag</span>
-          <span>WebAssembly</span>
-        </div>
+  <footer class="px-5 pb-10 md:px-8" role="contentinfo">
+    <div class="mx-auto max-w-6xl">
+      <hr class="rule-gold" />
+      <div class="flex flex-col gap-3 pt-6 text-xs text-mist sm:flex-row sm:items-center sm:justify-between">
+        <span>© <span data-year>2026</span> Dorian Pachot · BTS SIO SLAM · IRIS MediaSchool, Rouen</span>
+        <span class="flex gap-5">
+          <a class="link-gold" href="../pages/mentions-legales.html">Mentions légales</a>
+          <a class="link-gold" href="../index.html">Accueil</a>
+        </span>
       </div>
+    </div>
+  </footer>
 
-      <p class="play__note">
-        Le premier chargement prend quelques secondes, le temps que Python
-        soit téléchargé. Si l'écran reste noir, rechargez la page.
-      </p>
-
-      <a class="btn btn--secondary" href="../index.html#projets">Voir les autres projets</a>
-    </aside>
-
-  </div>
+  <script src="../js/main.js"></script>
 </body>
 </html>

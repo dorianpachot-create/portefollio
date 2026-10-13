@@ -3,290 +3,177 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mentions légales, Dorian Pachot</title>
-  <meta name="description" content="Mentions légales du portfolio de Dorian Pachot : éditeur, hébergement, propriété intellectuelle et données personnelles." />
-  <!-- Ce script doit rester ici, en haut du <head>. Il pose la classe
-       "js" avant le premier affichage : le CSS ne masque les blocs a
-       reveler que dans ce cas. -->
+  <title>Mentions légales, portfolio de Dorian Pachot</title>
+  <meta name="description" content="Mentions légales du portfolio de Dorian Pachot." />
+  <meta name="author" content="Dorian Pachot" />
+  <link rel="canonical" href="https://dorianpachot-create.github.io/portefollio/pages/mentions-legales.html" />
+  <meta name="theme-color" content="#0A0A0C" />
   <script>document.documentElement.classList.add('js');</script>
 
-  <meta name="theme-color" content="#203961" />
-  <link rel="icon" href="../assets/meta/favicon.svg" type="image/svg+xml" />
-  <link rel="icon" href="../assets/meta/favicon-32.png" sizes="32x32" />
-  <link rel="apple-touch-icon" href="../assets/meta/favicon-180.png" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Mentions légales, portfolio de Dorian Pachot" />
+  <meta property="og:description" content="Mentions légales du portfolio de Dorian Pachot." />
+  <meta property="og:url" content="https://dorianpachot-create.github.io/portefollio/pages/mentions-legales.html" />
   <meta property="og:image" content="https://dorianpachot-create.github.io/portefollio/assets/meta/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="preload" href="../assets/fonts/dm-sans-400.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="../assets/fonts/dm-sans-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="icon" href="../assets/meta/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="../assets/meta/favicon-32.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="../assets/meta/favicon-180.png" />
+
+  <link rel="preload" href="../assets/fonts/cormorant-garamond-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../assets/fonts/plus-jakarta-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="../css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-obsidian: #0A0A0C;
+      --color-panel: #111115;
+      --color-gold: #E6C687;
+      --color-gold-deep: #D4AF37;
+      --color-gold-hi: #FFF3D1;
+      --color-chrome: #CBD5E1;
+      --color-chrome-hi: #F8FAFC;
+      --color-mist: #A1A1AA;
+      --font-display: "Cormorant Garamond", Georgia, serif;
+      --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+  </style>
 </head>
-<body>
+<body id="top">
   <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="spotlight-layer" aria-hidden="true"><div class="spotlight" data-spotlight></div></div>
 
-
-
-  <!-- Barre de progression de lecture. Purement decorative, donc invisible
-       pour les lecteurs d'ecran. Le JavaScript ne modifie qu'une variable
-       CSS, le navigateur fait le reste. -->
-  <div class="progress" aria-hidden="true"><span class="progress__bar" data-progress></span></div>
-
-
-  <header class="topbar" role="banner">
-    <div class="topbar__inner">
-      <a class="brand" href="../index.html" aria-label="Dorian Pachot, retour à l'accueil">
-        <span class="brand__name">Dorian Pachot</span>
+  <header class="topbar fixed inset-x-0 top-0 z-50" data-topbar>
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:h-[4.5rem] md:px-8">
+      <a href="../index.html" class="flex items-center gap-3" aria-label="Dorian Pachot, retour à l'accueil">
+        <span class="monogram"><span class="foil">DP</span></span>
+        <span class="hidden font-display text-xl font-semibold tracking-wide text-chrome-hi sm:inline">Dorian Pachot</span>
       </a>
 
-
-      <nav class="nav" id="primary-nav" data-nav aria-label="Navigation principale">
-        <a class="nav__link" href="../index.html">Accueil</a>
-        <a class="nav__link" href="../index.html#competences">Compétences</a>
-        <a class="nav__link" href="../index.html#stage">Stage</a>
-        <a class="nav__link" href="../index.html#projets">Projets</a>
-        <a class="nav__link" href="../index.html#cours">Cours</a>
-        <a class="nav__link" href="../index.html#veille">Veille</a>
-        <a class="nav__link" href="../index.html#documents">Documents</a>
-        <a class="nav__link" href="../index.html#ce-site">Ce site</a>
-        <a class="nav__link" href="../index.html#contact">Contact</a>
+      <nav class="hidden items-center gap-7 text-sm lg:flex" data-nav aria-label="Navigation principale">
+          <a class="nav-link" href="../index.html#projets">Projets</a>
+          <a class="nav-link" href="projets-cours.html">Cours</a>
+          <a class="nav-link" href="../index.html#competences">Compétences</a>
+          <a class="nav-link" href="../index.html#personnel">En dehors du travail</a>
+          <a class="nav-link" href="../version-doree.html#veille">Veille</a>
+          <a class="nav-link" href="documents.html">Documents</a>
       </nav>
 
-      <div class="topbar__tools">
-        <button class="search-btn" type="button" data-palette-open aria-label="Rechercher dans le site">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
-          <span class="search-btn__label">Rechercher</span>
-          <span class="search-btn__kbd" aria-hidden="true">Ctrl K</span>
-        </button>
-
-
-        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="true" aria-controls="primary-nav">Menu</button>
+      <div class="flex items-center gap-2">
+        <a class="status" href="../index.html#contact">
+          <span class="status__dot" aria-hidden="true"></span>
+          <span class="hidden min-[400px]:inline">Dispo pour une alternance</span><span class="min-[400px]:hidden">Dispo</span>
+        </a>
+        <button class="btn-lux btn-sm lg:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu-mobile"><span data-menu-label>Menu</span></button>
       </div>
+    </div>
+
+    <div class="mobile-menu border-t border-white/5 bg-obsidian/95 backdrop-blur-xl lg:hidden" id="menu-mobile" data-menu>
+      <nav class="mx-auto max-w-6xl px-5 pb-5 pt-1 text-[15px]" aria-label="Navigation mobile">
+        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="../index.html#projets">Projets<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="projets-cours.html">Cours<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="../index.html#competences">Compétences<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="../index.html#personnel">En dehors du travail<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="../version-doree.html#veille">Veille<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="documents.html">Documents<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+        <a class="flex items-center justify-between py-3 text-chrome-hi" href="../index.html#contact">Contact<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+      </nav>
     </div>
   </header>
 
-  <main id="main">
-    <div class="container">
-      <header class="page-header">
-        <h1 class="page-header__title">Mentions légales</h1>
-        <p class="page-header__subtitle">
-          Informations légales de ce site personnel, publiées conformément à l'article
-          6-III de la loi n°2004-575 du 21 juin 2004 pour la confiance dans l'économie
-          numérique. Dernière mise à jour : 10 août 2026.
-        </p>
-      </header>
-
-      <div class="grid" style="grid-template-columns: 1fr; gap: 1.5rem;">
-
-        <section>
-          <div class="section__panel">
-            <h2 class="section__title">Éditeur du site</h2>
-            <p>
-              Ce site est un portfolio personnel, à but non commercial, édité par un
-              particulier.
-            </p>
-            <p>
-              <strong>Dorian Pachot</strong><br />
-              Étudiant en BTS Services Informatiques aux Organisations, option SLAM,
-              à IRIS MediaSchool, campus de Rouen.<br />
-              Rouen (76000), France<br />
-              <a href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a><br />
-              <a href="tel:+33771623228">07 71 62 32 28</a>
-            </p>
-            <p>
-              <strong>Directeur de la publication :</strong> Dorian Pachot.
-            </p>
-            <p>
-              Le site n'ayant aucune activité commerciale, l'adresse postale complète
-              n'est pas publiée, comme la loi le permet pour un particulier. Elle est
-              communiquée à l'hébergeur, qui la tient à la disposition de l'autorité
-              judiciaire.
-            </p>
-          </div>
-        </section>
-
-        <section>
-          <div class="section__panel">
-            <h2 class="section__title">Hébergement</h2>
-            <p>
-              Le site est hébergé par le service GitHub Pages :
-            </p>
-            <p>
-              <strong>GitHub, Inc.</strong><br />
-              88 Colin P. Kelly Jr. Street<br />
-              San Francisco, CA 94107, États-Unis<br />
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com</a>
-            </p>
-            <p>
-              Le code source du site est public :
-              <a href="https://github.com/dorianpachot-create/portefollio" target="_blank" rel="noopener noreferrer">github.com/dorianpachot-create/portefollio</a>.
-            </p>
-          </div>
-        </section>
-
-        <section>
-          <div class="section__panel">
-            <h2 class="section__title">Données personnelles et cookies</h2>
-            <p>
-              <strong>Ce site ne dépose aucun cookie et ne collecte aucune donnée.</strong>
-              Il n'y a ni formulaire, ni compte utilisateur, ni outil de mesure d'audience,
-              ni pixel de suivi. Les pages sont des fichiers statiques.
-            </p>
-            <p>
-              Rien n'est enregistré dans le navigateur : ni cookie, ni stockage local.
-            </p>
-            <p>
-              <strong>Le site n'appelle aucun service tiers.</strong> La police de caractères
-              est servie depuis ce site, pas depuis Google Fonts : le navigateur ne contacte
-              donc aucun serveur extérieur pour afficher les pages.
-            </p>
-            <p>
-              Seul l'hébergeur, GitHub Pages, voit passer les connexions et les journalise
-              selon sa propre politique de confidentialité, comme tout hébergeur.
-            </p>
-          </div>
-        </section>
-
-        <section>
-          <div class="section__panel">
-            <h2 class="section__title">Documents publiés</h2>
-            <p>
-              Le bulletin scolaire et la lettre de recommandation mis en ligne concernent
-              l'éditeur du site et sont publiés par lui-même, volontairement.
-            </p>
-            <p>
-              Ces documents ne sont pas les originaux. La date de naissance et les
-              signatures manuscrites ont été retirées avant publication. Les versions
-              complètes sont fournies sur demande, directement aux recruteurs concernés.
-            </p>
-            <p>
-              Toute personne mentionnée dans un document publié ici peut demander sa
-              modification ou son retrait en écrivant à
-              <a href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>. La demande
-              sera traitée sous quinze jours.
-            </p>
-          </div>
-        </section>
-
-        <section>
-          <div class="section__panel">
-            <h2 class="section__title">Propriété intellectuelle</h2>
-            <p>
-              Sauf mention contraire, les textes, le code source, les mises en page et les
-              visuels de ce site ont été réalisés par Dorian Pachot et lui appartiennent.
-            </p>
-            <p>
-              <strong>SYNCRO</strong> et <strong>appsyncro.fr</strong> sont la propriété de
-              SUITIME SAS. Les captures d'écran et descriptions présentées ici le sont à
-              titre de portfolio, pour rendre compte du travail effectué pendant un stage.
-              La marque, le logo et le code de l'application restent la propriété de leur
-              titulaire.
-            </p>
-            <p>
-              <strong>CRP-Assurance.com</strong> a été réalisé pour le Cabinet Romain Pachot,
-              qui en est propriétaire.
-            </p>
-            <p>
-              Les fiches et comptes rendus de cours téléchargeables sont des travaux
-              d'étudiant, produits dans le cadre de la formation et partagés à titre de
-              portfolio. Ils peuvent s'appuyer sur des énoncés, supports ou données fournis
-              par IRIS MediaSchool ou ses intervenants, dont les droits restent réservés.
-            </p>
-            <p>
-              Les noms de produits et marques cités (App Store, Google Play, Flutter,
-              Next.js et autres) appartiennent à leurs propriétaires respectifs.
-            </p>
-          </div>
-        </section>
-
-        <section>
-          <div class="section__panel">
-            <h2 class="section__title">Crédits techniques</h2>
-            <p>
-              Site écrit à la main en HTML, CSS et JavaScript, sans framework ni
-              bibliothèque chargée par le navigateur.
-            </p>
-            <ul class="section__list">
-              <li>Police <strong>Inter</strong>, de Rasmus Andersson, sous licence SIL Open Font License. Les fichiers sont hébergés avec le site, dans <code>assets/fonts/</code>.</li>
-              <li>Icônes dessinées en SVG pour ce site, aucune bibliothèque externe.</li>
-              <li>Mini-jeu Mission Orion compilé en WebAssembly avec <strong>pygbag</strong>.</li>
-            </ul>
-          </div>
-        </section>
-
-        <section>
-          <div class="section__panel">
-            <h2 class="section__title">Liens vers d'autres sites</h2>
-            <p>
-              Ce site renvoie vers des sites tiers : LinkedIn, GitHub, l'App Store, Google
-              Play, appsyncro.fr et CRP-Assurance.com. Dorian Pachot n'a pas de contrôle sur
-              leur contenu ni sur leurs pratiques en matière de données, et ne peut en être
-              tenu responsable.
-            </p>
-          </div>
-        </section>
-
-        <section>
-          <div class="section__panel">
-            <h2 class="section__title">Signaler une erreur</h2>
-            <p>
-              Une information inexacte, un document à retirer, une question sur ces mentions :
-              écrivez à <a href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>.
-            </p>
-          </div>
-        </section>
-
+  <main id="main" class="relative">
+    <header class="px-5 pb-10 pt-32 md:px-8 md:pt-40">
+      <div class="mx-auto max-w-6xl">
+        <a class="link-gold inline-flex items-center gap-2 text-sm" href="../index.html"><span class="w-4 h-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></span>Retour à l'accueil</a>
+        <p class="eyebrow mt-8">Mentions légales</p>
+        <h1 class="mt-4 font-display text-5xl font-semibold leading-[1.02] md:text-7xl"><span class="foil">Mentions légales</span></h1>
+        <div class="mt-6 max-w-2xl text-[15px] leading-relaxed text-mist md:text-base"><p>Les infos légales de ce site perso, publiées selon l'article 6-III de la loi n°2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique. Dernière mise à jour : 13 octobre 2026.</p></div>
       </div>
-    </div>
+    </header>
+
+    <div class="px-5 pb-10 md:px-8"><div class="mx-auto max-w-6xl">
+      <section class="ingot reveal mt-6 scroll-mt-24 ">
+        <div class="ingot__inner prose-dark p-6 md:p-10">
+          <h2>Éditeur du site</h2>
+          
+          <p>Ce site est un portfolio personnel, sans but commercial, édité par un particulier.</p>
+          <p><strong>Dorian Pachot</strong>, étudiant en BTS SIO option SLAM à IRIS MediaSchool, campus de Rouen.<br />Rouen (76000), France<br /><a href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a> · <a href="tel:+33771623228">07 71 62 32 28</a></p>
+          <p><strong>Directeur de la publication :</strong> Dorian Pachot.</p>
+          <p>Le site n'ayant pas d'activité commerciale, l'adresse postale complète n'est pas publiée, comme la loi le permet pour un particulier. Elle est communiquée à l'hébergeur.</p>
+        </div>
+      </section>
+      <section class="ingot reveal mt-6 scroll-mt-24 ">
+        <div class="ingot__inner prose-dark p-6 md:p-10">
+          <h2>Hébergement</h2>
+          
+          <p>Le site est hébergé par GitHub Pages : <strong>GitHub, Inc.</strong>, 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis (<a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com</a>).</p>
+        </div>
+      </section>
+      <section class="ingot reveal mt-6 scroll-mt-24 ">
+        <div class="ingot__inner prose-dark p-6 md:p-10">
+          <h2>Données personnelles et cookies</h2>
+          
+          <p><strong>Ce site ne dépose aucun cookie et ne collecte aucune donnée.</strong> Pas de formulaire, pas de compte, pas d'outil de mesure d'audience.</p>
+          <p>Pour afficher les pages, votre navigateur contacte deux services extérieurs : <strong>jsDelivr</strong> (cdn.jsdelivr.net), qui fournit la bibliothèque de mise en page Tailwind CSS, et <strong>Google Fonts</strong> (fonts.googleapis.com et fonts.gstatic.com), qui fournit les polices de la page d'accueil. Comme tout serveur web, ils voient passer votre adresse IP.</p>
+          <p>L'hébergeur, GitHub Pages, journalise aussi les connexions selon sa propre politique de confidentialité.</p>
+        </div>
+      </section>
+      <section class="ingot reveal mt-6 scroll-mt-24 ">
+        <div class="ingot__inner prose-dark p-6 md:p-10">
+          <h2>Documents publiés</h2>
+          
+          <p>Le bulletin et la lettre de recommandation concernent l'éditeur du site et sont publiés par lui, volontairement. Ce ne sont pas les originaux : la date de naissance et les signatures ont été retirées. Les versions complètes sont fournies sur demande.</p>
+          <p>Toute personne citée dans un document publié ici peut demander sa modification ou son retrait à <a href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>. La demande sera traitée sous quinze jours.</p>
+        </div>
+      </section>
+      <section class="ingot reveal mt-6 scroll-mt-24 ">
+        <div class="ingot__inner prose-dark p-6 md:p-10">
+          <h2>Propriété intellectuelle</h2>
+          
+          <p>Sauf mention contraire, les textes et les visuels de ce site appartiennent à Dorian Pachot.</p>
+          <p><strong>SYNCRO</strong> et <strong>appsyncro.fr</strong> sont la propriété de SUITIME SAS. Les captures et descriptions présentées ici le sont à titre de portfolio, pour montrer le travail fait pendant un stage.</p>
+          <p><strong>CRP-Assurance.com</strong> a été réalisé pour le Cabinet Romain Pachot, qui en est propriétaire.</p>
+          <p>Les comptes rendus de cours sont des travaux d'étudiant faits dans le cadre de la formation. Ils peuvent s'appuyer sur des énoncés ou des supports d'IRIS MediaSchool et de ses intervenants, dont les droits restent réservés.</p>
+          <p>Les marques citées (App Store, Google Play, Flutter, Next.js, etc.) appartiennent à leurs propriétaires.</p>
+        </div>
+      </section>
+      <section class="ingot reveal mt-6 scroll-mt-24 ">
+        <div class="ingot__inner prose-dark p-6 md:p-10">
+          <h2>Crédits</h2>
+          
+          <ul>
+            <li>Polices <strong>Archivo</strong>, <strong>Inter</strong> et <strong>IBM Plex Mono</strong> (page d'accueil, via Google Fonts), <strong>Cormorant Garamond</strong> et <strong>Plus Jakarta Sans</strong> (autres pages, hébergées avec le site), toutes sous licence SIL Open Font License.</li>
+            <li>Mise en page avec <strong>Tailwind CSS</strong> (licence MIT).</li>
+            <li>Mission Orion compilé en WebAssembly avec <strong>pygbag</strong>.</li>
+          </ul>
+        </div>
+      </section>
+      <section class="ingot reveal mt-6 scroll-mt-24 ">
+        <div class="ingot__inner prose-dark p-6 md:p-10">
+          <h2>Liens et erreurs</h2>
+          
+          <p>Ce site renvoie vers d'autres sites (LinkedIn, l'App Store, Google Play, appsyncro.fr, CRP-Assurance.com, des articles de presse). Je n'ai pas la main sur leur contenu.</p>
+          <p>Une info fausse, un document à retirer, une question : écrivez à <a href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>.</p>
+        </div>
+      </section>
+    </div></div>
+
   </main>
 
-  <footer class="footer" role="contentinfo">
-    <div class="footer__inner">
-      <span>&copy; 2026 Dorian Pachot, BTS SIO SLAM, IRIS MediaSchool</span>
-      <a href="https://www.linkedin.com/in/dorian-pachot-81299930a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>
-      <a href="mentions-legales.html">Mentions l&eacute;gales</a>
+  <footer class="px-5 pb-10 md:px-8" role="contentinfo">
+    <div class="mx-auto max-w-6xl">
+      <hr class="rule-gold" />
+      <div class="flex flex-col gap-3 pt-6 text-xs text-mist sm:flex-row sm:items-center sm:justify-between">
+        <span>© <span data-year>2026</span> Dorian Pachot · BTS SIO SLAM · IRIS MediaSchool, Rouen</span>
+        <span class="flex gap-5">
+          <a class="link-gold" href="../pages/mentions-legales.html">Mentions légales</a>
+          <a class="link-gold" href="../index.html">Accueil</a>
+        </span>
+      </div>
     </div>
   </footer>
-
-  <!-- Barre de contact collee en bas de l'ecran, sur toutes les pages.
-       Le body a une marge basse equivalente pour qu'elle ne recouvre pas
-       la fin du pied de page. -->
-  <aside class="contact-bar" aria-label="Me contacter">
-    <div class="contact-bar__inner">
-      <p class="contact-bar__text">
-        <strong>Une alternance à proposer ?</strong>
-        Je réponds sous 24 heures.
-      </p>
-      <div class="contact-bar__actions">
-        <a class="btn btn--primary" href="mailto:dorianpachot@gmail.com">
-          M'écrire
-        </a>
-        <a class="btn btn--secondary" href="tel:+33771623228">
-          07 71 62 32 28
-        </a>
-        <a class="btn btn--secondary" href="../assets/cv/CV_Dorian_Pachot.pdf" target="_blank" rel="noopener">Mon CV</a>
-      </div>
-    </div>
-  </aside>
-
-  <button class="to-top" type="button" data-to-top aria-label="Revenir en haut de la page">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
-  </button>
-
-  <div class="palette" data-palette data-base="../" hidden role="dialog" aria-modal="true" aria-label="Rechercher dans le site">
-    <div class="palette__box">
-      <div class="palette__field">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
-        <input class="palette__input" data-palette-input type="text" placeholder="Rechercher une page, un document, un projet…"
-               role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" />
-      </div>
-      <ul class="palette__list" id="palette-list" data-palette-list role="listbox" aria-label="Résultats"></ul>
-      <p class="palette__empty" data-palette-empty hidden>Aucun résultat.</p>
-      <p class="palette__hint">↑ ↓ pour naviguer · Entrée pour ouvrir · Échap pour fermer</p>
-    </div>
-  </div>
 
   <script src="../js/main.js"></script>
 </body>

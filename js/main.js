@@ -1,510 +1,176 @@
-/**
- * PORTFOLIO DORIAN PACHOT
- * Tout le JavaScript du site tient dans ce fichier. Aucune dependance.
- *
- * COMMENT C'EST ORGANISE
- * Chaque fonctionnalite est une fonction anonyme qui s'execute tout de
- * suite, dans son propre bloc numerote. Elles ne se parlent pas entre
- * elles, donc on peut en supprimer une sans toucher aux autres.
- *
- *   1. Menu repliable .......... bouton Menu en dessous de 760px
- *   2. Section en cours ........ surligne le lien de la section lue
- *   3. Palette de commandes .... la recherche, au clic ou au Ctrl+K
- *   4. Carrousel ............... projets et captures, fleches et onglets
- *   5. Copie de l'e-mail ....... bouton Copier de la section Contact
- *   6. Moteur de defilement .... un seul ecouteur pour tout le site
- *   7. Apparitions ............. reveal, cascade, histogramme, compteurs
- *
- * LE PRINCIPE A RETENIR
- * Chaque bloc commence par chercher son HTML et s'arrete tout de suite
- * s'il ne le trouve pas. C'est ce qui permet de charger le meme fichier
- * sur les 8 pages : la palette existe partout, le carrousel seulement
- * la ou il y a des diapositives, et rien ne casse.
- *
- * Le site doit rester lisible meme si ce fichier ne se charge pas. Les
- * animations sont donc desactivees par defaut en CSS et n'apparaissent
- * que si la classe "js" est posee sur <html>, ce que fait le petit
- * script en haut de chaque page.
- */
+/* =====================================================================
+   Portfolio de Dorian Pachot, JavaScript commun à toutes les pages.
+   Rien d'indispensable ici : sans JS, tout reste lisible et cliquable.
+   ===================================================================== */
 (function () {
   'use strict';
 
-  // Deux raccourcis pour eviter d'ecrire querySelector partout.
-  // $ renvoie le premier element trouve, $$ renvoie un vrai tableau.
-  const $  = (sel, root) => (root || document).querySelector(sel);
-  const $$ = (sel, root) => Array.from((root || document).querySelectorAll(sel));
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  // Certaines personnes reglent leur systeme pour limiter les animations,
-  // souvent pour des raisons de sante. On respecte ce choix partout.
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* ---------- Barre du haut : fond flouté une fois qu'on a défilé ---------- */
+  var topbar = document.querySelector('[data-topbar]');
+  function onScroll() {
+    if (topbar) topbar.classList.toggle('is-scrolled', window.scrollY > 12);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-  /* =======================================================
-     1. MENU REPLIABLE
-     En dessous de 760px le menu est cache derriere un bouton.
-     Au-dessus il est toujours visible.
-     ======================================================= */
-  (function nav() {
-    const toggle = $('[data-nav-toggle]');
-    const menu = $('[data-nav]');
-    if (!toggle || !menu) return;
-
-    const mq = window.matchMedia('(max-width: 760px)');
-    const sync = () => {
-      menu.hidden = mq.matches;
-      toggle.setAttribute('aria-expanded', String(!mq.matches));
+  /* ---------- Menu mobile ---------- */
+  var toggle = document.querySelector('[data-menu-toggle]');
+  var menu = document.querySelector('[data-menu]');
+  if (toggle && menu) {
+    var setMenu = function (open) {
+      menu.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.querySelector('[data-menu-label]').textContent = open ? 'Fermer' : 'Menu';
     };
-    sync();
-    mq.addEventListener('change', sync);
+    toggle.addEventListener('click', function () { setMenu(!menu.classList.contains('is-open')); });
+    menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  }
 
-    toggle.addEventListener('click', () => {
-      const open = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!open));
-      menu.hidden = open;
-    });
-
-    menu.addEventListener('click', (e) => {
-      if (mq.matches && e.target.closest('a')) {
-        menu.hidden = true;
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  })();
-
-  /* =======================================================
-     2. SECTION EN COURS DE LECTURE
-
-     Surligne dans le menu le lien de la section qu'on est en
-     train de lire. Ne s'active que sur l'accueil, puisque les
-     autres pages n'ont pas de liens en #ancre.
-     ======================================================= */
-  (function scrollSpy() {
-    const links = $$('.nav__link[href^="#"]');
-    if (!links.length || !('IntersectionObserver' in window)) return;
-
-    const sections = links
-      .map((a) => document.querySelector(a.getAttribute('href')))
-      .filter(Boolean);
-    if (!sections.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const seen = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (!seen) return;
-        links.forEach((a) =>
-          a.classList.toggle('is-active', a.getAttribute('href') === '#' + seen.target.id)
-        );
-      },
-      // On retrecit volontairement la zone de detection a une bande
-      // au milieu de l'ecran. Sans ca, deux sections seraient
-      // considerees comme visibles en meme temps et le surlignage
-      // sauterait d'un lien a l'autre.
-      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
-    );
-    sections.forEach((s) => observer.observe(s));
-  })();
-
-  /* =======================================================
-     3. PALETTE DE COMMANDES
-
-     La recherche du site. S'ouvre au clic sur le bouton
-     Rechercher ou au Ctrl+K (Cmd+K sur Mac).
-
-     POUR AJOUTER UNE DESTINATION : une ligne dans le tableau
-     ENTRIES ci-dessous, et c'est tout. Le reste suit.
-     ======================================================= */
-  (function palette() {
-    const box = $('[data-palette]');
-    if (!box) return;
-
-    const input = $('[data-palette-input]', box);
-    const list = $('[data-palette-list]', box);
-    const empty = $('[data-palette-empty]', box);
-    // data-base vaut "" sur l'accueil et "../" sur les pages du dossier
-    // pages/. C'est ce qui permet au meme fichier de construire des liens
-    // corrects depuis les deux niveaux.
-    const base = box.dataset.base || '';
-
-    const ENTRIES = [
-      { label: 'Qui je suis',                kind: 'Section',  href: base + 'index.html#profil' },
-      { label: 'Mon parcours',               kind: 'Section',  href: base + 'index.html#parcours' },
-      { label: 'Compétences techniques',     kind: 'Section',  href: base + 'index.html#competences' },
-      { label: 'Stage chez Suitime',         kind: 'Section',  href: base + 'index.html#stage' },
-      { label: 'Projets',                    kind: 'Section',  href: base + 'index.html#projets' },
-      { label: 'Projets encadrés du BTS',    kind: 'Section',  href: base + 'index.html#cours' },
-      { label: 'Veille technologique',       kind: 'Section',  href: base + 'index.html#veille' },
-      { label: 'Documents',                  kind: 'Section',  href: base + 'index.html#documents' },
-      { label: 'Ce site : les coulisses',    kind: 'Section',  href: base + 'index.html#ce-site' },
-      { label: 'Contact',                    kind: 'Section',  href: base + 'index.html#contact' },
-      { label: 'Le code du site sur GitHub', kind: 'Lien',     href: 'https://github.com/dorianpachot-create/portefollio' },
-      { label: 'Journal de stage détaillé',  kind: 'Page',     href: base + 'pages/stage.html' },
-      { label: 'CV en grand',                kind: 'Page',     href: base + 'pages/cv.html' },
-      { label: 'Tous les documents',         kind: 'Page',     href: base + 'pages/documents.html' },
-      { label: 'Projets personnels',         kind: 'Page',     href: base + 'pages/projets-perso.html' },
-      { label: 'Pla\'Net, planning MediaSchool', kind: 'Page', href: base + 'pages/projets-perso.html#planet' },
-      { label: 'Toutes les fiches de cours', kind: 'Page',     href: base + 'pages/projets-cours.html' },
-      { label: 'Jouer à Mission Orion',      kind: 'Page',     href: base + 'pages/mini-jeu.html' },
-      { label: 'Mentions légales',           kind: 'Page',     href: base + 'pages/mentions-legales.html' },
-      { label: 'Télécharger le CV (PDF)',    kind: 'Document', href: base + 'assets/cv/CV_Dorian_Pachot.pdf' },
-      { label: 'Lettre de recommandation (PDF)', kind: 'Document', href: base + 'assets/recommandation/Lettre_recommandation_Suitime.pdf' },
-      { label: 'Bulletin de 1re année (PDF)', kind: 'Document', href: base + 'assets/bulletin/Bulletin_1ere_annee_Dorian_Pachot.pdf' },
-      { label: 'Lettre de motivation (PDF)', kind: 'Document', href: base + 'assets/lettre-motivation/LM_Dorian_Pachot.pdf' },
-      { label: 'SYNCRO sur l’App Store', kind: 'Lien', href: 'https://apps.apple.com/fr/app/syncro/id6787898930' },
-      { label: 'SYNCRO sur Google Play',     kind: 'Lien',     href: 'https://play.google.com/store/apps/details?id=fr.appsyncro.mobile' },
-      { label: 'appsyncro.fr',               kind: 'Lien',     href: 'https://appsyncro.fr' },
-      { label: 'CRP-Assurance.com',          kind: 'Lien',     href: 'https://crp-assurance.com' },
-      { label: 'LinkedIn',                   kind: 'Lien',     href: 'https://www.linkedin.com/in/dorian-pachot-81299930a/' },
-      { label: 'M’envoyer un e-mail',    kind: 'Contact',  href: 'mailto:dorianpachot@gmail.com' }
-    ];
-
-    // On retire les accents des deux cotes de la comparaison. Comme ca
-    // "recommandation" trouve "recommandation" qu'on tape avec ou sans
-    // accent, et personne ne rate un resultat pour un accent oublie.
-    const norm = (s) =>
-      s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-
-    let shown = [];
-    let cursor = 0;
-    let lastFocus = null;
-
-    function render(query) {
-      const q = norm(query.trim());
-      shown = q
-        ? ENTRIES.filter((e) => norm(e.label + ' ' + e.kind).includes(q))
-        : ENTRIES;
-      cursor = 0;
-      list.innerHTML = '';
-      shown.forEach((e, i) => {
-        const li = document.createElement('li');
-        li.className = 'palette__item';
-        li.setAttribute('role', 'option');
-        li.id = 'palette-opt-' + i;
-        li.setAttribute('aria-selected', String(i === 0));
-        li.innerHTML =
-          '<span></span><span class="palette__kind"></span>';
-        li.firstChild.textContent = e.label;
-        li.lastChild.textContent = e.kind;
-        li.addEventListener('click', () => go(e));
-        list.appendChild(li);
-      });
-      empty.hidden = shown.length > 0;
-      input.setAttribute('aria-activedescendant', shown.length ? 'palette-opt-0' : '');
-    }
-
-    function move(step) {
-      if (!shown.length) return;
-      const items = $$('.palette__item', list);
-      items[cursor].setAttribute('aria-selected', 'false');
-      cursor = (cursor + step + shown.length) % shown.length;
-      const active = items[cursor];
-      active.setAttribute('aria-selected', 'true');
-      active.scrollIntoView({ block: 'nearest' });
-      input.setAttribute('aria-activedescendant', active.id);
-    }
-
-    function go(entry) {
-      close();
-      if (/^https?:/.test(entry.href)) window.open(entry.href, '_blank', 'noopener');
-      else window.location.href = entry.href;
-    }
-
-    function open() {
-      lastFocus = document.activeElement;
-      box.hidden = false;
-      input.value = '';
-      render('');
-      input.focus();
-    }
-
-    function close() {
-      box.hidden = true;
-      if (lastFocus && lastFocus.focus) lastFocus.focus();
-    }
-
-    document.addEventListener('keydown', (e) => {
-      const combo = (e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k';
-      if (combo) { e.preventDefault(); box.hidden ? open() : close(); return; }
-      if (box.hidden) return;
-      if (e.key === 'Escape') { e.preventDefault(); close(); }
-      else if (e.key === 'ArrowDown') { e.preventDefault(); move(1); }
-      else if (e.key === 'ArrowUp') { e.preventDefault(); move(-1); }
-      else if (e.key === 'Enter' && shown[cursor]) { e.preventDefault(); go(shown[cursor]); }
-    });
-
-    input.addEventListener('input', () => render(input.value));
-    box.addEventListener('mousedown', (e) => { if (e.target === box) close(); });
-    $$('[data-palette-open]').forEach((b) => b.addEventListener('click', open));
-  })();
-
-  /* =======================================================
-     4. CARROUSEL
-
-     Une diapositive a la fois. Le principe est volontairement
-     bete : on garde un index, et on fait glisser la bande de
-     -index * 100%. Comme chaque diapositive occupe exactement
-     la largeur du cadre, on ne peut jamais en voir deux a
-     moitie.
-
-     Le meme code sert aux captures de telephone et au grand
-     carrousel de projets. La seule difference est le HTML.
-
-     Trois facons d'avancer, qui pilotent toutes le meme index :
-     les fleches, les fleches du clavier, et les onglets nommes
-     (data-carousel-go="2" va a la troisieme diapositive).
-     ======================================================= */
-  (function carousel() {
-    $$('[data-carousel]').forEach((root) => {
-      const track  = $('[data-carousel-track]', root);
-      const slides = $$('.carousel__slide', track || root);
-      const count  = $('[data-carousel-count]', root);
-      const tabs   = $$('[data-carousel-go]', root);
-      if (!track || slides.length < 2) return;
-
-      let index = 0;
-
-      function show(i) {
-        // On boucle : apres la derniere diapositive on revient a la premiere.
-        index = (i + slides.length) % slides.length;
-        track.style.transform = 'translateX(' + (-index * 100) + '%)';
-        if (count) count.textContent = (index + 1) + ' sur ' + slides.length;
-
-        // Ce qui est masque sort de l'ordre de tabulation, sinon le
-        // clavier part sur des liens qu'on ne voit pas a l'ecran.
-        slides.forEach((slide, k) => {
-          const off = k !== index;
-          slide.setAttribute('aria-hidden', String(off));
-          if ('inert' in slide) slide.inert = off;
-        });
-
-        tabs.forEach((tab) => {
-          tab.setAttribute('aria-selected', String(Number(tab.dataset.carouselGo) === index));
-        });
-      }
-
-      $$('[data-carousel-prev]', root).forEach((b) =>
-        b.addEventListener('click', () => show(index - 1))
-      );
-      $$('[data-carousel-next]', root).forEach((b) =>
-        b.addEventListener('click', () => show(index + 1))
-      );
-      tabs.forEach((tab) =>
-        tab.addEventListener('click', () => show(Number(tab.dataset.carouselGo)))
-      );
-
-      // Fleches du clavier quand le carrousel a le focus.
-      const viewport = $('[data-carousel-viewport]', root);
-      if (viewport) {
-        viewport.addEventListener('keydown', (e) => {
-          if (e.key === 'ArrowLeft')  { e.preventDefault(); show(index - 1); }
-          if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1); }
-        });
-      }
-
-      show(0);
-    });
-  })();
-
-  /* =======================================================
-     5. COPIE DE L'E-MAIL
-     ======================================================= */
-  (function copy() {
-    $$('[data-copy]').forEach((btn) => {
-      const original = btn.querySelector('[data-copy-label]');
-      btn.addEventListener('click', async (e) => {
-        e.preventDefault();
-        const text = btn.dataset.copy;
-        try {
-          await navigator.clipboard.writeText(text);
-        } catch (err) {
-          // L'API presse-papiers n'existe pas partout, et elle est bloquee
-          // sur les pages servies en http simple. On retombe alors sur la
-          // vieille methode : un champ texte invisible qu'on selectionne.
-          const tmp = document.createElement('textarea');
-          tmp.value = text;
-          tmp.setAttribute('readonly', '');
-          tmp.style.position = 'absolute';
-          tmp.style.left = '-9999px';
-          document.body.appendChild(tmp);
-          tmp.select();
-          try { document.execCommand('copy'); } catch (e2) { /* abandon silencieux */ }
-          document.body.removeChild(tmp);
-        }
-        btn.classList.add('is-done');
-        if (original) original.textContent = 'Copié';
-        btn.setAttribute('aria-live', 'polite');
-        setTimeout(() => {
-          btn.classList.remove('is-done');
-          if (original) original.textContent = 'Copier';
-        }, 2000);
-      });
-    });
-  })();
-
-  /* =======================================================
-     6. UN SEUL ECOUTEUR DE DEFILEMENT
-
-     C'est le point le plus important du fichier pour la
-     fluidite. Avant, trois blocs ecoutaient le defilement
-     chacun de leur cote, et l'un d'eux lisait scrollHeight a
-     chaque evenement.
-
-     Lire scrollHeight force le navigateur a recalculer toute
-     la mise en page immediatement, avant de rendre la main.
-     A raison de plusieurs dizaines d'evenements par seconde,
-     ca fait sauter le defilement : c'est exactement le
-     symptome "des fois on descend beaucoup plus vite".
-
-     Trois corrections :
-       1. un seul ecouteur pour tout le monde ;
-       2. le travail est repousse dans requestAnimationFrame,
-          donc au plus une fois par image affichee ;
-       3. la hauteur du document est mesuree une seule fois et
-          remesuree seulement quand la fenetre change de taille.
-     ======================================================= */
-  (function scrollEngine() {
-    const bar = $('.topbar');
-    const progress = $('[data-progress]');
-    const top = $('[data-to-top]');
-    if (!bar && !progress && !top) return;
-
-    let docHeight = 0;
-    let ticking = false;
-
-    // Mesure couteuse : on ne la fait qu'au chargement et au redimensionnement.
-    function measure() {
-      docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      apply();
-    }
-
-    // Lecture peu couteuse (scrollY est mis en cache par le navigateur)
-    // et ecritures uniquement.
-    function apply() {
-      const y = window.scrollY;
-      if (bar) bar.classList.toggle('is-stuck', y > 8);
-      if (top) top.classList.toggle('is-visible', y > 600);
-      if (progress) {
-        const p = docHeight > 0 ? y / docHeight : 0;
-        progress.style.setProperty('--p', Math.min(Math.max(p, 0), 1).toFixed(4));
-      }
-      ticking = false;
-    }
-
-    window.addEventListener('scroll', () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(apply);
+  /* ---------- Halo doré qui suit le curseur ----------
+     On déplace un disque déjà dessiné (transform), on ne redessine pas
+     de dégradé : c'est ce qui garde 60 images par seconde. */
+  var spot = document.querySelector('[data-spotlight]');
+  if (spot && finePointer && !reduceMotion) {
+    var tx = window.innerWidth / 2, ty = window.innerHeight / 3, x = tx, y = ty, raf = 0;
+    var loop = function () {
+      x += (tx - x) * 0.14;
+      y += (ty - y) * 0.14;
+      spot.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)';
+      raf = (Math.abs(tx - x) > 0.3 || Math.abs(ty - y) > 0.3) ? requestAnimationFrame(loop) : 0;
+    };
+    window.addEventListener('pointermove', function (e) {
+      tx = e.clientX; ty = e.clientY;
+      spot.classList.add('is-on');
+      if (!raf) raf = requestAnimationFrame(loop);
     }, { passive: true });
+    document.documentElement.addEventListener('pointerleave', function () { spot.classList.remove('is-on'); });
+  }
 
-    window.addEventListener('resize', measure);
-    // Les images qui finissent de charger changent la hauteur du document.
-    window.addEventListener('load', measure);
-
-    if (top) {
-      top.addEventListener('click', () =>
-        window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' })
-      );
-    }
-
-    measure();
-  })();
-
-  /* =======================================================
-     7. APPARITIONS ET COMPTEURS
-
-     L'apparition des blocs au defilement, l'effet de cascade,
-     les barres de l'histogramme et les compteurs qui montent.
-     Tout passe par IntersectionObserver, jamais par un
-     ecouteur de defilement.
-
-     Toutes sont desactivees si la personne a demande moins
-     d'animations dans les reglages de son systeme.
-     ======================================================= */
-  (function motion() {
-    if (!('IntersectionObserver' in window)) {
-      // Sans IntersectionObserver, on affiche tout immédiatement.
-      $$('.reveal').forEach((el) => el.classList.add('is-in'));
-      $$('[data-chart]').forEach((el) => el.classList.add('is-in'));
-      return;
-    }
-
-    // Histogramme : les barres poussent quand le bloc arrive à l'écran.
-    const charts = $$('[data-chart]');
-    if (charts.length) {
-      const ioChart = new IntersectionObserver(
-        (entries, obs) => {
-          entries.forEach((e) => {
-            if (!e.isIntersecting) return;
-            e.target.classList.add('is-in');
-            obs.unobserve(e.target);
-          });
-        },
-        { threshold: 0.25 }
-      );
-      charts.forEach((c) => ioChart.observe(c));
-    }
-
-    // Apparition au defilement. On ajoute .is-in une seule fois, puis on
-    // arrete d'observer : inutile de rejouer l'effet a chaque passage.
-    const targets = $$('.reveal, .stagger');
-    if (targets.length) {
-      if (reduced) {
-        targets.forEach((el) => el.classList.add('is-in'));
-      } else {
-        const io = new IntersectionObserver(
-          (entries, obs) => {
-            entries.forEach((e) => {
-              if (!e.isIntersecting) return;
-              e.target.classList.add('is-in');
-              obs.unobserve(e.target);
-            });
-          },
-          { rootMargin: '0px 0px -8% 0px', threshold: 0.06 }
-        );
-        targets.forEach((el) => io.observe(el));
-      }
-    }
-
-    // Cascade : chaque enfant d'un bloc .stagger recoit un retard croissant.
-    // Plafonne a 6 enfants, sinon une grille de dix cartes met deux secondes
-    // a finir d'apparaitre et on a l'impression que la page rame.
-    $$('.stagger').forEach((group) => {
-      Array.from(group.children).forEach((child, i) => {
-        child.style.setProperty('--d', Math.min(i, 6) * 70 + 'ms');
+  /* ---------- Apparition des blocs au défilement ---------- */
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('is-in'); io.unobserve(entry.target); }
       });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('is-in'); });
+  }
+
+  /* ---------- Lien actif dans le menu ---------- */
+  var navLinks = document.querySelectorAll('[data-nav] a[href^="#"]');
+  if (navLinks.length && 'IntersectionObserver' in window) {
+    var map = {};
+    navLinks.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach(function (a) { a.removeAttribute('aria-current'); });
+        var link = map[entry.target.id];
+        if (link) link.setAttribute('aria-current', 'true');
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    Object.keys(map).forEach(function (id) { var s = document.getElementById(id); if (s) spy.observe(s); });
+  }
+
+  /* ---------- Frise horizontale ----------
+     Défilement natif (doigt, trackpad, Maj + molette), plus les flèches,
+     le clavier et le glisser à la souris. */
+  document.querySelectorAll('[data-rail-wrap]').forEach(function (wrap) {
+    var rail = wrap.querySelector('[data-rail]');
+    var prev = wrap.querySelector('[data-rail-prev]');
+    var next = wrap.querySelector('[data-rail-next]');
+    var bar = wrap.querySelector('[data-rail-progress]');
+    if (!rail) return;
+
+    var step = function () {
+      var first = rail.querySelector('li');
+      return first ? first.getBoundingClientRect().width : 300;
+    };
+    var update = function () {
+      var max = rail.scrollWidth - rail.clientWidth;
+      var ratio = max > 0 ? rail.scrollLeft / max : 1;
+      if (bar) bar.style.transform = 'scaleX(' + Math.max(0.08, ratio).toFixed(3) + ')';
+      if (prev) prev.disabled = rail.scrollLeft <= 4;
+      if (next) next.disabled = rail.scrollLeft >= max - 4;
+    };
+    var go = function (dir) {
+      rail.scrollBy({ left: dir * step(), behavior: reduceMotion ? 'auto' : 'smooth' });
+    };
+
+    if (prev) prev.addEventListener('click', function () { go(-1); });
+    if (next) next.addEventListener('click', function () { go(1); });
+    rail.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    rail.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
     });
 
-    // Les compteurs : le chiffre final est deja ecrit dans le HTML, on ne
-    // fait que le remplacer temporairement pendant l'animation. Sans
-    // JavaScript, le bon chiffre s'affiche quand meme.
-    const counters = $$('[data-count]');
-    if (!counters.length || reduced) return;
+    // Glisser à la souris (le doigt, lui, fait déjà défiler nativement)
+    var down = false, moved = false, startX = 0, startLeft = 0;
+    rail.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      down = true; moved = false; startX = e.clientX; startLeft = rail.scrollLeft;
+    });
+    window.addEventListener('pointermove', function (e) {
+      if (!down) return;
+      var dx = e.clientX - startX;
+      if (!moved && Math.abs(dx) > 5) { moved = true; rail.classList.add('is-drag'); }
+      if (moved) rail.scrollLeft = startLeft - dx;
+    });
+    window.addEventListener('pointerup', function () {
+      if (!down) return;
+      down = false;
+      if (moved) {
+        rail.classList.remove('is-drag');
+        // On se recale proprement sur l'étape la plus proche
+        var s = step();
+        rail.scrollTo({ left: Math.round(rail.scrollLeft / s) * s, behavior: reduceMotion ? 'auto' : 'smooth' });
+      }
+    });
 
-    const io2 = new IntersectionObserver(
-      (entries, obs) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const el = entry.target;
-          obs.unobserve(el);
-          const final = el.textContent.trim();
-          const target = parseFloat(final.replace(',', '.'));
-          if (isNaN(target)) return;
-          const decimals = (final.split(',')[1] || '').length;
-          const start = performance.now();
-          const dur = 900;
-          const tick = (now) => {
-            const p = Math.min((now - start) / dur, 1);
-            const eased = 1 - Math.pow(1 - p, 3);
-            const val = (target * eased).toFixed(decimals);
-            el.textContent = decimals ? val.replace('.', ',') : String(Math.round(target * eased));
-            if (p < 1) requestAnimationFrame(tick);
-            else el.textContent = final;
-          };
-          requestAnimationFrame(tick);
-        });
-      },
-      { threshold: 0.5 }
-    );
-    counters.forEach((c) => io2.observe(c));
-  })();
+    // Au chargement, on se place sur la fin (le plus récent), sans animation
+    if (wrap.hasAttribute('data-rail-start-end')) {
+      requestAnimationFrame(function () { rail.scrollLeft = rail.scrollWidth; update(); });
+    }
+    update();
+  });
+
+  /* ---------- Copier l'adresse e-mail ---------- */
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var text = btn.getAttribute('data-copy');
+      var label = btn.querySelector('[data-copy-label]') || btn;
+      var done = function () {
+        var old = label.textContent;
+        label.textContent = 'Copié';
+        setTimeout(function () { label.textContent = old; }, 1800);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done, function () { window.location.href = 'mailto:' + text; });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); } catch (err) { window.location.href = 'mailto:' + text; }
+        document.body.removeChild(ta);
+      }
+    });
+  });
+
+  /* ---------- Ouvrir la matière visée dans la page des cours ---------- */
+  if (location.hash) {
+    var target = document.getElementById(location.hash.slice(1));
+    if (target && target.tagName === 'DETAILS') target.open = true;
+  }
+
+  /* ---------- Année du pied de page ---------- */
+  document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
 })();
