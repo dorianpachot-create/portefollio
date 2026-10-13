@@ -34,13 +34,20 @@ ok('Pla\'Net en ligne et jeu testables', !!d.querySelector('a[href="https://pla-
 ok('veille : méthodologie et bilan', /Comment je fais ma veille/.test(text) && /Ce que j'en tire/.test(text));
 ok('suivi de défilement', !!d.querySelector('[data-progress]') && !!d.querySelector('[data-dots]'));
 
-console.log('\n--- version-doree.html ---');
-const g = load('version-doree.html');
-ok('frise horizontale avec 15 étapes', g.querySelectorAll('[data-rail] > li').length === 15);
-ok('TP de 2e année présents', /DHCP et DNS/.test(g.body.textContent) && /VitaSport/.test(g.body.textContent));
+console.log('\n--- pages projets ---');
+['syncro', 'planet', 'crp-assurance', 'mission-orion'].forEach((n) => {
+  const p = load('pages/' + n + '.html');
+  const t = p.body.textContent;
+  ok(n + ' : page complète', ['en-bref', 'contexte', 'realisation', 'choix', 'difficultes', 'resultat', 'acquis', 'competences'].every((id) => p.getElementById(id)));
+  ok(n + ' : design de l\'accueil', !!p.querySelector('link[href="../css/site.css"]') && !/foil|Cormorant/.test(p.documentElement.innerHTML));
+});
+const pc = load('pages/projets-cours.html');
+ok('projets encadrés détaillés (2e année)', ['tp0', 'tp1', 'tp2', 'tp3', 'tp4', 'tp5', 'vitasport'].every((id) => pc.getElementById(id)));
+ok('aucune page dorée restante', fs.readdirSync(path.join(ROOT, 'pages')).every((f) => !/class="foil/.test(fs.readFileSync(path.join(ROOT, 'pages', f), 'utf8'))));
+ok('veille : objectif DevOps', /Devenir DevOps, et un bon DevOps/.test(text));
 
 console.log('\n--- liens internes ---');
-const pages = ['index.html', 'version-doree.html', ...fs.readdirSync(path.join(ROOT, 'pages')).map((f) => 'pages/' + f)];
+const pages = ['index.html', ...fs.readdirSync(path.join(ROOT, 'pages')).map((f) => 'pages/' + f)];
 let broken = [];
 pages.forEach((p) => {
   const doc = load(p);

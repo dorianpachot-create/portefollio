@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pla'Net, application de planning des cours | Dorian Pachot</title>
+  <meta name="description" content="Pla'Net, application Symfony de planning des cours de MediaSchool Rouen, en ligne." />
+  <meta name="author" content="Dorian Pachot" />
+  <link rel="canonical" href="https://dorianpachot-create.github.io/portefollio/pages/planet.html" />
+  <meta name="theme-color" content="#090A0F" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Pla'Net, application de planning des cours | Dorian Pachot" />
+  <meta property="og:description" content="Pla'Net, application Symfony de planning des cours de MediaSchool Rouen, en ligne." />
+  <meta property="og:image" content="https://dorianpachot-create.github.io/portefollio/assets/meta/og-image.png" />
+  <link rel="icon" href="../assets/meta/favicon.svg" type="image/svg+xml" />
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/site.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-void: #090A0F;
+      --color-panel: #10121A;
+      --color-edge: #1E2130;
+      --color-blood: #EF4444;
+      --color-volt: #22D3EE;
+      --color-go: #22C55E;
+      --color-ash: #9CA3AF;
+      --color-bone: #F1F2F6;
+      --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+      --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+      --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-blood focus:px-4 focus:py-2 focus:text-white" href="#main">Aller au contenu</a>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><span data-progress></span></div>
+
+  <header class="topbar fixed inset-x-0 top-0 z-50 border-b border-transparent transition-colors" data-topbar>
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
+      <a href="../index.html" class="flex items-center gap-3" aria-label="Dorian Pachot, retour à l'accueil">
+        <span class="grid h-9 w-9 place-items-center rounded-lg bg-blood font-display text-sm font-extrabold text-white">DP</span>
+        <span class="hidden font-display text-[17px] font-bold tracking-tight text-bone sm:inline">Dorian Pachot</span>
+      </a>
+      <nav class="hidden items-center gap-6 text-sm font-medium xl:flex" aria-label="Navigation principale">
+        <a href="../index.html#parcours" class="nav-a text-ash transition hover:text-bone">Parcours</a>
+        <a href="../index.html#projets" class="nav-a !text-bone transition hover:text-bone">Projets</a>
+        <a href="projets-cours.html" class="nav-a text-ash transition hover:text-bone">Cours</a>
+        <a href="../index.html#outils" class="nav-a text-ash transition hover:text-bone">Outils</a>
+        <a href="../index.html#veille" class="nav-a text-ash transition hover:text-bone">Veille</a>
+        <a href="documents.html" class="nav-a text-ash transition hover:text-bone">Documents</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="../index.html#contact" class="flex items-center gap-2.5 rounded-full border border-go/30 bg-go/5 px-3 py-1.5 text-[13px] font-medium text-go transition hover:border-go/60">
+          <span class="dot" aria-hidden="true"></span><span class="hidden sm:inline">Disponible pour une alternance</span><span class="sm:hidden">Disponible</span>
+        </a>
+        <button class="btn btn-ghost btn-sm xl:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu">Menu</button>
+      </div>
+    </div>
+    <div class="mobile-menu border-t border-edge bg-void/95 backdrop-blur-xl xl:hidden" id="menu" data-menu>
+      <nav class="mx-auto grid max-w-6xl px-5 py-2 text-[15px] font-medium" aria-label="Navigation mobile">
+        <a href="../index.html#parcours" class="border-b border-edge py-3.5 text-bone">Parcours</a>
+        <a href="../index.html#projets" class="border-b border-edge py-3.5 text-bone">Projets</a>
+        <a href="projets-cours.html" class="border-b border-edge py-3.5 text-bone">Cours</a>
+        <a href="../index.html#outils" class="border-b border-edge py-3.5 text-bone">Outils</a>
+        <a href="../index.html#veille" class="border-b border-edge py-3.5 text-bone">Veille</a>
+        <a href="documents.html" class="border-b border-edge py-3.5 text-bone">Documents</a>
+        <a href="../index.html#contact" class="py-3.5 text-blood">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <header class="px-5 pb-10 pt-28 md:px-8 md:pt-36">
+      <div class="mx-auto max-w-6xl">
+        <a class="inline-flex items-center gap-2 text-sm font-semibold text-ash transition hover:text-bone" href="../index.html#projets"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Retour aux projets</a>
+        <p class="label mt-8 text-blood">Projet de deuxième année de BTS</p>
+        <h1 class="mt-3 font-display text-[clamp(2.2rem,6vw,3.8rem)] font-extrabold leading-[1.05] tracking-[-.025em] text-bone"><span style="color:#22D3EE">P</span>la'Net</h1>
+        <div class="mt-5 max-w-2xl text-base leading-relaxed text-ash md:text-lg"><p>Application web de planning des cours de MediaSchool Rouen, développée en Symfony et mise en ligne.</p></div>
+        <div class="mt-7 flex flex-wrap gap-2.5"><a class="btn btn-primary btn-sm" href="https://pla-net.mediaschool-rouen.fr/login" target="_blank" rel="noopener noreferrer">Tester l'application</a></div>
+      </div>
+    </header>
+
+    <div class="px-5 pb-6 md:px-8"><div class="mx-auto max-w-6xl"><figure class="reveal overflow-hidden rounded-2xl border border-edge bg-panel"><picture><source srcset="../assets/meta/shot-planet.webp" type="image/webp" /><img class="w-full" src="../assets/meta/shot-planet.jpg" alt="Maquette initiale de Pla'Net, vue semaine" width="1200" height="533" /></picture><figcaption class="border-t border-edge px-4 py-2.5 text-xs text-ash">La maquette réalisée au début du projet, pour valider les écrans. Comptes de démonstration de l'application en ligne : admin / admin et user / user.</figcaption></figure></div></div>
+
+    <div class="px-5 pb-16 pt-6 md:px-8">
+      <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_18rem]">
+        <div class="grid min-w-0 gap-5">
+          <section id="en-bref" class="section-block reveal callout p-6 md:p-8">
+            <div class="prose-red">
+              <h2>En bref</h2>
+              <p>Pla'Net sert à construire et à consulter le planning des cours de l'école : quelle classe, avec quel intervenant, dans quelle salle et à quel moment. J'ai commencé par une maquette pour valider les écrans, puis j'ai modélisé la base de données et développé l'application en Symfony, avant de la mettre en ligne.</p>
+            </div>
+          </section>
+          <section id="contexte" class="section-block reveal panel p-6 md:p-8">
+            <div class="prose-red">
+              <h2>Le contexte et le besoin</h2>
+              <p>Un planning d'école réunit beaucoup d'informations liées entre elles : des classes, des intervenants, des salles partagées, des matières, et des cours qui se répètent ou qui changent. Le besoin : un outil web qui permette aux administrateurs de saisir et de modifier ce planning, et à tout le monde de le consulter facilement.</p>
+            </div>
+          </section>
+          <section id="realisation" class="section-block reveal panel p-6 md:p-8">
+            <div class="prose-red">
+              <h2>Ce que j'ai réalisé</h2>
+              <ul><li>Une <strong>maquette en JavaScript</strong> pour valider les écrans avant d'écrire la moindre table.</li><li>Une <strong>base MariaDB de dix tables</strong> : campus, classes, cursus, niveaux, spécialités, matières, intervenants, salles, séances et utilisateurs.</li><li>Plusieurs <strong>vues du planning</strong> : semaine, mois, par intervenant et par salle, avec le détail de chaque séance.</li><li>La <strong>gestion des classes, des intervenants et des matières</strong>, avec un archivage plutôt qu'une suppression.</li><li>La <strong>duplication</strong> d'une journée ou d'une semaine de cours vers d'autres dates, annulable.</li><li>L'<strong>import et l'export CSV</strong> des cours, et l'export du planning sur une période.</li><li>Les <strong>jours fériés</strong> calculés automatiquement et grisés, et des <strong>filtres par école</strong>.</li></ul>
+            </div>
+          </section>
+          <section id="choix" class="section-block reveal panel p-6 md:p-8">
+            <div class="prose-red">
+              <h2>Les choix techniques</h2>
+              <ul><li><strong>Symfony</strong> pour son organisation claire (contrôleurs, services, gabarits) et son composant de sécurité.</li><li><strong>Deux rôles</strong> : les administrateurs modifient, les utilisateurs consultent. Formulaire de connexion protégé par jeton CSRF et mots de passe hachés.</li><li>La logique métier est rangée dans des <strong>services</strong> séparés : recherche des séances, duplication, import CSV, jours fériés, filtres.</li><li>L'<strong>archivage</strong> plutôt que la suppression, pour ne jamais casser l'historique des plannings.</li><li>Un <strong>déploiement scripté</strong> : un script PowerShell prépare et envoie l'archive, un script Bash l'installe sur le serveur.</li></ul>
+            </div>
+          </section>
+          <section id="difficultes" class="section-block reveal panel p-6 md:p-8">
+            <div class="prose-red">
+              <h2>Les difficultés et comment je les ai résolues</h2>
+              <ul><li><strong>Réglages ignorés en production</strong> : Symfony fige les variables d'environnement dans un fichier, et une correction restait sans effet. Le script de déploiement régénère maintenant ce fichier à chaque mise en ligne.</li><li><strong>Import de la base dans phpMyAdmin</strong> : l'import échouait car phpMyAdmin perd la base sélectionnée. J'ai préparé un script d'import adapté, rejouable, avec la marche à suivre.</li><li><strong>Jours fériés mobiles</strong> : trois d'entre eux dépendent de Pâques. Je les calcule avec un algorithme dédié, sans dépendre d'une extension PHP qui n'est pas toujours installée.</li></ul>
+            </div>
+          </section>
+          <section id="resultat" class="section-block reveal panel p-6 md:p-8">
+            <div class="prose-red">
+              <h2>Le résultat</h2>
+              <p>L'application est en ligne sur <a href="https://pla-net.mediaschool-rouen.fr/login" target="_blank" rel="noopener noreferrer">pla-net.mediaschool-rouen.fr</a>, avec des comptes de démonstration. Elle continue d'évoluer au fil de l'année.</p>
+            </div>
+          </section>
+          <section id="acquis" class="section-block reveal panel p-6 md:p-8">
+            <div class="prose-red">
+              <h2>Ce que j'en retiens</h2>
+              <ul><li>Maquetter et modéliser avant de coder fait gagner beaucoup de temps.</li><li>Un code découpé en services est plus simple à faire évoluer et à tester.</li><li>Automatiser le déploiement évite les oublis et les erreurs de manipulation.</li></ul>
+            </div>
+          </section>
+          <section id="competences" class="section-block reveal panel p-6 md:p-8">
+            <div class="prose-red">
+              <h2>Compétences mobilisées</h2>
+              <ul><li>Concevoir une base de données relationnelle.</li><li>Développer une application web avec un framework MVC.</li><li>Gérer les droits d'accès selon le rôle de l'utilisateur.</li><li>Mettre en ligne et maintenir une application sur un serveur Linux.</li><li>Importer et exporter des données.</li><li>Travailler en mode projet, de la maquette à la mise en ligne.</li></ul>
+            </div>
+          </section>
+        </div>
+        <aside class="order-first lg:order-none lg:sticky lg:top-24 lg:self-start">
+          <div class="panel p-5">
+            <p class="label text-blood">Fiche du projet</p>
+            <dl class="mt-3 text-sm"><div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Cadre</dt><dd class="text-right font-medium text-bone">Projet de BTS, 2<sup>e</sup> année</dd></div><div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Début</dt><dd class="text-right font-medium text-bone">Septembre 2026</dd></div><div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Mon rôle</dt><dd class="text-right font-medium text-bone">Conception et développement</dd></div><div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Statut</dt><dd class="text-right font-medium text-bone">En ligne, en évolution</dd></div></dl>
+            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Symfony</li><li class="tag">PHP 8</li><li class="tag">Twig</li><li class="tag">Doctrine</li><li class="tag">MariaDB</li><li class="tag">Bash</li><li class="tag">PowerShell</li></ul>
+          </div>
+          <nav class="toc mt-5 hidden lg:block" aria-label="Sommaire de la page" data-toc>
+            <p class="label mb-2 px-3 text-ash">Sommaire</p>
+            <a href="#en-bref">En bref</a><a href="#contexte">Le contexte et le besoin</a><a href="#realisation">Ce que j'ai réalisé</a><a href="#choix">Les choix techniques</a><a href="#difficultes">Les difficultés et comment je les ai résolues</a><a href="#resultat">Le résultat</a><a href="#acquis">Ce que j'en retiens</a><a href="#competences">Compétences mobilisées</a>
+          </nav>
+        </aside>
+      </div>
+    </div>
+
+    <section class="px-5 pb-16 pt-10 md:px-8" aria-label="Contact">
+      <div class="mx-auto max-w-6xl">
+        <div class="panel relative overflow-hidden px-6 py-10 text-center md:px-12">
+          <div class="pointer-events-none absolute inset-x-0 -top-28 mx-auto h-56 w-[30rem] max-w-full rounded-full bg-blood/15 blur-3xl" aria-hidden="true"></div>
+          <p class="relative font-display text-2xl font-bold text-bone md:text-3xl">Une question sur ce projet&nbsp;?</p>
+          <p class="relative mx-auto mt-3 max-w-lg text-ash">Je serai ravi d'en parler plus en détail lors d'un échange.</p>
+          <div class="relative mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+            <a class="btn btn-primary" href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>
+            <button class="btn btn-ghost" type="button" data-copy="dorianpachot@gmail.com"><span data-copy-label>Copier l'adresse</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="px-5 pb-10 md:px-8">
+    <div class="mx-auto flex max-w-6xl flex-col gap-3 border-t border-edge pt-6 text-xs text-ash/80 sm:flex-row sm:items-center sm:justify-between">
+      <span>© 2026 Dorian Pachot, BTS SIO SLAM, IRIS MediaSchool Rouen</span>
+      <span class="flex gap-6"><a class="hover:text-bone" href="mentions-legales.html">Mentions légales</a><a class="hover:text-bone" href="../index.html">Accueil</a></span>
+    </div>
+  </footer>
+
+  <script src="../js/site.js"></script>
+</body>
+</html>

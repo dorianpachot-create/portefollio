@@ -3,200 +3,139 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Les projets de Dorian Pachot : SYNCRO, Pla'Net, CRP-Assurance, Mission Orion</title>
-  <meta name="description" content="Le détail des projets de Dorian Pachot : SYNCRO (App Store et Google Play), Pla'Net en Symfony, le site CRP-Assurance.com et le jeu Mission Orion." />
+  <title>Mes projets | Dorian Pachot</title>
+  <meta name="description" content="Les projets de Dorian Pachot : SYNCRO, Pla'Net, CRP-Assurance et Mission Orion." />
   <meta name="author" content="Dorian Pachot" />
   <link rel="canonical" href="https://dorianpachot-create.github.io/portefollio/pages/projets-perso.html" />
-  <meta name="theme-color" content="#0A0A0C" />
-  <script>document.documentElement.classList.add('js');</script>
-
+  <meta name="theme-color" content="#090A0F" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="fr_FR" />
-  <meta property="og:title" content="Les projets de Dorian Pachot : SYNCRO, Pla'Net, CRP-Assurance, Mission Orion" />
-  <meta property="og:description" content="Le détail des projets de Dorian Pachot : SYNCRO (App Store et Google Play), Pla'Net en Symfony, le site CRP-Assurance.com et le jeu Mission Orion." />
-  <meta property="og:url" content="https://dorianpachot-create.github.io/portefollio/pages/projets-perso.html" />
+  <meta property="og:title" content="Mes projets | Dorian Pachot" />
+  <meta property="og:description" content="Les projets de Dorian Pachot : SYNCRO, Pla'Net, CRP-Assurance et Mission Orion." />
   <meta property="og:image" content="https://dorianpachot-create.github.io/portefollio/assets/meta/og-image.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-
   <link rel="icon" href="../assets/meta/favicon.svg" type="image/svg+xml" />
-  <link rel="icon" href="../assets/meta/favicon-32.png" sizes="32x32" />
-  <link rel="apple-touch-icon" href="../assets/meta/favicon-180.png" />
-
-  <link rel="preload" href="../assets/fonts/cormorant-garamond-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="../assets/fonts/plus-jakarta-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="../css/style.css" />
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/site.css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
   <style type="text/tailwindcss">
     @theme {
-      --color-obsidian: #0A0A0C;
-      --color-panel: #111115;
-      --color-gold: #E6C687;
-      --color-gold-deep: #D4AF37;
-      --color-gold-hi: #FFF3D1;
-      --color-chrome: #CBD5E1;
-      --color-chrome-hi: #F8FAFC;
-      --color-mist: #A1A1AA;
-      --font-display: "Cormorant Garamond", Georgia, serif;
-      --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --color-void: #090A0F;
+      --color-panel: #10121A;
+      --color-edge: #1E2130;
+      --color-blood: #EF4444;
+      --color-volt: #22D3EE;
+      --color-go: #22C55E;
+      --color-ash: #9CA3AF;
+      --color-bone: #F1F2F6;
+      --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+      --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+      --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
     }
   </style>
 </head>
 <body id="top">
-  <a class="skip-link" href="#main">Aller au contenu</a>
-  <div class="spotlight-layer" aria-hidden="true"><div class="spotlight" data-spotlight></div></div>
+  <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-blood focus:px-4 focus:py-2 focus:text-white" href="#main">Aller au contenu</a>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><span data-progress></span></div>
 
-  <header class="topbar fixed inset-x-0 top-0 z-50" data-topbar>
-    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:h-[4.5rem] md:px-8">
+  <header class="topbar fixed inset-x-0 top-0 z-50 border-b border-transparent transition-colors" data-topbar>
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
       <a href="../index.html" class="flex items-center gap-3" aria-label="Dorian Pachot, retour à l'accueil">
-        <span class="monogram"><span class="foil">DP</span></span>
-        <span class="hidden font-display text-xl font-semibold tracking-wide text-chrome-hi sm:inline">Dorian Pachot</span>
+        <span class="grid h-9 w-9 place-items-center rounded-lg bg-blood font-display text-sm font-extrabold text-white">DP</span>
+        <span class="hidden font-display text-[17px] font-bold tracking-tight text-bone sm:inline">Dorian Pachot</span>
       </a>
-
-      <nav class="hidden items-center gap-7 text-sm lg:flex" data-nav aria-label="Navigation principale">
-          <a class="nav-link" href="../index.html#projets">Projets</a>
-          <a class="nav-link" href="projets-cours.html">Cours</a>
-          <a class="nav-link" href="../index.html#outils">Outils</a>
-          <a class="nav-link" href="../index.html#parcours">Parcours</a>
-          <a class="nav-link" href="../index.html#veille">Veille</a>
-          <a class="nav-link" href="documents.html">Documents</a>
+      <nav class="hidden items-center gap-6 text-sm font-medium xl:flex" aria-label="Navigation principale">
+        <a href="../index.html#parcours" class="nav-a text-ash transition hover:text-bone">Parcours</a>
+        <a href="../index.html#projets" class="nav-a !text-bone transition hover:text-bone">Projets</a>
+        <a href="projets-cours.html" class="nav-a text-ash transition hover:text-bone">Cours</a>
+        <a href="../index.html#outils" class="nav-a text-ash transition hover:text-bone">Outils</a>
+        <a href="../index.html#veille" class="nav-a text-ash transition hover:text-bone">Veille</a>
+        <a href="documents.html" class="nav-a text-ash transition hover:text-bone">Documents</a>
       </nav>
-
-      <div class="flex items-center gap-2">
-        <a class="status" href="../index.html#contact">
-          <span class="status__dot" aria-hidden="true"></span>
-          <span class="hidden min-[400px]:inline">Dispo pour une alternance</span><span class="min-[400px]:hidden">Dispo</span>
+      <div class="flex items-center gap-3">
+        <a href="../index.html#contact" class="flex items-center gap-2.5 rounded-full border border-go/30 bg-go/5 px-3 py-1.5 text-[13px] font-medium text-go transition hover:border-go/60">
+          <span class="dot" aria-hidden="true"></span><span class="hidden sm:inline">Disponible pour une alternance</span><span class="sm:hidden">Disponible</span>
         </a>
-        <button class="btn-lux btn-sm lg:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu-mobile"><span data-menu-label>Menu</span></button>
+        <button class="btn btn-ghost btn-sm xl:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu">Menu</button>
       </div>
     </div>
-
-    <div class="mobile-menu border-t border-white/5 bg-obsidian/95 backdrop-blur-xl lg:hidden" id="menu-mobile" data-menu>
-      <nav class="mx-auto max-w-6xl px-5 pb-5 pt-1 text-[15px]" aria-label="Navigation mobile">
-        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="../index.html#projets">Projets<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
-        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="projets-cours.html">Cours<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
-        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="../index.html#outils">Outils<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
-        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="../index.html#parcours">Parcours<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
-        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="../index.html#veille">Veille<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
-        <a class="flex items-center justify-between py-3 border-b border-white/5 text-chrome-hi" href="documents.html">Documents<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
-        <a class="flex items-center justify-between py-3 text-chrome-hi" href="../index.html#contact">Contact<span class="text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></a>
+    <div class="mobile-menu border-t border-edge bg-void/95 backdrop-blur-xl xl:hidden" id="menu" data-menu>
+      <nav class="mx-auto grid max-w-6xl px-5 py-2 text-[15px] font-medium" aria-label="Navigation mobile">
+        <a href="../index.html#parcours" class="border-b border-edge py-3.5 text-bone">Parcours</a>
+        <a href="../index.html#projets" class="border-b border-edge py-3.5 text-bone">Projets</a>
+        <a href="projets-cours.html" class="border-b border-edge py-3.5 text-bone">Cours</a>
+        <a href="../index.html#outils" class="border-b border-edge py-3.5 text-bone">Outils</a>
+        <a href="../index.html#veille" class="border-b border-edge py-3.5 text-bone">Veille</a>
+        <a href="documents.html" class="border-b border-edge py-3.5 text-bone">Documents</a>
+        <a href="../index.html#contact" class="py-3.5 text-blood">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main id="main" class="relative">
-    <header class="px-5 pb-10 pt-32 md:px-8 md:pt-40">
+  <main id="main">
+    <header class="px-5 pb-10 pt-28 md:px-8 md:pt-36">
       <div class="mx-auto max-w-6xl">
-        <a class="link-gold inline-flex items-center gap-2 text-sm" href="../index.html"><span class="w-4 h-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></span>Retour à l'accueil</a>
-        <p class="eyebrow mt-8">Projets</p>
-        <h1 class="mt-4 font-display text-5xl font-semibold leading-[1.02] md:text-7xl"><span class="foil">Le détail de mes projets</span></h1>
-        <div class="mt-6 max-w-2xl text-[15px] leading-relaxed text-mist md:text-base"><p>Une appli sur les stores, une application de planning en ligne pour mon école, un site client et un jeu en Python.</p></div>
+        <a class="inline-flex items-center gap-2 text-sm font-semibold text-ash transition hover:text-bone" href="../index.html#projets"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Retour aux projets</a>
+        <p class="label mt-8 text-blood">Projets</p>
+        <h1 class="mt-3 font-display text-[clamp(2.2rem,6vw,3.8rem)] font-extrabold leading-[1.05] tracking-[-.025em] text-bone">Mes réalisations</h1>
+        <div class="mt-5 max-w-2xl text-base leading-relaxed text-ash md:text-lg"><p>Chaque projet a sa page de présentation : le contexte, ce que j'ai réalisé, les choix techniques, les difficultés et ce que j'en retiens.</p></div>
+        
       </div>
     </header>
 
-    <div class="px-5 pb-10 md:px-8"><div class="mx-auto max-w-6xl">
-      <section id="syncro" class="ingot reveal mt-6 scroll-mt-24 ">
-        <div class="ingot__inner prose-dark p-6 md:p-10">
-          <h2>SYNCRO, sur l'App Store et Google Play</h2>
-          
-          <p>SYNCRO, c'est une appli de plannings d'équipe que j'ai faite pour <strong>Suitime</strong>. Chaque membre met ses dispos, le responsable valide et verrouille la semaine. Il y a aussi les invitations par QR code, les notifications et le suivi des heures.</p>
-          <p>Je l'ai commencée en avril 2026 à côté des cours, puis j'ai fait mon stage dessus à temps plein du 6 juillet au 7 août. J'ai touché à toute la chaîne : l'appli <strong>Flutter</strong> (Android et iOS), le back-end <strong>Next.js</strong> avec sa base <strong>SQL</strong> et son API, le site vitrine <strong>appsyncro.fr</strong>, et la mise en prod : signature Android, notifications push, serveur et publication sur les deux stores.</p>
-          <div class="my-6 flex flex-wrap gap-2.5">
-            <a class="btn-lux btn-sm !no-underline" href="https://apps.apple.com/fr/app/syncro/id6787898930" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4"><path d="M16.4 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.6 2.1-1.5 2.6-.4 6.5 1.1 8.7.7 1 1.6 2.2 2.7 2.2 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.8.7 1.2 0 1.9-1.1 2.6-2.1.8-1.2 1.2-2.4 1.2-2.5-.1 0-2.2-.9-2.2-3.3ZM14.3 5.9c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.7-.9 2.6 1 .1 2-.5 2.6-1.2Z"/></svg>App Store</a>
-            <a class="btn-lux btn-sm !no-underline" href="https://play.google.com/store/apps/details?id=fr.appsyncro.mobile" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 512 512" aria-hidden="true" class="w-4 h-4"><path fill="#00d3ff" d="M47 21c-7 7-11 18-11 33v404c0 15 4 26 11 33l2 2 226-226v-6L49 19z"/><path fill="#ffce00" d="M349 331 274 267v-6l75-64 2 1 89 51c26 14 26 38 0 52z"/><path fill="#ff3a44" d="M351 313 274 256 47 483c9 9 23 10 39 1z"/><path fill="#00c853" d="M351 199 86 28c-16-9-30-8-39 1l227 227z"/></svg>Google Play</a>
-            <a class="btn-lux btn-sm !no-underline" href="https://appsyncro.fr" target="_blank" rel="noopener noreferrer">appsyncro.fr</a>
-            <a class="btn-gold btn-sm !no-underline" href="stage.html">Le journal de stage</a>
-          </div>
-          <div class="flex gap-3 overflow-x-auto pb-2 md:grid md:grid-cols-4"><img src="../assets/syncro/screens/screen-1.jpg" alt="SYNCRO : planning de la semaine" loading="lazy" width="720" height="1280" class="w-36 flex-none rounded-xl border border-white/10 md:w-auto" /><img src="../assets/syncro/screens/screen-2.jpg" alt="SYNCRO : saisie des disponibilités" loading="lazy" width="720" height="1280" class="w-36 flex-none rounded-xl border border-white/10 md:w-auto" /><img src="../assets/syncro/screens/screen-3.jpg" alt="SYNCRO : groupes et rôles" loading="lazy" width="720" height="1280" class="w-36 flex-none rounded-xl border border-white/10 md:w-auto" /><img src="../assets/syncro/screens/screen-4.jpg" alt="SYNCRO : notifications et heures" loading="lazy" width="720" height="1280" class="w-36 flex-none rounded-xl border border-white/10 md:w-auto" /></div>
-        </div>
-      </section>
-      <section id="planet" class="ingot reveal mt-6 scroll-mt-24 ">
-        <div class="ingot__inner prose-dark p-6 md:p-10">
-          <h2>Pla'Net, en ligne</h2>
-          <p>Pla'Net est l'application de <strong>planning des cours de MediaSchool Rouen</strong>. Elle sert à placer les séances de chaque classe, avec leur intervenant, leur salle et leur matière, et à les consulter de plusieurs façons. C'est mon projet de deuxième année de BTS, commencé en septembre 2026. Elle est en ligne et continue d'évoluer.</p>
-          <div class="my-6 flex flex-wrap gap-2.5"><a class="btn-gold btn-sm !no-underline" href="https://pla-net.mediaschool-rouen.fr/login" target="_blank" rel="noopener noreferrer">Tester l'application</a></div>
-          <p class="text-sm">Comptes de démonstration, affichés sur la page de connexion : <strong>admin</strong> / admin (administration) et <strong>user</strong> / user (consultation).</p>
-
-          <h3>Ce que fait l'application</h3>
-          <ul>
-            <li><strong>Plusieurs vues du planning</strong> : par semaine, par mois, par intervenant ou par salle, avec le détail de chaque séance.</li>
-            <li><strong>Gestion des classes, des intervenants et des matières</strong>, avec un archivage plutôt qu'une suppression, pour ne pas casser l'historique.</li>
-            <li><strong>Création, modification et déplacement des cours</strong>, réservés aux administrateurs. Les utilisateurs simples consultent.</li>
-            <li><strong>Duplication</strong> d'une journée ou d'une semaine de cours vers d'autres dates, sur plusieurs semaines si besoin, avec possibilité d'annuler.</li>
-            <li><strong>Import et export CSV</strong> des cours, et export du planning sur une période.</li>
-            <li><strong>Jours fériés</strong> calculés automatiquement (y compris ceux qui dépendent de Pâques) et grisés dans le planning.</li>
-            <li><strong>Filtres par école</strong>, avec leurs couleurs et leurs logos, et une barre de recherche.</li>
-          </ul>
-
-          <h3>Comment elle est construite</h3>
-          <p>L'application est développée en <strong>Symfony</strong> avec des gabarits <strong>Twig</strong> et une base <strong>MariaDB</strong> de dix tables : campus, classes, cursus, niveaux, spécialités, matières, intervenants, salles, séances et utilisateurs. La logique est découpée en services (recherche des séances, duplication, import CSV, jours fériés, filtres), et la connexion utilise le composant de sécurité de Symfony : formulaire protégé par jeton CSRF, mots de passe hachés, deux rôles.</p>
-          <p>Avant de commencer, j'avais réalisé une maquette en JavaScript pour valider les écrans, puis modélisé la base de données.</p>
-
-          <h3>La mise en ligne</h3>
-          <p>L'application tourne sur un serveur Linux avec PHP-FPM. Le déploiement est scripté : un script PowerShell prépare et envoie l'archive, un script Bash l'installe sur le serveur (dépendances Composer, variables d'environnement, cache et droits). Une mise en ligne se fait donc en une commande, toujours de la même façon.</p>
-          <ul class="!mb-0 flex flex-wrap gap-2 !p-0"><li class="chip">Symfony</li><li class="chip">PHP 8</li><li class="chip">Twig</li><li class="chip">MariaDB</li><li class="chip">Doctrine</li><li class="chip">Bash</li><li class="chip">PowerShell</li></ul>
-        </div>
-      </section>
-      <section id="crp" class="ingot reveal mt-6 scroll-mt-24 ">
-        <div class="ingot__inner prose-dark p-6 md:p-10">
-          <h2>CRP-Assurance.com, en ligne</h2>
-          
-          <p>Le site d'un cabinet d'assurance, fait de A à Z en février 2026 : discuter du besoin avec le client, concevoir les pages, les coder, mettre en ligne, gérer l'hébergement, le nom de domaine et la conformité RGPD. Il tourne toujours.</p>
-          <p>C'était mon premier vrai client. Ce que j'en retiens : le plus dur n'est pas le code. Quand quelqu'un demande « un site sérieux », il faut d'abord comprendre ce qu'il met derrière. Depuis, je pose mes questions avant d'ouvrir l'éditeur.</p>
-          <figure class="my-6 overflow-hidden rounded-xl border border-white/10"><picture><source srcset="../assets/meta/shot-crp.webp" type="image/webp" /><img src="../assets/meta/shot-crp.jpg" alt="Page d'accueil de CRP-Assurance.com" loading="lazy" width="1200" height="533" /></picture></figure>
-          <p><a href="https://crp-assurance.com" target="_blank" rel="noopener noreferrer">Voir crp-assurance.com</a></p>
-        </div>
-      </section>
-      <section id="orion" class="ingot reveal mt-6 scroll-mt-24 ">
-        <div class="ingot__inner prose-dark p-6 md:p-10">
-          <h2>Mission Orion, mon jeu en Python</h2>
-          
-          <p>Un jeu spatial en Python avec pygame, compilé avec pygbag pour tourner dans le navigateur sans rien installer. Il a commencé comme un exercice de cours, et j'ai continué chez moi parce que j'ai accroché. Il n'est pas fini.</p>
-          <p><a href="mini-jeu.html">Jouer à Mission Orion</a></p>
-        </div>
-      </section>
-    </div></div>
-
-    <section id="contact" class="relative px-5 pb-16 pt-24 md:px-8 md:pt-32" aria-labelledby="contact-title">
-      <div class="mx-auto max-w-6xl">
-        <div class="reveal text-center">
-          <span class="eyebrow justify-center">Contact</span>
-          <h2 id="contact-title" class="cta-title mx-auto mt-6 max-w-4xl text-[2.9rem] sm:text-6xl md:text-7xl lg:text-[5.6rem]">
-            <span class="foil">On construit</span><br class="hidden sm:block" />
-            <span class="foil-chrome italic pr-[.12em]"> quelque chose ensemble&nbsp;?</span>
-          </h2>
-          <p class="mx-auto mt-6 max-w-xl text-[15px] text-mist md:text-base">
-            Si vous avez une alternance à proposer, ou juste une question sur un projet,
-            écrivez-moi. Je réponds vite, promis.
-          </p>
-        </div>
-
-        <div class="reveal mx-auto mt-10 flex max-w-2xl flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center">
-          <a class="btn-gold" href="mailto:dorianpachot@gmail.com"><span class="w-4 h-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>dorianpachot@gmail.com</a>
-          <button class="btn-lux" type="button" data-copy="dorianpachot@gmail.com"><span data-copy-label>Copier l'adresse</span></button>
-        </div>
-
-        <ul class="reveal mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm">
-          <li><a class="social" href="tel:+33771623228"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>07 71 62 32 28</a></li>
-          <li><a class="social" href="https://www.linkedin.com/in/dorian-pachot-81299930a/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>LinkedIn</a></li>
-          <li><a class="social" href="../assets/cv/CV_Dorian_Pachot.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 12v6"/><path d="m9 15 3 3 3-3"/></svg>Mon CV en PDF</a></li>
-        </ul>
+    <div class="px-5 pb-16 md:px-8">
+      <div class="mx-auto grid max-w-6xl gap-5 md:grid-cols-2">
+          <article class="project card-link panel reveal relative flex flex-col" style="--c:#EF4444">
+            <div class="grid aspect-[16/9] grid-cols-4 gap-2 overflow-hidden border-b border-edge bg-gradient-to-br from-blood/10 to-transparent p-4"><img class="project__img h-full w-full rounded-lg object-cover object-top" src="../assets/syncro/screens/screen-1.jpg" alt="" loading="lazy" width="720" height="1280" /><img class="project__img h-full w-full rounded-lg object-cover object-top" src="../assets/syncro/screens/screen-2.jpg" alt="" loading="lazy" width="720" height="1280" /><img class="project__img h-full w-full rounded-lg object-cover object-top" src="../assets/syncro/screens/screen-3.jpg" alt="" loading="lazy" width="720" height="1280" /><img class="project__img h-full w-full rounded-lg object-cover object-top" src="../assets/syncro/screens/screen-4.jpg" alt="" loading="lazy" width="720" height="1280" /></div>
+            <div class="flex flex-1 flex-col p-6">
+              <span class="status">En production</span>
+              <h2 class="mt-3 font-display text-2xl font-bold text-bone">SYNCRO</h2>
+              <p class="mt-2 text-sm leading-relaxed text-ash">Application mobile de planification d'équipe, développée pendant mon stage chez Suitime et publiée sur l'App Store et Google Play.</p>
+              <a class="stretch mt-auto pt-5 text-sm font-semibold text-[var(--c)] hover:text-bone" href="syncro.html">Lire la présentation</a>
+            </div>
+          </article>
+          <article class="project card-link panel reveal relative flex flex-col" style="--c:#22D3EE">
+            <div class="aspect-[16/9] overflow-hidden border-b border-edge"><picture><source srcset="../assets/meta/shot-planet.webp" type="image/webp" /><img class="project__img h-full w-full object-cover object-top" src="../assets/meta/shot-planet.jpg" alt="Maquette de Pla'Net" loading="lazy" width="1200" height="533" /></picture></div>
+            <div class="flex flex-1 flex-col p-6">
+              <span class="status">En ligne, en évolution</span>
+              <h2 class="mt-3 font-display text-2xl font-bold text-bone">Pla'Net</h2>
+              <p class="mt-2 text-sm leading-relaxed text-ash">Application Symfony de planning des cours de MediaSchool Rouen.</p>
+              <a class="stretch mt-auto pt-5 text-sm font-semibold text-[var(--c)] hover:text-bone" href="planet.html">Lire la présentation</a>
+            </div>
+          </article>
+          <article class="project card-link panel reveal relative flex flex-col" style="--c:#22C55E">
+            <div class="aspect-[16/9] overflow-hidden border-b border-edge"><picture><source srcset="../assets/meta/shot-crp.webp" type="image/webp" /><img class="project__img h-full w-full object-cover object-top" src="../assets/meta/shot-crp.jpg" alt="Accueil de CRP-Assurance.com" loading="lazy" width="1200" height="533" /></picture></div>
+            <div class="flex flex-1 flex-col p-6">
+              <span class="status">En ligne</span>
+              <h2 class="mt-3 font-display text-2xl font-bold text-bone">CRP-Assurance</h2>
+              <p class="mt-2 text-sm leading-relaxed text-ash">Site PHP et MySQL d'un cabinet d'assurance, avec back-office et espace client.</p>
+              <a class="stretch mt-auto pt-5 text-sm font-semibold text-[var(--c)] hover:text-bone" href="crp-assurance.html">Lire la présentation</a>
+            </div>
+          </article>
+          <article class="project card-link panel reveal relative flex flex-col" style="--c:#A78BFA">
+            <div class="aspect-[16/9] overflow-hidden border-b border-edge"><picture><source srcset="../assets/meta/shot-orion.webp" type="image/webp" /><img class="project__img h-full w-full object-cover object-top" src="../assets/meta/shot-orion.jpg" alt="Écran-titre de Mission Orion" loading="lazy" width="1200" height="533" /></picture></div>
+            <div class="flex flex-1 flex-col p-6">
+              <span class="status">Projet personnel</span>
+              <h2 class="mt-3 font-display text-2xl font-bold text-bone">Mission Orion</h2>
+              <p class="mt-2 text-sm leading-relaxed text-ash">Jeu spatial en Python, jouable dans le navigateur grâce à WebAssembly.</p>
+              <a class="stretch mt-auto pt-5 text-sm font-semibold text-[var(--c)] hover:text-bone" href="mission-orion.html">Lire la présentation</a>
+            </div>
+          </article>
       </div>
-    </section>
+    </div>
+
   </main>
 
-  <footer class="px-5 pb-10 md:px-8" role="contentinfo">
-    <div class="mx-auto max-w-6xl">
-      <hr class="rule-gold" />
-      <div class="flex flex-col gap-3 pt-6 text-xs text-mist sm:flex-row sm:items-center sm:justify-between">
-        <span>© <span data-year>2026</span> Dorian Pachot · BTS SIO SLAM · IRIS MediaSchool, Rouen</span>
-        <span class="flex gap-5">
-          <a class="link-gold" href="../pages/mentions-legales.html">Mentions légales</a>
-          <a class="link-gold" href="../index.html">Accueil</a>
-        </span>
-      </div>
+  <footer class="px-5 pb-10 md:px-8">
+    <div class="mx-auto flex max-w-6xl flex-col gap-3 border-t border-edge pt-6 text-xs text-ash/80 sm:flex-row sm:items-center sm:justify-between">
+      <span>© 2026 Dorian Pachot, BTS SIO SLAM, IRIS MediaSchool Rouen</span>
+      <span class="flex gap-6"><a class="hover:text-bone" href="mentions-legales.html">Mentions légales</a><a class="hover:text-bone" href="../index.html">Accueil</a></span>
     </div>
   </footer>
 
-  <script src="../js/main.js"></script>
+  <script src="../js/site.js"></script>
 </body>
 </html>

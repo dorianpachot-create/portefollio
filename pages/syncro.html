@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SYNCRO, application mobile de planning d'équipe | Dorian Pachot</title>
+  <meta name="description" content="SYNCRO, application Flutter et API Next.js développée pendant mon stage chez Suitime, publiée sur l'App Store et Google Play." />
+  <meta name="author" content="Dorian Pachot" />
+  <link rel="canonical" href="https://dorianpachot-create.github.io/portefollio/pages/syncro.html" />
+  <meta name="theme-color" content="#090A0F" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="SYNCRO, application mobile de planning d'équipe | Dorian Pachot" />
+  <meta property="og:description" content="SYNCRO, application Flutter et API Next.js développée pendant mon stage chez Suitime, publiée sur l'App Store et Google Play." />
+  <meta property="og:image" content="https://dorianpachot-create.github.io/portefollio/assets/meta/og-image.png" />
+  <link rel="icon" href="../assets/meta/favicon.svg" type="image/svg+xml" />
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/site.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-void: #090A0F;
+      --color-panel: #10121A;
+      --color-edge: #1E2130;
+      --color-blood: #EF4444;
+      --color-volt: #22D3EE;
+      --color-go: #22C55E;
+      --color-ash: #9CA3AF;
+      --color-bone: #F1F2F6;
+      --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+      --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+      --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-blood focus:px-4 focus:py-2 focus:text-white" href="#main">Aller au contenu</a>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><span data-progress></span></div>
+
+  <header class="topbar fixed inset-x-0 top-0 z-50 border-b border-transparent transition-colors" data-topbar>
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
+      <a href="../index.html" class="flex items-center gap-3" aria-label="Dorian Pachot, retour à l'accueil">
+        <span class="grid h-9 w-9 place-items-center rounded-lg bg-blood font-display text-sm font-extrabold text-white">DP</span>
+        <span class="hidden font-display text-[17px] font-bold tracking-tight text-bone sm:inline">Dorian Pachot</span>
+      </a>
+      <nav class="hidden items-center gap-6 text-sm font-medium xl:flex" aria-label="Navigation principale">
+        <a href="../index.html#parcours" class="nav-a text-ash transition hover:text-bone">Parcours</a>
+        <a href="../index.html#projets" class="nav-a !text-bone transition hover:text-bone">Projets</a>
+        <a href="projets-cours.html" class="nav-a text-ash transition hover:text-bone">Cours</a>
+        <a href="../index.html#outils" class="nav-a text-ash transition hover:text-bone">Outils</a>
+        <a href="../index.html#veille" class="nav-a text-ash transition hover:text-bone">Veille</a>
+        <a href="documents.html" class="nav-a text-ash transition hover:text-bone">Documents</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="../index.html#contact" class="flex items-center gap-2.5 rounded-full border border-go/30 bg-go/5 px-3 py-1.5 text-[13px] font-medium text-go transition hover:border-go/60">
+          <span class="dot" aria-hidden="true"></span><span class="hidden sm:inline">Disponible pour une alternance</span><span class="sm:hidden">Disponible</span>
+        </a>
+        <button class="btn btn-ghost btn-sm xl:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu">Menu</button>
+      </div>
+    </div>
+    <div class="mobile-menu border-t border-edge bg-void/95 backdrop-blur-xl xl:hidden" id="menu" data-menu>
+      <nav class="mx-auto grid max-w-6xl px-5 py-2 text-[15px] font-medium" aria-label="Navigation mobile">
+        <a href="../index.html#parcours" class="border-b border-edge py-3.5 text-bone">Parcours</a>
+        <a href="../index.html#projets" class="border-b border-edge py-3.5 text-bone">Projets</a>
+        <a href="projets-cours.html" class="border-b border-edge py-3.5 text-bone">Cours</a>
+        <a href="../index.html#outils" class="border-b border-edge py-3.5 text-bone">Outils</a>
+        <a href="../index.html#veille" class="border-b border-edge py-3.5 text-bone">Veille</a>
+        <a href="documents.html" class="border-b border-edge py-3.5 text-bone">Documents</a>
+        <a href="../index.html#contact" class="py-3.5 text-blood">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <header class="px-5 pb-10 pt-28 md:px-8 md:pt-36">
+      <div class="mx-auto max-w-6xl">
+        <a class="inline-flex items-center gap-2 text-sm font-semibold text-ash transition hover:text-bone" href="../index.html#projets"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Retour aux projets</a>
+        <p class="label mt-8 text-blood">Projet en milieu professionnel, stage chez Suitime</p>
+        <h1 class="mt-3 font-display text-[clamp(2.2rem,6vw,3.8rem)] font-extrabold leading-[1.05] tracking-[-.025em] text-bone"><span style="color:#EF4444">S</span>YNCRO</h1>
+        <div class="mt-5 max-w-2xl text-base leading-relaxed text-ash md:text-lg"><p>Application mobile de planification d'équipe, développée pour Suitime d'avril à août 2026 et publiée sur l'App Store et Google Play.</p></div>
+        <div class="mt-7 flex flex-wrap gap-2.5"><a class="btn btn-primary btn-sm" href="https://apps.apple.com/fr/app/syncro/id6787898930" target="_blank" rel="noopener noreferrer"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.6 2.1-1.5 2.6-.4 6.5 1.1 8.7.7 1 1.6 2.2 2.7 2.2 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.8.7 1.2 0 1.9-1.1 2.6-2.1.8-1.2 1.2-2.4 1.2-2.5-.1 0-2.2-.9-2.2-3.3ZM14.3 5.9c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.7-.9 2.6 1 .1 2-.5 2.6-1.2Z"/></svg>App Store</a><a class="btn btn-ghost btn-sm" href="https://play.google.com/store/apps/details?id=fr.appsyncro.mobile" target="_blank" rel="noopener noreferrer"><svg class="h-4 w-4" viewBox="0 0 512 512" aria-hidden="true"><path fill="#00d3ff" d="M47 21c-7 7-11 18-11 33v404c0 15 4 26 11 33l2 2 226-226v-6L49 19z"/><path fill="#ffce00" d="M349 331 274 267v-6l75-64 2 1 89 51c26 14 26 38 0 52z"/><path fill="#ff3a44" d="M351 313 274 256 47 483c9 9 23 10 39 1z"/><path fill="#00c853" d="M351 199 86 28c-16-9-30-8-39 1l227 227z"/></svg>Google Play</a><a class="btn btn-ghost btn-sm" href="https://appsyncro.fr" target="_blank" rel="noopener noreferrer">appsyncro.fr</a><a class="btn btn-ghost btn-sm" href="stage.html">Journal de stage</a><a class="btn btn-ghost btn-sm" href="documents.html#reco">Lettre de recommandation</a></div>
+      </div>
+    </header>
+
+    <div class="px-5 pb-6 md:px-8"><div class="mx-auto max-w-6xl"><div class="reveal flex gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-4"><figure class="w-44 flex-none md:w-auto"><img class="rounded-2xl border border-edge" src="../assets/syncro/screens/screen-1.jpg" alt="SYNCRO : planning de la semaine" loading="lazy" width="720" height="1280" /></figure><figure class="w-44 flex-none md:w-auto"><img class="rounded-2xl border border-edge" src="../assets/syncro/screens/screen-2.jpg" alt="SYNCRO : saisie des disponibilités" loading="lazy" width="720" height="1280" /></figure><figure class="w-44 flex-none md:w-auto"><img class="rounded-2xl border border-edge" src="../assets/syncro/screens/screen-3.jpg" alt="SYNCRO : groupes et rôles" loading="lazy" width="720" height="1280" /></figure><figure class="w-44 flex-none md:w-auto"><img class="rounded-2xl border border-edge" src="../assets/syncro/screens/screen-4.jpg" alt="SYNCRO : notifications et suivi des heures" loading="lazy" width="720" height="1280" /></figure></div></div></div>
+
+    <div class="px-5 pb-16 pt-6 md:px-8">
+      <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_18rem]">
+        <div class="grid min-w-0 gap-5">
+          <section id="en-bref" class="section-block reveal callout p-6 md:p-8">
+            <div class="prose-red">
+              <h2>En bref</h2>
+              <p>SYNCRO est une application mobile qui permet à une équipe de coordonner ses disponibilités de la semaine. Je l'ai développée pour Suitime, d'abord en parallèle de mes cours, puis à temps plein pendant mon stage. Je m'en suis occupé de bout en bout : l'application Flutter, l'API Next.js, la base de données, le serveur, le site vitrine et la publication sur les deux stores.</p>
+            </div>
+          </section>
+          <section id="contexte" class="section-block reveal panel p-6 md:p-8">
+            <div class="prose-red">
+              <h2>Le contexte et le besoin</h2>
+              <p>Dans beaucoup de petites entreprises, les plannings changent chaque semaine et se gèrent avec un tableur partagé et des messages. Les informations se perdent, et il est difficile de savoir qui est disponible et quand.</p>
+              <p>Le besoin exprimé par Suitime : une application simple, utilisable sans formation, où chaque membre saisit ses disponibilités et où les responsables valident puis verrouillent la semaine.</p>
+            </div>
+          </section>
+          <section id="realisation" class="section-block reveal panel p-6 md:p-8">
+            <div class="prose-red">
+              <h2>Ce que j'ai réalisé</h2>
+              <ul><li><strong>Avril à juin</strong> : cahier des charges, maquettes, puis le cœur de l'application : comptes, groupes, saisie des disponibilités (matin, après-midi, autres plages), validation et verrouillage, notifications.</li><li><strong>Juillet</strong> (stage) : mise en production sur un serveur Linux, site vitrine appsyncro.fr, back-office pour l'équipe, migration du back-end en TypeScript et renforcement de la sécurité.</li><li><strong>Août</strong> (stage) : publication sur l'App Store et Google Play, notifications iOS, accessibilité et derniers correctifs.</li><li>Invitations par QR code, suivi des heures, suppression de compte depuis l'application (exigée par Apple).</li><li>Treize écrans maquettés pour cadrer une évolution importante du produit avec les responsables.</li></ul>
+            </div>
+          </section>
+          <section id="choix" class="section-block reveal panel p-6 md:p-8">
+            <div class="prose-red">
+              <h2>Les choix techniques</h2>
+              <ul><li><strong>Flutter</strong> : une seule base de code pour Android et iOS.</li><li><strong>Next.js en TypeScript</strong> pour l'API REST : 14 modules partagés et 53 routes migrés de JavaScript vers TypeScript, pour détecter les erreurs avant la mise en ligne plutôt qu'en production.</li><li><strong>MySQL / MariaDB</strong>, avec des index et des déclencheurs pour garder les données cohérentes.</li><li><strong>Authentification par jetons</strong> : un jeton d'accès de 15 minutes et un jeton de renouvellement de 7 jours.</li><li><strong>Nginx, PM2 et HTTPS</strong> sur le serveur, avec un déploiement automatisé basé sur Git.</li><li><strong>Notifications push</strong> avec Firebase pour Android et APNs pour iOS.</li></ul>
+            </div>
+          </section>
+          <section id="difficultes" class="section-block reveal panel p-6 md:p-8">
+            <div class="prose-red">
+              <h2>Les difficultés et comment je les ai résolues</h2>
+              <ul><li><strong>Refus de l'App Store</strong> : les testeurs d'Apple ne pouvaient pas se connecter. La connexion était en réalité cassée en production depuis cinq jours, à cause d'anciens fichiers restés sur le serveur. J'ai corrigé, puis modifié le script de déploiement pour supprimer les fichiers obsolètes et lancer un test de connexion à chaque mise en ligne.</li><li><strong>Notifications iPhone</strong> qui n'avaient jamais fonctionné, sans aucun message d'erreur. J'ai comparé point par point avec une autre application de l'entreprise qui fonctionnait, et trouvé trois écarts.</li><li><strong>Blocage de créneaux</strong> : un membre pouvait être bloqué deux fois sur le même créneau. La protection existait, mais elle était fausse pour les horaires qui passent minuit. J'ai écrit une nouvelle méthode, vérifiée sur les cent combinaisons possibles.</li><li><strong>Permissions</strong> : en relisant les routes sensibles une par une, j'ai trouvé et corrigé un défaut de cloisonnement entre groupes.</li></ul>
+            </div>
+          </section>
+          <section id="resultat" class="section-block reveal panel p-6 md:p-8">
+            <div class="prose-red">
+              <h2>Le résultat</h2>
+              <p>SYNCRO est disponible sur l'App Store et Google Play, et son site appsyncro.fr est en ligne. Le projet représente 84 commits sur cinq mois. Mon responsable de stage m'a remis une lettre de recommandation.</p>
+            </div>
+          </section>
+          <section id="acquis" class="section-block reveal panel p-6 md:p-8">
+            <div class="prose-red">
+              <h2>Ce que j'en retiens</h2>
+              <ul><li>Une protection présente dans le code doit être vérifiée sur les cas limites.</li><li>Après une correction, il faut empêcher que le problème revienne : c'est le rôle des tests automatiques.</li><li>Comparer avec ce qui fonctionne déjà est souvent plus sûr que d'inventer.</li><li>Quand un sujet relève d'une décision produit, je le signale au lieu de trancher seul.</li></ul>
+            </div>
+          </section>
+          <section id="competences" class="section-block reveal panel p-6 md:p-8">
+            <div class="prose-red">
+              <h2>Compétences mobilisées</h2>
+              <ul><li>Concevoir et développer une application mobile et son API.</li><li>Concevoir et faire évoluer une base de données.</li><li>Mettre en production et maintenir un service sur un serveur Linux.</li><li>Sécuriser une application : authentification, permissions, validation des données.</li><li>Travailler en mode projet avec des responsables : maquettes, cadrage, compte rendu.</li><li>Diagnostiquer et corriger des incidents en production.</li></ul>
+            </div>
+          </section>
+        </div>
+        <aside class="order-first lg:order-none lg:sticky lg:top-24 lg:self-start">
+          <div class="panel p-5">
+            <p class="label text-blood">Fiche du projet</p>
+            <dl class="mt-3 text-sm"><div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Cadre</dt><dd class="text-right font-medium text-bone">Stage chez Suitime</dd></div><div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Période</dt><dd class="text-right font-medium text-bone">Avril à août 2026</dd></div><div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Stage à temps plein</dt><dd class="text-right font-medium text-bone">6 juillet au 7 août</dd></div><div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Mon rôle</dt><dd class="text-right font-medium text-bone">Développeur full-stack</dd></div><div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Statut</dt><dd class="text-right font-medium text-bone">En production</dd></div></dl>
+            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Flutter</li><li class="tag">Dart</li><li class="tag">Next.js</li><li class="tag">TypeScript</li><li class="tag">MySQL</li><li class="tag">JWT</li><li class="tag">Nginx</li><li class="tag">PM2</li><li class="tag">Firebase</li></ul>
+          </div>
+          <nav class="toc mt-5 hidden lg:block" aria-label="Sommaire de la page" data-toc>
+            <p class="label mb-2 px-3 text-ash">Sommaire</p>
+            <a href="#en-bref">En bref</a><a href="#contexte">Le contexte et le besoin</a><a href="#realisation">Ce que j'ai réalisé</a><a href="#choix">Les choix techniques</a><a href="#difficultes">Les difficultés et comment je les ai résolues</a><a href="#resultat">Le résultat</a><a href="#acquis">Ce que j'en retiens</a><a href="#competences">Compétences mobilisées</a>
+          </nav>
+        </aside>
+      </div>
+    </div>
+
+    <section class="px-5 pb-16 pt-10 md:px-8" aria-label="Contact">
+      <div class="mx-auto max-w-6xl">
+        <div class="panel relative overflow-hidden px-6 py-10 text-center md:px-12">
+          <div class="pointer-events-none absolute inset-x-0 -top-28 mx-auto h-56 w-[30rem] max-w-full rounded-full bg-blood/15 blur-3xl" aria-hidden="true"></div>
+          <p class="relative font-display text-2xl font-bold text-bone md:text-3xl">Une question sur ce projet&nbsp;?</p>
+          <p class="relative mx-auto mt-3 max-w-lg text-ash">Je serai ravi d'en parler plus en détail lors d'un échange.</p>
+          <div class="relative mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+            <a class="btn btn-primary" href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>
+            <button class="btn btn-ghost" type="button" data-copy="dorianpachot@gmail.com"><span data-copy-label>Copier l'adresse</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="px-5 pb-10 md:px-8">
+    <div class="mx-auto flex max-w-6xl flex-col gap-3 border-t border-edge pt-6 text-xs text-ash/80 sm:flex-row sm:items-center sm:justify-between">
+      <span>© 2026 Dorian Pachot, BTS SIO SLAM, IRIS MediaSchool Rouen</span>
+      <span class="flex gap-6"><a class="hover:text-bone" href="mentions-legales.html">Mentions légales</a><a class="hover:text-bone" href="../index.html">Accueil</a></span>
+    </div>
+  </footer>
+
+  <script src="../js/site.js"></script>
+</body>
+</html>

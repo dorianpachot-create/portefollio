@@ -2,6 +2,21 @@
 
 Dernière mise à jour : 2026-10-13
 
+## Mise à jour du 2026-10-13 (6), pages projets et design unifié
+
+- Une page de présentation par projet, pour préparer l'oral : `pages/syncro.html`, `planet.html`,
+  `crp-assurance.html`, `mission-orion.html` (en bref, contexte et besoin, réalisation, choix
+  techniques, difficultés, résultat, acquis, compétences mobilisées, fiche projet et sommaire).
+  Contenus tirés des dossiers des projets (README, guides de déploiement, code).
+- Toutes les pages secondaires passent au design de l'accueil (`css/site.css`, `js/site.js`) ;
+  l'ancienne version dorée (`version-doree.html`, `css/style.css`, `js/main.js`, polices locales) est
+  supprimée.
+- Projets encadrés détaillés un par un sur `pages/projets-cours.html` ; les cartes de l'accueil
+  ouvrent le TP correspondant.
+- Veille : bloc "Devenir DevOps, et un bon DevOps" en tête de section.
+- En attente : le tableau de synthèse fourni par l'école, pour relier chaque projet à ses
+  compétences.
+
 ## Mise à jour du 2026-10-13 (5), Pla'Net : la vraie version en ligne
 
 - La maquette `assets/planet-demo/` est retirée : ce n'était pas la bonne version.
