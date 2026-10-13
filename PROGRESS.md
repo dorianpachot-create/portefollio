@@ -2,6 +2,17 @@
 
 Dernière mise à jour : 2026-10-13
 
+## Mise à jour du 2026-10-13 (5), Pla'Net : la vraie version en ligne
+
+- La maquette `assets/planet-demo/` est retirée : ce n'était pas la bonne version.
+- Les liens "Tester l'application" pointent vers https://pla-net.mediaschool-rouen.fr/login
+  (comptes de démo admin/admin et user/user, affichés sur la page de connexion).
+- Fiche Pla'Net réécrite d'après le code de l'application Symfony : vues semaine, mois,
+  intervenant et salle, archivage, duplication, import et export CSV, jours fériés, filtres par
+  école, déploiement scripté (PowerShell + Bash).
+- À faire : remplacer `assets/meta/shot-planet.*` (capture de l'ancienne maquette) par une
+  capture de l'application en ligne.
+
 ## Mise à jour du 2026-10-13 (4), réalisations, veille, suivi de défilement
 
 - Parcours (frise) remonté juste après la présentation, avant les réalisations.

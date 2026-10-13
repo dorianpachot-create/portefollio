@@ -30,7 +30,7 @@ ok('veille : une + articles repérés', !!d.getElementById('une') && d.querySele
 ok('4 documents', d.querySelectorAll('#documents article').length === 4);
 ok('parcours avant les réalisations', d.body.innerHTML.indexOf('id="parcours"') < d.body.innerHTML.indexOf('id="projets"'));
 ok('cartes de projets entièrement cliquables', [...d.querySelectorAll('#projets article')].every((c) => c.classList.contains('card-link') && c.querySelector('a.stretch')));
-ok('maquette Pla\'Net et jeu testables', !!d.querySelector('a[href="assets/planet-demo/index.html"]') && !!d.querySelector('a[href="pages/mini-jeu.html"]'));
+ok('Pla\'Net en ligne et jeu testables', !!d.querySelector('a[href="https://pla-net.mediaschool-rouen.fr/login"]') && !!d.querySelector('a[href="pages/mini-jeu.html"]'));
 ok('veille : méthodologie et bilan', /Comment je fais ma veille/.test(text) && /Ce que j'en tire/.test(text));
 ok('suivi de défilement', !!d.querySelector('[data-progress]') && !!d.querySelector('[data-dots]'));
 

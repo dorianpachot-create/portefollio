@@ -89,7 +89,7 @@
         <a class="link-gold inline-flex items-center gap-2 text-sm" href="../index.html"><span class="w-4 h-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></span>Retour à l'accueil</a>
         <p class="eyebrow mt-8">Projets</p>
         <h1 class="mt-4 font-display text-5xl font-semibold leading-[1.02] md:text-7xl"><span class="foil">Le détail de mes projets</span></h1>
-        <div class="mt-6 max-w-2xl text-[15px] leading-relaxed text-mist md:text-base"><p>Une appli sur les stores, un site client en ligne, une appli de planning en cours pour mon école, et un jeu en Python.</p></div>
+        <div class="mt-6 max-w-2xl text-[15px] leading-relaxed text-mist md:text-base"><p>Une appli sur les stores, une application de planning en ligne pour mon école, un site client et un jeu en Python.</p></div>
       </div>
     </header>
 
@@ -111,25 +111,29 @@
       </section>
       <section id="planet" class="ingot reveal mt-6 scroll-mt-24 ">
         <div class="ingot__inner prose-dark p-6 md:p-10">
-          <h2>Pla'Net, en cours</h2>
-          
-          <p>Pla'Net, c'est une appli web de <strong>planning pour les écoles du groupe MediaSchool</strong> (IRIS, ECS, IEJ). Le but : placer les cours de chaque classe avec leur prof, leur salle et leur matière, et les voir par jour, semaine ou mois. C'est mon projet de 2<sup>e</sup> année, commencé en septembre 2026.</p>
-          <h3>1. Une maquette pour tester les écrans</h3>
-          <p>Avant de créer la moindre table, j'ai fait une <strong>maquette cliquable en HTML, CSS et JavaScript</strong> : connexion avec deux rôles, gestion des cours, profs, élèves et salles, planning jour/semaine/mois, recherche par classe ou par prof, cours ponctuels ou répétés. Toutes les lectures et écritures passent par trois fonctions, pour brancher la vraie base sans tout casser.</p>
-          <h3>2. La base de données</h3>
-          <p>Une base <strong>MariaDB</strong> de onze tables (campus, classes, niveaux, spécialités, cursus, matières, intervenants, salles, séances, utilisateurs, et une table qui relie séances et classes, parce qu'un cours peut réunir plusieurs classes). Quelques choix :</p>
+          <h2>Pla'Net, en ligne</h2>
+          <p>Pla'Net est l'application de <strong>planning des cours de MediaSchool Rouen</strong>. Elle sert à placer les séances de chaque classe, avec leur intervenant, leur salle et leur matière, et à les consulter de plusieurs façons. C'est mon projet de deuxième année de BTS, commencé en septembre 2026. Elle est en ligne et continue d'évoluer.</p>
+          <div class="my-6 flex flex-wrap gap-2.5"><a class="btn-gold btn-sm !no-underline" href="https://pla-net.mediaschool-rouen.fr/login" target="_blank" rel="noopener noreferrer">Tester l'application</a></div>
+          <p class="text-sm">Comptes de démonstration, affichés sur la page de connexion : <strong>admin</strong> / admin (administration) et <strong>user</strong> / user (consultation).</p>
+
+          <h3>Ce que fait l'application</h3>
           <ul>
-            <li><strong>Des clés étrangères partout</strong>, pour qu'une séance ne pointe jamais vers une salle qui n'existe pas.</li>
-            <li><strong>Un champ « obsolète » au lieu de supprimer</strong> : une salle fermée disparaît des listes sans casser l'historique.</li>
-            <li><strong>Un identifiant de série</strong> pour modifier d'un coup toutes les occurrences d'un cours répété.</li>
-            <li><strong>Une couleur par matière</strong>, pour lire le planning d'un coup d'œil.</li>
+            <li><strong>Plusieurs vues du planning</strong> : par semaine, par mois, par intervenant ou par salle, avec le détail de chaque séance.</li>
+            <li><strong>Gestion des classes, des intervenants et des matières</strong>, avec un archivage plutôt qu'une suppression, pour ne pas casser l'historique.</li>
+            <li><strong>Création, modification et déplacement des cours</strong>, réservés aux administrateurs. Les utilisateurs simples consultent.</li>
+            <li><strong>Duplication</strong> d'une journée ou d'une semaine de cours vers d'autres dates, sur plusieurs semaines si besoin, avec possibilité d'annuler.</li>
+            <li><strong>Import et export CSV</strong> des cours, et export du planning sur une période.</li>
+            <li><strong>Jours fériés</strong> calculés automatiquement (y compris ceux qui dépendent de Pâques) et grisés dans le planning.</li>
+            <li><strong>Filtres par école</strong>, avec leurs couleurs et leurs logos, et une barre de recherche.</li>
           </ul>
-          <h3>3. L'appli Symfony</h3>
-          <p>L'appli passe en <strong>Symfony</strong> avec des gabarits <strong>Twig</strong> : menu à gauche, filtres campus, classe et spécialité en haut, vues accueil, planning et jour. La connexion utilise le composant de sécurité de Symfony (jeton CSRF, mots de passe hachés, pages réservées aux connectés). Prochaine étape : brancher les filtres et le planning sur la base avec Doctrine.</p>
-          <div class="my-6 flex flex-wrap gap-2.5"><a class="btn-gold btn-sm !no-underline" href="../assets/planet-demo/index.html" target="_blank" rel="noopener">Tester la maquette</a></div>
-          <p class="text-sm">Comptes de démonstration : <strong>admin@mediaschool.fr</strong> / admin123, ou <strong>eleve@mediaschool.fr</strong> / eleve123. Les données sont fictives et restent dans votre navigateur.</p>
-          <figure class="my-6 overflow-hidden rounded-xl border border-white/10"><picture><source srcset="../assets/meta/shot-planet.webp" type="image/webp" /><img src="../assets/meta/shot-planet.jpg" alt="Maquette de Pla'Net, vue semaine" loading="lazy" width="1200" height="533" /></picture></figure>
-          <ul class="!mb-0 flex flex-wrap gap-2 !p-0"><li class="chip">Symfony</li><li class="chip">PHP 8</li><li class="chip">Twig</li><li class="chip">MariaDB</li><li class="chip">JavaScript</li></ul>
+
+          <h3>Comment elle est construite</h3>
+          <p>L'application est développée en <strong>Symfony</strong> avec des gabarits <strong>Twig</strong> et une base <strong>MariaDB</strong> de dix tables : campus, classes, cursus, niveaux, spécialités, matières, intervenants, salles, séances et utilisateurs. La logique est découpée en services (recherche des séances, duplication, import CSV, jours fériés, filtres), et la connexion utilise le composant de sécurité de Symfony : formulaire protégé par jeton CSRF, mots de passe hachés, deux rôles.</p>
+          <p>Avant de commencer, j'avais réalisé une maquette en JavaScript pour valider les écrans, puis modélisé la base de données.</p>
+
+          <h3>La mise en ligne</h3>
+          <p>L'application tourne sur un serveur Linux avec PHP-FPM. Le déploiement est scripté : un script PowerShell prépare et envoie l'archive, un script Bash l'installe sur le serveur (dépendances Composer, variables d'environnement, cache et droits). Une mise en ligne se fait donc en une commande, toujours de la même façon.</p>
+          <ul class="!mb-0 flex flex-wrap gap-2 !p-0"><li class="chip">Symfony</li><li class="chip">PHP 8</li><li class="chip">Twig</li><li class="chip">MariaDB</li><li class="chip">Doctrine</li><li class="chip">Bash</li><li class="chip">PowerShell</li></ul>
         </div>
       </section>
       <section id="crp" class="ingot reveal mt-6 scroll-mt-24 ">
