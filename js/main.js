@@ -8,6 +8,21 @@
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var finePointer = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
+  /* ---------- Suivi de défilement : barre fine en haut de l'écran ---------- */
+  var bar = document.createElement('div');
+  bar.className = 'scroll-progress'; bar.setAttribute('aria-hidden', 'true');
+  bar.innerHTML = '<span></span>';
+  document.body.appendChild(bar);
+  var barFill = bar.firstChild, barTick = false;
+  function paintBar() {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    barFill.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, window.scrollY / max) : 0).toFixed(4) + ')';
+    barTick = false;
+  }
+  window.addEventListener('scroll', function () { if (!barTick) { barTick = true; requestAnimationFrame(paintBar); } }, { passive: true });
+  window.addEventListener('resize', paintBar);
+  paintBar();
+
   /* ---------- Barre du haut : fond flouté une fois qu'on a défilé ---------- */
   var topbar = document.querySelector('[data-topbar]');
   function onScroll() {

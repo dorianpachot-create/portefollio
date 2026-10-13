@@ -28,6 +28,11 @@ ok('TP de 2e année présents', /DHCP et DNS/.test(text) && /VitaSport/.test(tex
 ok('outils : coder, avec l\'IA, en cours', /Pour coder/.test(text) && /avec l'IA/.test(text) && /Découverts en cours/.test(text));
 ok('veille : une + articles repérés', !!d.getElementById('une') && d.querySelectorAll('.brief').length >= 4);
 ok('4 documents', d.querySelectorAll('#documents article').length === 4);
+ok('parcours avant les réalisations', d.body.innerHTML.indexOf('id="parcours"') < d.body.innerHTML.indexOf('id="projets"'));
+ok('cartes de projets entièrement cliquables', [...d.querySelectorAll('#projets article')].every((c) => c.classList.contains('card-link') && c.querySelector('a.stretch')));
+ok('maquette Pla\'Net et jeu testables', !!d.querySelector('a[href="assets/planet-demo/index.html"]') && !!d.querySelector('a[href="pages/mini-jeu.html"]'));
+ok('veille : méthodologie et bilan', /Comment je fais ma veille/.test(text) && /Ce que j'en tire/.test(text));
+ok('suivi de défilement', !!d.querySelector('[data-progress]') && !!d.querySelector('[data-dots]'));
 
 console.log('\n--- version-doree.html ---');
 const g = load('version-doree.html');

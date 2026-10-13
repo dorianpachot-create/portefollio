@@ -488,3 +488,9 @@
   details.subject[open] > summary.ingot__inner { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
   details.subject > div.ingot__inner { height: auto; border-top-left-radius: 0; border-top-right-radius: 0; margin-top: 0; }
 }
+
+/* Barre de suivi de défilement (pages secondaires) */
+@layer components {
+  .scroll-progress { position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 70; pointer-events: none; }
+  .scroll-progress span { display: block; height: 100%; transform-origin: left; transform: scaleX(0); background: linear-gradient(90deg, var(--gold-2), var(--gold-1)); }
+}

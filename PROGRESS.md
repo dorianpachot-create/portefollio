@@ -2,6 +2,19 @@
 
 Dernière mise à jour : 2026-10-13
 
+## Mise à jour du 2026-10-13 (4), réalisations, veille, suivi de défilement
+
+- Parcours (frise) remonté juste après la présentation, avant les réalisations.
+- Réalisations refaites : SYNCRO en grande carte, puis Pla'Net, CRP-Assurance et Mission Orion
+  en trois cartes de même hauteur. Toutes les cartes sont cliquables en entier (projets,
+  projets encadrés, documents), les liens secondaires restent utilisables.
+- Maquette de Pla'Net publiée dans `assets/planet-demo/` (données fictives, comptes de démo),
+  testable depuis l'accueil et la fiche projet. Mission Orion reste jouable via `pages/mini-jeu.html`.
+- Veille : blocs "Comment je fais ma veille" (méthodologie) et "Ce que j'en tire" (bilan).
+- Suivi de défilement : barre de progression en haut, lien actif dans le menu et repères
+  latéraux sur grand écran ; barre de progression aussi sur les pages secondaires.
+- Tests : 28 au vert.
+
 ## Mise à jour du 2026-10-13 (3), parties remises sur l'accueil
 
 Les parties de l'ancienne accueil absentes de la nouvelle sont revenues, dans le style sombre :
