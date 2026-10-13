@@ -1,0 +1,24 @@
+{# SECTION 10 : CONTACT. Textes et coordonnées : contenu/profil.yaml #}
+{%- set c = profil.contact -%}
+{%- set lienContact = 'flex items-center gap-2 rounded-lg border border-edge px-4 py-2.5 text-ash transition hover:-translate-y-0.5 hover:border-ash/50 hover:text-bone' -%}
+<section id="contact" class="scroll-mt-16 px-5 pb-16 pt-20 md:px-8 md:pt-28" aria-labelledby="contact-title">
+  <div class="mx-auto max-w-6xl">
+    <div class="panel reveal relative overflow-hidden px-6 py-14 text-center md:px-12 md:py-20">
+      <div class="pointer-events-none absolute inset-x-0 -top-28 mx-auto h-64 w-[36rem] max-w-full rounded-full bg-blood/15 blur-3xl" aria-hidden="true"></div>
+      <p class="label relative text-blood"><span class="mr-3 text-ash/70">10</span>Contact</p>
+      <h2 id="contact-title" class="relative mx-auto mt-5 max-w-3xl font-display text-[clamp(2rem,6.5vw,4rem)] font-extrabold leading-[1.05] tracking-[-.025em] text-bone">
+        {{ c.titre }} <span class="text-blood">{{ c.titre_accent }}</span>
+      </h2>
+      <p class="relative mx-auto mt-6 max-w-lg text-ash">{{ c.texte }}</p>
+      <div class="relative mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+        <twig:BoutonsContact />
+      </div>
+      <ul class="relative mt-10 flex flex-wrap items-center justify-center gap-3 text-sm font-medium">
+        <li><a class="{{ lienContact }}" href="{{ profil.github }}" target="_blank" rel="noopener noreferrer"><twig:Icone nom="github" />GitHub</a></li>
+        <li><a class="{{ lienContact }}" href="{{ profil.linkedin }}" target="_blank" rel="noopener noreferrer"><twig:Icone nom="linkedin" />LinkedIn</a></li>
+        <li><a class="{{ lienContact }}" href="tel:{{ profil.telephone_lien }}">{{ profil.telephone }}</a></li>
+        <li><a class="{{ lienContact }}" href="{{ lien(profil.cv_pdf) }}" target="_blank" rel="noopener">Télécharger le CV</a></li>
+      </ul>
+    </div>
+  </div>
+</section>

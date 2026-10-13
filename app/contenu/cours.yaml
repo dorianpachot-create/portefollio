@@ -1,0 +1,482 @@
+# ============================================================================
+# LES PROJETS ENCADRÉS (travaux pratiques du BTS)
+# ----------------------------------------------------------------------------
+# Rangés par année, puis par matière. Chaque travail apparaît sur la page
+# pages/projets-cours.html (ancre #<id>).
+#
+# Deuxième année : un travail qui a une clé "accueil" a aussi sa carte
+# dans la section "Projets encadrés" de l'accueil.
+# Première année : l'accueil affiche une tuile par matière, avec le nombre
+# de travaux calculé automatiquement.
+#
+#   id            ancre de la page (projets-cours.html#tp0)
+#   cadre         petite ligne au-dessus du titre
+#   realise       liste "Ce que j'ai fait"  (ou realise_texte : un paragraphe)
+#   retiens       "Ce que j'en retiens" (facultatif)
+#   fichiers      boutons vers les comptes rendus PDF (facultatif)
+# ============================================================================
+
+annees:
+- id: annee-2
+  titre: Deuxième année
+  groupes:
+  - matiere: Linux avancé (SISR)
+    travaux:
+    - id: tp0
+      cadre: Linux avancé, TP0, 3 septembre 2026
+      titre: Installer et prendre en main un serveur Ubuntu en ligne de commande
+      objectif: Installer Ubuntu Server 24.04 sans interface graphique dans une machine virtuelle, et revoir les bases de l'administration Linux sans internet, avec seulement man et --help.
+      realise:
+      - Installation en mode texte dans VMware, sur un réseau de TP sans DHCP, avec une adresse IP fixe.
+      - Connexion en SSH depuis le poste Windows, mises à jour du système.
+      - Navigation, édition de fichiers de configuration, création d'utilisateurs.
+      - Archive et instantané de la machine en fin de séance, pour la réutiliser dans les TP suivants.
+      retiens: 'Prendre l''habitude de faire un instantané avant de modifier une machine : c''est ce qui permet de tester sans crainte.'
+      technos:
+      - Ubuntu Server
+      - VMware
+      - SSH
+      fichiers:
+      - url: assets/fiches-cours/linux-avance/tp0-ubuntu-server.pdf
+        texte: Compte rendu (PDF)
+      accueil:
+        etiquette: Linux avancé, TP0
+        titre: Installer un serveur Ubuntu en ligne de commande
+        resume: 'Ubuntu Server dans une machine virtuelle, sans interface graphique : adresse IP fixe, connexion SSH, mises à jour, utilisateurs et fichiers de configuration.'
+        tags:
+        - Ubuntu Server
+        - SSH
+        - VMware
+    - id: tp1
+      cadre: Linux avancé, TP1, 7 septembre 2026
+      titre: Déployer un serveur DHCP et un serveur DNS
+      objectif: 'Monter le réseau d''un domaine sur deux machines Debian 12 : un serveur qui distribue les adresses et résout les noms, et un client de test.'
+      realise:
+      - Serveur DHCP avec isc-dhcp-server, et une réservation d'adresse pour le client.
+      - Serveur DNS avec bind9, en résolution directe et inverse.
+      - Sécurisation de l'accès SSH au serveur.
+      - 'Exercice de dépannage : trois erreurs cachées dans ma configuration, à retrouver seul.'
+      retiens: Le dépannage m'a appris à lire les journaux et à tester service par service plutôt qu'au hasard.
+      technos:
+      - Debian 12
+      - isc-dhcp-server
+      - bind9
+      - SSH
+      fichiers:
+      - url: assets/fiches-cours/linux-avance/tp1-dhcp-dns.pdf
+        texte: Compte rendu (PDF)
+      accueil:
+        etiquette: Linux avancé, TP1
+        titre: Mettre en place un serveur DHCP et DNS
+        resume: 'Un domaine sur deux machines Debian : distribution des adresses avec isc-dhcp-server, résolution des noms avec bind9, sécurisation de SSH, puis recherche de trois pannes.'
+        tags:
+        - Debian
+        - DHCP
+        - bind9
+    - id: tp2
+      cadre: Linux avancé, TP2, 8 septembre 2026
+      titre: Héberger deux sites web et les publier en HTTPS
+      objectif: 'Mettre deux sites en ligne sur la même machine et la même adresse IP : une vitrine publique et un intranet réservé.'
+      realise:
+      - 'Hôtes virtuels Apache : c''est l''en-tête Host de la requête qui désigne le site demandé.'
+      - Intranet en HTTPS avec un certificat généré par mes soins, limité au réseau local et protégé par mot de passe.
+      - Une page PHP dynamique avec formulaire, et Nginx installé à côté d'Apache sur le port 8080.
+      - Ouverture du pare-feu sans couper l'accès SSH.
+      retiens: Comprendre ce qui se passe entre le navigateur et le serveur m'aide aussi quand je déploie mes propres applications.
+      technos:
+      - Apache
+      - HTTPS
+      - PHP
+      - Nginx
+      - Pare-feu
+      fichiers:
+      - url: assets/fiches-cours/linux-avance/tp2-serveur-web-https.pdf
+        texte: Compte rendu (PDF)
+      accueil:
+        etiquette: Linux avancé, TP2
+        titre: Héberger deux sites et passer en HTTPS
+        resume: Deux sites sur une même machine avec les hôtes virtuels Apache, dont un intranet en HTTPS protégé par mot de passe. Ajout d'une page PHP, de Nginx et du pare-feu.
+        tags:
+        - Apache
+        - HTTPS
+        - Nginx
+        - PHP
+    - id: tp3
+      cadre: Linux avancé, TP3, 9 septembre 2026
+      titre: Partager des fichiers et maîtriser les journaux
+      objectif: Mettre en place un espace de travail partagé, puis organiser et surveiller les journaux du serveur.
+      realise:
+      - Partage accessible depuis Windows avec Samba, et depuis Linux avec NFS.
+      - Journal système rendu persistant, et journal applicatif séparé avec rsyslog.
+      - Rotation des journaux avec logrotate.
+      - Blocage automatique des adresses qui échouent à se connecter en SSH, avec fail2ban.
+      retiens: Des journaux bien rangés font gagner un temps précieux le jour où il faut comprendre une panne.
+      technos:
+      - Samba
+      - NFS
+      - rsyslog
+      - logrotate
+      - fail2ban
+      fichiers:
+      - url: assets/fiches-cours/linux-avance/tp3-partages-journaux.pdf
+        texte: Compte rendu (PDF)
+      accueil:
+        etiquette: Linux avancé, TP3
+        titre: Partager des fichiers et gérer les journaux
+        resume: Partage accessible depuis Windows (Samba) et Linux (NFS), journaux persistants, rsyslog, rotation avec logrotate et blocage des connexions SSH abusives avec fail2ban.
+        tags:
+        - Samba
+        - NFS
+        - rsyslog
+        - fail2ban
+    - id: tp4
+      cadre: Linux avancé, TP4, 11 septembre 2026
+      titre: Automatiser l'administration du serveur
+      objectif: Mettre en scripts ce qui était fait à la main les jours précédents, et le faire tourner automatiquement.
+      realise:
+      - Huit scripts Bash, vérifiés un par un avant exécution.
+      - Scripts de sauvegarde, de supervision et de déploiement, et une page d'état du serveur.
+      - Planification avec cron et avec des minuteurs systemd.
+      retiens: 'C''est le TP qui se rapproche le plus du DevOps : automatiser ce qui se répète pour le rendre fiable.'
+      technos:
+      - Bash
+      - cron
+      - systemd
+      fichiers:
+      - url: assets/fiches-cours/linux-avance/tp4-scripts-bash.pdf
+        texte: Compte rendu (PDF)
+      accueil:
+        etiquette: Linux avancé, TP4
+        titre: Automatiser l'administration en Bash
+        resume: Scripts de sauvegarde, de supervision et de déploiement, plus une page d'état du serveur, exécutés automatiquement avec cron et systemd.
+        tags:
+        - Bash
+        - cron
+        - systemd
+    - id: tp5
+      cadre: Linux avancé, révision, 30 septembre 2026
+      titre: L'intranet du service comptable
+      objectif: Reconstruire une machine de zéro et réviser l'ensemble du module sur un cas complet.
+      realise:
+      - Comptes et groupes pour le service comptable.
+      - Droits sur les dossiers, avec le bit SGID pour que tout le service partage les fichiers créés.
+      - Site Apache protégé par mot de passe, partage Samba et sauvegarde automatique.
+      retiens: Refaire tout depuis zéro montre ce qui est vraiment acquis et ce qui ne l'est pas encore.
+      technos:
+      - Droits Linux
+      - Apache
+      - Samba
+      - cron
+      fichiers:
+      - url: assets/fiches-cours/linux-avance/tp5-revision-intranet.pdf
+        texte: Compte rendu (PDF)
+      accueil:
+        etiquette: Linux avancé, TP5
+        titre: 'Révision : l''intranet du service comptable'
+        resume: 'Une machine reconstruite de zéro : comptes et groupes, droits sur les dossiers, site Apache protégé, partage Samba et sauvegarde automatique.'
+        tags:
+        - Droits Linux
+        - Apache
+        - Samba
+  - matiere: Bases de données avancées (SLAM)
+    travaux:
+    - id: vitasport
+      cadre: Bases de données avancées, octobre 2026
+      titre: 'VitaSport : concevoir, interroger et optimiser une base'
+      objectif: Travailler sur la base de données d'une salle de sport, de la modélisation jusqu'aux requêtes avancées.
+      realise:
+      - 'Rappels SQL : création des tables, contraintes, erreurs de clés étrangères et d''unicité provoquées volontairement.'
+      - 'Modélisation Merise de l''extension VitaSport+ avec Looping : dictionnaire des données, MCD, MLD puis MPD exécuté, et normalisation.'
+      - 'Diagrammes UML sur draw.io : diagramme de classes et diagramme de cas d''utilisation.'
+      - 'SQL avancé : jointures, agrégats, sous-requêtes et vues. La suite du TP (index, transactions, déclencheurs) est en cours.'
+      technos:
+      - MySQL / MariaDB
+      - Merise
+      - Looping
+      - UML
+      - draw.io
+      accueil:
+        etiquette: Bases de données avancées
+        titre: 'VitaSport : concevoir et interroger une base'
+        resume: 'Base de données d''une salle de sport : modélisation Merise avec Looping, diagrammes UML sur draw.io, puis jointures, agrégats, sous-requêtes et vues. En cours.'
+        tags:
+        - MySQL
+        - Merise
+        - Looping
+        - draw.io
+  - matiere: Développement
+    travaux:
+    - id: planet
+      cadre: Projet de l'année, depuis septembre 2026
+      titre: Pla'Net, l'application de planning de l'école
+      objectif: Développer une application web de planning des cours pour MediaSchool Rouen.
+      realise_texte: Le projet est présenté en détail sur <a href="planet.html">sa page dédiée</a>, avec le lien pour tester l'application en ligne.
+      technos:
+      - Symfony
+      - Twig
+      - MariaDB
+      accueil:
+        etiquette: Développement
+        titre: Pla'Net, le projet de l'année
+        resume: Application de planning des cours de MediaSchool Rouen, développée en Symfony et mise en ligne. Présentée dans les réalisations.
+        tags:
+        - Symfony
+        - MariaDB
+        lien:
+          texte: Voir le projet
+          url: pages/planet.html
+  periode: Septembre et octobre 2026
+- id: annee-1
+  titre: Première année
+  groupes:
+  - matiere: Développement
+    travaux:
+    - id: pafalan
+      cadre: Développement, 1<sup>re</sup> année
+      titre: 'Pafalan : application web PHP de collection de cartes'
+      objectif: Réaliser en binôme un site de collection de cartes, inspiré de l'univers Dofus.
+      realise:
+      - 'Authentification par session avec mots de passe hachés, et trois rôles : administrateur, joueur, visiteur.'
+      - Catalogue filtrable et ouverture de paquets de cartes au hasard, selon leur rareté.
+      - Panneau d'administration avec création, modification et suppression.
+      - Code organisé en services, avec un accès aux données par PDO.
+      technos:
+      - PHP
+      - PDO
+      - Sessions
+    - id: bistrot
+      cadre: Développement, 1<sup>re</sup> année
+      titre: 'Le Bistrot de Marcel : conception de base de données'
+      objectif: Modéliser et créer la base de données d'un restaurant.
+      realise:
+      - Tables clients, tables du restaurant, plats, allergènes et serveurs, avec clés et contraintes.
+      - 'TP noté : installation de MariaDB et phpMyAdmin sur une machine Debian, avec un compte dédié à l''application plutôt que root.'
+      technos:
+      - SQL
+      - MariaDB
+      - Debian
+      fichiers:
+      - url: assets/fiches-cours/developpement/bistrot-marcel.pdf
+        texte: Fiche (PDF)
+    - id: pygame
+      cadre: Développement, 1<sup>re</sup> année
+      titre: Jeu spatial en Python avec pygame
+      objectif: Pratiquer Python en réalisant un petit jeu d'arcade.
+      realise:
+      - Vaisseau, ennemis, projectiles, astéroïdes et bonus, avec un système de vies et de score sauvegardé.
+      - Exercices de programmation objet en Python. C'est le point de départ de Mission Orion.
+      technos:
+      - Python
+      - pygame
+      - POO
+    - id: seo
+      cadre: Développement, 1<sup>re</sup> année
+      titre: Audit SEO de deux sites
+      objectif: Analyser deux sites existants et proposer des améliorations.
+      realise:
+      - 'Analyse avec PageSpeed Insights : performance, accessibilité, bonnes pratiques.'
+      - 'Recommandations classées par priorité : images compressées, chargement différé, moins de JavaScript, données structurées.'
+      technos:
+      - SEO
+      - PageSpeed
+      fichiers:
+      - url: assets/fiches-cours/developpement/audit-seo.pdf
+        texte: Audit (PDF)
+  - matiere: Systèmes
+    travaux:
+    - id: active-directory
+      cadre: Systèmes, 1<sup>re</sup> année
+      titre: Infrastructure Active Directory sous Windows Server 2025
+      objectif: Déployer une infrastructure serveur Windows complète dans VMware.
+      realise:
+      - Contrôleur de domaine avec DNS intégré, et un second serveur joint au domaine.
+      - Serveur DHCP en mode basculement, pour la haute disponibilité.
+      - Partage de fichiers et chiffrement BitLocker d'un volume, avec sauvegarde de la clé de récupération.
+      - Chaque étape documentée avec ses commandes PowerShell.
+      technos:
+      - Windows Server
+      - Active Directory
+      - PowerShell
+      fichiers:
+      - url: assets/fiches-cours/systemes/infra-active-directory.pdf
+        texte: Fiche (PDF)
+    - id: load-balancing
+      cadre: Systèmes, 1<sup>re</sup> année
+      titre: Infrastructure web avec répartition de charge sur Scaleway
+      objectif: Mettre en place une architecture web haute disponibilité sur un cloud public.
+      realise:
+      - Deux serveurs Nginx et PHP-FPM derrière un répartiteur HAProxy, reliés par un réseau privé.
+      - Test de la répartition et du basculement automatique quand un serveur s'arrête.
+      - Page de statistiques HAProxy accessible uniquement par tunnel SSH.
+      technos:
+      - HAProxy
+      - Nginx
+      - Scaleway
+      fichiers:
+      - url: assets/fiches-cours/systemes/infra-web-loadbalancing.pdf
+        texte: Compte rendu (PDF)
+    - id: parc
+      cadre: Systèmes, 1<sup>re</sup> année
+      titre: Gestion de parc informatique et ITIL
+      objectif: Comprendre l'organisation d'une DSI et la gestion d'un parc.
+      realise:
+      - 'Travail de groupe : rôle de la DSI, inventaire de parc (OCS Inventory, GLPI), CMDB et cycle de vie du matériel, avec ITIL 4.'
+      - 'Exercice individuel : qualification de tickets de support (type, urgence, impact, priorité).'
+      technos:
+      - GLPI
+      - ITIL
+      fichiers:
+      - url: assets/fiches-cours/systemes/parc-informatique.pdf
+        texte: Rendu de groupe (PDF)
+  - matiere: Réseaux
+    travaux:
+    - id: frantech
+      cadre: Réseaux, 1<sup>re</sup> année
+      titre: 'TP Frantech : réseau d''entreprise sous Packet Tracer'
+      objectif: Concevoir en binôme le réseau segmenté d'une entreprise sur plusieurs sites.
+      realise:
+      - Plan d'adressage IPv4 selon le nombre de postes par service, et segmentation en VLAN.
+      - Trunks, routage inter-VLAN, DHCP par VLAN et routage OSPF entre les filiales.
+      - Spanning Tree avec répartition de charge entre deux commutateurs principaux.
+      technos:
+      - Cisco
+      - VLAN
+      - OSPF
+      - DHCP
+      fichiers:
+      - url: assets/fiches-cours/reseaux/tp-frantech.pdf
+        texte: Compte rendu (PDF)
+    - id: securite-acces
+      cadre: Réseaux, 1<sup>re</sup> année
+      titre: Sécurisation des accès réseau
+      objectif: Sécuriser les commutateurs d'accès d'un réseau.
+      realise:
+      - Port-security avec limitation du nombre d'adresses MAC par port.
+      - Ports inutilisés désactivés et accès distant chiffré en SSH au lieu de Telnet.
+      - Comparaison des trois modes de violation pour justifier le choix retenu.
+      technos:
+      - Port-security
+      - SSH
+  - matiere: Cybersécurité
+    travaux:
+    - id: fortigate
+      cadre: Cybersécurité, 1<sup>re</sup> année
+      titre: Cluster FortiGate en haute disponibilité sous GNS3
+      objectif: Monter une maquette réseau sécurisée et redondante.
+      realise:
+      - Deux pare-feu FortiGate en cluster de haute disponibilité, avec des liens dédiés entre eux.
+      - Redondance physique entre deux commutateurs Cisco.
+      - Réseau interne découpé en trois VLAN avec attribution DHCP.
+      technos:
+      - GNS3
+      - FortiGate
+      - VLAN
+      fichiers:
+      - url: assets/fiches-cours/cyber-securite/compte-rendu-gns3-fortigate-ha.pdf
+        texte: Compte rendu (PDF)
+  - matiere: Mathématiques
+    travaux:
+    - id: arithmetique
+      cadre: Mathématiques, 1<sup>re</sup> année
+      titre: 'Arithmétique appliquée : les clés de contrôle'
+      objectif: Appliquer l'arithmétique modulaire à des cas concrets.
+      realise:
+      - Vérifier la clé d'un numéro de billet (modulo 9) et d'un code-barres EAN-13.
+      - 'Retrouver des chiffres illisibles, et repérer une faille : une erreur de plus ou moins 9 sur un chiffre passe inaperçue.'
+      technos:
+      - Modulo
+      fichiers:
+      - url: assets/fiches-cours/mathematiques/fiche-revision-arithmetique.pdf
+        texte: Fiche de révision (PDF)
+    - id: algo-python
+      cadre: Mathématiques, 1<sup>re</sup> année
+      titre: Algorithmique en Python
+      objectif: Pratiquer les structures de données et les algorithmes de base.
+      realise:
+      - Moyenne, conversion binaire et décimal, tri à bulles, médiane, insertion triée.
+      - Un outil de manipulation de matrices, avec vérification des dimensions.
+      technos:
+      - Python
+      fichiers:
+      - url: assets/fiches-cours/mathematiques/exercices-codage.py
+        texte: Code (exercices)
+      - url: assets/fiches-cours/mathematiques/matrice.py
+        texte: Code (matrices)
+  - matiere: CEJM
+    travaux:
+    - id: ankama
+      cadre: CEJM, 1<sup>re</sup> année
+      titre: 'Étude RSE : le cas Ankama'
+      objectif: Analyser la démarche de responsabilité sociale d'une entreprise.
+      realise:
+      - Analyse des trois piliers (environnemental, social, économique) du studio Ankama.
+      - Confrontation avec des éléments négatifs documentés, pour une conclusion nuancée.
+      technos:
+      - RSE
+      fichiers:
+      - url: assets/fiches-cours/cejm/ankama-rse.pdf
+        texte: Fiche (PDF)
+    - id: caissiere
+      cadre: CEJM, 1<sup>re</sup> année
+      titre: 'Cas pratique : responsabilité de l''employeur'
+      objectif: Qualifier juridiquement une situation de santé au travail.
+      realise:
+      - Absence de document unique d'évaluation des risques et troubles musculosquelettiques.
+      - Responsabilité pénale et civile de l'employeur, appuyée sur le Code du travail.
+      technos:
+      - Droit du travail
+      fichiers:
+      - url: assets/fiches-cours/cejm/cas-caissiere.pdf
+        texte: Fiche (PDF)
+    - id: droit
+      cadre: CEJM, 1<sup>re</sup> année
+      titre: Droit des marques et structures juridiques
+      objectif: Étudier la protection d'une marque et le choix d'une forme d'entreprise.
+      realise:
+      - L'affaire Louboutin contre YSL sur la protection d'une couleur.
+      - Choix d'une structure (EI, EURL, SARL, SAS) pour une création d'entreprise à trois associés.
+      technos:
+      - Droit
+      fichiers:
+      - url: assets/fiches-cours/cejm/droit-des-marques.pdf
+        texte: Marques (PDF)
+      - url: assets/fiches-cours/cejm/structures-juridiques.pdf
+        texte: Structures (PDF)
+  - matiere: Anglais
+    travaux:
+    - id: anglais
+      cadre: Anglais, 1<sup>re</sup> année
+      titre: Future of Work 2026
+      objectif: Comprendre et commenter un document en anglais professionnel.
+      realise:
+      - Compréhension d'une vidéo sur l'IA et le marché du travail, et lexique ciblé.
+      - Développement argumenté sur la manière de s'y préparer.
+      technos:
+      - Anglais
+      fichiers:
+      - url: assets/fiches-cours/anglais/future-of-work-2026.pdf
+        texte: Fiche (PDF)
+  - matiere: Culture générale
+    travaux:
+    - id: chat-potte
+      cadre: Culture générale, 1<sup>re</sup> année
+      titre: 'Exposé : Le Chat Potté'
+      objectif: Analyser une œuvre sur le thème de l'animal héros.
+      realise:
+      - Analyse de l'affiche et d'une scène clé, et du détournement des codes du western.
+      technos:
+      - Expression
+      fichiers:
+      - url: assets/fiches-cours/culture-generale/le-chat-potte.pdf
+        texte: Fiche (PDF)
+    - id: hybrides
+      cadre: Culture générale, 1<sup>re</sup> année
+      titre: 'Exposé : les animaux hybrides'
+      objectif: Étudier une figure mythologique et sa place dans le cinéma actuel.
+      realise:
+      - 'Chimère, centaure, sirènes : ce que ces figures symbolisent, mis en parallèle avec le film <em>Le Règne animal</em>.'
+      technos:
+      - Expression
+      fichiers:
+      - url: assets/fiches-cours/culture-generale/animaux-hybrides.pdf
+        texte: Fiche (PDF)

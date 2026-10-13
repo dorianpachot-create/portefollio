@@ -1,0 +1,6 @@
+{#
+  Composant Tag : une petite étiquette grise (ou rouge si importante).
+  Utilisation : <twig:Tag texte="PHP" />   ou   <twig:Tag texte="Symfony" :important="true" />
+#}
+{% props texte, important = false %}
+<li class="tag{{ important ? ' tag-hl' }}">{{ texte }}</li>

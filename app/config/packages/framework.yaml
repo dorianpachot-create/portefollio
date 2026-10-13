@@ -1,0 +1,7 @@
+# Configuration générale de Symfony.
+framework:
+    secret: 'portfolio-statique-sans-secret' # aucun formulaire ni session : la valeur n'a pas d'importance
+    http_method_override: false
+    handle_all_throwables: true
+    php_errors:
+        log: true

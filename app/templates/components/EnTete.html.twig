@@ -1,0 +1,39 @@
+{#
+  Composant EnTete : la barre du haut (logo, menu, pastille "Disponible", menu mobile).
+  La logique (quels liens afficher) est dans src/Twig/Components/EnTete.php.
+  Dans ce gabarit, "this" désigne l'objet PHP : this.liens, this.accueil...
+#}
+{%- set contact = this.accueil ? '#contact' : lien('index.html#contact') -%}
+<header class="topbar fixed inset-x-0 top-0 z-50 border-b border-transparent transition-colors" data-topbar>
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
+    {# Logo : carré rouge "DP" + nom #}
+    <a href="{{ this.accueil ? '#top' : lien('index.html') }}" class="flex items-center gap-3" aria-label="Dorian Pachot, {{ this.accueil ? 'haut de page' : 'retour à l\'accueil' }}">
+      <span class="grid h-9 w-9 place-items-center rounded-lg bg-blood font-display text-sm font-extrabold text-white">DP</span>
+      <span class="hidden font-display text-[17px] font-bold tracking-tight text-bone sm:inline">Dorian Pachot</span>
+    </a>
+
+    {# Menu principal, visible sur grand écran. data-spy : surligne la section en cours (accueil) #}
+    <nav class="hidden items-center gap-6 text-sm font-medium xl:flex" aria-label="Navigation principale"{% if this.accueil %} data-spy{% endif %}>
+      {% for l in this.liens %}
+        <a href="{{ lien(l.cible) }}" class="nav-a {{ l.texte == this.actif ? '!text-bone' : 'text-ash' }} transition hover:text-bone">{{ l.texte }}</a>
+      {% endfor %}
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="{{ contact }}" class="flex items-center gap-2.5 rounded-full border border-go/30 bg-go/5 px-3 py-1.5 text-[13px] font-medium text-go transition hover:border-go/60">
+        <span class="dot" aria-hidden="true"></span><span class="hidden sm:inline">Disponible pour une alternance</span><span class="sm:hidden">Disponible</span>
+      </a>
+      <button class="btn btn-ghost btn-sm xl:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu">Menu</button>
+    </div>
+  </div>
+
+  {# Menu mobile, ouvert par le bouton "Menu" (voir le JavaScript) #}
+  <div class="mobile-menu border-t border-edge bg-void/95 backdrop-blur-xl xl:hidden" id="menu" data-menu>
+    <nav class="mx-auto grid max-w-6xl px-5 py-2 text-[15px] font-medium" aria-label="Navigation mobile">
+      {% for l in this.liensMobile %}
+        <a href="{{ lien(l.cible) }}" class="border-b border-edge py-3.5 text-bone">{{ l.texte }}</a>
+      {% endfor %}
+      <a href="{{ contact }}" class="py-3.5 text-blood">Contact</a>
+    </nav>
+  </div>
+</header>

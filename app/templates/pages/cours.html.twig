@@ -1,0 +1,43 @@
+{#
+  PAGE "PROJETS ENCADRÉS" : tous les TP, par année puis par matière.
+  Les textes sont dans contenu/cours.yaml.
+#}
+{% extends 'base.html.twig' %}
+
+{% block titre %}Projets encadrés de BTS SIO | Dorian Pachot{% endblock %}
+{% block description %}Les travaux pratiques de BTS SIO SLAM de Dorian Pachot, détaillés : objectif, réalisation, compte rendu.{% endblock %}
+{% block chemin %}pages/projets-cours.html{% endblock %}
+{% block entete %}<twig:EnTete actif="Cours" />{% endblock %}
+
+{% block contenu %}
+  <twig:EnTetePage cadre="BTS SIO, 2025-2027" titre="Projets encadrés" retourUrl="index.html#cours" retourTexte="Retour à l'accueil">
+    <p>Les travaux pratiques réalisés en cours, détaillés un par un : l'objectif, ce que j'ai fait et, quand il existe, le compte rendu complet en PDF.</p>
+  </twig:EnTetePage>
+
+  <div class="px-5 pb-16 md:px-8">
+    <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_16rem]">
+      <div class="grid min-w-0 gap-5">
+        {% for annee in annees %}
+          {% if not loop.first %}<div class="h-6"></div>{% endif %}
+          <h2 id="{{ annee.id }}" class="section-block reveal mt-4 font-display text-3xl font-extrabold tracking-tight text-bone">{{ annee.titre }}</h2>
+          {% for groupe in annee.groupes %}
+            <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">{{ groupe.matiere }}</h3>
+            {% for travail in groupe.travaux %}<twig:TravailPratique :travail="travail" />{% endfor %}
+          {% endfor %}
+        {% endfor %}
+      </div>
+
+      {# Sommaire à droite : le titre court de chaque TP (avant les deux-points ou la virgule) #}
+      <aside class="hidden lg:sticky lg:top-24 lg:block lg:max-h-[calc(100vh-7rem)] lg:self-start lg:overflow-y-auto">
+        <nav class="toc" aria-label="Sommaire des projets encadrés" data-toc>
+          <p class="label mb-2 px-3 text-ash">Sommaire</p>
+          {% for annee in annees %}
+            {% if not loop.first %}<div class="h-3"></div>{% endif %}
+            <a href="#{{ annee.id }}" class="!font-semibold">{{ annee.titre }}</a>
+            {% for groupe in annee.groupes %}{% for travail in groupe.travaux %}<a href="#{{ travail.id }}" class="!pl-6 !text-[.8rem]">{{ (travail.titre|split(' : ')|first)|split(',')|first }}</a>{% endfor %}{% endfor %}
+          {% endfor %}
+        </nav>
+      </aside>
+    </div>
+  </div>
+{% endblock %}

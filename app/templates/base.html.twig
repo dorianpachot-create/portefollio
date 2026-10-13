@@ -1,0 +1,79 @@
+{#
+  GABARIT DE BASE : la structure commune à toutes les pages.
+  -----------------------------------------------------------------------------
+  Chaque page "hérite" de ce fichier ({% extends 'base.html.twig' %}) et
+  remplit seulement les blocs dont elle a besoin :
+    titre        le titre de l'onglet du navigateur
+    description  le résumé lu par les moteurs de recherche
+    chemin       le chemin de la page, pour l'adresse canonique (ex. pages/cv.html)
+    avant_entete éléments placés avant le menu (les repères de l'accueil)
+    entete       le menu du haut (par défaut : celui des pages secondaires)
+    contenu      le contenu propre à la page
+    scripts      le JavaScript de la page
+#}
+{%- set profil = contenu.get('profil') -%}
+<!doctype html>
+<!-- Page générée par Symfony (php bin/console app:export). Pour la modifier : dossier app/ -->
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block titre %}{{ profil.nom }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{% endblock %}" />
+  <meta name="author" content="{{ profil.nom }}" />
+  <link rel="canonical" href="{{ profil.url_site }}{% block chemin %}{% endblock %}" />
+  <meta name="theme-color" content="#090A0F" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="{{ block('titre') }}" />
+  <meta property="og:description" content="{{ block('description') }}" />
+  <meta property="og:image" content="{{ profil.url_site }}assets/meta/og-image.png" />
+  <link rel="icon" href="{{ lien('assets/meta/favicon.svg') }}" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="{{ lien('assets/meta/favicon-180.png') }}" />
+  {# Ajoute la classe "js" : les animations d'apparition ne s'activent que si JavaScript marche #}
+  <script>document.documentElement.classList.add('js');</script>
+
+  {# Polices : Archivo (titres), Inter (texte), IBM Plex Mono (petites étiquettes) #}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  {# Styles maison (boutons, cartes, frise...) puis Tailwind CSS pour les classes utilitaires #}
+  <link rel="stylesheet" href="{{ lien('css/site.css') }}" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+  {# Les couleurs du site. Pour changer le rouge partout : modifier --color-blood #}
+  <style type="text/tailwindcss">
+    @theme {
+      --color-void: #090A0F;
+      --color-panel: #10121A;
+      --color-edge: #1E2130;
+      --color-blood: #EF4444;
+      --color-volt: #22D3EE;
+      --color-go: #22C55E;
+      --color-ash: #9CA3AF;
+      --color-bone: #F1F2F6;
+      --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+      --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+      --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+  </style>
+</head>
+
+<body id="top">
+  <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-blood focus:px-4 focus:py-2 focus:text-white" href="#main">Aller au contenu</a>
+  <div class="bg-grid" aria-hidden="true"></div>
+  {# Barre rouge en haut de l'écran, qui avance avec le défilement #}
+  <div class="scroll-progress" aria-hidden="true"><span data-progress></span></div>
+  {% block avant_entete %}{% endblock %}
+
+  {% block entete %}<twig:EnTete />{% endblock %}
+
+  <main id="main">
+    {% block contenu %}{% endblock %}
+  </main>
+
+  <twig:PiedDePage />
+
+  {% block scripts %}<script src="{{ lien('js/site.js') }}"></script>{% endblock %}
+</body>
+</html>

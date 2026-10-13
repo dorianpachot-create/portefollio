@@ -1,0 +1,51 @@
+{#
+  SECTION 06 : POINTS D'APPUI ET MÉTHODE. Textes : contenu/competences.yaml
+  Le radar est dessiné en JavaScript (js/accueil.js) à partir de l'attribut
+  data-qualites : changer une "valeur" dans le YAML change la forme du radar.
+#}
+<section id="competences" class="scroll-mt-16 px-5 py-20 md:px-8 md:py-28" aria-labelledby="comp-title">
+  <div class="mx-auto max-w-6xl">
+    <twig:EnTeteSection numero="06" rubrique="Points d'appui et méthode" titre="Ce sur quoi je peux m'appuyer" idTitre="comp-title">
+      Pas de notes ni de niveaux : quatre qualités que je travaille, chacune illustrée par un exemple concret. Sélectionnez-en une pour la mettre en évidence.
+    </twig:EnTeteSection>
+
+    <div class="mt-12 grid items-center gap-10 lg:grid-cols-[1fr_1.05fr]">
+      <div class="panel reveal p-5 md:p-8">
+        <svg viewBox="-205 -165 410 330" class="mx-auto w-full max-w-[26rem]" role="img" aria-labelledby="radar-desc" data-radar
+             data-qualites="{{ competences.qualites|map(q => {n: q.nom, v: q.valeur})|json_encode }}">
+          <title id="radar-desc">Radar de compétences : {{ competences.qualites|map(q => q.nom|lower)|join(', ') }}</title>
+          <g data-radar-grid stroke="#232736" fill="none"></g>
+          <polygon data-radar-shape class="radar-shape" fill="rgba(239,68,68,.18)" stroke="#EF4444" stroke-width="2" points="0,0 0,0 0,0 0,0"></polygon>
+          <g data-radar-dots></g>
+          <g data-radar-labels font-family="Inter, sans-serif" font-weight="600" font-size="13"></g>
+        </svg>
+      </div>
+
+      <ul class="reveal grid gap-2" data-stat-list>
+        {% for q in competences.qualites %}
+          <li>
+            <button type="button" class="stat-row w-full px-4 py-4 text-left" data-stat="{{ loop.index0 }}" aria-pressed="{{ loop.first ? 'true' : 'false' }}">
+              <span class="flex items-baseline justify-between"><span class="font-display text-lg font-bold text-bone">{{ q.nom }}</span></span>
+              <span class="meter mt-2.5 block"><span data-w="{{ q.valeur }}"></span></span>
+              <span class="mt-2.5 block text-sm leading-relaxed text-ash">{{ q.texte }}</span>
+            </button>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="mt-16">
+      <h3 class="reveal font-display text-2xl font-bold tracking-tight text-bone">Ma méthode de travail</h3>
+      <p class="reveal mt-2 max-w-xl text-sm text-ash">Héritée du sport collectif : préparer, exécuter, puis analyser.</p>
+      <ol class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {% for etape in competences.methode %}
+          <li class="panel reveal p-6">
+            <span class="font-mono text-sm text-blood">{{ '%02d'|format(loop.index) }}</span>
+            <h4 class="mt-3 font-display text-lg font-bold text-bone">{{ etape.titre }}</h4>
+            <p class="mt-2 text-sm leading-relaxed text-ash">{{ etape.texte }}</p>
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>

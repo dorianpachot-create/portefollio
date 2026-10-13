@@ -1,0 +1,11 @@
+# Les composants Twig (Symfony UX Twig Component).
+#
+# Deux sortes de composants sont utilisées dans ce projet :
+#  - les composants "anonymes" : un simple fichier dans templates/components/,
+#    avec ses paramètres déclarés par {% props %}. Exemple : <twig:Tag texte="PHP" />
+#  - les composants "avec classe" : une classe PHP dans src/Twig/Components/
+#    quand le composant a besoin d'un peu de logique. Exemple : <twig:Lien cible="pages/cv.html" />
+twig_component:
+    anonymous_template_directory: 'components/'
+    defaults:
+        App\Twig\Components\: 'components/'

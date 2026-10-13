@@ -1,0 +1,34 @@
+{# PAGE "JOURNAL DE STAGE" : textes dans contenu/stage.yaml. #}
+{% extends 'base.html.twig' %}
+
+{% block titre %}Journal de stage chez Suitime | Dorian Pachot{% endblock %}
+{% block description %}Le stage de Dorian Pachot chez Suitime, du 6 juillet au 7 août 2026, semaine par semaine.{% endblock %}
+{% block chemin %}pages/stage.html{% endblock %}
+{% block entete %}<twig:EnTete actif="Projets" />{% endblock %}
+
+{% block contenu %}
+  <twig:EnTetePage cadre="Stage chez Suitime, 6 juillet au 7 août 2026" titre="Journal de stage" retourUrl="pages/syncro.html" retourTexte="Retour à la page SYNCRO">
+    <p>Cinq semaines à temps plein sur SYNCRO, une application que je développais déjà pour Suitime depuis avril. C'est pendant ce stage qu'elle a été mise en production et publiée sur l'App Store et Google Play.</p>
+  </twig:EnTetePage>
+
+  <div class="px-5 pb-6 md:px-8"><div class="mx-auto max-w-6xl">
+    <dl class="reveal grid grid-cols-2 gap-3 md:grid-cols-4">
+      {% for c in stage.chiffres %}
+        <div class="panel p-5"><dd class="font-display text-3xl font-bold text-bone">{{ c.valeur }}</dd><dt class="text-xs text-ash">{{ c.libelle }}</dt></div>
+      {% endfor %}
+    </dl>
+    <p class="reveal mt-6 max-w-3xl text-sm text-ash">{{ stage.note }}</p>
+  </div></div>
+
+  <div class="px-5 pb-16 pt-4 md:px-8"><div class="mx-auto grid max-w-6xl gap-5">
+    {% for semaine in stage.semaines %}
+      <article id="semaine-{{ loop.index }}" class="section-block panel reveal grid gap-4 p-6 md:grid-cols-[11rem_1fr] md:p-8">
+        <div><p class="font-display text-2xl font-extrabold text-blood">{{ semaine.numero }}</p><p class="text-sm text-ash">{{ semaine.dates }}</p></div>
+        <div class="prose-red"><h2 class="!text-xl">{{ semaine.titre }}</h2><ul>{% for p in semaine.points %}<li>{{ p|raw }}</li>{% endfor %}</ul></div>
+      </article>
+    {% endfor %}
+    <twig:Panneau id="retiens" titre="Ce que j'en retiens" :callout="true">
+      <ul>{% for p in stage.retiens %}<li>{{ p|raw }}</li>{% endfor %}</ul>
+    </twig:Panneau>
+  </div></div>
+{% endblock %}

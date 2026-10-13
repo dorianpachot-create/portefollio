@@ -1,0 +1,26 @@
+{#
+  Composant TravailPratique : un TP détaillé sur la page "Projets encadrés".
+  Reçoit un travail de contenu/cours.yaml.
+#}
+{% props travail %}
+<article id="{{ travail.id }}" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">{{ travail.cadre|raw }}</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">{{ travail.titre }}</h2>
+    <h3>Objectif</h3><p>{{ travail.objectif }}</p>
+    <h3>Ce que j'ai fait</h3>
+    {% if travail.realise is defined %}
+      <ul>{% for point in travail.realise %}<li>{{ point|raw }}</li>{% endfor %}</ul>
+    {% else %}
+      {# Lien vers une autre page écrit dans le YAML depuis pages/ : on le garde tel quel #}
+      <p>{{ travail.realise_texte|raw }}</p>
+    {% endif %}
+    {% if travail.retiens is defined %}<h3>Ce que j'en retiens</h3><p>{{ travail.retiens }}</p>{% endif %}
+  </div>
+  <twig:ListeTags :tags="travail.technos" />
+  {% if travail.fichiers is defined %}
+    <div class="mt-5 flex flex-wrap gap-2">
+      {% for f in travail.fichiers %}<twig:Bouton :texte="f.texte" :url="f.url" style="secondaire" :petit="true" />{% endfor %}
+    </div>
+  {% endif %}
+</article>

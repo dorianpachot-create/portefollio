@@ -1,0 +1,35 @@
+{#
+  SECTION 09 : EN DEHORS DU TRAVAIL. Onglets, textes : contenu/interets.yaml
+  Le premier onglet est ouvert ; les autres sont masqués (hidden) et s'ouvrent au clic.
+#}
+<section id="personnel" class="scroll-mt-16 px-5 py-20 md:px-8 md:py-28" aria-labelledby="perso-title">
+  <div class="mx-auto max-w-6xl">
+    <twig:EnTeteSection numero="09" rubrique="Centres d'intérêt" titre="En dehors du travail" idTitre="perso-title">
+      Ce qui m'anime en dehors du code, et ce que cela apporte à ma manière de travailler.
+    </twig:EnTeteSection>
+
+    <div class="reveal mt-12 grid gap-5 lg:grid-cols-[17rem_1fr]">
+      <div class="flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:gap-1 lg:overflow-visible" role="tablist" aria-label="Centres d'intérêt">
+        {% for o in interets %}
+          <button class="tab shrink-0 px-4 py-3.5 text-left text-ash" role="tab" id="t-{{ o.id }}" aria-controls="p-{{ o.id }}" aria-selected="{{ loop.first ? 'true' : 'false' }}" tabindex="{{ loop.first ? 0 : -1 }}">
+            <span class="block font-display font-bold">{{ o.nom }}</span><span class="hidden text-xs lg:block">{{ o.resume }}</span>
+          </button>
+        {% endfor %}
+      </div>
+
+      <div class="panel min-h-[20rem] p-6 md:p-10">
+        {% for o in interets %}
+          <div class="tab-panel" role="tabpanel" id="p-{{ o.id }}" aria-labelledby="t-{{ o.id }}"{% if not loop.first %} hidden{% endif %}>
+            <h3 class="font-display text-3xl font-bold tracking-tight text-bone">{{ o.titre }}</h3>
+            <div class="mt-6 grid gap-4 md:grid-cols-{{ o.cartes|length }}">
+              {% for c in o.cartes %}
+                <div class="rounded-xl border {{ c.mis_en_avant ?? false ? 'border-blood/30 bg-blood/[.04]' : 'border-edge bg-void/40' }} p-5"><p class="font-display font-bold text-bone">{{ c.titre }}</p><p class="mt-2 text-sm leading-relaxed text-ash">{{ c.texte }}</p></div>
+              {% endfor %}
+            </div>
+            <p class="mt-6 border-l-2 border-blood pl-4 text-sm text-bone">{{ o.conclusion }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

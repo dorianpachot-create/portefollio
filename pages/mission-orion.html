@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- Page générée par Symfony (php bin/console app:export). Pour la modifier : dossier app/ -->
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
@@ -14,13 +15,16 @@
   <meta property="og:description" content="Mission Orion, jeu spatial en Python et pygame compilé en WebAssembly, jouable dans le navigateur." />
   <meta property="og:image" content="https://dorianpachot-create.github.io/portefollio/assets/meta/og-image.png" />
   <link rel="icon" href="../assets/meta/favicon.svg" type="image/svg+xml" />
-  <script>document.documentElement.classList.add('js');</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="apple-touch-icon" href="../assets/meta/favicon-180.png" />
+    <script>document.documentElement.classList.add('js');</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/site.css" />
+
+    <link rel="stylesheet" href="../css/site.css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
-  <style type="text/tailwindcss">
+    <style type="text/tailwindcss">
     @theme {
       --color-void: #090A0F;
       --color-panel: #10121A;
@@ -36,146 +40,179 @@
     }
   </style>
 </head>
+
 <body id="top">
   <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-blood focus:px-4 focus:py-2 focus:text-white" href="#main">Aller au contenu</a>
   <div class="bg-grid" aria-hidden="true"></div>
-  <div class="scroll-progress" aria-hidden="true"><span data-progress></span></div>
-
+    <div class="scroll-progress" aria-hidden="true"><span data-progress></span></div>
+  
   <header class="topbar fixed inset-x-0 top-0 z-50 border-b border-transparent transition-colors" data-topbar>
-    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
-      <a href="../index.html" class="flex items-center gap-3" aria-label="Dorian Pachot, retour à l'accueil">
-        <span class="grid h-9 w-9 place-items-center rounded-lg bg-blood font-display text-sm font-extrabold text-white">DP</span>
-        <span class="hidden font-display text-[17px] font-bold tracking-tight text-bone sm:inline">Dorian Pachot</span>
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
+        <a href="../index.html" class="flex items-center gap-3" aria-label="Dorian Pachot, retour à l'accueil">
+      <span class="grid h-9 w-9 place-items-center rounded-lg bg-blood font-display text-sm font-extrabold text-white">DP</span>
+      <span class="hidden font-display text-[17px] font-bold tracking-tight text-bone sm:inline">Dorian Pachot</span>
+    </a>
+
+        <nav class="hidden items-center gap-6 text-sm font-medium xl:flex" aria-label="Navigation principale">
+              <a href="../index.html#parcours" class="nav-a text-ash transition hover:text-bone">Parcours</a>
+              <a href="../index.html#projets" class="nav-a !text-bone transition hover:text-bone">Projets</a>
+              <a href="projets-cours.html" class="nav-a text-ash transition hover:text-bone">Cours</a>
+              <a href="../index.html#outils" class="nav-a text-ash transition hover:text-bone">Outils</a>
+              <a href="../index.html#veille" class="nav-a text-ash transition hover:text-bone">Veille</a>
+              <a href="documents.html" class="nav-a text-ash transition hover:text-bone">Documents</a>
+          </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="../index.html#contact" class="flex items-center gap-2.5 rounded-full border border-go/30 bg-go/5 px-3 py-1.5 text-[13px] font-medium text-go transition hover:border-go/60">
+        <span class="dot" aria-hidden="true"></span><span class="hidden sm:inline">Disponible pour une alternance</span><span class="sm:hidden">Disponible</span>
       </a>
-      <nav class="hidden items-center gap-6 text-sm font-medium xl:flex" aria-label="Navigation principale">
-        <a href="../index.html#parcours" class="nav-a text-ash transition hover:text-bone">Parcours</a>
-        <a href="../index.html#projets" class="nav-a !text-bone transition hover:text-bone">Projets</a>
-        <a href="projets-cours.html" class="nav-a text-ash transition hover:text-bone">Cours</a>
-        <a href="../index.html#outils" class="nav-a text-ash transition hover:text-bone">Outils</a>
-        <a href="../index.html#veille" class="nav-a text-ash transition hover:text-bone">Veille</a>
-        <a href="documents.html" class="nav-a text-ash transition hover:text-bone">Documents</a>
-      </nav>
-      <div class="flex items-center gap-3">
-        <a href="../index.html#contact" class="flex items-center gap-2.5 rounded-full border border-go/30 bg-go/5 px-3 py-1.5 text-[13px] font-medium text-go transition hover:border-go/60">
-          <span class="dot" aria-hidden="true"></span><span class="hidden sm:inline">Disponible pour une alternance</span><span class="sm:hidden">Disponible</span>
-        </a>
-        <button class="btn btn-ghost btn-sm xl:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu">Menu</button>
-      </div>
+      <button class="btn btn-ghost btn-sm xl:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu">Menu</button>
     </div>
+  </div>
+
     <div class="mobile-menu border-t border-edge bg-void/95 backdrop-blur-xl xl:hidden" id="menu" data-menu>
-      <nav class="mx-auto grid max-w-6xl px-5 py-2 text-[15px] font-medium" aria-label="Navigation mobile">
-        <a href="../index.html#parcours" class="border-b border-edge py-3.5 text-bone">Parcours</a>
-        <a href="../index.html#projets" class="border-b border-edge py-3.5 text-bone">Projets</a>
-        <a href="projets-cours.html" class="border-b border-edge py-3.5 text-bone">Cours</a>
-        <a href="../index.html#outils" class="border-b border-edge py-3.5 text-bone">Outils</a>
-        <a href="../index.html#veille" class="border-b border-edge py-3.5 text-bone">Veille</a>
-        <a href="documents.html" class="border-b border-edge py-3.5 text-bone">Documents</a>
-        <a href="../index.html#contact" class="py-3.5 text-blood">Contact</a>
-      </nav>
-    </div>
-  </header>
+    <nav class="mx-auto grid max-w-6xl px-5 py-2 text-[15px] font-medium" aria-label="Navigation mobile">
+              <a href="../index.html#parcours" class="border-b border-edge py-3.5 text-bone">Parcours</a>
+              <a href="../index.html#projets" class="border-b border-edge py-3.5 text-bone">Projets</a>
+              <a href="projets-cours.html" class="border-b border-edge py-3.5 text-bone">Cours</a>
+              <a href="../index.html#outils" class="border-b border-edge py-3.5 text-bone">Outils</a>
+              <a href="../index.html#veille" class="border-b border-edge py-3.5 text-bone">Veille</a>
+              <a href="documents.html" class="border-b border-edge py-3.5 text-bone">Documents</a>
+            <a href="../index.html#contact" class="py-3.5 text-blood">Contact</a>
+    </nav>
+  </div>
+</header>
 
   <main id="main">
-    <header class="px-5 pb-10 pt-28 md:px-8 md:pt-36">
-      <div class="mx-auto max-w-6xl">
-        <a class="inline-flex items-center gap-2 text-sm font-semibold text-ash transition hover:text-bone" href="../index.html#projets"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Retour aux projets</a>
-        <p class="label mt-8 text-blood">Projet personnel</p>
-        <h1 class="mt-3 font-display text-[clamp(2.2rem,6vw,3.8rem)] font-extrabold leading-[1.05] tracking-[-.025em] text-bone"><span style="color:#A78BFA">M</span>ission Orion</h1>
-        <div class="mt-5 max-w-2xl text-base leading-relaxed text-ash md:text-lg"><p>Jeu spatial en Python, né d'un exercice de cours et poursuivi sur mon temps libre. Il se joue directement dans le navigateur.</p></div>
-        <div class="mt-7 flex flex-wrap gap-2.5"><a class="btn btn-primary btn-sm" href="mini-jeu.html">Jouer dans le navigateur</a></div>
+          <header class="px-5 pb-10 pt-28 md:px-8 md:pt-36">
+  <div class="mx-auto max-w-6xl">
+    <a class="inline-flex items-center gap-2 text-sm font-semibold text-ash transition hover:text-bone" href="../index.html#projets"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Retour aux projets</a>
+    <p class="label mt-8 text-blood">Projet personnel</p>
+    <h1 class="mt-3 font-display text-[clamp(2.2rem,6vw,3.8rem)] font-extrabold leading-[1.05] tracking-[-.025em] text-bone"><span style="color:#A78BFA">M</span>ission Orion</h1>
+    <div class="mt-5 max-w-2xl text-base leading-relaxed text-ash md:text-lg"><p>Jeu spatial en Python, né d'un exercice de cours et poursuivi sur mon temps libre. Il se joue directement dans le navigateur.</p>
+    </div>
+          <div class="mt-7 flex flex-wrap gap-2.5">
+                  <a class="btn btn-primary btn-sm" href="mini-jeu.html">Jouer dans le navigateur</a>
+
+              </div>
       </div>
-    </header>
+</header>
 
-    <div class="px-5 pb-6 md:px-8"><div class="mx-auto max-w-6xl"><figure class="reveal overflow-hidden rounded-2xl border border-edge bg-panel"><picture><source srcset="../assets/meta/shot-orion.webp" type="image/webp" /><img class="w-full" src="../assets/meta/shot-orion.jpg" alt="Écran-titre de Mission Orion" width="1200" height="533" /></picture><figcaption class="border-t border-edge px-4 py-2.5 text-xs text-ash">L'écran-titre du jeu.</figcaption></figure></div></div>
+  <div class="px-5 pb-6 md:px-8"><div class="mx-auto max-w-6xl">  <figure class="reveal overflow-hidden rounded-2xl border border-edge bg-panel">
+    <picture><source srcset="../assets/meta/shot-orion.webp" type="image/webp" /><img class="w-full" src="../assets/meta/shot-orion.jpg" alt="Écran-titre de Mission Orion" width="1200" height="533" /></picture>
 
-    <div class="px-5 pb-16 pt-6 md:px-8">
-      <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_18rem]">
-        <div class="grid min-w-0 gap-5">
-          <section id="en-bref" class="section-block reveal callout p-6 md:p-8">
-            <div class="prose-red">
-              <h2>En bref</h2>
-              <p>Mission Orion est un jeu de tir spatial écrit en Python avec pygame. C'était au départ un exercice de cours ; j'ai continué chez moi parce que le projet me plaisait. Je l'ai ensuite compilé en WebAssembly pour qu'il se joue dans le navigateur, sans rien installer.</p>
-            </div>
-          </section>
-          <section id="contexte" class="section-block reveal panel p-6 md:p-8">
-            <div class="prose-red">
-              <h2>Le contexte</h2>
-              <p>En première année, un TP demandait de réaliser un petit jeu avec pygame pour pratiquer Python : sprites, collisions, score. Une fois le TP terminé, j'ai voulu aller plus loin et en faire un vrai jeu, avec plusieurs niveaux et une progression.</p>
-            </div>
-          </section>
-          <section id="realisation" class="section-block reveal panel p-6 md:p-8">
-            <div class="prose-red">
-              <h2>Ce que j'ai réalisé</h2>
-              <ul><li>Un <strong>mode histoire</strong> en vagues successives, avec un boss, et un <strong>mode survie</strong>.</li><li>Un <strong>garage</strong> pour personnaliser la couleur du laser et du vaisseau.</li><li>Des <strong>arrière-plans générés par le code</strong>, avec huit styles différents.</li><li>Une <strong>progression sauvegardée</strong> (modes terminés, meilleurs scores).</li><li>Les écrans d'introduction, les menus et les crédits.</li><li>Une <strong>version web</strong>, jouable depuis ce portfolio.</li></ul>
-            </div>
-          </section>
-          <section id="choix" class="section-block reveal panel p-6 md:p-8">
-            <div class="prose-red">
-              <h2>Les choix techniques</h2>
-              <ul><li><strong>Neuf modules</strong> aux rôles précis : configuration, état du jeu, génération des fonds, chargement des ressources, entités, dessin de l'interface, écrans, utilitaires et boucle principale.</li><li>Des <strong>dépendances à sens unique</strong> entre ces modules, pour éviter les imports circulaires.</li><li>Toute la <strong>configuration au même endroit</strong> : ajouter un niveau ou une couleur se fait en modifiant une liste.</li><li>Une <strong>mise en cache</strong> des arrière-plans générés, pour garder un jeu fluide.</li><li>Une <strong>boucle de jeu asynchrone</strong>, nécessaire pour la version navigateur avec pygbag, et qui fonctionne aussi en local.</li></ul>
-            </div>
-          </section>
-          <section id="difficultes" class="section-block reveal panel p-6 md:p-8">
-            <div class="prose-red">
-              <h2>Les difficultés et comment je les ai résolues</h2>
-              <ul><li><strong>Un seul gros fichier</strong> devenu difficile à faire évoluer : je l'ai découpé en modules, avec un schéma des dépendances pour m'y retrouver.</li><li><strong>Faire tourner le jeu dans le navigateur</strong> : j'ai adapté la boucle principale pour pygbag, et fixé le format d'affichage en 16/9 pour éviter les bandes noires.</li></ul>
-            </div>
-          </section>
-          <section id="resultat" class="section-block reveal panel p-6 md:p-8">
-            <div class="prose-red">
-              <h2>Le résultat</h2>
-              <p>Le jeu est jouable en ligne. Il n'est pas terminé, et je le reprends régulièrement. Ma copine le teste depuis le début : elle me dit quand quelque chose n'est pas clair, et une bonne partie des idées viennent d'elle.</p>
-            </div>
-          </section>
-          <section id="acquis" class="section-block reveal panel p-6 md:p-8">
-            <div class="prose-red">
-              <h2>Ce que j'en retiens</h2>
-              <ul><li>Organiser un projet en modules dès qu'il grandit.</li><li>Faire tester par quelqu'un d'autre révèle des problèmes qu'on ne voit pas soi-même.</li><li>Un projet personnel est l'endroit idéal pour apprendre sans contrainte.</li></ul>
-            </div>
-          </section>
-          <section id="competences" class="section-block reveal panel p-6 md:p-8">
-            <div class="prose-red">
-              <h2>Compétences mobilisées</h2>
-              <ul><li>Programmer en Python et structurer un projet en modules.</li><li>Concevoir une logique de jeu : états, collisions, progression.</li><li>Publier une application sur le web (WebAssembly).</li><li>Prendre en compte les retours d'un utilisateur.</li></ul>
-            </div>
-          </section>
-        </div>
-        <aside class="order-first lg:order-none lg:sticky lg:top-24 lg:self-start">
-          <div class="panel p-5">
-            <p class="label text-blood">Fiche du projet</p>
-            <dl class="mt-3 text-sm"><div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Cadre</dt><dd class="text-right font-medium text-bone">Exercice de cours, puis projet personnel</dd></div><div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Mon rôle</dt><dd class="text-right font-medium text-bone">Tout le projet</dd></div><div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Taille</dt><dd class="text-right font-medium text-bone">9 modules Python</dd></div><div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Statut</dt><dd class="text-right font-medium text-bone">Jouable, toujours en chantier</dd></div></dl>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Python</li><li class="tag">pygame</li><li class="tag">pygbag</li><li class="tag">WebAssembly</li><li class="tag">asyncio</li></ul>
-          </div>
-          <nav class="toc mt-5 hidden lg:block" aria-label="Sommaire de la page" data-toc>
-            <p class="label mb-2 px-3 text-ash">Sommaire</p>
-            <a href="#en-bref">En bref</a><a href="#contexte">Le contexte</a><a href="#realisation">Ce que j'ai réalisé</a><a href="#choix">Les choix techniques</a><a href="#difficultes">Les difficultés et comment je les ai résolues</a><a href="#resultat">Le résultat</a><a href="#acquis">Ce que j'en retiens</a><a href="#competences">Compétences mobilisées</a>
-          </nav>
-        </aside>
+    <figcaption class="border-t border-edge px-4 py-2.5 text-xs text-ash">L&#039;écran-titre du jeu.</figcaption>
+  </figure>
+</div></div>
+
+  <div class="px-5 pb-16 pt-6 md:px-8">
+    <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_18rem]">
+      <div class="grid min-w-0 gap-5">
+                  <section id="en-bref" class="section-block reveal callout p-6 md:p-8">
+  <div class="prose-red">
+    <h2>En bref</h2>
+        <p>Mission Orion est un jeu de tir spatial écrit en Python avec pygame. C'était au départ un exercice de cours ; j'ai continué chez moi parce que le projet me plaisait. Je l'ai ensuite compilé en WebAssembly pour qu'il se joue dans le navigateur, sans rien installer.</p>    </div>
+</section>
+
+                  <section id="contexte" class="section-block reveal panel p-6 md:p-8">
+  <div class="prose-red">
+    <h2>Le contexte</h2>
+        <p>En première année, un TP demandait de réaliser un petit jeu avec pygame pour pratiquer Python : sprites, collisions, score. Une fois le TP terminé, j'ai voulu aller plus loin et en faire un vrai jeu, avec plusieurs niveaux et une progression.</p>    </div>
+</section>
+
+                  <section id="realisation" class="section-block reveal panel p-6 md:p-8">
+  <div class="prose-red">
+    <h2>Ce que j&#039;ai réalisé</h2>
+        <ul><li>Un <strong>mode histoire</strong> en vagues successives, avec un boss, et un <strong>mode survie</strong>.</li><li>Un <strong>garage</strong> pour personnaliser la couleur du laser et du vaisseau.</li><li>Des <strong>arrière-plans générés par le code</strong>, avec huit styles différents.</li><li>Une <strong>progression sauvegardée</strong> (modes terminés, meilleurs scores).</li><li>Les écrans d'introduction, les menus et les crédits.</li><li>Une <strong>version web</strong>, jouable depuis ce portfolio.</li></ul>
+    </div>
+</section>
+
+                  <section id="choix" class="section-block reveal panel p-6 md:p-8">
+  <div class="prose-red">
+    <h2>Les choix techniques</h2>
+        <ul><li><strong>Neuf modules</strong> aux rôles précis : configuration, état du jeu, génération des fonds, chargement des ressources, entités, dessin de l'interface, écrans, utilitaires et boucle principale.</li><li>Des <strong>dépendances à sens unique</strong> entre ces modules, pour éviter les imports circulaires.</li><li>Toute la <strong>configuration au même endroit</strong> : ajouter un niveau ou une couleur se fait en modifiant une liste.</li><li>Une <strong>mise en cache</strong> des arrière-plans générés, pour garder un jeu fluide.</li><li>Une <strong>boucle de jeu asynchrone</strong>, nécessaire pour la version navigateur avec pygbag, et qui fonctionne aussi en local.</li></ul>
+    </div>
+</section>
+
+                  <section id="difficultes" class="section-block reveal panel p-6 md:p-8">
+  <div class="prose-red">
+    <h2>Les difficultés et comment je les ai résolues</h2>
+        <ul><li><strong>Un seul gros fichier</strong> devenu difficile à faire évoluer : je l'ai découpé en modules, avec un schéma des dépendances pour m'y retrouver.</li><li><strong>Faire tourner le jeu dans le navigateur</strong> : j'ai adapté la boucle principale pour pygbag, et fixé le format d'affichage en 16/9 pour éviter les bandes noires.</li></ul>
+    </div>
+</section>
+
+                  <section id="resultat" class="section-block reveal panel p-6 md:p-8">
+  <div class="prose-red">
+    <h2>Le résultat</h2>
+        <p>Le jeu est jouable en ligne. Il n'est pas terminé, et je le reprends régulièrement. Ma copine le teste depuis le début : elle me dit quand quelque chose n'est pas clair, et une bonne partie des idées viennent d'elle.</p>    </div>
+</section>
+
+                  <section id="acquis" class="section-block reveal panel p-6 md:p-8">
+  <div class="prose-red">
+    <h2>Ce que j&#039;en retiens</h2>
+        <ul><li>Organiser un projet en modules dès qu'il grandit.</li><li>Faire tester par quelqu'un d'autre révèle des problèmes qu'on ne voit pas soi-même.</li><li>Un projet personnel est l'endroit idéal pour apprendre sans contrainte.</li></ul>
+    </div>
+</section>
+
+                  <section id="competences" class="section-block reveal panel p-6 md:p-8">
+  <div class="prose-red">
+    <h2>Compétences mobilisées</h2>
+        <ul><li>Programmer en Python et structurer un projet en modules.</li><li>Concevoir une logique de jeu : états, collisions, progression.</li><li>Publier une application sur le web (WebAssembly).</li><li>Prendre en compte les retours d'un utilisateur.</li></ul>
+    </div>
+</section>
+
+              </div>
+      <aside class="order-first lg:order-none lg:sticky lg:top-24 lg:self-start">
+  <div class="panel p-5">
+    <p class="label text-blood">Fiche du projet</p>
+    <dl class="mt-3 text-sm">
+              <div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Cadre</dt><dd class="text-right font-medium text-bone">Exercice de cours, puis projet personnel</dd></div>
+              <div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Mon rôle</dt><dd class="text-right font-medium text-bone">Tout le projet</dd></div>
+              <div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Taille</dt><dd class="text-right font-medium text-bone">9 modules Python</dd></div>
+              <div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Statut</dt><dd class="text-right font-medium text-bone">Jouable, toujours en chantier</dd></div>
+          </dl>
+    <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Python</li>
+<li class="tag">pygame</li>
+<li class="tag">pygbag</li>
+<li class="tag">WebAssembly</li>
+<li class="tag">asyncio</li>
+</ul>
+
+  </div>
+    <nav class="toc mt-5 hidden lg:block" aria-label="Sommaire de la page" data-toc>
+    <p class="label mb-2 px-3 text-ash">Sommaire</p>
+    <a href="#en-bref">En bref</a><a href="#contexte">Le contexte</a><a href="#realisation">Ce que j&#039;ai réalisé</a><a href="#choix">Les choix techniques</a><a href="#difficultes">Les difficultés et comment je les ai résolues</a><a href="#resultat">Le résultat</a><a href="#acquis">Ce que j&#039;en retiens</a><a href="#competences">Compétences mobilisées</a>  </nav>
+</aside>
+
+    </div>
+  </div>
+
+  <section class="px-5 pb-16 pt-10 md:px-8" aria-label="Contact">
+  <div class="mx-auto max-w-6xl">
+    <div class="panel relative overflow-hidden px-6 py-10 text-center md:px-12">
+      <div class="pointer-events-none absolute inset-x-0 -top-28 mx-auto h-56 w-[30rem] max-w-full rounded-full bg-blood/15 blur-3xl" aria-hidden="true"></div>
+      <p class="relative font-display text-2xl font-bold text-bone md:text-3xl">Une question sur ce projet&nbsp;?</p>
+      <p class="relative mx-auto mt-3 max-w-lg text-ash">Je serai ravi d'en parler plus en détail lors d'un échange.</p>
+      <div class="relative mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+        <a class="btn btn-primary" href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>
+<button class="btn btn-ghost" type="button" data-copy="dorianpachot@gmail.com"><span data-copy-label>Copier l'adresse</span></button>
+
       </div>
     </div>
+  </div>
+</section>
 
-    <section class="px-5 pb-16 pt-10 md:px-8" aria-label="Contact">
-      <div class="mx-auto max-w-6xl">
-        <div class="panel relative overflow-hidden px-6 py-10 text-center md:px-12">
-          <div class="pointer-events-none absolute inset-x-0 -top-28 mx-auto h-56 w-[30rem] max-w-full rounded-full bg-blood/15 blur-3xl" aria-hidden="true"></div>
-          <p class="relative font-display text-2xl font-bold text-bone md:text-3xl">Une question sur ce projet&nbsp;?</p>
-          <p class="relative mx-auto mt-3 max-w-lg text-ash">Je serai ravi d'en parler plus en détail lors d'un échange.</p>
-          <div class="relative mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-            <a class="btn btn-primary" href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>
-            <button class="btn btn-ghost" type="button" data-copy="dorianpachot@gmail.com"><span data-copy-label>Copier l'adresse</span></button>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="px-5 pb-10 md:px-8">
-    <div class="mx-auto flex max-w-6xl flex-col gap-3 border-t border-edge pt-6 text-xs text-ash/80 sm:flex-row sm:items-center sm:justify-between">
-      <span>© 2026 Dorian Pachot, BTS SIO SLAM, IRIS MediaSchool Rouen</span>
-      <span class="flex gap-6"><a class="hover:text-bone" href="mentions-legales.html">Mentions légales</a><a class="hover:text-bone" href="../index.html">Accueil</a></span>
-    </div>
-  </footer>
+  <div class="mx-auto flex max-w-6xl flex-col gap-3 border-t border-edge pt-6 text-xs text-ash/80 sm:flex-row sm:items-center sm:justify-between">
+    <span>© 2026 Dorian Pachot, BTS SIO SLAM, IRIS MediaSchool Rouen</span>
+    <span class="flex gap-6">
+      <a class="hover:text-bone" href="mentions-legales.html">Mentions légales</a>
+      <a class="hover:text-bone" href="../index.html">Accueil</a>    </span>
+  </div>
+</footer>
 
-  <script src="../js/site.js"></script>
-</body>
+
+  <script src="../js/site.js"></script></body>
 </html>

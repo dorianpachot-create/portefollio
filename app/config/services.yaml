@@ -1,0 +1,25 @@
+# Déclaration des services : Symfony crée et injecte automatiquement les classes de src/.
+parameters:
+    # Dossier des fichiers de contenu (textes du site, au format YAML).
+    app.dossier_contenu: '%kernel.project_dir%/contenu'
+    # Dossier où l'export écrit les pages HTML : la racine du dépôt, servie par GitHub Pages.
+    app.dossier_export: '%kernel.project_dir%/..'
+
+services:
+    _defaults:
+        autowire: true      # les dépendances sont injectées automatiquement
+        autoconfigure: true # les commandes, extensions Twig, etc. sont reconnues automatiquement
+        bind:
+            $dossierContenu: '%app.dossier_contenu%'
+            $dossierExport: '%app.dossier_export%'
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/Kernel.php'
+
+    # Journal de Symfony : seulement les avertissements et les erreurs
+    # (sinon chaque page exportée affiche une ligne "Matched route").
+    logger:
+        class: Symfony\Component\HttpKernel\Log\Logger
+        arguments: ['warning']

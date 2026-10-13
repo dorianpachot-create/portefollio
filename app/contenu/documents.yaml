@@ -1,0 +1,31 @@
+# ============================================================================
+# LES DOCUMENTS (section "Mon dossier" de l'accueil)
+#   vignette  image d'aperçu, sans l'extension (.webp et .jpg sont utilisés)
+#   page      page qui affiche le document en grand ; pdf : le fichier à télécharger
+# ============================================================================
+
+documents:
+- titre: Curriculum vitae
+  sous_titre: Mis à jour le 7 août 2026
+  vignette: assets/meta/thumb-cv
+  largeur: 368
+  page: pages/cv.html
+  pdf: assets/cv/CV_Dorian_Pachot.pdf
+- titre: Lettre de recommandation
+  sous_titre: Suitime, 20 juillet 2026
+  vignette: assets/meta/thumb-reco
+  largeur: 402
+  page: pages/documents.html#reco
+  pdf: assets/recommandation/Lettre_recommandation_Suitime.pdf
+- titre: Bulletin de première année
+  sous_titre: BTS SIO, 2025-2026
+  vignette: assets/meta/thumb-bulletin
+  largeur: 368
+  page: pages/documents.html#bulletin
+  pdf: assets/bulletin/Bulletin_1ere_annee_Dorian_Pachot.pdf
+- titre: Lettre de motivation
+  sous_titre: Adaptée à chaque entreprise
+  vignette: assets/meta/thumb-lm
+  largeur: 368
+  page: pages/documents.html#lm
+  pdf: assets/lettre-motivation/LM_Dorian_Pachot.pdf

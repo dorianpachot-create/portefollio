@@ -1,0 +1,108 @@
+# ============================================================================
+# LA VEILLE TECHNOLOGIQUE (section "Ma veille" de l'accueil)
+# ----------------------------------------------------------------------------
+#   objectif          le grand encadré rouge "Devenir DevOps"
+#   a_la_une          l'article principal du "journal"
+#   articles_reperes  la colonne de droite (liens vers les articles lus)
+#   articles          les rangées d'articles : chaque rangée est une liste
+#                     (2 ou 3 articles par rangée, la grille s'adapte)
+#   methode / bilan   "Comment je fais ma veille" et "Ce que j'en tire"
+# Pour ajouter un article repéré : copier un bloc de articles_reperes.
+# ============================================================================
+
+mise_a_jour: 24 septembre 2026
+objectif:
+  titre: Devenir DevOps, et un bon DevOps.
+  texte: 'C''est le fil conducteur de ma veille. Je ne cherche pas seulement à connaître les outils : je veux comprendre comment on livre des applications fiables, sécurisées et faciles à maintenir, et savoir automatiser tout ce qui peut l''être. C''est pour cette raison que je vise un bachelor DevOps après le BTS.'
+  etapes:
+  - titre: Ce que je pratique déjà
+    texte: Déploiements scriptés pour SYNCRO et Pla'Net, test automatique à chaque mise en ligne, serveurs Linux, scripts Bash, cron et systemd en TP.
+  - titre: Ce que je prépare
+    texte: 'Les certifications GitLab 101 et Terraform Associate : intégration continue et infrastructure décrite en code.'
+  - titre: Ce que je veux maîtriser
+    texte: Les chaînes CI/CD complètes, les conteneurs, la supervision et la sécurité intégrée dès la conception.
+rubriques:
+- texte: Cybersécurité
+  ancre: '#une'
+- texte: Réglementation
+  ancre: '#art-nis2'
+- texte: Réseaux
+  ancre: '#art-reseaux'
+- texte: Mes outils
+  ancre: '#art-outils'
+- texte: DevOps
+  ancre: '#art-devops'
+- texte: IA
+  ancre: '#art-ia'
+a_la_une:
+  id: une
+  rubrique: À la une, cybersécurité
+  titre: Les attaques qui passent par l'utilisateur
+  chapeau: Le faux CAPTCHA « ClickFix », qui pousse la victime à coller elle-même une commande, est désormais plus répandu que le phishing classique.
+  pourquoi: SYNCRO et Pla'Net ont tous les deux un écran de connexion et des comptes à protéger. Je veux comprendre comment ces comptes sont réellement attaqués.
+  retenu: La faille est souvent humaine. Côté code, je protège ce que je peux (jeton CSRF, mots de passe hachés, limite de tentatives). Le reste passe par la sensibilisation des utilisateurs.
+  liens_avec: SYNCRO, Pla'Net, TP FortiGate
+articles_reperes:
+- date_source: 23 septembre 2026, Panda Security
+  titre: 'Cybermois 2026 : la France veut passer à la vitesse supérieure face aux cybermenaces'
+  url: https://www.pandasecurity.com/fr/mediacenter/cybermois-2026-france-passer-vitesse-superieure-face-aux-cybermenaces/
+- date_source: 23 septembre 2026, Planet Sans fil
+  titre: 'Digital Networks Act : les opérateurs demandent à l''UE de revoir sa copie sur la 5G, la fibre et la 6G'
+  url: https://www.planet-sansfil.com/5g/digital-networks-act-les-operateurs-europeens-demandent-a-lue-de-revoir-sa-copie-sur-la-5g-la-fibre-et-la-6g/
+- date_source: 16 septembre 2026, Zataz
+  titre: Avancer sur la mise en conformité NIS2 avec le référentiel ReCyF
+  url: https://www.zataz.com/guide-comment-avancer-sur-le-projet-de-mise-en-conformite-nis2-avec-le-referentiel-recyf/
+- date_source: 16 septembre 2026, Pasquale Pillitteri
+  titre: ClickFix, le faux CAPTCHA qui pousse la victime à installer elle-même le logiciel malveillant
+  url: https://pasqualepillitteri.it/fr/news/16345/clickfix-faux-captcha-malware
+articles:
+- - id: art-nis2
+    rubrique: Réglementation
+    titre: NIS2, ReCyF et RGPD
+    pourquoi: Sur CRP-Assurance, la conformité RGPD faisait partie de la commande. La réglementation en cybersécurité suit le même chemin.
+    retenu: L'ANSSI a publié le ReCyF pour accompagner la mise en conformité NIS2. Pour un développeur, cela signifie penser la sécurité dès le cahier des charges.
+    liens_avec: CRP-Assurance, CEJM
+  - id: art-reseaux
+    rubrique: Réseaux
+    titre: Wi-Fi 7, 5G et 6G
+    pourquoi: Mes travaux pratiques en réseau (VLAN, DHCP, cluster FortiGate sous GNS3) m'ont donné envie de suivre les évolutions à venir.
+    retenu: Le Wi-Fi 7 arrive dans le matériel grand public, et les opérateurs demandent à l'UE de revoir le Digital Networks Act. Les choix d'infrastructure sont aussi politiques.
+    liens_avec: cours de réseaux, TP GNS3
+  - id: art-outils
+    rubrique: Mes outils
+    titre: Frameworks et règles des stores
+    pourquoi: SYNCRO est publiée sur l'App Store et Google Play, et Pla'Net repose sur Symfony. Une application publiée doit être maintenue.
+    retenu: Google Play relève chaque année le niveau d'API Android exigé et Apple fait évoluer ses règles. Je suis les notes de version de Flutter, Next.js et Symfony pour anticiper.
+    liens_avec: SYNCRO, Pla'Net
+- - id: art-devops
+    rubrique: DevOps
+    titre: Automatiser la mise en ligne
+    pourquoi: Pendant mon stage, une connexion défaillante a bloqué la validation de SYNCRO sur l'App Store. La correction la plus utile a été un test automatique à chaque déploiement.
+    retenu: C'est ce qui m'oriente vers un bachelor DevOps et vers les certifications GitLab 101 et Terraform Associate, que je prépare. Le TP d'automatisation en Bash va dans le même sens.
+    liens_avec: stage chez Suitime, TP4 Linux
+  - id: art-ia
+    rubrique: Intelligence artificielle
+    titre: Les agents IA
+    pourquoi: Les outils d'IA changent la manière d'écrire, de relire et de tester du code. Je les utilise, donc je dois savoir où ils en sont.
+    retenu: Les grands acteurs investissent massivement, par exemple IBM avec un incubateur ouvert avec Marist University. Plus le code est produit vite, plus les tests et la relecture comptent.
+    liens_avec: Mission Orion, mes outils
+methode:
+- titre: Des sources choisies
+  texte: 'Cinq alertes Google en français, reçues chaque semaine : cybersécurité, NIS2, ransomware et phishing, réseaux (Wi-Fi 7, 6G), intelligence artificielle. En complément, les notes de version de Flutter, Next.js et Symfony, et les règles de publication de l''App Store et de Google Play.'
+- titre: Un tri systématique
+  texte: 'Pour chaque article, une seule question : est-ce que cela concerne un projet que j''ai mené, un cours, ou le métier que je vise ? Si ce n''est pas le cas, je ne le garde pas.'
+- titre: Une lecture critique
+  texte: Je vérifie la source et la date, et je croise l'information avec une deuxième source quand le sujet est important.
+- titre: Une trace écrite
+  texte: Ce qui compte est résumé sur cette page, rattaché au projet concerné, et mis à jour au fil de l'année.
+bilan:
+- titre: La sécurité se prévoit dès le départ
+  texte: Sur Pla'Net, la protection CSRF et le hachage des mots de passe sont en place dès la première version, pas ajoutés à la fin.
+- titre: Automatiser les vérifications
+  texte: 'Un test de connexion à chaque déploiement de SYNCRO, et des scripts Bash pour la sauvegarde et la supervision en TP : ce qui est automatisé ne s''oublie pas.'
+- titre: Une application publiée s'entretient
+  texte: Les exigences de Google Play et d'Apple évoluent chaque année. Suivre ces changements permet d'anticiper les mises à jour de SYNCRO.
+- titre: L'IA aide, mais je relis
+  texte: J'utilise l'IA pour avancer plus vite. Ma veille me rappelle que plus le code arrive vite, plus les tests et la relecture sont importants.
+- titre: 'Un cap : le DevOps'
+  texte: 'Automatisation, déploiement, sécurité, maintenance : tous ces sujets mènent au même métier. Ma veille confirme que je veux devenir DevOps, et que je veux le faire bien.'

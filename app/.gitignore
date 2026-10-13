@@ -1,0 +1,7 @@
+# Dépendances installées par Composer (on ne les versionne pas)
+/vendor/
+# Cache et journaux de Symfony
+/var/
+# Fichier de travail local (installation sans Packagist)
+/composer.local.json
+/composer.local.lock

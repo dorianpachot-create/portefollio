@@ -1,0 +1,85 @@
+# ============================================================================
+# LA FRISE DU PARCOURS (section "Mon parcours" de l'accueil)
+# ----------------------------------------------------------------------------
+# Une étape par bloc, de la plus ancienne à la plus récente.
+#   type : la couleur du point sur la frise
+#          sport = orange, tech = rouge (études, technique),
+#          work = gris (emploi), now = rouge lumineux (le présent)
+# ============================================================================
+
+etapes:
+- periode: 2017 à 2019
+  type: sport
+  categorie: Sport
+  titre: Handball en National 1
+  texte: En semi-professionnel, pendant le lycée puis après le bac. Entraînement quotidien et un rôle à tenir dans l'équipe.
+- periode: '2018'
+  type: tech
+  categorie: Études
+  titre: Bac STI2D, architecture et construction
+  texte: Au lycée Pablo Neruda, où j'ai appris à lire et à réaliser un plan.
+- periode: 2018 à 2019
+  type: work
+  categorie: Emploi
+  titre: Restauration et bar dans un casino
+  texte: Une année de service, avec la salle et la caisse à gérer en même temps.
+- periode: 2019 à 2020
+  type: tech
+  categorie: Alternance
+  titre: BTS EEC chez Tihno SA
+  texte: 'Chargé d''affaires : accueil en showroom, prises de mesures, plans 3D, devis et suivi de chantier.'
+- periode: 2020 à 2021
+  type: work
+  categorie: Emploi
+  titre: Retour en restauration
+  texte: Pendant la période du covid, au rythme des ouvertures et des fermetures.
+- periode: '2021'
+  type: work
+  categorie: Emploi
+  titre: Intérim, mise en rayon et étiquetage
+  texte: Des missions courtes, dans des équipes qui changent souvent.
+- periode: 2021 à 2022
+  type: tech
+  categorie: Formation
+  titre: Dessinateur projeteur, Art&Communication
+  texte: 'Une année pour revenir au technique : lecture de plans, cotation et normes.'
+- periode: '2022'
+  type: tech
+  categorie: Emploi
+  titre: Plans d'électricité
+  texte: Dans la continuité de la formation, jusqu'en juillet 2022.
+- periode: 2022 à 2023
+  type: work
+  categorie: Emploi
+  titre: McDonald's, équipier puis manager
+  texte: Huit mois à encadrer une équipe de 5 à 20 personnes pendant les périodes de forte affluence.
+- periode: 2023 à 2024
+  type: work
+  categorie: Emploi
+  titre: Subway
+  texte: Trois mois en restauration rapide.
+- periode: 2024 à 2025
+  type: work
+  categorie: Emploi
+  titre: Paysagiste et conducteur d'engins chez GBM
+  texte: Beaucoup d'autonomie et des règles de sécurité strictes. Le poste s'est arrêté après un accident du travail en février 2025.
+- periode: '2025'
+  type: now
+  categorie: Reprise d'études
+  titre: BTS SIO SLAM à IRIS MediaSchool
+  texte: Après l'accident, un travail physique n'était plus possible. J'ai repris mes études en septembre 2025, cette fois dans l'informatique.
+- periode: '2026'
+  type: now
+  categorie: Projets
+  titre: CRP-Assurance, SYNCRO et le stage
+  texte: Un site client livré en février, puis cinq mois sur SYNCRO, dont cinq semaines de stage, jusqu'à la publication sur les stores.
+- periode: Septembre 2026
+  type: now
+  categorie: Deuxième année
+  titre: Linux, bases de données et Pla'Net
+  texte: Une semaine d'administration Linux, un module de bases de données avancées et le développement de Pla'Net.
+- periode: Aujourd'hui
+  type: now
+  categorie: Objectif
+  titre: Une alternance
+  texte: Trois jours en entreprise, deux jours à l'école, puis un bachelor DevOps si l'occasion se présente.

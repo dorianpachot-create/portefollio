@@ -1,0 +1,484 @@
+# ============================================================================
+# LES PROJETS (réalisations)
+# ----------------------------------------------------------------------------
+# Un bloc par projet. Chaque projet produit :
+#   - sa carte dans la section "Réalisations" de l'accueil (clé "accueil")
+#   - sa carte sur la page "Mes réalisations" (clé "liste_projets")
+#   - sa page de présentation : pages/<slug>.html
+#
+# Pour AJOUTER un projet : copier un bloc entier (de "- slug:" au suivant),
+# changer le slug et les textes, puis lancer : php bin/console app:export
+#
+# Les textes peuvent contenir un peu de HTML (<strong>, <a>, <sup>).
+# Ordre des clés d'un projet :
+#   slug        nom du fichier de la page (syncro -> pages/syncro.html)
+#   nom         nom affiché ; couleur : couleur d'accent du projet
+#   fiche       lignes de la "Fiche du projet" (encadré à droite)
+#   technos     étiquettes sous la fiche
+#   liens       boutons sous le titre (style : principal ou secondaire)
+#   media       captures d'écran (type: captures) ou une image large (type: image)
+#   sections    les parties de la page (paragraphes OU liste à puces)
+# ============================================================================
+
+projets:
+- slug: syncro
+  nom: SYNCRO
+  couleur: '#EF4444'
+  titre_page: SYNCRO, application mobile de planning d'équipe | Dorian Pachot
+  description: SYNCRO, application Flutter et API Next.js développée pendant mon stage chez Suitime, publiée sur l'App Store et Google Play.
+  cadre: Projet en milieu professionnel, stage chez Suitime
+  intro: Application mobile de planification d'équipe, développée pour Suitime d'avril à août 2026 et publiée sur l'App Store et Google Play.
+  fiche:
+  - libelle: Cadre
+    valeur: Stage chez Suitime
+  - libelle: Période
+    valeur: Avril à août 2026
+  - libelle: Stage à temps plein
+    valeur: 6 juillet au 7 août
+  - libelle: Mon rôle
+    valeur: 'Tout le projet : appli, API, base, serveur, publication'
+  - libelle: Statut
+    valeur: En production
+  technos:
+  - Flutter
+  - Dart
+  - Next.js
+  - TypeScript
+  - MySQL
+  - JWT
+  - Nginx
+  - PM2
+  - Firebase
+  liens:
+  - texte: App Store
+    url: https://apps.apple.com/fr/app/syncro/id6787898930
+    style: principal
+    icone: apple
+  - texte: Google Play
+    url: https://play.google.com/store/apps/details?id=fr.appsyncro.mobile
+    style: secondaire
+    icone: google-play
+  - texte: appsyncro.fr
+    url: https://appsyncro.fr
+    style: secondaire
+  - texte: Journal de stage
+    url: pages/stage.html
+    style: secondaire
+  - texte: Lettre de recommandation
+    url: pages/documents.html#reco
+    style: secondaire
+  media:
+    type: captures
+    images:
+    - fichier: assets/syncro/screens/screen-1.jpg
+      alt: 'SYNCRO : planning de la semaine'
+    - fichier: assets/syncro/screens/screen-2.jpg
+      alt: 'SYNCRO : saisie des disponibilités'
+    - fichier: assets/syncro/screens/screen-3.jpg
+      alt: 'SYNCRO : groupes et rôles'
+    - fichier: assets/syncro/screens/screen-4.jpg
+      alt: 'SYNCRO : notifications et suivi des heures'
+  sections:
+  - id: en-bref
+    titre: En bref
+    paragraphes:
+    - 'SYNCRO est une application mobile qui permet à une équipe de coordonner ses disponibilités de la semaine. Je l''ai développée pour Suitime, d''abord en parallèle de mes cours, puis à temps plein pendant mon stage. Je m''en suis occupé de bout en bout : l''application Flutter, l''API Next.js, la base de données, le serveur, le site vitrine et la publication sur les deux stores.'
+  - id: contexte
+    titre: Le contexte et le besoin
+    paragraphes:
+    - Dans beaucoup de petites entreprises, les plannings changent chaque semaine et se gèrent avec un tableur partagé et des messages. Les informations se perdent, et il est difficile de savoir qui est disponible et quand.
+    - 'Le besoin exprimé par Suitime : une application simple, utilisable sans formation, où chaque membre saisit ses disponibilités et où les responsables valident puis verrouillent la semaine.'
+  - id: realisation
+    titre: Ce que j'ai réalisé
+    liste:
+    - '<strong>Avril à juin</strong> : cahier des charges, maquettes, puis le cœur de l''application : comptes, groupes, saisie des disponibilités (matin, après-midi, autres plages), validation et verrouillage, notifications.'
+    - '<strong>Juillet</strong> (stage) : mise en production sur un serveur Linux, site vitrine appsyncro.fr, back-office pour l''équipe, migration du back-end en TypeScript et renforcement de la sécurité.'
+    - '<strong>Août</strong> (stage) : publication sur l''App Store et Google Play, notifications iOS, accessibilité et derniers correctifs.'
+    - Invitations par QR code, suivi des heures, suppression de compte depuis l'application (exigée par Apple).
+    - Treize écrans maquettés pour cadrer une évolution importante du produit avec les responsables.
+  - id: choix
+    titre: Les choix techniques
+    liste:
+    - '<strong>Flutter</strong> : une seule base de code pour Android et iOS.'
+    - '<strong>Next.js en TypeScript</strong> pour l''API REST : 14 modules partagés et 53 routes migrés de JavaScript vers TypeScript, pour détecter les erreurs avant la mise en ligne plutôt qu''en production.'
+    - <strong>MySQL / MariaDB</strong>, avec des index et des déclencheurs pour garder les données cohérentes.
+    - '<strong>Authentification par jetons</strong> : un jeton d''accès de 15 minutes et un jeton de renouvellement de 7 jours.'
+    - <strong>Nginx, PM2 et HTTPS</strong> sur le serveur, avec un déploiement automatisé basé sur Git.
+    - <strong>Notifications push</strong> avec Firebase pour Android et APNs pour iOS.
+  - id: difficultes
+    titre: Les difficultés et comment je les ai résolues
+    liste:
+    - '<strong>Refus de l''App Store</strong> : les testeurs d''Apple ne pouvaient pas se connecter. La connexion était en réalité cassée en production depuis cinq jours, à cause d''anciens fichiers restés sur le serveur. J''ai corrigé, puis modifié le script de déploiement pour supprimer les fichiers obsolètes et lancer un test de connexion à chaque mise en ligne.'
+    - <strong>Notifications iPhone</strong> qui n'avaient jamais fonctionné, sans aucun message d'erreur. J'ai comparé point par point avec une autre application de l'entreprise qui fonctionnait, et trouvé trois écarts.
+    - '<strong>Blocage de créneaux</strong> : un membre pouvait être bloqué deux fois sur le même créneau. La protection existait, mais elle était fausse pour les horaires qui passent minuit. J''ai écrit une nouvelle méthode, vérifiée sur les cent combinaisons possibles.'
+    - '<strong>Permissions</strong> : en relisant les routes sensibles une par une, j''ai trouvé et corrigé un défaut de cloisonnement entre groupes.'
+  - id: resultat
+    titre: Le résultat
+    paragraphes:
+    - SYNCRO est disponible sur l'App Store et Google Play, et son site appsyncro.fr est en ligne. Le projet représente 84 commits sur cinq mois. Mon responsable de stage m'a remis une lettre de recommandation.
+  - id: acquis
+    titre: Ce que j'en retiens
+    liste:
+    - Une protection présente dans le code doit être vérifiée sur les cas limites.
+    - 'Après une correction, il faut empêcher que le problème revienne : c''est le rôle des tests automatiques.'
+    - Comparer avec ce qui fonctionne déjà est souvent plus sûr que d'inventer.
+    - Quand un sujet relève d'une décision produit, je le signale au lieu de trancher seul.
+  - id: competences
+    titre: Compétences mobilisées
+    liste:
+    - Concevoir et développer une application mobile et son API.
+    - Concevoir et faire évoluer une base de données.
+    - Mettre en production et maintenir un service sur un serveur Linux.
+    - 'Sécuriser une application : authentification, permissions, validation des données.'
+    - 'Travailler en mode projet avec des responsables : maquettes, cadrage, compte rendu.'
+    - Diagnostiquer et corriger des incidents en production.
+  accueil:
+    grande_carte: true
+    filtre: done
+    statut: En production
+    contexte: Stage chez Suitime, avril à août 2026
+    accroche: Application mobile de planification d'équipe
+    resume: Chaque membre renseigne ses disponibilités, le responsable valide la semaine. J'ai développé l'application Flutter et le back-end Next.js, puis assuré la mise en production pendant mon stage, jusqu'à la publication sur l'App Store et Google Play.
+    chiffres:
+    - valeur: '5'
+      libelle: mois de projet
+    - valeur: '53'
+      libelle: routes en TypeScript
+    - valeur: '2'
+      libelle: stores
+    tags:
+    - Flutter
+    - Dart
+    - Next.js
+    - TypeScript
+    - SQL
+    - Nginx
+    lien_principal:
+      texte: Lire la présentation du projet
+      url: pages/syncro.html
+    captures_bureau:
+    - assets/syncro/screens/screen-2.jpg
+    - assets/syncro/screens/screen-1.jpg
+    captures_mobile:
+    - assets/syncro/screens/screen-1.jpg
+    - assets/syncro/screens/screen-2.jpg
+    - assets/syncro/screens/screen-3.jpg
+  liste_projets:
+    statut: En production
+    texte: Application mobile de planification d'équipe, développée pendant mon stage chez Suitime et publiée sur l'App Store et Google Play.
+- slug: planet
+  nom: Pla'Net
+  couleur: '#22D3EE'
+  titre_page: Pla'Net, application de planning des cours | Dorian Pachot
+  description: Pla'Net, application Symfony de planning des cours de MediaSchool Rouen, en ligne.
+  cadre: Projet de deuxième année de BTS
+  intro: Application web de planning des cours de MediaSchool Rouen, développée en Symfony et mise en ligne.
+  fiche:
+  - libelle: Cadre
+    valeur: Projet de BTS, 2<sup>e</sup> année
+  - libelle: Début
+    valeur: Septembre 2026
+  - libelle: Mon rôle
+    valeur: 'Tout le projet : conception, développement, mise en ligne'
+  - libelle: Statut
+    valeur: En ligne, en évolution
+  technos:
+  - Symfony
+  - PHP 8
+  - Twig
+  - Doctrine
+  - MariaDB
+  - Bash
+  - PowerShell
+  liens:
+  - texte: Tester l'application
+    url: https://pla-net.mediaschool-rouen.fr/login
+    style: principal
+  media:
+    type: image
+    image: assets/meta/shot-planet
+    alt: Maquette initiale de Pla'Net, vue semaine
+    legende: 'La maquette réalisée au début du projet, pour valider les écrans. Comptes de démonstration de l''application en ligne : admin / admin et user / user.'
+  sections:
+  - id: en-bref
+    titre: En bref
+    paragraphes:
+    - 'Pla''Net sert à construire et à consulter le planning des cours de l''école : quelle classe, avec quel intervenant, dans quelle salle et à quel moment. J''ai mené tout le projet : une maquette pour valider les écrans, la modélisation de la base de données, le développement en Symfony, puis la mise en ligne.'
+  - id: contexte
+    titre: Le contexte et le besoin
+    paragraphes:
+    - 'Un planning d''école réunit beaucoup d''informations liées entre elles : des classes, des intervenants, des salles partagées, des matières, et des cours qui se répètent ou qui changent. Le besoin : un outil web qui permette aux administrateurs de saisir et de modifier ce planning, et à tout le monde de le consulter facilement.'
+  - id: realisation
+    titre: Ce que j'ai réalisé
+    liste:
+    - Une <strong>maquette en JavaScript</strong> pour valider les écrans avant d'écrire la moindre table.
+    - 'Une <strong>base MariaDB de dix tables</strong> : campus, classes, cursus, niveaux, spécialités, matières, intervenants, salles, séances et utilisateurs.'
+    - 'Plusieurs <strong>vues du planning</strong> : semaine, mois, par intervenant et par salle, avec le détail de chaque séance.'
+    - La <strong>gestion des classes, des intervenants et des matières</strong>, avec un archivage plutôt qu'une suppression.
+    - La <strong>duplication</strong> d'une journée ou d'une semaine de cours vers d'autres dates, annulable.
+    - L'<strong>import et l'export CSV</strong> des cours, et l'export du planning sur une période.
+    - Les <strong>jours fériés</strong> calculés automatiquement et grisés, et des <strong>filtres par école</strong>.
+  - id: choix
+    titre: Les choix techniques
+    liste:
+    - <strong>Symfony</strong> pour son organisation claire (contrôleurs, services, gabarits) et son composant de sécurité.
+    - '<strong>Deux rôles</strong> : les administrateurs modifient, les utilisateurs consultent. Formulaire de connexion protégé par jeton CSRF et mots de passe hachés.'
+    - 'La logique métier est rangée dans des <strong>services</strong> séparés : recherche des séances, duplication, import CSV, jours fériés, filtres.'
+    - L'<strong>archivage</strong> plutôt que la suppression, pour ne jamais casser l'historique des plannings.
+    - 'Un <strong>déploiement scripté</strong> : un script PowerShell prépare et envoie l''archive, un script Bash l''installe sur le serveur.'
+  - id: difficultes
+    titre: Les difficultés et comment je les ai résolues
+    liste:
+    - '<strong>Réglages ignorés en production</strong> : Symfony fige les variables d''environnement dans un fichier, et une correction restait sans effet. Le script de déploiement régénère maintenant ce fichier à chaque mise en ligne.'
+    - '<strong>Import de la base dans phpMyAdmin</strong> : l''import échouait car phpMyAdmin perd la base sélectionnée. J''ai préparé un script d''import adapté, rejouable, avec la marche à suivre.'
+    - '<strong>Jours fériés mobiles</strong> : trois d''entre eux dépendent de Pâques. Je les calcule avec un algorithme dédié, sans dépendre d''une extension PHP qui n''est pas toujours installée.'
+  - id: resultat
+    titre: Le résultat
+    paragraphes:
+    - L'application est en ligne sur <a href="https://pla-net.mediaschool-rouen.fr/login" target="_blank" rel="noopener noreferrer">pla-net.mediaschool-rouen.fr</a>, avec des comptes de démonstration. Elle continue d'évoluer au fil de l'année.
+  - id: acquis
+    titre: Ce que j'en retiens
+    liste:
+    - Maquetter et modéliser avant de coder fait gagner beaucoup de temps.
+    - Un code découpé en services est plus simple à faire évoluer et à tester.
+    - Automatiser le déploiement évite les oublis et les erreurs de manipulation.
+  - id: competences
+    titre: Compétences mobilisées
+    liste:
+    - Concevoir une base de données relationnelle.
+    - Développer une application web avec un framework MVC.
+    - Gérer les droits d'accès selon le rôle de l'utilisateur.
+    - Mettre en ligne et maintenir une application sur un serveur Linux.
+    - Importer et exporter des données.
+    - Travailler en mode projet, de la maquette à la mise en ligne.
+  accueil:
+    filtre: wip
+    badge: Testable en ligne
+    image: assets/meta/shot-planet
+    alt: Maquette de Pla'Net, vue semaine
+    statut: En ligne, toujours en évolution
+    resume: 'Application de planning des cours pour MediaSchool Rouen, en ligne. Développée en Symfony avec une base MariaDB : planning par semaine, par mois, par intervenant ou par salle, import et export CSV, duplication de semaines.'
+    tags:
+    - Symfony
+    - Twig
+    - MariaDB
+    - PHP 8
+    lien_principal:
+      texte: Tester l'application
+      url: https://pla-net.mediaschool-rouen.fr/login
+    lien_secondaire:
+      texte: La présentation
+      url: pages/planet.html
+  liste_projets:
+    statut: En ligne, en évolution
+    texte: Application Symfony de planning des cours de MediaSchool Rouen.
+    alt: Maquette de Pla'Net
+- slug: crp-assurance
+  nom: CRP-Assurance
+  couleur: '#22C55E'
+  titre_page: CRP-Assurance, site d'un cabinet d'assurance | Dorian Pachot
+  description: CRP-Assurance.com, site PHP et MySQL d'un cabinet d'assurance avec back-office, espace client et mise en ligne sur hébergement mutualisé.
+  cadre: Projet client
+  intro: Site professionnel d'un cabinet d'assurance, réalisé de bout en bout, avec un back-office pour que le cabinet modifie lui-même ses contenus.
+  fiche:
+  - libelle: Cadre
+    valeur: Client, cabinet d'assurance
+  - libelle: Livraison
+    valeur: Février 2026
+  - libelle: Mon rôle
+    valeur: Tout le projet, du besoin à la mise en ligne
+  - libelle: Hébergement
+    valeur: LWS, mutualisé
+  - libelle: Statut
+    valeur: En ligne
+  technos:
+  - PHP
+  - MySQL
+  - PDO
+  - HTML
+  - CSS
+  - JavaScript
+  - FTP
+  - RGPD
+  liens:
+  - texte: Voir le site
+    url: https://crp-assurance.com
+    style: principal
+  media:
+    type: image
+    image: assets/meta/shot-crp
+    alt: Page d'accueil de CRP-Assurance.com
+    legende: La page d'accueil du site.
+  sections:
+  - id: en-bref
+    titre: En bref
+    paragraphes:
+    - 'CRP-Assurance.com est le site d''un cabinet d''assurance. J''ai mené tout le projet, du premier échange avec le client jusqu''à la mise en ligne : pages des offres, demandes de devis, espace client, et un back-office qui permet au cabinet de tout modifier sans moi.'
+  - id: contexte
+    titre: Le contexte et le besoin
+    paragraphes:
+    - Le cabinet souhaitait un site sérieux pour présenter ses offres, aux particuliers comme aux professionnels, et recevoir des demandes de devis. Il voulait aussi pouvoir mettre à jour ses textes, ses actualités et ses partenaires lui-même.
+    - 'Premier vrai client pour moi : la première étape a été de comprendre ce que « un site sérieux » voulait dire pour lui, avant d''écrire du code.'
+  - id: realisation
+    titre: Ce que j'ai réalisé
+    liste:
+    - Plus de trente <strong>pages d'offres</strong> (auto, habitation, santé, prévoyance, responsabilité civile professionnelle, flotte, décennale…), générées à partir d'un catalogue commun.
+    - 'Un <strong>back-office</strong> : contenus et pages, actualités, FAQ, partenaires, demandes de devis, contrats, utilisateurs et réglages.'
+    - 'Un <strong>espace client</strong> : consultation des contrats et des devis, et contrat téléchargeable en PDF.'
+    - 'Des <strong>outils</strong> : calculatrice, simulation, et l''intégration du devis en ligne d''un assureur partenaire.'
+    - Un <strong>blog d'actualités</strong>, les mentions légales et la conformité RGPD.
+    - Le <strong>nom de domaine</strong>, l'hébergement et un guide de mise en ligne.
+  - id: choix
+    titre: Les choix techniques
+    liste:
+    - '<strong>PHP et MySQL</strong>, sans framework, compatibles PHP 7.1 et plus : la version de PHP de l''hébergement mutualisé n''était pas garantie.'
+    - <strong>PDO et requêtes préparées</strong> pour l'accès aux données, <strong>jetons CSRF</strong> sur les formulaires d'administration.
+    - Les <strong>identifiants sensibles</strong> sont stockés dans un fichier séparé, hors du dépôt de code.
+    - 'Les <strong>images optimisées</strong> : de 226 Mo à 7 Mo, pour un site plus rapide.'
+    - 'Les erreurs PHP ne s''affichent jamais aux visiteurs : elles sont enregistrées dans un journal protégé.'
+  - id: difficultes
+    titre: Les difficultés et comment je les ai résolues
+    liste:
+    - '<strong>Pas d''accès SSH</strong> sur cette formule d''hébergement : la mise en ligne se fait en FTP. Les transferts échouaient au hasard avec trop de connexions simultanées ; j''ai documenté les bons réglages de FileZilla.'
+    - '<strong>Savoir si tout est bien en ligne</strong> : j''ai créé une page de vérification qui compare chaque fichier du serveur au paquet envoyé, et signale ce qui manque ou ce qui ne fonctionne pas (base de données, droits sur les dossiers).'
+    - '<strong>Version de PHP inconnue</strong> : j''ai écarté les fonctions trop récentes pour rester compatible.'
+  - id: resultat
+    titre: Le résultat
+    paragraphes:
+    - Le site est en ligne sur <a href="https://crp-assurance.com" target="_blank" rel="noopener noreferrer">crp-assurance.com</a>. Grâce au back-office, le cabinet modifie un texte, une photo ou un article sans avoir besoin de moi ni de renvoyer de fichiers.
+  - id: acquis
+    titre: Ce que j'en retiens
+    liste:
+    - Le plus difficile n'est pas le code, c'est de bien comprendre le besoin du client.
+    - Rendre le client autonome sur ses contenus fait partie du travail.
+    - Une mise en ligne doit pouvoir se vérifier simplement, surtout sans accès au serveur.
+  - id: competences
+    titre: Compétences mobilisées
+    liste:
+    - Recueillir et analyser le besoin d'un client.
+    - Développer un site web dynamique avec base de données.
+    - Gérer un nom de domaine et un hébergement.
+    - Sécuriser un site et respecter le RGPD.
+    - Documenter une procédure de mise en ligne.
+  accueil:
+    filtre: done
+    badge: Site en ligne
+    image: assets/meta/shot-crp
+    alt: Page d'accueil de CRP-Assurance.com
+    statut: En ligne
+    resume: 'Site PHP et MySQL d''un cabinet d''assurance : plus de trente pages d''offres, un back-office pour que le cabinet gère ses contenus, et un espace client.'
+    tags:
+    - PHP
+    - MySQL
+    - HTML et CSS
+    - RGPD
+    lien_principal:
+      texte: Voir le site
+      url: https://crp-assurance.com
+    lien_secondaire:
+      texte: La présentation
+      url: pages/crp-assurance.html
+  liste_projets:
+    statut: En ligne
+    texte: Site PHP et MySQL d'un cabinet d'assurance, avec back-office et espace client.
+    alt: Accueil de CRP-Assurance.com
+- slug: mission-orion
+  nom: Mission Orion
+  couleur: '#A78BFA'
+  titre_page: Mission Orion, jeu en Python | Dorian Pachot
+  description: Mission Orion, jeu spatial en Python et pygame compilé en WebAssembly, jouable dans le navigateur.
+  cadre: Projet personnel
+  intro: Jeu spatial en Python, né d'un exercice de cours et poursuivi sur mon temps libre. Il se joue directement dans le navigateur.
+  fiche:
+  - libelle: Cadre
+    valeur: Exercice de cours, puis projet personnel
+  - libelle: Mon rôle
+    valeur: Tout le projet
+  - libelle: Taille
+    valeur: 9 modules Python
+  - libelle: Statut
+    valeur: Jouable, toujours en chantier
+  technos:
+  - Python
+  - pygame
+  - pygbag
+  - WebAssembly
+  - asyncio
+  liens:
+  - texte: Jouer dans le navigateur
+    url: pages/mini-jeu.html
+    style: principal
+  media:
+    type: image
+    image: assets/meta/shot-orion
+    alt: Écran-titre de Mission Orion
+    legende: L'écran-titre du jeu.
+  sections:
+  - id: en-bref
+    titre: En bref
+    paragraphes:
+    - Mission Orion est un jeu de tir spatial écrit en Python avec pygame. C'était au départ un exercice de cours ; j'ai continué chez moi parce que le projet me plaisait. Je l'ai ensuite compilé en WebAssembly pour qu'il se joue dans le navigateur, sans rien installer.
+  - id: contexte
+    titre: Le contexte
+    paragraphes:
+    - 'En première année, un TP demandait de réaliser un petit jeu avec pygame pour pratiquer Python : sprites, collisions, score. Une fois le TP terminé, j''ai voulu aller plus loin et en faire un vrai jeu, avec plusieurs niveaux et une progression.'
+  - id: realisation
+    titre: Ce que j'ai réalisé
+    liste:
+    - Un <strong>mode histoire</strong> en vagues successives, avec un boss, et un <strong>mode survie</strong>.
+    - Un <strong>garage</strong> pour personnaliser la couleur du laser et du vaisseau.
+    - Des <strong>arrière-plans générés par le code</strong>, avec huit styles différents.
+    - Une <strong>progression sauvegardée</strong> (modes terminés, meilleurs scores).
+    - Les écrans d'introduction, les menus et les crédits.
+    - Une <strong>version web</strong>, jouable depuis ce portfolio.
+  - id: choix
+    titre: Les choix techniques
+    liste:
+    - '<strong>Neuf modules</strong> aux rôles précis : configuration, état du jeu, génération des fonds, chargement des ressources, entités, dessin de l''interface, écrans, utilitaires et boucle principale.'
+    - Des <strong>dépendances à sens unique</strong> entre ces modules, pour éviter les imports circulaires.
+    - 'Toute la <strong>configuration au même endroit</strong> : ajouter un niveau ou une couleur se fait en modifiant une liste.'
+    - Une <strong>mise en cache</strong> des arrière-plans générés, pour garder un jeu fluide.
+    - Une <strong>boucle de jeu asynchrone</strong>, nécessaire pour la version navigateur avec pygbag, et qui fonctionne aussi en local.
+  - id: difficultes
+    titre: Les difficultés et comment je les ai résolues
+    liste:
+    - '<strong>Un seul gros fichier</strong> devenu difficile à faire évoluer : je l''ai découpé en modules, avec un schéma des dépendances pour m''y retrouver.'
+    - '<strong>Faire tourner le jeu dans le navigateur</strong> : j''ai adapté la boucle principale pour pygbag, et fixé le format d''affichage en 16/9 pour éviter les bandes noires.'
+  - id: resultat
+    titre: Le résultat
+    paragraphes:
+    - 'Le jeu est jouable en ligne. Il n''est pas terminé, et je le reprends régulièrement. Ma copine le teste depuis le début : elle me dit quand quelque chose n''est pas clair, et une bonne partie des idées viennent d''elle.'
+  - id: acquis
+    titre: Ce que j'en retiens
+    liste:
+    - Organiser un projet en modules dès qu'il grandit.
+    - Faire tester par quelqu'un d'autre révèle des problèmes qu'on ne voit pas soi-même.
+    - Un projet personnel est l'endroit idéal pour apprendre sans contrainte.
+  - id: competences
+    titre: Compétences mobilisées
+    liste:
+    - Programmer en Python et structurer un projet en modules.
+    - 'Concevoir une logique de jeu : états, collisions, progression.'
+    - Publier une application sur le web (WebAssembly).
+    - Prendre en compte les retours d'un utilisateur.
+  accueil:
+    filtre: wip
+    badge: Jouable en ligne
+    image: assets/meta/shot-orion
+    alt: Écran-titre de Mission Orion
+    statut: Projet personnel
+    resume: Jeu spatial en Python, né d'un exercice de cours et poursuivi sur mon temps libre. Compilé en WebAssembly, il se joue directement dans le navigateur.
+    tags:
+    - Python
+    - pygame
+    - WebAssembly
+    lien_principal:
+      texte: Jouer dans le navigateur
+      url: pages/mini-jeu.html
+    lien_secondaire:
+      texte: La présentation
+      url: pages/mission-orion.html
+  liste_projets:
+    statut: Projet personnel
+    texte: Jeu spatial en Python, jouable dans le navigateur grâce à WebAssembly.
+    alt: Écran-titre de Mission Orion

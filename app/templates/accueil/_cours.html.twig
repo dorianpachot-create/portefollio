@@ -1,0 +1,28 @@
+{# SECTION 04 : PROJETS ENCADRÉS. Textes : contenu/cours.yaml #}
+<section id="cours" class="scroll-mt-16 px-5 py-20 md:px-8 md:py-28" aria-labelledby="cours-title">
+  <div class="mx-auto max-w-6xl">
+    <twig:EnTeteSection numero="04" rubrique="BTS SIO" titre="Projets encadrés" idTitre="cours-title">
+      Les travaux pratiques réalisés en cours. Le BTS couvre aussi les systèmes et les réseaux, et cette deuxième année a commencé par une semaine d'administration Linux.
+    </twig:EnTeteSection>
+
+    {# Deuxième année : une carte par TP qui a une clé "accueil" #}
+    <div class="reveal mt-12 flex items-center gap-4">
+      <h3 class="font-display text-2xl font-bold text-bone">Deuxième année</h3>
+      <span class="tag tag-hl">{{ periodeDeuxiemeAnnee }}</span>
+      <span class="hidden h-px flex-1 bg-edge sm:block"></span>
+    </div>
+    <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {% for travail in cartesCours %}<twig:CarteCours :travail="travail" />{% endfor %}
+    </ul>
+
+    {# Première année : une tuile par matière #}
+    <div class="reveal mt-14 flex items-center gap-4">
+      <h3 class="font-display text-2xl font-bold text-bone">Première année</h3>
+      <span class="hidden h-px flex-1 bg-edge sm:block"></span>
+    </div>
+    <ul class="reveal mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      {% for tuile in tuilesPremiereAnnee %}<twig:TuileMatiere :tuile="tuile" />{% endfor %}
+    </ul>
+    <div class="reveal mt-8"><twig:Bouton texte="Tous les projets encadrés en détail" url="pages/projets-cours.html" style="secondaire" /></div>
+  </div>
+</section>

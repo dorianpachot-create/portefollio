@@ -1,0 +1,98 @@
+# ============================================================================
+# PROFIL : les informations générales, utilisées sur tout le site
+# ----------------------------------------------------------------------------
+# Textes de la présentation (haut de l'accueil), coordonnées, menu,
+# bandeau défilant et section Contact.
+# ============================================================================
+
+nom: Dorian Pachot
+email: dorianpachot@gmail.com
+telephone: '07 71 62 32 28'
+telephone_lien: '+33771623228'
+github: https://github.com/dorianpachot-create
+linkedin: https://www.linkedin.com/in/dorian-pachot-81299930a/
+cv_pdf: assets/cv/CV_Dorian_Pachot.pdf
+url_site: https://dorianpachot-create.github.io/portefollio/
+
+# Pied de page, sur toutes les pages
+mention_pied: © 2026 Dorian Pachot, BTS SIO SLAM, IRIS MediaSchool Rouen
+
+# ------------------------------------------------------------- Présentation
+presentation:
+  salut: Bonjour
+  titre: Je m'appelle Dorian Pachot.
+  sous_titre: Étudiant en deuxième année de BTS SIO, option SLAM, à Rouen.
+  paragraphes:
+    - Je suis arrivé dans l'informatique après une reconversion. Avant, j'ai joué au handball en National 1, puis j'ai travaillé dans la restauration, le management et le paysagisme.
+    - Aujourd'hui je développe surtout des applications web et mobiles, et je m'intéresse aussi aux systèmes et aux réseaux. Je cherche une alternance, 3 jours en entreprise et 2 jours à l'école, pour continuer à apprendre au sein d'une équipe.
+
+# Carte de profil (photo à droite de la présentation)
+carte_profil:
+  photo: assets/meta/portrait
+  legende: Étudiant développeur, Rouen
+  infos:
+    - { libelle: Option, valeur: SLAM }
+    - { libelle: Recherche, valeur: Alternance }
+    - { libelle: Ville, valeur: Rouen }
+  avancement_texte: Avancement du BTS
+  avancement_valeur: 2<sup>e</sup> année sur 2
+  avancement_pourcentage: 62
+
+# Bandeau qui défile sous la présentation
+bandeau:
+  - SYNCRO publiée sur l'App Store et Google Play
+  - 84 commits en cinq mois
+  - 53 routes d'API migrées en TypeScript
+  - 6 TP d'administration Linux
+  - Handball en National 1
+  - Pla'Net en cours de développement
+
+# ------------------------------------------------------------- Menus
+# Menu de l'accueil (liens vers les sections de la page)
+menu_accueil:
+  - { texte: Parcours, ancre: parcours }
+  - { texte: Projets, ancre: projets }
+  - { texte: Cours, ancre: cours }
+  - { texte: Outils, ancre: outils }
+  - { texte: Veille, ancre: veille }
+  - { texte: Documents, ancre: documents }
+  - { texte: Contact, ancre: contact }
+
+# Menu mobile de l'accueil (plus complet)
+menu_accueil_mobile:
+  - { texte: Parcours, ancre: parcours }
+  - { texte: Projets, ancre: projets }
+  - { texte: Projets encadrés, ancre: cours }
+  - { texte: Outils, ancre: outils }
+  - { texte: Méthode, ancre: competences }
+  - { texte: Veille, ancre: veille }
+  - { texte: Documents, ancre: documents }
+  - { texte: En dehors du travail, ancre: personnel }
+
+# Repères sur le côté droit de l'accueil (écrans larges) : une pastille par section
+reperes:
+  - { texte: Accueil, ancre: top }
+  - { texte: Parcours, ancre: parcours }
+  - { texte: Réalisations, ancre: projets }
+  - { texte: Projets encadrés, ancre: cours }
+  - { texte: Outils, ancre: outils }
+  - { texte: Méthode, ancre: competences }
+  - { texte: Veille, ancre: veille }
+  - { texte: Documents, ancre: documents }
+  - { texte: En dehors du travail, ancre: personnel }
+  - { texte: Contact, ancre: contact }
+
+# Menu des pages secondaires (liens écrits depuis la racine du site)
+menu_pages:
+  - { texte: Parcours, cible: 'index.html#parcours' }
+  - { texte: Projets, cible: 'index.html#projets' }
+  - { texte: Cours, cible: pages/projets-cours.html }
+  - { texte: Outils, cible: 'index.html#outils' }
+  - { texte: Veille, cible: 'index.html#veille' }
+  - { texte: Documents, cible: pages/documents.html }
+
+# ------------------------------------------------------------- Contact
+contact:
+  titre: Construisons la suite
+  titre_accent: ensemble.
+  texte: 'Je recherche une alternance à Rouen ou dans les environs, au rythme de trois jours en entreprise et deux jours à l''école. Développement, systèmes ou réseaux : je suis prêt à apprendre et à me donner pour votre équipe.'

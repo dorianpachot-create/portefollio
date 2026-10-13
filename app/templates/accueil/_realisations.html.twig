@@ -1,0 +1,26 @@
+{# SECTION 03 : RÉALISATIONS. Les projets de contenu/projets.yaml (clé "accueil" de chaque projet) #}
+<section id="projets" class="scroll-mt-16 px-5 py-20 md:px-8 md:py-28" aria-labelledby="projets-title">
+  <div class="mx-auto max-w-6xl">
+    <twig:EnTeteSection numero="03" rubrique="Projets" titre="Réalisations" idTitre="projets-title">
+      Quatre projets, tous consultables : une application sur les stores, une application web et un site en ligne, et un jeu jouable dans le navigateur.
+      <twig:block name="aDroite">
+        {# Filtre : masque les cartes dont le data-status ne correspond pas #}
+        <div class="flex flex-wrap gap-1" role="group" aria-label="Filtrer les projets">
+          <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">Tous</button>
+          <button type="button" class="filter-btn" data-filter="done" aria-pressed="false">Livrés</button>
+          <button type="button" class="filter-btn" data-filter="wip" aria-pressed="false">En cours</button>
+        </div>
+      </twig:block>
+    </twig:EnTeteSection>
+
+    <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      {% for projet in projets %}
+        {% if projet.accueil.grande_carte ?? false %}
+          <twig:GrandeCarteProjet :projet="projet" />
+        {% else %}
+          <twig:CarteProjetAccueil :projet="projet" />
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

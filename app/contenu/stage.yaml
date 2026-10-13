@@ -1,0 +1,73 @@
+# ============================================================================
+# LE JOURNAL DE STAGE (pages/stage.html)
+#   chiffres   les quatre encadrés en haut de la page
+#   semaines   une carte par semaine (numero, dates, titre, points)
+#   retiens    l'encadré final "Ce que j'en retiens"
+# ============================================================================
+
+chiffres:
+- valeur: '5'
+  libelle: semaines à temps plein
+- valeur: '2'
+  libelle: stores, App Store et Google Play
+- valeur: '53'
+  libelle: routes d'API passées en TypeScript
+- valeur: '13'
+  libelle: écrans maquettés
+note: Quand le stage a commencé, la base de l'application existait déjà (comptes, groupes, planning, notifications). Les détails techniques internes à Suitime ne sont pas présentés ici.
+semaines:
+- numero: Semaine 1
+  dates: 6 au 10 juillet
+  titre: Mise en ligne et notifications
+  points:
+  - 'Mise en ligne du site vitrine : accueil, quatre pages légales, identité visuelle.'
+  - 'Un back-office réservé à l''équipe : tableau de bord, utilisateurs, groupes et invitations.'
+  - Mise en prod sur un serveur Linux (Nginx, PM2, HTTPS), avec un déploiement automatique et sans coupure.
+  - Les notifications push, côté serveur et côté appli.
+  - Passage au nom de domaine définitif pour le site, l'appli et les liens d'invitation.
+- numero: Semaine 2
+  dates: 13 au 17 juillet
+  titre: Back-end en TypeScript et sécurité
+  points:
+  - J'ai fait le tour de tout le code et écrit un petit guide pour m'y retrouver vite.
+  - 'Passage du back-end de JavaScript à <strong>TypeScript</strong> : 14 modules partagés puis 53 routes d''API, par petits lots et sans coupure. Les erreurs se voient maintenant avant la mise en ligne.'
+  - Relecture des permissions des routes sensibles, une par une, et correction d'un souci de cloisonnement entre groupes.
+  - Une validation des champs centralisée dans un seul outil au lieu d'être recopiée partout.
+  - Une protection contre les tentatives de connexion à répétition.
+- numero: Semaine 3
+  dates: 20 au 24 juillet
+  titre: Le refus d'Apple, et ce qu'il a montré
+  points:
+  - 'Apple refuse l''appli : ses testeurs n''arrivent pas à se connecter. En cherchant, je découvre que la connexion était cassée en prod depuis cinq jours pour tout le monde. De vieux fichiers restés sur le serveur après la migration étaient utilisés à la place des nouveaux.'
+  - 'Je répare, puis je corrige le script de déploiement : suppression automatique des vieux fichiers et <strong>test de connexion à chaque mise en ligne</strong>.'
+  - Déploiement par Git au lieu d'envoyer les fichiers à la main.
+  - Vérification des jetons Google et Apple renforcée, avec des tests.
+  - Correction de l'invitation par QR code, qui bloquait sans rien dire le retour d'un membre dans un groupe qu'il avait quitté.
+  - Nouveaux écrans de connexion et d'inscription.
+- numero: Semaine 4
+  dates: 27 au 31 juillet
+  titre: Maquettes, validation Apple et correctifs
+  points:
+  - 'Nouvelle page de profil, maquettée et validée avant de coder. Les éléments communs sont regroupés dans un seul fichier : un changement de style se fait à un endroit au lieu de quatre.'
+  - Une grosse évolution du produit à cadrer. Au lieu d'un long texte, j'ai fait <strong>treize écrans maquettés</strong> en clair et en sombre, parce que le changement inversait une logique centrale de l'appli et qu'un texte risquait d'être mal compris.
+  - Pour chaque décision, je proposais plusieurs options avec leurs limites. Le choix revenait aux responsables.
+  - J'ai aussi listé les cas limites et ce qui risquait de casser dans l'existant.
+  - Suppression de compte depuis l'appli (obligatoire chez Apple), avec le cas du propriétaire de groupe qui doit d'abord transmettre son groupe.
+  - 'L''appli est validée sur l''App Store, puis une série de correctifs : vue Couverture plus lisible, limite de membres relevée, notifications iOS, liens d''invitation qui ouvrent directement l''appli.'
+- numero: Semaine 5
+  dates: 3 au 7 août
+  titre: Publication, accessibilité et dernier bug
+  points:
+  - Un écran prêt mais caché derrière un interrupteur dans le code, parce qu'il manquait encore un prérequis côté entreprise. Il sera prêt à activer le moment venu.
+  - 'Les notifications iPhone n''avaient jamais marché, sans aucun message d''erreur. J''ai comparé point par point avec une autre appli de l''entreprise où elles marchaient : trois différences, toutes corrigées.'
+  - Un indicateur d'état visible dans l'appli, pour que le prochain diagnostic ne demande ni serveur ni Mac.
+  - 'Les bandeaux de six écrans, qui avaient dérivé à force de copier-coller, réunis en un seul : <strong>259 lignes de code en moins</strong>.'
+  - 'Accessibilité : les zones tactiles sans libellé pour les lecteurs d''écran passent de <strong>62 à 26</strong>, et les boutons atteignent la taille minimale conseillée par Apple et Google.'
+  - 'Dernier jour : un membre pouvait être bloqué sur le même créneau par deux groupes. La protection existait, mais elle était fausse pour les horaires qui passent minuit (une équipe de nuit, par exemple). Nouvelle méthode de comparaison, testée sur les <strong>cent combinaisons possibles</strong> plutôt que sur quelques cas.'
+retiens:
+- <strong>Une protection qui existe n'est pas forcément une protection qui marche.</strong> Les deux plus gros bugs venaient de garde-fous déjà là, mais faux. Il faut vérifier qu'ils tiennent sur les cas limites.
+- <strong>Réparer, puis empêcher que ça revienne.</strong> Corriger la connexion n'aurait servi à rien sans le test automatique à chaque déploiement.
+- <strong>Comparer avec ce qui marche déjà.</strong> Pour les notifications iPhone, partir d'une appli qui fonctionnait a été plus rapide et plus sûr que d'inventer.
+- '<strong>Remonter le problème plutôt que trancher seul.</strong> Quand j''ai trouvé trois valeurs différentes pour un même réglage, je l''ai signalé : c''était une décision produit, pas technique.'
+- <strong>Maquetter quand les mots ne suffisent pas.</strong> Montrer des écrans a évité de construire une fonctionnalité sur un malentendu.
+- <strong>Assumer mes erreurs.</strong> Un matin j'ai affirmé un truc faux sur les règles d'Apple. Je l'ai corrigé par écrit l'après-midi même.

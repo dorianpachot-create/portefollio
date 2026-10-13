@@ -1,0 +1,18 @@
+{#
+  Composant MediaProjet : les images sous le titre d'une page projet.
+    type "captures" : une rangée de captures d'écran de téléphone (SYNCRO)
+    type "image"    : une grande image avec sa légende
+#}
+{% props media %}
+{% if media.type == 'captures' %}
+  <div class="reveal flex gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-4">
+    {% for image in media.images %}
+      <figure class="w-44 flex-none md:w-auto"><img class="rounded-2xl border border-edge" src="{{ lien(image.fichier) }}" alt="{{ image.alt }}" loading="lazy" width="720" height="1280" /></figure>
+    {% endfor %}
+  </div>
+{% else %}
+  <figure class="reveal overflow-hidden rounded-2xl border border-edge bg-panel">
+    <twig:Image :fichier="media.image" :alt="media.alt" classe="w-full" :lazy="false" />
+    <figcaption class="border-t border-edge px-4 py-2.5 text-xs text-ash">{{ media.legende }}</figcaption>
+  </figure>
+{% endif %}

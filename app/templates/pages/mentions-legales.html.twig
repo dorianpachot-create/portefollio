@@ -1,0 +1,42 @@
+{# PAGE "MENTIONS LÉGALES" : texte fixe, à modifier directement ici. #}
+{% extends 'base.html.twig' %}
+
+{% block titre %}Mentions légales | Dorian Pachot{% endblock %}
+{% block description %}Mentions légales du portfolio de Dorian Pachot.{% endblock %}
+{% block chemin %}pages/mentions-legales.html{% endblock %}
+
+{% block contenu %}
+  <twig:EnTetePage cadre="Mentions légales" titre="Mentions légales" retourUrl="index.html" retourTexte="Retour à l'accueil">
+    <p>Informations légales de ce site personnel, publiées selon l'article 6-III de la loi n°2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique. Dernière mise à jour : 13 octobre 2026.</p>
+  </twig:EnTetePage>
+
+  <div class="px-5 pb-16 md:px-8"><div class="mx-auto grid max-w-4xl gap-5">
+    <twig:Panneau id="editeur" titre="Éditeur du site">
+      <p>Ce site est un portfolio personnel, sans but commercial, édité par un particulier.</p>
+      <p><strong>Dorian Pachot</strong>, étudiant en BTS SIO option SLAM à IRIS MediaSchool, campus de Rouen. Rouen (76000), France. <a href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>, <a href="tel:+33771623228">07 71 62 32 28</a>.</p>
+      <p><strong>Directeur de la publication :</strong> Dorian Pachot. Le site n'ayant pas d'activité commerciale, l'adresse postale complète n'est pas publiée, comme la loi le permet pour un particulier ; elle est communiquée à l'hébergeur.</p>
+    </twig:Panneau>
+    <twig:Panneau id="hebergement" titre="Hébergement">
+      <p>GitHub Pages, <strong>GitHub, Inc.</strong>, 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis (<a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com</a>).</p>
+    </twig:Panneau>
+    <twig:Panneau id="donnees" titre="Données personnelles et cookies">
+      <p><strong>Ce site ne dépose aucun cookie et ne collecte aucune donnée.</strong> Pas de formulaire, pas de compte, pas de mesure d'audience.</p>
+      <p>Pour afficher les pages, votre navigateur contacte deux services extérieurs : <strong>jsDelivr</strong> (cdn.jsdelivr.net), qui fournit la bibliothèque de mise en page Tailwind CSS, et <strong>Google Fonts</strong> (fonts.googleapis.com et fonts.gstatic.com), qui fournit les polices. Comme tout serveur web, ils voient passer votre adresse IP. L'hébergeur, GitHub Pages, journalise aussi les connexions selon sa propre politique.</p>
+    </twig:Panneau>
+    <twig:Panneau id="documents-publies" titre="Documents publiés">
+      <p>Le bulletin et la lettre de recommandation concernent l'éditeur du site et sont publiés par lui, volontairement. La date de naissance et les signatures ont été retirées ; les versions complètes sont fournies sur demande.</p>
+      <p>Toute personne citée dans un document publié ici peut demander sa modification ou son retrait à <a href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>. La demande sera traitée sous quinze jours.</p>
+    </twig:Panneau>
+    <twig:Panneau id="propriete" titre="Propriété intellectuelle">
+      <p>Sauf mention contraire, les textes et visuels de ce site appartiennent à Dorian Pachot.</p>
+      <p><strong>SYNCRO</strong> et <strong>appsyncro.fr</strong> sont la propriété de SUITIME SAS ; captures et descriptions sont présentées à titre de portfolio. <strong>CRP-Assurance.com</strong> a été réalisé pour le Cabinet Romain Pachot, qui en est propriétaire. <strong>Pla'Net</strong> est développé dans le cadre de la formation à IRIS MediaSchool.</p>
+      <p>Les comptes rendus de cours sont des travaux d'étudiant ; ils peuvent s'appuyer sur des énoncés ou supports d'IRIS MediaSchool et de ses intervenants, dont les droits restent réservés. Les marques citées appartiennent à leurs propriétaires.</p>
+    </twig:Panneau>
+    <twig:Panneau id="credits" titre="Crédits">
+      <ul><li>Polices Archivo, Inter et IBM Plex Mono (Google Fonts), sous licence SIL Open Font License.</li><li>Mise en page avec Tailwind CSS (licence MIT).</li><li>Mission Orion compilé en WebAssembly avec pygbag.</li></ul>
+    </twig:Panneau>
+    <twig:Panneau id="liens" titre="Liens et erreurs">
+      <p>Ce site renvoie vers d'autres sites (LinkedIn, App Store, Google Play, appsyncro.fr, CRP-Assurance.com, Pla'Net, articles de presse) dont je ne maîtrise pas le contenu. Une information inexacte ou un document à retirer : <a href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>.</p>
+    </twig:Panneau>
+  </div></div>
+{% endblock %}

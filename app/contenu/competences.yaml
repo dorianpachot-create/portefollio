@@ -1,0 +1,30 @@
+# ============================================================================
+# POINTS D'APPUI ET MÉTHODE (section "Ce sur quoi je peux m'appuyer")
+# ----------------------------------------------------------------------------
+# qualites : les branches du radar. "valeur" (sur 100) règle la longueur
+#            de la branche et de la jauge. Le radar est redessiné tout seul.
+# methode  : les quatre étapes de "Ma méthode de travail".
+# ============================================================================
+
+qualites:
+- nom: Rigueur
+  valeur: 88
+  texte: Le handball m'a habitué à l'entraînement quotidien. En développement, cela se traduit par des commits réguliers, des tests et une relecture systématique avant livraison.
+- nom: Conception
+  valeur: 72
+  texte: Je maquette les écrans et je modélise la base de données avant de coder. C'est le point sur lequel j'ai le plus à apprendre, et c'est ce que je viens chercher en alternance.
+- nom: Persévérance
+  valeur: 95
+  texte: Un accident du travail en 2025, puis une reconversion et une reprise d'études. Ce parcours m'a appris à rester constant quand un projet se complique.
+- nom: Efficacité
+  valeur: 80
+  texte: 'Pendant mon stage, j''ai appris à avancer vite sans bâcler : SYNCRO a été mise en production et publiée sur les deux stores en cinq semaines.'
+methode:
+- titre: Comprendre le besoin
+  texte: Avant d'écrire du code, je clarifie les attentes. Sur mon premier site client, cette étape a évité plusieurs allers-retours.
+- titre: Préparer
+  texte: Maquettes, modèle de données et liste des risques. Une bonne préparation rend l'exécution plus sereine.
+- titre: Livrer par étapes
+  texte: Des changements courts, testés et livrés régulièrement, plutôt qu'une seule grosse mise à jour difficile à vérifier.
+- titre: Analyser et corriger
+  texte: Après un incident, je corrige puis j'empêche qu'il se reproduise. En stage, cela a conduit à un test automatique à chaque déploiement.

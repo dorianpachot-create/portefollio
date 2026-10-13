@@ -1,0 +1,20 @@
+{#
+  Composant EnTetePage : le haut des pages secondaires
+  (lien de retour, petite ligne rouge, grand titre, introduction).
+  Utilisation :
+    <twig:EnTetePage cadre="Documents" titre="Mon dossier" retourUrl="index.html#documents" retourTexte="Retour à l'accueil">
+      <p>Introduction de la page.</p>
+      <twig:block name="extra"> ... boutons sous l'introduction (facultatif) ... </twig:block>
+    </twig:EnTetePage>
+  "titre" peut contenir du HTML (première lettre colorée des projets).
+#}
+{% props cadre, titre, retourUrl = 'index.html#projets', retourTexte = 'Retour aux projets' %}
+<header class="px-5 pb-10 pt-28 md:px-8 md:pt-36">
+  <div class="mx-auto max-w-6xl">
+    <a class="inline-flex items-center gap-2 text-sm font-semibold text-ash transition hover:text-bone" href="{{ lien(retourUrl) }}"><twig:Icone nom="fleche-gauche" />{{ retourTexte }}</a>
+    <p class="label mt-8 text-blood">{{ cadre|raw }}</p>
+    <h1 class="mt-3 font-display text-[clamp(2.2rem,6vw,3.8rem)] font-extrabold leading-[1.05] tracking-[-.025em] text-bone">{{ titre|raw }}</h1>
+    <div class="mt-5 max-w-2xl text-base leading-relaxed text-ash md:text-lg">{% block content %}{% endblock %}</div>
+    {% block extra %}{% endblock %}
+  </div>
+</header>

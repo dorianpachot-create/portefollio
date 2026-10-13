@@ -1,0 +1,13 @@
+{#
+  Composant SectionProjet : une partie d'une page projet ("Le contexte", "Les difficultés"...).
+  Reçoit une section de contenu/projets.yaml : { id, titre, paragraphes } ou { id, titre, liste }.
+  La section "en-bref" est mise en avant automatiquement.
+#}
+{% props section %}
+<twig:Panneau :id="section.id" :titre="section.titre" :callout="section.id == 'en-bref'">
+  {% if section.liste is defined %}
+    <ul>{% for point in section.liste %}<li>{{ point|raw }}</li>{% endfor %}</ul>
+  {% else %}
+    {% for paragraphe in section.paragraphes %}<p>{{ paragraphe|raw }}</p>{% endfor %}
+  {% endif %}
+</twig:Panneau>

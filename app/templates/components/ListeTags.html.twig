@@ -1,0 +1,16 @@
+{#
+  Composant ListeTags : une rangée d'étiquettes.
+  Utilisation : <twig:ListeTags :tags="projet.technos" />
+  Chaque élément de "tags" est soit un texte ("PHP"), soit { nom: "Flutter", important: true }.
+  "classe" règle la marge au-dessus (par défaut mt-4).
+#}
+{% props tags, classe = 'mt-4' %}
+<ul class="{{ classe }} flex flex-wrap gap-1.5">
+  {%- for tag in tags -%}
+    {%- if tag is iterable -%}
+      <twig:Tag :texte="tag.nom" :important="tag.important ?? false" />
+    {%- else -%}
+      <twig:Tag :texte="tag" />
+    {%- endif -%}
+  {%- endfor -%}
+</ul>

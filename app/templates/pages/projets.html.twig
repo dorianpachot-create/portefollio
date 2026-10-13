@@ -1,0 +1,18 @@
+{# PAGE "MES RÉALISATIONS" : une carte par projet de contenu/projets.yaml. #}
+{% extends 'base.html.twig' %}
+
+{% block titre %}Mes projets | Dorian Pachot{% endblock %}
+{% block description %}Les projets de Dorian Pachot : SYNCRO, Pla'Net, CRP-Assurance et Mission Orion.{% endblock %}
+{% block chemin %}pages/projets-perso.html{% endblock %}
+{% block entete %}<twig:EnTete actif="Projets" />{% endblock %}
+
+{% block contenu %}
+  <twig:EnTetePage cadre="Projets" titre="Mes réalisations">
+    <p>Chaque projet a sa page de présentation : le contexte, ce que j'ai réalisé, les choix techniques, les difficultés et ce que j'en retiens.</p>
+  </twig:EnTetePage>
+  <div class="px-5 pb-16 md:px-8">
+    <div class="mx-auto grid max-w-6xl gap-5 md:grid-cols-2">
+      {% for projet in projets %}<twig:CarteProjet :projet="projet" />{% endfor %}
+    </div>
+  </div>
+{% endblock %}

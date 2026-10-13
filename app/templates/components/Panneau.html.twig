@@ -1,0 +1,15 @@
+{#
+  Composant Panneau : un encadré avec un titre et du texte mis en forme.
+  Utilisation :
+    <twig:Panneau id="editeur" titre="Éditeur du site">
+      <p>Texte...</p>
+    </twig:Panneau>
+  callout=true : version mise en avant (fond rouge léger), pour "En bref" par exemple.
+#}
+{% props id, titre, callout = false %}
+<section id="{{ id }}" class="section-block reveal {{ callout ? 'callout' : 'panel' }} p-6 md:p-8">
+  <div class="prose-red">
+    <h2>{{ titre }}</h2>
+    {% block content %}{% endblock %}
+  </div>
+</section>

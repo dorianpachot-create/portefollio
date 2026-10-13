@@ -1,0 +1,22 @@
+{#
+  Composant FicheProjet : l'encadré "Fiche du projet" à droite d'une page projet,
+  avec le sommaire de la page en dessous (écrans larges).
+  Utilisation : <twig:FicheProjet :projet="projet" />
+#}
+{% props projet %}
+<aside class="order-first lg:order-none lg:sticky lg:top-24 lg:self-start">
+  <div class="panel p-5">
+    <p class="label text-blood">Fiche du projet</p>
+    <dl class="mt-3 text-sm">
+      {% for ligne in projet.fiche %}
+        <div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">{{ ligne.libelle }}</dt><dd class="text-right font-medium text-bone">{{ ligne.valeur|raw }}</dd></div>
+      {% endfor %}
+    </dl>
+    <twig:ListeTags :tags="projet.technos" />
+  </div>
+  {# Sommaire : un lien par section ; data-toc surligne la section lue (js/site.js) #}
+  <nav class="toc mt-5 hidden lg:block" aria-label="Sommaire de la page" data-toc>
+    <p class="label mb-2 px-3 text-ash">Sommaire</p>
+    {% for section in projet.sections %}<a href="#{{ section.id }}">{{ section.titre }}</a>{% endfor %}
+  </nav>
+</aside>

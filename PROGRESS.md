@@ -2,6 +2,20 @@
 
 Dernière mise à jour : 2026-10-13
 
+## Mise à jour du 2026-10-13 (7), passage à Symfony et composants Twig
+
+- Le site est maintenant écrit en **Symfony 7.4 LTS** (dossier `app/`), avec des
+  **composants Twig** (Symfony UX Twig Component) : Bouton, Tag, ListeTags, Panneau,
+  EnTeteSection, EnTetePage, cartes de projets, de TP, de documents, articles de veille...
+- Les **textes** sont sortis du HTML, dans `app/contenu/*.yaml` (un fichier par partie du site).
+- `php bin/console app:export` génère `index.html` et `pages/*.html` pour GitHub Pages.
+  Les pages générées ont le même contenu qu'avant (textes, liens, images vérifiés un par un).
+- Le JavaScript de l'accueil est passé dans `js/accueil.js` ; le radar lit ses valeurs
+  dans `competences.yaml`, le suivi de défilement se règle sur les repères de la page.
+- Favicon (SVG et PNG) et image de partage passés au rouge du site.
+- `README.md` réécrit, avec le tableau « où modifier quoi » pour l'oral.
+- `.nojekyll` ajouté : GitHub Pages sert les fichiers tels quels.
+
 ## Mise à jour du 2026-10-13 (6), pages projets et design unifié
 
 - Une page de présentation par projet, pour préparer l'oral : `pages/syncro.html`, `planet.html`,

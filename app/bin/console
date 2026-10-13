@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+<?php
+
+// Point d'entrée en ligne de commande : php bin/console <commande>
+// Commande principale du projet : php bin/console app:export
+
+use App\Kernel;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+
+require dirname(__DIR__).'/vendor/autoload.php';
+
+$env = $_SERVER['APP_ENV'] ?? 'dev';
+$debug = $env !== 'prod';
+
+$kernel = new Kernel($env, $debug);
+(new Application($kernel))->run();

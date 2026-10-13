@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- Page générée par Symfony (php bin/console app:export). Pour la modifier : dossier app/ -->
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
@@ -14,13 +15,16 @@
   <meta property="og:description" content="Les travaux pratiques de BTS SIO SLAM de Dorian Pachot, détaillés : objectif, réalisation, compte rendu." />
   <meta property="og:image" content="https://dorianpachot-create.github.io/portefollio/assets/meta/og-image.png" />
   <link rel="icon" href="../assets/meta/favicon.svg" type="image/svg+xml" />
-  <script>document.documentElement.classList.add('js');</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="apple-touch-icon" href="../assets/meta/favicon-180.png" />
+    <script>document.documentElement.classList.add('js');</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/site.css" />
+
+    <link rel="stylesheet" href="../css/site.css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
-  <style type="text/tailwindcss">
+    <style type="text/tailwindcss">
     @theme {
       --color-void: #090A0F;
       --color-panel: #10121A;
@@ -36,380 +40,517 @@
     }
   </style>
 </head>
+
 <body id="top">
   <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-blood focus:px-4 focus:py-2 focus:text-white" href="#main">Aller au contenu</a>
   <div class="bg-grid" aria-hidden="true"></div>
-  <div class="scroll-progress" aria-hidden="true"><span data-progress></span></div>
-
+    <div class="scroll-progress" aria-hidden="true"><span data-progress></span></div>
+  
   <header class="topbar fixed inset-x-0 top-0 z-50 border-b border-transparent transition-colors" data-topbar>
-    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
-      <a href="../index.html" class="flex items-center gap-3" aria-label="Dorian Pachot, retour à l'accueil">
-        <span class="grid h-9 w-9 place-items-center rounded-lg bg-blood font-display text-sm font-extrabold text-white">DP</span>
-        <span class="hidden font-display text-[17px] font-bold tracking-tight text-bone sm:inline">Dorian Pachot</span>
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
+        <a href="../index.html" class="flex items-center gap-3" aria-label="Dorian Pachot, retour à l'accueil">
+      <span class="grid h-9 w-9 place-items-center rounded-lg bg-blood font-display text-sm font-extrabold text-white">DP</span>
+      <span class="hidden font-display text-[17px] font-bold tracking-tight text-bone sm:inline">Dorian Pachot</span>
+    </a>
+
+        <nav class="hidden items-center gap-6 text-sm font-medium xl:flex" aria-label="Navigation principale">
+              <a href="../index.html#parcours" class="nav-a text-ash transition hover:text-bone">Parcours</a>
+              <a href="../index.html#projets" class="nav-a text-ash transition hover:text-bone">Projets</a>
+              <a href="projets-cours.html" class="nav-a !text-bone transition hover:text-bone">Cours</a>
+              <a href="../index.html#outils" class="nav-a text-ash transition hover:text-bone">Outils</a>
+              <a href="../index.html#veille" class="nav-a text-ash transition hover:text-bone">Veille</a>
+              <a href="documents.html" class="nav-a text-ash transition hover:text-bone">Documents</a>
+          </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="../index.html#contact" class="flex items-center gap-2.5 rounded-full border border-go/30 bg-go/5 px-3 py-1.5 text-[13px] font-medium text-go transition hover:border-go/60">
+        <span class="dot" aria-hidden="true"></span><span class="hidden sm:inline">Disponible pour une alternance</span><span class="sm:hidden">Disponible</span>
       </a>
-      <nav class="hidden items-center gap-6 text-sm font-medium xl:flex" aria-label="Navigation principale">
-        <a href="../index.html#parcours" class="nav-a text-ash transition hover:text-bone">Parcours</a>
-        <a href="../index.html#projets" class="nav-a text-ash transition hover:text-bone">Projets</a>
-        <a href="projets-cours.html" class="nav-a !text-bone transition hover:text-bone">Cours</a>
-        <a href="../index.html#outils" class="nav-a text-ash transition hover:text-bone">Outils</a>
-        <a href="../index.html#veille" class="nav-a text-ash transition hover:text-bone">Veille</a>
-        <a href="documents.html" class="nav-a text-ash transition hover:text-bone">Documents</a>
-      </nav>
-      <div class="flex items-center gap-3">
-        <a href="../index.html#contact" class="flex items-center gap-2.5 rounded-full border border-go/30 bg-go/5 px-3 py-1.5 text-[13px] font-medium text-go transition hover:border-go/60">
-          <span class="dot" aria-hidden="true"></span><span class="hidden sm:inline">Disponible pour une alternance</span><span class="sm:hidden">Disponible</span>
-        </a>
-        <button class="btn btn-ghost btn-sm xl:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu">Menu</button>
-      </div>
+      <button class="btn btn-ghost btn-sm xl:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu">Menu</button>
     </div>
+  </div>
+
     <div class="mobile-menu border-t border-edge bg-void/95 backdrop-blur-xl xl:hidden" id="menu" data-menu>
-      <nav class="mx-auto grid max-w-6xl px-5 py-2 text-[15px] font-medium" aria-label="Navigation mobile">
-        <a href="../index.html#parcours" class="border-b border-edge py-3.5 text-bone">Parcours</a>
-        <a href="../index.html#projets" class="border-b border-edge py-3.5 text-bone">Projets</a>
-        <a href="projets-cours.html" class="border-b border-edge py-3.5 text-bone">Cours</a>
-        <a href="../index.html#outils" class="border-b border-edge py-3.5 text-bone">Outils</a>
-        <a href="../index.html#veille" class="border-b border-edge py-3.5 text-bone">Veille</a>
-        <a href="documents.html" class="border-b border-edge py-3.5 text-bone">Documents</a>
-        <a href="../index.html#contact" class="py-3.5 text-blood">Contact</a>
-      </nav>
-    </div>
-  </header>
+    <nav class="mx-auto grid max-w-6xl px-5 py-2 text-[15px] font-medium" aria-label="Navigation mobile">
+              <a href="../index.html#parcours" class="border-b border-edge py-3.5 text-bone">Parcours</a>
+              <a href="../index.html#projets" class="border-b border-edge py-3.5 text-bone">Projets</a>
+              <a href="projets-cours.html" class="border-b border-edge py-3.5 text-bone">Cours</a>
+              <a href="../index.html#outils" class="border-b border-edge py-3.5 text-bone">Outils</a>
+              <a href="../index.html#veille" class="border-b border-edge py-3.5 text-bone">Veille</a>
+              <a href="documents.html" class="border-b border-edge py-3.5 text-bone">Documents</a>
+            <a href="../index.html#contact" class="py-3.5 text-blood">Contact</a>
+    </nav>
+  </div>
+</header>
 
   <main id="main">
-    <header class="px-5 pb-10 pt-28 md:px-8 md:pt-36">
-      <div class="mx-auto max-w-6xl">
-        <a class="inline-flex items-center gap-2 text-sm font-semibold text-ash transition hover:text-bone" href="../index.html#cours"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Retour à l'accueil</a>
-        <p class="label mt-8 text-blood">BTS SIO, 2025-2027</p>
-        <h1 class="mt-3 font-display text-[clamp(2.2rem,6vw,3.8rem)] font-extrabold leading-[1.05] tracking-[-.025em] text-bone">Projets encadrés</h1>
-        <div class="mt-5 max-w-2xl text-base leading-relaxed text-ash md:text-lg"><p>Les travaux pratiques réalisés en cours, détaillés un par un : l'objectif, ce que j'ai fait et, quand il existe, le compte rendu complet en PDF.</p></div>
-        
+      <header class="px-5 pb-10 pt-28 md:px-8 md:pt-36">
+  <div class="mx-auto max-w-6xl">
+    <a class="inline-flex items-center gap-2 text-sm font-semibold text-ash transition hover:text-bone" href="../index.html#cours"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Retour à l&#039;accueil</a>
+    <p class="label mt-8 text-blood">BTS SIO, 2025-2027</p>
+    <h1 class="mt-3 font-display text-[clamp(2.2rem,6vw,3.8rem)] font-extrabold leading-[1.05] tracking-[-.025em] text-bone">Projets encadrés</h1>
+    <div class="mt-5 max-w-2xl text-base leading-relaxed text-ash md:text-lg"><p>Les travaux pratiques réalisés en cours, détaillés un par un : l'objectif, ce que j'ai fait et, quand il existe, le compte rendu complet en PDF.</p>
+  </div>
       </div>
-    </header>
+</header>
 
-    <div class="px-5 pb-16 md:px-8">
-      <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_16rem]">
-        <div class="grid min-w-0 gap-5">
-        <h2 id="annee-2" class="section-block reveal mt-4 font-display text-3xl font-extrabold tracking-tight text-bone">Deuxième année</h2>
-        <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Linux avancé (SISR)</h3>
-          <article id="tp0" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Linux avancé, TP0, 3 septembre 2026</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Installer et prendre en main un serveur Ubuntu en ligne de commande</h2>
-              <h3>Objectif</h3><p>Installer Ubuntu Server 24.04 sans interface graphique dans une machine virtuelle, et revoir les bases de l'administration Linux sans internet, avec seulement man et --help.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Installation en mode texte dans VMware, sur un réseau de TP sans DHCP, avec une adresse IP fixe.</li><li>Connexion en SSH depuis le poste Windows, mises à jour du système.</li><li>Navigation, édition de fichiers de configuration, création d'utilisateurs.</li><li>Archive et instantané de la machine en fin de séance, pour la réutiliser dans les TP suivants.</li></ul>
-              <h3>Ce que j'en retiens</h3><p>Prendre l'habitude de faire un instantané avant de modifier une machine : c'est ce qui permet de tester sans crainte.</p>
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Ubuntu Server</li><li class="tag">VMware</li><li class="tag">SSH</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/linux-avance/tp0-ubuntu-server.pdf" target="_blank" rel="noopener">Compte rendu (PDF)</a></div>
-          </article>
-          <article id="tp1" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Linux avancé, TP1, 7 septembre 2026</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Déployer un serveur DHCP et un serveur DNS</h2>
-              <h3>Objectif</h3><p>Monter le réseau d'un domaine sur deux machines Debian 12 : un serveur qui distribue les adresses et résout les noms, et un client de test.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Serveur DHCP avec isc-dhcp-server, et une réservation d'adresse pour le client.</li><li>Serveur DNS avec bind9, en résolution directe et inverse.</li><li>Sécurisation de l'accès SSH au serveur.</li><li>Exercice de dépannage : trois erreurs cachées dans ma configuration, à retrouver seul.</li></ul>
-              <h3>Ce que j'en retiens</h3><p>Le dépannage m'a appris à lire les journaux et à tester service par service plutôt qu'au hasard.</p>
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Debian 12</li><li class="tag">isc-dhcp-server</li><li class="tag">bind9</li><li class="tag">SSH</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/linux-avance/tp1-dhcp-dns.pdf" target="_blank" rel="noopener">Compte rendu (PDF)</a></div>
-          </article>
-          <article id="tp2" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Linux avancé, TP2, 8 septembre 2026</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Héberger deux sites web et les publier en HTTPS</h2>
-              <h3>Objectif</h3><p>Mettre deux sites en ligne sur la même machine et la même adresse IP : une vitrine publique et un intranet réservé.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Hôtes virtuels Apache : c'est l'en-tête Host de la requête qui désigne le site demandé.</li><li>Intranet en HTTPS avec un certificat généré par mes soins, limité au réseau local et protégé par mot de passe.</li><li>Une page PHP dynamique avec formulaire, et Nginx installé à côté d'Apache sur le port 8080.</li><li>Ouverture du pare-feu sans couper l'accès SSH.</li></ul>
-              <h3>Ce que j'en retiens</h3><p>Comprendre ce qui se passe entre le navigateur et le serveur m'aide aussi quand je déploie mes propres applications.</p>
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Apache</li><li class="tag">HTTPS</li><li class="tag">PHP</li><li class="tag">Nginx</li><li class="tag">Pare-feu</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/linux-avance/tp2-serveur-web-https.pdf" target="_blank" rel="noopener">Compte rendu (PDF)</a></div>
-          </article>
-          <article id="tp3" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Linux avancé, TP3, 9 septembre 2026</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Partager des fichiers et maîtriser les journaux</h2>
-              <h3>Objectif</h3><p>Mettre en place un espace de travail partagé, puis organiser et surveiller les journaux du serveur.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Partage accessible depuis Windows avec Samba, et depuis Linux avec NFS.</li><li>Journal système rendu persistant, et journal applicatif séparé avec rsyslog.</li><li>Rotation des journaux avec logrotate.</li><li>Blocage automatique des adresses qui échouent à se connecter en SSH, avec fail2ban.</li></ul>
-              <h3>Ce que j'en retiens</h3><p>Des journaux bien rangés font gagner un temps précieux le jour où il faut comprendre une panne.</p>
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Samba</li><li class="tag">NFS</li><li class="tag">rsyslog</li><li class="tag">logrotate</li><li class="tag">fail2ban</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/linux-avance/tp3-partages-journaux.pdf" target="_blank" rel="noopener">Compte rendu (PDF)</a></div>
-          </article>
-          <article id="tp4" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Linux avancé, TP4, 11 septembre 2026</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Automatiser l'administration du serveur</h2>
-              <h3>Objectif</h3><p>Mettre en scripts ce qui était fait à la main les jours précédents, et le faire tourner automatiquement.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Huit scripts Bash, vérifiés un par un avant exécution.</li><li>Scripts de sauvegarde, de supervision et de déploiement, et une page d'état du serveur.</li><li>Planification avec cron et avec des minuteurs systemd.</li></ul>
-              <h3>Ce que j'en retiens</h3><p>C'est le TP qui se rapproche le plus du DevOps : automatiser ce qui se répète pour le rendre fiable.</p>
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Bash</li><li class="tag">cron</li><li class="tag">systemd</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/linux-avance/tp4-scripts-bash.pdf" target="_blank" rel="noopener">Compte rendu (PDF)</a></div>
-          </article>
-          <article id="tp5" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Linux avancé, révision, 30 septembre 2026</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">L'intranet du service comptable</h2>
-              <h3>Objectif</h3><p>Reconstruire une machine de zéro et réviser l'ensemble du module sur un cas complet.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Comptes et groupes pour le service comptable.</li><li>Droits sur les dossiers, avec le bit SGID pour que tout le service partage les fichiers créés.</li><li>Site Apache protégé par mot de passe, partage Samba et sauvegarde automatique.</li></ul>
-              <h3>Ce que j'en retiens</h3><p>Refaire tout depuis zéro montre ce qui est vraiment acquis et ce qui ne l'est pas encore.</p>
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Droits Linux</li><li class="tag">Apache</li><li class="tag">Samba</li><li class="tag">cron</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/linux-avance/tp5-revision-intranet.pdf" target="_blank" rel="noopener">Compte rendu (PDF)</a></div>
-          </article>
-        <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Bases de données avancées (SLAM)</h3>
-          <article id="vitasport" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Bases de données avancées, octobre 2026</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">VitaSport : concevoir, interroger et optimiser une base</h2>
-              <h3>Objectif</h3><p>Travailler sur la base de données d'une salle de sport, de la modélisation jusqu'aux requêtes avancées.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Rappels SQL : création des tables, contraintes, erreurs de clés étrangères et d'unicité provoquées volontairement.</li><li>Modélisation Merise de l'extension VitaSport+ avec Looping : dictionnaire des données, MCD, MLD puis MPD exécuté, et normalisation.</li><li>Diagrammes UML sur draw.io : diagramme de classes et diagramme de cas d'utilisation.</li><li>SQL avancé : jointures, agrégats, sous-requêtes et vues. La suite du TP (index, transactions, déclencheurs) est en cours.</li></ul>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">MySQL / MariaDB</li><li class="tag">Merise</li><li class="tag">Looping</li><li class="tag">UML</li><li class="tag">draw.io</li></ul>
-            
-          </article>
-        <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Développement</h3>
-          <article id="planet" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Projet de l'année, depuis septembre 2026</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Pla'Net, l'application de planning de l'école</h2>
-              <h3>Objectif</h3><p>Développer une application web de planning des cours pour MediaSchool Rouen.</p>
-              <h3>Ce que j'ai fait</h3><p>Le projet est présenté en détail sur <a href="planet.html">sa page dédiée</a>, avec le lien pour tester l'application en ligne.</p>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Symfony</li><li class="tag">Twig</li><li class="tag">MariaDB</li></ul>
-            
-          </article>
-          <div class="h-6"></div>
-        <h2 id="annee-1" class="section-block reveal mt-4 font-display text-3xl font-extrabold tracking-tight text-bone">Première année</h2>
-        <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Développement</h3>
-          <article id="pafalan" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Développement, 1<sup>re</sup> année</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Pafalan : application web PHP de collection de cartes</h2>
-              <h3>Objectif</h3><p>Réaliser en binôme un site de collection de cartes, inspiré de l'univers Dofus.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Authentification par session avec mots de passe hachés, et trois rôles : administrateur, joueur, visiteur.</li><li>Catalogue filtrable et ouverture de paquets de cartes au hasard, selon leur rareté.</li><li>Panneau d'administration avec création, modification et suppression.</li><li>Code organisé en services, avec un accès aux données par PDO.</li></ul>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">PHP</li><li class="tag">PDO</li><li class="tag">Sessions</li></ul>
-            
-          </article>
-          <article id="bistrot" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Développement, 1<sup>re</sup> année</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Le Bistrot de Marcel : conception de base de données</h2>
-              <h3>Objectif</h3><p>Modéliser et créer la base de données d'un restaurant.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Tables clients, tables du restaurant, plats, allergènes et serveurs, avec clés et contraintes.</li><li>TP noté : installation de MariaDB et phpMyAdmin sur une machine Debian, avec un compte dédié à l'application plutôt que root.</li></ul>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">SQL</li><li class="tag">MariaDB</li><li class="tag">Debian</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/developpement/bistrot-marcel.pdf" target="_blank" rel="noopener">Fiche (PDF)</a></div>
-          </article>
-          <article id="pygame" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Développement, 1<sup>re</sup> année</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Jeu spatial en Python avec pygame</h2>
-              <h3>Objectif</h3><p>Pratiquer Python en réalisant un petit jeu d'arcade.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Vaisseau, ennemis, projectiles, astéroïdes et bonus, avec un système de vies et de score sauvegardé.</li><li>Exercices de programmation objet en Python. C'est le point de départ de Mission Orion.</li></ul>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Python</li><li class="tag">pygame</li><li class="tag">POO</li></ul>
-            
-          </article>
-          <article id="seo" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Développement, 1<sup>re</sup> année</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Audit SEO de deux sites</h2>
-              <h3>Objectif</h3><p>Analyser deux sites existants et proposer des améliorations.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Analyse avec PageSpeed Insights : performance, accessibilité, bonnes pratiques.</li><li>Recommandations classées par priorité : images compressées, chargement différé, moins de JavaScript, données structurées.</li></ul>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">SEO</li><li class="tag">PageSpeed</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/developpement/audit-seo.pdf" target="_blank" rel="noopener">Audit (PDF)</a></div>
-          </article>
-        <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Systèmes</h3>
-          <article id="active-directory" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Systèmes, 1<sup>re</sup> année</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Infrastructure Active Directory sous Windows Server 2025</h2>
-              <h3>Objectif</h3><p>Déployer une infrastructure serveur Windows complète dans VMware.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Contrôleur de domaine avec DNS intégré, et un second serveur joint au domaine.</li><li>Serveur DHCP en mode basculement, pour la haute disponibilité.</li><li>Partage de fichiers et chiffrement BitLocker d'un volume, avec sauvegarde de la clé de récupération.</li><li>Chaque étape documentée avec ses commandes PowerShell.</li></ul>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Windows Server</li><li class="tag">Active Directory</li><li class="tag">PowerShell</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/systemes/infra-active-directory.pdf" target="_blank" rel="noopener">Fiche (PDF)</a></div>
-          </article>
-          <article id="load-balancing" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Systèmes, 1<sup>re</sup> année</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Infrastructure web avec répartition de charge sur Scaleway</h2>
-              <h3>Objectif</h3><p>Mettre en place une architecture web haute disponibilité sur un cloud public.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Deux serveurs Nginx et PHP-FPM derrière un répartiteur HAProxy, reliés par un réseau privé.</li><li>Test de la répartition et du basculement automatique quand un serveur s'arrête.</li><li>Page de statistiques HAProxy accessible uniquement par tunnel SSH.</li></ul>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">HAProxy</li><li class="tag">Nginx</li><li class="tag">Scaleway</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/systemes/infra-web-loadbalancing.pdf" target="_blank" rel="noopener">Compte rendu (PDF)</a></div>
-          </article>
-          <article id="parc" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Systèmes, 1<sup>re</sup> année</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Gestion de parc informatique et ITIL</h2>
-              <h3>Objectif</h3><p>Comprendre l'organisation d'une DSI et la gestion d'un parc.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Travail de groupe : rôle de la DSI, inventaire de parc (OCS Inventory, GLPI), CMDB et cycle de vie du matériel, avec ITIL 4.</li><li>Exercice individuel : qualification de tickets de support (type, urgence, impact, priorité).</li></ul>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">GLPI</li><li class="tag">ITIL</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/systemes/parc-informatique.pdf" target="_blank" rel="noopener">Rendu de groupe (PDF)</a></div>
-          </article>
-        <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Réseaux</h3>
-          <article id="frantech" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Réseaux, 1<sup>re</sup> année</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">TP Frantech : réseau d'entreprise sous Packet Tracer</h2>
-              <h3>Objectif</h3><p>Concevoir en binôme le réseau segmenté d'une entreprise sur plusieurs sites.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Plan d'adressage IPv4 selon le nombre de postes par service, et segmentation en VLAN.</li><li>Trunks, routage inter-VLAN, DHCP par VLAN et routage OSPF entre les filiales.</li><li>Spanning Tree avec répartition de charge entre deux commutateurs principaux.</li></ul>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Cisco</li><li class="tag">VLAN</li><li class="tag">OSPF</li><li class="tag">DHCP</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/reseaux/tp-frantech.pdf" target="_blank" rel="noopener">Compte rendu (PDF)</a></div>
-          </article>
-          <article id="securite-acces" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Réseaux, 1<sup>re</sup> année</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Sécurisation des accès réseau</h2>
-              <h3>Objectif</h3><p>Sécuriser les commutateurs d'accès d'un réseau.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Port-security avec limitation du nombre d'adresses MAC par port.</li><li>Ports inutilisés désactivés et accès distant chiffré en SSH au lieu de Telnet.</li><li>Comparaison des trois modes de violation pour justifier le choix retenu.</li></ul>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Port-security</li><li class="tag">SSH</li></ul>
-            
-          </article>
-        <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Cybersécurité</h3>
-          <article id="fortigate" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Cybersécurité, 1<sup>re</sup> année</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Cluster FortiGate en haute disponibilité sous GNS3</h2>
-              <h3>Objectif</h3><p>Monter une maquette réseau sécurisée et redondante.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Deux pare-feu FortiGate en cluster de haute disponibilité, avec des liens dédiés entre eux.</li><li>Redondance physique entre deux commutateurs Cisco.</li><li>Réseau interne découpé en trois VLAN avec attribution DHCP.</li></ul>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">GNS3</li><li class="tag">FortiGate</li><li class="tag">VLAN</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/cyber-securite/compte-rendu-gns3-fortigate-ha.pdf" target="_blank" rel="noopener">Compte rendu (PDF)</a></div>
-          </article>
-        <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Mathématiques</h3>
-          <article id="arithmetique" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Mathématiques, 1<sup>re</sup> année</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Arithmétique appliquée : les clés de contrôle</h2>
-              <h3>Objectif</h3><p>Appliquer l'arithmétique modulaire à des cas concrets.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Vérifier la clé d'un numéro de billet (modulo 9) et d'un code-barres EAN-13.</li><li>Retrouver des chiffres illisibles, et repérer une faille : une erreur de plus ou moins 9 sur un chiffre passe inaperçue.</li></ul>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Modulo</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/mathematiques/fiche-revision-arithmetique.pdf" target="_blank" rel="noopener">Fiche de révision (PDF)</a></div>
-          </article>
-          <article id="algo-python" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Mathématiques, 1<sup>re</sup> année</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Algorithmique en Python</h2>
-              <h3>Objectif</h3><p>Pratiquer les structures de données et les algorithmes de base.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Moyenne, conversion binaire et décimal, tri à bulles, médiane, insertion triée.</li><li>Un outil de manipulation de matrices, avec vérification des dimensions.</li></ul>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Python</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/mathematiques/exercices-codage.py" target="_blank" rel="noopener">Code (exercices)</a><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/mathematiques/matrice.py" target="_blank" rel="noopener">Code (matrices)</a></div>
-          </article>
-        <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">CEJM</h3>
-          <article id="ankama" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">CEJM, 1<sup>re</sup> année</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Étude RSE : le cas Ankama</h2>
-              <h3>Objectif</h3><p>Analyser la démarche de responsabilité sociale d'une entreprise.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Analyse des trois piliers (environnemental, social, économique) du studio Ankama.</li><li>Confrontation avec des éléments négatifs documentés, pour une conclusion nuancée.</li></ul>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">RSE</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/cejm/ankama-rse.pdf" target="_blank" rel="noopener">Fiche (PDF)</a></div>
-          </article>
-          <article id="caissiere" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">CEJM, 1<sup>re</sup> année</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Cas pratique : responsabilité de l'employeur</h2>
-              <h3>Objectif</h3><p>Qualifier juridiquement une situation de santé au travail.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Absence de document unique d'évaluation des risques et troubles musculosquelettiques.</li><li>Responsabilité pénale et civile de l'employeur, appuyée sur le Code du travail.</li></ul>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Droit du travail</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/cejm/cas-caissiere.pdf" target="_blank" rel="noopener">Fiche (PDF)</a></div>
-          </article>
-          <article id="droit" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">CEJM, 1<sup>re</sup> année</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Droit des marques et structures juridiques</h2>
-              <h3>Objectif</h3><p>Étudier la protection d'une marque et le choix d'une forme d'entreprise.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>L'affaire Louboutin contre YSL sur la protection d'une couleur.</li><li>Choix d'une structure (EI, EURL, SARL, SAS) pour une création d'entreprise à trois associés.</li></ul>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Droit</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/cejm/droit-des-marques.pdf" target="_blank" rel="noopener">Marques (PDF)</a><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/cejm/structures-juridiques.pdf" target="_blank" rel="noopener">Structures (PDF)</a></div>
-          </article>
-        <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Anglais</h3>
-          <article id="anglais" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Anglais, 1<sup>re</sup> année</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Future of Work 2026</h2>
-              <h3>Objectif</h3><p>Comprendre et commenter un document en anglais professionnel.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Compréhension d'une vidéo sur l'IA et le marché du travail, et lexique ciblé.</li><li>Développement argumenté sur la manière de s'y préparer.</li></ul>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Anglais</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/anglais/future-of-work-2026.pdf" target="_blank" rel="noopener">Fiche (PDF)</a></div>
-          </article>
-        <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Culture générale</h3>
-          <article id="chat-potte" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Culture générale, 1<sup>re</sup> année</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Exposé : Le Chat Potté</h2>
-              <h3>Objectif</h3><p>Analyser une œuvre sur le thème de l'animal héros.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Analyse de l'affiche et d'une scène clé, et du détournement des codes du western.</li></ul>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Expression</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/culture-generale/le-chat-potte.pdf" target="_blank" rel="noopener">Fiche (PDF)</a></div>
-          </article>
-          <article id="hybrides" class="section-block panel reveal p-6 md:p-8">
-            <p class="label text-blood">Culture générale, 1<sup>re</sup> année</p>
-            <div class="prose-red">
-              <h2 class="!mt-2 !text-2xl">Exposé : les animaux hybrides</h2>
-              <h3>Objectif</h3><p>Étudier une figure mythologique et sa place dans le cinéma actuel.</p>
-              <h3>Ce que j'ai fait</h3><ul><li>Chimère, centaure, sirènes : ce que ces figures symbolisent, mis en parallèle avec le film <em>Le Règne animal</em>.</li></ul>
-              
-            </div>
-            <ul class="tags-list plain mt-4 flex flex-wrap gap-1.5"><li class="tag">Expression</li></ul>
-            <div class="mt-5 flex flex-wrap gap-2"><a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/culture-generale/animaux-hybrides.pdf" target="_blank" rel="noopener">Fiche (PDF)</a></div>
-          </article>
-        </div>
-        <aside class="hidden lg:sticky lg:top-24 lg:block lg:max-h-[calc(100vh-7rem)] lg:self-start lg:overflow-y-auto">
-          <nav class="toc" aria-label="Sommaire des projets encadrés" data-toc>
-            <p class="label mb-2 px-3 text-ash">Sommaire</p>
-            <a href="#annee-2" class="!font-semibold">Deuxième année</a><a href="#tp0" class="!pl-6 !text-[.8rem]">Installer et prendre en main un serveur Ubuntu en ligne de commande</a><a href="#tp1" class="!pl-6 !text-[.8rem]">Déployer un serveur DHCP et un serveur DNS</a><a href="#tp2" class="!pl-6 !text-[.8rem]">Héberger deux sites web et les publier en HTTPS</a><a href="#tp3" class="!pl-6 !text-[.8rem]">Partager des fichiers et maîtriser les journaux</a><a href="#tp4" class="!pl-6 !text-[.8rem]">Automatiser l'administration du serveur</a><a href="#tp5" class="!pl-6 !text-[.8rem]">L'intranet du service comptable</a><a href="#vitasport" class="!pl-6 !text-[.8rem]">VitaSport</a><a href="#planet" class="!pl-6 !text-[.8rem]">Pla'Net</a>
-            <div class="h-3"></div>
-            <a href="#annee-1" class="!font-semibold">Première année</a><a href="#pafalan" class="!pl-6 !text-[.8rem]">Pafalan</a><a href="#bistrot" class="!pl-6 !text-[.8rem]">Le Bistrot de Marcel</a><a href="#pygame" class="!pl-6 !text-[.8rem]">Jeu spatial en Python avec pygame</a><a href="#seo" class="!pl-6 !text-[.8rem]">Audit SEO de deux sites</a><a href="#active-directory" class="!pl-6 !text-[.8rem]">Infrastructure Active Directory sous Windows Server 2025</a><a href="#load-balancing" class="!pl-6 !text-[.8rem]">Infrastructure web avec répartition de charge sur Scaleway</a><a href="#parc" class="!pl-6 !text-[.8rem]">Gestion de parc informatique et ITIL</a><a href="#frantech" class="!pl-6 !text-[.8rem]">TP Frantech</a><a href="#securite-acces" class="!pl-6 !text-[.8rem]">Sécurisation des accès réseau</a><a href="#fortigate" class="!pl-6 !text-[.8rem]">Cluster FortiGate en haute disponibilité sous GNS3</a><a href="#arithmetique" class="!pl-6 !text-[.8rem]">Arithmétique appliquée</a><a href="#algo-python" class="!pl-6 !text-[.8rem]">Algorithmique en Python</a><a href="#ankama" class="!pl-6 !text-[.8rem]">Étude RSE</a><a href="#caissiere" class="!pl-6 !text-[.8rem]">Cas pratique</a><a href="#droit" class="!pl-6 !text-[.8rem]">Droit des marques et structures juridiques</a><a href="#anglais" class="!pl-6 !text-[.8rem]">Future of Work 2026</a><a href="#chat-potte" class="!pl-6 !text-[.8rem]">Exposé</a><a href="#hybrides" class="!pl-6 !text-[.8rem]">Exposé</a>
-          </nav>
-        </aside>
-      </div>
+  <div class="px-5 pb-16 md:px-8">
+    <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_16rem]">
+      <div class="grid min-w-0 gap-5">
+                            <h2 id="annee-2" class="section-block reveal mt-4 font-display text-3xl font-extrabold tracking-tight text-bone">Deuxième année</h2>
+                      <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Linux avancé (SISR)</h3>
+            <article id="tp0" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Linux avancé, TP0, 3 septembre 2026</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Installer et prendre en main un serveur Ubuntu en ligne de commande</h2>
+    <h3>Objectif</h3><p>Installer Ubuntu Server 24.04 sans interface graphique dans une machine virtuelle, et revoir les bases de l&#039;administration Linux sans internet, avec seulement man et --help.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Installation en mode texte dans VMware, sur un réseau de TP sans DHCP, avec une adresse IP fixe.</li><li>Connexion en SSH depuis le poste Windows, mises à jour du système.</li><li>Navigation, édition de fichiers de configuration, création d'utilisateurs.</li><li>Archive et instantané de la machine en fin de séance, pour la réutiliser dans les TP suivants.</li></ul>
+        <h3>Ce que j'en retiens</h3><p>Prendre l&#039;habitude de faire un instantané avant de modifier une machine : c&#039;est ce qui permet de tester sans crainte.</p>  </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Ubuntu Server</li>
+<li class="tag">VMware</li>
+<li class="tag">SSH</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/linux-avance/tp0-ubuntu-server.pdf" target="_blank" rel="noopener">Compte rendu (PDF)</a>
     </div>
+  </article>
+<article id="tp1" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Linux avancé, TP1, 7 septembre 2026</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Déployer un serveur DHCP et un serveur DNS</h2>
+    <h3>Objectif</h3><p>Monter le réseau d&#039;un domaine sur deux machines Debian 12 : un serveur qui distribue les adresses et résout les noms, et un client de test.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Serveur DHCP avec isc-dhcp-server, et une réservation d'adresse pour le client.</li><li>Serveur DNS avec bind9, en résolution directe et inverse.</li><li>Sécurisation de l'accès SSH au serveur.</li><li>Exercice de dépannage : trois erreurs cachées dans ma configuration, à retrouver seul.</li></ul>
+        <h3>Ce que j'en retiens</h3><p>Le dépannage m&#039;a appris à lire les journaux et à tester service par service plutôt qu&#039;au hasard.</p>  </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Debian 12</li>
+<li class="tag">isc-dhcp-server</li>
+<li class="tag">bind9</li>
+<li class="tag">SSH</li>
+</ul>
 
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/linux-avance/tp1-dhcp-dns.pdf" target="_blank" rel="noopener">Compte rendu (PDF)</a>
+    </div>
+  </article>
+<article id="tp2" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Linux avancé, TP2, 8 septembre 2026</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Héberger deux sites web et les publier en HTTPS</h2>
+    <h3>Objectif</h3><p>Mettre deux sites en ligne sur la même machine et la même adresse IP : une vitrine publique et un intranet réservé.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Hôtes virtuels Apache : c'est l'en-tête Host de la requête qui désigne le site demandé.</li><li>Intranet en HTTPS avec un certificat généré par mes soins, limité au réseau local et protégé par mot de passe.</li><li>Une page PHP dynamique avec formulaire, et Nginx installé à côté d'Apache sur le port 8080.</li><li>Ouverture du pare-feu sans couper l'accès SSH.</li></ul>
+        <h3>Ce que j'en retiens</h3><p>Comprendre ce qui se passe entre le navigateur et le serveur m&#039;aide aussi quand je déploie mes propres applications.</p>  </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Apache</li>
+<li class="tag">HTTPS</li>
+<li class="tag">PHP</li>
+<li class="tag">Nginx</li>
+<li class="tag">Pare-feu</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/linux-avance/tp2-serveur-web-https.pdf" target="_blank" rel="noopener">Compte rendu (PDF)</a>
+    </div>
+  </article>
+<article id="tp3" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Linux avancé, TP3, 9 septembre 2026</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Partager des fichiers et maîtriser les journaux</h2>
+    <h3>Objectif</h3><p>Mettre en place un espace de travail partagé, puis organiser et surveiller les journaux du serveur.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Partage accessible depuis Windows avec Samba, et depuis Linux avec NFS.</li><li>Journal système rendu persistant, et journal applicatif séparé avec rsyslog.</li><li>Rotation des journaux avec logrotate.</li><li>Blocage automatique des adresses qui échouent à se connecter en SSH, avec fail2ban.</li></ul>
+        <h3>Ce que j'en retiens</h3><p>Des journaux bien rangés font gagner un temps précieux le jour où il faut comprendre une panne.</p>  </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Samba</li>
+<li class="tag">NFS</li>
+<li class="tag">rsyslog</li>
+<li class="tag">logrotate</li>
+<li class="tag">fail2ban</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/linux-avance/tp3-partages-journaux.pdf" target="_blank" rel="noopener">Compte rendu (PDF)</a>
+    </div>
+  </article>
+<article id="tp4" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Linux avancé, TP4, 11 septembre 2026</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Automatiser l&#039;administration du serveur</h2>
+    <h3>Objectif</h3><p>Mettre en scripts ce qui était fait à la main les jours précédents, et le faire tourner automatiquement.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Huit scripts Bash, vérifiés un par un avant exécution.</li><li>Scripts de sauvegarde, de supervision et de déploiement, et une page d'état du serveur.</li><li>Planification avec cron et avec des minuteurs systemd.</li></ul>
+        <h3>Ce que j'en retiens</h3><p>C&#039;est le TP qui se rapproche le plus du DevOps : automatiser ce qui se répète pour le rendre fiable.</p>  </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Bash</li>
+<li class="tag">cron</li>
+<li class="tag">systemd</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/linux-avance/tp4-scripts-bash.pdf" target="_blank" rel="noopener">Compte rendu (PDF)</a>
+    </div>
+  </article>
+<article id="tp5" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Linux avancé, révision, 30 septembre 2026</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">L&#039;intranet du service comptable</h2>
+    <h3>Objectif</h3><p>Reconstruire une machine de zéro et réviser l&#039;ensemble du module sur un cas complet.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Comptes et groupes pour le service comptable.</li><li>Droits sur les dossiers, avec le bit SGID pour que tout le service partage les fichiers créés.</li><li>Site Apache protégé par mot de passe, partage Samba et sauvegarde automatique.</li></ul>
+        <h3>Ce que j'en retiens</h3><p>Refaire tout depuis zéro montre ce qui est vraiment acquis et ce qui ne l&#039;est pas encore.</p>  </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Droits Linux</li>
+<li class="tag">Apache</li>
+<li class="tag">Samba</li>
+<li class="tag">cron</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/linux-avance/tp5-revision-intranet.pdf" target="_blank" rel="noopener">Compte rendu (PDF)</a>
+    </div>
+  </article>
+                      <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Bases de données avancées (SLAM)</h3>
+            <article id="vitasport" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Bases de données avancées, octobre 2026</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">VitaSport : concevoir, interroger et optimiser une base</h2>
+    <h3>Objectif</h3><p>Travailler sur la base de données d&#039;une salle de sport, de la modélisation jusqu&#039;aux requêtes avancées.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Rappels SQL : création des tables, contraintes, erreurs de clés étrangères et d'unicité provoquées volontairement.</li><li>Modélisation Merise de l'extension VitaSport+ avec Looping : dictionnaire des données, MCD, MLD puis MPD exécuté, et normalisation.</li><li>Diagrammes UML sur draw.io : diagramme de classes et diagramme de cas d'utilisation.</li><li>SQL avancé : jointures, agrégats, sous-requêtes et vues. La suite du TP (index, transactions, déclencheurs) est en cours.</li></ul>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">MySQL / MariaDB</li>
+<li class="tag">Merise</li>
+<li class="tag">Looping</li>
+<li class="tag">UML</li>
+<li class="tag">draw.io</li>
+</ul>
+
+  </article>
+                      <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Développement</h3>
+            <article id="planet" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Projet de l'année, depuis septembre 2026</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Pla&#039;Net, l&#039;application de planning de l&#039;école</h2>
+    <h3>Objectif</h3><p>Développer une application web de planning des cours pour MediaSchool Rouen.</p>
+    <h3>Ce que j'ai fait</h3>
+                <p>Le projet est présenté en détail sur <a href="planet.html">sa page dédiée</a>, avec le lien pour tester l'application en ligne.</p>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Symfony</li>
+<li class="tag">Twig</li>
+<li class="tag">MariaDB</li>
+</ul>
+
+  </article>
+                            <div class="h-6"></div>          <h2 id="annee-1" class="section-block reveal mt-4 font-display text-3xl font-extrabold tracking-tight text-bone">Première année</h2>
+                      <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Développement</h3>
+            <article id="pafalan" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Développement, 1<sup>re</sup> année</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Pafalan : application web PHP de collection de cartes</h2>
+    <h3>Objectif</h3><p>Réaliser en binôme un site de collection de cartes, inspiré de l&#039;univers Dofus.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Authentification par session avec mots de passe hachés, et trois rôles : administrateur, joueur, visiteur.</li><li>Catalogue filtrable et ouverture de paquets de cartes au hasard, selon leur rareté.</li><li>Panneau d'administration avec création, modification et suppression.</li><li>Code organisé en services, avec un accès aux données par PDO.</li></ul>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">PHP</li>
+<li class="tag">PDO</li>
+<li class="tag">Sessions</li>
+</ul>
+
+  </article>
+<article id="bistrot" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Développement, 1<sup>re</sup> année</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Le Bistrot de Marcel : conception de base de données</h2>
+    <h3>Objectif</h3><p>Modéliser et créer la base de données d&#039;un restaurant.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Tables clients, tables du restaurant, plats, allergènes et serveurs, avec clés et contraintes.</li><li>TP noté : installation de MariaDB et phpMyAdmin sur une machine Debian, avec un compte dédié à l'application plutôt que root.</li></ul>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">SQL</li>
+<li class="tag">MariaDB</li>
+<li class="tag">Debian</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/developpement/bistrot-marcel.pdf" target="_blank" rel="noopener">Fiche (PDF)</a>
+    </div>
+  </article>
+<article id="pygame" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Développement, 1<sup>re</sup> année</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Jeu spatial en Python avec pygame</h2>
+    <h3>Objectif</h3><p>Pratiquer Python en réalisant un petit jeu d&#039;arcade.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Vaisseau, ennemis, projectiles, astéroïdes et bonus, avec un système de vies et de score sauvegardé.</li><li>Exercices de programmation objet en Python. C'est le point de départ de Mission Orion.</li></ul>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Python</li>
+<li class="tag">pygame</li>
+<li class="tag">POO</li>
+</ul>
+
+  </article>
+<article id="seo" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Développement, 1<sup>re</sup> année</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Audit SEO de deux sites</h2>
+    <h3>Objectif</h3><p>Analyser deux sites existants et proposer des améliorations.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Analyse avec PageSpeed Insights : performance, accessibilité, bonnes pratiques.</li><li>Recommandations classées par priorité : images compressées, chargement différé, moins de JavaScript, données structurées.</li></ul>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">SEO</li>
+<li class="tag">PageSpeed</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/developpement/audit-seo.pdf" target="_blank" rel="noopener">Audit (PDF)</a>
+    </div>
+  </article>
+                      <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Systèmes</h3>
+            <article id="active-directory" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Systèmes, 1<sup>re</sup> année</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Infrastructure Active Directory sous Windows Server 2025</h2>
+    <h3>Objectif</h3><p>Déployer une infrastructure serveur Windows complète dans VMware.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Contrôleur de domaine avec DNS intégré, et un second serveur joint au domaine.</li><li>Serveur DHCP en mode basculement, pour la haute disponibilité.</li><li>Partage de fichiers et chiffrement BitLocker d'un volume, avec sauvegarde de la clé de récupération.</li><li>Chaque étape documentée avec ses commandes PowerShell.</li></ul>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Windows Server</li>
+<li class="tag">Active Directory</li>
+<li class="tag">PowerShell</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/systemes/infra-active-directory.pdf" target="_blank" rel="noopener">Fiche (PDF)</a>
+    </div>
+  </article>
+<article id="load-balancing" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Systèmes, 1<sup>re</sup> année</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Infrastructure web avec répartition de charge sur Scaleway</h2>
+    <h3>Objectif</h3><p>Mettre en place une architecture web haute disponibilité sur un cloud public.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Deux serveurs Nginx et PHP-FPM derrière un répartiteur HAProxy, reliés par un réseau privé.</li><li>Test de la répartition et du basculement automatique quand un serveur s'arrête.</li><li>Page de statistiques HAProxy accessible uniquement par tunnel SSH.</li></ul>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">HAProxy</li>
+<li class="tag">Nginx</li>
+<li class="tag">Scaleway</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/systemes/infra-web-loadbalancing.pdf" target="_blank" rel="noopener">Compte rendu (PDF)</a>
+    </div>
+  </article>
+<article id="parc" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Systèmes, 1<sup>re</sup> année</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Gestion de parc informatique et ITIL</h2>
+    <h3>Objectif</h3><p>Comprendre l&#039;organisation d&#039;une DSI et la gestion d&#039;un parc.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Travail de groupe : rôle de la DSI, inventaire de parc (OCS Inventory, GLPI), CMDB et cycle de vie du matériel, avec ITIL 4.</li><li>Exercice individuel : qualification de tickets de support (type, urgence, impact, priorité).</li></ul>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">GLPI</li>
+<li class="tag">ITIL</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/systemes/parc-informatique.pdf" target="_blank" rel="noopener">Rendu de groupe (PDF)</a>
+    </div>
+  </article>
+                      <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Réseaux</h3>
+            <article id="frantech" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Réseaux, 1<sup>re</sup> année</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">TP Frantech : réseau d&#039;entreprise sous Packet Tracer</h2>
+    <h3>Objectif</h3><p>Concevoir en binôme le réseau segmenté d&#039;une entreprise sur plusieurs sites.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Plan d'adressage IPv4 selon le nombre de postes par service, et segmentation en VLAN.</li><li>Trunks, routage inter-VLAN, DHCP par VLAN et routage OSPF entre les filiales.</li><li>Spanning Tree avec répartition de charge entre deux commutateurs principaux.</li></ul>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Cisco</li>
+<li class="tag">VLAN</li>
+<li class="tag">OSPF</li>
+<li class="tag">DHCP</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/reseaux/tp-frantech.pdf" target="_blank" rel="noopener">Compte rendu (PDF)</a>
+    </div>
+  </article>
+<article id="securite-acces" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Réseaux, 1<sup>re</sup> année</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Sécurisation des accès réseau</h2>
+    <h3>Objectif</h3><p>Sécuriser les commutateurs d&#039;accès d&#039;un réseau.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Port-security avec limitation du nombre d'adresses MAC par port.</li><li>Ports inutilisés désactivés et accès distant chiffré en SSH au lieu de Telnet.</li><li>Comparaison des trois modes de violation pour justifier le choix retenu.</li></ul>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Port-security</li>
+<li class="tag">SSH</li>
+</ul>
+
+  </article>
+                      <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Cybersécurité</h3>
+            <article id="fortigate" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Cybersécurité, 1<sup>re</sup> année</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Cluster FortiGate en haute disponibilité sous GNS3</h2>
+    <h3>Objectif</h3><p>Monter une maquette réseau sécurisée et redondante.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Deux pare-feu FortiGate en cluster de haute disponibilité, avec des liens dédiés entre eux.</li><li>Redondance physique entre deux commutateurs Cisco.</li><li>Réseau interne découpé en trois VLAN avec attribution DHCP.</li></ul>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">GNS3</li>
+<li class="tag">FortiGate</li>
+<li class="tag">VLAN</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/cyber-securite/compte-rendu-gns3-fortigate-ha.pdf" target="_blank" rel="noopener">Compte rendu (PDF)</a>
+    </div>
+  </article>
+                      <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Mathématiques</h3>
+            <article id="arithmetique" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Mathématiques, 1<sup>re</sup> année</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Arithmétique appliquée : les clés de contrôle</h2>
+    <h3>Objectif</h3><p>Appliquer l&#039;arithmétique modulaire à des cas concrets.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Vérifier la clé d'un numéro de billet (modulo 9) et d'un code-barres EAN-13.</li><li>Retrouver des chiffres illisibles, et repérer une faille : une erreur de plus ou moins 9 sur un chiffre passe inaperçue.</li></ul>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Modulo</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/mathematiques/fiche-revision-arithmetique.pdf" target="_blank" rel="noopener">Fiche de révision (PDF)</a>
+    </div>
+  </article>
+<article id="algo-python" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Mathématiques, 1<sup>re</sup> année</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Algorithmique en Python</h2>
+    <h3>Objectif</h3><p>Pratiquer les structures de données et les algorithmes de base.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Moyenne, conversion binaire et décimal, tri à bulles, médiane, insertion triée.</li><li>Un outil de manipulation de matrices, avec vérification des dimensions.</li></ul>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Python</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/mathematiques/exercices-codage.py">Code (exercices)</a>
+<a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/mathematiques/matrice.py">Code (matrices)</a>
+    </div>
+  </article>
+                      <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">CEJM</h3>
+            <article id="ankama" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">CEJM, 1<sup>re</sup> année</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Étude RSE : le cas Ankama</h2>
+    <h3>Objectif</h3><p>Analyser la démarche de responsabilité sociale d&#039;une entreprise.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Analyse des trois piliers (environnemental, social, économique) du studio Ankama.</li><li>Confrontation avec des éléments négatifs documentés, pour une conclusion nuancée.</li></ul>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">RSE</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/cejm/ankama-rse.pdf" target="_blank" rel="noopener">Fiche (PDF)</a>
+    </div>
+  </article>
+<article id="caissiere" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">CEJM, 1<sup>re</sup> année</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Cas pratique : responsabilité de l&#039;employeur</h2>
+    <h3>Objectif</h3><p>Qualifier juridiquement une situation de santé au travail.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Absence de document unique d'évaluation des risques et troubles musculosquelettiques.</li><li>Responsabilité pénale et civile de l'employeur, appuyée sur le Code du travail.</li></ul>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Droit du travail</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/cejm/cas-caissiere.pdf" target="_blank" rel="noopener">Fiche (PDF)</a>
+    </div>
+  </article>
+<article id="droit" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">CEJM, 1<sup>re</sup> année</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Droit des marques et structures juridiques</h2>
+    <h3>Objectif</h3><p>Étudier la protection d&#039;une marque et le choix d&#039;une forme d&#039;entreprise.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>L'affaire Louboutin contre YSL sur la protection d'une couleur.</li><li>Choix d'une structure (EI, EURL, SARL, SAS) pour une création d'entreprise à trois associés.</li></ul>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Droit</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/cejm/droit-des-marques.pdf" target="_blank" rel="noopener">Marques (PDF)</a>
+<a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/cejm/structures-juridiques.pdf" target="_blank" rel="noopener">Structures (PDF)</a>
+    </div>
+  </article>
+                      <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Anglais</h3>
+            <article id="anglais" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Anglais, 1<sup>re</sup> année</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Future of Work 2026</h2>
+    <h3>Objectif</h3><p>Comprendre et commenter un document en anglais professionnel.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Compréhension d'une vidéo sur l'IA et le marché du travail, et lexique ciblé.</li><li>Développement argumenté sur la manière de s'y préparer.</li></ul>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Anglais</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/anglais/future-of-work-2026.pdf" target="_blank" rel="noopener">Fiche (PDF)</a>
+    </div>
+  </article>
+                      <h3 class="reveal mt-6 font-display text-lg font-bold text-ash">Culture générale</h3>
+            <article id="chat-potte" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Culture générale, 1<sup>re</sup> année</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Exposé : Le Chat Potté</h2>
+    <h3>Objectif</h3><p>Analyser une œuvre sur le thème de l&#039;animal héros.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Analyse de l'affiche et d'une scène clé, et du détournement des codes du western.</li></ul>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Expression</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/culture-generale/le-chat-potte.pdf" target="_blank" rel="noopener">Fiche (PDF)</a>
+    </div>
+  </article>
+<article id="hybrides" class="section-block panel reveal p-6 md:p-8">
+  <p class="label text-blood">Culture générale, 1<sup>re</sup> année</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Exposé : les animaux hybrides</h2>
+    <h3>Objectif</h3><p>Étudier une figure mythologique et sa place dans le cinéma actuel.</p>
+    <h3>Ce que j'ai fait</h3>
+          <ul><li>Chimère, centaure, sirènes : ce que ces figures symbolisent, mis en parallèle avec le film <em>Le Règne animal</em>.</li></ul>
+          </div>
+  <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Expression</li>
+</ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+      <a class="btn btn-ghost btn-sm" href="../assets/fiches-cours/culture-generale/animaux-hybrides.pdf" target="_blank" rel="noopener">Fiche (PDF)</a>
+    </div>
+  </article>
+                        </div>
+
+            <aside class="hidden lg:sticky lg:top-24 lg:block lg:max-h-[calc(100vh-7rem)] lg:self-start lg:overflow-y-auto">
+        <nav class="toc" aria-label="Sommaire des projets encadrés" data-toc>
+          <p class="label mb-2 px-3 text-ash">Sommaire</p>
+                                  <a href="#annee-2" class="!font-semibold">Deuxième année</a>
+            <a href="#tp0" class="!pl-6 !text-[.8rem]">Installer et prendre en main un serveur Ubuntu en ligne de commande</a><a href="#tp1" class="!pl-6 !text-[.8rem]">Déployer un serveur DHCP et un serveur DNS</a><a href="#tp2" class="!pl-6 !text-[.8rem]">Héberger deux sites web et les publier en HTTPS</a><a href="#tp3" class="!pl-6 !text-[.8rem]">Partager des fichiers et maîtriser les journaux</a><a href="#tp4" class="!pl-6 !text-[.8rem]">Automatiser l&#039;administration du serveur</a><a href="#tp5" class="!pl-6 !text-[.8rem]">L&#039;intranet du service comptable</a><a href="#vitasport" class="!pl-6 !text-[.8rem]">VitaSport</a><a href="#planet" class="!pl-6 !text-[.8rem]">Pla&#039;Net</a>                      <div class="h-3"></div>            <a href="#annee-1" class="!font-semibold">Première année</a>
+            <a href="#pafalan" class="!pl-6 !text-[.8rem]">Pafalan</a><a href="#bistrot" class="!pl-6 !text-[.8rem]">Le Bistrot de Marcel</a><a href="#pygame" class="!pl-6 !text-[.8rem]">Jeu spatial en Python avec pygame</a><a href="#seo" class="!pl-6 !text-[.8rem]">Audit SEO de deux sites</a><a href="#active-directory" class="!pl-6 !text-[.8rem]">Infrastructure Active Directory sous Windows Server 2025</a><a href="#load-balancing" class="!pl-6 !text-[.8rem]">Infrastructure web avec répartition de charge sur Scaleway</a><a href="#parc" class="!pl-6 !text-[.8rem]">Gestion de parc informatique et ITIL</a><a href="#frantech" class="!pl-6 !text-[.8rem]">TP Frantech</a><a href="#securite-acces" class="!pl-6 !text-[.8rem]">Sécurisation des accès réseau</a><a href="#fortigate" class="!pl-6 !text-[.8rem]">Cluster FortiGate en haute disponibilité sous GNS3</a><a href="#arithmetique" class="!pl-6 !text-[.8rem]">Arithmétique appliquée</a><a href="#algo-python" class="!pl-6 !text-[.8rem]">Algorithmique en Python</a><a href="#ankama" class="!pl-6 !text-[.8rem]">Étude RSE</a><a href="#caissiere" class="!pl-6 !text-[.8rem]">Cas pratique</a><a href="#droit" class="!pl-6 !text-[.8rem]">Droit des marques et structures juridiques</a><a href="#anglais" class="!pl-6 !text-[.8rem]">Future of Work 2026</a><a href="#chat-potte" class="!pl-6 !text-[.8rem]">Exposé</a><a href="#hybrides" class="!pl-6 !text-[.8rem]">Exposé</a>                  </nav>
+      </aside>
+    </div>
+  </div>
   </main>
 
   <footer class="px-5 pb-10 md:px-8">
-    <div class="mx-auto flex max-w-6xl flex-col gap-3 border-t border-edge pt-6 text-xs text-ash/80 sm:flex-row sm:items-center sm:justify-between">
-      <span>© 2026 Dorian Pachot, BTS SIO SLAM, IRIS MediaSchool Rouen</span>
-      <span class="flex gap-6"><a class="hover:text-bone" href="mentions-legales.html">Mentions légales</a><a class="hover:text-bone" href="../index.html">Accueil</a></span>
-    </div>
-  </footer>
+  <div class="mx-auto flex max-w-6xl flex-col gap-3 border-t border-edge pt-6 text-xs text-ash/80 sm:flex-row sm:items-center sm:justify-between">
+    <span>© 2026 Dorian Pachot, BTS SIO SLAM, IRIS MediaSchool Rouen</span>
+    <span class="flex gap-6">
+      <a class="hover:text-bone" href="mentions-legales.html">Mentions légales</a>
+      <a class="hover:text-bone" href="../index.html">Accueil</a>    </span>
+  </div>
+</footer>
 
-  <script src="../js/site.js"></script>
-</body>
+
+  <script src="../js/site.js"></script></body>
 </html>

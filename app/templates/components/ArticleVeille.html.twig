@@ -1,0 +1,13 @@
+{#
+  Composant ArticleVeille : un article du "journal" de veille.
+  Structure fixe : rubrique, titre, "Pourquoi je suis ce sujet", "Ce que j'en retiens", liens avec mes projets.
+  "classe" ajoute les marges et séparateurs selon la place de l'article dans la rangée.
+#}
+{% props article, classe = '' %}
+<article id="{{ article.id }}" class="article py-8 {{ classe }}">
+  <p class="label !text-[.66rem] text-blood">{{ article.rubrique }}</p>
+  <h4 class="mt-2 font-display text-2xl font-bold leading-tight text-bone">{{ article.titre }}</h4>
+  <p class="mt-3"><strong>Pourquoi je suis ce sujet.</strong> {{ article.pourquoi|raw }}</p>
+  <p><strong>Ce que j'en retiens.</strong> {{ article.retenu|raw }}</p>
+  <p class="!mb-0 text-xs !text-ash/80">En lien avec : {{ article.liens_avec }}</p>
+</article>

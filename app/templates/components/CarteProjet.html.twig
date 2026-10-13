@@ -1,0 +1,21 @@
+{#
+  Composant CarteProjet : une carte de la page "Mes réalisations".
+  Toute la carte est cliquable (classe card-link + lien "stretch").
+  SYNCRO affiche ses quatre captures, les autres projets leur image.
+#}
+{% props projet %}
+<article class="project card-link panel reveal relative flex flex-col" style="--c:{{ projet.couleur }}">
+  {% if projet.media.type == 'captures' %}
+    <div class="grid aspect-[16/9] grid-cols-4 gap-2 overflow-hidden border-b border-edge bg-gradient-to-br from-blood/10 to-transparent p-4">
+      {%- for image in projet.media.images -%}<img class="project__img h-full w-full rounded-lg object-cover object-top" src="{{ lien(image.fichier) }}" alt="" loading="lazy" width="720" height="1280" />{%- endfor -%}
+    </div>
+  {% else %}
+    <div class="aspect-[16/9] overflow-hidden border-b border-edge"><twig:Image :fichier="projet.media.image" :alt="projet.liste_projets.alt" classe="project__img h-full w-full object-cover object-top" /></div>
+  {% endif %}
+  <div class="flex flex-1 flex-col p-6">
+    <span class="status">{{ projet.liste_projets.statut }}</span>
+    <h2 class="mt-3 font-display text-2xl font-bold text-bone">{{ projet.nom }}</h2>
+    <p class="mt-2 text-sm leading-relaxed text-ash">{{ projet.liste_projets.texte }}</p>
+    <a class="stretch mt-auto pt-5 text-sm font-semibold text-[var(--c)] hover:text-bone" href="{{ lien('pages/' ~ projet.slug ~ '.html') }}">Lire la présentation</a>
+  </div>
+</article>

@@ -1,0 +1,14 @@
+{#
+  Composant EtapeParcours : une étape de la frise "Mon parcours".
+  La couleur du point dépend du type (sport, tech, work, now) : voir .stop--... dans css/site.css.
+#}
+{% props etape %}
+<li class="stop stop--{{ etape.type }}">
+  <span class="stop__year">{{ etape.periode }}</span>
+  <span class="stop__dot" aria-hidden="true"></span>
+  <div class="stop__card">
+    <span class="label !text-[.62rem] text-ash">{{ etape.categorie }}</span>
+    <h4 class="mt-1.5 font-display text-[1rem] font-bold leading-snug text-bone">{{ etape.titre }}</h4>
+    <p class="mt-2 text-sm leading-relaxed text-ash">{{ etape.texte }}</p>
+  </div>
+</li>

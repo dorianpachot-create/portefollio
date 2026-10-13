@@ -1,0 +1,9 @@
+# Configuration de Twig, le moteur de gabarits.
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    # En cas d'erreur dans un gabarit, l'export s'arrête au lieu de produire une page fausse.
+    strict_variables: true
+    # Variables disponibles dans TOUS les gabarits et composants :
+    #   {{ contenu.get('profil').email }}
+    globals:
+        contenu: '@App\Service\Contenu'

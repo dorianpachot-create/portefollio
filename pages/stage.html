@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- Page générée par Symfony (php bin/console app:export). Pour la modifier : dossier app/ -->
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
@@ -14,13 +15,16 @@
   <meta property="og:description" content="Le stage de Dorian Pachot chez Suitime, du 6 juillet au 7 août 2026, semaine par semaine." />
   <meta property="og:image" content="https://dorianpachot-create.github.io/portefollio/assets/meta/og-image.png" />
   <link rel="icon" href="../assets/meta/favicon.svg" type="image/svg+xml" />
-  <script>document.documentElement.classList.add('js');</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="apple-touch-icon" href="../assets/meta/favicon-180.png" />
+    <script>document.documentElement.classList.add('js');</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/site.css" />
+
+    <link rel="stylesheet" href="../css/site.css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
-  <style type="text/tailwindcss">
+    <style type="text/tailwindcss">
     @theme {
       --color-void: #090A0F;
       --color-panel: #10121A;
@@ -36,98 +40,109 @@
     }
   </style>
 </head>
+
 <body id="top">
   <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-blood focus:px-4 focus:py-2 focus:text-white" href="#main">Aller au contenu</a>
   <div class="bg-grid" aria-hidden="true"></div>
-  <div class="scroll-progress" aria-hidden="true"><span data-progress></span></div>
-
+    <div class="scroll-progress" aria-hidden="true"><span data-progress></span></div>
+  
   <header class="topbar fixed inset-x-0 top-0 z-50 border-b border-transparent transition-colors" data-topbar>
-    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
-      <a href="../index.html" class="flex items-center gap-3" aria-label="Dorian Pachot, retour à l'accueil">
-        <span class="grid h-9 w-9 place-items-center rounded-lg bg-blood font-display text-sm font-extrabold text-white">DP</span>
-        <span class="hidden font-display text-[17px] font-bold tracking-tight text-bone sm:inline">Dorian Pachot</span>
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
+        <a href="../index.html" class="flex items-center gap-3" aria-label="Dorian Pachot, retour à l'accueil">
+      <span class="grid h-9 w-9 place-items-center rounded-lg bg-blood font-display text-sm font-extrabold text-white">DP</span>
+      <span class="hidden font-display text-[17px] font-bold tracking-tight text-bone sm:inline">Dorian Pachot</span>
+    </a>
+
+        <nav class="hidden items-center gap-6 text-sm font-medium xl:flex" aria-label="Navigation principale">
+              <a href="../index.html#parcours" class="nav-a text-ash transition hover:text-bone">Parcours</a>
+              <a href="../index.html#projets" class="nav-a !text-bone transition hover:text-bone">Projets</a>
+              <a href="projets-cours.html" class="nav-a text-ash transition hover:text-bone">Cours</a>
+              <a href="../index.html#outils" class="nav-a text-ash transition hover:text-bone">Outils</a>
+              <a href="../index.html#veille" class="nav-a text-ash transition hover:text-bone">Veille</a>
+              <a href="documents.html" class="nav-a text-ash transition hover:text-bone">Documents</a>
+          </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="../index.html#contact" class="flex items-center gap-2.5 rounded-full border border-go/30 bg-go/5 px-3 py-1.5 text-[13px] font-medium text-go transition hover:border-go/60">
+        <span class="dot" aria-hidden="true"></span><span class="hidden sm:inline">Disponible pour une alternance</span><span class="sm:hidden">Disponible</span>
       </a>
-      <nav class="hidden items-center gap-6 text-sm font-medium xl:flex" aria-label="Navigation principale">
-        <a href="../index.html#parcours" class="nav-a text-ash transition hover:text-bone">Parcours</a>
-        <a href="../index.html#projets" class="nav-a !text-bone transition hover:text-bone">Projets</a>
-        <a href="projets-cours.html" class="nav-a text-ash transition hover:text-bone">Cours</a>
-        <a href="../index.html#outils" class="nav-a text-ash transition hover:text-bone">Outils</a>
-        <a href="../index.html#veille" class="nav-a text-ash transition hover:text-bone">Veille</a>
-        <a href="documents.html" class="nav-a text-ash transition hover:text-bone">Documents</a>
-      </nav>
-      <div class="flex items-center gap-3">
-        <a href="../index.html#contact" class="flex items-center gap-2.5 rounded-full border border-go/30 bg-go/5 px-3 py-1.5 text-[13px] font-medium text-go transition hover:border-go/60">
-          <span class="dot" aria-hidden="true"></span><span class="hidden sm:inline">Disponible pour une alternance</span><span class="sm:hidden">Disponible</span>
-        </a>
-        <button class="btn btn-ghost btn-sm xl:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu">Menu</button>
-      </div>
+      <button class="btn btn-ghost btn-sm xl:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu">Menu</button>
     </div>
+  </div>
+
     <div class="mobile-menu border-t border-edge bg-void/95 backdrop-blur-xl xl:hidden" id="menu" data-menu>
-      <nav class="mx-auto grid max-w-6xl px-5 py-2 text-[15px] font-medium" aria-label="Navigation mobile">
-        <a href="../index.html#parcours" class="border-b border-edge py-3.5 text-bone">Parcours</a>
-        <a href="../index.html#projets" class="border-b border-edge py-3.5 text-bone">Projets</a>
-        <a href="projets-cours.html" class="border-b border-edge py-3.5 text-bone">Cours</a>
-        <a href="../index.html#outils" class="border-b border-edge py-3.5 text-bone">Outils</a>
-        <a href="../index.html#veille" class="border-b border-edge py-3.5 text-bone">Veille</a>
-        <a href="documents.html" class="border-b border-edge py-3.5 text-bone">Documents</a>
-        <a href="../index.html#contact" class="py-3.5 text-blood">Contact</a>
-      </nav>
-    </div>
-  </header>
+    <nav class="mx-auto grid max-w-6xl px-5 py-2 text-[15px] font-medium" aria-label="Navigation mobile">
+              <a href="../index.html#parcours" class="border-b border-edge py-3.5 text-bone">Parcours</a>
+              <a href="../index.html#projets" class="border-b border-edge py-3.5 text-bone">Projets</a>
+              <a href="projets-cours.html" class="border-b border-edge py-3.5 text-bone">Cours</a>
+              <a href="../index.html#outils" class="border-b border-edge py-3.5 text-bone">Outils</a>
+              <a href="../index.html#veille" class="border-b border-edge py-3.5 text-bone">Veille</a>
+              <a href="documents.html" class="border-b border-edge py-3.5 text-bone">Documents</a>
+            <a href="../index.html#contact" class="py-3.5 text-blood">Contact</a>
+    </nav>
+  </div>
+</header>
 
   <main id="main">
-    <header class="px-5 pb-10 pt-28 md:px-8 md:pt-36">
-      <div class="mx-auto max-w-6xl">
-        <a class="inline-flex items-center gap-2 text-sm font-semibold text-ash transition hover:text-bone" href="syncro.html"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Retour à la page SYNCRO</a>
-        <p class="label mt-8 text-blood">Stage chez Suitime, 6 juillet au 7 août 2026</p>
-        <h1 class="mt-3 font-display text-[clamp(2.2rem,6vw,3.8rem)] font-extrabold leading-[1.05] tracking-[-.025em] text-bone">Journal de stage</h1>
-        <div class="mt-5 max-w-2xl text-base leading-relaxed text-ash md:text-lg"><p>Cinq semaines à temps plein sur SYNCRO, une application que je développais déjà pour Suitime depuis avril. C'est pendant ce stage qu'elle a été mise en production et publiée sur l'App Store et Google Play.</p></div>
-        
+      <header class="px-5 pb-10 pt-28 md:px-8 md:pt-36">
+  <div class="mx-auto max-w-6xl">
+    <a class="inline-flex items-center gap-2 text-sm font-semibold text-ash transition hover:text-bone" href="syncro.html"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Retour à la page SYNCRO</a>
+    <p class="label mt-8 text-blood">Stage chez Suitime, 6 juillet au 7 août 2026</p>
+    <h1 class="mt-3 font-display text-[clamp(2.2rem,6vw,3.8rem)] font-extrabold leading-[1.05] tracking-[-.025em] text-bone">Journal de stage</h1>
+    <div class="mt-5 max-w-2xl text-base leading-relaxed text-ash md:text-lg"><p>Cinq semaines à temps plein sur SYNCRO, une application que je développais déjà pour Suitime depuis avril. C'est pendant ce stage qu'elle a été mise en production et publiée sur l'App Store et Google Play.</p>
+  </div>
       </div>
-    </header>
+</header>
 
-    <div class="px-5 pb-6 md:px-8"><div class="mx-auto max-w-6xl">
-      <dl class="reveal grid grid-cols-2 gap-3 md:grid-cols-4">
-        <div class="panel p-5"><dd class="font-display text-3xl font-bold text-bone">5</dd><dt class="text-xs text-ash">semaines à temps plein</dt></div>
-        <div class="panel p-5"><dd class="font-display text-3xl font-bold text-bone">2</dd><dt class="text-xs text-ash">stores, App Store et Google Play</dt></div>
-        <div class="panel p-5"><dd class="font-display text-3xl font-bold text-bone">53</dd><dt class="text-xs text-ash">routes d'API passées en TypeScript</dt></div>
-        <div class="panel p-5"><dd class="font-display text-3xl font-bold text-bone">13</dd><dt class="text-xs text-ash">écrans maquettés</dt></div>
-      </dl>
-      <p class="reveal mt-6 max-w-3xl text-sm text-ash">Quand le stage a commencé, la base de l'application existait déjà (comptes, groupes, planning, notifications). Les détails techniques internes à Suitime ne sont pas présentés ici.</p>
-    </div></div>
-    <div class="px-5 pb-16 pt-4 md:px-8"><div class="mx-auto grid max-w-6xl gap-5">
-        <article id="semaine-1" class="section-block panel reveal grid gap-4 p-6 md:grid-cols-[11rem_1fr] md:p-8">
-          <div><p class="font-display text-2xl font-extrabold text-blood">Semaine 1</p><p class="text-sm text-ash">6 au 10 juillet</p></div>
-          <div class="prose-red"><h2 class="!text-xl">Mise en ligne et notifications</h2><ul><li>Mise en ligne du site vitrine : accueil, quatre pages légales, identité visuelle.</li><li>Un back-office réservé à l'équipe : tableau de bord, utilisateurs, groupes et invitations.</li><li>Mise en prod sur un serveur Linux (Nginx, PM2, HTTPS), avec un déploiement automatique et sans coupure.</li><li>Les notifications push, côté serveur et côté appli.</li><li>Passage au nom de domaine définitif pour le site, l'appli et les liens d'invitation.</li></ul></div>
-        </article>
-        <article id="semaine-2" class="section-block panel reveal grid gap-4 p-6 md:grid-cols-[11rem_1fr] md:p-8">
-          <div><p class="font-display text-2xl font-extrabold text-blood">Semaine 2</p><p class="text-sm text-ash">13 au 17 juillet</p></div>
-          <div class="prose-red"><h2 class="!text-xl">Back-end en TypeScript et sécurité</h2><ul><li>J'ai fait le tour de tout le code et écrit un petit guide pour m'y retrouver vite.</li><li>Passage du back-end de JavaScript à <strong>TypeScript</strong> : 14 modules partagés puis 53 routes d'API, par petits lots et sans coupure. Les erreurs se voient maintenant avant la mise en ligne.</li><li>Relecture des permissions des routes sensibles, une par une, et correction d'un souci de cloisonnement entre groupes.</li><li>Une validation des champs centralisée dans un seul outil au lieu d'être recopiée partout.</li><li>Une protection contre les tentatives de connexion à répétition.</li></ul></div>
-        </article>
-        <article id="semaine-3" class="section-block panel reveal grid gap-4 p-6 md:grid-cols-[11rem_1fr] md:p-8">
-          <div><p class="font-display text-2xl font-extrabold text-blood">Semaine 3</p><p class="text-sm text-ash">20 au 24 juillet</p></div>
-          <div class="prose-red"><h2 class="!text-xl">Le refus d'Apple, et ce qu'il a montré</h2><ul><li>Apple refuse l'appli : ses testeurs n'arrivent pas à se connecter. En cherchant, je découvre que la connexion était cassée en prod depuis cinq jours pour tout le monde. De vieux fichiers restés sur le serveur après la migration étaient utilisés à la place des nouveaux.</li><li>Je répare, puis je corrige le script de déploiement : suppression automatique des vieux fichiers et <strong>test de connexion à chaque mise en ligne</strong>.</li><li>Déploiement par Git au lieu d'envoyer les fichiers à la main.</li><li>Vérification des jetons Google et Apple renforcée, avec des tests.</li><li>Correction de l'invitation par QR code, qui bloquait sans rien dire le retour d'un membre dans un groupe qu'il avait quitté.</li><li>Nouveaux écrans de connexion et d'inscription.</li></ul></div>
-        </article>
-        <article id="semaine-4" class="section-block panel reveal grid gap-4 p-6 md:grid-cols-[11rem_1fr] md:p-8">
-          <div><p class="font-display text-2xl font-extrabold text-blood">Semaine 4</p><p class="text-sm text-ash">27 au 31 juillet</p></div>
-          <div class="prose-red"><h2 class="!text-xl">Maquettes, validation Apple et correctifs</h2><ul><li>Nouvelle page de profil, maquettée et validée avant de coder. Les éléments communs sont regroupés dans un seul fichier : un changement de style se fait à un endroit au lieu de quatre.</li><li>Une grosse évolution du produit à cadrer. Au lieu d'un long texte, j'ai fait <strong>treize écrans maquettés</strong> en clair et en sombre, parce que le changement inversait une logique centrale de l'appli et qu'un texte risquait d'être mal compris.</li><li>Pour chaque décision, je proposais plusieurs options avec leurs limites. Le choix revenait aux responsables.</li><li>J'ai aussi listé les cas limites et ce qui risquait de casser dans l'existant.</li><li>Suppression de compte depuis l'appli (obligatoire chez Apple), avec le cas du propriétaire de groupe qui doit d'abord transmettre son groupe.</li><li>L'appli est validée sur l'App Store, puis une série de correctifs : vue Couverture plus lisible, limite de membres relevée, notifications iOS, liens d'invitation qui ouvrent directement l'appli.</li></ul></div>
-        </article>
-        <article id="semaine-5" class="section-block panel reveal grid gap-4 p-6 md:grid-cols-[11rem_1fr] md:p-8">
-          <div><p class="font-display text-2xl font-extrabold text-blood">Semaine 5</p><p class="text-sm text-ash">3 au 7 août</p></div>
-          <div class="prose-red"><h2 class="!text-xl">Publication, accessibilité et dernier bug</h2><ul><li>Un écran prêt mais caché derrière un interrupteur dans le code, parce qu'il manquait encore un prérequis côté entreprise. Il sera prêt à activer le moment venu.</li><li>Les notifications iPhone n'avaient jamais marché, sans aucun message d'erreur. J'ai comparé point par point avec une autre appli de l'entreprise où elles marchaient : trois différences, toutes corrigées.</li><li>Un indicateur d'état visible dans l'appli, pour que le prochain diagnostic ne demande ni serveur ni Mac.</li><li>Les bandeaux de six écrans, qui avaient dérivé à force de copier-coller, réunis en un seul : <strong>259 lignes de code en moins</strong>.</li><li>Accessibilité : les zones tactiles sans libellé pour les lecteurs d'écran passent de <strong>62 à 26</strong>, et les boutons atteignent la taille minimale conseillée par Apple et Google.</li><li>Dernier jour : un membre pouvait être bloqué sur le même créneau par deux groupes. La protection existait, mais elle était fausse pour les horaires qui passent minuit (une équipe de nuit, par exemple). Nouvelle méthode de comparaison, testée sur les <strong>cent combinaisons possibles</strong> plutôt que sur quelques cas.</li></ul></div>
-        </article>
-        <section class="section-block callout reveal p-6 md:p-8"><div class="prose-red"><h2>Ce que j'en retiens</h2><ul><li><strong>Une protection qui existe n'est pas forcément une protection qui marche.</strong> Les deux plus gros bugs venaient de garde-fous déjà là, mais faux. Il faut vérifier qu'ils tiennent sur les cas limites.</li><li><strong>Réparer, puis empêcher que ça revienne.</strong> Corriger la connexion n'aurait servi à rien sans le test automatique à chaque déploiement.</li><li><strong>Comparer avec ce qui marche déjà.</strong> Pour les notifications iPhone, partir d'une appli qui fonctionnait a été plus rapide et plus sûr que d'inventer.</li><li><strong>Remonter le problème plutôt que trancher seul.</strong> Quand j'ai trouvé trois valeurs différentes pour un même réglage, je l'ai signalé : c'était une décision produit, pas technique.</li><li><strong>Maquetter quand les mots ne suffisent pas.</strong> Montrer des écrans a évité de construire une fonctionnalité sur un malentendu.</li><li><strong>Assumer mes erreurs.</strong> Un matin j'ai affirmé un truc faux sur les règles d'Apple. Je l'ai corrigé par écrit l'après-midi même.</li></ul></div></section>
-    </div></div>
+  <div class="px-5 pb-6 md:px-8"><div class="mx-auto max-w-6xl">
+    <dl class="reveal grid grid-cols-2 gap-3 md:grid-cols-4">
+              <div class="panel p-5"><dd class="font-display text-3xl font-bold text-bone">5</dd><dt class="text-xs text-ash">semaines à temps plein</dt></div>
+              <div class="panel p-5"><dd class="font-display text-3xl font-bold text-bone">2</dd><dt class="text-xs text-ash">stores, App Store et Google Play</dt></div>
+              <div class="panel p-5"><dd class="font-display text-3xl font-bold text-bone">53</dd><dt class="text-xs text-ash">routes d&#039;API passées en TypeScript</dt></div>
+              <div class="panel p-5"><dd class="font-display text-3xl font-bold text-bone">13</dd><dt class="text-xs text-ash">écrans maquettés</dt></div>
+          </dl>
+    <p class="reveal mt-6 max-w-3xl text-sm text-ash">Quand le stage a commencé, la base de l&#039;application existait déjà (comptes, groupes, planning, notifications). Les détails techniques internes à Suitime ne sont pas présentés ici.</p>
+  </div></div>
 
+  <div class="px-5 pb-16 pt-4 md:px-8"><div class="mx-auto grid max-w-6xl gap-5">
+          <article id="semaine-1" class="section-block panel reveal grid gap-4 p-6 md:grid-cols-[11rem_1fr] md:p-8">
+        <div><p class="font-display text-2xl font-extrabold text-blood">Semaine 1</p><p class="text-sm text-ash">6 au 10 juillet</p></div>
+        <div class="prose-red"><h2 class="!text-xl">Mise en ligne et notifications</h2><ul><li>Mise en ligne du site vitrine : accueil, quatre pages légales, identité visuelle.</li><li>Un back-office réservé à l'équipe : tableau de bord, utilisateurs, groupes et invitations.</li><li>Mise en prod sur un serveur Linux (Nginx, PM2, HTTPS), avec un déploiement automatique et sans coupure.</li><li>Les notifications push, côté serveur et côté appli.</li><li>Passage au nom de domaine définitif pour le site, l'appli et les liens d'invitation.</li></ul></div>
+      </article>
+          <article id="semaine-2" class="section-block panel reveal grid gap-4 p-6 md:grid-cols-[11rem_1fr] md:p-8">
+        <div><p class="font-display text-2xl font-extrabold text-blood">Semaine 2</p><p class="text-sm text-ash">13 au 17 juillet</p></div>
+        <div class="prose-red"><h2 class="!text-xl">Back-end en TypeScript et sécurité</h2><ul><li>J'ai fait le tour de tout le code et écrit un petit guide pour m'y retrouver vite.</li><li>Passage du back-end de JavaScript à <strong>TypeScript</strong> : 14 modules partagés puis 53 routes d'API, par petits lots et sans coupure. Les erreurs se voient maintenant avant la mise en ligne.</li><li>Relecture des permissions des routes sensibles, une par une, et correction d'un souci de cloisonnement entre groupes.</li><li>Une validation des champs centralisée dans un seul outil au lieu d'être recopiée partout.</li><li>Une protection contre les tentatives de connexion à répétition.</li></ul></div>
+      </article>
+          <article id="semaine-3" class="section-block panel reveal grid gap-4 p-6 md:grid-cols-[11rem_1fr] md:p-8">
+        <div><p class="font-display text-2xl font-extrabold text-blood">Semaine 3</p><p class="text-sm text-ash">20 au 24 juillet</p></div>
+        <div class="prose-red"><h2 class="!text-xl">Le refus d&#039;Apple, et ce qu&#039;il a montré</h2><ul><li>Apple refuse l'appli : ses testeurs n'arrivent pas à se connecter. En cherchant, je découvre que la connexion était cassée en prod depuis cinq jours pour tout le monde. De vieux fichiers restés sur le serveur après la migration étaient utilisés à la place des nouveaux.</li><li>Je répare, puis je corrige le script de déploiement : suppression automatique des vieux fichiers et <strong>test de connexion à chaque mise en ligne</strong>.</li><li>Déploiement par Git au lieu d'envoyer les fichiers à la main.</li><li>Vérification des jetons Google et Apple renforcée, avec des tests.</li><li>Correction de l'invitation par QR code, qui bloquait sans rien dire le retour d'un membre dans un groupe qu'il avait quitté.</li><li>Nouveaux écrans de connexion et d'inscription.</li></ul></div>
+      </article>
+          <article id="semaine-4" class="section-block panel reveal grid gap-4 p-6 md:grid-cols-[11rem_1fr] md:p-8">
+        <div><p class="font-display text-2xl font-extrabold text-blood">Semaine 4</p><p class="text-sm text-ash">27 au 31 juillet</p></div>
+        <div class="prose-red"><h2 class="!text-xl">Maquettes, validation Apple et correctifs</h2><ul><li>Nouvelle page de profil, maquettée et validée avant de coder. Les éléments communs sont regroupés dans un seul fichier : un changement de style se fait à un endroit au lieu de quatre.</li><li>Une grosse évolution du produit à cadrer. Au lieu d'un long texte, j'ai fait <strong>treize écrans maquettés</strong> en clair et en sombre, parce que le changement inversait une logique centrale de l'appli et qu'un texte risquait d'être mal compris.</li><li>Pour chaque décision, je proposais plusieurs options avec leurs limites. Le choix revenait aux responsables.</li><li>J'ai aussi listé les cas limites et ce qui risquait de casser dans l'existant.</li><li>Suppression de compte depuis l'appli (obligatoire chez Apple), avec le cas du propriétaire de groupe qui doit d'abord transmettre son groupe.</li><li>L'appli est validée sur l'App Store, puis une série de correctifs : vue Couverture plus lisible, limite de membres relevée, notifications iOS, liens d'invitation qui ouvrent directement l'appli.</li></ul></div>
+      </article>
+          <article id="semaine-5" class="section-block panel reveal grid gap-4 p-6 md:grid-cols-[11rem_1fr] md:p-8">
+        <div><p class="font-display text-2xl font-extrabold text-blood">Semaine 5</p><p class="text-sm text-ash">3 au 7 août</p></div>
+        <div class="prose-red"><h2 class="!text-xl">Publication, accessibilité et dernier bug</h2><ul><li>Un écran prêt mais caché derrière un interrupteur dans le code, parce qu'il manquait encore un prérequis côté entreprise. Il sera prêt à activer le moment venu.</li><li>Les notifications iPhone n'avaient jamais marché, sans aucun message d'erreur. J'ai comparé point par point avec une autre appli de l'entreprise où elles marchaient : trois différences, toutes corrigées.</li><li>Un indicateur d'état visible dans l'appli, pour que le prochain diagnostic ne demande ni serveur ni Mac.</li><li>Les bandeaux de six écrans, qui avaient dérivé à force de copier-coller, réunis en un seul : <strong>259 lignes de code en moins</strong>.</li><li>Accessibilité : les zones tactiles sans libellé pour les lecteurs d'écran passent de <strong>62 à 26</strong>, et les boutons atteignent la taille minimale conseillée par Apple et Google.</li><li>Dernier jour : un membre pouvait être bloqué sur le même créneau par deux groupes. La protection existait, mais elle était fausse pour les horaires qui passent minuit (une équipe de nuit, par exemple). Nouvelle méthode de comparaison, testée sur les <strong>cent combinaisons possibles</strong> plutôt que sur quelques cas.</li></ul></div>
+      </article>
+        <section id="retiens" class="section-block reveal callout p-6 md:p-8">
+  <div class="prose-red">
+    <h2>Ce que j&#039;en retiens</h2>
+    <ul><li><strong>Une protection qui existe n'est pas forcément une protection qui marche.</strong> Les deux plus gros bugs venaient de garde-fous déjà là, mais faux. Il faut vérifier qu'ils tiennent sur les cas limites.</li><li><strong>Réparer, puis empêcher que ça revienne.</strong> Corriger la connexion n'aurait servi à rien sans le test automatique à chaque déploiement.</li><li><strong>Comparer avec ce qui marche déjà.</strong> Pour les notifications iPhone, partir d'une appli qui fonctionnait a été plus rapide et plus sûr que d'inventer.</li><li><strong>Remonter le problème plutôt que trancher seul.</strong> Quand j'ai trouvé trois valeurs différentes pour un même réglage, je l'ai signalé : c'était une décision produit, pas technique.</li><li><strong>Maquetter quand les mots ne suffisent pas.</strong> Montrer des écrans a évité de construire une fonctionnalité sur un malentendu.</li><li><strong>Assumer mes erreurs.</strong> Un matin j'ai affirmé un truc faux sur les règles d'Apple. Je l'ai corrigé par écrit l'après-midi même.</li></ul>
+      </div>
+</section>
+  </div></div>
   </main>
 
   <footer class="px-5 pb-10 md:px-8">
-    <div class="mx-auto flex max-w-6xl flex-col gap-3 border-t border-edge pt-6 text-xs text-ash/80 sm:flex-row sm:items-center sm:justify-between">
-      <span>© 2026 Dorian Pachot, BTS SIO SLAM, IRIS MediaSchool Rouen</span>
-      <span class="flex gap-6"><a class="hover:text-bone" href="mentions-legales.html">Mentions légales</a><a class="hover:text-bone" href="../index.html">Accueil</a></span>
-    </div>
-  </footer>
+  <div class="mx-auto flex max-w-6xl flex-col gap-3 border-t border-edge pt-6 text-xs text-ash/80 sm:flex-row sm:items-center sm:justify-between">
+    <span>© 2026 Dorian Pachot, BTS SIO SLAM, IRIS MediaSchool Rouen</span>
+    <span class="flex gap-6">
+      <a class="hover:text-bone" href="mentions-legales.html">Mentions légales</a>
+      <a class="hover:text-bone" href="../index.html">Accueil</a>    </span>
+  </div>
+</footer>
 
-  <script src="../js/site.js"></script>
-</body>
+
+  <script src="../js/site.js"></script></body>
 </html>

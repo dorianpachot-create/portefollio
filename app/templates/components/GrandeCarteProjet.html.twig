@@ -1,0 +1,39 @@
+{#
+  Composant GrandeCarteProjet : la grande carte qui occupe toute la largeur
+  en tête des réalisations (SYNCRO). Texte et chiffres à gauche, captures à droite.
+#}
+{% props projet %}
+{%- set a = projet.accueil -%}
+<article class="project card-link panel reveal relative md:col-span-2 lg:col-span-3" style="--c:{{ projet.couleur }}" data-status="{{ a.filtre }}">
+  <div class="grid md:grid-cols-[1.35fr_1fr]">
+    <div class="flex flex-col p-6 md:p-9">
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-2"><span class="status">{{ a.statut }}</span><span class="text-sm text-ash">{{ a.contexte }}</span></div>
+      <h3 class="mt-5 font-display text-4xl font-extrabold tracking-tight text-bone md:text-5xl">{{ projet.nom }}</h3>
+      <p class="mt-1 font-medium text-blood">{{ a.accroche }}</p>
+      <p class="mt-4 max-w-xl text-[15px] leading-relaxed text-ash">{{ a.resume }}</p>
+      <dl class="mt-6 grid max-w-md grid-cols-3 gap-3">
+        {% for c in a.chiffres %}<div class="rounded-lg border border-edge bg-void/40 p-3"><dd class="font-display text-2xl font-bold text-bone">{{ c.valeur }}</dd><dt class="text-xs text-ash">{{ c.libelle }}</dt></div>{% endfor %}
+      </dl>
+      <twig:ListeTags :tags="a.tags" classe="mt-6" />
+      {# Les boutons de la carte : les mêmes que ceux de la page projet, sans le dernier (lettre de recommandation) #}
+      <div class="mt-8 flex flex-wrap gap-2">
+        {% for l in projet.liens|slice(0, 4) %}<twig:Bouton :texte="l.texte" :url="l.url" :style="l.style" :petit="true" :icone="l.icone ?? null" />{% endfor %}
+      </div>
+      {# Lien "stretch" : rend toute la carte cliquable #}
+      <a class="stretch mt-5 text-sm font-semibold text-blood hover:text-bone" href="{{ lien(a.lien_principal.url) }}">{{ a.lien_principal.texte }}</a>
+    </div>
+    {# Grand écran : deux captures inclinées #}
+    <div class="relative hidden items-center justify-center overflow-hidden border-l border-edge bg-gradient-to-br from-blood/[.07] via-transparent to-transparent md:flex">
+      <div class="relative flex h-[26rem] w-full items-center justify-center gap-4 px-6">
+        {% set alts = projet.media.images|reduce((acc, i) => acc|merge({(i.fichier): i.alt}), {}) %}
+        {% for f in a.captures_bureau %}
+          <img class="project__img w-[40%] max-w-[11rem] {{ loop.first ? '-rotate-3' : 'translate-y-4' }} rounded-2xl border border-edge shadow-2xl" src="{{ lien(f) }}" alt="{{ alts[f] }}" loading="lazy" width="720" height="1280" />
+        {% endfor %}
+      </div>
+    </div>
+    {# Petit écran : une rangée de captures qui défile #}
+    <div class="relative z-[2] flex gap-3 overflow-x-auto px-6 pb-6 md:hidden">
+      {% for f in a.captures_mobile %}<img class="w-32 flex-none rounded-xl border border-edge" src="{{ lien(f) }}" alt="{{ alts[f] }}" loading="lazy" width="720" height="1280" />{% endfor %}
+    </div>
+  </div>
+</article>

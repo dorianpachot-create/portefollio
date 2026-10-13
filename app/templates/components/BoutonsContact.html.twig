@@ -1,0 +1,4 @@
+{# Composant BoutonsContact : l'adresse e-mail en bouton + "Copier l'adresse" (voir data-copy dans le JavaScript). #}
+{%- set email = contenu.get('profil').email -%}
+<a class="btn btn-primary" href="mailto:{{ email }}">{{ email }}</a>
+<button class="btn btn-ghost" type="button" data-copy="{{ email }}"><span data-copy-label>Copier l'adresse</span></button>

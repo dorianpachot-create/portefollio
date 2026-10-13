@@ -1,0 +1,8 @@
+{#
+  Composant Image : une image en WebP (léger) avec une version JPG de secours
+  pour les vieux navigateurs.
+  Utilisation : <twig:Image fichier="assets/meta/shot-crp" alt="..." classe="w-full" />
+  "fichier" s'écrit SANS extension : les fichiers .webp et .jpg doivent exister tous les deux.
+#}
+{% props fichier, alt, classe = '', largeur = 1200, hauteur = 533, lazy = true %}
+<picture><source srcset="{{ lien(fichier ~ '.webp') }}" type="image/webp" /><img class="{{ classe }}" src="{{ lien(fichier ~ '.jpg') }}" alt="{{ alt }}"{% if lazy %} loading="lazy"{% endif %} width="{{ largeur }}" height="{{ hauteur }}" /></picture>

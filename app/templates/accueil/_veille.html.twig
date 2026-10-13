@@ -1,0 +1,85 @@
+{#
+  SECTION 07 : VEILLE, présentée comme un journal. Textes : contenu/veille.yaml
+  Ordre : l'objectif DevOps, puis le journal (article à la une, articles repérés,
+  rangées d'articles), puis la méthode et le bilan.
+#}
+{%- set v = veille -%}
+<section id="veille" class="scroll-mt-16 px-5 py-20 md:px-8 md:py-28" aria-labelledby="veille-title">
+  <div class="mx-auto max-w-6xl">
+    <twig:EnTeteSection numero="07" rubrique="Veille technologique" titre="Ma veille" idTitre="veille-title">
+      Ma veille sert un objectif précis : devenir DevOps. Chaque sujet part d'un projet ou d'un cours. Mise à jour le {{ v.mise_a_jour }}.
+    </twig:EnTeteSection>
+
+    {# L'objectif : le grand encadré rouge #}
+    <div class="reveal relative mt-10 overflow-hidden rounded-2xl border border-blood/40 bg-gradient-to-br from-blood/[.12] via-blood/[.04] to-transparent p-6 md:p-10">
+      <div class="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-blood/20 blur-3xl" aria-hidden="true"></div>
+      <div class="relative grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+        <div>
+          <p class="label text-blood">Mon objectif</p>
+          <h3 class="mt-3 font-display text-3xl font-extrabold leading-tight tracking-tight text-bone md:text-4xl">{{ v.objectif.titre }}</h3>
+          <p class="mt-4 text-[15px] leading-relaxed text-ash">{{ v.objectif.texte }}</p>
+        </div>
+        <ol class="relative grid gap-3 text-sm">
+          {% for e in v.objectif.etapes %}<li class="rounded-xl border border-edge bg-void/60 p-4"><p class="font-semibold text-bone">{{ e.titre }}</p><p class="mt-1 text-ash">{{ e.texte }}</p></li>{% endfor %}
+        </ol>
+      </div>
+    </div>
+
+    {# Le journal #}
+    <div class="paper reveal mt-10">
+      <nav class="paper__rubrics flex flex-wrap gap-x-6 gap-y-2 py-3 text-xs font-semibold uppercase tracking-[.12em]" aria-label="Rubriques de la veille">
+        {% for r in v.rubriques %}<a href="{{ r.ancre }}">{{ r.texte }}</a>{% endfor %}
+      </nav>
+      <div class="grid lg:grid-cols-12">
+        {%- set une = v.a_la_une -%}
+        <article id="une" class="article py-8 lg:col-span-8 lg:pr-10">
+          <p class="label !text-[.66rem] text-blood">{{ une.rubrique }}</p>
+          <h3 class="mt-3 font-display text-3xl font-extrabold leading-tight tracking-tight text-bone md:text-4xl">{{ une.titre }}</h3>
+          <p class="mt-4 !text-base !text-bone/90">{{ une.chapeau }}</p>
+          <div class="mt-5 gap-8 md:columns-2">
+            <p><strong>Pourquoi je suis ce sujet.</strong> {{ une.pourquoi|raw }}</p>
+            <p><strong>Ce que j'en retiens.</strong> {{ une.retenu|raw }}</p>
+          </div>
+          <p class="!mb-0 text-xs !text-ash/80">En lien avec : {{ une.liens_avec }}</p>
+        </article>
+        <aside class="col-rule py-8 lg:col-span-4 lg:pl-8" aria-label="Articles repérés">
+          <p class="label !text-[.66rem] text-blood">Articles repérés</p>
+          <div class="mt-4">
+            {% for a in v.articles_reperes %}
+              <a class="brief" href="{{ a.url }}" target="_blank" rel="noopener noreferrer">
+                <span class="label !text-[.62rem] text-ash">{{ a.date_source }}</span>
+                <span class="brief__title mt-1 block font-display text-[1.02rem] font-bold leading-snug text-bone">{{ a.titre }}</span>
+              </a>
+            {% endfor %}
+          </div>
+        </aside>
+      </div>
+      {# Rangées d'articles : 2 ou 3 colonnes selon le nombre d'articles de la rangée #}
+      {% for rangee in v.articles %}
+        <div class="grid border-t border-edge lg:grid-cols-{{ rangee|length }}">
+          {% for article in rangee %}
+            {%- set place = loop.first ? 'lg:pr-8' : (loop.last ? 'col-rule lg:pl-8' : 'col-rule lg:px-8') -%}
+            <twig:ArticleVeille :article="article" :classe="place" />
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="mt-14 grid gap-5 lg:grid-cols-2">
+      <div class="panel reveal p-6 md:p-8">
+        <p class="label text-blood">Méthodologie</p>
+        <h3 class="mt-3 font-display text-2xl font-bold text-bone">Comment je fais ma veille</h3>
+        <ol class="mt-6 grid gap-5">
+          {% for e in v.methode %}<li class="grid grid-cols-[2.2rem_1fr] gap-3"><span class="font-mono text-sm text-blood">{{ '%02d'|format(loop.index) }}</span><div><p class="font-semibold text-bone">{{ e.titre }}</p><p class="mt-1 text-sm leading-relaxed text-ash">{{ e.texte }}</p></div></li>{% endfor %}
+        </ol>
+      </div>
+      <div class="panel reveal p-6 md:p-8">
+        <p class="label text-blood">Bilan</p>
+        <h3 class="mt-3 font-display text-2xl font-bold text-bone">Ce que j'en tire</h3>
+        <ul class="mt-6 grid gap-5">
+          {% for b in v.bilan %}<li class="border-l-2 border-blood/60 pl-4"><p class="font-semibold text-bone">{{ b.titre }}</p><p class="mt-1 text-sm leading-relaxed text-ash">{{ b.texte }}</p></li>{% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

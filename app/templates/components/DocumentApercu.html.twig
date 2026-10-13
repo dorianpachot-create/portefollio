@@ -1,0 +1,10 @@
+{#
+  Composant DocumentApercu : un document affiché en grand (image) + bouton de téléchargement.
+  Utilisé sur les pages Documents et CV.
+#}
+{% props image, alt, note, pdf, nomFichier, bouton, principal = false %}
+<figure class="mt-6 overflow-hidden rounded-xl border border-edge bg-white"><img class="w-full" src="{{ lien(image) }}" alt="{{ alt }}" loading="lazy" /></figure>
+<div class="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+  <p class="text-sm text-ash">{{ note }}</p>
+  <twig:Bouton :texte="bouton" :url="pdf" :style="principal ? 'principal' : 'secondaire'" :petit="true" :telecharger="nomFichier" />
+</div>

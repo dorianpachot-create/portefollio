@@ -1,0 +1,18 @@
+{#
+  Composant Bouton : un lien qui a l'apparence d'un bouton.
+  Utilisation :
+    <twig:Bouton texte="Me contacter" url="#contact" />
+    <twig:Bouton texte="App Store" url="https://..." style="secondaire" :petit="true" icone="apple" />
+  Paramètres :
+    style        principal (rouge plein) ou secondaire (contour)
+    petit        version compacte
+    icone        nom d'une icône du composant Icone (facultatif)
+    telecharger  nom du fichier proposé au téléchargement (facultatif)
+  Les adresses externes (https://) s'ouvrent dans un nouvel onglet ; les PDF aussi.
+#}
+{% props texte, url, style = 'principal', petit = false, icone = null, telecharger = null %}
+{%- set externe = url starts with 'http' -%}
+<a class="btn {{ style == 'principal' ? 'btn-primary' : 'btn-ghost' }}{{ petit ? ' btn-sm' }}" href="{{ lien(url) }}"
+  {%- if externe %} target="_blank" rel="noopener noreferrer"{% elseif url ends with '.pdf' and not telecharger %} target="_blank" rel="noopener"{% endif %}
+  {%- if telecharger %} download="{{ telecharger }}"{% endif %}>
+  {%- if icone %}<twig:Icone :nom="icone" />{% endif %}{{ texte }}</a>

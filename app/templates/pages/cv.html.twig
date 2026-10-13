@@ -1,0 +1,19 @@
+{# PAGE "CV" #}
+{% extends 'base.html.twig' %}
+
+{% block titre %}CV | Dorian Pachot{% endblock %}
+{% block description %}Le CV de Dorian Pachot, étudiant en BTS SIO SLAM à Rouen, à la recherche d'une alternance.{% endblock %}
+{% block chemin %}pages/cv.html{% endblock %}
+{% block entete %}<twig:EnTete actif="Documents" />{% endblock %}
+
+{% block contenu %}
+  <twig:EnTetePage cadre="CV" titre="Mon CV" retourUrl="index.html#documents" retourTexte="Retour à l'accueil">
+    <p>Étudiant en deuxième année de BTS SIO SLAM, à la recherche d'une alternance (3 jours en entreprise, 2 jours à l'école).</p>
+  </twig:EnTetePage>
+  <div class="px-5 pb-16 md:px-8"><div class="mx-auto max-w-4xl">
+    <twig:Panneau id="cv" titre="Curriculum vitae">
+      <twig:DocumentApercu image="assets/cv/cv.png" alt="CV de Dorian Pachot." note="Mis à jour le 7 août 2026."
+        pdf="assets/cv/CV_Dorian_Pachot.pdf" nomFichier="CV_Dorian_Pachot.pdf" bouton="Télécharger le CV" :principal="true" />
+    </twig:Panneau>
+  </div></div>
+{% endblock %}
