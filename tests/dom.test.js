@@ -17,7 +17,7 @@ const d = load('index.html');
 d.querySelectorAll('script').forEach((x) => x.remove());
 const text = d.body.textContent;
 ok('un seul h1', d.querySelectorAll('h1').length === 1);
-['projets', 'cours', 'parcours', 'outils', 'competences', 'veille', 'documents', 'personnel', 'contact'].forEach((id) => ok('section #' + id, !!d.getElementById(id)));
+['projets', 'cours', 'parcours', 'outils', 'competences', 'veille', 'documents', 'contact'].forEach((id) => ok('section #' + id, !!d.getElementById(id)));
 ok('présentation simple en accroche', /Je m'appelle Dorian Pachot/.test(d.querySelector('h1').textContent));
 ok('aucune moyenne ni note affichée', !/15,55|20\/20|\/ 100/.test(text));
 ok('pas d\'émojis', !/[\u{1F300}-\u{1FAFF}☀-➿]/u.test(text));
@@ -38,7 +38,9 @@ console.log('\n--- pages projets ---');
 ['syncro', 'planet', 'crp-assurance', 'mission-orion'].forEach((n) => {
   const p = load('pages/' + n + '.html');
   const t = p.body.textContent;
-  ok(n + ' : page complète', ['en-bref', 'contexte', 'realisation', 'choix', 'difficultes', 'resultat', 'acquis', 'competences'].every((id) => p.getElementById(id)));
+  // Pla'Net met en avant la planification et la base de données à la place de "réalisation" et "choix"
+  const propres = n === 'planet' ? ['planification', 'base-de-donnees', 'code', 'ecarts'] : ['realisation', 'choix'];
+  ok(n + ' : page complète', ['en-bref', 'contexte', ...propres, 'difficultes', 'resultat', 'acquis', 'competences'].every((id) => p.getElementById(id)));
   ok(n + ' : design de l\'accueil', !!p.querySelector('link[href="../css/site.css"]') && !/foil|Cormorant/.test(p.documentElement.innerHTML));
 });
 const pc = load('pages/projets-cours.html');

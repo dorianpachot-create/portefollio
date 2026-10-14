@@ -218,7 +218,7 @@ annees:
       accueil:
         etiquette: Développement
         titre: Pla'Net, le projet de l'année
-        resume: Application de planning des cours de MediaSchool Rouen, développée en Symfony et mise en ligne. Présentée dans les réalisations.
+        resume: "Application de planning des cours de MediaSchool Rouen, réalisée à cinq en quatre jours : planification Trello et conception de la base de données, puis code en grande partie généré par l'IA."
         tags:
         - Symfony
         - MariaDB

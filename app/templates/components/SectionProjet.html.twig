@@ -1,13 +1,26 @@
 {#
   Composant SectionProjet : une partie d'une page projet ("Le contexte", "Les difficultés"...).
-  Reçoit une section de contenu/projets.yaml : { id, titre, paragraphes } ou { id, titre, liste }.
+  Reçoit une section de contenu/projets.yaml. Toutes les clés sont facultatives,
+  et s'affichent dans cet ordre :
+    paragraphes  liste de paragraphes
+    figure       { fichier, alt, legende } : une image (schéma...), cliquable pour l'agrandir
+    tableau      { entetes: [...], lignes: [[...], [...]] }
+    liste        liste à puces
   La section "en-bref" est mise en avant automatiquement.
 #}
 {% props section %}
 <twig:Panneau :id="section.id" :titre="section.titre" :callout="section.id == 'en-bref'">
+  {% for paragraphe in section.paragraphes ?? [] %}<p>{{ paragraphe|raw }}</p>{% endfor %}
+  {% if section.figure is defined %}
+    <figure class="schema"><a href="{{ lien(section.figure.fichier) }}" target="_blank" rel="noopener"><img src="{{ lien(section.figure.fichier) }}" alt="{{ section.figure.alt }}" loading="lazy" width="1200" height="590" /></a><figcaption>{{ section.figure.legende|raw }}</figcaption></figure>
+  {% endif %}
+  {% if section.tableau is defined %}
+    <div class="table-wrap"><table>
+      <thead><tr>{% for e in section.tableau.entetes %}<th scope="col">{{ e }}</th>{% endfor %}</tr></thead>
+      <tbody>{% for ligne in section.tableau.lignes %}<tr>{% for c in ligne %}<td>{{ c|raw }}</td>{% endfor %}</tr>{% endfor %}</tbody>
+    </table></div>
+  {% endif %}
   {% if section.liste is defined %}
     <ul>{% for point in section.liste %}<li>{{ point|raw }}</li>{% endfor %}</ul>
-  {% else %}
-    {% for paragraphe in section.paragraphes %}<p>{{ paragraphe|raw }}</p>{% endfor %}
   {% endif %}
 </twig:Panneau>

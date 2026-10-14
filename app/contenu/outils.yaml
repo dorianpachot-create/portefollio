@@ -2,26 +2,22 @@
 # MES OUTILS DE TRAVAIL (section "Outils" de l'accueil)
 # ----------------------------------------------------------------------------
 # Trois colonnes. Un outil s'écrit simplement par son nom.
-# Pour le mettre en avant (étiquette rouge), écrire : { nom: Flutter, important: true }
 # ============================================================================
 
 groupes:
 - titre: Pour coder
   texte: 'Les langages et outils utilisés sur mes projets : SYNCRO, Pla''Net et les sites web.'
   outils:
-  - nom: Flutter
-    important: true
+  - Flutter
   - Dart
-  - nom: Next.js
-    important: true
+  - Next.js
   - React
   - TypeScript
   - JavaScript
   - HTML
   - CSS
   - PHP
-  - nom: Symfony
-    important: true
+  - Symfony
   - Twig
   - SQL
   - MariaDB
@@ -36,10 +32,8 @@ groupes:
 - titre: Pour coder avec l'IA
   texte: J'utilise l'IA pour gagner du temps et me débloquer. Je relis et je teste systématiquement ce qu'elle propose avant de le garder.
   outils:
-  - nom: Claude
-    important: true
-  - nom: Claude Code
-    important: true
+  - Claude
+  - Claude Code
 - titre: Découverts en cours
   texte: Des outils utilisés en travaux pratiques, parfois une seule fois. Je connais leur rôle, sans prétendre les maîtriser.
   outils:

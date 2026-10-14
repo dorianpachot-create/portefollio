@@ -67,7 +67,6 @@ menu_accueil_mobile:
   - { texte: Méthode, ancre: competences }
   - { texte: Veille, ancre: veille }
   - { texte: Documents, ancre: documents }
-  - { texte: En dehors du travail, ancre: personnel }
 
 # Repères sur le côté droit de l'accueil (écrans larges) : une pastille par section
 reperes:
@@ -79,7 +78,6 @@ reperes:
   - { texte: Méthode, ancre: competences }
   - { texte: Veille, ancre: veille }
   - { texte: Documents, ancre: documents }
-  - { texte: En dehors du travail, ancre: personnel }
   - { texte: Contact, ancre: contact }
 
 # Menu des pages secondaires (liens écrits depuis la racine du site)

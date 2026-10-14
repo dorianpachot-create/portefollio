@@ -169,100 +169,171 @@ projets:
 - slug: planet
   nom: Pla'Net
   couleur: '#22D3EE'
-  titre_page: Pla'Net, application de planning des cours | Dorian Pachot
-  description: Pla'Net, application Symfony de planning des cours de MediaSchool Rouen, en ligne.
-  cadre: Projet de deuxième année de BTS
-  intro: Application web de planning des cours de MediaSchool Rouen, développée en Symfony et mise en ligne.
+  titre_page: Pla'Net, planification et base de données d'une application de planning | Dorian Pachot
+  description: "Pla'Net, application de planning des cours de MediaSchool Rouen, réalisée à cinq en quatre jours : planification Trello, conception de la base de données, puis développement Symfony."
+  cadre: Projet de deuxième année de BTS, en équipe de cinq
+  intro: "Application web de planning des cours de MediaSchool Rouen, réalisée à cinq en quatre jours. Le cœur du projet, c'est la planification et la base de données : nous y avons consacré deux jours et demi sur quatre."
   fiche:
   - libelle: Cadre
     valeur: Projet de BTS, 2<sup>e</sup> année
-  - libelle: Début
-    valeur: Septembre 2026
-  - libelle: Mon rôle
-    valeur: 'Tout le projet : conception, développement, mise en ligne'
+  - libelle: Équipe
+    valeur: 5 étudiants
+  - libelle: Période
+    valeur: 15 au 18/09/2026
+  - libelle: Planification et BDD
+    valeur: 2,5 jours
+  - libelle: Code
+    valeur: 1,5 jour, en grande partie généré par IA
   - libelle: Statut
     valeur: En ligne, en évolution
   technos:
-  - Symfony
-  - PHP 8
-  - Twig
-  - Doctrine
+  - Trello
   - MariaDB
-  - Bash
-  - PowerShell
+  - SQL
+  - Symfony
+  - Doctrine
+  - Twig
+  - PHP 8
   liens:
   - texte: Tester l'application
     url: https://pla-net.mediaschool-rouen.fr/login
     style: principal
+  - texte: Dossier de conception (PDF)
+    url: assets/fiches-cours/developpement/planet-dossier-conception.pdf
+    style: secondaire
   media:
     type: image
     image: assets/meta/shot-planet
     alt: Maquette initiale de Pla'Net, vue semaine
-    legende: 'La maquette réalisée au début du projet, pour valider les écrans. Comptes de démonstration de l''application en ligne : admin / admin et user / user.'
+    legende: 'La maquette réalisée pendant la conception, pour valider les écrans. Comptes de démonstration de l''application en ligne : admin / admin et user / user.'
   sections:
   - id: en-bref
     titre: En bref
     paragraphes:
-    - 'Pla''Net sert à construire et à consulter le planning des cours de l''école : quelle classe, avec quel intervenant, dans quelle salle et à quel moment. J''ai mené tout le projet : une maquette pour valider les écrans, la modélisation de la base de données, le développement en Symfony, puis la mise en ligne.'
+    - 'Pla''Net sert à construire et à consulter le planning des cours de l''école : quelle classe, avec quel intervenant, dans quelle salle et à quel moment. Nous l''avons réalisé à cinq, en quatre jours, du 15 au 18 septembre 2026.'
+    - 'Nous avons fait un choix assumé : passer <strong>deux jours et demi sur la planification et la base de données</strong> avant d''écrire la moindre ligne de code. L''application a ensuite été produite en un jour et demi, <strong>en grande partie générée avec l''IA</strong>. C''est la conception qui fait la valeur de ce projet, c''est donc elle que je présente ici.'
   - id: contexte
     titre: Le contexte et le besoin
     paragraphes:
-    - 'Un planning d''école réunit beaucoup d''informations liées entre elles : des classes, des intervenants, des salles partagées, des matières, et des cours qui se répètent ou qui changent. Le besoin : un outil web qui permette aux administrateurs de saisir et de modifier ce planning, et à tout le monde de le consulter facilement.'
-  - id: realisation
-    titre: Ce que j'ai réalisé
+    - Un planning d'école réunit beaucoup d'informations liées entre elles. Des classes rattachées à une école, un niveau, une spécialité et un cursus (initial ou alternance). Des intervenants, des salles partagées, des matières. Des cours communs à plusieurs classes, et des cours qui changent souvent.
+    - 'Le besoin : un outil web où les administrateurs saisissent et modifient le planning, et où tout le monde le consulte. Avec une règle forte posée dès le départ : <strong>ne jamais rien supprimer définitivement</strong>, pour ne pas perdre l''historique des plannings.'
+  - id: planification
+    titre: 'La planification : 45 cartes sur Trello'
+    paragraphes:
+    - 'Avant de coder, nous avons découpé tout le besoin en cartes, sur un tableau Trello organisé en colonnes : Backlog, Sprint 1 « Fondations », En cours, Bloqué, En revue, Terminé et Hors périmètre.'
     liste:
-    - Une <strong>maquette en JavaScript</strong> pour valider les écrans avant d'écrire la moindre table.
-    - 'Une <strong>base MariaDB de dix tables</strong> : campus, classes, cursus, niveaux, spécialités, matières, intervenants, salles, séances et utilisateurs.'
-    - 'Plusieurs <strong>vues du planning</strong> : semaine, mois, par intervenant et par salle, avec le détail de chaque séance.'
-    - La <strong>gestion des classes, des intervenants et des matières</strong>, avec un archivage plutôt qu'une suppression.
-    - La <strong>duplication</strong> d'une journée ou d'une semaine de cours vers d'autres dates, annulable.
-    - L'<strong>import et l'export CSV</strong> des cours, et l'export du planning sur une période.
-    - Les <strong>jours fériés</strong> calculés automatiquement et grisés, et des <strong>filtres par école</strong>.
-  - id: choix
-    titre: Les choix techniques
+    - <strong>Une priorité par carte</strong>, de P1 (indispensable) à P4 (si le temps le permet).
+    - '<strong>Six lots</strong>, chacun avec sa couleur d''étiquette : INFRA, AUTH (connexion et rôles), REF (référentiels), COURS, CAL (calendrier) et ARCH (archivage).'
+    - '<strong>Un critère « Fait quand »</strong> sur chaque carte : une phrase qu''on peut vérifier. Par exemple : « une séance sélectionnant 3 classes apparaît dans les 3 calendriers ».'
+    - <strong>Une estimation en jours-développeur</strong> et les <strong>dépendances</strong> entre cartes. On ne crée pas une séance tant que les salles, matières et intervenants n'existent pas.
+    - '<strong>Une carte DÉCISION</strong>, qui bloquait le code tant que quatre questions n''étaient pas tranchées : comment archiver une séance, conflits bloquants ou simples avertissements, alternants et initiaux dans une ou deux classes, et que sauvegarder.'
+    tableau:
+      entetes: [Lot, Ce qu'il contient, Cartes, Estimation]
+      lignes:
+      - [INFRA, 'Environnement commun, schéma de la base, données de départ, sauvegardes', '6', 9 j·d]
+      - [AUTH, 'Rôles admin et user, connexion, déconnexion, droits vérifiés côté serveur', '4', 4 j·d]
+      - [REF, 'Écrans des référentiels : écoles, niveaux, spécialités, cursus, classes, intervenants, matières, salles', '9', '10,5 j·d']
+      - [COURS, 'Créer et modifier une séance, contrôles de saisie, troncs communs, conflits, duplication', '11', 14 j·d]
+      - [CAL, 'Vues mois et semaine, navigation, filtres, couleurs, thème clair et sombre', '7', 11 j·d]
+      - [ARCH, 'Interdire la suppression, archiver, confirmer, restaurer, corbeille', '7', '8,5 j·d']
+      - [DÉCISION, Les quatre questions à trancher avant de coder, '1', '']
+      - ['<strong>Total</strong>', '', '<strong>45</strong>', '<strong>57 j·d</strong>']
+  - id: base-de-donnees
+    titre: 'La base de données : du tableau blanc au script SQL'
+    paragraphes:
+    - 'Le schéma a été construit au tableau, en équipe, puis écrit en SQL. Une règle était notée sur la carte Trello : <strong>le schéma ne se modifie pas sans passer par la carte DÉCISION</strong>. Les réponses à ses questions se lisent directement dans les tables.'
+    figure:
+      fichier: assets/planet/schema-bdd.svg
+      alt: 'Modèle logique de la base de Pla''Net : 12 tables reliées par leurs clés étrangères'
+      legende: 'Le modèle logique de la base, tel qu''il est en production. Douze tables : les dix du schéma validé au tableau, la table utilisateur pour la connexion, et matiere_campus, ajoutée ensuite par une migration.'
+    tableau:
+      entetes: [Table, Son rôle]
+      lignes:
+      - ['campus, niveau, specialite, cursus', 'Les référentiels qui décrivent une classe : l''école (IRIS, ECS, IEJ), le niveau, la spécialité, et le cursus initial ou en alternance.']
+      - ['matiere, intervenant, salle', 'Les référentiels utilisés par une séance. Chaque matière a sa couleur dans le planning.']
+      - [classe, 'Une promotion : école, niveau, spécialité, cursus, année de début et année de fin.']
+      - [seance, 'Un cours : matière, intervenant, salle, début, fin et commentaire.']
+      - [seance_classe, 'Liaison plusieurs-à-plusieurs : une séance de tronc commun concerne plusieurs classes.']
+      - [matiere_campus, 'Liaison plusieurs-à-plusieurs : les matières enseignées dans chaque école.']
+      - [utilisateur, 'Les comptes de connexion : identifiant, mot de passe haché et rôle (admin ou user).']
     liste:
-    - <strong>Symfony</strong> pour son organisation claire (contrôleurs, services, gabarits) et son composant de sécurité.
-    - '<strong>Deux rôles</strong> : les administrateurs modifient, les utilisateurs consultent. Formulaire de connexion protégé par jeton CSRF et mots de passe hachés.'
-    - 'La logique métier est rangée dans des <strong>services</strong> séparés : recherche des séances, duplication, import CSV, jours fériés, filtres.'
-    - L'<strong>archivage</strong> plutôt que la suppression, pour ne jamais casser l'historique des plannings.
-    - 'Un <strong>déploiement scripté</strong> : un script PowerShell prépare et envoie l''archive, un script Bash l''installe sur le serveur.'
+    - '<strong>Jamais de suppression</strong> : chaque table a une colonne <code>obsolete</code>. Archiver un élément le retire des listes de saisie, sans casser les séances passées qui l''utilisent : les clés étrangères restent valides.'
+    - '<strong>Une table de liaison pour les troncs communs</strong>, plutôt qu''une copie de la séance dans chaque classe. Un changement d''horaire se voit alors partout en même temps.'
+    - '<strong>Alternants et initiaux</strong> sont deux classes distinctes, grâce au cursus. C''est la réponse à l''une des questions de la carte DÉCISION.'
+    - '<strong>Une contrainte CHECK</strong> (la fin après le début) dans la base elle-même, en plus du contrôle dans le formulaire.'
+    - '<strong>Des index</strong> sur le début des séances, puisque chaque affichage du planning cherche les cours d''une semaine ou d''un mois.'
+    - '<strong>La série</strong> : une journée avec une pause déjeuner est enregistrée en deux séances qui partagent le même identifiant, car un début et une fin ne savent pas décrire un trou.'
+    - '<strong>Des scripts SQL rejouables</strong> : la création supprime puis recrée les tables dans l''ordre imposé par les clés étrangères, et les migrations peuvent être relancées sans créer de doublon.'
+  - id: code
+    titre: 'Le code : un jour et demi, en grande partie généré par l''IA'
+    paragraphes:
+    - 'Il restait un jour et demi pour l''application. Nous avons fait générer la plus grande partie du code par l''IA, en lui donnant le schéma et les cartes Trello comme cahier des charges. Je le dis franchement : je ne présente pas ce code comme écrit par moi ligne par ligne.'
+    - 'C''est la préparation qui a rendu cela possible. Avec des tables figées et un critère « Fait quand » sur chaque carte, nous pouvions vérifier ce que l''IA produisait, carte par carte, au lieu de la laisser inventer l''application.'
+    liste:
+    - 'Le planning en vue semaine, mois, par intervenant et par salle, avec des filtres par école.'
+    - 'La gestion des classes, des intervenants et des matières, avec archivage et confirmation.'
+    - 'Les conflits : une classe déjà en cours <strong>bloque</strong> l''enregistrement, une salle ou un intervenant déjà pris donne un <strong>avertissement</strong> que l''admin peut confirmer. C''est la réponse à une autre question de la carte DÉCISION.'
+    - 'Deux rôles : l''administrateur modifie, l''utilisateur consulte. Les droits sont vérifiés côté serveur, pas seulement en masquant les boutons.'
+    - La duplication d'une journée ou d'une semaine, l'import et l'export CSV, et les jours fériés grisés.
+  - id: ecarts
+    titre: 'Prévu et réalisé : les écarts'
+    paragraphes:
+    - 'Après les quatre jours, j''ai repris chaque carte du Trello pour comparer le prévu et ce qui existe vraiment dans l''application.'
+    tableau:
+      entetes: [Lot, Prévu, Réalisé, Ce qui manque]
+      lignes:
+      - [INFRA, '6', '3', Les trois cartes de sauvegarde]
+      - [AUTH, '4', '4', '']
+      - [REF, '9', '4', 'Les écrans des écoles, niveaux, spécialités, cursus et salles']
+      - [COURS, '11', '10', Le journal des corrections]
+      - [CAL, '7', '7', '']
+      - [ARCH, '7', '5', La restauration et la corbeille]
+      - [DÉCISION, '1', '1', 'Trois questions tranchées sur quatre : la sauvegarde reste ouverte']
+      - ['<strong>Total</strong>', '<strong>45</strong>', '<strong>34</strong>', '<strong>42,5 j·d sur 57, soit 75 %</strong>']
+    liste:
+    - '<strong>L''estimation ne collait pas à notre façon de travailler.</strong> 57 jours-développeur, c''est plus de onze jours à cinq ; nous avons codé en un jour et demi grâce à l''IA. Ces estimations supposaient un développement à la main. Elles restent utiles pour comparer la taille des cartes entre elles, pas pour prévoir une durée.'
+    - '<strong>Les référentiels simples n''ont pas d''écran</strong> : les écoles, niveaux, spécialités, cursus et salles sont remplis par script SQL. Ils changent rarement, c''était l''écart le moins gênant. Mais la correction des salles a dû passer par une migration SQL au lieu d''un formulaire.'
+    - '<strong>La sauvegarde n''est pas faite</strong>, alors que la sauvegarde manuelle était une P1. C''est le principal écart et le prochain chantier. Je l''ai déjà pratiquée en TP Linux (script de sauvegarde et cron) : il reste à l''appliquer à Pla''Net.'
+    - '<strong>Des fonctions non prévues ont été ajoutées</strong> : import et export CSV, jours fériés, vues par intervenant et par salle. Elles sont utiles, mais elles sont passées avant certaines P1. C''est une leçon pour la suite : finir les priorités avant les bonus.'
   - id: difficultes
-    titre: Les difficultés et comment je les ai résolues
+    titre: Les difficultés et comment elles ont été résolues
     liste:
+    - '<strong>Import de la base dans phpMyAdmin</strong> : l''import échouait, car phpMyAdmin perd la base sélectionnée. Le script a été réécrit sans création de base, avec la marche à suivre en commentaire.'
     - '<strong>Réglages ignorés en production</strong> : Symfony fige les variables d''environnement dans un fichier, et une correction restait sans effet. Le script de déploiement régénère maintenant ce fichier à chaque mise en ligne.'
-    - '<strong>Import de la base dans phpMyAdmin</strong> : l''import échouait car phpMyAdmin perd la base sélectionnée. J''ai préparé un script d''import adapté, rejouable, avec la marche à suivre.'
-    - '<strong>Jours fériés mobiles</strong> : trois d''entre eux dépendent de Pâques. Je les calcule avec un algorithme dédié, sans dépendre d''une extension PHP qui n''est pas toujours installée.'
+    - '<strong>Faire évoluer une base déjà en production</strong> : les salles et les matières par école ont été corrigées par des migrations SQL rejouables, qui archivent au lieu de supprimer et réaffectent d''abord les cours concernés.'
   - id: resultat
     titre: Le résultat
     paragraphes:
-    - L'application est en ligne sur <a href="https://pla-net.mediaschool-rouen.fr/login" target="_blank" rel="noopener noreferrer">pla-net.mediaschool-rouen.fr</a>, avec des comptes de démonstration. Elle continue d'évoluer au fil de l'année.
+    - L'application est en ligne sur <a href="https://pla-net.mediaschool-rouen.fr/login" target="_blank" rel="noopener noreferrer">pla-net.mediaschool-rouen.fr</a>, avec des comptes de démonstration. 34 cartes sur 45 sont réalisées, et l'application continue d'évoluer au fil de l'année.
   - id: acquis
     titre: Ce que j'en retiens
     liste:
-    - Maquetter et modéliser avant de coder fait gagner beaucoup de temps.
-    - Un code découpé en services est plus simple à faire évoluer et à tester.
-    - Automatiser le déploiement évite les oublis et les erreurs de manipulation.
+    - 'Deux jours et demi de préparation pour un jour et demi de code : c''est la préparation qui a rendu le code rapide et vérifiable.'
+    - Un critère « Fait quand » transforme une idée floue en quelque chose qu'on peut tester.
+    - Trancher les questions bloquantes avant de coder évite de refaire la base en cours de route.
+    - 'Le code généré par l''IA va vite, mais il faut un cahier des charges précis pour le contrôler.'
+    - 'Quand l''IA écrit le code, estimer en jours-développeur ne suffit plus : il faut suivre l''avancement autrement, par exemple en cartes terminées.'
   - id: competences
     titre: Compétences mobilisées
     liste:
-    - Concevoir une base de données relationnelle.
-    - Développer une application web avec un framework MVC.
-    - Gérer les droits d'accès selon le rôle de l'utilisateur.
-    - Mettre en ligne et maintenir une application sur un serveur Linux.
-    - Importer et exporter des données.
-    - Travailler en mode projet, de la maquette à la mise en ligne.
+    - Analyser les objectifs et les modalités d'organisation d'un projet.
+    - 'Planifier les activités : backlog priorisé, lots, estimations, dépendances.'
+    - Évaluer les indicateurs de suivi d'un projet et analyser les écarts.
+    - Concevoir une base de données relationnelle et l'écrire en SQL.
+    - Mettre en place des niveaux d'habilitation (rôles admin et user).
+    - Mettre en ligne et faire évoluer une application et sa base en production.
   accueil:
     filtre: wip
     badge: Testable en ligne
     image: assets/meta/shot-planet
     alt: Maquette de Pla'Net, vue semaine
     statut: En ligne, toujours en évolution
-    resume: 'Application de planning des cours pour MediaSchool Rouen, en ligne. Développée en Symfony avec une base MariaDB : planning par semaine, par mois, par intervenant ou par salle, import et export CSV, duplication de semaines.'
+    resume: 'Application de planning des cours de MediaSchool Rouen, réalisée à cinq en quatre jours. Deux jours et demi de planification (45 cartes Trello) et de conception de la base de données (12 tables), puis un jour et demi de code, en grande partie généré par l''IA.'
     tags:
-    - Symfony
-    - Twig
+    - Trello
     - MariaDB
-    - PHP 8
+    - SQL
+    - Symfony
     lien_principal:
       texte: Tester l'application
       url: https://pla-net.mediaschool-rouen.fr/login
@@ -271,7 +342,7 @@ projets:
       url: pages/planet.html
   liste_projets:
     statut: En ligne, en évolution
-    texte: Application Symfony de planning des cours de MediaSchool Rouen.
+    texte: Application de planning des cours de MediaSchool Rouen, réalisée à cinq. Planification Trello et conception de la base de données, puis code généré en grande partie par l'IA.
     alt: Maquette de Pla'Net
 - slug: crp-assurance
   nom: CRP-Assurance

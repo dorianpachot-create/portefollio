@@ -1,6 +1,27 @@
 # Etat d'avancement
 
-Dernière mise à jour : 2026-10-13
+Dernière mise à jour : 2026-10-14
+
+## Mise à jour du 2026-10-14, Pla'Net recentré sur la conception, outils, section 09
+
+- **Pla'Net** réécrit : projet en équipe de 5, du 15 au 18/09/2026 ; 2,5 jours de planification
+  et de BDD, 1,5 jour de code en grande partie généré par l'IA (dit franchement sur la page).
+  Nouvelles sections : planification (45 cartes Trello « Planning Mediaschool »), base de
+  données (schéma `assets/planet/schema-bdd.svg`, 12 tables, choix de conception), code,
+  écarts prévu/réalisé (34 cartes sur 45, 42,5 j·d sur 57).
+  Page ensuite raccourcie : le détail (tableaux des lots, des tables, du bilan) est réservé
+  au dossier PDF, gardé comme annexe pour les épreuves.
+- **Dossier de conception** `assets/fiches-cours/developpement/planet-dossier-conception.pdf`
+  (backlog complet, carte DÉCISION, MLD, dictionnaire des données, bilan) : document associé
+  pour l'annexe E5.
+- `SectionProjet` accepte maintenant `figure` et `tableau` en plus de `paragraphes` et `liste`.
+- **Outils** : plus d'étiquettes rouges. **Section 09 « En dehors du travail »** retirée de
+  l'accueil (le fichier `_interets.html.twig` est gardé) ; Contact devient 09.
+- Les HTML ont été mis à jour à la main (pas de PHP disponible) : lancer `php bin/console
+  app:export` pour vérifier que l'export redonne le même résultat.
+- À vérifier par Dorian : le statut des cartes dans le bilan (environnement Git commun et
+  écrans de liste comptés comme faits).
+- Plus tard : TP GPO (fait l'an dernier, fichiers perdus).
 
 ## Mise à jour du 2026-10-13 (7), passage à Symfony et composants Twig
 
