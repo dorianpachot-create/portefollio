@@ -30,7 +30,8 @@ ok('veille : une + articles repérés', !!d.getElementById('une') && d.querySele
 ok('4 documents', d.querySelectorAll('#documents article').length === 4);
 ok('parcours avant les réalisations', d.body.innerHTML.indexOf('id="parcours"') < d.body.innerHTML.indexOf('id="projets"'));
 ok('cartes de projets entièrement cliquables', [...d.querySelectorAll('#projets article')].every((c) => c.classList.contains('card-link') && c.querySelector('a.stretch')));
-ok('Pla\'Net sans lien public, jeu testable', !d.querySelector('a[href*="pla-net.mediaschool-rouen.fr"]') && !!d.querySelector('a[href="pages/mini-jeu.html"]'));
+// Premier clic = page de présentation : le jeu se lance depuis la page Mission Orion
+ok('Pla\'Net sans lien public, jeu joignable depuis sa présentation', !d.querySelector('a[href*="pla-net.mediaschool-rouen.fr"]') && !!load('pages/mission-orion.html').querySelector('a[href="mini-jeu.html"]'));
 ok('veille : méthodologie et bilan', /Comment je fais ma veille/.test(text) && /Ce que j'en tire/.test(text));
 ok('suivi de défilement', !!d.querySelector('[data-progress]') && !!d.querySelector('[data-dots]'));
 
