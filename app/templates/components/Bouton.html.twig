@@ -8,11 +8,13 @@
     petit        version compacte
     icone        nom d'une icône du composant Icone (facultatif)
     telecharger  nom du fichier proposé au téléchargement (facultatif)
+    masque       adresse encodée en base64 : le lien fonctionne, mais l'adresse n'apparaît
+                 ni dans la page ni dans le code (js/site.js la décode au clic)
   Les adresses externes (https://) s'ouvrent dans un nouvel onglet ; les PDF aussi.
 #}
-{% props texte, url, style = 'principal', petit = false, icone = null, telecharger = null %}
+{% props texte, url = '#', style = 'principal', petit = false, icone = null, telecharger = null, masque = null %}
 {%- set externe = url starts with 'http' -%}
-<a class="btn {{ style == 'principal' ? 'btn-primary' : 'btn-ghost' }}{{ petit ? ' btn-sm' }}" href="{{ lien(url) }}"
-  {%- if externe %} target="_blank" rel="noopener noreferrer"{% elseif url ends with '.pdf' and not telecharger %} target="_blank" rel="noopener"{% endif %}
+<a class="btn {{ style == 'principal' ? 'btn-primary' : 'btn-ghost' }}{{ petit ? ' btn-sm' }}" {% if masque %}href="#" data-lien="{{ masque }}" rel="nofollow"{% else %}href="{{ lien(url) }}"{% endif %}
+  {%- if externe and not masque %} target="_blank" rel="noopener noreferrer"{% elseif url ends with '.pdf' and not telecharger %} target="_blank" rel="noopener"{% endif %}
   {%- if telecharger %} download="{{ telecharger }}"{% endif %}>
   {%- if icone %}<twig:Icone :nom="icone" />{% endif %}{{ texte }}</a>

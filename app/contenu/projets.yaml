@@ -191,9 +191,13 @@ projets:
   - Twig
   - PHP 8
   liens:
+  # Outil interne à l'école : le lien marche, mais l'adresse est masquée (encodée en base64)
+  - texte: Tester l'application
+    masque: aHR0cHM6Ly9wbGEtbmV0Lm1lZGlhc2Nob29sLXJvdWVuLmZyL2xvZ2lu
+    style: principal
   - texte: Dossier de conception (PDF)
     url: assets/fiches-cours/developpement/planet-dossier-conception.pdf
-    style: principal
+    style: secondaire
   media:
     type: image
     image: assets/meta/shot-planet
@@ -249,7 +253,7 @@ projets:
   - id: resultat
     titre: Le résultat
     paragraphes:
-    - Pla'Net est un outil interne, utilisé uniquement par l'école : il n'est donc pas accessible publiquement. Il continue d'évoluer au fil de l'année.
+    - Pla'Net est un outil interne à l'école, testable avec le bouton en haut de cette page (des comptes de démonstration sont indiqués sur l'écran de connexion). Il continue d'évoluer au fil de l'année.
   - id: acquis
     titre: Ce que j'en retiens
     liste:

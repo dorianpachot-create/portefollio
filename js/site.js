@@ -69,4 +69,13 @@
       else location.href = 'mailto:' + b.dataset.copy;
     });
   });
+
+  // Liens masqués (data-lien) : l'adresse, encodée en base64, n'apparaît ni dans la page
+  // ni en clair dans le code ; elle est décodée seulement au clic.
+  document.querySelectorAll('[data-lien]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.open(atob(a.dataset.lien), '_blank', 'noopener,noreferrer');
+    });
+  });
 })();

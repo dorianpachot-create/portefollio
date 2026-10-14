@@ -18,7 +18,7 @@
     <twig:block name="extra">
       <div class="mt-7 flex flex-wrap gap-2.5">
         {% for l in projet.liens %}
-          <twig:Bouton :texte="l.texte" :url="l.url" :style="l.style" :petit="true" :icone="l.icone ?? null" />
+          <twig:Bouton :texte="l.texte" :url="l.url ?? '#'" :style="l.style" :petit="true" :icone="l.icone ?? null" :masque="l.masque ?? null" />
         {% endfor %}
       </div>
     </twig:block>
