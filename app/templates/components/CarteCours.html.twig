@@ -1,7 +1,7 @@
 {#
   Composant CarteCours : un TP de deuxième année sur l'accueil.
   Le lien mène au détail du TP (ou à la page indiquée dans accueil.lien) ;
-  si le TP a un compte rendu, un lien "PDF" est ajouté.
+  le compte rendu PDF s'ouvre depuis cette page de détail (premier clic = présentation).
 #}
 {% props travail %}
 {%- set c = travail.accueil -%}
@@ -12,9 +12,5 @@
   <h4 class="mt-2 font-display text-[1.05rem] font-bold leading-snug text-bone">{{ c.titre }}</h4>
   <p class="mt-2.5 text-sm leading-relaxed text-ash">{{ c.resume }}</p>
   <twig:ListeTags :tags="c.tags" />
-  {% if travail.fichiers is defined %}
-    <div class="mt-auto flex flex-wrap gap-x-4 gap-y-1 pt-5 text-sm font-semibold"><a class="stretch text-blood hover:text-bone" href="{{ lien(cible) }}">{{ texte }}</a><a class="text-ash hover:text-bone" href="{{ lien(travail.fichiers[0].url) }}" target="_blank" rel="noopener">PDF</a></div>
-  {% else %}
-    <a class="stretch mt-auto pt-5 text-sm font-semibold text-blood hover:text-bone" href="{{ lien(cible) }}">{{ texte }}</a>
-  {% endif %}
+  <a class="stretch mt-auto pt-5 text-sm font-semibold text-blood hover:text-bone" href="{{ lien(cible) }}">{{ texte }}</a>
 </li>

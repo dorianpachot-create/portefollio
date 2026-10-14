@@ -9,10 +9,16 @@ Dernière mise à jour : 2026-10-14
   Ces liens sont sur la page de présentation. `lien_secondaire` est devenu facultatif.
 - Pla'Net : bouton « Tester l'application » avec adresse masquée (`masque:` dans le YAML,
   décodée au clic par `js/site.js`).
-- **Mode présentation** `pages/presentation.html` : 16 diapositives pour l'épreuve E5, peu
-  de texte, flous volontaires sur les fonctions de SYNCRO (clic pour dévoiler). Ouverture
-  avec la touche **P** sur n'importe quelle page ; page non liée, non indexée. Commandes :
-  flèches, F plein écran, N notes, B flous, Échap ou bouton « Quitter » pour revenir.
+- **Mode présentation** `pages/presentation.html`, refait sur la grille E5 : 12 diapositives,
+  environ 9 minutes (temps conseillé par diapo dans les notes, chronomètre de 10:00).
+  Titre, le bloc 1 et ses six compétences, les deux années de BTS, le tableau de synthèse,
+  une diapo par compétence (preuves tirées du site uniquement), une diapo « À montrer en
+  direct » (liens en nouvel onglet), questions. Flous volontaires sur des détails à faire
+  demander (clic pour dévoiler). Ouverture avec la touche **P** ; page non liée, non indexée.
+  Commandes : flèches, F plein écran, N notes, B flous, Échap ou « Quitter » pour revenir.
+- **Premier clic** aussi sur les cartes des TP et des documents de l'accueil : plus de lien
+  PDF direct (le PDF s'ouvre depuis la page de détail). Contact : « Voir le CV » mène à
+  la page du CV. Mini-jeu : « Retour à la présentation du projet ».
 
 ## Mise à jour du 2026-10-14, Pla'Net recentré sur la conception, outils, section 09
 

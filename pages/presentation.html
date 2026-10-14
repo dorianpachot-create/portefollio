@@ -5,10 +5,15 @@
   Page cachée : elle n'est liée nulle part, n'est pas dans le sitemap et n'est
   pas indexée. On l'ouvre avec la touche P depuis n'importe quelle page du site.
 
+  Trame : la grille du tableau de synthèse E5 (les six compétences du bloc 1),
+  12 diapositives, environ 9 minutes (temps conseillé de chaque diapo dans les notes).
+  Tout ce qui est montré vient du site : rien d'inventé.
+
   Commandes :  → / Espace / Page suivante : diapo suivante
                ← / Page précédente        : diapo précédente
                F : plein écran   N : notes (pour moi)   B : retirer / remettre les flous
                Échap : quitter (retour à la page d'où l'on vient)
+               Bouton 10:00 : chronomètre (démarre tout seul à la 2e diapo, clic = pause)
   Les éléments flous (class="flou") sont là exprès, pour amener les questions.
   Un clic sur un élément flou le dévoile.
 
@@ -64,8 +69,8 @@
     .etape::before { content: ""; position: absolute; top: 9px; left: 0; right: 0; height: 2px; background: var(--edge); }
     .etape::after { content: ""; position: absolute; top: 2px; left: 0; width: 16px; height: 16px; border-radius: 50%; background: #2A2F42; }
     .etape.now::after { background: var(--blood); box-shadow: 0 0 0 6px rgba(239,68,68,.18); }
-    .etape b { display: block; font-family: Archivo, sans-serif; font-size: 24px; }
-    .etape span { display: block; color: var(--ash); font-size: 17px; margin-top: 6px; }
+    .etape b { display: block; font-family: Archivo, sans-serif; font-size: 27px; }
+    .etape span { display: block; color: var(--ash); font-size: 20px; margin-top: 10px; line-height: 1.4; padding-right: 18px; }
     /* Architecture */
     .archi { display: grid; grid-template-columns: 1fr 70px 1fr 70px 1fr; align-items: center; margin-top: 46px; }
     .boite { background: #11131C; border: 1px solid var(--edge); border-radius: 16px; padding: 22px; text-align: center; }
@@ -82,6 +87,36 @@
     .comp { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
     .comp .card b { font-family: Archivo, sans-serif; font-size: 21px; display: block; }
     .comp .card span { color: var(--ash); font-size: 16px; display: block; margin-top: 8px; }
+    /* Tableau de synthèse */
+    table.grille { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 30px; font-size: 19px; }
+    .grille th { font-weight: 600; color: var(--ash); font-size: 15px; letter-spacing: .02em; padding: 0 6px 12px; text-align: center; vertical-align: bottom; line-height: 1.25; }
+    .grille th:first-child { text-align: left; }
+    .grille td { padding: 11px 6px; border-top: 1px solid var(--edge); text-align: center; }
+    .grille td:first-child { text-align: left; font-weight: 600; color: var(--bone); white-space: nowrap; }
+    .grille td:first-child small { display: inline; font-weight: 400; color: var(--ash); font-size: 14px; margin-left: 8px; }
+    .grille tr.pro td { background: rgba(239,68,68,.07); }
+    .pt { display: inline-block; width: 16px; height: 16px; border-radius: 50%; background: var(--blood); box-shadow: 0 0 0 5px rgba(239,68,68,.14); }
+    .legende { margin-top: 14px; font-size: 15px; color: var(--ash); }
+    /* Compétences */
+    .six { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; }
+    .six .card { min-height: 190px; padding: 28px; }
+    .six .n { font-family: "IBM Plex Mono", monospace; color: var(--blood); font-size: 15px; }
+    .six b { display: block; font-family: Archivo, sans-serif; font-size: 29px; margin-top: 10px; line-height: 1.2; }
+    .six span { display: block; color: var(--ash); font-size: 16px; margin-top: 8px; }
+    .preuves { display: grid; gap: 20px; margin-top: 64px; }
+    .preuves.c2 { grid-template-columns: repeat(2, 1fr); } .preuves.c3 { grid-template-columns: repeat(3, 1fr); } .preuves.c4 { grid-template-columns: repeat(4, 1fr); }
+    .preuve { background: #11131C; border: 1px solid var(--edge); border-radius: 18px; padding: 30px 28px; min-height: 250px; }
+    .preuve .k { font-size: 15px; }
+    .preuve b { display: block; font-family: Archivo, sans-serif; font-size: 31px; margin-top: 14px; line-height: 1.15; }
+    .preuve p { color: var(--ash); font-size: 21px; line-height: 1.5; margin: 16px 0 0; }
+    .preuve p .flou { display: inline-block; }
+    .src { position: absolute; left: 80px; bottom: 46px; font-size: 14px; color: #6B7080; }
+    .chrono { font-variant-numeric: tabular-nums; min-width: 56px; text-align: center; }
+    .chrono.tard { color: #FBBF24; } .chrono.fin { color: var(--blood); font-weight: 700; }
+    .demo { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 36px; }
+    .demo .preuve { min-height: 0; }
+    .demo .preuve a { display: inline-block; margin: 14px 10px 0 0; font-size: 17px; color: var(--bone); background: #1A1D29; border: 1px solid var(--edge); border-radius: 10px; padding: 8px 14px; text-decoration: none; }
+    .demo .preuve a:hover { border-color: var(--blood); }
   </style>
 </head>
 <body>
@@ -89,190 +124,171 @@
   <div class="scene"><div class="stage" id="stage">
 
     <!-- 1. Titre -->
-    <section class="slide" data-notes="Bonjour. Je me présente en une phrase, puis je montre les deux réalisations : SYNCRO en milieu professionnel, Pla'Net en formation.">
-      <div class="grow" style="display:flex;align-items:center;gap:64px">
-        <img src="../assets/meta/portrait.jpg" alt="" style="width:260px;height:260px;border-radius:50%;border:1px solid var(--edge);object-fit:cover" />
-        <div>
-          <div class="k">BTS SIO · option SLAM · épreuve E5</div>
-          <h1 style="margin-top:18px">Dorian Pachot</h1>
-          <p class="lead">Du terrain au code.</p>
-        </div>
+    <section class="slide" data-temps="20" data-notes="Bonjour. Je présente mon portfolio du BTS SIO pour l'épreuve E5 : le bloc 1, support et mise à disposition de services informatiques. Je vais suivre la grille du tableau de synthèse.">
+      <div class="grow" style="display:flex;flex-direction:column;justify-content:center">
+        <div class="k">BTS Services informatiques aux organisations · option SLAM</div>
+        <h1 style="margin-top:22px">Épreuve E5</h1>
+        <p class="lead" style="font-size:32px;color:var(--bone)">Support et mise à disposition<br>de services informatiques</p>
+        <p class="lead" style="font-size:20px;margin-top:40px">IRIS MediaSchool Rouen · Dorian Pachot</p>
       </div>
     </section>
 
-    <!-- 2. Parcours -->
-    <section class="slide" data-notes="Parcours non linéaire : sport de haut niveau, restauration et management, puis un accident du travail en 2025. La reconversion vers l'informatique.">
-      <div class="k">Parcours</div>
-      <h2>Une reconversion</h2>
+    <!-- 2. Le bloc 1 -->
+    <section class="slide" data-temps="40" data-notes="Le bloc 1 est commun aux deux options, SISR et SLAM. Six compétences, que je vais reprendre une par une avec mes réalisations.">
+      <div class="k">Le bloc 1</div>
+      <h2>Six compétences</h2>
+      <div class="six">
+        <div class="card"><div class="n">01</div><b>Gérer le patrimoine informatique</b></div>
+        <div class="card"><div class="n">02</div><b>Répondre aux incidents et aux demandes</b></div>
+        <div class="card"><div class="n">03</div><b>Développer la présence en ligne</b></div>
+        <div class="card"><div class="n">04</div><b>Travailler en mode projet</b></div>
+        <div class="card"><div class="n">05</div><b>Mettre à disposition un service</b></div>
+        <div class="card"><div class="n">06</div><b>Organiser son développement professionnel</b></div>
+      </div>
+    </section>
+
+    <!-- 3. Le parcours dans le BTS -->
+    <section class="slide" data-temps="40" data-notes="Le cadre : entrée en BTS SIO SLAM en septembre 2025. Première année : TP de réseaux, systèmes, cybersécurité et développement. Un site client livré en février 2026. Stage chez Suitime, cinq semaines à temps plein. Deuxième année : Linux avancé, bases de données avancées, Pla'Net.">
+      <div class="k">Deux années de BTS</div>
+      <h2>Formation et milieu professionnel</h2>
       <div class="frise">
-        <div class="etape"><b>Handball</b><span>National 1</span></div>
-        <div class="etape"><b>Restauration</b><span>Équipier, manager</span></div>
-        <div class="etape"><b>Paysagiste</b><span>Accident en 2025</span></div>
-        <div class="etape now"><b>BTS SIO</b><span>Depuis 2025</span></div>
-        <div class="etape"><b>Demain</b><span>Alternance, DevOps</span></div>
+        <div class="etape"><b>Sept. 2025</b><span>Entrée en BTS SIO SLAM</span></div>
+        <div class="etape"><b>1<sup>re</sup> année</b><span>Réseaux · systèmes · cybersécurité · développement</span></div>
+        <div class="etape"><b>Févr. 2026</b><span>CRP-Assurance, site client</span></div>
+        <div class="etape now"><b>Juil. – août 2026</b><span>Stage chez Suitime : SYNCRO</span></div>
+        <div class="etape"><b>Sept. 2026</b><span>Linux avancé · BDD avancées · Pla'Net</span></div>
       </div>
     </section>
 
-    <!-- 3. Sommaire -->
-    <section class="slide" data-notes="Deux réalisations. SYNCRO est le sujet principal.">
-      <div class="k">Aujourd'hui</div>
-      <h2>Deux réalisations</h2>
-      <div class="row" style="margin-top:56px">
-        <div class="card" style="flex:1.4;padding:34px;border-color:rgba(239,68,68,.45)"><div class="k">Milieu professionnel</div><div class="big" style="margin-top:16px">SYNCRO</div><div class="lbl">Stage chez Suitime</div></div>
-        <div class="card" style="flex:1;padding:34px"><div class="k" style="color:var(--cyan)">En formation</div><div class="big" style="margin-top:16px">Pla'Net</div><div class="lbl">Projet à cinq</div></div>
-      </div>
+    <!-- 4. Tableau de synthèse -->
+    <section class="slide" data-temps="60" data-notes="Le tableau de synthèse : chaque compétence est couverte au moins une fois. La ligne en rouge est la réalisation en milieu professionnel. Je détaille maintenant compétence par compétence.">
+      <div class="k">Le tableau de synthèse</div>
+      <h2>Chaque compétence couverte</h2>
+      <table class="grille">
+        <thead><tr><th>Réalisation</th><th>01<br>Patrimoine</th><th>02<br>Incidents</th><th>03<br>Présence en ligne</th><th>04<br>Mode projet</th><th>05<br>Mise à disposition</th><th>06<br>Dév. pro</th></tr></thead>
+        <tbody>
+          <tr class="pro"><td>SYNCRO<small>stage Suitime</small></td><td><span class="pt"></span></td><td><span class="pt"></span></td><td><span class="pt"></span></td><td><span class="pt"></span></td><td><span class="pt"></span></td><td></td></tr>
+          <tr><td>Pla'Net<small>projet à cinq</small></td><td><span class="pt"></span></td><td></td><td></td><td><span class="pt"></span></td><td><span class="pt"></span></td><td></td></tr>
+          <tr><td>CRP-Assurance<small>site client</small></td><td></td><td></td><td><span class="pt"></span></td><td><span class="pt"></span></td><td><span class="pt"></span></td><td></td></tr>
+          <tr><td>TP Linux avancé<small>TP0 à TP5</small></td><td><span class="pt"></span></td><td><span class="pt"></span></td><td></td><td></td><td><span class="pt"></span></td><td></td></tr>
+          <tr><td>Active Directory<small>Windows Server</small></td><td><span class="pt"></span></td><td></td><td></td><td></td><td><span class="pt"></span></td><td></td></tr>
+          <tr><td>Répartition de charge<small>Scaleway</small></td><td><span class="pt"></span></td><td></td><td></td><td></td><td><span class="pt"></span></td><td></td></tr>
+          <tr><td>Parc informatique<small>GLPI · ITIL</small></td><td><span class="pt"></span></td><td><span class="pt"></span></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Audit SEO</td><td></td><td></td><td><span class="pt"></span></td><td></td><td></td><td></td></tr>
+          <tr><td>Veille et portfolio</td><td></td><td></td><td></td><td></td><td></td><td><span class="pt"></span></td></tr>
+        </tbody>
+      </table>
     </section>
 
-    <!-- 4. SYNCRO, le besoin -->
-    <section class="slide" data-notes="Le problème : des plannings d'équipe gérés avec un tableur et des messages. Le besoin de Suitime : simple, sans formation.">
-      <div class="row grow" style="align-items:center;gap:70px">
-        <div style="flex:1">
-          <div class="k">SYNCRO · le besoin</div>
-          <h2>Fini le tableur partagé</h2>
-          <p class="lead">Chacun donne ses disponibilités.<br>Le responsable valide la semaine.</p>
+    <!-- 5. Patrimoine -->
+    <section class="slide" data-temps="50" data-notes="Recenser : inventaire de parc avec OCS Inventory et GLPI, CMDB, ITIL 4. Habilitations : rôles admin et user dans Pla'Net, vérifiés côté serveur ; droits sur les dossiers et bit SGID au TP5. Continuité : DHCP en mode basculement sous Windows Server, deux serveurs Nginx derrière HAProxy sur Scaleway. Sauvegardes : scripts Bash planifiés avec cron et des minuteurs systemd.">
+      <div class="k">Compétence 01</div>
+      <h2>Gérer le patrimoine informatique</h2>
+      <div class="preuves c4">
+        <div class="preuve"><div class="k">Recenser</div><b>Parc informatique</b><p>GLPI · OCS Inventory · <span class="flou">ITIL 4</span></p></div>
+        <div class="preuve"><div class="k">Habilitations</div><b>Rôles et droits</b><p>Admin et user · droits Linux <span class="flou">bit SGID</span></p></div>
+        <div class="preuve"><div class="k">Continuité</div><b>Haute disponibilité</b><p>DHCP en basculement · <span class="flou">HAProxy</span></p></div>
+        <div class="preuve"><div class="k">Sauvegardes</div><b>Scripts automatisés</b><p>Bash · <span class="flou">cron et systemd</span></p></div>
+      </div>
+      <div class="src">Parc et ITIL · Pla'Net · TP Linux 4 et 5 · Active Directory · Scaleway</div>
+    </section>
+
+    <!-- 6. Incidents -->
+    <section class="slide" data-temps="50" data-notes="Qualifier : exercice de tickets de support, type, urgence, impact, priorité. Dépanner : TP1, trois erreurs cachées dans ma configuration DHCP et DNS ; j'ai appris à lire les journaux et à tester service par service. En production : SYNCRO refusée par Apple, la connexion était cassée depuis cinq jours à cause d'anciens fichiers restés sur le serveur. Correction, puis test de connexion à chaque déploiement.">
+      <div class="k">Compétence 02</div>
+      <h2>Répondre aux incidents et aux demandes</h2>
+      <div class="preuves c3">
+        <div class="preuve"><div class="k">Qualifier</div><b>Tickets de support</b><p>Type · urgence · impact · <span class="flou">priorité</span></p></div>
+        <div class="preuve"><div class="k">Dépanner</div><b>DHCP et DNS</b><p>Trois pannes cachées · <span class="flou">lire les journaux</span></p></div>
+        <div class="preuve" style="border-color:rgba(239,68,68,.45)"><div class="k">En production</div><b>Refus de l'App Store</b><p><span class="flou">Connexion cassée depuis cinq jours</span></p></div>
+      </div>
+      <div class="src">Parc et ITIL · TP Linux 1 · SYNCRO</div>
+    </section>
+
+    <!-- 7. Présence en ligne -->
+    <section class="slide" data-temps="50" data-notes="CRP-Assurance : site d'un cabinet d'assurance, plus de trente pages d'offres, un back-office pour que le cabinet gère ses contenus, un espace client. Cadre juridique : RGPD et mentions légales. appsyncro.fr : site vitrine et quatre pages légales. Mesurer la visibilité : audit SEO de deux sites avec PageSpeed Insights, recommandations classées par priorité.">
+      <div class="k">Compétence 03</div>
+      <h2>Développer la présence en ligne</h2>
+      <div class="row" style="margin-top:56px;align-items:stretch;height:390px">
+        <img src="../assets/meta/shot-crp.jpg" alt="" style="width:560px;border-radius:14px;border:1px solid var(--edge);object-fit:cover;object-position:top" />
+        <div class="preuves" style="flex:1;margin-top:0;grid-template-rows:1fr 1fr">
+          <div class="preuve"><div class="k">Site client</div><b>CRP-Assurance</b><p>Back-office · espace client · <span class="flou">RGPD</span></p></div>
+          <div class="preuve"><div class="k">Visibilité</div><b>Audit SEO</b><p>PageSpeed Insights · <span class="flou">recommandations par priorité</span></p></div>
         </div>
-        <img class="phone" style="width:250px" src="../assets/syncro/screens/screen-1.jpg" alt="" />
       </div>
+      <div class="src">CRP-Assurance · appsyncro.fr · Audit SEO</div>
     </section>
 
-    <!-- 5. SYNCRO, l'application -->
-    <section class="slide" data-notes="Les écrans. Le dernier est flou : notifications et suivi des heures, à expliquer si on me le demande.">
-      <div class="k">SYNCRO · l'application</div>
-      <h2>Quatre écrans</h2>
-      <div class="row" style="justify-content:space-between;margin-top:34px">
-        <figure style="margin:0"><img class="phone" src="../assets/syncro/screens/screen-1.jpg" alt="" /><figcaption class="cap">Planning</figcaption></figure>
-        <figure style="margin:0"><img class="phone" src="../assets/syncro/screens/screen-2.jpg" alt="" /><figcaption class="cap">Disponibilités</figcaption></figure>
-        <figure style="margin:0"><img class="phone" src="../assets/syncro/screens/screen-3.jpg" alt="" /><figcaption class="cap">Groupes et rôles</figcaption></figure>
-        <figure style="margin:0"><img class="phone flou" src="../assets/syncro/screens/screen-4.jpg" alt="" /><figcaption class="cap flou">Notifications et heures</figcaption></figure>
-      </div>
-    </section>
-
-    <!-- 6. SYNCRO, les fonctions -->
-    <section class="slide" data-notes="Les fonctions. Les tuiles floues sont celles que je maîtrise le mieux : verrouillage, QR code, notifications, suppression de compte exigée par Apple.">
-      <div class="k">SYNCRO · les fonctions</div>
-      <h2>Ce que fait l'application</h2>
-      <div class="tuiles">
-        <div class="tuile"><b>Disponibilités</b><span>Matin, après-midi, autres plages</span></div>
-        <div class="tuile flou"><b>Validation et verrouillage</b><span>Le responsable fige la semaine</span></div>
-        <div class="tuile"><b>Groupes et rôles</b><span>Membre, responsable, propriétaire</span></div>
-        <div class="tuile flou"><b>Invitation par QR code</b><span>Rejoindre un groupe en un scan</span></div>
-        <div class="tuile flou"><b>Notifications push</b><span>Firebase pour Android, APNs pour iOS</span></div>
-        <div class="tuile"><b>Suivi des heures</b><span>Pour chaque membre</span></div>
-        <div class="tuile flou"><b>Suppression de compte</b><span>Exigée par Apple, transfert du groupe</span></div>
-        <div class="tuile"><b>Site et back-office</b><span>appsyncro.fr</span></div>
-      </div>
-    </section>
-
-    <!-- 7. SYNCRO, l'architecture -->
-    <section class="slide" data-notes="Architecture : appli Flutter, API Next.js en TypeScript, base MySQL. Si on me demande l'authentification : jeton d'accès de 15 minutes, jeton de renouvellement de 7 jours.">
-      <div class="k">SYNCRO · l'architecture</div>
-      <h2>De l'appli au serveur</h2>
-      <div class="archi">
-        <div class="boite"><b>Flutter</b><span>Android et iOS</span></div><div class="fl"></div>
-        <div class="boite"><b>API Next.js</b><span>TypeScript · 53 routes</span></div><div class="fl"></div>
-        <div class="boite"><b>MySQL</b><span>Index et déclencheurs</span></div>
-      </div>
-      <div class="row" style="margin-top:44px;justify-content:center;gap:16px">
-        <span class="tag">Nginx</span><span class="tag">PM2</span><span class="tag">HTTPS</span><span class="tag">Déploiement Git</span>
-        <span class="tag flou">Jetons 15 min / 7 jours</span><span class="tag flou">Firebase · APNs</span>
-      </div>
-    </section>
-
-    <!-- 8. SYNCRO, les incidents -->
-    <section class="slide" data-notes="Trois incidents. Ne pas tout raconter : laisser le jury choisir. Refus Apple = connexion cassée en prod depuis 5 jours (vieux fichiers), test à chaque déploiement. Notifs iPhone = comparaison avec une autre appli, 3 écarts. Minuit = 100 combinaisons testées.">
-      <div class="k">SYNCRO · en production</div>
-      <h2>Trois incidents</h2>
-      <div class="row" style="margin-top:50px">
-        <div class="card" style="flex:1;min-height:250px"><div class="big acc" style="font-size:44px">01</div><b style="display:block;font-family:Archivo,sans-serif;font-size:26px;margin-top:14px">Refus de l'App Store</b><div class="lbl flou">La connexion était cassée en production depuis cinq jours</div></div>
-        <div class="card" style="flex:1;min-height:250px"><div class="big acc" style="font-size:44px">02</div><b style="display:block;font-family:Archivo,sans-serif;font-size:26px;margin-top:14px">Notifications iPhone</b><div class="lbl flou">Trois écarts trouvés par comparaison</div></div>
-        <div class="card" style="flex:1;min-height:250px"><div class="big acc" style="font-size:44px">03</div><b style="display:block;font-family:Archivo,sans-serif;font-size:26px;margin-top:14px">Créneaux après minuit</b><div class="lbl flou">Cent combinaisons testées</div></div>
-      </div>
-    </section>
-
-    <!-- 9. SYNCRO, le résultat -->
-    <section class="slide" data-notes="Le résultat : publiée sur les deux stores, lettre de recommandation.">
-      <div class="k">SYNCRO · le résultat</div>
-      <h2>En production</h2>
-      <div class="row" style="margin-top:56px">
-        <div class="card" style="flex:1"><div class="big">5</div><div class="lbl">mois de projet</div></div>
-        <div class="card" style="flex:1"><div class="big">84</div><div class="lbl">commits</div></div>
-        <div class="card" style="flex:1"><div class="big">53</div><div class="lbl">routes en TypeScript</div></div>
-        <div class="card" style="flex:1"><div class="big acc">2</div><div class="lbl">stores</div></div>
-      </div>
-      <p class="lead" style="margin-top:40px">App Store · Google Play · lettre de recommandation</p>
-    </section>
-
-    <!-- 10. Pla'Net, le choix -->
-    <section class="slide" data-notes="Pla'Net : quatre jours à cinq. Choix assumé : 2,5 jours de conception. Le code a ensuite été généré en grande partie par l'IA, je le dis franchement.">
-      <div class="k" style="color:var(--cyan)">Pla'Net · planning de l'école</div>
-      <h2>Quatre jours, à cinq</h2>
-      <div class="barre">
+    <!-- 8. Mode projet -->
+    <section class="slide" data-temps="70" data-notes="Pla'Net, planning des cours de l'école, à cinq en quatre jours. Deux jours et demi de planification et de base de données, puis un jour et demi de code généré en grande partie par l'IA. Trello : 45 cartes, priorités P1 à P4, un critère Fait quand par carte, une carte DÉCISION bloquante. Suivi : 34 cartes sur 45. Écart principal : la sauvegarde, pourtant P1. Base : 12 tables, archivage avec la colonne obsolete.">
+      <div class="k" style="color:var(--cyan)">Compétence 04</div>
+      <h2>Travailler en mode projet</h2>
+      <div class="barre" style="margin-top:56px">
         <div style="flex:2.5;background:rgba(34,211,238,.16);color:var(--cyan)">Planification et base de données · 2,5 j</div>
-        <div style="flex:1.5;background:#151824;color:var(--ash)">Code, généré par IA · 1,5 j</div>
+        <div style="flex:1.5;background:#151824;color:var(--ash)">Code · 1,5 j</div>
       </div>
-      <p class="lead" style="margin-top:40px">La conception d'abord.</p>
+      <div class="row" style="margin-top:34px;align-items:stretch;height:260px">
+        <div class="card" style="flex:1"><div class="big cy">45</div><div class="lbl">cartes Trello · P1 → P4</div></div>
+        <div class="card" style="flex:1"><div class="big" style="font-size:40px;margin-top:12px">« Fait quand »</div><div class="lbl">un critère par carte</div></div>
+        <div class="card" style="flex:1"><div class="big cy">34 / 45</div><div class="lbl">réalisées · <span class="flou">écart : la sauvegarde</span></div></div>
+        <div class="card" style="flex:1;padding:12px"><img class="flou" src="../assets/planet/schema-bdd.svg" alt="" style="width:100%;border-radius:8px;display:block" /><div class="lbl" style="text-align:center">12 tables</div></div>
+      </div>
+      <div class="src">Pla'Net · projet de deuxième année, en équipe de cinq</div>
     </section>
 
-    <!-- 11. Pla'Net, Trello -->
-    <section class="slide" data-notes="45 cartes, priorités P1 à P4, un critère Fait quand par carte, une carte DÉCISION bloquante.">
-      <div class="k" style="color:var(--cyan)">Pla'Net · la planification</div>
-      <h2>Trello</h2>
-      <div class="row" style="margin-top:50px">
-        <div class="card" style="flex:1"><div class="big cy">45</div><div class="lbl">cartes</div></div>
-        <div class="card" style="flex:1"><div class="big">P1 → P4</div><div class="lbl">priorités</div></div>
-        <div class="card" style="flex:1"><div class="big" style="font-size:44px">« Fait quand »</div><div class="lbl">un critère vérifiable</div></div>
+    <!-- 9. Mise à disposition -->
+    <section class="slide" data-temps="70" data-notes="SYNCRO, en milieu professionnel : application Flutter, API Next.js en TypeScript, base MySQL. Mise en production sur un serveur Linux avec Nginx, PM2 et HTTPS, déploiement par Git. Tests : un test de connexion à chaque mise en ligne ; les créneaux qui passent minuit vérifiés sur les cent combinaisons possibles. Publication sur l'App Store et Google Play. Accompagner : le back-office de CRP-Assurance rend le client autonome.">
+      <div class="k">Compétence 05</div>
+      <h2>Mettre à disposition un service</h2>
+      <div class="archi" style="margin-top:44px">
+        <div class="boite"><b>Flutter</b><span>Android et iOS</span></div><div class="fl"></div>
+        <div class="boite"><b>API Next.js</b><span>TypeScript</span></div><div class="fl"></div>
+        <div class="boite"><b>MySQL</b><span>Serveur Linux</span></div>
       </div>
+      <div class="preuves c3" style="margin-top:34px">
+        <div class="preuve"><div class="k">Tester</div><b>Avant chaque mise en ligne</b><p><span class="flou">Test de connexion automatique</span></p></div>
+        <div class="preuve"><div class="k">Déployer</div><b>Deux stores</b><p>Nginx · PM2 · HTTPS · <span class="flou">Git</span></p></div>
+        <div class="preuve"><div class="k">Accompagner</div><b>Client autonome</b><p>Back-office <span class="flou">CRP-Assurance</span></p></div>
+      </div>
+      <div class="src">SYNCRO, stage chez Suitime · CRP-Assurance</div>
     </section>
 
-    <!-- 12. Pla'Net, la base -->
-    <section class="slide" data-notes="12 tables. Archivage avec obsolete au lieu de supprimer. Table de liaison seance_classe pour les troncs communs.">
-      <div class="k" style="color:var(--cyan)">Pla'Net · la base de données</div>
-      <h2>12 tables</h2>
-      <img src="../assets/planet/schema-bdd.svg" alt="" style="margin-top:22px;width:100%;max-height:470px;object-fit:contain;border:1px solid var(--edge);border-radius:12px" />
+    <!-- 10. Développement professionnel -->
+    <section class="slide" data-temps="50" data-notes="La veille : cinq alertes Google chaque semaine, les notes de version de Flutter, Next.js et Symfony, les règles des stores. Une seule question pour trier : est-ce que cela concerne un projet, un cours ou le métier visé ? Je vérifie la source et la date. La trace est sur le portfolio. Projet : une alternance, puis un bachelor DevOps ; je prépare GitLab 101 et Terraform Associate.">
+      <div class="k">Compétence 06</div>
+      <h2>Organiser son développement professionnel</h2>
+      <div class="preuves c4">
+        <div class="preuve"><div class="k">01</div><b>Des sources</b><p>Alertes · notes de version</p></div>
+        <div class="preuve"><div class="k">02</div><b>Un tri</b><p><span class="flou">Lié à un projet ou au métier ?</span></p></div>
+        <div class="preuve"><div class="k">03</div><b>Une lecture critique</b><p>Source · date · <span class="flou">seconde source</span></p></div>
+        <div class="preuve"><div class="k">04</div><b>Une trace</b><p>Le portfolio</p></div>
+      </div>
+      <div style="margin-top:40px"><span class="tag">Cybersécurité</span><span class="tag">NIS2</span><span class="tag">Réseaux</span><span class="tag">IA</span><span class="tag">DevOps</span><span class="tag flou">GitLab 101 · Terraform</span></div>
+      <div class="src">Veille technologique · portfolio · GitHub · LinkedIn</div>
     </section>
 
-    <!-- 13. Pla'Net, prévu et réalisé -->
-    <section class="slide" data-notes="34 cartes sur 45, environ 75 % de la charge. Écart principal : la sauvegarde, pourtant P1. Les estimations en jours ne collent plus quand l'IA code.">
-      <div class="k" style="color:var(--cyan)">Pla'Net · le suivi</div>
-      <h2>Prévu et réalisé</h2>
-      <div class="row" style="margin-top:50px;align-items:stretch">
-        <div class="card" style="flex:1"><div class="big cy">34 / 45</div><div class="lbl">cartes faites · 75 %</div></div>
-        <div class="card" style="flex:1"><div class="big acc" style="font-size:48px">Sauvegarde</div><div class="lbl">l'écart principal</div></div>
-      </div>
-    </section>
-
-    <!-- 14. Compétences -->
-    <section class="slide" data-notes="Les six compétences du bloc 1, avec la réalisation qui les illustre le mieux.">
-      <div class="k">Bloc 1</div>
-      <h2>Les compétences</h2>
-      <div class="comp">
-        <div class="card"><b>Patrimoine informatique</b><span>Habilitations · sauvegardes · continuité</span></div>
-        <div class="card"><b>Incidents et demandes</b><span>SYNCRO en production</span></div>
-        <div class="card"><b>Présence en ligne</b><span>appsyncro.fr · CRP-Assurance</span></div>
-        <div class="card"><b>Mode projet</b><span>Pla'Net · Trello · écarts</span></div>
-        <div class="card"><b>Mise à disposition</b><span>Déploiement · stores</span></div>
-        <div class="card"><b>Développement pro</b><span>Veille · portfolio</span></div>
-      </div>
-    </section>
-
-    <!-- 15. Veille et projet -->
-    <section class="slide" data-notes="Fil conducteur de la veille : devenir DevOps. Certifications GitLab 101 et Terraform Associate en préparation. Objectif : alternance puis bachelor DevOps.">
-      <div class="k">Veille et projet</div>
-      <h2>Devenir DevOps</h2>
-      <div style="margin-top:46px">
-        <span class="tag">Cybersécurité</span><span class="tag">NIS2</span><span class="tag">Réseaux</span><span class="tag">IA</span><span class="tag">CI/CD</span>
-      </div>
-      <div class="row" style="margin-top:36px">
-        <div class="card" style="flex:1"><div class="k">Ensuite</div><b style="display:block;font-family:Archivo,sans-serif;font-size:30px;margin-top:10px">Alternance</b><div class="lbl">3 jours en entreprise, 2 à l'école</div></div>
-        <div class="card" style="flex:1"><div class="k">Plus tard</div><b style="display:block;font-family:Archivo,sans-serif;font-size:30px;margin-top:10px">Bachelor DevOps</b><div class="lbl">GitLab 101 · Terraform</div></div>
+    <!-- 11. Démonstrations -->
+    <section class="slide" data-temps="30" data-notes="Pour la partie pratique, je peux ouvrir ce que vous voulez. Les liens s'ouvrent dans un nouvel onglet : la présentation reste ouverte.">
+      <div class="k">Pour la pratique</div>
+      <h2>À montrer en direct</h2>
+      <div class="demo">
+        <div class="preuve"><div class="k">Milieu professionnel</div><b>SYNCRO</b>
+          <a href="https://apps.apple.com/fr/app/syncro/id6787898930" target="_blank" rel="noopener noreferrer">App Store</a><a href="https://play.google.com/store/apps/details?id=fr.appsyncro.mobile" target="_blank" rel="noopener noreferrer">Google Play</a><a href="https://appsyncro.fr" target="_blank" rel="noopener noreferrer">appsyncro.fr</a></div>
+        <div class="preuve"><div class="k">Mode projet</div><b>Pla'Net</b>
+          <a href="#" data-lien="aHR0cHM6Ly9wbGEtbmV0Lm1lZGlhc2Nob29sLXJvdWVuLmZyL2xvZ2lu" rel="nofollow">L'application</a><a href="../assets/fiches-cours/developpement/planet-dossier-conception.pdf" target="_blank" rel="noopener">Dossier de conception</a></div>
+        <div class="preuve"><div class="k">Présence en ligne</div><b>CRP-Assurance</b>
+          <a href="https://crp-assurance.com" target="_blank" rel="noopener noreferrer">Le site</a><a href="crp-assurance.html" target="_blank" rel="noopener">La présentation</a></div>
+        <div class="preuve"><div class="k">Formation</div><b>Projets encadrés</b>
+          <a href="projets-cours.html" target="_blank" rel="noopener">Les TP et comptes rendus</a><a href="../index.html#veille" target="_blank" rel="noopener">La veille</a></div>
       </div>
     </section>
 
-    <!-- 16. Fin -->
-    <section class="slide" data-notes="Merci, je suis prêt pour vos questions.">
+    <!-- 12. Questions -->
+    <section class="slide" data-temps="10" data-notes="Merci, je suis prêt pour vos questions et la partie pratique.">
       <div class="grow" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
-        <h1>Merci.</h1>
-        <p class="lead">Vos questions ?</p>
+        <div class="k">Épreuve E5</div>
+        <h1 style="margin-top:18px">Merci.</h1>
+        <p class="lead">Place aux questions.</p>
       </div>
     </section>
 
@@ -285,11 +301,11 @@
     <button type="button" id="suiv">Suivante</button>
     <span id="num"></span>
     <span class="sp"></span>
+    <button type="button" id="b-chrono" title="Démarrer, mettre en pause">10:00</button>
     <button type="button" id="b-flous">Flous</button>
     <button type="button" id="b-notes">Notes</button>
     <button type="button" id="b-plein">Plein écran</button>
   </nav>
-
   <script>
   (function () {
     var slides = [].slice.call(document.querySelectorAll('.slide'));
@@ -301,13 +317,25 @@
     var quitter = document.getElementById('quitter');
     try { if (document.referrer && new URL(document.referrer).origin === location.origin && !/presentation\.html/.test(document.referrer)) quitter.href = document.referrer; } catch (e) {}
 
+
+    // Chronomètre : 10 minutes, démarre à la première diapo suivante (clic sur le bouton : pause / reprise)
+    var reste = 600, tic = null, bc = document.getElementById('b-chrono');
+    function aff() { var m = Math.floor(Math.abs(reste) / 60), s = Math.abs(reste) % 60; bc.textContent = (reste < 0 ? '-' : '') + m + ':' + (s < 10 ? '0' : '') + s; bc.classList.add('chrono'); bc.classList.toggle('tard', reste <= 120 && reste > 0); bc.classList.toggle('fin', reste <= 0); }
+    function demarrer() { if (!tic) tic = setInterval(function () { reste--; aff(); }, 1000); }
+    bc.onclick = function () { if (tic) { clearInterval(tic); tic = null; } else demarrer(); };
+    aff();
+    // Liens masqués (Pla'Net) : adresse décodée au clic, ouverte dans un nouvel onglet
+    document.querySelectorAll('[data-lien]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); window.open(atob(a.dataset.lien), '_blank', 'noopener,noreferrer'); }); });
+
     function fit() { var s = Math.min(innerWidth / 1320, (innerHeight - 40) / 760); stage.style.transform = 'scale(' + s + ')'; }
     function show(n) {
       i = Math.max(0, Math.min(slides.length - 1, n));
       slides.forEach(function (s, k) { s.classList.toggle('on', k === i); s.classList.toggle('av', k < i); });
       num.textContent = (i + 1) + ' / ' + slides.length;
       prog.style.width = ((i + 1) / slides.length * 100) + '%';
-      notes.textContent = slides[i].dataset.notes || '';
+      var t = +slides[i].dataset.temps || 0;
+      notes.textContent = (t ? '[' + t + ' s] ' : '') + (slides[i].dataset.notes || '');
+      if (i > 0) demarrer();
       try { history.replaceState(null, '', '#' + (i + 1)); } catch (e) {}
     }
     function plein() { if (!document.fullscreenElement) { document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); } else { document.exitFullscreen(); } }
