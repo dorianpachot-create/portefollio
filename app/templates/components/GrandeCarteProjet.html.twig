@@ -15,12 +15,8 @@
         {% for c in a.chiffres %}<div class="rounded-lg border border-edge bg-void/40 p-3"><dd class="font-display text-2xl font-bold text-bone">{{ c.valeur }}</dd><dt class="text-xs text-ash">{{ c.libelle }}</dt></div>{% endfor %}
       </dl>
       <twig:ListeTags :tags="a.tags" classe="mt-6" />
-      {# Les boutons de la carte : les mêmes que ceux de la page projet, sans le dernier (lettre de recommandation) #}
-      <div class="mt-8 flex flex-wrap gap-2">
-        {% for l in projet.liens|slice(0, 4) %}<twig:Bouton :texte="l.texte" :url="l.url" :style="l.style" :petit="true" :icone="l.icone ?? null" />{% endfor %}
-      </div>
       {# Lien "stretch" : rend toute la carte cliquable #}
-      <a class="stretch mt-5 text-sm font-semibold text-blood hover:text-bone" href="{{ lien(a.lien_principal.url) }}">{{ a.lien_principal.texte }}</a>
+      <a class="stretch mt-8 text-sm font-semibold text-blood hover:text-bone" href="{{ lien(a.lien_principal.url) }}">{{ a.lien_principal.texte }}</a>
     </div>
     {# Grand écran : deux captures inclinées #}
     <div class="relative hidden items-center justify-center overflow-hidden border-l border-edge bg-gradient-to-br from-blood/[.07] via-transparent to-transparent md:flex">

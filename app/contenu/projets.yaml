@@ -281,9 +281,6 @@ projets:
     lien_principal:
       texte: Lire la présentation
       url: pages/planet.html
-    lien_secondaire:
-      texte: Dossier de conception
-      url: assets/fiches-cours/developpement/planet-dossier-conception.pdf
   liste_projets:
     statut: Outil interne de l'école
     texte: Application de planning des cours de MediaSchool Rouen, réalisée à cinq. Planification Trello et conception de la base de données, puis code généré en grande partie par l'IA.
@@ -388,10 +385,7 @@ projets:
     - HTML et CSS
     - RGPD
     lien_principal:
-      texte: Voir le site
-      url: https://crp-assurance.com
-    lien_secondaire:
-      texte: La présentation
+      texte: Lire la présentation
       url: pages/crp-assurance.html
   liste_projets:
     statut: En ligne
@@ -488,10 +482,7 @@ projets:
     - pygame
     - WebAssembly
     lien_principal:
-      texte: Jouer dans le navigateur
-      url: pages/mini-jeu.html
-    lien_secondaire:
-      texte: La présentation
+      texte: Lire la présentation
       url: pages/mission-orion.html
   liste_projets:
     statut: Projet personnel

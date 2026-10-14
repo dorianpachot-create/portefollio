@@ -1,0 +1,340 @@
+<!doctype html>
+<!--
+  MODE PRÉSENTATION (épreuve E5)
+  ---------------------------------------------------------------------------
+  Page cachée : elle n'est liée nulle part, n'est pas dans le sitemap et n'est
+  pas indexée. On l'ouvre avec la touche P depuis n'importe quelle page du site.
+
+  Commandes :  → / Espace / Page suivante : diapo suivante
+               ← / Page précédente        : diapo précédente
+               F : plein écran   N : notes (pour moi)   B : retirer / remettre les flous
+               Échap : quitter (retour à la page d'où l'on vient)
+  Les éléments flous (class="flou") sont là exprès, pour amener les questions.
+  Un clic sur un élément flou le dévoile.
+
+  Page écrite à la main (pas générée par Symfony) : app:export n'y touche pas.
+-->
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Présentation | Dorian Pachot</title>
+  <link rel="icon" href="../assets/meta/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root { --void:#07080C; --panel:#11131C; --edge:#1E2130; --bone:#F1F2F6; --ash:#9CA0AE; --blood:#EF4444; --cyan:#22D3EE; --green:#22C55E; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: var(--void); color: var(--bone); font-family: Inter, system-ui, sans-serif; overflow: hidden; }
+    .scene { position: fixed; inset: 0; display: grid; place-items: center; }
+    .stage { width: 1280px; height: 720px; position: relative; transform-origin: center; }
+    .slide { position: absolute; inset: 0; padding: 64px 80px; display: flex; flex-direction: column; opacity: 0; visibility: hidden; transition: opacity .45s ease, transform .45s ease; transform: translateX(24px);
+      background: radial-gradient(900px 500px at 85% -10%, rgba(239,68,68,.10), transparent 60%), linear-gradient(180deg, #0C0E15, #08090D); border: 1px solid var(--edge); border-radius: 18px; overflow: hidden; }
+    .slide.on { opacity: 1; visibility: visible; transform: none; }
+    .slide.av { transform: translateX(-24px); }
+    .k { font-family: "IBM Plex Mono", monospace; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--blood); }
+    h1, h2 { font-family: Archivo, sans-serif; letter-spacing: -.025em; margin: 0; }
+    h1 { font-size: 84px; line-height: 1; font-weight: 800; }
+    h2 { font-size: 52px; line-height: 1.05; font-weight: 800; margin-top: 14px; }
+    p.lead { font-size: 26px; line-height: 1.45; color: var(--ash); max-width: 900px; margin: 22px 0 0; }
+    .grow { flex: 1; min-height: 0; }
+    .row { display: flex; gap: 22px; }
+    .card { background: rgba(17,19,28,.85); border: 1px solid var(--edge); border-radius: 16px; padding: 22px 24px; }
+    .big { font-family: Archivo, sans-serif; font-weight: 800; font-size: 64px; line-height: 1; }
+    .lbl { color: var(--ash); font-size: 18px; margin-top: 8px; }
+    .tag { display: inline-block; border: 1px solid var(--edge); background: #151824; border-radius: 8px; padding: 6px 12px; font-size: 18px; color: var(--bone); margin: 0 8px 8px 0; }
+    .flou { filter: blur(9px); cursor: help; transition: filter .35s ease; user-select: none; }
+    .flou.vu, body.sans-flou .flou { filter: none; user-select: auto; }
+    .phone { width: 190px; border-radius: 22px; border: 1px solid var(--edge); box-shadow: 0 30px 60px rgba(0,0,0,.5); display: block; }
+    .cap { font-size: 17px; color: var(--ash); margin-top: 12px; text-align: center; }
+    .acc { color: var(--blood); } .cy { color: var(--cyan); }
+    /* Barre de commande (visible, pour ne jamais dépendre d'un raccourci) */
+    .bar { position: fixed; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 10px; padding: 10px 16px; font-size: 14px; color: var(--ash); opacity: .25; transition: opacity .3s; }
+    .bar:hover, .bar:focus-within { opacity: 1; }
+    .bar button, .bar a { font: inherit; color: var(--bone); background: #151824; border: 1px solid var(--edge); border-radius: 8px; padding: 6px 12px; cursor: pointer; text-decoration: none; }
+    .bar .sp { flex: 1; }
+    .prog { position: fixed; left: 0; top: 0; height: 3px; background: var(--blood); transition: width .4s ease; }
+    .notes { position: fixed; left: 50%; bottom: 56px; transform: translateX(-50%); width: min(900px, 92vw); background: #151824; border: 1px solid var(--edge); border-radius: 12px; padding: 14px 18px; font-size: 15px; line-height: 1.55; color: var(--bone); display: none; }
+    body.avec-notes .notes { display: block; }
+    /* Frise */
+    .frise { display: flex; align-items: flex-start; gap: 0; margin-top: 70px; }
+    .etape { flex: 1; position: relative; padding-top: 34px; }
+    .etape::before { content: ""; position: absolute; top: 9px; left: 0; right: 0; height: 2px; background: var(--edge); }
+    .etape::after { content: ""; position: absolute; top: 2px; left: 0; width: 16px; height: 16px; border-radius: 50%; background: #2A2F42; }
+    .etape.now::after { background: var(--blood); box-shadow: 0 0 0 6px rgba(239,68,68,.18); }
+    .etape b { display: block; font-family: Archivo, sans-serif; font-size: 24px; }
+    .etape span { display: block; color: var(--ash); font-size: 17px; margin-top: 6px; }
+    /* Architecture */
+    .archi { display: grid; grid-template-columns: 1fr 70px 1fr 70px 1fr; align-items: center; margin-top: 46px; }
+    .boite { background: #11131C; border: 1px solid var(--edge); border-radius: 16px; padding: 22px; text-align: center; }
+    .boite b { display: block; font-family: Archivo, sans-serif; font-size: 28px; }
+    .boite span { display: block; color: var(--ash); font-size: 17px; margin-top: 6px; }
+    .fl { height: 2px; background: var(--edge); position: relative; }
+    .fl::after { content: ""; position: absolute; right: -2px; top: -5px; border: 6px solid transparent; border-left-color: #3A3F55; }
+    .tuiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 40px; }
+    .tuile { background: #11131C; border: 1px solid var(--edge); border-radius: 16px; padding: 22px; min-height: 150px; }
+    .tuile b { display: block; font-family: Archivo, sans-serif; font-size: 23px; }
+    .tuile span { display: block; color: var(--ash); font-size: 16px; margin-top: 10px; line-height: 1.45; }
+    .barre { display: flex; height: 64px; border-radius: 14px; overflow: hidden; margin-top: 56px; font-family: Archivo, sans-serif; font-weight: 700; font-size: 22px; }
+    .barre div { display: flex; align-items: center; padding: 0 24px; }
+    .comp { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+    .comp .card b { font-family: Archivo, sans-serif; font-size: 21px; display: block; }
+    .comp .card span { color: var(--ash); font-size: 16px; display: block; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <div class="prog" id="prog"></div>
+  <div class="scene"><div class="stage" id="stage">
+
+    <!-- 1. Titre -->
+    <section class="slide" data-notes="Bonjour. Je me présente en une phrase, puis je montre les deux réalisations : SYNCRO en milieu professionnel, Pla'Net en formation.">
+      <div class="grow" style="display:flex;align-items:center;gap:64px">
+        <img src="../assets/meta/portrait.jpg" alt="" style="width:260px;height:260px;border-radius:50%;border:1px solid var(--edge);object-fit:cover" />
+        <div>
+          <div class="k">BTS SIO · option SLAM · épreuve E5</div>
+          <h1 style="margin-top:18px">Dorian Pachot</h1>
+          <p class="lead">Du terrain au code.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Parcours -->
+    <section class="slide" data-notes="Parcours non linéaire : sport de haut niveau, restauration et management, puis un accident du travail en 2025. La reconversion vers l'informatique.">
+      <div class="k">Parcours</div>
+      <h2>Une reconversion</h2>
+      <div class="frise">
+        <div class="etape"><b>Handball</b><span>National 1</span></div>
+        <div class="etape"><b>Restauration</b><span>Équipier, manager</span></div>
+        <div class="etape"><b>Paysagiste</b><span>Accident en 2025</span></div>
+        <div class="etape now"><b>BTS SIO</b><span>Depuis 2025</span></div>
+        <div class="etape"><b>Demain</b><span>Alternance, DevOps</span></div>
+      </div>
+    </section>
+
+    <!-- 3. Sommaire -->
+    <section class="slide" data-notes="Deux réalisations. SYNCRO est le sujet principal.">
+      <div class="k">Aujourd'hui</div>
+      <h2>Deux réalisations</h2>
+      <div class="row" style="margin-top:56px">
+        <div class="card" style="flex:1.4;padding:34px;border-color:rgba(239,68,68,.45)"><div class="k">Milieu professionnel</div><div class="big" style="margin-top:16px">SYNCRO</div><div class="lbl">Stage chez Suitime</div></div>
+        <div class="card" style="flex:1;padding:34px"><div class="k" style="color:var(--cyan)">En formation</div><div class="big" style="margin-top:16px">Pla'Net</div><div class="lbl">Projet à cinq</div></div>
+      </div>
+    </section>
+
+    <!-- 4. SYNCRO, le besoin -->
+    <section class="slide" data-notes="Le problème : des plannings d'équipe gérés avec un tableur et des messages. Le besoin de Suitime : simple, sans formation.">
+      <div class="row grow" style="align-items:center;gap:70px">
+        <div style="flex:1">
+          <div class="k">SYNCRO · le besoin</div>
+          <h2>Fini le tableur partagé</h2>
+          <p class="lead">Chacun donne ses disponibilités.<br>Le responsable valide la semaine.</p>
+        </div>
+        <img class="phone" style="width:250px" src="../assets/syncro/screens/screen-1.jpg" alt="" />
+      </div>
+    </section>
+
+    <!-- 5. SYNCRO, l'application -->
+    <section class="slide" data-notes="Les écrans. Le dernier est flou : notifications et suivi des heures, à expliquer si on me le demande.">
+      <div class="k">SYNCRO · l'application</div>
+      <h2>Quatre écrans</h2>
+      <div class="row" style="justify-content:space-between;margin-top:34px">
+        <figure style="margin:0"><img class="phone" src="../assets/syncro/screens/screen-1.jpg" alt="" /><figcaption class="cap">Planning</figcaption></figure>
+        <figure style="margin:0"><img class="phone" src="../assets/syncro/screens/screen-2.jpg" alt="" /><figcaption class="cap">Disponibilités</figcaption></figure>
+        <figure style="margin:0"><img class="phone" src="../assets/syncro/screens/screen-3.jpg" alt="" /><figcaption class="cap">Groupes et rôles</figcaption></figure>
+        <figure style="margin:0"><img class="phone flou" src="../assets/syncro/screens/screen-4.jpg" alt="" /><figcaption class="cap flou">Notifications et heures</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- 6. SYNCRO, les fonctions -->
+    <section class="slide" data-notes="Les fonctions. Les tuiles floues sont celles que je maîtrise le mieux : verrouillage, QR code, notifications, suppression de compte exigée par Apple.">
+      <div class="k">SYNCRO · les fonctions</div>
+      <h2>Ce que fait l'application</h2>
+      <div class="tuiles">
+        <div class="tuile"><b>Disponibilités</b><span>Matin, après-midi, autres plages</span></div>
+        <div class="tuile flou"><b>Validation et verrouillage</b><span>Le responsable fige la semaine</span></div>
+        <div class="tuile"><b>Groupes et rôles</b><span>Membre, responsable, propriétaire</span></div>
+        <div class="tuile flou"><b>Invitation par QR code</b><span>Rejoindre un groupe en un scan</span></div>
+        <div class="tuile flou"><b>Notifications push</b><span>Firebase pour Android, APNs pour iOS</span></div>
+        <div class="tuile"><b>Suivi des heures</b><span>Pour chaque membre</span></div>
+        <div class="tuile flou"><b>Suppression de compte</b><span>Exigée par Apple, transfert du groupe</span></div>
+        <div class="tuile"><b>Site et back-office</b><span>appsyncro.fr</span></div>
+      </div>
+    </section>
+
+    <!-- 7. SYNCRO, l'architecture -->
+    <section class="slide" data-notes="Architecture : appli Flutter, API Next.js en TypeScript, base MySQL. Si on me demande l'authentification : jeton d'accès de 15 minutes, jeton de renouvellement de 7 jours.">
+      <div class="k">SYNCRO · l'architecture</div>
+      <h2>De l'appli au serveur</h2>
+      <div class="archi">
+        <div class="boite"><b>Flutter</b><span>Android et iOS</span></div><div class="fl"></div>
+        <div class="boite"><b>API Next.js</b><span>TypeScript · 53 routes</span></div><div class="fl"></div>
+        <div class="boite"><b>MySQL</b><span>Index et déclencheurs</span></div>
+      </div>
+      <div class="row" style="margin-top:44px;justify-content:center;gap:16px">
+        <span class="tag">Nginx</span><span class="tag">PM2</span><span class="tag">HTTPS</span><span class="tag">Déploiement Git</span>
+        <span class="tag flou">Jetons 15 min / 7 jours</span><span class="tag flou">Firebase · APNs</span>
+      </div>
+    </section>
+
+    <!-- 8. SYNCRO, les incidents -->
+    <section class="slide" data-notes="Trois incidents. Ne pas tout raconter : laisser le jury choisir. Refus Apple = connexion cassée en prod depuis 5 jours (vieux fichiers), test à chaque déploiement. Notifs iPhone = comparaison avec une autre appli, 3 écarts. Minuit = 100 combinaisons testées.">
+      <div class="k">SYNCRO · en production</div>
+      <h2>Trois incidents</h2>
+      <div class="row" style="margin-top:50px">
+        <div class="card" style="flex:1;min-height:250px"><div class="big acc" style="font-size:44px">01</div><b style="display:block;font-family:Archivo,sans-serif;font-size:26px;margin-top:14px">Refus de l'App Store</b><div class="lbl flou">La connexion était cassée en production depuis cinq jours</div></div>
+        <div class="card" style="flex:1;min-height:250px"><div class="big acc" style="font-size:44px">02</div><b style="display:block;font-family:Archivo,sans-serif;font-size:26px;margin-top:14px">Notifications iPhone</b><div class="lbl flou">Trois écarts trouvés par comparaison</div></div>
+        <div class="card" style="flex:1;min-height:250px"><div class="big acc" style="font-size:44px">03</div><b style="display:block;font-family:Archivo,sans-serif;font-size:26px;margin-top:14px">Créneaux après minuit</b><div class="lbl flou">Cent combinaisons testées</div></div>
+      </div>
+    </section>
+
+    <!-- 9. SYNCRO, le résultat -->
+    <section class="slide" data-notes="Le résultat : publiée sur les deux stores, lettre de recommandation.">
+      <div class="k">SYNCRO · le résultat</div>
+      <h2>En production</h2>
+      <div class="row" style="margin-top:56px">
+        <div class="card" style="flex:1"><div class="big">5</div><div class="lbl">mois de projet</div></div>
+        <div class="card" style="flex:1"><div class="big">84</div><div class="lbl">commits</div></div>
+        <div class="card" style="flex:1"><div class="big">53</div><div class="lbl">routes en TypeScript</div></div>
+        <div class="card" style="flex:1"><div class="big acc">2</div><div class="lbl">stores</div></div>
+      </div>
+      <p class="lead" style="margin-top:40px">App Store · Google Play · lettre de recommandation</p>
+    </section>
+
+    <!-- 10. Pla'Net, le choix -->
+    <section class="slide" data-notes="Pla'Net : quatre jours à cinq. Choix assumé : 2,5 jours de conception. Le code a ensuite été généré en grande partie par l'IA, je le dis franchement.">
+      <div class="k" style="color:var(--cyan)">Pla'Net · planning de l'école</div>
+      <h2>Quatre jours, à cinq</h2>
+      <div class="barre">
+        <div style="flex:2.5;background:rgba(34,211,238,.16);color:var(--cyan)">Planification et base de données · 2,5 j</div>
+        <div style="flex:1.5;background:#151824;color:var(--ash)">Code, généré par IA · 1,5 j</div>
+      </div>
+      <p class="lead" style="margin-top:40px">La conception d'abord.</p>
+    </section>
+
+    <!-- 11. Pla'Net, Trello -->
+    <section class="slide" data-notes="45 cartes, priorités P1 à P4, un critère Fait quand par carte, une carte DÉCISION bloquante.">
+      <div class="k" style="color:var(--cyan)">Pla'Net · la planification</div>
+      <h2>Trello</h2>
+      <div class="row" style="margin-top:50px">
+        <div class="card" style="flex:1"><div class="big cy">45</div><div class="lbl">cartes</div></div>
+        <div class="card" style="flex:1"><div class="big">P1 → P4</div><div class="lbl">priorités</div></div>
+        <div class="card" style="flex:1"><div class="big" style="font-size:44px">« Fait quand »</div><div class="lbl">un critère vérifiable</div></div>
+      </div>
+    </section>
+
+    <!-- 12. Pla'Net, la base -->
+    <section class="slide" data-notes="12 tables. Archivage avec obsolete au lieu de supprimer. Table de liaison seance_classe pour les troncs communs.">
+      <div class="k" style="color:var(--cyan)">Pla'Net · la base de données</div>
+      <h2>12 tables</h2>
+      <img src="../assets/planet/schema-bdd.svg" alt="" style="margin-top:22px;width:100%;max-height:470px;object-fit:contain;border:1px solid var(--edge);border-radius:12px" />
+    </section>
+
+    <!-- 13. Pla'Net, prévu et réalisé -->
+    <section class="slide" data-notes="34 cartes sur 45, environ 75 % de la charge. Écart principal : la sauvegarde, pourtant P1. Les estimations en jours ne collent plus quand l'IA code.">
+      <div class="k" style="color:var(--cyan)">Pla'Net · le suivi</div>
+      <h2>Prévu et réalisé</h2>
+      <div class="row" style="margin-top:50px;align-items:stretch">
+        <div class="card" style="flex:1"><div class="big cy">34 / 45</div><div class="lbl">cartes faites · 75 %</div></div>
+        <div class="card" style="flex:1"><div class="big acc" style="font-size:48px">Sauvegarde</div><div class="lbl">l'écart principal</div></div>
+      </div>
+    </section>
+
+    <!-- 14. Compétences -->
+    <section class="slide" data-notes="Les six compétences du bloc 1, avec la réalisation qui les illustre le mieux.">
+      <div class="k">Bloc 1</div>
+      <h2>Les compétences</h2>
+      <div class="comp">
+        <div class="card"><b>Patrimoine informatique</b><span>Habilitations · sauvegardes · continuité</span></div>
+        <div class="card"><b>Incidents et demandes</b><span>SYNCRO en production</span></div>
+        <div class="card"><b>Présence en ligne</b><span>appsyncro.fr · CRP-Assurance</span></div>
+        <div class="card"><b>Mode projet</b><span>Pla'Net · Trello · écarts</span></div>
+        <div class="card"><b>Mise à disposition</b><span>Déploiement · stores</span></div>
+        <div class="card"><b>Développement pro</b><span>Veille · portfolio</span></div>
+      </div>
+    </section>
+
+    <!-- 15. Veille et projet -->
+    <section class="slide" data-notes="Fil conducteur de la veille : devenir DevOps. Certifications GitLab 101 et Terraform Associate en préparation. Objectif : alternance puis bachelor DevOps.">
+      <div class="k">Veille et projet</div>
+      <h2>Devenir DevOps</h2>
+      <div style="margin-top:46px">
+        <span class="tag">Cybersécurité</span><span class="tag">NIS2</span><span class="tag">Réseaux</span><span class="tag">IA</span><span class="tag">CI/CD</span>
+      </div>
+      <div class="row" style="margin-top:36px">
+        <div class="card" style="flex:1"><div class="k">Ensuite</div><b style="display:block;font-family:Archivo,sans-serif;font-size:30px;margin-top:10px">Alternance</b><div class="lbl">3 jours en entreprise, 2 à l'école</div></div>
+        <div class="card" style="flex:1"><div class="k">Plus tard</div><b style="display:block;font-family:Archivo,sans-serif;font-size:30px;margin-top:10px">Bachelor DevOps</b><div class="lbl">GitLab 101 · Terraform</div></div>
+      </div>
+    </section>
+
+    <!-- 16. Fin -->
+    <section class="slide" data-notes="Merci, je suis prêt pour vos questions.">
+      <div class="grow" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+        <h1>Merci.</h1>
+        <p class="lead">Vos questions ?</p>
+      </div>
+    </section>
+
+  </div></div>
+
+  <div class="notes" id="notes"></div>
+  <nav class="bar" aria-label="Commandes de la présentation">
+    <a href="../index.html" id="quitter">← Quitter</a>
+    <button type="button" id="prec">Précédente</button>
+    <button type="button" id="suiv">Suivante</button>
+    <span id="num"></span>
+    <span class="sp"></span>
+    <button type="button" id="b-flous">Flous</button>
+    <button type="button" id="b-notes">Notes</button>
+    <button type="button" id="b-plein">Plein écran</button>
+  </nav>
+
+  <script>
+  (function () {
+    var slides = [].slice.call(document.querySelectorAll('.slide'));
+    var stage = document.getElementById('stage'), num = document.getElementById('num'), prog = document.getElementById('prog'), notes = document.getElementById('notes');
+    var i = 0;
+    try { var h = parseInt(location.hash.slice(1), 10); if (h >= 1 && h <= slides.length) i = h - 1; } catch (e) {}
+
+    // Retour : la page d'où l'on vient (même site), sinon l'accueil
+    var quitter = document.getElementById('quitter');
+    try { if (document.referrer && new URL(document.referrer).origin === location.origin && !/presentation\.html/.test(document.referrer)) quitter.href = document.referrer; } catch (e) {}
+
+    function fit() { var s = Math.min(innerWidth / 1320, (innerHeight - 40) / 760); stage.style.transform = 'scale(' + s + ')'; }
+    function show(n) {
+      i = Math.max(0, Math.min(slides.length - 1, n));
+      slides.forEach(function (s, k) { s.classList.toggle('on', k === i); s.classList.toggle('av', k < i); });
+      num.textContent = (i + 1) + ' / ' + slides.length;
+      prog.style.width = ((i + 1) / slides.length * 100) + '%';
+      notes.textContent = slides[i].dataset.notes || '';
+      try { history.replaceState(null, '', '#' + (i + 1)); } catch (e) {}
+    }
+    function plein() { if (!document.fullscreenElement) { document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); } else { document.exitFullscreen(); } }
+
+    document.getElementById('prec').onclick = function () { show(i - 1); };
+    document.getElementById('suiv').onclick = function () { show(i + 1); };
+    document.getElementById('b-flous').onclick = function () { document.body.classList.toggle('sans-flou'); };
+    document.getElementById('b-notes').onclick = function () { document.body.classList.toggle('avec-notes'); };
+    document.getElementById('b-plein').onclick = plein;
+    // Un clic sur un élément flou le dévoile (et un second le refloute)
+    document.querySelectorAll('.flou').forEach(function (el) { el.addEventListener('click', function () { el.classList.toggle('vu'); }); });
+
+    addEventListener('keydown', function (e) {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      var k = e.key;
+      if (k === 'ArrowRight' || k === ' ' || k === 'PageDown') { e.preventDefault(); show(i + 1); }
+      else if (k === 'ArrowLeft' || k === 'PageUp') { e.preventDefault(); show(i - 1); }
+      else if (k === 'Home') show(0);
+      else if (k === 'End') show(slides.length - 1);
+      else if (k === 'f' || k === 'F') plein();
+      else if (k === 'n' || k === 'N') document.body.classList.toggle('avec-notes');
+      else if (k === 'b' || k === 'B') document.body.classList.toggle('sans-flou');
+      else if (k === 'Escape' && !document.fullscreenElement) location.href = quitter.href;
+    });
+    addEventListener('resize', fit);
+    fit(); show(i);
+  })();
+  </script>
+</body>
+</html>

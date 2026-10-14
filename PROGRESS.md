@@ -2,6 +2,18 @@
 
 Dernière mise à jour : 2026-10-14
 
+## Mise à jour du 2026-10-14 (2), navigation et mode présentation
+
+- **Premier clic = page de présentation** : les cartes de l'accueil (SYNCRO, Pla'Net,
+  CRP-Assurance, Mission Orion) ne mènent plus directement au site, aux stores ou au jeu.
+  Ces liens sont sur la page de présentation. `lien_secondaire` est devenu facultatif.
+- Pla'Net : bouton « Tester l'application » avec adresse masquée (`masque:` dans le YAML,
+  décodée au clic par `js/site.js`).
+- **Mode présentation** `pages/presentation.html` : 16 diapositives pour l'épreuve E5, peu
+  de texte, flous volontaires sur les fonctions de SYNCRO (clic pour dévoiler). Ouverture
+  avec la touche **P** sur n'importe quelle page ; page non liée, non indexée. Commandes :
+  flèches, F plein écran, N notes, B flous, Échap ou bouton « Quitter » pour revenir.
+
 ## Mise à jour du 2026-10-14, Pla'Net recentré sur la conception, outils, section 09
 
 - **Pla'Net** réécrit : projet en équipe de 5, du 15 au 18/09/2026 ; 2,5 jours de planification

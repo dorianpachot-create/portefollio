@@ -1,6 +1,8 @@
 {#
   Composant CarteProjetAccueil : une carte de projet dans "Réalisations" (accueil).
   data-status sert au filtre Tous / Livrés / En cours.
+  Règle du site : le premier clic mène toujours à la page de présentation du projet ;
+  les liens vers le site ou l'application sont sur cette page.
 #}
 {% props projet %}
 {%- set a = projet.accueil -%}
@@ -16,7 +18,7 @@
     <p class="mt-2 text-sm leading-relaxed text-ash">{{ a.resume }}</p>
     <twig:ListeTags :tags="a.tags" />
     <div class="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 pt-6 text-sm font-semibold">
-      <a class="stretch text-[var(--c)] hover:text-bone" href="{{ lien(a.lien_principal.url) }}"{% if externe %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ a.lien_principal.texte }}</a><a class="text-ash hover:text-bone" href="{{ lien(a.lien_secondaire.url) }}">{{ a.lien_secondaire.texte }}</a>
+      <a class="stretch text-[var(--c)] hover:text-bone" href="{{ lien(a.lien_principal.url) }}"{% if externe %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ a.lien_principal.texte }}</a>{% if a.lien_secondaire is defined %}<a class="text-ash hover:text-bone" href="{{ lien(a.lien_secondaire.url) }}">{{ a.lien_secondaire.texte }}</a>{% endif %}
     </div>
   </div>
 </article>

@@ -78,4 +78,11 @@
       window.open(atob(a.dataset.lien), '_blank', 'noopener,noreferrer');
     });
   });
+
+  // Touche P : ouvre le mode présentation caché (pages/presentation.html), pour l'oral
+  addEventListener('keydown', function (e) {
+    if (e.ctrlKey || e.metaKey || e.altKey || e.repeat || !(e.key === 'p' || e.key === 'P')) return;
+    var t = e.target; if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+    location.href = (/\/pages\//.test(location.pathname) ? '' : 'pages/') + 'presentation.html';
+  });
 })();
