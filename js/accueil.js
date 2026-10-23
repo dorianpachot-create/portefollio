@@ -4,7 +4,6 @@
  * Les pages secondaires utilisent js/site.js. Ici, en plus du menu et de la
  * barre de défilement, on trouve ce qui n'existe que sur l'accueil :
  *   - la carte de profil qui s'incline à la souris
- *   - le radar de compétences (dessiné en SVG)
  *   - le filtre des projets (Tous / Livrés / En cours)
  *   - les onglets "En dehors du travail"
  *   - la frise du parcours (flèches, clavier, glisser à la souris)
@@ -51,52 +50,6 @@
     });
     card.addEventListener('pointerleave', function () { card.style.transform = ''; });
   }
-
-  /* Radar de compétences, dessiné en SVG */
-  /* Les qualités et leurs valeurs viennent de contenu/competences.yaml,
-     écrites par Twig dans l'attribut data-qualites du SVG */
-  var radar = document.querySelector('[data-radar]');
-  var stats = JSON.parse(radar.dataset.qualites);
-  var R = 110, N = stats.length, NS = 'http://www.w3.org/2000/svg';
-  var pt = function (i, r) { var a = -Math.PI / 2 + i * 2 * Math.PI / N; return [Math.cos(a) * r, Math.sin(a) * r]; };
-  var grid = document.querySelector('[data-radar-grid]'), shape = document.querySelector('[data-radar-shape]');
-  var dots = document.querySelector('[data-radar-dots]'), labels = document.querySelector('[data-radar-labels]');
-  [.25, .5, .75, 1].forEach(function (k) {
-    var p = document.createElementNS(NS, 'polygon');
-    p.setAttribute('points', stats.map(function (_, i) { return pt(i, R * k).join(','); }).join(' '));
-    grid.appendChild(p);
-  });
-  stats.forEach(function (s, i) {
-    var e = pt(i, R), l = document.createElementNS(NS, 'line');
-    l.setAttribute('x1', 0); l.setAttribute('y1', 0); l.setAttribute('x2', e[0]); l.setAttribute('y2', e[1]); grid.appendChild(l);
-    var lp = pt(i, R + 24), t = document.createElementNS(NS, 'text');
-    t.setAttribute('x', lp[0]); t.setAttribute('y', lp[1] + 4); t.setAttribute('text-anchor', 'middle'); t.setAttribute('fill', '#9CA3AF');
-    t.textContent = s.n; labels.appendChild(t);
-    var c = document.createElementNS(NS, 'circle');
-    c.setAttribute('r', 4); c.setAttribute('fill', '#EF4444'); c.setAttribute('cx', 0); c.setAttribute('cy', 0);
-    c.style.transition = 'all .6s cubic-bezier(.2,.8,.2,1)'; dots.appendChild(c);
-  });
-  var current = 0;
-  var draw = function () {
-    var pts = stats.map(function (s, i) { return pt(i, R * s.v / 100); });
-    shape.setAttribute('points', pts.map(function (p) { return p.join(','); }).join(' '));
-    dots.querySelectorAll('circle').forEach(function (c, i) {
-      var on = i === current;
-      c.setAttribute('cx', pts[i][0]); c.setAttribute('cy', pts[i][1]);
-      c.setAttribute('r', on ? 6 : 4); c.setAttribute('fill', on ? '#22D3EE' : '#EF4444');
-    });
-    labels.querySelectorAll('text').forEach(function (t, i) { t.setAttribute('fill', i === current ? '#F1F2F6' : '#9CA3AF'); });
-  };
-  if ('IntersectionObserver' in window && !reduce) {
-    new IntersectionObserver(function (en, obs) { if (en[0].isIntersecting) { setTimeout(draw, 150); obs.disconnect(); } }, { threshold: .3 }).observe(radar);
-  } else draw();
-  document.querySelectorAll('[data-stat]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      current = +b.dataset.stat;
-      document.querySelectorAll('[data-stat]').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
-      draw();
-    });
-  });
 
   /* Filtre des projets */
   var projects = document.querySelectorAll('#projets [data-status]');

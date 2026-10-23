@@ -67,9 +67,6 @@
 
     <div class="flex items-center gap-3">
       <button class="theme-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="Passer en mode clair" title="Mode clair / mode sombre"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
-      <a href="#contact" class="flex items-center gap-2.5 rounded-full border border-go/30 bg-go/5 px-3 py-1.5 text-[13px] font-medium text-go transition hover:border-go/60">
-        <span class="dot" aria-hidden="true"></span><span class="hidden sm:inline">Disponible pour une alternance</span><span class="sm:hidden">Disponible</span>
-      </a>
       <button class="btn btn-ghost btn-sm xl:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu">Menu</button>
     </div>
   </div>
@@ -111,10 +108,10 @@
         <div class="relative aspect-[4/4.2] overflow-hidden rounded-[10px] bg-edge">
           <picture><source srcset="assets/meta/portrait.webp" type="image/webp" /><img class="h-full w-full object-cover" src="assets/meta/portrait.jpg" alt="Portrait de Dorian Pachot" width="720" height="720" /></picture>
 
-          <div class="absolute inset-0 bg-gradient-to-t from-void/90 via-transparent to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#090A0F]/85 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4 right-4">
-            <p class="font-display text-2xl font-bold tracking-tight text-bone">Dorian Pachot</p>
-            <p class="text-sm text-ash">Étudiant développeur, Rouen</p>
+            <p class="font-display text-2xl font-bold tracking-tight text-white">Dorian Pachot</p>
+            <p class="text-sm text-white/80">Étudiant développeur, Rouen</p>
           </div>
         </div>
         <dl class="mt-4 grid grid-cols-3 gap-2 text-center">
@@ -659,54 +656,29 @@
   <div>
     <p class="label text-blood"><span class="mr-3 text-ash/70">06</span>Points d&#039;appui et méthode</p>
     <h2 id="comp-title" class="mt-4 font-display text-4xl font-extrabold tracking-[-.02em] text-bone md:text-5xl">Ce sur quoi je peux m&#039;appuyer</h2>
-    <p class="mt-4 max-w-xl text-ash">Pas de notes ni de niveaux : quatre qualités que je travaille, chacune illustrée par un exemple concret. Sélectionnez-en une pour la mettre en évidence.
+    <p class="mt-4 max-w-xl text-ash">Pas de notes ni de niveaux : quatre qualités que je travaille, chacune illustrée par un exemple concret.
     </p>
   </div>
   </div>
 
-    <div class="mt-12 grid items-center gap-10 lg:grid-cols-[1fr_1.05fr]">
-      <div class="panel reveal p-5 md:p-8">
-        <svg viewBox="-205 -165 410 330" class="mx-auto w-full max-w-[26rem]" role="img" aria-labelledby="radar-desc" data-radar
-             data-qualites="[{&quot;n&quot;:&quot;Rigueur&quot;,&quot;v&quot;:88},{&quot;n&quot;:&quot;Conception&quot;,&quot;v&quot;:72},{&quot;n&quot;:&quot;Pers\u00e9v\u00e9rance&quot;,&quot;v&quot;:95},{&quot;n&quot;:&quot;Efficacit\u00e9&quot;,&quot;v&quot;:80}]">
-          <title id="radar-desc">Radar de compétences : rigueur, conception, persévérance, efficacité</title>
-          <g data-radar-grid stroke="#232736" fill="none"></g>
-          <polygon data-radar-shape class="radar-shape" fill="rgba(239,68,68,.18)" stroke="#EF4444" stroke-width="2" points="0,0 0,0 0,0 0,0"></polygon>
-          <g data-radar-dots></g>
-          <g data-radar-labels font-family="Inter, sans-serif" font-weight="600" font-size="13"></g>
-        </svg>
-      </div>
-
-      <ul class="reveal grid gap-2" data-stat-list>
-                  <li>
-            <button type="button" class="stat-row w-full px-4 py-4 text-left" data-stat="0" aria-pressed="true">
-              <span class="flex items-baseline justify-between"><span class="font-display text-lg font-bold text-bone">Rigueur</span></span>
-              <span class="meter mt-2.5 block"><span data-w="88"></span></span>
-              <span class="mt-2.5 block text-sm leading-relaxed text-ash">Le handball m&#039;a habitué à l&#039;entraînement quotidien. En développement, cela se traduit par des commits réguliers, des tests et une relecture systématique avant livraison.</span>
-            </button>
+    <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <li class="panel reveal p-6">
+            <h3 class="font-display text-lg font-bold text-bone">Rigueur</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ash">Le handball m&#039;a habitué à l&#039;entraînement quotidien. En développement, cela se traduit par des commits réguliers, des tests et une relecture systématique avant livraison.</p>
           </li>
-                  <li>
-            <button type="button" class="stat-row w-full px-4 py-4 text-left" data-stat="1" aria-pressed="false">
-              <span class="flex items-baseline justify-between"><span class="font-display text-lg font-bold text-bone">Conception</span></span>
-              <span class="meter mt-2.5 block"><span data-w="72"></span></span>
-              <span class="mt-2.5 block text-sm leading-relaxed text-ash">Je maquette les écrans et je modélise la base de données avant de coder. C&#039;est le point sur lequel j&#039;ai le plus à apprendre, et c&#039;est ce que je viens chercher en alternance.</span>
-            </button>
+          <li class="panel reveal p-6">
+            <h3 class="font-display text-lg font-bold text-bone">Conception</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ash">Je maquette les écrans et je modélise la base de données avant de coder. C&#039;est le point sur lequel j&#039;ai le plus à apprendre, et c&#039;est ce que je viens chercher en alternance.</p>
           </li>
-                  <li>
-            <button type="button" class="stat-row w-full px-4 py-4 text-left" data-stat="2" aria-pressed="false">
-              <span class="flex items-baseline justify-between"><span class="font-display text-lg font-bold text-bone">Persévérance</span></span>
-              <span class="meter mt-2.5 block"><span data-w="95"></span></span>
-              <span class="mt-2.5 block text-sm leading-relaxed text-ash">Un accident du travail en 2025, puis une reconversion et une reprise d&#039;études. Ce parcours m&#039;a appris à rester constant quand un projet se complique.</span>
-            </button>
+          <li class="panel reveal p-6">
+            <h3 class="font-display text-lg font-bold text-bone">Persévérance</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ash">Un accident du travail en 2025, puis une reconversion et une reprise d&#039;études. Ce parcours m&#039;a appris à rester constant quand un projet se complique.</p>
           </li>
-                  <li>
-            <button type="button" class="stat-row w-full px-4 py-4 text-left" data-stat="3" aria-pressed="false">
-              <span class="flex items-baseline justify-between"><span class="font-display text-lg font-bold text-bone">Efficacité</span></span>
-              <span class="meter mt-2.5 block"><span data-w="80"></span></span>
-              <span class="mt-2.5 block text-sm leading-relaxed text-ash">Pendant mon stage, j&#039;ai appris à avancer vite sans bâcler : SYNCRO a été mise en production et publiée sur les deux stores en cinq semaines.</span>
-            </button>
+          <li class="panel reveal p-6">
+            <h3 class="font-display text-lg font-bold text-bone">Efficacité</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ash">Pendant mon stage, j&#039;ai appris à avancer vite sans bâcler : SYNCRO a été mise en production et publiée sur les deux stores en cinq semaines.</p>
           </li>
-              </ul>
-    </div>
+    </ul>
 
     <div class="mt-16">
       <h3 class="reveal font-display text-2xl font-bold tracking-tight text-bone">Ma méthode de travail</h3>

@@ -52,7 +52,7 @@ rechargeant la page. Pour la mettre en ligne : `app:export`, puis commit et push
 | Un projet (carte de l'accueil et page détaillée) | `app/contenu/projets.yaml`                      |
 | Un TP des projets encadrés                       | `app/contenu/cours.yaml`                        |
 | Les outils                                       | `app/contenu/outils.yaml`                       |
-| Le radar et la méthode                           | `app/contenu/competences.yaml`                  |
+| Les qualités et la méthode                       | `app/contenu/competences.yaml`                  |
 | La veille                                        | `app/contenu/veille.yaml`                       |
 | Les vignettes de documents                       | `app/contenu/documents.yaml`                    |
 | Les centres d'intérêt                            | `app/contenu/interets.yaml`                     |
@@ -71,7 +71,6 @@ Exemples :
   « Mes réalisations » et la page `pages/<slug>.html` sont créées.
 - **Ajouter un TP** : copier un bloc dans `cours.yaml`. Le compteur de la tuile
   de la matière, sur l'accueil, se met à jour tout seul.
-- **Changer la forme du radar** : modifier une `valeur` dans `competences.yaml`.
 
 ## Organisation du dossier app/
 
@@ -115,7 +114,7 @@ qui explique ses paramètres.
 ```
 index.html, pages/*.html   Pages générées par app:export (ne pas modifier à la main)
 css/site.css               Styles maison (boutons, cartes, frise, journal de veille)
-js/accueil.js              JavaScript de l'accueil (radar, frise, filtres, onglets)
+js/accueil.js              JavaScript de l'accueil (frise, filtres, onglets)
 js/site.js                 JavaScript des pages secondaires (menu, sommaire)
 assets/                    Images, PDF, jeu Mission Orion compilé en WebAssembly
 tests/dom.test.js          Tests des pages générées (jsdom) : node tests/dom.test.js

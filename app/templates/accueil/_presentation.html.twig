@@ -22,10 +22,10 @@
         <span class="shine" aria-hidden="true"></span>
         <div class="relative aspect-[4/4.2] overflow-hidden rounded-[10px] bg-edge">
           <twig:Image :fichier="carte.photo" :alt="'Portrait de ' ~ profil.nom" classe="h-full w-full object-cover" :largeur="720" :hauteur="720" :lazy="false" />
-          <div class="absolute inset-0 bg-gradient-to-t from-void/90 via-transparent to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#090A0F]/85 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4 right-4">
-            <p class="font-display text-2xl font-bold tracking-tight text-bone">{{ profil.nom }}</p>
-            <p class="text-sm text-ash">{{ carte.legende }}</p>
+            <p class="font-display text-2xl font-bold tracking-tight text-white">{{ profil.nom }}</p>
+            <p class="text-sm text-white/80">{{ carte.legende }}</p>
           </div>
         </div>
         <dl class="mt-4 grid grid-cols-3 gap-2 text-center">

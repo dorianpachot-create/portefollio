@@ -2,6 +2,16 @@
 
 Dernière mise à jour : 2026-10-23
 
+## Mise à jour du 2026-10-23 (3), menu, photo, section 06
+
+- Pastille verte « Disponible pour une alternance » retirée du menu (composant `EnTete`) ;
+  il reste le logo, les liens et le bouton clair / sombre.
+- Photo de l'accueil : plus de voile blanc en mode clair. Le dégradé sous le nom est
+  maintenant toujours sombre, avec le nom en blanc, dans les deux modes.
+- Section 06 : le radar est retiré, ainsi que les jauges chiffrées. Les quatre qualités sont
+  quatre cartes (comme la méthode). Les `valeur` sont retirées de `competences.yaml` et le
+  code du radar de `js/accueil.js`.
+
 ## Mise à jour du 2026-10-23 (2), mode clair
 
 - **Mode clair** pour la présentation (vidéoprojecteur, reflets) : bouton soleil / lune dans le
