@@ -1,0 +1,52 @@
+{#
+  Composant IndexRecherche : la liste de tout ce que la barre de recherche du menu
+  sait trouver (sections, projets, TP, documents, articles de veille, pages).
+  Elle est écrite dans la page en JSON et lue par js/recherche.js.
+  Rien à faire pour ajouter un projet ou un TP : ils sont lus dans contenu/*.yaml.
+  Chaque entrée : t = titre, s = où c'est (petite ligne grise), u = adresse depuis
+  la racine du site, k = mots-clés en plus (technos), pour élargir la recherche.
+#}
+{%- set entrees = [] -%}
+{# Sections de l'accueil et pages du site #}
+{%- for e in [
+  ['Mon parcours', 'Accueil', 'index.html#parcours', 'handball reconversion études'],
+  ['Réalisations', 'Accueil', 'index.html#projets', 'projets'],
+  ['Projets encadrés', 'Accueil', 'index.html#cours', 'TP cours BTS'],
+  ['Mes outils de travail', 'Accueil', 'index.html#outils', 'langages logiciels IA'],
+  ['Ce sur quoi je peux m\'appuyer', 'Accueil', 'index.html#competences', 'qualités méthode'],
+  ['Ma veille', 'Accueil', 'index.html#veille', 'veille technologique DevOps'],
+  ['Mon dossier', 'Accueil', 'index.html#documents', 'documents CV lettres'],
+  ['Contact', 'Accueil', 'index.html#contact', 'e-mail téléphone LinkedIn GitHub'],
+  ['Mes réalisations', 'Page', 'pages/projets-perso.html', 'projets'],
+  ['Tous les projets encadrés', 'Page', 'pages/projets-cours.html', 'TP comptes rendus'],
+  ['Journal de stage', 'Page', 'pages/stage.html', 'Suitime SYNCRO semaines'],
+  ['Jouer à Mission Orion', 'Page', 'pages/mini-jeu.html', 'jeu Python'],
+  ['Mentions légales', 'Page', 'pages/mentions-legales.html', 'RGPD hébergement'],
+] -%}
+  {%- set entrees = entrees|merge([{t: e[0], s: e[1], u: e[2], k: e[3]}]) -%}
+{%- endfor -%}
+{# Projets #}
+{%- for p in contenu.projets() -%}
+  {%- set entrees = entrees|merge([{t: p.nom, s: 'Projet', u: 'pages/' ~ p.slug ~ '.html', k: p.technos|join(' ') ~ ' ' ~ p.description}]) -%}
+{%- endfor -%}
+{# Travaux pratiques #}
+{%- for annee in contenu.get('cours').annees -%}
+  {%- for groupe in annee.groupes -%}
+    {%- for travail in groupe.travaux -%}
+      {%- set entrees = entrees|merge([{t: travail.titre, s: groupe.matiere ~ ', ' ~ annee.titre|lower, u: 'pages/projets-cours.html#' ~ travail.id, k: (travail.technos ?? [])|join(' ')}]) -%}
+    {%- endfor -%}
+  {%- endfor -%}
+{%- endfor -%}
+{# Documents #}
+{%- for d in contenu.get('documents').documents -%}
+  {%- set entrees = entrees|merge([{t: d.titre, s: 'Document', u: d.page, k: d.sous_titre}]) -%}
+{%- endfor -%}
+{# Articles de veille #}
+{%- set v = contenu.get('veille') -%}
+{%- set entrees = entrees|merge([{t: v.a_la_une.titre, s: 'Veille, ' ~ v.a_la_une.rubrique|lower, u: 'index.html#une', k: v.a_la_une.chapeau}]) -%}
+{%- for rangee in v.articles -%}
+  {%- for a in rangee -%}
+    {%- set entrees = entrees|merge([{t: a.titre, s: 'Veille, ' ~ a.rubrique|lower, u: 'index.html#' ~ a.id, k: a.liens_avec}]) -%}
+  {%- endfor -%}
+{%- endfor -%}
+<script type="application/json" id="index-recherche">{{ entrees|json_encode|raw }}</script>

@@ -1,5 +1,5 @@
 {#
-  Composant EnTete : la barre du haut (logo, menu, bouton clair / sombre, menu mobile).
+  Composant EnTete : la barre du haut (logo, menu, recherche, bouton clair / sombre, menu mobile).
   La logique (quels liens afficher) est dans src/Twig/Components/EnTete.php.
   Dans ce gabarit, "this" désigne l'objet PHP : this.liens, this.accueil...
 #}
@@ -20,6 +20,8 @@
     </nav>
 
     <div class="flex items-center gap-3">
+      {# Bouton de recherche (Ctrl+K ou /). La fenêtre et la recherche : js/recherche.js #}
+      <button class="search-btn" type="button" data-search-open aria-label="Rechercher dans le site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="hidden sm:inline">Rechercher</span><kbd class="hidden lg:inline">Ctrl K</kbd></button>
       {# Bouton mode clair / mode sombre (soleil ou lune). Le script est dans base.html.twig #}
       <button class="theme-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="Passer en mode clair" title="Mode clair / mode sombre"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
       <button class="btn btn-ghost btn-sm xl:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu">Menu</button>

@@ -81,5 +81,8 @@
   <twig:PiedDePage />
 
   {% block scripts %}<script src="{{ lien('js/site.js') }}"></script>{% endblock %}
+  {# Barre de recherche du menu : la liste de ce qu'on peut trouver, puis le script #}
+  <twig:IndexRecherche />
+  <script src="{{ lien('js/recherche.js') }}"></script>
 </body>
 </html>

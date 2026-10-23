@@ -77,7 +77,7 @@ projets:
     - fichier: assets/syncro/screens/screen-3.jpg
       alt: 'SYNCRO : un groupe, ses membres et les heures de la semaine'
     - fichier: assets/syncro/screens/screen-4.jpg
-      alt: 'SYNCRO : notification d'un créneau bloqué'
+      alt: 'SYNCRO : notification d''un créneau bloqué'
   sections:
   - id: en-bref
     titre: En bref

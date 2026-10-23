@@ -3,5 +3,5 @@
   ("Réseaux, 2 travaux"). Le nombre est calculé par le service Contenu.
 #}
 {% props tuile %}
-<li><a class="flex items-center justify-between gap-3 rounded-xl border border-edge bg-white/[.02] px-4 py-3.5 transition hover:border-ash/40 hover:bg-white/[.04]" href="{{ lien('pages/projets-cours.html#' ~ tuile.ancre) }}">
+<li><a class="flex items-center justify-between gap-3 rounded-xl border border-edge bg-panel px-4 py-3.5 transition hover:border-ash/40" href="{{ lien('pages/projets-cours.html#' ~ tuile.ancre) }}">
   <span><span class="block text-sm font-semibold text-bone">{{ tuile.matiere }}</span><span class="text-xs text-ash">{{ tuile.nombre }} {{ tuile.nombre > 1 ? 'travaux' : 'travail' }}</span></span><span class="text-ash" aria-hidden="true">&rsaquo;</span></a></li>

@@ -2,6 +2,17 @@
 
 Dernière mise à jour : 2026-10-23
 
+## Mise à jour du 2026-10-23 (6), recherche, projets encadrés, veille
+
+- **Recherche** de retour dans le menu (bouton « Rechercher », Ctrl+K ou /) : sections,
+  projets, TP, documents, articles de veille. L'index est écrit dans chaque page par le
+  composant `IndexRecherche` (lu dans `contenu/*.yaml`), le script est `js/recherche.js`,
+  le style à la fin de `css/site.css`. Les accents sont ignorés.
+- Projets encadrés : tuiles de première année pleines (`bg-panel`), plus de trait à côté
+  de « Première année » et « Deuxième année ».
+- Veille : le titre de l'encadré devient « Devenir DevOps ».
+- Correction : apostrophe non doublée dans un `alt` de `projets.yaml` (YAML invalide).
+
 ## Mise à jour du 2026-10-23 (5), vraies captures de SYNCRO, plus de numéros
 
 - `assets/syncro/screens/screen-1` à `4` : vraies captures de l'application (planning,
