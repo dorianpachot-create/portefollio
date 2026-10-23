@@ -1,0 +1,103 @@
+# ============================================================================
+# LES ANNEXES (page pages/annexes.html)
+# ----------------------------------------------------------------------------
+# Les documents à montrer au jury, rangés par réalisation.
+# Un bloc par groupe ; dans chaque groupe, une ligne par document :
+#   titre        le nom du document
+#   texte        une phrase pour dire ce qu'il contient
+#   type         l'étiquette à gauche (PDF, Page, Image, PowerPoint, Lien)
+#   url          le fichier ou la page (depuis la racine du site)
+# Les comptes rendus de TP (contenu/cours.yaml) et les documents personnels
+# (contenu/documents.yaml) sont ajoutés tout seuls en bas de la page.
+# Pour ajouter une annexe : déposer le fichier dans assets/annexes/, puis
+# copier une ligne ci-dessous.
+# ============================================================================
+
+groupes:
+- id: e5
+  titre: Épreuve E5
+  documents:
+  - titre: Tableau de synthèse
+    texte: Mes réalisations face aux six compétences du bloc 1.
+    type: PDF
+    url: assets/annexes/tableau-de-synthese.pdf
+  - titre: Présentation de l'oral
+    texte: Les 15 diapositives, avec les notes de l'orateur.
+    type: PowerPoint
+    url: assets/presentation/Presentation_E5_Dorian_Pachot.pptx
+  - titre: Mode présentation
+    texte: Les mêmes diapositives dans le navigateur (touche P sur n'importe quelle page).
+    type: Page
+    url: pages/presentation.html
+
+- id: gestion-cabinet
+  titre: Application de gestion de cabinet
+  documents:
+  - titre: Fiche descriptive de la réalisation
+    texte: Cadre, compétences mobilisées, ressources et productions.
+    type: PDF
+    url: assets/annexes/fiches-e5/fiche-gestion-cabinet.pdf
+  - titre: Cahier des charges
+    texte: Contexte, problématique, rôles, fonctionnalités, déploiement.
+    type: PDF
+    url: assets/annexes/gestion-cabinet/cahier-des-charges.pdf
+  - titre: Cahier technique
+    texte: Architecture, choix justifiés, sécurité, RGPD, sauvegardes, tests.
+    type: PDF
+    url: assets/annexes/gestion-cabinet/cahier-technique.pdf
+  - titre: Schéma d'architecture
+    texte: L'application, l'API, la base et les services, pour une installation de cabinet.
+    type: Image
+    url: assets/presentation/architecture.jpg
+
+- id: syncro
+  titre: SYNCRO (stage chez Suitime)
+  documents:
+  - titre: Fiche descriptive de la réalisation
+    texte: Cadre, compétences mobilisées, ressources et productions.
+    type: PDF
+    url: assets/annexes/fiches-e5/fiche-syncro.pdf
+  - titre: Journal de stage
+    texte: Les cinq semaines de stage, semaine par semaine.
+    type: Page
+    url: pages/stage.html
+  - titre: Lettre de recommandation
+    texte: Écrite par mon responsable de stage chez Suitime.
+    type: PDF
+    url: assets/recommandation/Lettre_recommandation_Suitime.pdf
+  - titre: SYNCRO sur l'App Store
+    texte: L'application publiée.
+    type: Lien
+    url: https://apps.apple.com/fr/app/syncro/id6787898930
+  - titre: SYNCRO sur Google Play
+    texte: L'application publiée.
+    type: Lien
+    url: https://play.google.com/store/apps/details?id=fr.appsyncro.mobile
+
+- id: planet
+  titre: Pla'Net
+  documents:
+  - titre: Fiche descriptive de la réalisation
+    texte: Cadre, compétences mobilisées, ressources et productions.
+    type: PDF
+    url: assets/annexes/fiches-e5/fiche-planet.pdf
+  - titre: Dossier de conception
+    texte: Les 45 cartes Trello, la carte DÉCISION, le modèle de données, le bilan.
+    type: PDF
+    url: assets/fiches-cours/developpement/planet-dossier-conception.pdf
+  - titre: Modèle logique de la base
+    texte: Les 12 tables et leurs clés étrangères.
+    type: Image
+    url: assets/planet/schema-bdd.svg
+
+- id: crp-assurance
+  titre: CRP-Assurance
+  documents:
+  - titre: Fiche descriptive de la réalisation
+    texte: Cadre, compétences mobilisées, ressources et productions.
+    type: PDF
+    url: assets/annexes/fiches-e5/fiche-crp-assurance.pdf
+  - titre: Le site en ligne
+    texte: crp-assurance.com
+    type: Lien
+    url: https://crp-assurance.com

@@ -1,4 +1,4 @@
-{# SECTION 08 : DOCUMENTS. Vignettes : contenu/documents.yaml #}
+{# SECTION DOCUMENTS. Vignettes : contenu/documents.yaml #}
 <section id="documents" class="scroll-mt-16 px-5 py-20 md:px-8 md:py-28" aria-labelledby="documents-title">
   <div class="mx-auto max-w-6xl">
     <twig:EnTeteSection rubrique="Documents" titre="Mon dossier" idTitre="documents-title">
@@ -7,5 +7,6 @@
     <div class="mt-12 grid grid-cols-2 gap-4 md:gap-5 lg:grid-cols-4">
       {% for document in documents %}<twig:CarteDocument :document="document" />{% endfor %}
     </div>
+    <div class="reveal mt-8"><twig:Bouton texte="Toutes les annexes de l'épreuve E5" url="pages/annexes.html" style="secondaire" /></div>
   </div>
 </section>

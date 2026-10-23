@@ -1,0 +1,43 @@
+{#
+  PAGE "ANNEXES" : tous les documents à montrer au jury, rangés par réalisation.
+  Textes : contenu/annexes.yaml. En bas, ajoutés tout seuls : les comptes rendus
+  de TP (contenu/cours.yaml) et les documents personnels (contenu/documents.yaml).
+#}
+{% extends 'base.html.twig' %}
+
+{% block titre %}Annexes | Dorian Pachot{% endblock %}
+{% block description %}Annexes du portfolio de Dorian Pachot : fiches descriptives E5, tableau de synthèse, cahiers des charges, dossiers de conception et comptes rendus de TP.{% endblock %}
+{% block chemin %}pages/annexes.html{% endblock %}
+{% block entete %}<twig:EnTete actif="Annexes" />{% endblock %}
+
+{% block contenu %}
+  <twig:EnTetePage cadre="Épreuve E5" titre="Annexes" retourUrl="index.html#documents" retourTexte="Retour à l'accueil">
+    <p>Tous les documents de mes réalisations au même endroit : fiches descriptives, cahiers, dossiers de conception, comptes rendus de TP et documents personnels.</p>
+  </twig:EnTetePage>
+
+  <div class="px-5 pb-16 md:px-8"><div class="mx-auto grid max-w-4xl gap-5">
+    {% for groupe in annexes.groupes %}
+      <twig:Panneau :id="groupe.id" :titre="groupe.titre">
+        <ul class="annexes">
+          {% for d in groupe.documents %}<twig:LigneAnnexe :titre="d.titre" :texte="d.texte ?? ''" :type="d.type" :url="d.url" />{% endfor %}
+        </ul>
+      </twig:Panneau>
+    {% endfor %}
+
+    {# Comptes rendus de TP : un document par fichier de contenu/cours.yaml #}
+    <twig:Panneau id="comptes-rendus" titre="Comptes rendus de TP">
+      <ul class="annexes">
+        {% for annee in cours %}{% for groupe in annee.groupes %}{% for travail in groupe.travaux %}{% for f in travail.fichiers ?? [] %}
+          <twig:LigneAnnexe :titre="travail.titre" :texte="groupe.matiere ~ ', ' ~ annee.titre|lower" type="PDF" :url="f.url" />
+        {% endfor %}{% endfor %}{% endfor %}{% endfor %}
+      </ul>
+    </twig:Panneau>
+
+    {# Documents personnels : ceux de la section "Mon dossier" de l'accueil #}
+    <twig:Panneau id="personnels" titre="Documents personnels">
+      <ul class="annexes">
+        {% for d in documents %}<twig:LigneAnnexe :titre="d.titre" :texte="d.sous_titre" type="PDF" :url="d.pdf" />{% endfor %}
+      </ul>
+    </twig:Panneau>
+  </div></div>
+{% endblock %}

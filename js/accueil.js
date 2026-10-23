@@ -5,7 +5,6 @@
  * barre de défilement, on trouve ce qui n'existe que sur l'accueil :
  *   - la carte de profil qui s'incline à la souris
  *   - le filtre des projets (Tous / Livrés / En cours)
- *   - les onglets "En dehors du travail"
  *   - la frise du parcours (flèches, clavier, glisser à la souris)
  *   - le suivi de défilement (lien actif du menu et repères sur le côté)
  * Aucun framework : du JavaScript simple, exécuté une fois la page chargée.
@@ -60,25 +59,6 @@
       projects.forEach(function (p) { p.hidden = !(f === 'all' || p.dataset.status === f); });
     });
   });
-
-  /* Onglets, avec les flèches du clavier */
-  var tabs = [].slice.call(document.querySelectorAll('[role="tab"]'));
-  var select = function (tab) {
-    tabs.forEach(function (t) {
-      var on = t === tab;
-      t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1;
-      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
-    });
-  };
-  tabs.forEach(function (t, i) {
-    t.addEventListener('click', function () { select(t); });
-    t.addEventListener('keydown', function (e) {
-      var d = (e.key === 'ArrowDown' || e.key === 'ArrowRight') ? 1 : (e.key === 'ArrowUp' || e.key === 'ArrowLeft') ? -1 : 0;
-      if (!d) return; e.preventDefault();
-      var n = tabs[(i + d + tabs.length) % tabs.length]; select(n); n.focus();
-    });
-  });
-
 
   /* Frise horizontale : flèches, clavier et glisser à la souris */
   document.querySelectorAll('[data-rail-wrap]').forEach(function (wrap) {

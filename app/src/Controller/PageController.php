@@ -39,7 +39,6 @@ class PageController extends AbstractController
             'competences' => $this->contenu->get('competences'),
             'veille' => $this->contenu->get('veille'),
             'documents' => $this->contenu->get('documents')['documents'],
-            'interets' => $this->contenu->get('interets')['onglets'],
         ]);
     }
 
@@ -57,7 +56,7 @@ class PageController extends AbstractController
         ]);
     }
 
-    /** La liste des quatre projets, avec un lien vers chaque présentation. */
+    /** La liste des projets, avec un lien vers chaque présentation. */
     #[Route('/pages/projets-perso.html', name: 'projets')]
     public function projets(): Response
     {
@@ -88,6 +87,17 @@ class PageController extends AbstractController
     public function documents(): Response
     {
         return $this->render('pages/documents.html.twig');
+    }
+
+    /** Les annexes de l'épreuve E5, rangées par réalisation (contenu/annexes.yaml). */
+    #[Route('/pages/annexes.html', name: 'annexes')]
+    public function annexes(): Response
+    {
+        return $this->render('pages/annexes.html.twig', [
+            'annexes' => $this->contenu->get('annexes'),
+            'cours' => $this->contenu->get('cours')['annees'],
+            'documents' => $this->contenu->get('documents')['documents'],
+        ]);
     }
 
     #[Route('/pages/cv.html', name: 'cv')]

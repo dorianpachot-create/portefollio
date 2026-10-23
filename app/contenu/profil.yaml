@@ -11,7 +11,6 @@ telephone: '07 71 62 32 28'
 telephone_lien: '+33771623228'
 github: https://github.com/dorianpachot-create
 linkedin: https://www.linkedin.com/in/dorian-pachot-81299930a/
-cv_pdf: assets/cv/CV_Dorian_Pachot.pdf
 url_site: https://dorianpachot-create.github.io/portefollio/
 
 # Pied de page, sur toutes les pages
@@ -88,6 +87,7 @@ menu_pages:
   - { texte: Outils, cible: 'index.html#outils' }
   - { texte: Veille, cible: 'index.html#veille' }
   - { texte: Documents, cible: pages/documents.html }
+  - { texte: Annexes, cible: pages/annexes.html }
 
 # ------------------------------------------------------------- Contact
 contact:

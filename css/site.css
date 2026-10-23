@@ -1,4 +1,17 @@
-/* Portfolio de Dorian Pachot, style des pages secondaires (même design que l'accueil). */
+/*
+ * STYLE DU PORTFOLIO (toutes les pages)
+ * ---------------------------------------------------------------------------
+ * Les couleurs de base (--color-void, --color-blood...) sont dans base.html.twig ;
+ * les classes Tailwind (bg-void, text-bone, p-6...) viennent de Tailwind par CDN.
+ * Ce fichier contient seulement ce que Tailwind ne fait pas, dans cet ordre :
+ *   1. Base (page, liens, focus)
+ *   2. Composants de l'accueil (panneaux, boutons, étiquettes, bandeau, frise,
+ *      cartes de projets, veille, suivi de défilement, menu)
+ *   3. Pages secondaires (texte des pages projet, sommaire, tableaux)
+ *   4. Mode clair       (html[data-theme="light"], bouton soleil / lune)
+ *   5. Recherche        (bouton du menu et fenêtre)
+ * Pour retrouver une règle : Ctrl+F sur le nom de la classe.
+ */
 @layer theme, base, components, utilities;
 
     @layer base {
@@ -43,14 +56,9 @@
       .btn-ghost:hover { box-shadow: inset 0 0 0 1px #6B7280; transform: translateY(-2px); }
       .btn-sm { min-height: 2.4rem; padding: .45rem .95rem; font-size: .85rem; border-radius: 8px; }
 
-      .dot { position: relative; width: 8px; height: 8px; border-radius: 50%; background: #22C55E; box-shadow: 0 0 8px rgba(34,197,94,.8); }
-      .dot::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid #22C55E; animation: ping 2s ease-out infinite; }
-      @keyframes ping { from { transform: scale(.5); opacity: 1; } to { transform: scale(2); opacity: 0; } }
 
       .tag { display: inline-flex; padding: .2rem .55rem; border-radius: 6px; font-size: .78rem; font-weight: 500; color: #C9CBD3; background: rgba(255,255,255,.04); border: 1px solid #262A38; }
 
-      /* Trait d'accent sous le titre */
-      .accent-line { height: 3px; width: 4.5rem; border-radius: 3px; background: linear-gradient(90deg, #EF4444, rgba(239,68,68,0)); }
 
       /* Carte de profil */
       .profile-card { transition: transform .25s ease-out; will-change: transform; }
@@ -67,11 +75,6 @@
       .ticker__item::before { content: ""; width: 14px; height: 2px; background: #EF4444; }
       @keyframes tick { to { transform: translateX(-50%); } }
 
-      /* Qualités (anciennes lignes du radar, gardées pour le style de sélection) */
-      .stat-row { border-radius: 10px; transition: background-color .25s, box-shadow .25s; }
-      .stat-row[aria-pressed="true"], .stat-row:hover { background: rgba(255,255,255,.03); box-shadow: inset 2px 0 0 #EF4444; }
-      .stat-row[aria-pressed="true"] .meter > span { background: #22D3EE; }
-
       /* Cartes projets */
       .project { overflow: hidden; transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .35s, box-shadow .35s; }
       .project::before { content: ""; position: absolute; left: 0; top: 0; right: 0; height: 2px; background: var(--c, #EF4444); opacity: .85; z-index: 1; }
@@ -86,15 +89,6 @@
       .filter-btn { font-size: .88rem; font-weight: 600; color: #9CA3AF; padding: .5rem .9rem; border-radius: 8px; transition: color .2s, background-color .2s; }
       .filter-btn[aria-pressed="true"] { color: #F1F2F6; background: rgba(255,255,255,.06); }
       .filter-btn:hover { color: #F1F2F6; }
-
-      /* Onglets "En dehors du travail" */
-      .tab { border-radius: 10px; transition: background-color .25s, color .25s; }
-      .tab[aria-selected="true"] { background: rgba(255,255,255,.05); color: #F1F2F6; box-shadow: inset 2px 0 0 #EF4444; }
-      .tab:hover { color: #F1F2F6; }
-      .tab-panel { animation: panel-in .45s cubic-bezier(.2,.8,.2,1); }
-      .tab-panel[hidden] { display: none; }
-      @keyframes panel-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-
 
       /* Puces mises en avant */
       .tag-hl { color: #FECACA; border-color: rgba(239,68,68,.35); background: rgba(239,68,68,.08); }
@@ -172,7 +166,6 @@
 
       @media (prefers-reduced-motion: reduce) {
         .js .reveal { opacity: 1; transform: none; transition: none; }
-        .dot::after { animation: none; }
         /* Le bandeau sous le profil défile quand même, plus lentement */
         .ticker__track { animation-duration: 90s; }
         .profile-card { transform: none !important; }
@@ -189,11 +182,21 @@
       .prose-red ul { margin: 0 0 1rem; padding: 0; list-style: none; }
       .prose-red ul li { position: relative; padding-left: 1.25rem; margin-bottom: .6rem; line-height: 1.7; }
       .prose-red ul li::before { content: ""; position: absolute; left: 0; top: .72em; width: .5rem; height: 2px; border-radius: 2px; background: #EF4444; }
-      .prose-red ul.tags-list li, .prose-red ul.plain li { padding-left: 0; margin: 0; }
-      .prose-red ul.tags-list li::before, .prose-red ul.plain li::before { display: none; }
       .prose-red h2 { font-family: "Archivo", sans-serif; font-weight: 800; letter-spacing: -.02em; font-size: 1.75rem; line-height: 1.15; color: #F1F2F6; margin: 0 0 1rem; }
       .prose-red h3 { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 1.1rem; color: #F1F2F6; margin: 1.6rem 0 .6rem; }
       .section-block { scroll-margin-top: 6rem; }
+
+      /* Page Annexes : une ligne par document (étiquette, titre, bouton) */
+      .prose-red ul.annexes { margin: 0; }
+      .prose-red ul.annexes li { padding-left: 0; margin: 0; }
+      .prose-red ul.annexes li::before { display: none; }
+      .annexe { display: flex; align-items: center; gap: .9rem; padding: .8rem 0; border-top: 1px solid #1E2130; }
+      .annexe:first-child { border-top: 0; padding-top: .2rem; }
+      @media (max-width: 520px) {
+        .annexe { flex-wrap: wrap; gap: .5rem .75rem; }
+        .annexe > .flex-1 { order: -1; flex-basis: 100% !important; }
+        .annexe .btn { margin-left: auto; }
+      }
 
       /* Schéma et tableau dans une section de projet */
       .prose-red figure.schema { margin: .5rem 0 1.5rem; }
@@ -212,25 +215,9 @@
       .toc a:hover { color: #F1F2F6; }
       .toc a[aria-current="true"] { color: #F1F2F6; border-left-color: #EF4444; }
 
-      /* Barre de progression */
-      .scroll-progress { position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 70; pointer-events: none; }
-      .scroll-progress span { display: block; height: 100%; background: linear-gradient(90deg, #EF4444, #F87171); transform-origin: left; transform: scaleX(0); box-shadow: 0 0 10px rgba(239,68,68,.6); }
-
-      /* Cartes cliquables */
-      .card-link { cursor: pointer; }
-      .card-link .stretch::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit; }
-      .card-link a:not(.stretch), .card-link button { position: relative; z-index: 2; }
-      .card-link:has(.stretch:focus-visible) { outline: 2px solid #22D3EE; outline-offset: 3px; }
-      @media (hover: hover) { .card-link:hover { border-color: #3A3F52; } }
-
       .callout { border: 1px solid rgba(239,68,68,.3); background: rgba(239,68,68,.05); border-radius: 12px; }
-      .tag-hl { color: #FECACA; border-color: rgba(239,68,68,.35); background: rgba(239,68,68,.08); }
       .game-frame { aspect-ratio: 16 / 9; width: 100%; border-radius: 12px; overflow: hidden; background: #000; }
       .game-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
-      details.subject > summary { list-style: none; cursor: pointer; }
-      details.subject > summary::-webkit-details-marker { display: none; }
-      details.subject > summary .chev { transition: transform .3s; }
-      details.subject[open] > summary .chev { transform: rotate(45deg); }
     }
 
 /* ======================================================================
@@ -279,13 +266,10 @@ html[data-theme="light"] .btn-ghost:hover { box-shadow: inset 0 0 0 1px #6B7280;
 html[data-theme="light"] .tag { color: #2B2F3A; background: #F1F2F5; border-color: #DDE0E7; }
 html[data-theme="light"] .tag-hl { color: #991B1B; background: #FEF2F2; border-color: #FECACA; }
 html[data-theme="light"] .meter, html[data-theme="light"] .rail-progress { background: #E5E7EC; }
-html[data-theme="light"] .stat-row[aria-pressed="true"], html[data-theme="light"] .stat-row:hover { background: #F1F2F5; }
 html[data-theme="light"] .project:hover { border-color: #B9BEC9; box-shadow: 0 24px 50px -30px rgba(18,20,27,.35); }
 html[data-theme="light"] .status { color: #2B2F3A; }
 html[data-theme="light"] .filter-btn { color: #4B5263; }
 html[data-theme="light"] .filter-btn[aria-pressed="true"], html[data-theme="light"] .filter-btn:hover { color: #12141B; background: #E9EBEF; }
-html[data-theme="light"] .tab[aria-selected="true"] { background: #F1F2F5; color: #12141B; }
-html[data-theme="light"] .tab:hover { color: #12141B; }
 html[data-theme="light"] .stop::before { background: #D5D8E0; }
 html[data-theme="light"] .stop:last-child::before { background: linear-gradient(90deg, #D5D8E0, transparent); }
 html[data-theme="light"] .stop__year { color: #4B5263; }
@@ -319,6 +303,7 @@ html[data-theme="light"] .prose-red figure.schema img, html[data-theme="light"] 
 html[data-theme="light"] .prose-red th, html[data-theme="light"] .prose-red td { border-color: #DDE0E7; }
 html[data-theme="light"] .prose-red th { background: #F1F2F5; }
 html[data-theme="light"] .prose-red figure.schema figcaption { color: #4B5263; }
+html[data-theme="light"] .annexe { border-color: #DDE0E7; }
 html[data-theme="light"] .toc a { color: #4B5263; border-left-color: #DDE0E7; }
 html[data-theme="light"] .toc a:hover, html[data-theme="light"] .toc a[aria-current="true"] { color: #12141B; }
 html[data-theme="light"] .toc a[aria-current="true"] { border-left-color: #DC2626; }

@@ -1,0 +1,12 @@
+{#
+  Composant LigneAnnexe : une ligne de la page Annexes (étiquette, titre, phrase, bouton).
+  Utilisation : <twig:LigneAnnexe titre="Cahier des charges" texte="..." type="PDF" url="assets/..." />
+  Les liens externes, les PDF et les images s'ouvrent dans un nouvel onglet.
+#}
+{% props titre, texte = '', type = 'PDF', url %}
+{%- set onglet = url starts with 'http' or not (url ends with '.html') -%}
+<li class="annexe">
+  <span class="tag shrink-0">{{ type }}</span>
+  <span class="min-w-0 flex-1"><span class="block font-semibold text-bone">{{ titre }}</span>{% if texte %}<span class="block text-sm text-ash">{{ texte }}</span>{% endif %}</span>
+  <a class="btn btn-ghost btn-sm shrink-0" href="{{ lien(url) }}"{% if onglet %} target="_blank" rel="noopener{{ url starts with 'http' ? ' noreferrer' }}"{% endif %}>Ouvrir</a>
+</li>

@@ -67,6 +67,9 @@ projets:
   - texte: Lettre de recommandation
     url: pages/documents.html#reco
     style: secondaire
+  - texte: Fiche E5 (PDF)
+    url: assets/annexes/fiches-e5/fiche-syncro.pdf
+    style: secondaire
   media:
     type: captures
     images:
@@ -198,6 +201,9 @@ projets:
   - texte: Dossier de conception (PDF)
     url: assets/fiches-cours/developpement/planet-dossier-conception.pdf
     style: secondaire
+  - texte: Fiche E5 (PDF)
+    url: assets/annexes/fiches-e5/fiche-planet.pdf
+    style: secondaire
   media:
     type: image
     image: assets/meta/shot-planet
@@ -316,6 +322,9 @@ projets:
   - texte: Voir le site
     url: https://crp-assurance.com
     style: principal
+  - texte: Fiche E5 (PDF)
+    url: assets/annexes/fiches-e5/fiche-crp-assurance.pdf
+    style: secondaire
   media:
     type: image
     image: assets/meta/shot-crp
@@ -516,8 +525,17 @@ projets:
   - JWT
   - Scaleway
   - Firebase
-  # Pas encore de lien : le projet est en conception (ajouter ici le dépôt ou l'application plus tard)
-  liens: []
+  # Le projet est en conception : les liens mènent aux cahiers (ajouter ici le dépôt ou l'application plus tard)
+  liens:
+  - texte: Cahier des charges (PDF)
+    url: assets/annexes/gestion-cabinet/cahier-des-charges.pdf
+    style: principal
+  - texte: Cahier technique (PDF)
+    url: assets/annexes/gestion-cabinet/cahier-technique.pdf
+    style: secondaire
+  - texte: Fiche E5 (PDF)
+    url: assets/annexes/fiches-e5/fiche-gestion-cabinet.pdf
+    style: secondaire
   media:
     type: image
     image: assets/meta/shot-cabinet

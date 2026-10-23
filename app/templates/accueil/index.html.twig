@@ -22,17 +22,16 @@
 {% block entete %}<twig:EnTete :accueil="true" />{% endblock %}
 
 {% block contenu %}
-  {% include 'accueil/_presentation.html.twig' %}    {# 01 Présentation et bandeau #}
-  {% include 'accueil/_parcours.html.twig' %}        {# 02 Parcours (frise)       #}
-  {% include 'accueil/_realisations.html.twig' %}    {# 03 Réalisations           #}
-  {% include 'accueil/_cours.html.twig' %}           {# 04 Projets encadrés       #}
-  {% include 'accueil/_outils.html.twig' %}          {# 05 Outils                 #}
-  {% include 'accueil/_competences.html.twig' %}     {# 06 Points d'appui         #}
-  {% include 'accueil/_veille.html.twig' %}          {# 07 Veille                 #}
-  {% include 'accueil/_documents.html.twig' %}       {# 08 Documents              #}
-  {# include 'accueil/_interets.html.twig'  : section "En dehors du travail", retirée #}
-  {% include 'accueil/_contact.html.twig' %}         {# 09 Contact                #}
+  {% include 'accueil/_presentation.html.twig' %}    {# Présentation et bandeau   #}
+  {% include 'accueil/_parcours.html.twig' %}        {# Parcours (frise)          #}
+  {% include 'accueil/_realisations.html.twig' %}    {# Réalisations (projets)    #}
+  {% include 'accueil/_cours.html.twig' %}           {# Projets encadrés (TP)     #}
+  {% include 'accueil/_outils.html.twig' %}          {# Outils                    #}
+  {% include 'accueil/_competences.html.twig' %}     {# Qualités et méthode       #}
+  {% include 'accueil/_veille.html.twig' %}          {# Veille                    #}
+  {% include 'accueil/_documents.html.twig' %}       {# Documents                 #}
+  {% include 'accueil/_contact.html.twig' %}         {# Contact                   #}
 {% endblock %}
 
-{# L'accueil a son propre script (radar, frise, filtres, onglets...) #}
+{# L'accueil a son propre script (carte de profil, frise, filtre des projets, suivi de défilement) #}
 {% block scripts %}<script src="js/accueil.js"></script>{% endblock %}
