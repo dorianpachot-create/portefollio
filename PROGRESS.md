@@ -2,6 +2,19 @@
 
 Dernière mise à jour : 2026-10-23
 
+## Mise à jour du 2026-10-23 (4), nouvelle présentation pour l'oral
+
+- `pages/presentation.html` (touche P) refait sur le modèle du PowerPoint
+  `assets/presentation/Presentation_E5_Dorian_Pachot.pptx` (téléchargeable depuis la barre
+  du bas) : 15 diapos centrées sur l'application de gestion de cabinet, puis SYNCRO, la base
+  de Pla'Net et la veille.
+- Plus de flous : les points « survolés » sont des pastilles (un mot-clé), la réponse est
+  dans les notes (touche N), sous « SI ON ME DEMANDE ».
+- Durée : environ 8 min 40 de parole (temps par diapo dans les notes), chronomètre de 10:00.
+- Diapos claires par défaut (vidéoprojecteur) ; touche L ou bouton « Sombre » pour le mode sombre.
+- Images de la présentation : `assets/presentation/architecture.jpg` et `planet-bdd.jpg`
+  (versions claires des schémas).
+
 ## Mise à jour du 2026-10-23 (3), menu, photo, section 06
 
 - Pastille verte « Disponible pour une alternance » retirée du menu (composant `EnTete`) ;

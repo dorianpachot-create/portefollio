@@ -5,18 +5,19 @@
   Page cachée : elle n'est liée nulle part, n'est pas dans le sitemap et n'est
   pas indexée. On l'ouvre avec la touche P depuis n'importe quelle page du site.
 
-  Trame : la grille du tableau de synthèse E5 (les six compétences du bloc 1),
-  12 diapositives, environ 9 minutes (temps conseillé de chaque diapo dans les notes).
-  Tout ce qui est montré vient du site : rien d'inventé.
+  Même contenu que le PowerPoint assets/presentation/Presentation_E5_Dorian_Pachot.pptx
+  (bouton « PowerPoint » de la barre du bas). 15 diapositives, environ 8 min 40 de
+  parole (temps conseillé de chaque diapo dans les notes), pour un oral de 10 minutes.
+
+  Les pastilles (class="pastille") sont les points « survolés » : juste un mot-clé,
+  pour amener les questions. La réponse est dans les notes (touche N), sous
+  « SI ON ME DEMANDE ».
 
   Commandes :  → / Espace / Page suivante : diapo suivante
                ← / Page précédente        : diapo précédente
-               F : plein écran   N : notes (pour moi)   B : retirer / remettre les flous
+               F : plein écran   N : notes (pour moi)   L : clair / sombre
                Échap : quitter (retour à la page d'où l'on vient)
-               L ou bouton « Clair » : mode clair (vidéoprojecteur, reflets), même choix que le site
                Bouton 10:00 : chronomètre (démarre tout seul à la 2e diapo, clic = pause)
-  Les éléments flous (class="flou") sont là exprès, pour amener les questions.
-  Un clic sur un élément flou le dévoile.
 
   Page écrite à la main (pas générée par Symfony) : app:export n'y touche pas.
 -->
@@ -27,109 +28,129 @@
   <meta name="robots" content="noindex, nofollow" />
   <title>Présentation | Dorian Pachot</title>
   <link rel="icon" href="../assets/meta/favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <script>try { if (localStorage.getItem('theme') === 'light') document.documentElement.setAttribute('data-theme', 'light'); } catch (e) {}</script>
+  <script>try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}</script>
   <style>
-    :root { --void:#07080C; --panel:#11131C; --edge:#1E2130; --bone:#F1F2F6; --ash:#9CA0AE; --blood:#EF4444; --cyan:#22D3EE; --green:#22C55E; }
+    /* Clair par défaut (vidéoprojecteur). Mode sombre : touche L ou bouton « Sombre ». */
+    :root { --fond:#E9EBEF; --diapo:#FFFFFF; --carte:#FFFFFF; --doux:#F3F4F6; --edge:#E1E4EA; --texte:#12141B; --gris:#4B5263;
+            --rouge:#DC2626; --ambre:#B45309; --bleu:#0E7490; --vert:#15803D; --nuit:#0B0D13; --ombre:0 10px 26px -18px rgba(18,20,27,.45); }
+    html[data-theme="dark"] { --fond:#05060A; --diapo:#0E1017; --carte:#151824; --doux:#151824; --edge:#262A38; --texte:#F1F2F6; --gris:#A3A8B6;
+            --rouge:#F05252; --ambre:#F59E0B; --bleu:#22D3EE; --vert:#22C55E; --ombre:none; }
     * { box-sizing: border-box; }
-    html, body { margin: 0; height: 100%; background: var(--void); color: var(--bone); font-family: Inter, system-ui, sans-serif; overflow: hidden; }
+    html, body { margin: 0; height: 100%; background: var(--fond); color: var(--texte); font-family: Calibri, Carlito, "Segoe UI", system-ui, sans-serif; overflow: hidden; }
+    h1, h2, .titre, .gros, .h { font-family: Arial, "Liberation Sans", Helvetica, sans-serif; }
     .scene { position: fixed; inset: 0; display: grid; place-items: center; }
     .stage { width: 1280px; height: 720px; position: relative; transform-origin: center; }
-    .slide { position: absolute; inset: 0; padding: 64px 80px; display: flex; flex-direction: column; opacity: 0; visibility: hidden; transition: opacity .45s ease, transform .45s ease; transform: translateX(24px);
-      background: radial-gradient(900px 500px at 85% -10%, rgba(239,68,68,.10), transparent 60%), linear-gradient(180deg, #0C0E15, #08090D); border: 1px solid var(--edge); border-radius: 18px; overflow: hidden; }
+    .slide { position: absolute; inset: 0; padding: 40px 58px 0; background: var(--diapo); border-radius: 14px; overflow: hidden;
+             opacity: 0; visibility: hidden; transition: opacity .35s ease, transform .35s ease; transform: translateX(24px); box-shadow: 0 30px 80px -40px rgba(0,0,0,.45); }
     .slide.on { opacity: 1; visibility: visible; transform: none; }
     .slide.av { transform: translateX(-24px); }
-    .k { font-family: "IBM Plex Mono", monospace; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--blood); }
-    h1, h2 { font-family: Archivo, sans-serif; letter-spacing: -.025em; margin: 0; }
-    h1 { font-size: 84px; line-height: 1; font-weight: 800; }
-    h2 { font-size: 52px; line-height: 1.05; font-weight: 800; margin-top: 14px; }
-    p.lead { font-size: 26px; line-height: 1.45; color: var(--ash); max-width: 900px; margin: 22px 0 0; }
-    .grow { flex: 1; min-height: 0; }
-    .row { display: flex; gap: 22px; }
-    .card { background: rgba(17,19,28,.85); border: 1px solid var(--edge); border-radius: 16px; padding: 22px 24px; }
-    .big { font-family: Archivo, sans-serif; font-weight: 800; font-size: 64px; line-height: 1; }
-    .lbl { color: var(--ash); font-size: 18px; margin-top: 8px; }
-    .tag { display: inline-block; border: 1px solid var(--edge); background: #151824; border-radius: 8px; padding: 6px 12px; font-size: 18px; color: var(--bone); margin: 0 8px 8px 0; }
-    .flou { filter: blur(9px); cursor: help; transition: filter .35s ease; user-select: none; }
-    .flou.vu, body.sans-flou .flou { filter: none; user-select: auto; }
-    .phone { width: 190px; border-radius: 22px; border: 1px solid var(--edge); box-shadow: 0 30px 60px rgba(0,0,0,.5); display: block; }
-    .cap { font-size: 17px; color: var(--ash); margin-top: 12px; text-align: center; }
-    .acc { color: var(--blood); } .cy { color: var(--cyan); }
-    /* Barre de commande (visible, pour ne jamais dépendre d'un raccourci) */
-    .bar { position: fixed; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 10px; padding: 10px 16px; font-size: 14px; color: var(--ash); opacity: .25; transition: opacity .3s; }
-    .bar:hover, .bar:focus-within { opacity: 1; }
-    .bar button, .bar a { font: inherit; color: var(--bone); background: #151824; border: 1px solid var(--edge); border-radius: 8px; padding: 6px 12px; cursor: pointer; text-decoration: none; }
-    .bar .sp { flex: 1; }
-    .prog { position: fixed; left: 0; top: 0; height: 3px; background: var(--blood); transition: width .4s ease; }
-    .notes { position: fixed; left: 50%; bottom: 56px; transform: translateX(-50%); width: min(900px, 92vw); background: #151824; border: 1px solid var(--edge); border-radius: 12px; padding: 14px 18px; font-size: 15px; line-height: 1.55; color: var(--bone); display: none; }
-    body.avec-notes .notes { display: block; }
+    .slide.sombre { background: var(--nuit); color: #fff; }
+    .k { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--rouge); }
+    .cab .k { color: var(--ambre); }
+    .titre { font-size: 33px; font-weight: 700; margin: 8px 0 0; letter-spacing: -.01em; }
+    .pied { position: absolute; left: 58px; right: 58px; bottom: 18px; display: flex; justify-content: space-between; font-size: 10px; color: var(--gris); }
+    .sombre .pied { color: #9CA3AF; }
+    .carte { background: var(--carte); border: 1px solid var(--edge); border-radius: 12px; box-shadow: var(--ombre); }
+    .gris { color: var(--gris); }
+    .pastilles { position: absolute; left: 58px; display: flex; flex-wrap: wrap; gap: 10px; }
+    .pastille { display: inline-block; padding: 7px 16px; border-radius: 999px; font-size: 12.5px; font-weight: 700; color: var(--c, var(--rouge));
+                background: color-mix(in srgb, var(--c, var(--rouge)) 12%, transparent); border: 1px solid color-mix(in srgb, var(--c, var(--rouge)) 60%, transparent); }
+    .cab .pastille { --c: var(--ambre); } .pn .pastille { --c: var(--bleu); }
+    /* Diapos sombres (titre, intercalaire, questions) */
+    .grand-titre { font-size: 44px; font-weight: 700; line-height: 1.15; margin: 14px 0 0; max-width: 790px; }
+    .sous { font-size: 18px; color: #C9CBD3; margin-top: 26px; }
     /* Frise */
-    .frise { display: flex; align-items: flex-start; gap: 0; margin-top: 70px; }
-    .etape { flex: 1; position: relative; padding-top: 34px; }
-    .etape::before { content: ""; position: absolute; top: 9px; left: 0; right: 0; height: 2px; background: var(--edge); }
-    .etape::after { content: ""; position: absolute; top: 2px; left: 0; width: 16px; height: 16px; border-radius: 50%; background: #2A2F42; }
-    .etape.now::after { background: var(--blood); box-shadow: 0 0 0 6px rgba(239,68,68,.18); }
-    .etape b { display: block; font-family: Archivo, sans-serif; font-size: 27px; }
-    .etape span { display: block; color: var(--ash); font-size: 20px; margin-top: 10px; line-height: 1.4; padding-right: 18px; }
-    /* Architecture */
-    .archi { display: grid; grid-template-columns: 1fr 70px 1fr 70px 1fr; align-items: center; margin-top: 46px; }
-    .boite { background: #11131C; border: 1px solid var(--edge); border-radius: 16px; padding: 22px; text-align: center; }
-    .boite b { display: block; font-family: Archivo, sans-serif; font-size: 28px; }
-    .boite span { display: block; color: var(--ash); font-size: 17px; margin-top: 6px; }
-    .fl { height: 2px; background: var(--edge); position: relative; }
-    .fl::after { content: ""; position: absolute; right: -2px; top: -5px; border: 6px solid transparent; border-left-color: #3A3F55; }
-    .tuiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 40px; }
-    .tuile { background: #11131C; border: 1px solid var(--edge); border-radius: 16px; padding: 22px; min-height: 150px; }
-    .tuile b { display: block; font-family: Archivo, sans-serif; font-size: 23px; }
-    .tuile span { display: block; color: var(--ash); font-size: 16px; margin-top: 10px; line-height: 1.45; }
-    .barre { display: flex; height: 64px; border-radius: 14px; overflow: hidden; margin-top: 56px; font-family: Archivo, sans-serif; font-weight: 700; font-size: 22px; }
-    .barre div { display: flex; align-items: center; padding: 0 24px; }
-    .comp { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
-    .comp .card b { font-family: Archivo, sans-serif; font-size: 21px; display: block; }
-    .comp .card span { color: var(--ash); font-size: 16px; display: block; margin-top: 8px; }
+    .frise { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; margin-top: 50px; }
+    .frise::before { content: ""; position: absolute; left: 12px; right: 30px; top: 63px; height: 2px; background: var(--edge); }
+    .et b { display: block; font-size: 14px; height: 52px; }
+    .et i { position: relative; display: block; width: 23px; height: 23px; border-radius: 50%; background: var(--gris); border: 2px solid var(--diapo); }
+    .et .carte { margin: 30px 17px 0 0; padding: 16px 17px; height: 168px; font-size: 15px; }
+    .et.pro i { background: var(--rouge); } .et.now i { background: var(--ambre); } .et.now b { color: var(--ambre); }
+    .et.now .carte { background: color-mix(in srgb, var(--ambre) 9%, var(--carte)); border-color: var(--ambre); }
     /* Tableau de synthèse */
-    table.grille { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 30px; font-size: 19px; }
-    .grille th { font-weight: 600; color: var(--ash); font-size: 15px; letter-spacing: .02em; padding: 0 6px 12px; text-align: center; vertical-align: bottom; line-height: 1.25; }
-    .grille th:first-child { text-align: left; }
-    .grille td { padding: 11px 6px; border-top: 1px solid var(--edge); text-align: center; }
-    .grille td:first-child { text-align: left; font-weight: 600; color: var(--bone); white-space: nowrap; }
-    .grille td:first-child small { display: inline; font-weight: 400; color: var(--ash); font-size: 14px; margin-left: 8px; }
-    .grille tr.pro td { background: rgba(239,68,68,.07); }
-    .pt { display: inline-block; width: 16px; height: 16px; border-radius: 50%; background: var(--blood); box-shadow: 0 0 0 5px rgba(239,68,68,.14); }
-    .legende { margin-top: 14px; font-size: 15px; color: var(--ash); }
-    /* Compétences */
-    .six { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; }
-    .six .card { min-height: 190px; padding: 28px; }
-    .six .n { font-family: "IBM Plex Mono", monospace; color: var(--blood); font-size: 15px; }
-    .six b { display: block; font-family: Archivo, sans-serif; font-size: 29px; margin-top: 10px; line-height: 1.2; }
-    .six span { display: block; color: var(--ash); font-size: 16px; margin-top: 8px; }
-    .preuves { display: grid; gap: 20px; margin-top: 64px; }
-    .preuves.c2 { grid-template-columns: repeat(2, 1fr); } .preuves.c3 { grid-template-columns: repeat(3, 1fr); } .preuves.c4 { grid-template-columns: repeat(4, 1fr); }
-    .preuve { background: #11131C; border: 1px solid var(--edge); border-radius: 18px; padding: 30px 28px; min-height: 250px; }
-    .preuve .k { font-size: 15px; }
-    .preuve b { display: block; font-family: Archivo, sans-serif; font-size: 31px; margin-top: 14px; line-height: 1.15; }
-    .preuve p { color: var(--ash); font-size: 21px; line-height: 1.5; margin: 16px 0 0; }
-    .preuve p .flou { display: inline-block; }
-    .src { position: absolute; left: 80px; bottom: 46px; font-size: 14px; color: #6B7080; }
+    table.grille { width: 100%; border-collapse: collapse; margin-top: 26px; font-size: 14px; }
+    .grille th, .grille td { border: 1px solid var(--edge); height: 48px; padding: 0 8px; }
+    .grille th { font-size: 12px; color: var(--gris); font-weight: 700; }
+    .grille th:first-child, .grille td:first-child { text-align: left; width: 380px; }
+    .grille td { text-align: center; font-size: 18px; color: var(--rouge); }
+    .grille td:first-child { font-size: 14px; color: var(--texte); } .grille td small { color: var(--gris); font-size: 12px; margin-left: 8px; }
+    .grille tr.cab td { background: color-mix(in srgb, var(--ambre) 9%, transparent); } .grille tr.cab td:not(:first-child) { color: var(--ambre); }
+    .grille tr.pro td { background: color-mix(in srgb, var(--rouge) 8%, transparent); }
+    /* Le besoin */
+    .liste-num { margin-top: 26px; display: grid; gap: 14px; width: 640px; }
+    .liste-num div { display: grid; grid-template-columns: 48px 1fr; align-items: start; }
+    .liste-num span { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; color: var(--ambre); font-weight: 700; font-size: 16px; border: 1px solid var(--ambre); background: color-mix(in srgb, var(--ambre) 12%, transparent); }
+    .liste-num b { display: block; font-size: 17px; margin-top: 2px; } .liste-num em { display: block; font-style: normal; color: var(--gris); font-size: 14px; margin-top: 3px; }
+    .probleme { position: absolute; right: 58px; top: 128px; width: 478px; height: 345px; background: var(--nuit); color: #fff; border-radius: 12px; padding: 28px 32px; }
+    .probleme .k { color: #F59E0B; }
+    .probleme p { font-family: Arial, sans-serif; font-weight: 700; font-size: 21px; line-height: 1.3; margin: 16px 0 0; }
+    /* Rôles et fonctionnalités */
+    .roles { position: absolute; left: 58px; top: 128px; width: 442px; display: grid; gap: 20px; }
+    .roles .carte { padding: 20px 24px; height: 177px; }
+    .roles .h { font-size: 22px; font-weight: 700; color: var(--ambre); } .roles .h small { font-family: Calibri, sans-serif; font-size: 15px; color: var(--texte); margin-left: 24px; }
+    .roles p { font-size: 14px; color: var(--gris); margin: 12px 0 0; line-height: 1.35; }
+    .fcts { position: absolute; left: 533px; right: 58px; top: 128px; display: grid; grid-template-columns: 1fr 1fr; gap: 13px 14px; }
+    .fcts div { background: var(--doux); border-radius: 10px; height: 64px; display: flex; align-items: center; padding: 0 18px; font-size: 15px; font-weight: 700; }
+    .fcts span { color: var(--ambre); font-size: 13px; width: 48px; }
+    /* Images */
+    .img { position: absolute; border-radius: 10px; display: block; }
+    html[data-theme="dark"] .img.clair { filter: invert(1) hue-rotate(180deg); }
+    /* Tableau des choix */
+    table.choix { width: 100%; border-collapse: collapse; margin-top: 26px; font-size: 15px; }
+    .choix th, .choix td { border: 1px solid var(--edge); height: 50px; padding: 0 10px; text-align: left; }
+    .choix th { font-size: 12px; color: var(--gris); } .choix td:first-child { color: var(--gris); width: 230px; } .choix td:nth-child(2) { font-weight: 700; width: 345px; }
+    /* Sécurité */
+    .controles { position: absolute; left: 58px; right: 58px; top: 128px; display: grid; grid-template-columns: 1fr 26px 1fr 26px 1fr 26px 243px; align-items: center; }
+    .controles .carte { height: 182px; padding: 14px 24px; }
+    .controles .n { font-family: Arial, sans-serif; font-size: 30px; font-weight: 700; color: var(--ambre); }
+    .controles b { display: block; font-size: 16px; margin-top: 18px; } .controles em { display: block; font-style: normal; color: var(--gris); font-size: 14px; margin-top: 20px; }
+    .fl { width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-left: 18px solid var(--edge); margin-left: 4px; }
+    .ok { height: 182px; border-radius: 12px; border: 1px solid var(--vert); background: color-mix(in srgb, var(--vert) 12%, transparent); color: var(--vert); font-weight: 700; font-size: 18px; padding: 54px 24px; }
+    /* Trois colonnes */
+    .trois { position: absolute; left: 58px; right: 58px; top: 128px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+    .trois .carte { height: 264px; padding: 20px 28px; }
+    .trois .h { font-size: 20px; font-weight: 700; color: var(--ambre); }
+    .trois ul { margin: 16px 0 0; padding-left: 20px; font-size: 15px; line-height: 1.75; }
+    .rgpd { position: absolute; left: 58px; right: 58px; top: 466px; height: 110px; background: var(--doux); border-radius: 12px; display: grid; grid-template-columns: 170px 1fr; align-items: center; padding: 0 28px; font-size: 15px; }
+    .rgpd .h { font-size: 24px; font-weight: 700; color: var(--ambre); }
+    /* Où j'en suis */
+    .etapes { position: absolute; left: 58px; right: 58px; top: 136px; display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; }
+    .etapes i { display: block; height: 15px; border-radius: 8px; background: var(--edge); }
+    .etapes .fait i { background: var(--vert); } .etapes .suite i { background: var(--ambre); }
+    .etapes small { display: block; font-size: 12px; font-weight: 700; color: var(--gris); margin-top: 12px; }
+    .etapes .fait small { color: var(--vert); } .etapes .suite small { color: var(--ambre); }
+    .etapes b { display: block; font-size: 15px; margin-top: 8px; }
+    .chiffres { position: absolute; left: 58px; right: 58px; display: grid; gap: 20px; }
+    .chiffres .carte { padding: 12px 26px; height: 158px; }
+    .chiffres .gros { font-size: 44px; font-weight: 700; color: var(--ambre); line-height: 1.4; }
+    .chiffres em { display: block; font-style: normal; color: var(--gris); font-size: 15px; margin-top: 8px; }
+    .rouge .gros { color: var(--rouge); } .pn .chiffres .gros { color: var(--bleu); }
+    /* SYNCRO */
+    .phones { position: absolute; right: 50px; top: 168px; display: flex; gap: 12px; }
+    .phones img { width: 144px; border-radius: 12px; display: block; box-shadow: var(--ombre); }
+    .phones img:nth-child(2) { margin-top: -28px; }
+    /* Veille */
+    .methode { position: absolute; left: 58px; top: 128px; width: 560px; display: grid; gap: 22px; }
+    .methode div { display: grid; grid-template-columns: 66px 1fr; }
+    .methode span { color: var(--rouge); font-weight: 700; font-size: 16px; } .methode b { font-size: 17px; } .methode em { display: block; font-style: normal; color: var(--gris); font-size: 14px; margin-top: 6px; }
+    .une { position: absolute; left: 672px; right: 58px; top: 128px; height: 226px; border-radius: 12px; border: 1px solid var(--rouge); background: color-mix(in srgb, var(--rouge) 8%, var(--diapo)); padding: 18px 28px; }
+    .cap { position: absolute; left: 672px; right: 58px; top: 374px; height: 140px; padding: 16px 28px; }
+    .une .h, .cap .h { font-family: Arial, sans-serif; font-size: 19px; font-weight: 700; margin-top: 10px; line-height: 1.25; }
+    .cap .k { color: var(--gris); }
+    /* Questions */
+    .liens { position: absolute; left: 890px; top: 220px; display: grid; gap: 26px; }
+    .liens a { color: #fff; font-size: 18px; font-weight: 700; }
+    /* Barre de commande (visible, pour ne jamais dépendre d'un raccourci) */
+    .bar { position: fixed; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 10px; padding: 10px 16px; font-size: 14px; color: var(--gris); opacity: .3; transition: opacity .3s; }
+    .bar:hover, .bar:focus-within { opacity: 1; }
+    .bar button, .bar a { font: inherit; color: var(--texte); background: var(--diapo); border: 1px solid var(--edge); border-radius: 8px; padding: 6px 12px; cursor: pointer; text-decoration: none; }
+    .bar .sp { flex: 1; }
     .chrono { font-variant-numeric: tabular-nums; min-width: 56px; text-align: center; }
-    .chrono.tard { color: #FBBF24; } .chrono.fin { color: var(--blood); font-weight: 700; }
-    .demo { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 36px; }
-    .demo .preuve { min-height: 0; }
-    .demo .preuve a { display: inline-block; margin: 14px 10px 0 0; font-size: 17px; color: var(--bone); background: #1A1D29; border: 1px solid var(--edge); border-radius: 10px; padding: 8px 14px; text-decoration: none; }
-    .demo .preuve a:hover { border-color: var(--blood); }
-    /* MODE CLAIR (touche L ou bouton « Clair ») : pour un vidéoprojecteur ou un écran avec des reflets */
-    html[data-theme="light"] { --void:#E9EBEF; --panel:#FFFFFF; --edge:#D5D8E0; --bone:#12141B; --ash:#4B5263; --blood:#DC2626; --cyan:#0E7490; --green:#15803D; }
-    html[data-theme="light"] .slide { background: radial-gradient(900px 500px at 85% -10%, rgba(220,38,38,.06), transparent 60%), #FAFAFB; }
-    html[data-theme="light"] .card, html[data-theme="light"] .boite, html[data-theme="light"] .tuile, html[data-theme="light"] .preuve { background: #FFFFFF; box-shadow: 0 10px 30px -22px rgba(18,20,27,.35); }
-    html[data-theme="light"] .tag, html[data-theme="light"] .bar button, html[data-theme="light"] .bar a, html[data-theme="light"] .notes, html[data-theme="light"] .demo .preuve a { background: #F1F2F5; }
-    html[data-theme="light"] .etape::after { background: #C9CDD6; }
-    html[data-theme="light"] .fl::after { border-left-color: #9CA3AF; }
-    html[data-theme="light"] .phone { box-shadow: 0 20px 40px rgba(18,20,27,.25); }
-    html[data-theme="light"] .src { color: #6B7280; }
-    html[data-theme="light"] .chrono.tard { color: #B45309; }
-    html[data-theme="light"] [style*="background:#151824"] { background: #E9EBEF !important; }
+    .chrono.tard { color: #B45309; } .chrono.fin { color: var(--rouge); font-weight: 700; }
+    .prog { position: fixed; left: 0; top: 0; height: 3px; background: var(--rouge); transition: width .4s ease; }
+    .notes { position: fixed; left: 50%; bottom: 56px; transform: translateX(-50%); width: min(980px, 94vw); max-height: 46vh; overflow: auto; white-space: pre-line;
+             background: var(--diapo); border: 1px solid var(--edge); border-radius: 12px; padding: 14px 18px; font-size: 15px; line-height: 1.5; color: var(--texte); display: none; box-shadow: 0 20px 50px -20px rgba(0,0,0,.5); }
+    body.avec-notes .notes { display: block; }
   </style>
 </head>
 <body>
@@ -137,171 +158,237 @@
   <div class="scene"><div class="stage" id="stage">
 
     <!-- 1. Titre -->
-    <section class="slide" data-temps="20" data-notes="Bonjour. Je présente mon portfolio du BTS SIO pour l'épreuve E5 : le bloc 1, support et mise à disposition de services informatiques. Je vais suivre la grille du tableau de synthèse.">
-      <div class="grow" style="display:flex;flex-direction:column;justify-content:center">
-        <div class="k">BTS Services informatiques aux organisations · option SLAM</div>
-        <h1 style="margin-top:22px">Épreuve E5</h1>
-        <p class="lead" style="font-size:32px;color:var(--bone)">Support et mise à disposition<br>de services informatiques</p>
-        <p class="lead" style="font-size:20px;margin-top:40px">IRIS MediaSchool Rouen · Dorian Pachot</p>
+    <section class="slide sombre" data-notes="[15 s] Bonjour. Je m&#x27;appelle Dorian Pachot, je suis en deuxième année de BTS SIO option SLAM à IRIS MediaSchool Rouen.&#10;Je vais présenter mes réalisations en suivant le tableau de synthèse, et je vais surtout détailler mon projet en cours : une application de gestion pour les cabinets de courtage en assurance. Je finirai par SYNCRO, mon stage, et la base de données de Pla&#x27;Net.&#10;&#10;DURÉE TOTALE PRÉVUE : environ 8 min 40, soit 1 min 20 de marge sur les 10 minutes.">
+      <div style="position:absolute;left:58px;top:163px">
+        <div class="k">BTS SIO · option SLAM · épreuve E5</div>
+        <h1 class="grand-titre">Support et mise à disposition de services informatiques</h1>
+        <p class="sous">Dorian Pachot · IRIS MediaSchool Rouen</p>
       </div>
+      <img src="../assets/meta/portrait.jpg" alt="Portrait de Dorian Pachot" style="position:absolute;left:917px;top:178px;width:298px;height:298px;border-radius:50%;object-fit:cover" />
     </section>
 
-    <!-- 2. Le bloc 1 -->
-    <section class="slide" data-temps="40" data-notes="Le bloc 1 est commun aux deux options, SISR et SLAM. Six compétences, que je vais reprendre une par une avec mes réalisations.">
-      <div class="k">Le bloc 1</div>
-      <h2>Six compétences</h2>
-      <div class="six">
-        <div class="card"><div class="n">01</div><b>Gérer le patrimoine informatique</b></div>
-        <div class="card"><div class="n">02</div><b>Répondre aux incidents et aux demandes</b></div>
-        <div class="card"><div class="n">03</div><b>Développer la présence en ligne</b></div>
-        <div class="card"><div class="n">04</div><b>Travailler en mode projet</b></div>
-        <div class="card"><div class="n">05</div><b>Mettre à disposition un service</b></div>
-        <div class="card"><div class="n">06</div><b>Organiser son développement professionnel</b></div>
-      </div>
-    </section>
-
-    <!-- 3. Le parcours dans le BTS -->
-    <section class="slide" data-temps="40" data-notes="Le cadre : entrée en BTS SIO SLAM en septembre 2025. Première année : TP de réseaux, systèmes, cybersécurité et développement. Un site client livré en février 2026. Stage chez Suitime, cinq semaines à temps plein. Deuxième année : Linux avancé, bases de données avancées, Pla'Net.">
-      <div class="k">Deux années de BTS</div>
-      <h2>Formation et milieu professionnel</h2>
+    <!-- 2. Parcours -->
+    <section class="slide" data-notes="[30 s] Je suis entré en BTS SIO SLAM en septembre 2025. En première année, des TP de réseaux, de systèmes, de cybersécurité et de développement. En février 2026, j&#x27;ai livré un premier site à un client, CRP-Assurance. D&#x27;avril à août, j&#x27;ai développé SYNCRO pour Suitime, en parallèle des cours puis en stage. Cette année : Linux avancé, bases de données avancées, Pla&#x27;Net, et depuis octobre l&#x27;application de gestion de cabinet.&#10;&#10;SI ON ME DEMANDE&#10;• La reconversion : j&#x27;ai joué au handball en National 1, puis j&#x27;ai travaillé dans la restauration, le management et le paysagisme. Un accident du travail en 2025 m&#x27;a poussé à me reconvertir ; l&#x27;informatique m&#x27;attirait depuis longtemps.&#10;• Le stage : SYNCRO a commencé en avril en parallèle des cours ; le stage à temps plein, c&#x27;était du 6 juillet au 7 août.">
+      <div class="k">Mon parcours</div>
+      <h2 class="titre">Deux années de BTS, un stage, un projet en cours</h2>
       <div class="frise">
-        <div class="etape"><b>Sept. 2025</b><span>Entrée en BTS SIO SLAM</span></div>
-        <div class="etape"><b>1<sup>re</sup> année</b><span>Réseaux · systèmes · cybersécurité · développement</span></div>
-        <div class="etape"><b>Févr. 2026</b><span>CRP-Assurance, site client</span></div>
-        <div class="etape now"><b>Juil. – août 2026</b><span>Stage chez Suitime : SYNCRO</span></div>
-        <div class="etape"><b>Sept. 2026</b><span>Linux avancé · BDD avancées · Pla'Net</span></div>
+        <div class="et"><b>Sept. 2025</b><i></i><div class="carte">Entrée en BTS SIO SLAM</div></div>
+        <div class="et"><b>1<sup>re</sup> année</b><i></i><div class="carte">Réseaux, systèmes, cybersécurité, développement</div></div>
+        <div class="et"><b>Févr. 2026</b><i></i><div class="carte">CRP-Assurance, site d'un client</div></div>
+        <div class="et pro"><b>Avril – août 2026</b><i></i><div class="carte">Stage chez Suitime : SYNCRO</div></div>
+        <div class="et"><b>Sept. 2026</b><i></i><div class="carte">Linux avancé, BDD avancées, Pla'Net</div></div>
+        <div class="et now"><b>Oct. 2026</b><i></i><div class="carte">Application de gestion de cabinet</div></div>
       </div>
+      <p class="gris" style="position:absolute;left:58px;top:500px;margin:0;font-size:15px">Avant le BTS : handball en National 1, puis la restauration, le management et le paysagisme.</p>
+      <div class="pastilles" style="top:556px"><span class="pastille">Une reconversion</span><span class="pastille">Stage à temps plein en juillet et août</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>2</span></div>
     </section>
 
-    <!-- 4. Tableau de synthèse -->
-    <section class="slide" data-temps="60" data-notes="Le tableau de synthèse : chaque compétence est couverte au moins une fois. La ligne en rouge est la réalisation en milieu professionnel. Je détaille maintenant compétence par compétence.">
+    <!-- 3. Tableau de synthèse -->
+    <section class="slide" data-notes="[35 s] Voici mon tableau de synthèse. Chaque compétence est couverte au moins une fois. La ligne rouge, c&#x27;est la réalisation en milieu professionnel : SYNCRO. La ligne orange, c&#x27;est le projet que je vais détailler : l&#x27;application de gestion de cabinet, qui couvre le patrimoine (rôles, droits, sauvegardes), le mode projet (cahier des charges, cahier technique) et la mise à disposition (déploiement par cabinet).">
       <div class="k">Le tableau de synthèse</div>
-      <h2>Chaque compétence couverte</h2>
+      <h2 class="titre">Chaque compétence du bloc 1 est couverte</h2>
       <table class="grille">
-        <thead><tr><th>Réalisation</th><th>01<br>Patrimoine</th><th>02<br>Incidents</th><th>03<br>Présence en ligne</th><th>04<br>Mode projet</th><th>05<br>Mise à disposition</th><th>06<br>Dév. pro</th></tr></thead>
+        <thead><tr><th>Réalisation</th><th>01 Patrimoine</th><th>02 Incidents</th><th>03 Présence en ligne</th><th>04 Mode projet</th><th>05 Mise à disposition</th><th>06 Dév. pro</th></tr></thead>
         <tbody>
-          <tr class="pro"><td>SYNCRO<small>stage Suitime</small></td><td><span class="pt"></span></td><td><span class="pt"></span></td><td><span class="pt"></span></td><td><span class="pt"></span></td><td><span class="pt"></span></td><td></td></tr>
-          <tr><td>Pla'Net<small>projet à cinq</small></td><td><span class="pt"></span></td><td></td><td></td><td><span class="pt"></span></td><td><span class="pt"></span></td><td></td></tr>
-          <tr><td>CRP-Assurance<small>site client</small></td><td></td><td></td><td><span class="pt"></span></td><td><span class="pt"></span></td><td><span class="pt"></span></td><td></td></tr>
-          <tr><td>TP Linux avancé<small>TP0 à TP5</small></td><td><span class="pt"></span></td><td><span class="pt"></span></td><td></td><td></td><td><span class="pt"></span></td><td></td></tr>
-          <tr><td>Active Directory<small>Windows Server</small></td><td><span class="pt"></span></td><td></td><td></td><td></td><td><span class="pt"></span></td><td></td></tr>
-          <tr><td>Répartition de charge<small>Scaleway</small></td><td><span class="pt"></span></td><td></td><td></td><td></td><td><span class="pt"></span></td><td></td></tr>
-          <tr><td>Parc informatique<small>GLPI · ITIL</small></td><td><span class="pt"></span></td><td><span class="pt"></span></td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Audit SEO</td><td></td><td></td><td><span class="pt"></span></td><td></td><td></td><td></td></tr>
-          <tr><td>Veille et portfolio</td><td></td><td></td><td></td><td></td><td></td><td><span class="pt"></span></td></tr>
+          <tr class="cab"><td><b>Gestion de cabinet</b><small>projet en cours</small></td><td>●</td><td></td><td></td><td>●</td><td>●</td><td></td></tr>
+          <tr class="pro"><td><b>SYNCRO</b><small>stage chez Suitime</small></td><td>●</td><td>●</td><td>●</td><td>●</td><td>●</td><td></td></tr>
+          <tr><td><b>Pla'Net</b><small>projet à cinq</small></td><td>●</td><td></td><td></td><td>●</td><td>●</td><td></td></tr>
+          <tr><td><b>CRP-Assurance</b><small>site client</small></td><td></td><td></td><td>●</td><td>●</td><td>●</td><td></td></tr>
+          <tr><td><b>TP Linux avancé</b><small>TP0 à TP5</small></td><td>●</td><td>●</td><td></td><td></td><td>●</td><td></td></tr>
+          <tr><td><b>AD et répartition de charge</b><small>Windows Server, Scaleway</small></td><td>●</td><td></td><td></td><td></td><td>●</td><td></td></tr>
+          <tr><td><b>Parc informatique</b><small>GLPI, ITIL</small></td><td>●</td><td>●</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td><b>Audit SEO</b><small>deux sites</small></td><td></td><td></td><td>●</td><td></td><td></td><td></td></tr>
+          <tr><td><b>Veille et portfolio</b></td><td></td><td></td><td></td><td></td><td></td><td>●</td></tr>
         </tbody>
       </table>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>3</span></div>
     </section>
 
-    <!-- 5. Patrimoine -->
-    <section class="slide" data-temps="50" data-notes="Recenser : inventaire de parc avec OCS Inventory et GLPI, CMDB, ITIL 4. Habilitations : rôles admin et user dans Pla'Net, vérifiés côté serveur ; droits sur les dossiers et bit SGID au TP5. Continuité : DHCP en mode basculement sous Windows Server, deux serveurs Nginx derrière HAProxy sur Scaleway. Sauvegardes : scripts Bash planifiés avec cron et des minuteurs systemd.">
-      <div class="k">Compétence 01</div>
-      <h2>Gérer le patrimoine informatique</h2>
-      <div class="preuves c4">
-        <div class="preuve"><div class="k">Recenser</div><b>Parc informatique</b><p>GLPI · OCS Inventory · <span class="flou">ITIL 4</span></p></div>
-        <div class="preuve"><div class="k">Habilitations</div><b>Rôles et droits</b><p>Admin et user · droits Linux <span class="flou">bit SGID</span></p></div>
-        <div class="preuve"><div class="k">Continuité</div><b>Haute disponibilité</b><p>DHCP en basculement · <span class="flou">HAProxy</span></p></div>
-        <div class="preuve"><div class="k">Sauvegardes</div><b>Scripts automatisés</b><p>Bash · <span class="flou">cron et systemd</span></p></div>
-      </div>
-      <div class="src">Parc et ITIL · Pla'Net · TP Linux 4 et 5 · Active Directory · Scaleway</div>
-    </section>
-
-    <!-- 6. Incidents -->
-    <section class="slide" data-temps="50" data-notes="Qualifier : exercice de tickets de support, type, urgence, impact, priorité. Dépanner : TP1, trois erreurs cachées dans ma configuration DHCP et DNS ; j'ai appris à lire les journaux et à tester service par service. En production : SYNCRO refusée par Apple, la connexion était cassée depuis cinq jours à cause d'anciens fichiers restés sur le serveur. Correction, puis test de connexion à chaque déploiement.">
-      <div class="k">Compétence 02</div>
-      <h2>Répondre aux incidents et aux demandes</h2>
-      <div class="preuves c3">
-        <div class="preuve"><div class="k">Qualifier</div><b>Tickets de support</b><p>Type · urgence · impact · <span class="flou">priorité</span></p></div>
-        <div class="preuve"><div class="k">Dépanner</div><b>DHCP et DNS</b><p>Trois pannes cachées · <span class="flou">lire les journaux</span></p></div>
-        <div class="preuve" style="border-color:rgba(239,68,68,.45)"><div class="k">En production</div><b>Refus de l'App Store</b><p><span class="flou">Connexion cassée depuis cinq jours</span></p></div>
-      </div>
-      <div class="src">Parc et ITIL · TP Linux 1 · SYNCRO</div>
-    </section>
-
-    <!-- 7. Présence en ligne -->
-    <section class="slide" data-temps="50" data-notes="CRP-Assurance : site d'un cabinet d'assurance, plus de trente pages d'offres, un back-office pour que le cabinet gère ses contenus, un espace client. Cadre juridique : RGPD et mentions légales. appsyncro.fr : site vitrine et quatre pages légales. Mesurer la visibilité : audit SEO de deux sites avec PageSpeed Insights, recommandations classées par priorité.">
-      <div class="k">Compétence 03</div>
-      <h2>Développer la présence en ligne</h2>
-      <div class="row" style="margin-top:56px;align-items:stretch;height:390px">
-        <img src="../assets/meta/shot-crp.jpg" alt="" style="width:560px;border-radius:14px;border:1px solid var(--edge);object-fit:cover;object-position:top" />
-        <div class="preuves" style="flex:1;margin-top:0;grid-template-rows:1fr 1fr">
-          <div class="preuve"><div class="k">Site client</div><b>CRP-Assurance</b><p>Back-office · espace client · <span class="flou">RGPD</span></p></div>
-          <div class="preuve"><div class="k">Visibilité</div><b>Audit SEO</b><p>PageSpeed Insights · <span class="flou">recommandations par priorité</span></p></div>
-        </div>
-      </div>
-      <div class="src">CRP-Assurance · appsyncro.fr · Audit SEO</div>
-    </section>
-
-    <!-- 8. Mode projet -->
-    <section class="slide" data-temps="70" data-notes="Pla'Net, planning des cours de l'école, à cinq en quatre jours. Deux jours et demi de planification et de base de données, puis un jour et demi de code généré en grande partie par l'IA. Trello : 45 cartes, priorités P1 à P4, un critère Fait quand par carte, une carte DÉCISION bloquante. Suivi : 34 cartes sur 45. Écart principal : la sauvegarde, pourtant P1. Base : 12 tables, archivage avec la colonne obsolete.">
-      <div class="k" style="color:var(--cyan)">Compétence 04</div>
-      <h2>Travailler en mode projet</h2>
-      <div class="barre" style="margin-top:56px">
-        <div style="flex:2.5;background:rgba(34,211,238,.16);color:var(--cyan)">Planification et base de données · 2,5 j</div>
-        <div style="flex:1.5;background:#151824;color:var(--ash)">Code · 1,5 j</div>
-      </div>
-      <div class="row" style="margin-top:34px;align-items:stretch;height:260px">
-        <div class="card" style="flex:1"><div class="big cy">45</div><div class="lbl">cartes Trello · P1 → P4</div></div>
-        <div class="card" style="flex:1"><div class="big" style="font-size:40px;margin-top:12px">« Fait quand »</div><div class="lbl">un critère par carte</div></div>
-        <div class="card" style="flex:1"><div class="big cy">34 / 45</div><div class="lbl">réalisées · <span class="flou">écart : la sauvegarde</span></div></div>
-        <div class="card" style="flex:1;padding:12px"><img class="flou" src="../assets/planet/schema-bdd.svg" alt="" style="width:100%;border-radius:8px;display:block" /><div class="lbl" style="text-align:center">12 tables</div></div>
-      </div>
-      <div class="src">Pla'Net · projet de deuxième année, en équipe de cinq</div>
-    </section>
-
-    <!-- 9. Mise à disposition -->
-    <section class="slide" data-temps="70" data-notes="SYNCRO, en milieu professionnel : application Flutter, API Next.js en TypeScript, base MySQL. Mise en production sur un serveur Linux avec Nginx, PM2 et HTTPS, déploiement par Git. Tests : un test de connexion à chaque mise en ligne ; les créneaux qui passent minuit vérifiés sur les cent combinaisons possibles. Publication sur l'App Store et Google Play. Accompagner : le back-office de CRP-Assurance rend le client autonome.">
-      <div class="k">Compétence 05</div>
-      <h2>Mettre à disposition un service</h2>
-      <div class="archi" style="margin-top:44px">
-        <div class="boite"><b>Flutter</b><span>Android et iOS</span></div><div class="fl"></div>
-        <div class="boite"><b>API Next.js</b><span>TypeScript</span></div><div class="fl"></div>
-        <div class="boite"><b>MySQL</b><span>Serveur Linux</span></div>
-      </div>
-      <div class="preuves c3" style="margin-top:34px">
-        <div class="preuve"><div class="k">Tester</div><b>Avant chaque mise en ligne</b><p><span class="flou">Test de connexion automatique</span></p></div>
-        <div class="preuve"><div class="k">Déployer</div><b>Deux stores</b><p>Nginx · PM2 · HTTPS · <span class="flou">Git</span></p></div>
-        <div class="preuve"><div class="k">Accompagner</div><b>Client autonome</b><p>Back-office <span class="flou">CRP-Assurance</span></p></div>
-      </div>
-      <div class="src">SYNCRO, stage chez Suitime · CRP-Assurance</div>
-    </section>
-
-    <!-- 10. Développement professionnel -->
-    <section class="slide" data-temps="50" data-notes="La veille : cinq alertes Google chaque semaine, les notes de version de Flutter, Next.js et Symfony, les règles des stores. Une seule question pour trier : est-ce que cela concerne un projet, un cours ou le métier visé ? Je vérifie la source et la date. La trace est sur le portfolio. Projet : une alternance, puis un bachelor DevOps ; je prépare GitLab 101 et Terraform Associate.">
-      <div class="k">Compétence 06</div>
-      <h2>Organiser son développement professionnel</h2>
-      <div class="preuves c4">
-        <div class="preuve"><div class="k">01</div><b>Des sources</b><p>Alertes · notes de version</p></div>
-        <div class="preuve"><div class="k">02</div><b>Un tri</b><p><span class="flou">Lié à un projet ou au métier ?</span></p></div>
-        <div class="preuve"><div class="k">03</div><b>Une lecture critique</b><p>Source · date · <span class="flou">seconde source</span></p></div>
-        <div class="preuve"><div class="k">04</div><b>Une trace</b><p>Le portfolio</p></div>
-      </div>
-      <div style="margin-top:40px"><span class="tag">Cybersécurité</span><span class="tag">NIS2</span><span class="tag">Réseaux</span><span class="tag">IA</span><span class="tag">DevOps</span><span class="tag flou">GitLab 101 · Terraform</span></div>
-      <div class="src">Veille technologique · portfolio · GitHub · LinkedIn</div>
-    </section>
-
-    <!-- 11. Démonstrations -->
-    <section class="slide" data-temps="30" data-notes="Pour la partie pratique, je peux ouvrir ce que vous voulez. Les liens s'ouvrent dans un nouvel onglet : la présentation reste ouverte.">
-      <div class="k">Pour la pratique</div>
-      <h2>À montrer en direct</h2>
-      <div class="demo">
-        <div class="preuve"><div class="k">Milieu professionnel</div><b>SYNCRO</b>
-          <a href="https://apps.apple.com/fr/app/syncro/id6787898930" target="_blank" rel="noopener noreferrer">App Store</a><a href="https://play.google.com/store/apps/details?id=fr.appsyncro.mobile" target="_blank" rel="noopener noreferrer">Google Play</a><a href="https://appsyncro.fr" target="_blank" rel="noopener noreferrer">appsyncro.fr</a></div>
-        <div class="preuve"><div class="k">Mode projet</div><b>Pla'Net</b>
-          <a href="#" data-lien="aHR0cHM6Ly9wbGEtbmV0Lm1lZGlhc2Nob29sLXJvdWVuLmZyL2xvZ2lu" rel="nofollow">L'application</a><a href="../assets/fiches-cours/developpement/planet-dossier-conception.pdf" target="_blank" rel="noopener">Dossier de conception</a></div>
-        <div class="preuve"><div class="k">Présence en ligne</div><b>CRP-Assurance</b>
-          <a href="https://crp-assurance.com" target="_blank" rel="noopener noreferrer">Le site</a><a href="crp-assurance.html" target="_blank" rel="noopener">La présentation</a></div>
-        <div class="preuve"><div class="k">Formation</div><b>Projets encadrés</b>
-          <a href="projets-cours.html" target="_blank" rel="noopener">Les TP et comptes rendus</a><a href="../index.html#veille" target="_blank" rel="noopener">La veille</a></div>
+    <!-- 4. Intercalaire -->
+    <section class="slide sombre" data-notes="[5 s] J&#x27;en viens au projet principal : une application de gestion pour les cabinets de courtage en assurance.">
+      <div style="position:absolute;left:58px;top:221px">
+        <div class="k" style="color:#F59E0B">Projet principal · en cours</div>
+        <h1 class="grand-titre" style="max-width:1100px">Une application de gestion pour les cabinets de courtage en assurance</h1>
+        <p class="sous">Projet de deuxième année · conception terminée, développement en cours</p>
       </div>
     </section>
 
-    <!-- 12. Questions -->
-    <section class="slide" data-temps="10" data-notes="Merci, je suis prêt pour vos questions et la partie pratique.">
-      <div class="grow" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
-        <div class="k">Épreuve E5</div>
-        <h1 style="margin-top:18px">Merci.</h1>
-        <p class="lead">Place aux questions.</p>
+    <!-- 5. Le besoin -->
+    <section class="slide cab" data-notes="[45 s] Un cabinet de courtage travaille avec un réseau de mandataires, qui vendent des contrats d&#x27;assurance (prêt, habitation, auto, prévoyance, santé) de plusieurs compagnies. Chaque contrat signé rapporte une commission, partagée entre le cabinet et le mandataire.&#10;Aujourd&#x27;hui tout est dispersé : sites des compagnies, Excel, e-mails. D&#x27;où la problématique écrite dans le cahier des charges.&#10;&#10;SI ON ME DEMANDE&#10;• Commission partagée : l&#x27;application calcule la commission attendue (prime × taux du produit), puis la répartit entre le cabinet et le mandataire selon un pourcentage paramétrable. Ensuite on la compare à ce que la compagnie a vraiment versé.&#10;• ORIAS : le registre officiel des intermédiaires en assurance. Le numéro est obligatoire ; il fait partie du paramétrage du cabinet (nom, logo, coordonnées, ORIAS).&#10;• Pour tout cabinet : rien n&#x27;est écrit en dur. Chaque cabinet saisit ses compagnies, ses produits, ses taux et ses pièces obligatoires, sans toucher au code.">
+      <div class="k">Le besoin</div>
+      <h2 class="titre">Le problème : tout est dispersé</h2>
+      <div class="liste-num">
+        <div><span>1</span><p style="margin:0"><b>Informations dispersées</b><em>Sites des compagnies, fichiers Excel, e-mails</em></p></div>
+        <div><span>2</span><p style="margin:0"><b>Commissions difficiles à suivre</b><em>Ce qui est dû, ce qui est perçu, ce qui manque</em></p></div>
+        <div><span>3</span><p style="margin:0"><b>Suivi manuel des dossiers</b><em>Un site par compagnie pour savoir où en est un contrat</em></p></div>
+        <div><span>4</span><p style="margin:0"><b>Relances non automatisées</b><em>Pièces manquantes et échéances : de mémoire</em></p></div>
+        <div><span>5</span><p style="margin:0"><b>Aucune vue d'ensemble</b><em>Pas de tableau de bord pour le gérant</em></p></div>
+      </div>
+      <div class="probleme"><div class="k">La problématique</div><p>Comment permettre à un cabinet et à ses mandataires de suivre leurs clients, leurs contrats et leurs commissions depuis un outil unique ?</p></div>
+      <div class="pastilles" style="top:604px"><span class="pastille">Commission partagée</span><span class="pastille">Numéro ORIAS</span><span class="pastille">Pour tout cabinet</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>5</span></div>
+    </section>
+
+    <!-- 6. Rôles et fonctionnalités -->
+    <section class="slide cab" data-notes="[50 s] Deux rôles : l&#x27;admin, c&#x27;est le gérant ; le user, c&#x27;est le mandataire, qui ne voit que ses propres clients. Dix fonctionnalités, de la fiche client jusqu&#x27;à l&#x27;agenda. Le cœur, ce sont les contrats, avec leur statut (en attente de pièces, envoyé à la compagnie, accepté, actif, résilié ou refusé), et les commissions.&#10;&#10;SI ON ME DEMANDE&#10;• Journal d&#x27;audit : chaque action importante (connexion, création, modification, suppression) est enregistrée avec son auteur et sa date, consultable par l&#x27;admin. C&#x27;est l&#x27;API qui l&#x27;alimente, pour qu&#x27;aucune action n&#x27;y échappe.&#10;• Rapprochement attendu / reçu : les commissions versées par les compagnies sont saisies ou importées en CSV, puis comparées aux commissions attendues ; l&#x27;application signale les écarts et les commissions manquantes. Elle prévoit aussi les trois prochains mois.&#10;• Le point à valider : tous les mandataires ont-ils accès à tout le catalogue, ou le gérant choisit-il les produits de chacun ? Par défaut, tout le catalogue ; c&#x27;est à confirmer avec le client.&#10;• Comparateur emprunteur : l&#x27;admin saisit les offres des compagnies, le user entre le profil (âge, montant, durée, fumeur ou non), l&#x27;application classe par coût total et exporte un PDF pour le client.">
+      <div class="k">Utilisateurs et fonctionnalités</div>
+      <h2 class="titre">Deux rôles, dix fonctionnalités</h2>
+      <div class="roles">
+        <div class="carte"><div class="h">Admin<small><b>Le gérant du cabinet</b></small></div><p>Paramètre le cabinet, crée les comptes, voit tous les clients et contrats, saisit les commissions reçues.</p></div>
+        <div class="carte"><div class="h">User<small><b>Le mandataire</b></small></div><p>Gère ses propres clients et contrats, ajoute des documents, suit ses commissions et ses alertes.</p></div>
+      </div>
+      <div class="fcts">
+        <div><span>01</span>Connexion et rôles</div><div><span>02</span>Clients</div>
+        <div><span>03</span>Contrats et statuts</div><div><span>04</span>Commissions</div>
+        <div><span>05</span>Documents</div><div><span>06</span>Tableau de bord</div>
+        <div><span>07</span>Alertes et relances</div><div><span>08</span>Paramétrage du cabinet</div>
+        <div><span>09</span>Comparateur emprunteur</div><div><span>10</span>Agenda des rendez-vous</div>
+      </div>
+      <div class="pastilles" style="top:580px"><span class="pastille">Journal d'audit</span><span class="pastille">Rapprochement attendu / reçu</span><span class="pastille">Un point à valider</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>6</span></div>
+    </section>
+
+    <!-- 7. Architecture -->
+    <section class="slide cab" data-notes="[45 s] Une seule application Flutter, compilée pour téléphone (Android, iOS) et ordinateur (Windows, macOS). Elle parle en HTTPS à l&#x27;API Node.js du cabinet. Chaque cabinet a sa propre installation dans Docker : son API et sa base MySQL. Autour, les services de Scaleway à Paris pour les documents et les e-mails, et Firebase pour les notifications sur téléphone.&#10;&#10;SI ON ME DEMANDE&#10;• Seule l&#x27;API touche à la base : l&#x27;application affiche et contrôle la saisie, mais les droits, les calculs et le catalogue viennent toujours du serveur. Sur l&#x27;appareil, on ne garde que le jeton de connexion, dans le stockage sécurisé du système.&#10;• Un chemin par cabinet : un seul domaine en HTTPS, par exemple nomdelapplication.fr/nomducabinet. Un reverse proxy, avec un certificat Let&#x27;s Encrypt, envoie chaque chemin vers l&#x27;API du bon cabinet. Au premier lancement, l&#x27;utilisateur saisit l&#x27;identifiant de son cabinet.&#10;• Jeton JWT : après la connexion, l&#x27;API donne un jeton de courte durée, envoyé avec chaque requête, et un jeton de renouvellement pour ne pas retaper le mot de passe.">
+      <div class="k">L'architecture</div>
+      <h2 class="titre">Une installation isolée par cabinet</h2>
+      <img class="img clair" src="../assets/presentation/architecture.jpg" alt="Architecture : application Flutter, reverse proxy HTTPS, API Node.js et base MySQL dans Docker, services Scaleway et Firebase" style="left:72px;top:168px;width:1133px" />
+      <div class="pastilles" style="top:624px"><span class="pastille">Seule l'API touche à la base</span><span class="pastille">Un chemin par cabinet</span><span class="pastille">Jeton JWT</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>7</span></div>
+    </section>
+
+    <!-- 8. Choix techniques -->
+    <section class="slide cab" data-notes="[45 s] Trois principes : une seule base de code pour le mobile et l&#x27;ordinateur, des technologies que je maîtrise déjà (Flutter, Node.js, SQL), et des données hébergées en France.&#10;&#10;SI ON ME DEMANDE&#10;• Compatible S3 : S3 est le format de stockage d&#x27;Amazon, devenu un standard. Scaleway le parle aussi : si on change de fournisseur, on ne réécrit pas le code. Prix : environ 0,016 € par Go et par mois à Paris.&#10;• SPF, DKIM, DMARC : trois réglages DNS qui prouvent que les e-mails viennent bien de notre domaine. Sans eux, les relances partent dans les spams.&#10;• Firebase ne gère pas Windows : sur ordinateur, l&#x27;application ouverte interroge l&#x27;API toutes les 5 minutes (et à l&#x27;ouverture), met à jour le compteur d&#x27;alertes et affiche une notification Windows ou macOS. Plus tard, on pourra passer en temps réel avec une WebSocket.&#10;• Pourquoi Express et pas un framework plus complet : il est minimaliste, les routes, les middlewares et les erreurs s&#x27;écrivent explicitement, donc je comprends tout ce qui se passe.&#10;• Gestion d&#x27;état Flutter : Provider, celle que présente la documentation officielle.">
+      <div class="k">Les choix techniques</div>
+      <h2 class="titre">Chaque choix est justifié dans le cahier technique</h2>
+      <table class="choix">
+        <thead><tr><th>Besoin</th><th>Choix</th><th>Pourquoi</th></tr></thead>
+        <tbody>
+          <tr><td>Application</td><td>Flutter (Dart)</td><td>Une seule base de code pour 4 plateformes, déjà utilisée sur SYNCRO</td></tr>
+          <tr><td>Serveur (API)</td><td>Node.js et Express</td><td>Maîtrisé, minimaliste, le plus documenté</td></tr>
+          <tr><td>Base de données</td><td>MySQL dans Docker</td><td>Données très liées : les clés étrangères gardent la cohérence</td></tr>
+          <tr><td>Documents</td><td>Scaleway Object Storage</td><td>Payé à l'usage : le volume est impossible à prévoir</td></tr>
+          <tr><td>E-mails</td><td>Scaleway Transactional Email</td><td>Envoyés depuis le domaine de l'application</td></tr>
+          <tr><td>Notifications</td><td>Firebase + notifications locales</td><td>Push sur téléphone, alertes sur ordinateur</td></tr>
+          <tr><td>Hébergement</td><td>Scaleway, région Paris</td><td>Données en France, un seul fournisseur</td></tr>
+        </tbody>
+      </table>
+      <div class="pastilles" style="top:604px"><span class="pastille">Compatible S3</span><span class="pastille">SPF · DKIM · DMARC</span><span class="pastille">Firebase ne gère pas Windows</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>8</span></div>
+    </section>
+
+    <!-- 9. Sécurité -->
+    <section class="slide cab" data-notes="[45 s] Chaque requête passe trois contrôles : le jeton, le rôle, puis la propriété de la donnée. Par exemple, un mandataire qui demande le client d&#x27;un autre mandataire est refusé, même avec un jeton valide.&#10;&#10;SI ON ME DEMANDE&#10;• 401 ou 403 : 401, on ne sait pas qui tu es (pas de jeton, ou jeton expiré) ; 403, on sait qui tu es mais tu n&#x27;as pas le droit. 404 sert à ne pas révéler qu&#x27;une donnée existe.&#10;• Mots de passe hachés : bcrypt ou argon2, jamais en clair.&#10;• Limite de tentatives : contre les attaques par force brute sur la connexion.&#10;• Requêtes préparées : contre l&#x27;injection SQL, aucune saisie n&#x27;est collée dans une requête.&#10;• Liens temporaires : les documents sont dans un espace privé ; après contrôle des droits, l&#x27;API génère une URL présignée valable quelques minutes. Les fichiers déposés sont contrôlés : PDF, JPEG ou PNG, 10 Mo maximum, et renommés avec un identifiant unique.&#10;• Clés hors du code : les clés S3, e-mail et Firebase sont dans des variables d&#x27;environnement, jamais dans le code ni sur GitHub.&#10;• Montants en DECIMAL : primes, taux et commissions en DECIMAL et jamais en FLOAT, pour éviter les erreurs d&#x27;arrondi sur de l&#x27;argent.">
+      <div class="k">La sécurité</div>
+      <h2 class="titre">La sécurité est sur le serveur, pas dans l'application</h2>
+      <div class="controles">
+        <div class="carte"><div class="n">1</div><b>Le jeton est-il valide ?</b><em>Sinon : 401</em></div><div class="fl"></div>
+        <div class="carte"><div class="n">2</div><b>Le rôle est-il autorisé ?</b><em>Sinon : 403</em></div><div class="fl"></div>
+        <div class="carte"><div class="n">3</div><b>La donnée est-elle à lui ?</b><em>Sinon : 403 ou 404</em></div><div class="fl"></div>
+        <div class="ok">Requête acceptée</div>
+      </div>
+      <p style="position:absolute;left:58px;top:398px;margin:0;font-size:16px">Contrôlé à chaque requête : l'application peut être copiée ou imitée, donc tout contrôle fait seulement chez elle peut être contourné.</p>
+      <p class="gris" style="position:absolute;left:58px;top:478px;margin:0;font-size:13px;font-weight:700">Et aussi</p>
+      <div class="pastilles" style="top:516px"><span class="pastille">Mots de passe hachés</span><span class="pastille">Limite de tentatives</span><span class="pastille">Requêtes préparées</span></div>
+      <div class="pastilles" style="top:568px"><span class="pastille">Liens temporaires</span><span class="pastille">Clés hors du code</span><span class="pastille">Montants en DECIMAL</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>9</span></div>
+    </section>
+
+    <!-- 10. Mettre à disposition -->
+    <section class="slide cab" data-notes="[40 s] L&#x27;application est vendue aux cabinets, et nous hébergeons chaque installation. Une installation par cabinet, identique et reproductible grâce à Docker. Une mise à jour = une nouvelle image Docker, déployée cabinet par cabinet ; les migrations de la base s&#x27;exécutent au démarrage, sans perte de données.&#10;&#10;SI ON ME DEMANDE&#10;• Sous-traitant : en hébergeant les données des clients des cabinets, nous sommes sous-traitants au sens du RGPD. Un contrat de sous-traitance est signé avec chaque cabinet ; chaque cabinet tient son registre des traitements.&#10;• Trois environnements : développement sur mon poste, démonstration avec des données fictives, production (une par cabinet).&#10;• Une sauvegarde qui n&#x27;est pas testée… n&#x27;en est pas une : seul un test de restauration prouve qu&#x27;on peut s&#x27;en servir. Sauvegardes quotidiennes, rangées dans un autre espace S3, la plus ancienne supprimée après 30 jours.&#10;• Pourquoi pas une seule base pour tous les cabinets : l&#x27;isolement est plus simple à garantir et à expliquer au client ; une erreur de filtre ne peut pas mélanger deux cabinets.">
+      <div class="k">Mettre à disposition</div>
+      <h2 class="titre">Héberger, déployer, sauvegarder</h2>
+      <div class="trois">
+        <div class="carte"><div class="h">Héberger</div><ul><li>Scaleway, région Paris</li><li>Une installation par cabinet</li><li>Données jamais mélangées</li></ul></div>
+        <div class="carte"><div class="h">Déployer</div><ul><li>Docker Compose : un cabinet = une copie</li><li>Même version pour tous</li><li>Migrations au démarrage</li></ul></div>
+        <div class="carte"><div class="h">Sauvegarder</div><ul><li>Une sauvegarde par jour</li><li>Gardée 30 jours</li><li>Restauration testée</li></ul></div>
+      </div>
+      <div class="rgpd"><div class="h">RGPD</div><div>Données en France, collecte limitée au nécessaire, export et suppression sur demande, données fictives pour le développement et la démonstration.</div></div>
+      <div class="pastilles" style="top:604px"><span class="pastille">Sous-traitant</span><span class="pastille">Trois environnements</span><span class="pastille">Une sauvegarde qui n'est pas testée…</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>10</span></div>
+    </section>
+
+    <!-- 11. Où j'en suis -->
+    <section class="slide cab" data-notes="[30 s] Le cahier des charges et le cahier technique sont rédigés depuis le 21 octobre. La prochaine étape, c&#x27;est la base de données : le MCD, le MLD, le script SQL et un jeu de données fictives. Ensuite l&#x27;API avec ses tests, puis les écrans Flutter, et une recette avec le client.&#10;&#10;SI ON ME DEMANDE&#10;• Les tests prévus : tests unitaires sur les règles critiques (calcul et répartition des commissions, rapprochement, contrôle des droits), test de chaque route de l&#x27;API dans les cas autorisés ET refusés (avec Postman ou Bruno), tests des principaux écrans, et un cahier de recette avec le client.&#10;• iOS demande un Mac : la compilation et la publication iOS et macOS se font sur un Mac, avec un compte développeur Apple payant, idéalement au nom de l&#x27;éditeur. Pour la démonstration du BTS, Android et Windows suffisent.&#10;• Organisation : Git et GitHub avec une branche par fonctionnalité, Trello pour le suivi, VS Code et Android Studio.">
+      <div class="k">Où j'en suis</div>
+      <h2 class="titre">La conception est faite, le développement commence</h2>
+      <div class="etapes">
+        <div class="fait"><i></i><small>Fait</small><b>Cahier des charges</b></div>
+        <div class="fait"><i></i><small>Fait</small><b>Cahier technique</b></div>
+        <div class="suite"><i></i><small>Prochaine étape</small><b>MCD et MLD</b></div>
+        <div><i></i><small>À venir</small><b>Script SQL et données fictives</b></div>
+        <div><i></i><small>À venir</small><b>API et ses tests</b></div>
+        <div><i></i><small>À venir</small><b>Écrans Flutter</b></div>
+        <div><i></i><small>À venir</small><b>Recette avec le client</b></div>
+      </div>
+      <div class="chiffres" style="top:370px;grid-template-columns:repeat(4,1fr)">
+        <div class="carte"><div class="gros">10</div><em>fonctionnalités</em></div>
+        <div class="carte"><div class="gros">2</div><em>rôles</em></div>
+        <div class="carte"><div class="gros">4</div><em>plateformes</em></div>
+        <div class="carte"><div class="gros">2</div><em>cahiers rédigés</em></div>
+      </div>
+      <div class="pastilles" style="top:576px"><span class="pastille">Les tests prévus</span><span class="pastille">iOS demande un Mac</span><span class="pastille">Démo : Android et Windows</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>11</span></div>
+    </section>
+
+    <!-- 12. SYNCRO -->
+    <section class="slide rouge" data-notes="[50 s] SYNCRO, c&#x27;est ma réalisation en milieu professionnel. Je l&#x27;ai développée pour Suitime d&#x27;avril à août 2026, d&#x27;abord en parallèle des cours puis en stage. Elle est publiée sur l&#x27;App Store et Google Play.&#10;&#10;SI ON ME DEMANDE&#10;• Refus de l&#x27;App Store : les testeurs d&#x27;Apple ne pouvaient pas se connecter. La connexion était cassée en production depuis cinq jours, à cause d&#x27;anciens fichiers restés sur le serveur. J&#x27;ai corrigé, puis changé le script de déploiement : il supprime les fichiers obsolètes et lance un test de connexion à chaque mise en ligne. C&#x27;est ce qui m&#x27;a donné envie du DevOps.&#10;• Créneaux après minuit : un membre pouvait être bloqué deux fois sur le même créneau. La protection existait, mais elle était fausse pour les horaires qui passent minuit. J&#x27;ai écrit une nouvelle méthode, vérifiée sur les cent combinaisons possibles.&#10;• Notifications iPhone : elles n&#x27;avaient jamais marché, sans message d&#x27;erreur. J&#x27;ai comparé point par point avec une autre application de l&#x27;entreprise qui fonctionnait, et trouvé trois écarts.&#10;• Cloisonnement des groupes : en relisant les routes sensibles une par une, j&#x27;ai trouvé un défaut : un responsable pouvait agir hors de son groupe. Corrigé.&#10;• Technique : jeton d&#x27;accès de 15 minutes, jeton de renouvellement de 7 jours ; Nginx, PM2 et HTTPS ; 84 commits en cinq mois.">
+      <div class="k">En milieu professionnel · stage chez Suitime</div>
+      <h2 class="titre">SYNCRO, de la maquette aux deux stores</h2>
+      <p style="position:absolute;left:58px;top:168px;width:660px;margin:0;font-size:16px;line-height:1.4">Application mobile de planning d'équipe : chaque membre saisit ses disponibilités, le responsable valide puis verrouille la semaine. J'ai fait tout le projet : l'application Flutter, l'API Next.js en TypeScript, la base MySQL, le serveur et la publication.</p>
+      <div class="chiffres" style="top:336px;right:auto;width:660px;grid-template-columns:repeat(3,1fr)">
+        <div class="carte" style="height:139px"><div class="gros" style="font-size:40px">5</div><em>mois de projet</em></div>
+        <div class="carte" style="height:139px"><div class="gros" style="font-size:40px">53</div><em>routes en TypeScript</em></div>
+        <div class="carte" style="height:139px"><div class="gros" style="font-size:40px">2</div><em>stores</em></div>
+      </div>
+      <div class="pastilles" style="top:514px"><span class="pastille">Refus de l'App Store</span><span class="pastille">Créneaux après minuit</span></div>
+      <div class="pastilles" style="top:566px"><span class="pastille">Notifications iPhone</span><span class="pastille">Cloisonnement des groupes</span></div>
+      <div class="phones"><img src="../assets/syncro/screens/screen-1.jpg" alt="SYNCRO : planning de la semaine" /><img src="../assets/syncro/screens/screen-2.jpg" alt="SYNCRO : saisie des disponibilités" /><img src="../assets/syncro/screens/screen-3.jpg" alt="SYNCRO : groupes et rôles" /></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>12</span></div>
+    </section>
+
+    <!-- 13. Pla'Net -->
+    <section class="slide pn" data-notes="[40 s] Pla&#x27;Net, c&#x27;est le planning des cours de l&#x27;école, fait à cinq en quatre jours. Notre choix : deux jours et demi de planification et de base de données avant de coder. Le code a ensuite été généré en grande partie par l&#x27;IA, et c&#x27;est la conception qui a permis de le vérifier carte par carte.&#10;&#10;SI ON ME DEMANDE&#10;• Colonne obsolete : on ne supprime jamais rien. Chaque table a une colonne obsolete ; archiver une salle ou un intervenant ne casse pas les séances passées.&#10;• Table de liaison : seance_classe. Un cours commun à trois classes, c&#x27;est UNE séance liée à trois classes, au lieu de trois copies.&#10;• Carte DÉCISION : une carte Trello qui bloquait le code tant que quatre questions de conception n&#x27;étaient pas tranchées (par exemple : une classe déjà en cours bloque l&#x27;enregistrement, une salle déjà prise donne seulement un avertissement).&#10;• Migrations rejouables : on peut relancer un script de migration sans créer de doublon ; il archive au lieu de supprimer. L&#x27;import dans phpMyAdmin perdait la base sélectionnée, j&#x27;ai réécrit le script.&#10;• L&#x27;écart : 34 cartes sur 45, environ 75 % de la charge. Il manque la sauvegarde, pourtant prioritaire : c&#x27;est le prochain chantier. Leçon : avec l&#x27;IA, il faut suivre l&#x27;avancement en cartes terminées, pas en jours.&#10;• Contrôles dans la base : clés étrangères, fin après le début, index sur les dates.">
+      <div class="k" style="color:var(--bleu)">Pla'Net · projet à cinq en quatre jours</div>
+      <h2 class="titre">La base d'abord, le code ensuite</h2>
+      <img class="img clair" src="../assets/presentation/planet-bdd.jpg" alt="Modèle logique de la base de Pla'Net : 12 tables" style="left:58px;top:168px;width:787px" />
+      <div class="chiffres" style="top:168px;left:874px;grid-template-columns:1fr;gap:19px">
+        <div class="carte" style="height:154px"><div class="gros">12</div><em>tables</em></div>
+        <div class="carte" style="height:154px"><div class="gros" style="font-size:40px">34 / 45</div><em>cartes Trello réalisées</em></div>
+      </div>
+      <div class="pastilles" style="top:581px"><span class="pastille">Colonne obsolete</span><span class="pastille">Table de liaison</span><span class="pastille">Carte DÉCISION</span><span class="pastille">Migrations rejouables</span><span class="pastille">L'écart : la sauvegarde</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>13</span></div>
+    </section>
+
+    <!-- 14. Veille -->
+    <section class="slide" data-notes="[35 s] Ma veille a un objectif : devenir DevOps, et un bon DevOps. Quatre étapes : des sources choisies, un tri avec une seule question (est-ce que ça touche un projet, un cours ou le métier visé ?), une lecture critique, et une trace sur le portfolio.&#10;À la une en ce moment : PHP2Shell, deux failles critiques dans PHP.&#10;&#10;SI ON ME DEMANDE&#10;• PHP2Shell : CVE-2026-109618 et CVE-2026-109619, annoncées par PHP le 20 octobre et corrigées le 21 (versions 8.2.35, 8.3.36, 8.4.27, 8.5.12). Une requête HTTP sans être connecté peut suffire à exécuter du code. Touche PHP-FPM et Apache avec mod_php. La seule vraie parade : mettre à jour.&#10;• Mes projets en PHP : CRP-Assurance est sur un hébergement mutualisé LWS, c&#x27;est l&#x27;hébergeur qui corrige ; mon rôle est de vérifier la version de PHP active et de choisir une branche encore suivie. Pla&#x27;Net tourne avec PHP-FPM sur le serveur de l&#x27;école. Le portfolio est publié en HTML : aucun PHP ne tourne en ligne.&#10;• GitLab 101 et Terraform Associate : les deux certifications que je prépare, l&#x27;intégration continue et l&#x27;infrastructure décrite en code.&#10;• ClickFix : un faux CAPTCHA qui pousse la victime à coller elle-même une commande ; plus répandu que le phishing classique. La faille est souvent humaine.&#10;• NIS2 : directive européenne sur la cybersécurité ; l&#x27;ANSSI a publié le référentiel ReCyF pour accompagner la mise en conformité.">
+      <div class="k">Développement professionnel</div>
+      <h2 class="titre">Ma veille a un cap : devenir DevOps</h2>
+      <div class="methode">
+        <div><span>01</span><p style="margin:0"><b>Des sources</b><em>Alertes Google, notes de version, règles des stores</em></p></div>
+        <div><span>02</span><p style="margin:0"><b>Un tri</b><em>Projet, cours ou métier visé ? Sinon, je ne garde pas</em></p></div>
+        <div><span>03</span><p style="margin:0"><b>Une lecture critique</b><em>Source, date, deuxième source</em></p></div>
+        <div><span>04</span><p style="margin:0"><b>Une trace</b><em>Résumée sur le portfolio</em></p></div>
+      </div>
+      <div class="une"><div class="k">À la une · 20 octobre 2026</div><div class="h">PHP2Shell : deux failles critiques dans PHP</div><p class="gris" style="font-size:15px;margin:14px 0 0">Annoncées le 20, corrigées le 21. Trois de mes projets tournent sur PHP.</p></div>
+      <div class="carte cap"><div class="k">Mon cap</div><div class="h">Une alternance, puis un bachelor DevOps</div></div>
+      <div class="pastilles" style="top:581px"><span class="pastille">Mes projets en PHP</span><span class="pastille">GitLab 101 · Terraform</span><span class="pastille">ClickFix</span><span class="pastille">NIS2</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>14</span></div>
+    </section>
+
+    <!-- 15. Questions -->
+    <section class="slide sombre" data-notes="[10 s] Merci. Je suis prêt pour vos questions et pour la partie pratique : je peux ouvrir SYNCRO, Pla&#x27;Net, le site de CRP-Assurance ou le portfolio. Les cahiers de l&#x27;application de gestion de cabinet sont aussi disponibles.">
+      <div style="position:absolute;left:58px;top:163px">
+        <div class="k">Merci</div>
+        <h1 class="grand-titre">Vos questions</h1>
+        <p class="sous" style="margin-top:170px;max-width:760px"><b style="color:#fff">À montrer en direct :</b> SYNCRO sur les stores · Pla'Net · crp-assurance.com · le portfolio</p>
+      </div>
+      <div class="liens">
+        <a href="../index.html" target="_blank" rel="noopener">Portfolio</a>
+        <a href="https://apps.apple.com/fr/app/syncro/id6787898930" target="_blank" rel="noopener noreferrer">SYNCRO</a>
+        <a href="#" data-lien="aHR0cHM6Ly9wbGEtbmV0Lm1lZGlhc2Nob29sLXJvdWVuLmZyL2xvZ2lu" rel="nofollow">Pla'Net</a>
+        <a href="https://crp-assurance.com" target="_blank" rel="noopener noreferrer">CRP-Assurance</a>
       </div>
     </section>
 
@@ -315,9 +402,9 @@
     <span id="num"></span>
     <span class="sp"></span>
     <button type="button" id="b-chrono" title="Démarrer, mettre en pause">10:00</button>
-    <button type="button" id="b-theme">Clair</button>
-    <button type="button" id="b-flous">Flous</button>
+    <button type="button" id="b-theme">Sombre</button>
     <button type="button" id="b-notes">Notes</button>
+    <a href="../assets/presentation/Presentation_E5_Dorian_Pachot.pptx" download>PowerPoint</a>
     <button type="button" id="b-plein">Plein écran</button>
   </nav>
   <script>
@@ -331,14 +418,13 @@
     var quitter = document.getElementById('quitter');
     try { if (document.referrer && new URL(document.referrer).origin === location.origin && !/presentation\.html/.test(document.referrer)) quitter.href = document.referrer; } catch (e) {}
 
-
-    // Chronomètre : 10 minutes, démarre à la première diapo suivante (clic sur le bouton : pause / reprise)
+    // Chronomètre : 10 minutes, démarre à la deuxième diapo (clic sur le bouton : pause / reprise)
     var reste = 600, tic = null, bc = document.getElementById('b-chrono');
     function aff() { var m = Math.floor(Math.abs(reste) / 60), s = Math.abs(reste) % 60; bc.textContent = (reste < 0 ? '-' : '') + m + ':' + (s < 10 ? '0' : '') + s; bc.classList.add('chrono'); bc.classList.toggle('tard', reste <= 120 && reste > 0); bc.classList.toggle('fin', reste <= 0); }
     function demarrer() { if (!tic) tic = setInterval(function () { reste--; aff(); }, 1000); }
     bc.onclick = function () { if (tic) { clearInterval(tic); tic = null; } else demarrer(); };
     aff();
-    // Liens masqués (Pla'Net) : adresse décodée au clic, ouverte dans un nouvel onglet
+    // Lien masqué (Pla'Net) : adresse décodée au clic, ouverte dans un nouvel onglet
     document.querySelectorAll('[data-lien]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); window.open(atob(a.dataset.lien), '_blank', 'noopener,noreferrer'); }); });
 
     function fit() { var s = Math.min(innerWidth / 1320, (innerHeight - 40) / 760); stage.style.transform = 'scale(' + s + ')'; }
@@ -347,30 +433,27 @@
       slides.forEach(function (s, k) { s.classList.toggle('on', k === i); s.classList.toggle('av', k < i); });
       num.textContent = (i + 1) + ' / ' + slides.length;
       prog.style.width = ((i + 1) / slides.length * 100) + '%';
-      var t = +slides[i].dataset.temps || 0;
-      notes.textContent = (t ? '[' + t + ' s] ' : '') + (slides[i].dataset.notes || '');
+      notes.textContent = slides[i].dataset.notes || '';
       if (i > 0) demarrer();
       try { history.replaceState(null, '', '#' + (i + 1)); } catch (e) {}
     }
     function plein() { if (!document.fullscreenElement) { document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); } else { document.exitFullscreen(); } }
 
-    document.getElementById('prec').onclick = function () { show(i - 1); };
-    document.getElementById('suiv').onclick = function () { show(i + 1); };
-    document.getElementById('b-flous').onclick = function () { document.body.classList.toggle('sans-flou'); };
-    document.getElementById('b-notes').onclick = function () { document.body.classList.toggle('avec-notes'); };
-    document.getElementById('b-plein').onclick = plein;
-    // Mode clair : même choix que sur le reste du site (gardé dans le navigateur)
+    // Clair / sombre : clair par défaut ; le choix « sombre » est gardé comme sur le reste du site
     var bt = document.getElementById('b-theme'), r = document.documentElement;
-    function majTheme() { bt.textContent = r.getAttribute('data-theme') === 'light' ? 'Sombre' : 'Clair'; }
+    function majTheme() { bt.textContent = r.getAttribute('data-theme') === 'dark' ? 'Clair' : 'Sombre'; }
     function theme() {
-      var clair = r.getAttribute('data-theme') !== 'light';
-      if (clair) r.setAttribute('data-theme', 'light'); else r.removeAttribute('data-theme');
-      try { localStorage.setItem('theme', clair ? 'light' : 'dark'); } catch (e) {}
+      var sombre = r.getAttribute('data-theme') !== 'dark';
+      if (sombre) r.setAttribute('data-theme', 'dark'); else r.removeAttribute('data-theme');
+      try { localStorage.setItem('theme', sombre ? 'dark' : 'light'); } catch (e) {}
       majTheme();
     }
     bt.onclick = theme; majTheme();
-    // Un clic sur un élément flou le dévoile (et un second le refloute)
-    document.querySelectorAll('.flou').forEach(function (el) { el.addEventListener('click', function () { el.classList.toggle('vu'); }); });
+
+    document.getElementById('prec').onclick = function () { show(i - 1); };
+    document.getElementById('suiv').onclick = function () { show(i + 1); };
+    document.getElementById('b-notes').onclick = function () { document.body.classList.toggle('avec-notes'); };
+    document.getElementById('b-plein').onclick = plein;
 
     addEventListener('keydown', function (e) {
       if (e.ctrlKey || e.metaKey || e.altKey) return;
@@ -381,7 +464,6 @@
       else if (k === 'End') show(slides.length - 1);
       else if (k === 'f' || k === 'F') plein();
       else if (k === 'n' || k === 'N') document.body.classList.toggle('avec-notes');
-      else if (k === 'b' || k === 'B') document.body.classList.toggle('sans-flou');
       else if (k === 'l' || k === 'L') theme();
       else if (k === 'Escape' && !document.fullscreenElement) location.href = quitter.href;
     });

@@ -58,7 +58,7 @@ rechargeant la page. Pour la mettre en ligne : `app:export`, puis commit et push
 | Les centres d'intérêt                            | `app/contenu/interets.yaml`                     |
 | Le journal de stage                              | `app/contenu/stage.yaml`                        |
 | L'ordre des sections de l'accueil                | `app/templates/accueil/index.html.twig`         |
-| Le mode présentation de l'oral (touche P)        | `pages/presentation.html` (écrit à la main)     |
+| Le mode présentation de l'oral (touche P)        | `pages/presentation.html` (écrit à la main) et le PowerPoint `assets/presentation/` |
 | La mise en page d'une section de l'accueil       | `app/templates/accueil/_<section>.html.twig`    |
 | La mise en page des pages projet                 | `app/templates/pages/projet.html.twig`          |
 | Une brique réutilisée partout (bouton, étiquette)| `app/templates/components/<Nom>.html.twig`      |
