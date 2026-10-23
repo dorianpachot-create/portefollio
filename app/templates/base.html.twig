@@ -30,8 +30,14 @@
   <meta property="og:image" content="{{ profil.url_site }}assets/meta/og-image.png" />
   <link rel="icon" href="{{ lien('assets/meta/favicon.svg') }}" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="{{ lien('assets/meta/favicon-180.png') }}" />
-  {# Ajoute la classe "js" : les animations d'apparition ne s'activent que si JavaScript marche #}
-  <script>document.documentElement.classList.add('js');</script>
+  {#
+    Avant l'affichage de la page :
+    - ajoute la classe "js" : les animations d'apparition ne s'activent que si JavaScript marche ;
+    - MODE CLAIR : remet le thème choisi la dernière fois (data-theme="light" sur <html>),
+      pour éviter un flash sombre, et fait marcher le bouton soleil / lune du menu
+      (composant EnTete). Les couleurs du mode clair sont à la fin de css/site.css.
+  #}
+  <script>(function(d,r){r.classList.add('js');var t;try{t=localStorage.getItem('theme')}catch(e){}if(t==='light')r.setAttribute('data-theme','light');function maj(){var c=r.getAttribute('data-theme')==='light';d.querySelectorAll('[data-theme-toggle]').forEach(function(b){b.setAttribute('aria-pressed',c);b.setAttribute('aria-label',c?'Passer en mode sombre':'Passer en mode clair')})}d.addEventListener('DOMContentLoaded',maj);d.addEventListener('click',function(e){if(!e.target.closest('[data-theme-toggle]'))return;var c=r.getAttribute('data-theme')!=='light';if(c)r.setAttribute('data-theme','light');else r.removeAttribute('data-theme');try{localStorage.setItem('theme',c?'light':'dark')}catch(e){}maj()})})(document,document.documentElement);</script>
 
   {# Polices : Archivo (titres), Inter (texte), IBM Plex Mono (petites étiquettes) #}
   <link rel="preconnect" href="https://fonts.googleapis.com" />

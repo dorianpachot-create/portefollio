@@ -231,3 +231,107 @@
       details.subject > summary .chev { transition: transform .3s; }
       details.subject[open] > summary .chev { transform: rotate(45deg); }
     }
+
+/* ======================================================================
+   MODE CLAIR
+   Activé par le bouton soleil/lune du menu (attribut data-theme="light"
+   sur <html>, choix gardé dans le navigateur). Pensé pour un vidéoprojecteur
+   ou un écran avec des reflets : fond clair, texte foncé, couleurs plus sombres.
+   Les classes Tailwind (bg-void, text-bone, text-ash...) suivent toutes seules
+   car elles lisent ces variables. Le reste est repris un par un ci-dessous.
+   ====================================================================== */
+html[data-theme="light"] {
+  color-scheme: light;
+  --color-void: #F5F6F8;
+  --color-panel: #FFFFFF;
+  --color-edge: #DDE0E7;
+  --color-blood: #DC2626;
+  --color-volt: #0E7490;
+  --color-go: #15803D;
+  --color-ash: #4B5263;
+  --color-bone: #12141B;
+}
+/* Couleur d'accent de chaque projet, assombrie pour rester lisible sur fond clair */
+html[data-theme="light"] [style*="--c:#EF4444"] { --c: #DC2626 !important; }
+html[data-theme="light"] [style*="--c:#22D3EE"] { --c: #0E7490 !important; }
+html[data-theme="light"] [style*="--c:#22C55E"] { --c: #15803D !important; }
+html[data-theme="light"] [style*="--c:#A78BFA"] { --c: #6D28D9 !important; }
+html[data-theme="light"] [style*="--c:#F59E0B"] { --c: #B45309 !important; }
+html[data-theme="light"] h1 span[style*="#22D3EE"] { color: #0E7490 !important; }
+html[data-theme="light"] h1 span[style*="#22C55E"] { color: #15803D !important; }
+html[data-theme="light"] h1 span[style*="#A78BFA"] { color: #6D28D9 !important; }
+html[data-theme="light"] h1 span[style*="#F59E0B"] { color: #B45309 !important; }
+html[data-theme="light"] h1 span[style*="#EF4444"] { color: #DC2626 !important; }
+
+html[data-theme="light"] body { background: #F5F6F8; color: #2B2F3A; }
+html[data-theme="light"] .bg-grid {
+  background:
+    radial-gradient(48rem 26rem at 88% -8%, rgba(220, 38, 38, .07), transparent 60%),
+    linear-gradient(rgba(18,20,27,.045) 1px, transparent 1px) 0 0 / 56px 56px,
+    linear-gradient(90deg, rgba(18,20,27,.045) 1px, transparent 1px) 0 0 / 56px 56px,
+    #F5F6F8;
+}
+html[data-theme="light"] .panel { border-color: #DDE0E7; background: #FFFFFF; box-shadow: 0 1px 2px rgba(18,20,27,.04), 0 8px 24px -18px rgba(18,20,27,.18); }
+html[data-theme="light"] .btn-primary { background: #DC2626; }
+html[data-theme="light"] .btn-ghost { color: #12141B; background: #FFFFFF; box-shadow: inset 0 0 0 1px #C9CDD6; }
+html[data-theme="light"] .btn-ghost:hover { box-shadow: inset 0 0 0 1px #6B7280; }
+html[data-theme="light"] .tag { color: #2B2F3A; background: #F1F2F5; border-color: #DDE0E7; }
+html[data-theme="light"] .tag-hl { color: #991B1B; background: #FEF2F2; border-color: #FECACA; }
+html[data-theme="light"] .meter, html[data-theme="light"] .rail-progress { background: #E5E7EC; }
+html[data-theme="light"] .stat-row[aria-pressed="true"], html[data-theme="light"] .stat-row:hover { background: #F1F2F5; }
+html[data-theme="light"] .project:hover { border-color: #B9BEC9; box-shadow: 0 24px 50px -30px rgba(18,20,27,.35); }
+html[data-theme="light"] .status { color: #2B2F3A; }
+html[data-theme="light"] .filter-btn { color: #4B5263; }
+html[data-theme="light"] .filter-btn[aria-pressed="true"], html[data-theme="light"] .filter-btn:hover { color: #12141B; background: #E9EBEF; }
+html[data-theme="light"] .tab[aria-selected="true"] { background: #F1F2F5; color: #12141B; }
+html[data-theme="light"] .tab:hover { color: #12141B; }
+html[data-theme="light"] .stop::before { background: #D5D8E0; }
+html[data-theme="light"] .stop:last-child::before { background: linear-gradient(90deg, #D5D8E0, transparent); }
+html[data-theme="light"] .stop__year { color: #4B5263; }
+html[data-theme="light"] .stop--now .stop__year { color: #12141B; }
+html[data-theme="light"] .stop__dot { box-shadow: 0 0 0 4px #F5F6F8; }
+html[data-theme="light"] .stop--now .stop__dot { box-shadow: 0 0 0 4px #F5F6F8, 0 0 12px rgba(220,38,38,.5); }
+html[data-theme="light"] .stop__card { border-color: #DDE0E7; background: #FFFFFF; }
+html[data-theme="light"] .stop:hover .stop__card { border-color: #B9BEC9; }
+html[data-theme="light"] .round-btn { color: #12141B; background: #FFFFFF; border-color: #C9CDD6; }
+html[data-theme="light"] .paper { border-top-color: #DC2626; border-bottom-color: #DDE0E7; }
+html[data-theme="light"] .paper__rubrics, html[data-theme="light"] .col-rule, html[data-theme="light"] .brief { border-color: #DDE0E7; }
+html[data-theme="light"] .paper__rubrics a { color: #4B5263; }
+html[data-theme="light"] .paper__rubrics a:hover { color: #12141B; }
+html[data-theme="light"] .article p { color: #3A3F4C; }
+html[data-theme="light"] .article p strong { color: #12141B; }
+html[data-theme="light"] .brief:hover .brief__title { color: #B91C1C; }
+html[data-theme="light"] .card-link:hover { border-color: #B9BEC9; }
+html[data-theme="light"] .scroll-dots a { background: #C9CDD6; }
+html[data-theme="light"] .scroll-dots a::after { color: #12141B; background: #FFFFFF; border-color: #DDE0E7; }
+html[data-theme="light"] .scroll-dots a[aria-current="true"] { background: #DC2626; }
+html[data-theme="light"] .nav-a[aria-current="true"] { color: #12141B; }
+html[data-theme="light"] .topbar.is-scrolled { background: rgba(245,246,248,.88); border-color: #DDE0E7; }
+html[data-theme="light"] .prose-red { color: #3A3F4C; }
+html[data-theme="light"] .prose-red strong, html[data-theme="light"] .prose-red h2, html[data-theme="light"] .prose-red h3,
+html[data-theme="light"] .prose-red th, html[data-theme="light"] .prose-red td:first-child { color: #12141B; }
+html[data-theme="light"] .prose-red a:not(.btn) { color: #B91C1C; }
+html[data-theme="light"] .prose-red a:not(.btn):hover { color: #7F1D1D; }
+html[data-theme="light"] .prose-red code { color: #12141B; background: #EEF0F3; }
+html[data-theme="light"] .prose-red figure.schema img, html[data-theme="light"] .prose-red .table-wrap,
+html[data-theme="light"] .prose-red th, html[data-theme="light"] .prose-red td { border-color: #DDE0E7; }
+html[data-theme="light"] .prose-red th { background: #F1F2F5; }
+html[data-theme="light"] .prose-red figure.schema figcaption { color: #4B5263; }
+html[data-theme="light"] .toc a { color: #4B5263; border-left-color: #DDE0E7; }
+html[data-theme="light"] .toc a:hover, html[data-theme="light"] .toc a[aria-current="true"] { color: #12141B; }
+html[data-theme="light"] .toc a[aria-current="true"] { border-left-color: #DC2626; }
+html[data-theme="light"] .callout { border-color: #FECACA; background: #FEF6F6; }
+html[data-theme="light"] ::selection { background: #DC2626; color: #fff; }
+/* Radar de l'accueil (SVG) */
+html[data-theme="light"] [data-radar-grid] { stroke: #D5D8E0; }
+html[data-theme="light"] svg text[fill="#9CA3AF"] { fill: #4B5263; }
+html[data-theme="light"] svg text[fill="#F1F2F6"] { fill: #12141B; }
+
+/* Bouton clair / sombre du menu : soleil en mode sombre, lune en mode clair */
+.theme-btn { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 8px; color: #F1F2F6; background: rgba(255,255,255,.03); box-shadow: inset 0 0 0 1px #2A2E3D; transition: box-shadow .25s, transform .25s; }
+.theme-btn:hover { box-shadow: inset 0 0 0 1px #6B7280; transform: translateY(-1px); }
+.theme-btn svg { width: 1.1rem; height: 1.1rem; }
+.theme-btn .i-moon { display: none; }
+html[data-theme="light"] .theme-btn { color: #12141B; background: #FFFFFF; box-shadow: inset 0 0 0 1px #C9CDD6; }
+html[data-theme="light"] .theme-btn .i-sun { display: none; }
+html[data-theme="light"] .theme-btn .i-moon { display: block; }

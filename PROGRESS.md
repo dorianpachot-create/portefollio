@@ -2,6 +2,17 @@
 
 Dernière mise à jour : 2026-10-23
 
+## Mise à jour du 2026-10-23 (2), mode clair
+
+- **Mode clair** pour la présentation (vidéoprojecteur, reflets) : bouton soleil / lune dans le
+  menu de toutes les pages (composant `EnTete`). Le choix est gardé dans le navigateur
+  (`localStorage`, clé `theme`) et réappliqué avant l'affichage (script dans `base.html.twig`).
+- Couleurs du mode clair à la fin de `css/site.css` : les variables Tailwind (`--color-void`,
+  `--color-bone`...) sont redéfinies, les couleurs des projets assombries pour rester lisibles.
+- **Mode présentation** : bouton « Clair » dans la barre du bas, ou touche **L** (même choix
+  que le site).
+- Mentions légales : le choix du thème est le seul élément gardé dans le navigateur.
+
 ## Mise à jour du 2026-10-23, veille PHP2Shell et projet de gestion de cabinet
 
 - **Veille** : nouvel article à la une sur PHP2Shell (CVE-2026-109618 et CVE-2026-109619),
