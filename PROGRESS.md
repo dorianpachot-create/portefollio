@@ -11,6 +11,9 @@ Dernière mise à jour : 2026-10-23
 - Projets encadrés : tuiles de première année pleines (`bg-panel`), plus de trait à côté
   de « Première année » et « Deuxième année ».
 - Veille : le titre de l'encadré devient « Devenir DevOps ».
+- Mode clair : fond blanc sur le journal de la veille et sur le bandeau sous le profil.
+- Bandeau sous le profil : il défile aussi quand Windows réduit les animations (90 s par tour
+  au lieu de 50 s), au lieu de s'arrêter.
 - Correction : apostrophe non doublée dans un `alt` de `projets.yaml` (YAML invalide).
 
 ## Mise à jour du 2026-10-23 (5), vraies captures de SYNCRO, plus de numéros

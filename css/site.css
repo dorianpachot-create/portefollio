@@ -172,7 +172,9 @@
 
       @media (prefers-reduced-motion: reduce) {
         .js .reveal { opacity: 1; transform: none; transition: none; }
-        .ticker__track, .dot::after { animation: none; }
+        .dot::after { animation: none; }
+        /* Le bandeau sous le profil défile quand même, plus lentement */
+        .ticker__track { animation-duration: 90s; }
         .profile-card { transform: none !important; }
       }
     }
@@ -293,7 +295,8 @@ html[data-theme="light"] .stop--now .stop__dot { box-shadow: 0 0 0 4px #F5F6F8, 
 html[data-theme="light"] .stop__card { border-color: #DDE0E7; background: #FFFFFF; }
 html[data-theme="light"] .stop:hover .stop__card { border-color: #B9BEC9; }
 html[data-theme="light"] .round-btn { color: #12141B; background: #FFFFFF; border-color: #C9CDD6; }
-html[data-theme="light"] .paper { border-top-color: #DC2626; border-bottom-color: #DDE0E7; }
+html[data-theme="light"] .paper { border-top-color: #DC2626; border-bottom-color: #DDE0E7; background: #FFFFFF; border-left: 1px solid #DDE0E7; border-right: 1px solid #DDE0E7; border-radius: 0 0 14px 14px; padding: 0 1.5rem; box-shadow: 0 8px 24px -18px rgba(18,20,27,.18); }
+html[data-theme="light"] .ticker { background: #FFFFFF; }
 html[data-theme="light"] .paper__rubrics, html[data-theme="light"] .col-rule, html[data-theme="light"] .brief { border-color: #DDE0E7; }
 html[data-theme="light"] .paper__rubrics a { color: #4B5263; }
 html[data-theme="light"] .paper__rubrics a:hover { color: #12141B; }
