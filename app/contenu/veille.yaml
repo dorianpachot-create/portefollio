@@ -10,7 +10,7 @@
 # Pour ajouter un article repéré : copier un bloc de articles_reperes.
 # ============================================================================
 
-mise_a_jour: 24 septembre 2026
+mise_a_jour: 23 octobre 2026
 objectif:
   titre: Devenir DevOps, et un bon DevOps.
   texte: 'C''est le fil conducteur de ma veille. Je ne cherche pas seulement à connaître les outils : je veux comprendre comment on livre des applications fiables, sécurisées et faciles à maintenir, et savoir automatiser tout ce qui peut l''être. C''est pour cette raison que je vise un bachelor DevOps après le BTS.'
@@ -22,8 +22,10 @@ objectif:
   - titre: Ce que je veux maîtriser
     texte: Les chaînes CI/CD complètes, les conteneurs, la supervision et la sécurité intégrée dès la conception.
 rubriques:
-- texte: Cybersécurité
+- texte: Alerte PHP
   ancre: '#une'
+- texte: Cybersécurité
+  ancre: '#art-clickfix'
 - texte: Réglementation
   ancre: '#art-nis2'
 - texte: Réseaux
@@ -36,13 +38,19 @@ rubriques:
   ancre: '#art-ia'
 a_la_une:
   id: une
-  rubrique: À la une, cybersécurité
-  titre: Les attaques qui passent par l'utilisateur
-  chapeau: Le faux CAPTCHA « ClickFix », qui pousse la victime à coller elle-même une commande, est désormais plus répandu que le phishing classique.
-  pourquoi: SYNCRO et Pla'Net ont tous les deux un écran de connexion et des comptes à protéger. Je veux comprendre comment ces comptes sont réellement attaqués.
-  retenu: La faille est souvent humaine. Côté code, je protège ce que je peux (jeton CSRF, mots de passe hachés, limite de tentatives). Le reste passe par la sensibilisation des utilisateurs.
-  liens_avec: SYNCRO, Pla'Net, TP FortiGate
+  rubrique: À la une, alerte de sécurité PHP
+  titre: 'PHP2Shell : deux failles critiques dans PHP'
+  chapeau: 'Le 20 octobre 2026, l''équipe de PHP a annoncé deux failles critiques (CVE-2026-109618 et CVE-2026-109619), corrigées en urgence le lendemain. Une simple requête HTTP, sans être connecté, peut suffire à exécuter du code sur le serveur.'
+  pourquoi: 'Trois de mes projets tournent sur PHP : CRP-Assurance sur un hébergement mutualisé, Pla''Net en Symfony avec PHP-FPM, et ce portfolio, écrit en Symfony. Les modes touchés sont justement PHP-FPM et Apache avec mod_php, les plus courants.'
+  retenu: 'La seule vraie parade est la mise à jour : versions 8.2.35, 8.3.36, 8.4.27 et 8.5.12. Les réglages d''attente (désactiver <code>session.upload_progress</code>, filtrer les envois de formulaires) ne suppriment pas le risque, et PHP 8.1 ou plus ancien n''a plus de correctif officiel. Sur un mutualisé comme celui de CRP-Assurance, c''est l''hébergeur qui corrige : mon rôle est de vérifier la version active et de choisir une branche encore suivie. Ce portfolio, lui, est publié en HTML : aucun PHP ne tourne en ligne. Enfin, les failles ont été trouvées avec l''aide de l''IA : les attaquants vont aussi vite que les défenseurs.'
+  liens_avec: CRP-Assurance, Pla'Net, ce portfolio, cours de cybersécurité
 articles_reperes:
+- date_source: 21 octobre 2026, IT-Connect
+  titre: 'PHP2Shell : correctifs d''urgence pour les failles CVE-2026-109618 et CVE-2026-109619'
+  url: https://www.it-connect.fr/php2shell-correctifs-urgence-cve-2026-109618-cve-2026-109619/
+- date_source: 20 octobre 2026, BleepingComputer
+  titre: PHP warns admins of two critical flaws, emergency patches coming tomorrow
+  url: https://bleepingcomputer.com/news/security/php-warns-admins-of-two-critical-flaws-emergency-patches-coming-tomorrow
 - date_source: 23 septembre 2026, Panda Security
   titre: 'Cybermois 2026 : la France veut passer à la vitesse supérieure face aux cybermenaces'
   url: https://www.pandasecurity.com/fr/mediacenter/cybermois-2026-france-passer-vitesse-superieure-face-aux-cybermenaces/
@@ -74,7 +82,13 @@ articles:
     pourquoi: SYNCRO est publiée sur l'App Store et Google Play, et Pla'Net repose sur Symfony. Une application publiée doit être maintenue.
     retenu: Google Play relève chaque année le niveau d'API Android exigé et Apple fait évoluer ses règles. Je suis les notes de version de Flutter, Next.js et Symfony pour anticiper.
     liens_avec: SYNCRO, Pla'Net
-- - id: art-devops
+- - id: art-clickfix
+    rubrique: Cybersécurité
+    titre: Les attaques qui passent par l'utilisateur
+    pourquoi: 'Le faux CAPTCHA « ClickFix », qui pousse la victime à coller elle-même une commande, est désormais plus répandu que le phishing classique. SYNCRO et Pla''Net ont tous les deux un écran de connexion et des comptes à protéger.'
+    retenu: La faille est souvent humaine. Côté code, je protège ce que je peux (jeton CSRF, mots de passe hachés, limite de tentatives). Le reste passe par la sensibilisation des utilisateurs.
+    liens_avec: SYNCRO, Pla'Net, TP FortiGate
+  - id: art-devops
     rubrique: DevOps
     titre: Automatiser la mise en ligne
     pourquoi: Pendant mon stage, une connexion défaillante a bloqué la validation de SYNCRO sur l'App Store. La correction la plus utile a été un test automatique à chaque déploiement.
@@ -98,6 +112,8 @@ methode:
 bilan:
 - titre: La sécurité se prévoit dès le départ
   texte: Sur Pla'Net, la protection CSRF et le hachage des mots de passe sont en place dès la première version, pas ajoutés à la fin.
+- titre: Savoir ce qui tourne, et où
+  texte: 'Avec PHP2Shell, la première question était : quelle version de PHP tourne sur chacun de mes projets ? Tenir cet inventaire à jour permet de réagir en quelques heures, pas en quelques jours.'
 - titre: Automatiser les vérifications
   texte: 'Un test de connexion à chaque déploiement de SYNCRO, et des scripts Bash pour la sauvegarde et la supervision en TP : ce qui est automatisé ne s''oublie pas.'
 - titre: Une application publiée s'entretient

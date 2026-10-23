@@ -47,6 +47,9 @@ console.log('\n--- pages projets ---');
 const pc = load('pages/projets-cours.html');
 ok('projets encadrés détaillés (2e année)', ['tp0', 'tp1', 'tp2', 'tp3', 'tp4', 'tp5', 'vitasport'].every((id) => pc.getElementById(id)));
 ok('aucune page dorée restante', fs.readdirSync(path.join(ROOT, 'pages')).every((f) => !/class="foil/.test(fs.readFileSync(path.join(ROOT, 'pages', f), 'utf8'))));
+const gc = load('pages/gestion-cabinet.html');
+ok('gestion de cabinet : page du projet en cours', ['en-bref', 'contexte', 'fonctionnalites', 'architecture', 'securite', 'suite', 'competences'].every((id) => gc.getElementById(id)) && !!d.querySelector('#projets a[href="pages/gestion-cabinet.html"]'));
+ok('veille : alerte PHP du 20 octobre à la une', /PHP2Shell/.test(d.getElementById('une').textContent) && !!d.getElementById('art-clickfix'));
 ok('veille : objectif DevOps', /Devenir DevOps, et un bon DevOps/.test(text));
 
 console.log('\n--- liens internes ---');

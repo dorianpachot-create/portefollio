@@ -3,13 +3,16 @@
   data-status sert au filtre Tous / Livrés / En cours.
   Règle du site : le premier clic mène toujours à la page de présentation du projet ;
   les liens vers le site ou l'application sont sur cette page.
+  Option "largeur_complete: true" (clé accueil du projet) : la carte prend toute la largeur,
+  image à gauche et texte à droite sur grand écran (projet en cours de conception).
 #}
 {% props projet %}
 {%- set a = projet.accueil -%}
 {%- set externe = a.lien_principal.url starts with 'http' -%}
-<article class="project card-link panel reveal relative flex flex-col" style="--c:{{ projet.couleur }}" data-status="{{ a.filtre }}">
-  <div class="relative aspect-[16/9] overflow-hidden border-b border-edge">
-    <twig:Image :fichier="a.image" :alt="a.alt" classe="project__img h-full w-full object-cover object-top" />
+{%- set large = a.largeur_complete ?? false -%}
+<article class="project card-link panel reveal relative flex flex-col{{ large ? ' md:col-span-2 md:flex-row lg:col-span-3' }}" style="--c:{{ projet.couleur }}" data-status="{{ a.filtre }}">
+  <div class="relative aspect-[16/9] overflow-hidden border-b border-edge{{ large ? ' bg-void md:aspect-auto md:w-[58%] md:flex-none md:border-b-0 md:border-r' }}">
+    <twig:Image :fichier="a.image" :alt="a.alt" :classe="'project__img h-full w-full object-cover object-top' ~ (large ? ' !object-contain' : '')" />
     <span class="pointer-events-none absolute right-3 top-3 z-[3] rounded-md bg-void/80 px-2 py-1 text-[11px] font-semibold text-bone backdrop-blur">{{ a.badge }}</span>
   </div>
   <div class="flex flex-1 flex-col p-6">

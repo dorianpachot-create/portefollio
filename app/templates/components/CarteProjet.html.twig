@@ -2,9 +2,10 @@
   Composant CarteProjet : une carte de la page "Mes réalisations".
   Toute la carte est cliquable (classe card-link + lien "stretch").
   SYNCRO affiche ses quatre captures, les autres projets leur image.
+  Un projet avec "accueil.largeur_complete" prend aussi toute la largeur ici.
 #}
 {% props projet %}
-<article class="project card-link panel reveal relative flex flex-col" style="--c:{{ projet.couleur }}">
+<article class="project card-link panel reveal relative flex flex-col{{ (projet.accueil.largeur_complete ?? false) ? ' md:col-span-2' }}" style="--c:{{ projet.couleur }}">
   {% if projet.media.type == 'captures' %}
     <div class="grid aspect-[16/9] grid-cols-4 gap-2 overflow-hidden border-b border-edge bg-gradient-to-br from-blood/10 to-transparent p-4">
       {%- for image in projet.media.images -%}<img class="project__img h-full w-full rounded-lg object-cover object-top" src="{{ lien(image.fichier) }}" alt="" loading="lazy" width="720" height="1280" />{%- endfor -%}

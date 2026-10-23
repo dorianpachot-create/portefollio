@@ -488,3 +488,118 @@ projets:
     statut: Projet personnel
     texte: Jeu spatial en Python, jouable dans le navigateur grâce à WebAssembly.
     alt: Écran-titre de Mission Orion
+- slug: gestion-cabinet
+  nom: Gestion de cabinet
+  couleur: '#F59E0B'
+  titre_page: Application de gestion de cabinet de courtage, projet en cours | Dorian Pachot
+  description: Application Flutter (mobile et ordinateur) et API Node.js pour les cabinets de courtage en assurance et leurs mandataires. Projet de BTS en cours, en phase de conception.
+  cadre: Projet de deuxième année de BTS, en cours
+  intro: "Application de gestion pour les cabinets de courtage en assurance et leurs mandataires : clients, contrats et commissions dans un seul outil, sur téléphone comme sur ordinateur. Le projet en est à la conception : le cahier des charges et le cahier technique sont rédigés, le développement commence."
+  fiche:
+  - libelle: Cadre
+    valeur: Projet de BTS, 2<sup>e</sup> année
+  - libelle: Début
+    valeur: Octobre 2026
+  - libelle: Étape
+    valeur: Conception terminée, développement à venir
+  - libelle: Mon rôle
+    valeur: Cahier des charges et cahier technique
+  - libelle: Statut
+    valeur: En cours
+  technos:
+  - Flutter
+  - Dart
+  - Node.js
+  - Express
+  - MySQL
+  - Docker
+  - JWT
+  - Scaleway
+  - Firebase
+  # Pas encore de lien : le projet est en conception (ajouter ici le dépôt ou l'application plus tard)
+  liens: []
+  media:
+    type: image
+    image: assets/meta/shot-cabinet
+    alt: "Schéma d'architecture : l'application Flutter passe par un reverse proxy HTTPS vers l'API Node.js et la base MySQL du cabinet, dans Docker, avec le stockage, les e-mails et les notifications"
+    legende: "L'architecture prévue dans le cahier technique : une application pour tous les appareils, une installation isolée par cabinet."
+  sections:
+  - id: en-bref
+    titre: En bref
+    paragraphes:
+    - "Un cabinet de courtage travaille avec un réseau de mandataires, qui vendent des contrats d'assurance (prêt, habitation, automobile, prévoyance, santé) de plusieurs compagnies. Chaque contrat signé rapporte une commission, partagée entre le cabinet et le mandataire."
+    - "L'application doit réunir clients, contrats et commissions dans un seul outil. Elle est pensée pour <strong>n'importe quel cabinet</strong> : chacun la configure avec ses propres compagnies, produits et taux, sans toucher au code."
+  - id: contexte
+    titre: Le problème à résoudre
+    paragraphes:
+    - "Aujourd'hui, les informations sont dispersées entre les sites des compagnies, des fichiers Excel et des e-mails. La question posée dans le cahier des charges : <strong>comment permettre à un cabinet et à ses mandataires de suivre leurs clients, leurs contrats et leurs commissions depuis un outil unique ?</strong>"
+    liste:
+    - Le mandataire ne sait pas précisément ce qui lui est dû, ce qu'il a perçu et ce qui manque.
+    - Pour connaître l'avancement d'un contrat, il faut consulter le site de chaque compagnie.
+    - Les relances (pièces manquantes, échéances, clients à rappeler) dépendent de la mémoire de chacun.
+    - Le gérant n'a aucun tableau de bord sur l'activité du cabinet.
+  - id: fonctionnalites
+    titre: Ce que fera l'application
+    liste:
+    - '<strong>Deux rôles</strong> : le gérant (admin) paramètre le cabinet et voit tout ; le mandataire (user) gère ses propres clients et contrats.'
+    - '<strong>Clients et contrats</strong>, avec le suivi du statut : en attente de pièces, envoyé à la compagnie, accepté, actif, résilié ou refusé.'
+    - '<strong>Commissions</strong> : calcul de ce qui est attendu, répartition entre cabinet et mandataire, rapprochement avec ce qui a été versé, prévision sur trois mois.'
+    - '<strong>Documents</strong> joints aux clients et aux contrats, avec la liste des pièces obligatoires par produit.'
+    - '<strong>Alertes</strong> : notifications push sur téléphone, alertes sur ordinateur, e-mails de relance et synthèse hebdomadaire pour le gérant.'
+    - '<strong>Tableau de bord</strong>, agenda des rendez-vous et comparateur d''offres d''assurance de prêt, avec export PDF.'
+    - '<strong>Journal d''audit</strong> : chaque action importante est enregistrée avec son auteur et sa date.'
+  - id: architecture
+    titre: L'architecture et les choix techniques
+    paragraphes:
+    - "Le cahier technique justifie chaque choix par trois principes : une seule base de code pour le mobile et l'ordinateur, des technologies que je maîtrise déjà (Flutter, Node.js, SQL), et des données hébergées en France."
+    liste:
+    - '<strong>Flutter</strong> : une seule application pour Android, iOS, Windows et macOS. Je l''ai déjà utilisé pour SYNCRO.'
+    - '<strong>Node.js avec Express</strong> pour l''API : le serveur contrôle les droits et fait tous les calculs. L''application ne fait qu''afficher, car tout contrôle fait seulement côté application peut être contourné.'
+    - '<strong>MySQL</strong> : les données sont très liées (un client a des contrats, un contrat génère des commissions). Les montants sont en <code>DECIMAL</code>, jamais en <code>FLOAT</code>, pour éviter les erreurs d''arrondi.'
+    - '<strong>Une installation par cabinet</strong>, décrite avec Docker Compose : les données de deux cabinets ne sont jamais mélangées, et un nouveau cabinet s''installe en quelques commandes.'
+    - '<strong>Scaleway, à Paris</strong>, pour le serveur, le stockage des documents (compatible S3) et les e-mails : un seul fournisseur, et des données en France pour le RGPD.'
+  - id: securite
+    titre: La sécurité et le RGPD
+    liste:
+    - Mots de passe hachés, jetons JWT de courte durée et nombre de tentatives de connexion limité.
+    - 'Trois contrôles à chaque requête : le jeton est-il valide, le rôle est-il autorisé, la donnée appartient-elle bien à cet utilisateur ?'
+    - Documents dans un espace de stockage privé, téléchargeables seulement par des liens temporaires.
+    - Sauvegarde automatique chaque jour, gardée trente jours, avec des tests de restauration.
+    - 'RGPD : en hébergeant les données des cabinets, nous sommes sous-traitants. Un contrat de sous-traitance est prévu avec chaque cabinet, et le développement se fait uniquement avec des données fictives.'
+  - id: suite
+    titre: Où en est le projet
+    paragraphes:
+    - "Le cahier des charges et le cahier technique sont rédigés (octobre 2026). Un point reste à valider avec le client : chaque mandataire accède-t-il à tout le catalogue, ou le gérant choisit-il ses produits ?"
+    liste:
+    - 'Prochaine étape : le modèle de la base de données (MCD puis MLD), le script SQL et un jeu de données fictives.'
+    - Ensuite, l'API et ses tests (cas autorisés et cas refusés pour chaque route), puis les écrans Flutter.
+    - Pour la démonstration du BTS, les versions Android et Windows suffisent ; la version iOS demande un Mac et un compte développeur Apple.
+  - id: competences
+    titre: Compétences mobilisées
+    liste:
+    - Analyser un besoin et le traduire en cahier des charges.
+    - Choisir et justifier une architecture technique.
+    - Concevoir une base de données relationnelle.
+    - Prévoir la sécurité, les droits d'accès et la conformité RGPD dès la conception.
+    - Prévoir le déploiement, les sauvegardes et la mise à jour d'une application.
+  accueil:
+    largeur_complete: true
+    filtre: wip
+    badge: En conception
+    image: assets/meta/shot-cabinet
+    alt: Schéma d'architecture de l'application de gestion de cabinet
+    statut: Projet de BTS en cours
+    resume: "Application Flutter, sur téléphone et sur ordinateur, pour qu'un cabinet de courtage en assurance et ses mandataires suivent leurs clients, leurs contrats et leurs commissions au même endroit. Le cahier des charges et le cahier technique sont rédigés ; le développement commence."
+    tags:
+    - Flutter
+    - Node.js
+    - MySQL
+    - Docker
+    - RGPD
+    lien_principal:
+      texte: Lire la présentation
+      url: pages/gestion-cabinet.html
+  liste_projets:
+    statut: Projet de BTS en cours
+    texte: Application Flutter et API Node.js pour les cabinets de courtage en assurance et leurs mandataires. Conception terminée, développement en cours.
+    alt: Schéma d'architecture de l'application de gestion de cabinet

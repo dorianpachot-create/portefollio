@@ -304,7 +304,7 @@
   <div>
     <p class="label text-blood"><span class="mr-3 text-ash/70">03</span>Projets</p>
     <h2 id="projets-title" class="mt-4 font-display text-4xl font-extrabold tracking-[-.02em] text-bone md:text-5xl">Réalisations</h2>
-    <p class="mt-4 max-w-xl text-ash">Quatre projets, tous consultables : une application sur les stores, une application web et un site en ligne, et un jeu jouable dans le navigateur.
+    <p class="mt-4 max-w-xl text-ash">Cinq projets : une application sur les stores, une application web et un site en ligne, un jeu jouable dans le navigateur, et une application de gestion en cours de conception.
       </p>
   </div>
                   <div class="flex flex-wrap gap-1" role="group" aria-label="Filtrer les projets">
@@ -406,6 +406,29 @@
 
     <div class="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 pt-6 text-sm font-semibold">
       <a class="stretch text-[var(--c)] hover:text-bone" href="pages/mission-orion.html">Lire la présentation</a>
+    </div>
+  </div>
+</article>
+
+                                <article class="project card-link panel reveal relative flex flex-col md:col-span-2 md:flex-row lg:col-span-3" style="--c:#F59E0B" data-status="wip">
+  <div class="relative aspect-[16/9] overflow-hidden border-b border-edge bg-void md:aspect-auto md:w-[58%] md:flex-none md:border-b-0 md:border-r">
+    <picture><source srcset="assets/meta/shot-cabinet.webp" type="image/webp" /><img class="project__img h-full w-full object-cover object-top !object-contain" src="assets/meta/shot-cabinet.jpg" alt="Schéma d&#039;architecture de l&#039;application de gestion de cabinet" loading="lazy" width="1200" height="533" /></picture>
+
+    <span class="pointer-events-none absolute right-3 top-3 z-[3] rounded-md bg-void/80 px-2 py-1 text-[11px] font-semibold text-bone backdrop-blur">En conception</span>
+  </div>
+  <div class="flex flex-1 flex-col p-6">
+    <span class="status">Projet de BTS en cours</span>
+    <h3 class="mt-3 font-display text-2xl font-bold tracking-tight text-bone">Gestion de cabinet</h3>
+    <p class="mt-2 text-sm leading-relaxed text-ash">Application Flutter, sur téléphone et sur ordinateur, pour qu&#039;un cabinet de courtage en assurance et ses mandataires suivent leurs clients, leurs contrats et leurs commissions au même endroit. Le cahier des charges et le cahier technique sont rédigés ; le développement commence.</p>
+    <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Flutter</li>
+<li class="tag">Node.js</li>
+<li class="tag">MySQL</li>
+<li class="tag">Docker</li>
+<li class="tag">RGPD</li>
+</ul>
+
+    <div class="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 pt-6 text-sm font-semibold">
+      <a class="stretch text-[var(--c)] hover:text-bone" href="pages/gestion-cabinet.html">Lire la présentation</a>
     </div>
   </div>
 </article>
@@ -718,7 +741,7 @@
   <div>
     <p class="label text-blood"><span class="mr-3 text-ash/70">07</span>Veille technologique</p>
     <h2 id="veille-title" class="mt-4 font-display text-4xl font-extrabold tracking-[-.02em] text-bone md:text-5xl">Ma veille</h2>
-    <p class="mt-4 max-w-xl text-ash">Ma veille sert un objectif précis : devenir DevOps. Chaque sujet part d'un projet ou d'un cours. Mise à jour le 24 septembre 2026.
+    <p class="mt-4 max-w-xl text-ash">Ma veille sert un objectif précis : devenir DevOps. Chaque sujet part d'un projet ou d'un cours. Mise à jour le 23 octobre 2026.
     </p>
   </div>
   </div>
@@ -738,20 +761,28 @@
 
         <div class="paper reveal mt-10">
       <nav class="paper__rubrics flex flex-wrap gap-x-6 gap-y-2 py-3 text-xs font-semibold uppercase tracking-[.12em]" aria-label="Rubriques de la veille">
-        <a href="#une">Cybersécurité</a><a href="#art-nis2">Réglementation</a><a href="#art-reseaux">Réseaux</a><a href="#art-outils">Mes outils</a><a href="#art-devops">DevOps</a><a href="#art-ia">IA</a>      </nav>
+        <a href="#une">Alerte PHP</a><a href="#art-clickfix">Cybersécurité</a><a href="#art-nis2">Réglementation</a><a href="#art-reseaux">Réseaux</a><a href="#art-outils">Mes outils</a><a href="#art-devops">DevOps</a><a href="#art-ia">IA</a>      </nav>
       <div class="grid lg:grid-cols-12"><article id="une" class="article py-8 lg:col-span-8 lg:pr-10">
-          <p class="label !text-[.66rem] text-blood">À la une, cybersécurité</p>
-          <h3 class="mt-3 font-display text-3xl font-extrabold leading-tight tracking-tight text-bone md:text-4xl">Les attaques qui passent par l&#039;utilisateur</h3>
-          <p class="mt-4 !text-base !text-bone/90">Le faux CAPTCHA « ClickFix », qui pousse la victime à coller elle-même une commande, est désormais plus répandu que le phishing classique.</p>
+          <p class="label !text-[.66rem] text-blood">À la une, alerte de sécurité PHP</p>
+          <h3 class="mt-3 font-display text-3xl font-extrabold leading-tight tracking-tight text-bone md:text-4xl">PHP2Shell : deux failles critiques dans PHP</h3>
+          <p class="mt-4 !text-base !text-bone/90">Le 20 octobre 2026, l&#039;équipe de PHP a annoncé deux failles critiques (CVE-2026-109618 et CVE-2026-109619), corrigées en urgence le lendemain. Une simple requête HTTP, sans être connecté, peut suffire à exécuter du code sur le serveur.</p>
           <div class="mt-5 gap-8 md:columns-2">
-            <p><strong>Pourquoi je suis ce sujet.</strong> SYNCRO et Pla'Net ont tous les deux un écran de connexion et des comptes à protéger. Je veux comprendre comment ces comptes sont réellement attaqués.</p>
-            <p><strong>Ce que j'en retiens.</strong> La faille est souvent humaine. Côté code, je protège ce que je peux (jeton CSRF, mots de passe hachés, limite de tentatives). Le reste passe par la sensibilisation des utilisateurs.</p>
+            <p><strong>Pourquoi je suis ce sujet.</strong> Trois de mes projets tournent sur PHP : CRP-Assurance sur un hébergement mutualisé, Pla'Net en Symfony avec PHP-FPM, et ce portfolio, écrit en Symfony. Les modes touchés sont justement PHP-FPM et Apache avec mod_php, les plus courants.</p>
+            <p><strong>Ce que j'en retiens.</strong> La seule vraie parade est la mise à jour : versions 8.2.35, 8.3.36, 8.4.27 et 8.5.12. Les réglages d'attente (désactiver <code>session.upload_progress</code>, filtrer les envois de formulaires) ne suppriment pas le risque, et PHP 8.1 ou plus ancien n'a plus de correctif officiel. Sur un mutualisé comme celui de CRP-Assurance, c'est l'hébergeur qui corrige : mon rôle est de vérifier la version active et de choisir une branche encore suivie. Ce portfolio, lui, est publié en HTML : aucun PHP ne tourne en ligne. Enfin, les failles ont été trouvées avec l'aide de l'IA : les attaquants vont aussi vite que les défenseurs.</p>
           </div>
-          <p class="!mb-0 text-xs !text-ash/80">En lien avec : SYNCRO, Pla&#039;Net, TP FortiGate</p>
+          <p class="!mb-0 text-xs !text-ash/80">En lien avec : CRP-Assurance, Pla&#039;Net, ce portfolio, cours de cybersécurité</p>
         </article>
         <aside class="col-rule py-8 lg:col-span-4 lg:pl-8" aria-label="Articles repérés">
           <p class="label !text-[.66rem] text-blood">Articles repérés</p>
           <div class="mt-4">
+                          <a class="brief" href="https://www.it-connect.fr/php2shell-correctifs-urgence-cve-2026-109618-cve-2026-109619/" target="_blank" rel="noopener noreferrer">
+                <span class="label !text-[.62rem] text-ash">21 octobre 2026, IT-Connect</span>
+                <span class="brief__title mt-1 block font-display text-[1.02rem] font-bold leading-snug text-bone">PHP2Shell : correctifs d&#039;urgence pour les failles CVE-2026-109618 et CVE-2026-109619</span>
+              </a>
+                          <a class="brief" href="https://bleepingcomputer.com/news/security/php-warns-admins-of-two-critical-flaws-emergency-patches-coming-tomorrow" target="_blank" rel="noopener noreferrer">
+                <span class="label !text-[.62rem] text-ash">20 octobre 2026, BleepingComputer</span>
+                <span class="brief__title mt-1 block font-display text-[1.02rem] font-bold leading-snug text-bone">PHP warns admins of two critical flaws, emergency patches coming tomorrow</span>
+              </a>
                           <a class="brief" href="https://www.pandasecurity.com/fr/mediacenter/cybermois-2026-france-passer-vitesse-superieure-face-aux-cybermenaces/" target="_blank" rel="noopener noreferrer">
                 <span class="label !text-[.62rem] text-ash">23 septembre 2026, Panda Security</span>
                 <span class="brief__title mt-1 block font-display text-[1.02rem] font-bold leading-snug text-bone">Cybermois 2026 : la France veut passer à la vitesse supérieure face aux cybermenaces</span>
@@ -797,8 +828,16 @@
 </article>
 
                   </div>
-              <div class="grid border-t border-edge lg:grid-cols-2">
-          <article id="art-devops" class="article py-8 lg:pr-8">
+              <div class="grid border-t border-edge lg:grid-cols-3">
+          <article id="art-clickfix" class="article py-8 lg:pr-8">
+  <p class="label !text-[.66rem] text-blood">Cybersécurité</p>
+  <h4 class="mt-2 font-display text-2xl font-bold leading-tight text-bone">Les attaques qui passent par l&#039;utilisateur</h4>
+  <p class="mt-3"><strong>Pourquoi je suis ce sujet.</strong> Le faux CAPTCHA « ClickFix », qui pousse la victime à coller elle-même une commande, est désormais plus répandu que le phishing classique. SYNCRO et Pla'Net ont tous les deux un écran de connexion et des comptes à protéger.</p>
+  <p><strong>Ce que j'en retiens.</strong> La faille est souvent humaine. Côté code, je protège ce que je peux (jeton CSRF, mots de passe hachés, limite de tentatives). Le reste passe par la sensibilisation des utilisateurs.</p>
+  <p class="!mb-0 text-xs !text-ash/80">En lien avec : SYNCRO, Pla&#039;Net, TP FortiGate</p>
+</article>
+
+          <article id="art-devops" class="article py-8 col-rule lg:px-8">
   <p class="label !text-[.66rem] text-blood">DevOps</p>
   <h4 class="mt-2 font-display text-2xl font-bold leading-tight text-bone">Automatiser la mise en ligne</h4>
   <p class="mt-3"><strong>Pourquoi je suis ce sujet.</strong> Pendant mon stage, une connexion défaillante a bloqué la validation de SYNCRO sur l'App Store. La correction la plus utile a été un test automatique à chaque déploiement.</p>
@@ -828,7 +867,7 @@
         <p class="label text-blood">Bilan</p>
         <h3 class="mt-3 font-display text-2xl font-bold text-bone">Ce que j'en tire</h3>
         <ul class="mt-6 grid gap-5">
-          <li class="border-l-2 border-blood/60 pl-4"><p class="font-semibold text-bone">La sécurité se prévoit dès le départ</p><p class="mt-1 text-sm leading-relaxed text-ash">Sur Pla&#039;Net, la protection CSRF et le hachage des mots de passe sont en place dès la première version, pas ajoutés à la fin.</p></li><li class="border-l-2 border-blood/60 pl-4"><p class="font-semibold text-bone">Automatiser les vérifications</p><p class="mt-1 text-sm leading-relaxed text-ash">Un test de connexion à chaque déploiement de SYNCRO, et des scripts Bash pour la sauvegarde et la supervision en TP : ce qui est automatisé ne s&#039;oublie pas.</p></li><li class="border-l-2 border-blood/60 pl-4"><p class="font-semibold text-bone">Une application publiée s&#039;entretient</p><p class="mt-1 text-sm leading-relaxed text-ash">Les exigences de Google Play et d&#039;Apple évoluent chaque année. Suivre ces changements permet d&#039;anticiper les mises à jour de SYNCRO.</p></li><li class="border-l-2 border-blood/60 pl-4"><p class="font-semibold text-bone">L&#039;IA aide, mais je relis</p><p class="mt-1 text-sm leading-relaxed text-ash">J&#039;utilise l&#039;IA pour avancer plus vite. Ma veille me rappelle que plus le code arrive vite, plus les tests et la relecture sont importants.</p></li><li class="border-l-2 border-blood/60 pl-4"><p class="font-semibold text-bone">Un cap : le DevOps</p><p class="mt-1 text-sm leading-relaxed text-ash">Automatisation, déploiement, sécurité, maintenance : tous ces sujets mènent au même métier. Ma veille confirme que je veux devenir DevOps, et que je veux le faire bien.</p></li>        </ul>
+          <li class="border-l-2 border-blood/60 pl-4"><p class="font-semibold text-bone">La sécurité se prévoit dès le départ</p><p class="mt-1 text-sm leading-relaxed text-ash">Sur Pla&#039;Net, la protection CSRF et le hachage des mots de passe sont en place dès la première version, pas ajoutés à la fin.</p></li><li class="border-l-2 border-blood/60 pl-4"><p class="font-semibold text-bone">Savoir ce qui tourne, et où</p><p class="mt-1 text-sm leading-relaxed text-ash">Avec PHP2Shell, la première question était : quelle version de PHP tourne sur chacun de mes projets ? Tenir cet inventaire à jour permet de réagir en quelques heures, pas en quelques jours.</p></li><li class="border-l-2 border-blood/60 pl-4"><p class="font-semibold text-bone">Automatiser les vérifications</p><p class="mt-1 text-sm leading-relaxed text-ash">Un test de connexion à chaque déploiement de SYNCRO, et des scripts Bash pour la sauvegarde et la supervision en TP : ce qui est automatisé ne s&#039;oublie pas.</p></li><li class="border-l-2 border-blood/60 pl-4"><p class="font-semibold text-bone">Une application publiée s&#039;entretient</p><p class="mt-1 text-sm leading-relaxed text-ash">Les exigences de Google Play et d&#039;Apple évoluent chaque année. Suivre ces changements permet d&#039;anticiper les mises à jour de SYNCRO.</p></li><li class="border-l-2 border-blood/60 pl-4"><p class="font-semibold text-bone">L&#039;IA aide, mais je relis</p><p class="mt-1 text-sm leading-relaxed text-ash">J&#039;utilise l&#039;IA pour avancer plus vite. Ma veille me rappelle que plus le code arrive vite, plus les tests et la relecture sont importants.</p></li><li class="border-l-2 border-blood/60 pl-4"><p class="font-semibold text-bone">Un cap : le DevOps</p><p class="mt-1 text-sm leading-relaxed text-ash">Automatisation, déploiement, sécurité, maintenance : tous ces sujets mènent au même métier. Ma veille confirme que je veux devenir DevOps, et que je veux le faire bien.</p></li>        </ul>
       </div>
     </div>
   </div>

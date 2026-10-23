@@ -1,6 +1,27 @@
 # Etat d'avancement
 
-Dernière mise à jour : 2026-10-14
+Dernière mise à jour : 2026-10-23
+
+## Mise à jour du 2026-10-23, veille PHP2Shell et projet de gestion de cabinet
+
+- **Veille** : nouvel article à la une sur PHP2Shell (CVE-2026-109618 et CVE-2026-109619),
+  annoncées par PHP le 20 octobre et corrigées le 21 (8.2.35, 8.3.36, 8.4.27, 8.5.12).
+  Relié à CRP-Assurance (mutualisé), Pla'Net (PHP-FPM) et au portfolio. ClickFix passe dans
+  la 2e rangée d'articles (`art-clickfix`), rubrique « Alerte PHP » ajoutée, deux articles
+  repérés, un point de bilan « Savoir ce qui tourne, et où ».
+- **Nouveau projet** `gestion-cabinet` (app de gestion de cabinet de courtage, projet de BTS
+  en cours) : page `pages/gestion-cabinet.html`, carte pleine largeur en bas des réalisations
+  (`accueil.largeur_complete: true`, géré par `CarteProjetAccueil` et `CarteProjet`), carte sur
+  « Mes réalisations », sitemap. Contenu tiré du cahier des charges et du cahier technique
+  (dossier Boulot/outil métier, 21/10/2026).
+- **Visuels** : schéma d'architecture `assets/meta/shot-cabinet.{jpg,webp}` ; nouvelle capture
+  de crp-assurance.com (`assets/meta/shot-crp.*`, le site du cabinet a été refait). La capture
+  de Pla'Net est gardée telle quelle (choix de Dorian).
+- HTML mis à jour sans Symfony (pas d'accès à Packagist depuis l'environnement de Claude) :
+  les fragments ont été générés depuis les YAML avec un script qui redonne à l'identique les
+  pages existantes. Lancer `php bin/console app:export` pour confirmer.
+- Tests : 2 nouveaux (page du projet, alerte PHP à la une).
+- À faire : remplacer le schéma par des captures quand l'application aura ses premiers écrans.
 
 ## Mise à jour du 2026-10-14 (2), navigation et mode présentation
 
