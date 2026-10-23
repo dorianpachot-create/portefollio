@@ -4,7 +4,7 @@
 #}
 <section id="competences" class="scroll-mt-16 px-5 py-20 md:px-8 md:py-28" aria-labelledby="comp-title">
   <div class="mx-auto max-w-6xl">
-    <twig:EnTeteSection numero="06" rubrique="Points d'appui et méthode" titre="Ce sur quoi je peux m'appuyer" idTitre="comp-title">
+    <twig:EnTeteSection rubrique="Points d'appui et méthode" titre="Ce sur quoi je peux m'appuyer" idTitre="comp-title">
       Pas de notes ni de niveaux : quatre qualités que je travaille, chacune illustrée par un exemple concret.
     </twig:EnTeteSection>
 
@@ -23,8 +23,7 @@
       <ol class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {% for etape in competences.methode %}
           <li class="panel reveal p-6">
-            <span class="font-mono text-sm text-blood">{{ '%02d'|format(loop.index) }}</span>
-            <h4 class="mt-3 font-display text-lg font-bold text-bone">{{ etape.titre }}</h4>
+            <h4 class="font-display text-lg font-bold text-bone">{{ etape.titre }}</h4>
             <p class="mt-2 text-sm leading-relaxed text-ash">{{ etape.texte }}</p>
           </li>
         {% endfor %}

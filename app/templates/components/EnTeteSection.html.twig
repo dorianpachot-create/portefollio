@@ -1,16 +1,16 @@
 {#
   Composant EnTeteSection : le haut de chaque section de l'accueil
-  (petit numéro rouge, grand titre, phrase d'introduction).
+  (petite rubrique rouge, grand titre, phrase d'introduction).
   Utilisation :
-    <twig:EnTeteSection numero="05" rubrique="Outils" titre="Mes outils de travail" idTitre="outils-title">
+    <twig:EnTeteSection rubrique="Outils" titre="Mes outils de travail" idTitre="outils-title">
       Phrase d'introduction.
       <twig:block name="aDroite"> ... contenu facultatif à droite (boutons, filtres) ... </twig:block>
     </twig:EnTeteSection>
 #}
-{% props numero, rubrique, titre, idTitre %}
+{% props rubrique, titre, idTitre %}
 <div class="reveal flex flex-col justify-between gap-6 md:flex-row md:items-end">
   <div>
-    <p class="label text-blood"><span class="mr-3 text-ash/70">{{ numero }}</span>{{ rubrique }}</p>
+    <p class="label text-blood">{{ rubrique }}</p>
     <h2 id="{{ idTitre }}" class="mt-4 font-display text-4xl font-extrabold tracking-[-.02em] text-bone md:text-5xl">{{ titre }}</h2>
     <p class="mt-4 max-w-xl text-ash">{% block content %}{% endblock %}</p>
   </div>

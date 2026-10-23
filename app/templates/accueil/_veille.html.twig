@@ -6,7 +6,7 @@
 {%- set v = veille -%}
 <section id="veille" class="scroll-mt-16 px-5 py-20 md:px-8 md:py-28" aria-labelledby="veille-title">
   <div class="mx-auto max-w-6xl">
-    <twig:EnTeteSection numero="07" rubrique="Veille technologique" titre="Ma veille" idTitre="veille-title">
+    <twig:EnTeteSection rubrique="Veille technologique" titre="Ma veille" idTitre="veille-title">
       Ma veille sert un objectif précis : devenir DevOps. Chaque sujet part d'un projet ou d'un cours. Mise à jour le {{ v.mise_a_jour }}.
     </twig:EnTeteSection>
 
@@ -70,7 +70,7 @@
         <p class="label text-blood">Méthodologie</p>
         <h3 class="mt-3 font-display text-2xl font-bold text-bone">Comment je fais ma veille</h3>
         <ol class="mt-6 grid gap-5">
-          {% for e in v.methode %}<li class="grid grid-cols-[2.2rem_1fr] gap-3"><span class="font-mono text-sm text-blood">{{ '%02d'|format(loop.index) }}</span><div><p class="font-semibold text-bone">{{ e.titre }}</p><p class="mt-1 text-sm leading-relaxed text-ash">{{ e.texte }}</p></div></li>{% endfor %}
+          {% for e in v.methode %}<li><div><p class="font-semibold text-bone">{{ e.titre }}</p><p class="mt-1 text-sm leading-relaxed text-ash">{{ e.texte }}</p></div></li>{% endfor %}
         </ol>
       </div>
       <div class="panel reveal p-6 md:p-8">

@@ -8,7 +8,7 @@
 <article class="project card-link panel reveal relative flex flex-col{{ (projet.accueil.largeur_complete ?? false) ? ' md:col-span-2' }}" style="--c:{{ projet.couleur }}">
   {% if projet.media.type == 'captures' %}
     <div class="grid aspect-[16/9] grid-cols-4 gap-2 overflow-hidden border-b border-edge bg-gradient-to-br from-blood/10 to-transparent p-4">
-      {%- for image in projet.media.images -%}<img class="project__img h-full w-full rounded-lg object-cover object-top" src="{{ lien(image.fichier) }}" alt="" loading="lazy" width="720" height="1280" />{%- endfor -%}
+      {%- for image in projet.media.images -%}<img class="project__img h-full w-full rounded-lg object-cover object-top" src="{{ lien(image.fichier) }}" alt="" loading="lazy" width="591" height="1280" />{%- endfor -%}
     </div>
   {% else %}
     <div class="aspect-[16/9] overflow-hidden border-b border-edge"><twig:Image :fichier="projet.media.image" :alt="projet.liste_projets.alt" classe="project__img h-full w-full object-cover object-top" /></div>

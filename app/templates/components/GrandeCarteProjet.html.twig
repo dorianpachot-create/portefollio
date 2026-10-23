@@ -23,13 +23,13 @@
       <div class="relative flex h-[26rem] w-full items-center justify-center gap-4 px-6">
         {% set alts = projet.media.images|reduce((acc, i) => acc|merge({(i.fichier): i.alt}), {}) %}
         {% for f in a.captures_bureau %}
-          <img class="project__img w-[40%] max-w-[11rem] {{ loop.first ? '-rotate-3' : 'translate-y-4' }} rounded-2xl border border-edge shadow-2xl" src="{{ lien(f) }}" alt="{{ alts[f] }}" loading="lazy" width="720" height="1280" />
+          <img class="project__img w-[40%] max-w-[11rem] {{ loop.first ? '-rotate-3' : 'translate-y-4' }} rounded-2xl border border-edge shadow-2xl" src="{{ lien(f) }}" alt="{{ alts[f] }}" loading="lazy" width="591" height="1280" />
         {% endfor %}
       </div>
     </div>
     {# Petit écran : une rangée de captures qui défile #}
     <div class="relative z-[2] flex gap-3 overflow-x-auto px-6 pb-6 md:hidden">
-      {% for f in a.captures_mobile %}<img class="w-32 flex-none rounded-xl border border-edge" src="{{ lien(f) }}" alt="{{ alts[f] }}" loading="lazy" width="720" height="1280" />{% endfor %}
+      {% for f in a.captures_mobile %}<img class="w-32 flex-none rounded-xl border border-edge" src="{{ lien(f) }}" alt="{{ alts[f] }}" loading="lazy" width="591" height="1280" />{% endfor %}
     </div>
   </div>
 </article>

@@ -91,8 +91,7 @@
     .roles p { font-size: 14px; color: var(--gris); margin: 12px 0 0; line-height: 1.35; }
     .fcts { position: absolute; left: 533px; right: 58px; top: 128px; display: grid; grid-template-columns: 1fr 1fr; gap: 13px 14px; }
     .fcts div { background: var(--doux); border-radius: 10px; height: 64px; display: flex; align-items: center; padding: 0 18px; font-size: 15px; font-weight: 700; }
-    .fcts span { color: var(--ambre); font-size: 13px; width: 48px; }
-    /* Images */
+        /* Images */
     .img { position: absolute; border-radius: 10px; display: block; }
     html[data-theme="dark"] .img.clair { filter: invert(1) hue-rotate(180deg); }
     /* Tableau des choix */
@@ -131,7 +130,7 @@
     .phones img:nth-child(2) { margin-top: -28px; }
     /* Veille */
     .methode { position: absolute; left: 58px; top: 128px; width: 560px; display: grid; gap: 22px; }
-    .methode div { display: grid; grid-template-columns: 66px 1fr; }
+    .methode div { display: block; }
     .methode span { color: var(--rouge); font-weight: 700; font-size: 16px; } .methode b { font-size: 17px; } .methode em { display: block; font-style: normal; color: var(--gris); font-size: 14px; margin-top: 6px; }
     .une { position: absolute; left: 672px; right: 58px; top: 128px; height: 226px; border-radius: 12px; border: 1px solid var(--rouge); background: color-mix(in srgb, var(--rouge) 8%, var(--diapo)); padding: 18px 28px; }
     .cap { position: absolute; left: 672px; right: 58px; top: 374px; height: 140px; padding: 16px 28px; }
@@ -189,7 +188,7 @@
       <div class="k">Le tableau de synthèse</div>
       <h2 class="titre">Chaque compétence du bloc 1 est couverte</h2>
       <table class="grille">
-        <thead><tr><th>Réalisation</th><th>01 Patrimoine</th><th>02 Incidents</th><th>03 Présence en ligne</th><th>04 Mode projet</th><th>05 Mise à disposition</th><th>06 Dév. pro</th></tr></thead>
+        <thead><tr><th>Réalisation</th><th>Patrimoine</th><th>Incidents</th><th>Présence en ligne</th><th>Mode projet</th><th>Mise à disposition</th><th>Dév. pro</th></tr></thead>
         <tbody>
           <tr class="cab"><td><b>Gestion de cabinet</b><small>projet en cours</small></td><td>●</td><td></td><td></td><td>●</td><td>●</td><td>●</td></tr>
           <tr class="pro"><td><b>SYNCRO</b><small>stage chez Suitime</small></td><td>●</td><td>●</td><td>●</td><td>●</td><td>●</td><td>●</td></tr>
@@ -239,11 +238,11 @@
         <div class="carte"><div class="h">User<small><b>Le mandataire</b></small></div><p>Gère ses propres clients et contrats, ajoute des documents, suit ses commissions et ses alertes.</p></div>
       </div>
       <div class="fcts">
-        <div><span>01</span>Connexion et rôles</div><div><span>02</span>Clients</div>
-        <div><span>03</span>Contrats et statuts</div><div><span>04</span>Commissions</div>
-        <div><span>05</span>Documents</div><div><span>06</span>Tableau de bord</div>
-        <div><span>07</span>Alertes et relances</div><div><span>08</span>Paramétrage du cabinet</div>
-        <div><span>09</span>Comparateur emprunteur</div><div><span>10</span>Agenda des rendez-vous</div>
+        <div>Connexion et rôles</div><div>Clients</div>
+        <div>Contrats et statuts</div><div>Commissions</div>
+        <div>Documents</div><div>Tableau de bord</div>
+        <div>Alertes et relances</div><div>Paramétrage du cabinet</div>
+        <div>Comparateur emprunteur</div><div>Agenda des rendez-vous</div>
       </div>
       <div class="pastilles" style="top:580px"><span class="pastille">Journal d'audit</span><span class="pastille">Rapprochement attendu / reçu</span><span class="pastille">Un point à valider</span></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>6</span></div>
@@ -344,7 +343,7 @@
       </div>
       <div class="pastilles" style="top:514px"><span class="pastille">Refus de l'App Store</span><span class="pastille">Créneaux après minuit</span></div>
       <div class="pastilles" style="top:566px"><span class="pastille">Notifications iPhone</span><span class="pastille">Cloisonnement des groupes</span></div>
-      <div class="phones"><img src="../assets/syncro/screens/screen-1.jpg" alt="SYNCRO : planning de la semaine" /><img src="../assets/syncro/screens/screen-2.jpg" alt="SYNCRO : saisie des disponibilités" /><img src="../assets/syncro/screens/screen-3.jpg" alt="SYNCRO : groupes et rôles" /></div>
+      <div class="phones"><img src="../assets/syncro/screens/screen-1.jpg" alt="SYNCRO : planning du groupe, couverture et vue équipe" /><img src="../assets/syncro/screens/screen-2.jpg" alt="SYNCRO : saisie des disponibilités" /><img src="../assets/syncro/screens/screen-3.jpg" alt="SYNCRO : un groupe, ses membres et les heures de la semaine" /></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>12</span></div>
     </section>
 
@@ -366,10 +365,10 @@
       <div class="k">Développement professionnel</div>
       <h2 class="titre">Ma veille a un cap : devenir DevOps</h2>
       <div class="methode">
-        <div><span>01</span><p style="margin:0"><b>Des sources</b><em>Alertes Google, notes de version, règles des stores</em></p></div>
-        <div><span>02</span><p style="margin:0"><b>Un tri</b><em>Projet, cours ou métier visé ? Sinon, je ne garde pas</em></p></div>
-        <div><span>03</span><p style="margin:0"><b>Une lecture critique</b><em>Source, date, deuxième source</em></p></div>
-        <div><span>04</span><p style="margin:0"><b>Une trace</b><em>Résumée sur le portfolio</em></p></div>
+        <div><p style="margin:0"><b>Des sources</b><em>Alertes Google, notes de version, règles des stores</em></p></div>
+        <div><p style="margin:0"><b>Un tri</b><em>Projet, cours ou métier visé ? Sinon, je ne garde pas</em></p></div>
+        <div><p style="margin:0"><b>Une lecture critique</b><em>Source, date, deuxième source</em></p></div>
+        <div><p style="margin:0"><b>Une trace</b><em>Résumée sur le portfolio</em></p></div>
       </div>
       <div class="une"><div class="k">À la une · 20 octobre 2026</div><div class="h">PHP2Shell : deux failles critiques dans PHP</div><p class="gris" style="font-size:15px;margin:14px 0 0">Annoncées le 20, corrigées le 21. Trois de mes projets tournent sur PHP.</p></div>
       <div class="carte cap"><div class="k">Mon cap</div><div class="h">Une alternance, puis un bachelor DevOps</div></div>

@@ -2,6 +2,15 @@
 
 Dernière mise à jour : 2026-10-23
 
+## Mise à jour du 2026-10-23 (5), vraies captures de SYNCRO, plus de numéros
+
+- `assets/syncro/screens/screen-1` à `4` : vraies captures de l'application (planning,
+  disponibilités, groupe, notifications) à la place des visuels des stores. Les noms des
+  autres membres sont floutés (données personnelles), seul Dorian reste lisible.
+- Numéros « 01, 02, 03… » retirés partout : en-têtes de section (prop `numero` supprimée
+  de `EnTeteSection`), cartes des outils, méthode de travail, méthode de veille, contact,
+  et dans la présentation (fonctionnalités, méthode, en-têtes du tableau).
+
 ## Mise à jour du 2026-10-23 (4), nouvelle présentation pour l'oral
 
 - `pages/presentation.html` (touche P) refait sur le modèle du PowerPoint

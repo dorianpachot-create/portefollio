@@ -1,14 +1,13 @@
 {# SECTION 05 : OUTILS. Trois colonnes, textes : contenu/outils.yaml #}
 <section id="outils" class="scroll-mt-16 px-5 py-20 md:px-8 md:py-28" aria-labelledby="outils-title">
   <div class="mx-auto max-w-6xl">
-    <twig:EnTeteSection numero="05" rubrique="Outils" titre="Mes outils de travail" idTitre="outils-title">
+    <twig:EnTeteSection rubrique="Outils" titre="Mes outils de travail" idTitre="outils-title">
       Classés selon l'usage que j'en ai réellement : ce que j'utilise pour coder, ce que j'utilise pour coder avec l'IA, et ce que j'ai découvert en cours.
     </twig:EnTeteSection>
     <div class="mt-12 grid gap-5 lg:grid-cols-3">
       {% for groupe in outils %}
         <article class="panel reveal flex flex-col p-6 md:p-7">
-          <span class="font-mono text-sm text-blood">{{ '%02d'|format(loop.index) }}</span>
-          <h3 class="mt-3 font-display text-xl font-bold text-bone">{{ groupe.titre }}</h3>
+          <h3 class="font-display text-xl font-bold text-bone">{{ groupe.titre }}</h3>
           <p class="mt-2 text-sm leading-relaxed text-ash">{{ groupe.texte }}</p>
           <twig:ListeTags :tags="groupe.outils" classe="mt-5" />
         </article>

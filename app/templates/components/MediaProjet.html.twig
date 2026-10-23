@@ -7,7 +7,7 @@
 {% if media.type == 'captures' %}
   <div class="reveal flex gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-4">
     {% for image in media.images %}
-      <figure class="w-44 flex-none md:w-auto"><img class="rounded-2xl border border-edge" src="{{ lien(image.fichier) }}" alt="{{ image.alt }}" loading="lazy" width="720" height="1280" /></figure>
+      <figure class="w-44 flex-none md:w-auto"><img class="rounded-2xl border border-edge" src="{{ lien(image.fichier) }}" alt="{{ image.alt }}" loading="lazy" width="591" height="1280" /></figure>
     {% endfor %}
   </div>
 {% else %}
