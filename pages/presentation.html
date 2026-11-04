@@ -128,6 +128,10 @@
     .phones { position: absolute; right: 50px; top: 168px; display: flex; gap: 12px; }
     .phones img { width: 144px; border-radius: 12px; display: block; box-shadow: var(--ombre); }
     .phones img:nth-child(2) { margin-top: -28px; }
+    .rouge .liste-num span { color: var(--rouge); border-color: var(--rouge); background: color-mix(in srgb, var(--rouge) 12%, transparent); }
+    .prod { position: absolute; right: 58px; top: 136px; width: 478px; height: 300px; padding: 28px 34px; }
+    .prod .h { font-size: 20px; font-weight: 700; color: var(--rouge); }
+    .prod ul { margin: 20px 0 0; padding-left: 20px; font-size: 17px; line-height: 2; }
     /* Veille */
     .methode { position: absolute; left: 58px; top: 128px; width: 560px; display: grid; gap: 22px; }
     .methode div { display: block; }
@@ -184,23 +188,17 @@
     </section>
 
     <!-- 3. Tableau de synthèse -->
-    <section class="slide" data-notes="[35 s] Voici mon tableau de synthèse. Chaque compétence est couverte plusieurs fois. La ligne rouge, c&#x27;est la réalisation en milieu professionnel : SYNCRO, qui couvre les six compétences. La ligne orange, c&#x27;est le projet que je vais détailler : l&#x27;application de gestion de cabinet.&#10;&#10;SI ON ME DEMANDE (pourquoi ce point est coché)&#10;• SYNCRO, 01 Patrimoine : rôles et permissions par groupe, serveur Linux, script de déploiement qui supprime les fichiers obsolètes.&#10;• SYNCRO, 02 Incidents : refus de l&#x27;App Store (connexion cassée depuis cinq jours), notifications iPhone, double blocage des créneaux après minuit.&#10;• SYNCRO, 03 Présence en ligne : site vitrine appsyncro.fr et ses pages légales, fiches sur l&#x27;App Store et Google Play.&#10;• SYNCRO, 04 Mode projet : cahier des charges, maquettes, treize écrans maquettés pour cadrer une évolution avec les responsables.&#10;• SYNCRO, 05 Mise à disposition : mise en production (Nginx, PM2, HTTPS), test de connexion à chaque déploiement, publication sur les deux stores, back-office pour l&#x27;équipe.&#10;• SYNCRO, 06 Développement pro : c&#x27;est pendant ce stage que j&#x27;ai choisi le DevOps ; veille sur les règles des stores et les versions de Flutter ; lettre de recommandation.&#10;• Gestion de cabinet, 01 : rôles admin et user, contrôle des droits, sauvegardes quotidiennes testées. 04 : cahier des charges et cahier technique. 05 : déploiement Docker par cabinet, recette prévue avec le client. 06 : choix techniques appuyés sur une recherche (tarifs Scaleway, plateformes gérées par Firebase), sources citées dans le cahier technique.&#10;• Pla&#x27;Net, 03 : application web en ligne qui exploite les données de l&#x27;école (le planning des cours).&#10;• CRP-Assurance, 01 : respect des règles d&#x27;utilisation des données (RGPD, mentions légales), identifiants hors du code, journal des erreurs protégé.">
+    <section class="slide" data-notes="[30 s] Je vais présenter deux réalisations. La ligne orange, c&#x27;est le projet que je mène en ce moment : l&#x27;application de gestion de cabinet. La ligne rouge, c&#x27;est ma réalisation en milieu professionnel : SYNCRO, qui couvre à elle seule les six compétences. Mes autres réalisations sont sur le portfolio et dans le tableau complet, en annexe.&#10;&#10;SI ON ME DEMANDE (pourquoi ce point est coché)&#10;• SYNCRO, 01 Patrimoine : rôles et permissions par groupe, serveur Linux, script de déploiement qui supprime les fichiers obsolètes.&#10;• SYNCRO, 02 Incidents : refus de l&#x27;App Store (connexion cassée depuis cinq jours), notifications iPhone, double blocage des créneaux après minuit.&#10;• SYNCRO, 03 Présence en ligne : site vitrine appsyncro.fr et ses pages légales, fiches sur l&#x27;App Store et Google Play.&#10;• SYNCRO, 04 Mode projet : cahier des charges, maquettes, treize écrans maquettés pour cadrer une évolution avec les responsables.&#10;• SYNCRO, 05 Mise à disposition : mise en production (Nginx, PM2, HTTPS), test de connexion à chaque déploiement, publication sur les deux stores, back-office pour l&#x27;équipe.&#10;• SYNCRO, 06 Développement pro : c&#x27;est pendant ce stage que j&#x27;ai choisi le DevOps ; veille sur les règles des stores et les versions de Flutter ; lettre de recommandation.&#10;• Gestion de cabinet, 01 : rôles admin et user, contrôle des droits, sauvegardes quotidiennes testées. 04 : cahier des charges et cahier technique. 05 : déploiement Docker par cabinet, recette prévue avec le client. 06 : choix techniques appuyés sur une recherche (tarifs Scaleway, plateformes gérées par Firebase), sources citées dans le cahier technique.&#10;• Les autres réalisations (tableau complet en annexe) : Pla&#x27;Net (base de données, projet à cinq), CRP-Assurance (site client en PHP), TP Linux, Active Directory, parc informatique, audit SEO.">
       <div class="k">Le tableau de synthèse</div>
-      <h2 class="titre">Chaque compétence du bloc 1 est couverte</h2>
+      <h2 class="titre">Deux réalisations, les six compétences du bloc 1</h2>
       <table class="grille">
         <thead><tr><th>Réalisation</th><th>Patrimoine</th><th>Incidents</th><th>Présence en ligne</th><th>Mode projet</th><th>Mise à disposition</th><th>Dév. pro</th></tr></thead>
         <tbody>
-          <tr class="cab"><td><b>Gestion de cabinet</b><small>projet en cours</small></td><td>●</td><td></td><td></td><td>●</td><td>●</td><td>●</td></tr>
+          <tr class="cab"><td><b>Gestion de cabinet</b><small>projet de 2<sup>e</sup> année, en cours</small></td><td>●</td><td></td><td></td><td>●</td><td>●</td><td>●</td></tr>
           <tr class="pro"><td><b>SYNCRO</b><small>stage chez Suitime</small></td><td>●</td><td>●</td><td>●</td><td>●</td><td>●</td><td>●</td></tr>
-          <tr><td><b>Pla'Net</b><small>projet à cinq</small></td><td>●</td><td></td><td>●</td><td>●</td><td>●</td><td></td></tr>
-          <tr><td><b>CRP-Assurance</b><small>site client</small></td><td>●</td><td></td><td>●</td><td>●</td><td>●</td><td></td></tr>
-          <tr><td><b>TP Linux avancé</b><small>TP0 à TP5</small></td><td>●</td><td>●</td><td></td><td></td><td>●</td><td></td></tr>
-          <tr><td><b>AD et répartition de charge</b><small>Windows Server, Scaleway</small></td><td>●</td><td></td><td></td><td></td><td>●</td><td></td></tr>
-          <tr><td><b>Parc informatique</b><small>GLPI, ITIL</small></td><td>●</td><td>●</td><td></td><td></td><td></td><td></td></tr>
-          <tr><td><b>Audit SEO</b><small>deux sites</small></td><td></td><td></td><td>●</td><td></td><td></td><td></td></tr>
-          <tr><td><b>Veille et portfolio</b></td><td></td><td></td><td></td><td></td><td></td><td>●</td></tr>
         </tbody>
       </table>
+      <p class="gris" style="position:absolute;left:58px;top:330px;width:1100px;margin:0;font-size:16px;line-height:1.5">Je présente ces deux réalisations : SYNCRO couvre à elle seule les six compétences, et la gestion de cabinet est le projet que je mène en ce moment. Mes autres réalisations (Pla'Net, CRP-Assurance, les TP) sont détaillées sur le portfolio et dans le tableau de synthèse complet, en annexe.</p>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>3</span></div>
     </section>
 
@@ -209,7 +207,7 @@
       <div style="position:absolute;left:58px;top:221px">
         <div class="k" style="color:#F59E0B">Projet principal · en cours</div>
         <h1 class="grand-titre" style="max-width:1100px">Une application de gestion pour les cabinets de courtage en assurance</h1>
-        <p class="sous">Projet de deuxième année · conception terminée, développement en cours</p>
+        <p class="sous">Projet de deuxième année · conception et base de données terminées, API à venir</p>
       </div>
     </section>
 
@@ -331,8 +329,8 @@
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>11</span></div>
     </section>
 
-    <!-- 12. SYNCRO -->
-    <section class="slide rouge" data-notes="[50 s] SYNCRO, c&#x27;est ma réalisation en milieu professionnel. Je l&#x27;ai développée pour Suitime d&#x27;avril à août 2026, d&#x27;abord en parallèle des cours puis en stage. Elle est publiée sur l&#x27;App Store et Google Play.&#10;&#10;SI ON ME DEMANDE&#10;• Refus de l&#x27;App Store : les testeurs d&#x27;Apple ne pouvaient pas se connecter. La connexion était cassée en production depuis cinq jours, à cause d&#x27;anciens fichiers restés sur le serveur. J&#x27;ai corrigé, puis changé le script de déploiement : il supprime les fichiers obsolètes et lance un test de connexion à chaque mise en ligne. C&#x27;est ce qui m&#x27;a donné envie du DevOps.&#10;• Créneaux après minuit : un membre pouvait être bloqué deux fois sur le même créneau. La protection existait, mais elle était fausse pour les horaires qui passent minuit. J&#x27;ai écrit une nouvelle méthode, vérifiée sur les cent combinaisons possibles.&#10;• Notifications iPhone : elles n&#x27;avaient jamais marché, sans message d&#x27;erreur. J&#x27;ai comparé point par point avec une autre application de l&#x27;entreprise qui fonctionnait, et trouvé trois écarts.&#10;• Cloisonnement des groupes : en relisant les routes sensibles une par une, j&#x27;ai trouvé un défaut : un responsable pouvait agir hors de son groupe. Corrigé.&#10;• Technique : jeton d&#x27;accès de 15 minutes, jeton de renouvellement de 7 jours ; Nginx, PM2 et HTTPS ; 84 commits en cinq mois.">
+    <!-- 12. SYNCRO, le produit -->
+    <section class="slide rouge" data-notes="[45 s] SYNCRO, c&#x27;est ma réalisation en milieu professionnel. Une application de planning d&#x27;équipe : chaque membre saisit ses disponibilités, le responsable valide puis verrouille la semaine. Je l&#x27;ai développée pour Suitime d&#x27;avril à août 2026, d&#x27;abord en parallèle des cours puis en stage, et je m&#x27;en suis occupé de bout en bout : l&#x27;application Flutter, l&#x27;API, la base, le serveur et la publication sur les deux stores.&#10;&#10;SI ON ME DEMANDE&#10;• Valider puis verrouiller : le responsable valide les disponibilités, puis verrouille la semaine ; plus personne ne peut modifier, le planning devient la référence.&#10;• Invitations par QR code : le responsable affiche un QR code, le nouveau membre le scanne et rejoint directement le bon groupe.&#10;• Treize écrans maquettés : pour cadrer une évolution importante du produit avec les responsables avant de coder (mode projet).&#10;• Les choix : Flutter (une base de code pour Android et iOS), Next.js en TypeScript pour l&#x27;API (53 routes), MySQL / MariaDB avec index et déclencheurs, Firebase et APNs pour les notifications.&#10;• Organisation : des points réguliers avec les responsables de Suitime (besoin, maquettes, validation), 84 commits en cinq mois.">
       <div class="k">En milieu professionnel · stage chez Suitime</div>
       <h2 class="titre">SYNCRO, de la maquette aux deux stores</h2>
       <p style="position:absolute;left:58px;top:168px;width:660px;margin:0;font-size:16px;line-height:1.4">Application mobile de planning d'équipe : chaque membre saisit ses disponibilités, le responsable valide puis verrouille la semaine. J'ai fait tout le projet : l'application Flutter, l'API Next.js en TypeScript, la base MySQL, le serveur et la publication.</p>
@@ -341,22 +339,23 @@
         <div class="carte" style="height:139px"><div class="gros" style="font-size:40px">53</div><em>routes en TypeScript</em></div>
         <div class="carte" style="height:139px"><div class="gros" style="font-size:40px">2</div><em>stores</em></div>
       </div>
-      <div class="pastilles" style="top:514px"><span class="pastille">Refus de l'App Store</span><span class="pastille">Créneaux après minuit</span></div>
-      <div class="pastilles" style="top:566px"><span class="pastille">Notifications iPhone</span><span class="pastille">Cloisonnement des groupes</span></div>
+      <div class="pastilles" style="top:524px"><span class="pastille">Valider puis verrouiller</span><span class="pastille">Invitations par QR code</span><span class="pastille">Treize écrans maquettés</span></div>
       <div class="phones"><img src="../assets/syncro/screens/screen-1.jpg" alt="SYNCRO : planning du groupe, couverture et vue équipe" /><img src="../assets/syncro/screens/screen-2.jpg" alt="SYNCRO : saisie des disponibilités" /><img src="../assets/syncro/screens/screen-3.jpg" alt="SYNCRO : un groupe, ses membres et les heures de la semaine" /></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>12</span></div>
     </section>
 
-    <!-- 13. Pla'Net -->
-    <section class="slide pn" data-notes="[40 s] Pla&#x27;Net, c&#x27;est le planning des cours de l&#x27;école, fait à cinq en quatre jours. Notre choix : deux jours et demi de planification et de base de données avant de coder. Le code a ensuite été généré en grande partie par l&#x27;IA, et c&#x27;est la conception qui a permis de le vérifier carte par carte.&#10;&#10;SI ON ME DEMANDE&#10;• Colonne obsolete : on ne supprime jamais rien. Chaque table a une colonne obsolete ; archiver une salle ou un intervenant ne casse pas les séances passées.&#10;• Table de liaison : seance_classe. Un cours commun à trois classes, c&#x27;est UNE séance liée à trois classes, au lieu de trois copies.&#10;• Carte DÉCISION : une carte Trello qui bloquait le code tant que quatre questions de conception n&#x27;étaient pas tranchées (par exemple : une classe déjà en cours bloque l&#x27;enregistrement, une salle déjà prise donne seulement un avertissement).&#10;• Migrations rejouables : on peut relancer un script de migration sans créer de doublon ; il archive au lieu de supprimer. L&#x27;import dans phpMyAdmin perdait la base sélectionnée, j&#x27;ai réécrit le script.&#10;• L&#x27;écart : 34 cartes sur 45, environ 75 % de la charge. Il manque la sauvegarde, pourtant prioritaire : c&#x27;est le prochain chantier. Leçon : avec l&#x27;IA, il faut suivre l&#x27;avancement en cartes terminées, pas en jours.&#10;• Contrôles dans la base : clés étrangères, fin après le début, index sur les dates.">
-      <div class="k" style="color:var(--bleu)">Pla'Net · projet à cinq en quatre jours</div>
-      <h2 class="titre">La base d'abord, le code ensuite</h2>
-      <img class="img clair" src="../assets/presentation/planet-bdd.jpg" alt="Modèle logique de la base de Pla'Net : 12 tables" style="left:58px;top:168px;width:787px" />
-      <div class="chiffres" style="top:168px;left:874px;grid-template-columns:1fr;gap:19px">
-        <div class="carte" style="height:154px"><div class="gros">12</div><em>tables</em></div>
-        <div class="carte" style="height:154px"><div class="gros" style="font-size:40px">34 / 45</div><em>cartes Trello réalisées</em></div>
+    <!-- 13. SYNCRO, la production -->
+    <section class="slide rouge" data-notes="[55 s] En stage, j&#x27;ai surtout appris à gérer de vrais incidents en production. Le plus marquant : Apple a refusé l&#x27;application parce que ses testeurs ne pouvaient pas se connecter. En cherchant, j&#x27;ai découvert que la connexion était cassée en production depuis cinq jours, à cause d&#x27;anciens fichiers restés sur le serveur. J&#x27;ai corrigé, puis j&#x27;ai changé le script de déploiement pour que ça ne puisse pas revenir : il supprime les fichiers obsolètes et teste la connexion à chaque mise en ligne. C&#x27;est ce qui m&#x27;a donné envie du DevOps.&#10;&#10;SI ON ME DEMANDE&#10;• Créneaux après minuit : un membre pouvait être bloqué deux fois sur le même créneau. La protection existait, mais elle était fausse pour les horaires qui passent minuit. J&#x27;ai écrit une nouvelle méthode, vérifiée sur les cent combinaisons possibles.&#10;• Notifications iPhone : elles n&#x27;avaient jamais marché, sans message d&#x27;erreur. J&#x27;ai comparé point par point avec une autre application de l&#x27;entreprise qui fonctionnait, et trouvé trois écarts.&#10;• Cloisonnement des groupes : en relisant les routes sensibles une par une, j&#x27;ai trouvé qu&#x27;un responsable pouvait agir hors de son groupe. Corrigé côté API.&#10;• Mise en production : serveur Linux, Nginx en reverse proxy, PM2 qui garde l&#x27;API en vie et la relance, HTTPS ; déploiement par Git.&#10;• Jetons : un jeton d&#x27;accès de 15 minutes et un jeton de renouvellement de 7 jours ; si le jeton d&#x27;accès est volé, il ne sert pas longtemps.&#10;• TypeScript : 14 modules et 53 routes migrés de JavaScript vers TypeScript, pour trouver les erreurs avant la mise en ligne plutôt qu&#x27;en production.&#10;• Comment l&#x27;auriez-vous vu plus tôt ? Avec une supervision : un test automatique de la connexion toutes les quelques minutes, qui alerte. C&#x27;est exactement ce que je veux apprendre en DevOps.">
+      <div class="k">En milieu professionnel · stage chez Suitime</div>
+      <h2 class="titre">Des incidents réels, corrigés pour de bon</h2>
+      <div class="liste-num" style="gap:34px;width:610px;margin-top:34px">
+        <div><span>1</span><p style="margin:0"><b>Refus de l'App Store</b><em>Connexion cassée en production depuis cinq jours : corrigée, puis déploiement qui nettoie et teste</em></p></div>
+        <div><span>2</span><p style="margin:0"><b>Créneaux après minuit</b><em>Double blocage possible : nouvelle méthode vérifiée sur cent combinaisons</em></p></div>
+        <div><span>3</span><p style="margin:0"><b>Notifications iPhone</b><em>Jamais fonctionné, sans erreur : comparaison avec une application qui marche</em></p></div>
+        <div><span>4</span><p style="margin:0"><b>Cloisonnement des groupes</b><em>Relecture des routes sensibles : un responsable pouvait sortir de son groupe</em></p></div>
       </div>
-      <div class="pastilles" style="top:581px"><span class="pastille">Colonne obsolete</span><span class="pastille">Table de liaison</span><span class="pastille">Carte DÉCISION</span><span class="pastille">Migrations rejouables</span><span class="pastille">L'écart : la sauvegarde</span></div>
+      <div class="carte prod"><div class="h">En production</div><ul><li>Serveur Linux, Nginx, PM2, HTTPS</li><li>Déploiement par Git, test de connexion</li><li>Jetons de 15 minutes et de 7 jours</li><li>API passée en TypeScript (53 routes)</li><li>Publiée sur l'App Store et Google Play</li></ul></div>
+      <div class="pastilles" style="top:581px"><span class="pastille">Superviser pour voir plus tôt</span><span class="pastille">Lettre de recommandation</span><span class="pastille">Pourquoi le DevOps</span></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>13</span></div>
     </section>
 
@@ -377,16 +376,17 @@
     </section>
 
     <!-- 15. Questions -->
-    <section class="slide sombre" data-notes="[10 s] Merci. Je suis prêt pour vos questions et pour la partie pratique : je peux ouvrir SYNCRO, Pla&#x27;Net, le site de CRP-Assurance ou le portfolio. Les cahiers de l&#x27;application de gestion de cabinet sont aussi disponibles.">
+    <section class="slide sombre" data-notes="[10 s] Merci. Je suis prêt pour vos questions et pour la partie pratique : je peux ouvrir SYNCRO, la page et les cahiers de l&#x27;application de gestion de cabinet, ses modèles de données, ou le portfolio.">
       <div style="position:absolute;left:58px;top:163px">
         <div class="k">Merci</div>
         <h1 class="grand-titre">Vos questions</h1>
       </div>
       <div class="liens">
         <a href="../index.html" target="_blank" rel="noopener">Portfolio</a>
-        <a href="https://apps.apple.com/fr/app/syncro/id6787898930" target="_blank" rel="noopener noreferrer">SYNCRO</a>
-        <a href="#" data-lien="aHR0cHM6Ly9wbGEtbmV0Lm1lZGlhc2Nob29sLXJvdWVuLmZyL2xvZ2lu" rel="nofollow">Pla'Net</a>
-        <a href="https://crp-assurance.com" target="_blank" rel="noopener noreferrer">CRP-Assurance</a>
+        <a href="https://apps.apple.com/fr/app/syncro/id6787898930" target="_blank" rel="noopener noreferrer">SYNCRO sur l'App Store</a>
+        <a href="https://play.google.com/store/apps/details?id=fr.appsyncro.mobile" target="_blank" rel="noopener noreferrer">SYNCRO sur Google Play</a>
+        <a href="gestion-cabinet.html" target="_blank" rel="noopener">Gestion de cabinet</a>
+        <a href="annexes.html" target="_blank" rel="noopener">Annexes</a>
       </div>
     </section>
 

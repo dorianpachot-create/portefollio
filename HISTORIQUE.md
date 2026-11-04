@@ -34,3 +34,7 @@ Le détail de chaque modification est dans l'historique Git (`git log`). Ici, l'
 - Nouveaux TP : Le Fournil (BDD), PowerShell TP1, PrivaMilk et agents IA (anglais), les faussaires
   (culture générale), jeu de Bataille (1re année). VitaSport : réponses des parties 1 à 5 en PDF.
 - Annexes : le type de chaque compte rendu (PDF, Python, SQL) est déduit de l'extension du fichier.
+- Schéma relationnel corrigé (nouvelle version du PC) : image de la page projet et PDF des annexes.
+- Présentation de l'oral recentrée sur deux réalisations : la gestion de cabinet et SYNCRO (qui
+  couvrent à elles deux les six compétences). La diapo Pla'Net est remplacée par une seconde diapo
+  SYNCRO sur les incidents en production ; le tableau de synthèse complet reste en annexe.
