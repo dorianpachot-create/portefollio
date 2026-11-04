@@ -501,18 +501,18 @@ projets:
   nom: Gestion de cabinet
   couleur: '#F59E0B'
   titre_page: Application de gestion de cabinet de courtage, projet en cours | Dorian Pachot
-  description: Application Flutter (mobile et ordinateur) et API Node.js pour les cabinets de courtage en assurance et leurs mandataires. Projet de BTS en cours, en phase de conception.
+  description: 'Application Flutter (mobile et ordinateur) et API Node.js pour les cabinets de courtage en assurance et leurs mandataires. Projet de BTS en cours : cahiers et base de données terminés.'
   cadre: Projet de deuxième année de BTS, en cours
-  intro: "Application de gestion pour les cabinets de courtage en assurance et leurs mandataires : clients, contrats et commissions dans un seul outil, sur téléphone comme sur ordinateur. Le projet en est à la conception : le cahier des charges et le cahier technique sont rédigés, le développement commence."
+  intro: "Application de gestion pour les cabinets de courtage en assurance et leurs mandataires : clients, contrats et commissions dans un seul outil, sur téléphone comme sur ordinateur. Le cahier des charges, le cahier technique et le modèle de la base de données (MCD, MLD et script SQL de 19 tables) sont terminés ; le développement de l'API commence."
   fiche:
   - libelle: Cadre
     valeur: Projet de BTS, 2<sup>e</sup> année
   - libelle: Début
     valeur: Octobre 2026
   - libelle: Étape
-    valeur: Conception terminée, développement à venir
+    valeur: Conception et base de données terminées
   - libelle: Mon rôle
-    valeur: Cahier des charges et cahier technique
+    valeur: Cahiers, MCD, MLD et script SQL
   - libelle: Statut
     valeur: En cours
   technos:
@@ -521,6 +521,7 @@ projets:
   - Node.js
   - Express
   - MySQL
+  - Merise
   - Docker
   - JWT
   - Scaleway
@@ -532,6 +533,9 @@ projets:
     style: principal
   - texte: Cahier technique (PDF)
     url: assets/annexes/gestion-cabinet/cahier-technique.pdf
+    style: secondaire
+  - texte: Modèle de données (PDF)
+    url: assets/annexes/gestion-cabinet/mld.pdf
     style: secondaire
   - texte: Fiche E5 (PDF)
     url: assets/annexes/fiches-e5/fiche-gestion-cabinet.pdf
@@ -559,7 +563,7 @@ projets:
   - id: fonctionnalites
     titre: Ce que fera l'application
     liste:
-    - '<strong>Deux rôles</strong> : le gérant (admin) paramètre le cabinet et voit tout ; le mandataire (user) gère ses propres clients et contrats.'
+    - '<strong>Deux rôles</strong> : le gérant (admin) paramètre le cabinet et voit tout ; le mandataire (user) consulte tout le catalogue et gère ses propres clients et contrats.'
     - '<strong>Clients et contrats</strong>, avec le suivi du statut : en attente de pièces, envoyé à la compagnie, accepté, actif, résilié ou refusé.'
     - '<strong>Commissions</strong> : calcul de ce qui est attendu, répartition entre cabinet et mandataire, rapprochement avec ce qui a été versé, prévision sur trois mois.'
     - '<strong>Documents</strong> joints aux clients et aux contrats, avec la liste des pièces obligatoires par produit.'
@@ -576,6 +580,21 @@ projets:
     - '<strong>MySQL</strong> : les données sont très liées (un client a des contrats, un contrat génère des commissions). Les montants sont en <code>DECIMAL</code>, jamais en <code>FLOAT</code>, pour éviter les erreurs d''arrondi.'
     - '<strong>Une installation par cabinet</strong>, décrite avec Docker Compose : les données de deux cabinets ne sont jamais mélangées, et un nouveau cabinet s''installe en quelques commandes.'
     - '<strong>Scaleway, à Paris</strong>, pour le serveur, le stockage des documents (compatible S3) et les e-mails : un seul fournisseur, et des données en France pour le RGPD.'
+  - id: base-de-donnees
+    titre: La base de données
+    paragraphes:
+    - "J'ai conçu le modèle de données avec la méthode Merise : le MCD, puis le MLD et le script SQL pour MySQL 8. La base compte <strong>19 tables</strong>, rangées en six blocs : utilisateurs et cabinet, clients et contrats, pièces et documents, commissions, agenda et alertes, comparateur d'offres de prêt."
+    figure:
+      fichier: assets/gestion-cabinet/schema-relationnel.jpg
+      alt: 'Schéma relationnel de la base : 19 tables reliées par leurs clés étrangères, colorées par bloc'
+      legende: "Le schéma relationnel (MLD) : chaque couleur correspond à un bloc de l'application. Le MCD, le MLD détaillé et le script SQL sont dans les annexes."
+    liste:
+    - '<strong>Commission attendue et commission reçue</strong> sont deux tables séparées. Une vue SQL, <code>v_rapprochement_commission</code>, les compare et classe chaque commission : conforme, inférieure, supérieure ou manquante.'
+    - '<strong>Les taux sont recopiés dans la commission attendue</strong> au moment du calcul : si le gérant change un taux, les commissions passées ne bougent pas.'
+    - '<strong>Un historique des statuts</strong> de chaque contrat : qui l''a changé, quand, et de quel statut vers quel statut.'
+    - '<strong>Des contrôles dans la base</strong> : montants en <code>DECIMAL</code>, taux entre 0 et 100, un document toujours rattaché à un client ou à un contrat, une seule ligne de paramètres par cabinet.'
+    - '<strong>Rien de sensible en clair</strong> : mots de passe et jetons de renouvellement sont stockés hachés, et les documents restent sur le stockage S3 (la base ne garde que leur nom, leur type et leur taille).'
+    - '<strong>Pas de suppression qui casse l''historique</strong> : un client lié à des contrats ne peut pas être supprimé (<code>RESTRICT</code>), il est archivé.'
   - id: securite
     titre: La sécurité et le RGPD
     liste:
@@ -587,17 +606,17 @@ projets:
   - id: suite
     titre: Où en est le projet
     paragraphes:
-    - "Le cahier des charges et le cahier technique sont rédigés (octobre 2026). Un point reste à valider avec le client : chaque mandataire accède-t-il à tout le catalogue, ou le gérant choisit-il ses produits ?"
+    - "Le cahier des charges et le cahier technique sont rédigés (octobre 2026). Le point qui restait à valider est tranché : chaque mandataire accède à tout le catalogue. Le modèle de la base de données est terminé (novembre 2026) : MCD, MLD et script SQL."
     liste:
-    - 'Prochaine étape : le modèle de la base de données (MCD puis MLD), le script SQL et un jeu de données fictives.'
-    - Ensuite, l'API et ses tests (cas autorisés et cas refusés pour chaque route), puis les écrans Flutter.
+    - 'Prochaine étape : un jeu de données fictives, puis l''API Node.js et ses tests (cas autorisés et cas refusés pour chaque route).'
+    - Ensuite, les écrans Flutter.
     - Pour la démonstration du BTS, les versions Android et Windows suffisent ; la version iOS demande un Mac et un compte développeur Apple.
   - id: competences
     titre: Compétences mobilisées
     liste:
     - Analyser un besoin et le traduire en cahier des charges.
     - Choisir et justifier une architecture technique.
-    - Concevoir une base de données relationnelle.
+    - 'Concevoir une base de données relationnelle : MCD, MLD, script SQL, contraintes et vue.'
     - Prévoir la sécurité, les droits d'accès et la conformité RGPD dès la conception.
     - Prévoir le déploiement, les sauvegardes et la mise à jour d'une application.
   accueil:
@@ -607,7 +626,7 @@ projets:
     image: assets/meta/shot-cabinet
     alt: Schéma d'architecture de l'application de gestion de cabinet
     statut: Projet de BTS en cours
-    resume: "Application Flutter, sur téléphone et sur ordinateur, pour qu'un cabinet de courtage en assurance et ses mandataires suivent leurs clients, leurs contrats et leurs commissions au même endroit. Le cahier des charges et le cahier technique sont rédigés ; le développement commence."
+    resume: "Application Flutter, sur téléphone et sur ordinateur, pour qu'un cabinet de courtage en assurance et ses mandataires suivent leurs clients, leurs contrats et leurs commissions au même endroit. Cahiers et base de données (19 tables) terminés ; le développement de l'API commence."
     tags:
     - Flutter
     - Node.js
@@ -619,5 +638,5 @@ projets:
       url: pages/gestion-cabinet.html
   liste_projets:
     statut: Projet de BTS en cours
-    texte: Application Flutter et API Node.js pour les cabinets de courtage en assurance et leurs mandataires. Conception terminée, développement en cours.
+    texte: Application Flutter et API Node.js pour les cabinets de courtage en assurance et leurs mandataires. Cahiers et base de données terminés, développement de l'API à venir.
     alt: Schéma d'architecture de l'application de gestion de cabinet

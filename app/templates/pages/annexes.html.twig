@@ -28,7 +28,7 @@
     <twig:Panneau id="comptes-rendus" titre="Comptes rendus de TP">
       <ul class="annexes">
         {% for annee in cours %}{% for groupe in annee.groupes %}{% for travail in groupe.travaux %}{% for f in travail.fichiers ?? [] %}
-          <twig:LigneAnnexe :titre="travail.titre" :texte="groupe.matiere ~ ', ' ~ annee.titre|lower" type="PDF" :url="f.url" />
+          <twig:LigneAnnexe :titre="travail.titre" :texte="groupe.matiere ~ ', ' ~ annee.titre|lower" :type="{pdf: 'PDF', py: 'Python', sql: 'SQL'}[f.url|split('.')|last] ?? 'Fichier'" :url="f.url" />
         {% endfor %}{% endfor %}{% endfor %}{% endfor %}
       </ul>
     </twig:Panneau>

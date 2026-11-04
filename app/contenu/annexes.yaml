@@ -45,6 +45,22 @@ groupes:
     texte: Architecture, choix justifiés, sécurité, RGPD, sauvegardes, tests.
     type: PDF
     url: assets/annexes/gestion-cabinet/cahier-technique.pdf
+  - titre: MCD (modèle conceptuel de données)
+    texte: Les entités, les associations et leurs cardinalités.
+    type: PDF
+    url: assets/annexes/gestion-cabinet/mcd.pdf
+  - titre: MLD (modèle logique de données)
+    texte: Les 19 relations, toutes les clés étrangères et leur comportement à la suppression.
+    type: PDF
+    url: assets/annexes/gestion-cabinet/mld.pdf
+  - titre: Schéma relationnel
+    texte: Les 19 tables avec leurs types, colorées par bloc fonctionnel.
+    type: PDF
+    url: assets/annexes/gestion-cabinet/schema-relationnel.pdf
+  - titre: Script SQL de la base
+    texte: Création des tables, contraintes et vue de rapprochement des commissions (MySQL 8).
+    type: SQL
+    url: assets/annexes/gestion-cabinet/schema-bdd-courtage.sql
   - titre: Schéma d'architecture
     texte: L'application, l'API, la base et les services, pour une installation de cabinet.
     type: Image

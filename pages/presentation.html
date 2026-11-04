@@ -230,7 +230,7 @@
     </section>
 
     <!-- 6. Rôles et fonctionnalités -->
-    <section class="slide cab" data-notes="[50 s] Deux rôles : l&#x27;admin, c&#x27;est le gérant ; le user, c&#x27;est le mandataire, qui ne voit que ses propres clients. Dix fonctionnalités, de la fiche client jusqu&#x27;à l&#x27;agenda. Le cœur, ce sont les contrats, avec leur statut (en attente de pièces, envoyé à la compagnie, accepté, actif, résilié ou refusé), et les commissions.&#10;&#10;SI ON ME DEMANDE&#10;• Journal d&#x27;audit : chaque action importante (connexion, création, modification, suppression) est enregistrée avec son auteur et sa date, consultable par l&#x27;admin. C&#x27;est l&#x27;API qui l&#x27;alimente, pour qu&#x27;aucune action n&#x27;y échappe.&#10;• Rapprochement attendu / reçu : les commissions versées par les compagnies sont saisies ou importées en CSV, puis comparées aux commissions attendues ; l&#x27;application signale les écarts et les commissions manquantes. Elle prévoit aussi les trois prochains mois.&#10;• Le point à valider : tous les mandataires ont-ils accès à tout le catalogue, ou le gérant choisit-il les produits de chacun ? Par défaut, tout le catalogue ; c&#x27;est à confirmer avec le client.&#10;• Comparateur emprunteur : l&#x27;admin saisit les offres des compagnies, le user entre le profil (âge, montant, durée, fumeur ou non), l&#x27;application classe par coût total et exporte un PDF pour le client.">
+    <section class="slide cab" data-notes="[50 s] Deux rôles : l&#x27;admin, c&#x27;est le gérant ; le user, c&#x27;est le mandataire, qui ne voit que ses propres clients. Dix fonctionnalités, de la fiche client jusqu&#x27;à l&#x27;agenda. Le cœur, ce sont les contrats, avec leur statut (en attente de pièces, envoyé à la compagnie, accepté, actif, résilié ou refusé), et les commissions.&#10;&#10;SI ON ME DEMANDE&#10;• Journal d&#x27;audit : chaque action importante (connexion, création, modification, suppression) est enregistrée avec son auteur et sa date, consultable par l&#x27;admin. C&#x27;est l&#x27;API qui l&#x27;alimente, pour qu&#x27;aucune action n&#x27;y échappe.&#10;• Rapprochement attendu / reçu : les commissions versées par les compagnies sont saisies ou importées en CSV, puis comparées aux commissions attendues ; l&#x27;application signale les écarts et les commissions manquantes. Elle prévoit aussi les trois prochains mois.&#10;• Le point qui était à valider : tous les mandataires ont-ils accès à tout le catalogue, ou le gérant choisit-il les produits de chacun ? C&#x27;est tranché : tout le catalogue pour chacun, ce qui simplifie les droits (le mandataire ne voit que SES clients et SES contrats, mais tous les produits).&#10;• Comparateur emprunteur : l&#x27;admin saisit les offres des compagnies, le user entre le profil (âge, montant, durée, fumeur ou non), l&#x27;application classe par coût total et exporte un PDF pour le client.">
       <div class="k">Utilisateurs et fonctionnalités</div>
       <h2 class="titre">Deux rôles, dix fonctionnalités</h2>
       <div class="roles">
@@ -244,7 +244,7 @@
         <div>Alertes et relances</div><div>Paramétrage du cabinet</div>
         <div>Comparateur emprunteur</div><div>Agenda des rendez-vous</div>
       </div>
-      <div class="pastilles" style="top:580px"><span class="pastille">Journal d'audit</span><span class="pastille">Rapprochement attendu / reçu</span><span class="pastille">Un point à valider</span></div>
+      <div class="pastilles" style="top:580px"><span class="pastille">Journal d'audit</span><span class="pastille">Rapprochement attendu / reçu</span><span class="pastille">Tout le catalogue pour chacun</span></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>6</span></div>
     </section>
 
@@ -309,25 +309,25 @@
     </section>
 
     <!-- 11. Où j'en suis -->
-    <section class="slide cab" data-notes="[30 s] Le cahier des charges et le cahier technique sont rédigés depuis le 21 octobre. La prochaine étape, c&#x27;est la base de données : le MCD, le MLD, le script SQL et un jeu de données fictives. Ensuite l&#x27;API avec ses tests, puis les écrans Flutter, et une recette avec le client.&#10;&#10;SI ON ME DEMANDE&#10;• Les tests prévus : tests unitaires sur les règles critiques (calcul et répartition des commissions, rapprochement, contrôle des droits), test de chaque route de l&#x27;API dans les cas autorisés ET refusés (avec Postman ou Bruno), tests des principaux écrans, et un cahier de recette avec le client.&#10;• iOS demande un Mac : la compilation et la publication iOS et macOS se font sur un Mac, avec un compte développeur Apple payant, idéalement au nom de l&#x27;éditeur. Pour la démonstration du BTS, Android et Windows suffisent.&#10;• Organisation : Git et GitHub avec une branche par fonctionnalité, Trello pour le suivi, VS Code et Android Studio.">
+    <section class="slide cab" data-notes="[35 s] Le cahier des charges et le cahier technique sont rédigés depuis le 21 octobre. Depuis, j&#x27;ai fait la base de données : le MCD, le MLD et le script SQL pour MySQL 8, avec 19 tables. La prochaine étape, c&#x27;est un jeu de données fictives, puis l&#x27;API avec ses tests, les écrans Flutter, et une recette avec le client.&#10;&#10;SI ON ME DEMANDE&#10;• La base : 19 tables en six blocs (utilisateurs et cabinet, clients et contrats, pièces et documents, commissions, agenda et alertes, comparateur emprunteur). Montants en DECIMAL, contraintes CHECK (taux entre 0 et 100, un document rattaché à un client OU à un contrat), une seule ligne de paramètres par cabinet.&#10;• Les commissions : deux tables, commission_attendue et commission_recue. La vue v_rapprochement_commission les relie par contrat et par période (LEFT JOIN) et classe chacune : conforme, inférieure, supérieure ou manquante. Les taux sont recopiés dans la commission attendue : si le gérant change un taux, le passé ne bouge pas.&#10;• Suppression : RESTRICT sur les clients et contrats liés (on archive un client avec archive_at), CASCADE sur les sessions et appareils d&#x27;un utilisateur, SET NULL sur le journal d&#x27;audit pour garder la trace.&#10;• Les tests prévus : tests unitaires sur les règles critiques (calcul et répartition des commissions, rapprochement, contrôle des droits), test de chaque route de l&#x27;API dans les cas autorisés ET refusés (avec Postman ou Bruno), tests des principaux écrans, et un cahier de recette avec le client.&#10;• iOS demande un Mac : la compilation et la publication iOS et macOS se font sur un Mac, avec un compte développeur Apple payant, idéalement au nom de l&#x27;éditeur. Pour la démonstration du BTS, Android et Windows suffisent.&#10;• Organisation : Git et GitHub avec une branche par fonctionnalité, Trello pour le suivi, VS Code et Android Studio.">
       <div class="k">Où j'en suis</div>
-      <h2 class="titre">La conception est faite, le développement commence</h2>
+      <h2 class="titre">La conception et la base sont faites, l'API commence</h2>
       <div class="etapes">
         <div class="fait"><i></i><small>Fait</small><b>Cahier des charges</b></div>
         <div class="fait"><i></i><small>Fait</small><b>Cahier technique</b></div>
-        <div class="suite"><i></i><small>Prochaine étape</small><b>MCD et MLD</b></div>
-        <div><i></i><small>À venir</small><b>Script SQL et données fictives</b></div>
-        <div><i></i><small>À venir</small><b>API et ses tests</b></div>
-        <div><i></i><small>À venir</small><b>Écrans Flutter</b></div>
-        <div><i></i><small>À venir</small><b>Recette avec le client</b></div>
+        <div class="fait"><i></i><small>Fait</small><b>MCD et MLD</b></div>
+        <div class="fait"><i></i><small>Fait</small><b>Script SQL (19 tables)</b></div>
+        <div class="suite"><i></i><small>Prochaine étape</small><b>Données fictives et API</b></div>
+        <div><i></i><small>À venir</small><b>Tests de l'API</b></div>
+        <div><i></i><small>À venir</small><b>Écrans Flutter et recette</b></div>
       </div>
       <div class="chiffres" style="top:370px;grid-template-columns:repeat(4,1fr)">
         <div class="carte"><div class="gros">10</div><em>fonctionnalités</em></div>
         <div class="carte"><div class="gros">2</div><em>rôles</em></div>
         <div class="carte"><div class="gros">4</div><em>plateformes</em></div>
-        <div class="carte"><div class="gros">2</div><em>cahiers rédigés</em></div>
+        <div class="carte"><div class="gros">19</div><em>tables en base</em></div>
       </div>
-      <div class="pastilles" style="top:576px"><span class="pastille">Les tests prévus</span><span class="pastille">iOS demande un Mac</span><span class="pastille">Démo : Android et Windows</span></div>
+      <div class="pastilles" style="top:576px"><span class="pastille">Rapprochement en SQL</span><span class="pastille">Les tests prévus</span><span class="pastille">iOS demande un Mac</span><span class="pastille">Démo : Android et Windows</span></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>11</span></div>
     </section>
 

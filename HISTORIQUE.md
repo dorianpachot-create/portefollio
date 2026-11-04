@@ -25,3 +25,12 @@ Le détail de chaque modification est dans l'historique Git (`git log`). Ici, l'
 - `php bin/console app:export` n'a pas pu être lancé depuis l'environnement de Claude (pas d'accès à
   Packagist) : les pages HTML ont été mises à jour en même temps que les YAML et les gabarits. Le
   lancer une fois sur un poste avec PHP permet de vérifier que l'export redonne le même résultat.
+
+## 4 novembre 2026 : TP, fiches de cours et gestion de cabinet à jour
+
+- Gestion de cabinet : nouvelles versions des cahiers (tout le catalogue pour chaque mandataire), MCD,
+  MLD, schéma relationnel et script SQL (19 tables) en annexes, section « La base de données » sur la
+  page du projet, fiche E5, diapo 11 et PowerPoint mis à jour.
+- Nouveaux TP : Le Fournil (BDD), PowerShell TP1, PrivaMilk et agents IA (anglais), les faussaires
+  (culture générale), jeu de Bataille (1re année). VitaSport : réponses des parties 1 à 5 en PDF.
+- Annexes : le type de chaque compte rendu (PDF, Python, SQL) est déduit de l'extension du fichier.

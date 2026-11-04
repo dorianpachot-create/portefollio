@@ -188,22 +188,82 @@ annees:
       - 'Rappels SQL : création des tables, contraintes, erreurs de clés étrangères et d''unicité provoquées volontairement.'
       - 'Modélisation Merise de l''extension VitaSport+ avec Looping : dictionnaire des données, MCD, MLD puis MPD exécuté, et normalisation.'
       - 'Diagrammes UML sur draw.io : diagramme de classes et diagramme de cas d''utilisation.'
-      - 'SQL avancé : jointures, agrégats, sous-requêtes et vues. La suite du TP (index, transactions, déclencheurs) est en cours.'
+      - 'SQL avancé : jointures (internes et externes), agrégats, sous-requêtes et vues, dont une vue <code>WITH CHECK OPTION</code> et un compte limité à la lecture d''une seule vue.'
+      - 'Encore à faire : index et EXPLAIN, transactions, puis fonctions, déclencheurs et procédures.'
+      retiens: 'Une vue sert aussi à la sécurité : un compte qui ne lit qu''une vue ne voit jamais les e-mails ni les dates de naissance des adhérents.'
       technos:
       - MySQL / MariaDB
       - Merise
       - Looping
       - UML
       - draw.io
+      fichiers:
+      - url: assets/fiches-cours/bdd-avancees/vitasport-reponses.pdf
+        texte: Mes réponses (PDF)
       accueil:
         etiquette: Bases de données avancées
         titre: 'VitaSport : concevoir et interroger une base'
-        resume: 'Base de données d''une salle de sport : modélisation Merise avec Looping, diagrammes UML sur draw.io, puis jointures, agrégats, sous-requêtes et vues. En cours.'
+        resume: 'Base de données d''une salle de sport : modélisation Merise avec Looping, diagrammes UML sur draw.io, puis jointures, agrégats, sous-requêtes et vues.'
         tags:
         - MySQL
         - Merise
         - Looping
         - draw.io
+    - id: fournil
+      cadre: Bases de données avancées, 14 au 16 octobre 2026
+      titre: 'Le Fournil : construire et interroger la base d''un click & collect'
+      objectif: 'Construire de zéro la base de données d''une boulangerie qui vend en click & collect : catalogue, clients et commandes.'
+      realise:
+      - 'Passage du MCD au MLD, puis création des cinq tables avec leurs contraintes : clés étrangères, <code>CHECK</code>, <code>UNIQUE</code> et suppression en cascade des lignes de commande.'
+      - 'Tests des contraintes : pour chaque insertion, je note ma prévision, puis l''erreur réellement renvoyée (1062, 1451, 1452, 4025) et la règle de gestion qui l''explique.'
+      - 'Requêtes : tris, jointures, regroupements avec <code>HAVING</code>, jointure externe, <code>NOT EXISTS</code>, sous-requêtes, et une vue des commandes à préparer.'
+      - 'Le prix payé est gardé dans chaque ligne de commande : si le prix d''un produit change, les anciennes commandes ne bougent pas.'
+      - 'Encore à faire : les déclencheurs (stock, montant des commandes, historique des prix).'
+      retiens: 'Prévoir le résultat avant d''exécuter : quand le SGBD refuse, je sais quelle contrainte a joué et pourquoi.'
+      technos:
+      - MySQL / MariaDB
+      - SQL
+      - Contraintes
+      - Vues
+      fichiers:
+      - url: assets/fiches-cours/bdd-avancees/fournil-reponses.pdf
+        texte: Mes réponses (PDF)
+      accueil:
+        etiquette: Bases de données avancées
+        titre: 'Le Fournil : une base de click & collect'
+        resume: 'La base d''une boulangerie, créée de zéro : tables et contraintes, tests des erreurs du SGBD, jointures, regroupements, sous-requêtes et une vue.'
+        tags:
+        - MySQL
+        - SQL
+        - Contraintes
+  - matiere: PowerShell (SLAM)
+    travaux:
+    - id: powershell-tp1
+      cadre: PowerShell, TP1, 30 octobre 2026
+      titre: 'Inventaire du parc informatique en PowerShell'
+      objectif: 'Analyser l''inventaire du parc d''une entreprise de trois sites, fourni en fichier CSV, avec PowerShell 7.'
+      realise:
+      - 'Retrouver une commande et son aide avec <code>Get-Command</code> et <code>Get-Help</code>, inspecter un objet avec <code>Get-Member</code>.'
+      - 'Importer le CSV avec le bon séparateur, puis filtrer, trier et regrouper les postes (<code>Where-Object</code>, <code>Sort-Object</code>, <code>Group-Object</code>).'
+      - 'Corriger un tri faux : les colonnes du CSV sont du texte, il faut les convertir en nombre pour trier la mémoire vive.'
+      - 'Lister les postes encore sous Windows 10 par site et les exporter dans un CSV lisible dans Excel (séparateur point-virgule, encodage UTF-8).'
+      - 'Encore à faire : écrire ma première fonction, <code>Get-AgePoste</code>.'
+      retiens: 'PowerShell manipule des objets et non du texte : c''est pour cela que <code>Format-Table</code> ne doit jamais être placé avant un export.'
+      technos:
+      - PowerShell 7
+      - CSV
+      - Excel
+      fichiers:
+      - url: assets/fiches-cours/powershell/tp1-inventaire-parc.pdf
+        texte: Compte rendu (PDF)
+      accueil:
+        etiquette: PowerShell, TP1
+        titre: Inventaire du parc en PowerShell
+        resume: 'Un inventaire CSV de trois sites analysé avec PowerShell 7 : filtres, tris, regroupements, postes Windows 10 à migrer exportés pour Excel.'
+        tags:
+        - PowerShell
+        - CSV
+        - Excel
   - matiere: Développement
     travaux:
     - id: planet
@@ -225,6 +285,63 @@ annees:
         lien:
           texte: Voir le projet
           url: pages/planet.html
+  - matiere: Anglais
+    travaux:
+    - id: privamilk
+      cadre: Anglais, 2<sup>e</sup> année, octobre 2026
+      titre: 'PrivaMilk : pitch d''un produit en anglais'
+      objectif: Présenter en anglais un produit imaginaire, comme devant des investisseurs.
+      realise:
+      - 'Un diaporama de six diapositives : le problème, la cible, le fonctionnement en cinq étapes, le modèle économique et la conclusion.'
+      - 'Un produit volontairement absurde (une bouteille de lait qui filme celui qui la finit), pour parler aussi de vie privée.'
+      technos:
+      - Anglais
+      - Pitch
+      fichiers:
+      - url: assets/fiches-cours/anglais/privamilk-pitch.pdf
+        texte: Pitch (PDF)
+      accueil:
+        etiquette: Anglais
+        titre: 'PrivaMilk : un pitch en anglais'
+        resume: 'Le pitch d''un produit imaginaire, du problème au modèle économique, et une recommandation en anglais sur les agents IA en entreprise.'
+        tags:
+        - Anglais
+        - Pitch
+    - id: agents-ia
+      cadre: Anglais, 2<sup>e</sup> année, 15 octobre 2026
+      titre: 'Les agents IA en entreprise : synthèse et recommandation'
+      objectif: Comprendre un document en anglais sur les agents IA, puis conseiller une direction en anglais.
+      realise:
+      - 'Synthèse en français : gains de productivité, mais failles de sécurité, pièges cachés dans le code et perte de savoir-faire.'
+      - 'Recommandation rédigée en anglais : un test limité à trois mois, trois garde-fous (environnement isolé, analyse automatique du code, journalisation) et une validation humaine obligatoire.'
+      technos:
+      - Anglais
+      - IA
+      fichiers:
+      - url: assets/fiches-cours/anglais/agents-ia-recommandation.pdf
+        texte: Fiche (PDF)
+  - matiere: Culture générale
+    travaux:
+    - id: faussaires
+      cadre: Culture générale, 2<sup>e</sup> année, 23 octobre 2026
+      titre: 'Les faussaires sont-ils de vrais artistes ?'
+      objectif: 'Étudier un corpus de trois documents (un récit, un podcast et une affiche d''exposition) et répondre à des questions de synthèse.'
+      realise:
+      - 'Analyse de chaque document : le faux billet parfait, la méthode du faussaire Beltracchi, les trois figures de l''affiche (le faussaire, l''expert, le dupé).'
+      - 'Réponses argumentées qui croisent les documents, en citant le texte.'
+      technos:
+      - Expression
+      - Synthèse
+      fichiers:
+      - url: assets/fiches-cours/culture-generale/les-faussaires.pdf
+        texte: Fiche (PDF)
+      accueil:
+        etiquette: Culture générale
+        titre: Les faussaires sont-ils de vrais artistes ?
+        resume: 'Un corpus de trois documents, un récit, un podcast et une affiche, analysés puis croisés dans des réponses argumentées.'
+        tags:
+        - Expression
+        - Synthèse
   periode: Septembre et octobre 2026
 - id: annee-1
   titre: Première année
@@ -269,6 +386,22 @@ annees:
       - Python
       - pygame
       - POO
+    - id: bataille
+      cadre: Développement, 1<sup>re</sup> année, juin 2026
+      titre: Jeu de Bataille graphique en Python
+      objectif: 'Réaliser en une journée un jeu de cartes pour deux joueurs, avec une interface graphique.'
+      realise:
+      - 'Les 52 cartes représentées par des dictionnaires, mélangées puis distribuées 26 par joueur.'
+      - 'Interface tkinter : une zone par joueur, un bouton pour piocher, le message « BATAILLE ! » au centre en cas d''égalité.'
+      - 'Gestion de la bataille (une carte cachée, une carte visible) et de la fin de partie.'
+      - 'Les bonus (images des cartes, animation de glissement, version .exe) ont été faits avec l''aide de l''IA, ce qui est indiqué en tête du code.'
+      technos:
+      - Python
+      - tkinter
+      - Dictionnaires
+      fichiers:
+      - url: assets/fiches-cours/developpement/bataille.py
+        texte: Code (Python)
     - id: seo
       cadre: Développement, 1<sup>re</sup> année
       titre: Audit SEO de deux sites
