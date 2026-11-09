@@ -66,3 +66,5 @@ Le détail de chaque modification est dans l'historique Git (`git log`). Ici, l'
 - Diapos simplifiées pour l'oral : pastilles retirées (les réponses sont dans les notes), textes raccourcis,
   polices agrandies, une idée par bloc.
 - MCD redessiné en pleine largeur (entités, associations et cardinalités en grand) ; légende retirée du MLD.
+- Nouvelle diapo 13 « La base en action » : trois écrans des applications et la requête SQL de chacun,
+  avec le résultat sur des données fictives. 18 diapos, environ 9 min 45.

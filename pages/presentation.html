@@ -6,7 +6,7 @@
   pas indexée. On l'ouvre avec la touche P depuis n'importe quelle page du site.
 
   Même contenu que le PowerPoint assets/presentation/Presentation_E5_Dorian_Pachot.pptx
-  (bouton « PowerPoint » de la barre du bas). 17 diapositives, environ 9 min 20 de
+  (bouton « PowerPoint » de la barre du bas). 18 diapositives, environ 9 min 45 de
   parole (temps conseillé de chaque diapo dans les notes), pour un oral de 10 minutes.
 
   Les pastilles (class="pastille") sont les points « survolés » : juste un mot-clé,
@@ -235,6 +235,14 @@
     .mcd2 .pr { fill: var(--texte); font-size: 15.5px; }
     .mcd2 .as { fill: #3E2723; font: 700 13.5px Arial, "Liberation Sans", sans-serif; }
     .mcd2 .ca { fill: var(--rouge); font: 700 16px Arial, "Liberation Sans", sans-serif; }
+    /* La base en action */
+    .req { position: absolute; left: 58px; right: 58px; top: 130px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
+    .req .carte { padding: 16px 18px; }
+    .rq-k { font: 700 16px Arial, "Liberation Sans", sans-serif; color: var(--ambre); margin-bottom: 10px; }
+    .req pre { margin: 0; background: var(--doux); border-radius: 8px; padding: 10px 12px; font: 14px/1.45 Consolas, "Liberation Mono", monospace; white-space: pre; overflow: hidden; }
+    .req table { border-collapse: collapse; width: 100%; margin-top: 12px; font-size: 15px; }
+    .req th, .req td { border: 1px solid var(--edge); padding: 4px 10px; text-align: left; }
+    .req th { background: var(--doux); font-size: 13px; color: var(--gris); }
   </style>
 </head>
 <body>
@@ -425,7 +433,44 @@
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>12</span></div>
     </section>
 
-    <!-- 13. Sécurité -->
+    <!-- 13. La base en action -->
+    <section class="slide cab" data-notes="Voici la base en action, avec des données fictives.&#10;Pour chaque écran, l&#x27;API lance une requête SQL.&#10;Sur le mobile, « Mes affaires » : une jointure entre affaire et client, filtrée sur le mandataire connecté.&#10;« Mes chiffres » : la somme des commissions de ses affaires signées.&#10;Au bureau, le tableau de bord compte les affaires par étape.&#10;&#10;• Le point d&#x27;interrogation est rempli par l&#x27;API avec l&#x27;identifiant de l&#x27;utilisateur connecté : c&#x27;est une requête préparée, contre l&#x27;injection SQL.&#10;• La commission, c&#x27;est prime fois taux divisé par 100 : par exemple 61,20 € à 30 %, soit 18,36 €.&#10;• Le taux de transformation : les affaires signées divisées par les affaires créées, ici 3 sur 8, soit 37,5 %.">
+      <div class="k">La base de données · en action</div>
+      <h2 class="titre">Un écran, une requête</h2>
+      <div class="req">
+        <div class="carte">
+          <div class="rq-k">Appli mobile · Mes affaires</div>
+<pre>SELECT c.nom, a.etape
+FROM affaire a
+JOIN client c
+  ON c.id_client = a.id_client
+WHERE a.id_utilisateur = ?;</pre>
+          <table><tr><th>nom</th><th>etape</th></tr><tr><td>Leroy</td><td>signe</td></tr><tr><td>Moreau</td><td>devis_envoye</td></tr><tr><td>Blanc</td><td>qualifie</td></tr></table>
+        </div>
+        <div class="carte">
+          <div class="rq-k">Appli mobile · Mes chiffres</div>
+<pre>SELECT SUM(a.prime_mensuelle
+  * p.taux_commission / 100)
+FROM affaire a
+JOIN produit p
+  ON p.id_produit = a.id_produit
+WHERE a.id_utilisateur = ?
+  AND a.etape = 'signe';</pre>
+          <table><tr><th>commissions estimées</th></tr><tr><td>21,66 €</td></tr></table>
+        </div>
+        <div class="carte">
+          <div class="rq-k">Appli bureau · Tableau de bord</div>
+<pre>SELECT etape, COUNT(*) AS nb
+FROM affaire
+GROUP BY etape;</pre>
+          <table><tr><th>etape</th><th>nb</th></tr><tr><td>signe</td><td>3</td></tr><tr><td>perdu</td><td>2</td></tr><tr><td>prospect</td><td>1</td></tr><tr><td>qualifie</td><td>1</td></tr><tr><td>devis_envoye</td><td>1</td></tr></table>
+        </div>
+      </div>
+      <p class="gris" style="position:absolute;left:58px;top:470px;margin:0;font-size:18px">Le <b>?</b> est rempli par l'API avec l'utilisateur connecté : c'est une requête préparée.</p>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>13</span></div>
+    </section>
+
+    <!-- 14. Sécurité -->
     <section class="slide cab" data-notes="Chaque requête passe trois contrôles dans l&#x27;API.&#10;Le jeton est-il valide ? Le rôle est-il autorisé ? La donnée lui appartient-elle ?&#10;Par exemple, un mandataire qui demande le client d&#x27;un collègue est refusé.&#10;&#10;• 401 : on ne sait pas qui tu es. 403 : on sait qui tu es, mais tu n&#x27;as pas le droit.&#10;• Les mots de passe sont hachés avec bcrypt, jamais en clair.&#10;• Les requêtes préparées empêchent l&#x27;injection SQL.&#10;• Le compte MySQL de l&#x27;API ne peut pas créer ni supprimer de table.&#10;• Le mot de passe de la base et la clé JWT sont dans un fichier d&#x27;environnement, jamais sur GitHub.">
       <div class="k">La sécurité</div>
       <h2 class="titre">La sécurité est sur le serveur, pas dans l'application</h2>
@@ -437,10 +482,10 @@
       </div>
       <p style="position:absolute;left:58px;top:400px;margin:0;font-size:20px">À chaque requête, dans l'API.</p>
       <p class="gris" style="position:absolute;left:58px;top:470px;margin:0;font-size:19px">Et aussi : mots de passe hachés · requêtes préparées · secrets hors du code</p>
-      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>13</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>14</span></div>
     </section>
 
-    <!-- 14. Mettre à disposition -->
+    <!-- 15. Mettre à disposition -->
     <section class="slide cab" data-notes="Pour installer : un fichier Docker Compose lance la base MySQL et l&#x27;API, en une seule commande.&#10;Pour tester : chaque route, quand c&#x27;est autorisé et quand c&#x27;est refusé, puis une recette avec le client.&#10;Pour accompagner : un guide pour le mandataire et un guide pour le gérant.&#10;&#10;• La commande : docker compose up -d. Pour vérifier : docker compose ps.&#10;• La sauvegarde, c&#x27;est un mysqldump, et on teste la restauration.&#10;• Pour la démo : le serveur sur mon poste, l&#x27;application bureau sous Windows, l&#x27;application mobile sur un émulateur Android, avec des données fictives.">
       <div class="k">Mettre à disposition</div>
       <h2 class="titre">Installer, tester, accompagner</h2>
@@ -450,10 +495,10 @@
         <div class="carte"><div class="h">Accompagner</div><ul><li>Guide du mandataire</li><li>Guide du gérant</li><li>Prise en main</li></ul></div>
       </div>
       <div class="rgpd"><div class="h">Démo</div><div>Serveur sur mon poste · bureau sous Windows · mobile sur émulateur Android · données fictives</div></div>
-      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>14</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>15</span></div>
     </section>
 
-    <!-- 15. Où j'en suis -->
+    <!-- 16. Où j'en suis -->
     <section class="slide cab" data-notes="Où j&#x27;en suis.&#10;Le cahier des charges, le cahier technique, le MCD, le MLD et le script SQL sont faits.&#10;La suite : des données fictives, puis l&#x27;API et ses tests, puis les écrans, puis la recette.&#10;&#10;• Je ne promets pas de date de fin.&#10;• Je peux ouvrir le script SQL et l&#x27;expliquer table par table.">
       <div class="k">Où j'en suis</div>
       <h2 class="titre">La conception et la base sont faites, l'API commence</h2>
@@ -466,10 +511,10 @@
         <div><i></i><small>À venir</small><b>Écrans mobile et bureau</b></div>
         <div><i></i><small>À venir</small><b>Tests et recette</b></div>
       </div>
-      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>15</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>16</span></div>
     </section>
 
-    <!-- 16. Veille -->
+    <!-- 17. Veille -->
     <section class="slide" data-notes="Ma veille a un objectif : devenir DevOps.&#10;Des sources choisies, un tri, une lecture critique, et une trace sur mon portfolio.&#10;En ce moment : PHP2Shell, deux failles critiques dans PHP.&#10;&#10;• Les failles ont été annoncées le 20 octobre et corrigées le 21. Une simple requête peut suffire à exécuter du code. La parade : mettre à jour.&#10;• Je prépare deux certifications : GitLab 101 et Terraform Associate.">
       <div class="k">Développement professionnel</div>
       <h2 class="titre">Ma veille a un cap : devenir DevOps</h2>
@@ -481,10 +526,10 @@
       </div>
       <div class="une"><div class="k">À la une · 20 octobre 2026</div><div class="h">PHP2Shell : deux failles critiques dans PHP</div><p class="gris" style="font-size:15px;margin:14px 0 0">Annoncées le 20, corrigées le 21. Trois de mes projets tournent sur PHP.</p></div>
       <div class="carte cap"><div class="k">Mon cap</div><div class="h">Une alternance, puis un bachelor DevOps</div></div>
-      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>16</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>17</span></div>
     </section>
 
-    <!-- 17. Questions -->
+    <!-- 18. Questions -->
     <section class="slide sombre" data-notes="Merci.&#10;Je suis prêt pour vos questions.&#10;Je peux ouvrir les cahiers, le MCD, le MLD ou le script SQL.">
       <div style="position:absolute;left:58px;top:163px">
         <div class="k">Merci</div>
