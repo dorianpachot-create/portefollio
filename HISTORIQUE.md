@@ -47,3 +47,12 @@ Le détail de chaque modification est dans l'historique Git (`git log`). Ici, l'
 - 16 diapos, environ 9 min 05.
 - Reste à mettre à jour : le PowerPoint téléchargeable, la page « Gestion de cabinet » et ses annexes
   (encore sur la version à 19 tables).
+
+## 9 novembre 2026 (suite) : les deux réalisations sont les deux applications du cabinet
+
+- Les diapos SYNCRO sont retirées : les deux réalisations présentées sont l'application mobile des
+  mandataires et l'application bureau du gérant (une diapo chacune).
+- Diapo 3 : le vrai tableau de synthèse (les 10 lignes du projet, comme dans le fichier officiel).
+- Nouvelle diapo MCD (image `assets/presentation/mcd-v1.png`, cardinalités à lire) avant la diapo MLD.
+- Le besoin et le taux de transformation reprennent les termes du cahier des charges.
+- 17 diapos, environ 9 min 20.
