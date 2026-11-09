@@ -215,6 +215,21 @@
     .mld .fk { font-size: 14px; font-weight: 700; }
     .mld .ty { fill: var(--gris); font-size: 11.5px; }
     .mld .lt { fill: var(--texte); font: 700 15px Arial, sans-serif; }
+    /* Lisibilité : textes plus grands, moins d'éléments */
+    .liste-num { gap: 40px !important; } .liste-num b { font-size: 22px; } .liste-num em { font-size: 16px; }
+    .probleme p { font-size: 24px; }
+    .roles .carte { height: 150px; } .roles p { font-size: 18px; color: var(--texte); }
+    .et4 b { font-size: 19px; } .et4 em { font-size: 15.5px; } .tunnel .perdu { font-size: 17px; }
+    .boite b { font-size: 21px; } .boite em { font-size: 16px; }
+    .ecrans { gap: 12px; } .ecrans b { font-size: 19px; } .ecrans em { font-size: 15px; }
+    .infos p { font-size: 17px; }
+    .choix td { font-size: 18px; height: 58px; } .choix td:first-child { width: 220px; } .choix td:nth-child(2) { width: 330px; }
+    .controles b { font-size: 19px; } .controles em { font-size: 17px; }
+    .trois ul { font-size: 20px; line-height: 1.9; } .trois .h { font-size: 23px; } .rgpd { font-size: 17px; }
+    .etapes { top: 170px; } .etapes b { font-size: 18px; } .etapes small { font-size: 13px; } .etapes i { height: 18px; }
+    .methode b { font-size: 19px; } .methode em { font-size: 15px; }
+    .img.mcd { width: 700px; } .cardi { left: 790px; } .cardi li { font-size: 15px; }
+    .et .carte { font-size: 16px; }
   </style>
 </head>
 <body>
@@ -243,8 +258,6 @@
         <div class="et"><b>Sept. 2026</b><i></i><div class="carte">Linux avancé, BDD avancées, Pla'Net</div></div>
         <div class="et now"><b>Oct. 2026</b><i></i><div class="carte">Application de gestion de cabinet</div></div>
       </div>
-      <p class="gris" style="position:absolute;left:58px;top:500px;margin:0;font-size:15px">Avant le BTS : handball en National 1, puis la restauration, le management et le paysagisme.</p>
-      <div class="pastilles" style="top:556px"><span class="pastille">Une reconversion</span><span class="pastille">Stage à temps plein en juillet et août</span></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>2</span></div>
     </section>
 
@@ -267,7 +280,7 @@
           <tr><td>Veille et portfolio</td><td></td><td></td><td></td><td></td><td></td><td>●</td></tr>
         </tbody>
       </table>
-      <p class="gris" style="position:absolute;left:58px;top:512px;width:1100px;margin:0;font-size:15px;line-height:1.5">Mes deux réalisations : l'application mobile des mandataires et l'application bureau du gérant, reliées à la même API et à la même base. Le tableau complet, avec les productions de chaque ligne, est en annexe.</p>
+      <p class="gris" style="position:absolute;left:58px;top:512px;width:1100px;margin:0;font-size:15px;line-height:1.5">Mes deux réalisations : l'application mobile et l'application bureau.</p>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>3</span></div>
     </section>
 
@@ -290,7 +303,6 @@
         <div><span>3</span><p style="margin:0"><b>Aucun indicateur</b><em>Ni taux de transformation, ni chiffre signé, ni commissions prévues</em></p></div>
       </div>
       <div class="probleme"><div class="k">La problématique</div><p>Comment permettre à un cabinet de courtage de suivre chaque vente, du prospect au contrat signé, depuis le terrain comme depuis le bureau ?</p></div>
-      <div class="pastilles" style="top:604px"><span class="pastille">Mandataire</span><span class="pastille">Commission = prime × taux</span><span class="pastille">Pourquoi une version 1 réduite</span></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>5</span></div>
     </section>
 
@@ -299,18 +311,16 @@
       <div class="k">Utilisateurs et fonctionnement</div>
       <h2 class="titre">Deux rôles, une vente qui avance en 4 étapes</h2>
       <div class="roles">
-        <div class="carte"><div class="h">User<small><b>Le mandataire · application mobile</b></small></div><p>Gère ses propres prospects et clients, crée ses affaires, les fait avancer d'étape et consulte ses chiffres.</p></div>
-        <div class="carte"><div class="h">Admin<small><b>Le gérant · application bureau</b></small></div><p>Crée les comptes, gère le catalogue (compagnies, produits, taux), voit toutes les affaires et le tableau de bord.</p></div>
+        <div class="carte"><div class="h">User<small><b>Le mandataire · application mobile</b></small></div><p>Ses clients et ses ventes, sur le terrain.</p></div>
+        <div class="carte"><div class="h">Admin<small><b>Le gérant · application bureau</b></small></div><p>Les comptes, le catalogue et toutes les ventes, au bureau.</p></div>
       </div>
       <div class="tunnel">
-        <div class="et4"><b>Prospect</b><em>client, besoin exprimé</em></div>
-        <div class="et4"><b>Qualifié</b><em>besoin confirmé, produit visé</em></div>
-        <div class="et4"><b>Devis envoyé</b><em>produit + prime obligatoires</em></div>
-        <div class="et4 signe"><b>Signé</b><em>n° de contrat + date obligatoires</em></div>
-        <div class="perdu"><b>Perdu</b> possible depuis n'importe quelle étape · motif obligatoire</div>
-        <p class="gris">Chaque passage est enregistré (qui, quand). Une affaire signée ou perdue ne bouge plus.</p>
+        <div class="et4"><b>Prospect</b><em>premier contact</em></div>
+        <div class="et4"><b>Qualifié</b><em>besoin confirmé</em></div>
+        <div class="et4"><b>Devis envoyé</b><em>produit + prime</em></div>
+        <div class="et4 signe"><b>Signé</b><em>n° de contrat + date</em></div>
+        <div class="perdu"><b>Perdu</b> à tout moment, avec un motif</div>
       </div>
-      <div class="pastilles" style="top:580px"><span class="pastille">Historique dans une transaction</span><span class="pastille">Prospect = futur client</span><span class="pastille">Taux de transformation</span></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>6</span></div>
     </section>
 
@@ -325,12 +335,11 @@
         </div>
         <div class="lien"><span>HTTPS<br>JSON</span><i></i></div>
         <div class="docker"><small>Docker Compose</small>
-          <div class="carte boite fort"><b>API Node.js (Express)</b><em>vérifie le jeton, le rôle, la propriété · applique les règles du tunnel</em></div>
+          <div class="carte boite fort"><b>API Node.js (Express)</b><em>contrôle les droits et les règles</em></div>
           <div class="lien v"><i></i><span>SQL · requêtes préparées</span></div>
           <div class="carte boite"><b>MySQL · gestion_courtage</b><em>6 tables</em></div>
         </div>
       </div>
-      <div class="pastilles" style="top:604px"><span class="pastille">Seule l'API touche à la base</span><span class="pastille">HTTPS et JSON</span><span class="pastille">Jeton JWT</span></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>7</span></div>
     </section>
 
@@ -350,11 +359,9 @@
           <div class="h">Ce qu'elle utilise</div>
           <p><b>Flutter</b>, Android</p>
           <p><b>API</b> : <code>/auth</code> <code>/clients</code> <code>/affaires</code> <code>/catalogue</code> (lecture) <code>/statistiques</code></p>
-          <p><b>Tables</b> : client, affaire, historique_etape, produit</p>
           <p class="gris">Le mandataire ne voit que ses propres clients et affaires.</p>
         </div>
       </div>
-      <div class="pastilles" style="top:604px"><span class="pastille">Où en est le code</span><span class="pastille">Provider</span><span class="pastille">Un passage d'étape refusé</span></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>8</span></div>
     </section>
 
@@ -374,11 +381,9 @@
           <div class="h">Ce qu'elle utilise</div>
           <p><b>Flutter</b>, Windows</p>
           <p><b>API</b> : <code>/auth</code> <code>/utilisateurs</code> <code>/catalogue</code> <code>/affaires</code> <code>/statistiques</code></p>
-          <p><b>Tables</b> : les 6, dont utilisateur, compagnie et produit en écriture</p>
           <p class="gris">Routes réservées à l'admin : un user reçoit 403.</p>
         </div>
       </div>
-      <div class="pastilles" style="top:604px"><span class="pastille">Pourquoi deux applications</span><span class="pastille">Désactiver, pas supprimer</span><span class="pastille">Le tableau de bord</span></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>9</span></div>
     </section>
 
@@ -389,14 +394,13 @@
       <table class="choix">
         <thead><tr><th>Besoin</th><th>Choix</th><th>Pourquoi</th></tr></thead>
         <tbody>
-          <tr><td>Applications</td><td>Flutter (Dart), deux projets</td><td>Un seul langage pour le mobile et le bureau, déjà utilisé sur un projet précédent</td></tr>
-          <tr><td>Serveur (API)</td><td>Node.js et Express</td><td>Maîtrisé, minimaliste : tout est écrit explicitement</td></tr>
-          <tr><td>Base de données</td><td>MySQL 8</td><td>Données très liées : les clés étrangères gardent la cohérence</td></tr>
-          <tr><td>Exécution</td><td>Docker et Docker Compose</td><td>La base et l'API démarrent en une commande, sur n'importe quel poste</td></tr>
-          <tr><td>Versionnage</td><td>Git et GitHub</td><td>Historique du code et sauvegarde du travail</td></tr>
+          <tr><td>Applications</td><td>Flutter (Dart), deux projets</td><td>Un seul langage pour les deux applis</td></tr>
+          <tr><td>Serveur (API)</td><td>Node.js et Express</td><td>Je le maîtrise, tout est explicite</td></tr>
+          <tr><td>Base de données</td><td>MySQL 8</td><td>Les clés étrangères gardent la cohérence</td></tr>
+          <tr><td>Exécution</td><td>Docker et Docker Compose</td><td>Tout démarre en une commande</td></tr>
+          <tr><td>Versionnage</td><td>Git et GitHub</td><td>Historique et sauvegarde du code</td></tr>
         </tbody>
       </table>
-      <div class="pastilles" style="top:560px"><span class="pastille">MySQL plutôt que MongoDB</span><span class="pastille">Pourquoi Express</span><span class="pastille">Les outils</span></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>10</span></div>
     </section>
 
@@ -438,10 +442,8 @@
         <div class="carte"><div class="n">3</div><b>La donnée est-elle à lui ?</b><em>Sinon : 403 ou 404</em></div><div class="fl"></div>
         <div class="ok">Requête acceptée</div>
       </div>
-      <p style="position:absolute;left:58px;top:398px;margin:0;font-size:16px">Contrôlé à chaque requête : l'application peut être copiée ou imitée, donc tout contrôle fait seulement chez elle peut être contourné.</p>
-      <p class="gris" style="position:absolute;left:58px;top:478px;margin:0;font-size:13px;font-weight:700">Et aussi</p>
-      <div class="pastilles" style="top:516px"><span class="pastille">Mots de passe hachés (bcrypt)</span><span class="pastille">Requêtes préparées</span><span class="pastille">Compte MySQL limité</span></div>
-      <div class="pastilles" style="top:568px"><span class="pastille">Secrets hors du code</span><span class="pastille">Données fictives (RGPD)</span></div>
+      <p style="position:absolute;left:58px;top:400px;margin:0;font-size:20px">À chaque requête, dans l'API.</p>
+      <p class="gris" style="position:absolute;left:58px;top:470px;margin:0;font-size:19px">Et aussi : mots de passe hachés · requêtes préparées · secrets hors du code</p>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>13</span></div>
     </section>
 
@@ -450,12 +452,11 @@
       <div class="k">Mettre à disposition</div>
       <h2 class="titre">Installer, tester, accompagner</h2>
       <div class="trois">
-        <div class="carte"><div class="h">Installer</div><ul><li>Docker Compose : 2 conteneurs</li><li>MySQL + script de la base</li><li>API Node.js</li><li>Sauvegarde mysqldump testée</li></ul></div>
-        <div class="carte"><div class="h">Tester</div><ul><li>Chaque route : autorisé et refusé</li><li>Règles du tunnel</li><li>Cahier de recette</li><li>Procès-verbal avec le client</li></ul></div>
-        <div class="carte"><div class="h">Accompagner</div><ul><li>Guide du mandataire</li><li>Guide du gérant</li><li>Prise en main</li><li>Suivi des demandes</li></ul></div>
+        <div class="carte"><div class="h">Installer</div><ul><li>Docker Compose</li><li>MySQL + API</li><li>Une seule commande</li></ul></div>
+        <div class="carte"><div class="h">Tester</div><ul><li>Chaque route</li><li>Règles du tunnel</li><li>Recette avec le client</li></ul></div>
+        <div class="carte"><div class="h">Accompagner</div><ul><li>Guide du mandataire</li><li>Guide du gérant</li><li>Prise en main</li></ul></div>
       </div>
-      <div class="rgpd"><div class="h">Démo</div><div>Serveur sur mon poste, application bureau sous Windows, application mobile sur Android ou émulateur, données fictives.</div></div>
-      <div class="pastilles" style="top:604px"><span class="pastille">docker compose up -d</span><span class="pastille">Sauvegarde et restauration</span><span class="pastille">Procès-verbal de recette</span></div>
+      <div class="rgpd"><div class="h">Démo</div><div>Serveur sur mon poste · bureau sous Windows · mobile sur émulateur Android · données fictives</div></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>14</span></div>
     </section>
 
@@ -472,13 +473,6 @@
         <div><i></i><small>À venir</small><b>Écrans mobile et bureau</b></div>
         <div><i></i><small>À venir</small><b>Tests et recette</b></div>
       </div>
-      <div class="chiffres" style="top:370px;grid-template-columns:repeat(4,1fr)">
-        <div class="carte"><div class="gros">2</div><em>applications</em></div>
-        <div class="carte"><div class="gros">2</div><em>rôles</em></div>
-        <div class="carte"><div class="gros">5</div><em>étapes (dont perdu)</em></div>
-        <div class="carte"><div class="gros">6</div><em>tables en base</em></div>
-      </div>
-      <div class="pastilles" style="top:576px"><span class="pastille">Pas de date promise</span><span class="pastille">MCD, MLD, script en annexe</span><span class="pastille">Une branche par fonctionnalité</span></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>15</span></div>
     </section>
 
@@ -494,7 +488,6 @@
       </div>
       <div class="une"><div class="k">À la une · 20 octobre 2026</div><div class="h">PHP2Shell : deux failles critiques dans PHP</div><p class="gris" style="font-size:15px;margin:14px 0 0">Annoncées le 20, corrigées le 21. Trois de mes projets tournent sur PHP.</p></div>
       <div class="carte cap"><div class="k">Mon cap</div><div class="h">Une alternance, puis un bachelor DevOps</div></div>
-      <div class="pastilles" style="top:581px"><span class="pastille">Mes projets en PHP</span><span class="pastille">GitLab 101 · Terraform</span><span class="pastille">ClickFix</span><span class="pastille">NIS2</span></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>16</span></div>
     </section>
 

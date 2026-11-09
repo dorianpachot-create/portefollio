@@ -63,3 +63,5 @@ Le détail de chaque modification est dans l'historique Git (`git log`). Ici, l'
   réponses aux questions probables.
 - Diapo MLD redessinée en pleine largeur : les 6 tables avec toutes leurs colonnes et leurs types, et
   chaque flèche part de la ligne de la clé étrangère pour arriver sur la ligne de la clé primaire.
+- Diapos simplifiées pour l'oral : pastilles retirées (les réponses sont dans les notes), textes raccourcis,
+  polices agrandies, une idée par bloc.
