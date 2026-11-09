@@ -6,7 +6,7 @@
   pas indexée. On l'ouvre avec la touche P depuis n'importe quelle page du site.
 
   Même contenu que le PowerPoint assets/presentation/Presentation_E5_Dorian_Pachot.pptx
-  (bouton « PowerPoint » de la barre du bas). 18 diapositives, environ 9 min 45 de
+  (bouton « PowerPoint » de la barre du bas). 19 diapositives, environ 10 min de
   parole (temps conseillé de chaque diapo dans les notes), pour un oral de 10 minutes.
 
   Les pastilles (class="pastille") sont les points « survolés » : juste un mot-clé,
@@ -236,6 +236,16 @@
     .mcd2 .as { fill: #3E2723; font: 700 13.5px Arial, "Liberation Sans", sans-serif; }
     .mcd2 .ca { fill: var(--rouge); font: 700 16px Arial, "Liberation Sans", sans-serif; }
     /* La base en action */
+    .scr { position: absolute; left: 58px; right: 58px; top: 128px; display: grid; grid-template-columns: 1fr 330px; gap: 26px; align-items: start; }
+    .scr pre { margin: 0; padding: 16px 18px; font: 16px/1.5 Consolas, "Liberation Mono", monospace; white-space: pre; overflow: hidden; }
+    .scr pre i { color: var(--gris); font-style: normal; }
+    .scr mark { background: color-mix(in srgb, var(--ambre) 18%, transparent); color: inherit; border-radius: 3px; }
+    .nb, .regles li::before { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--ambre); color: #fff; font: 700 13px Arial, sans-serif; }
+    .nb { margin-left: 8px; vertical-align: 1px; }
+    .regles { list-style: none; counter-reset: r; margin: 0; padding: 0; }
+    .regles li { counter-increment: r; display: grid; grid-template-columns: 32px 1fr; align-items: start; font-size: 21px; line-height: 1.35; margin: 0 0 26px; }
+    .regles li::before { content: counter(r); margin-top: 1px; }
+    .regles b { color: var(--ambre); }
     .req { position: absolute; left: 58px; right: 58px; top: 130px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
     .req .carte { padding: 16px 18px; }
     .rq-k { font: 700 16px Arial, "Liberation Sans", sans-serif; color: var(--ambre); margin-bottom: 10px; }
@@ -426,14 +436,47 @@
     </section>
 
     <!-- 12. Le MLD -->
-    <section class="slide cab" data-notes="Voici le MLD.&#10;Chaque entité devient une table, son identifiant devient la clé primaire, soulignée.&#10;Chaque association devient une clé étrangère, avec un dièse, du côté 1,1.&#10;Chaque flèche part de la clé étrangère et arrive sur la clé primaire qu&#x27;elle référence.&#10;Le script SQL crée exactement ces six tables.&#10;&#10;• id_produit peut être vide : c&#x27;est la cardinalité 0,1.&#10;• L&#x27;étape est un ENUM : une liste fermée de cinq valeurs.&#10;• Les montants sont en DECIMAL, pas en FLOAT, pour avoir des valeurs exactes.&#10;• La commission n&#x27;est pas stockée : prime fois taux, divisé par 100.&#10;• Des contraintes CHECK : le taux est entre 0 et 100, la prime est positive.">
+    <section class="slide cab" data-notes="Voici le MLD.&#10;Chaque entité devient une table, son identifiant devient la clé primaire, soulignée.&#10;Chaque association devient une clé étrangère, avec un dièse, du côté 1,1.&#10;&#10;• Chaque flèche part de la clé étrangère et arrive sur la clé primaire qu&#x27;elle référence.&#10;• id_produit peut être vide : c&#x27;est la cardinalité 0,1.&#10;• L&#x27;étape est un ENUM : une liste fermée de cinq valeurs.&#10;• Les montants sont en DECIMAL, pas en FLOAT, pour avoir des valeurs exactes.&#10;• La commission n&#x27;est pas stockée : prime fois taux, divisé par 100.&#10;• Des contraintes CHECK : le taux est entre 0 et 100, la prime est positive.">
       <div class="k">La base de données · le MLD</div>
       <h2 class="titre">6 tables, 7 clés étrangères</h2>
       <svg class="mld" viewBox="0 0 1200 610" preserveAspectRatio="xMidYMin meet" role="img" aria-label="MLD de la base gestion_courtage : 6 tables et 7 clés étrangères"><defs><marker id="mu" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1565C0"/></marker><marker id="mc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2E7D32"/></marker><marker id="mp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#E65100"/></marker><marker id="ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6A1B9A"/></marker></defs><path d="M40,69 L16,69 L16,407 L40,407" fill="none" stroke="#1565C0" stroke-width="2.2" marker-end="url(#mu)"/><circle cx="40" cy="69" r="3.6" fill="#1565C0"/><path d="M470,69 L400,69 L400,47 L310,47" fill="none" stroke="#2E7D32" stroke-width="2.2" marker-end="url(#mc)"/><circle cx="470" cy="69" r="3.6" fill="#2E7D32"/><path d="M470,113 L422,113 L422,407 L310,407" fill="none" stroke="#1565C0" stroke-width="2.2" marker-end="url(#mu)"/><circle cx="470" cy="113" r="3.6" fill="#1565C0"/><path d="M470,471 L422,471 L422,407" fill="none" stroke="#1565C0" stroke-width="2.2"/><circle cx="470" cy="471" r="3.6" fill="#1565C0"/><path d="M740,449 L782,449 L782,47 L740,47" fill="none" stroke="#6A1B9A" stroke-width="2.2" marker-end="url(#ma)"/><circle cx="740" cy="449" r="3.6" fill="#6A1B9A"/><path d="M1170,113 L1192,113 L1192,307 L1170,307" fill="none" stroke="#E65100" stroke-width="2.2" marker-end="url(#mp)"/><circle cx="1170" cy="113" r="3.6" fill="#E65100"/><circle cx="422" cy="407" r="4" fill="#1565C0"/><path d="M740,91 L774,91 A8,8 0 0 1 790,91 L900,91" fill="none" stroke="#E65100" stroke-width="2.2" marker-end="url(#mp)"/><circle cx="740" cy="91" r="3.6" fill="#E65100"/><g><rect x="40" y="0" width="270" height="262" rx="7" style="fill:var(--carte)" stroke="#2E7D32" stroke-width="2"/><path d="M40,7 a7,7 0 0 1 7,-7 h256 a7,7 0 0 1 7,7 v25 h-270 z" fill="#2E7D32"/><text x="175.0" y="21" text-anchor="middle" class="mh">client</text><text x="52" y="52" class="pk">id_client</text><text x="298" y="52" text-anchor="end" class="ty">INT</text><text x="52" y="74" class="fk" fill="#1565C0">#id_utilisateur</text><text x="298" y="74" text-anchor="end" class="ty">INT</text><text x="52" y="96" class="at">nom</text><text x="298" y="96" text-anchor="end" class="ty">VARCHAR(100)</text><text x="52" y="118" class="at">prenom</text><text x="298" y="118" text-anchor="end" class="ty">VARCHAR(100)</text><text x="52" y="140" class="at">email</text><text x="298" y="140" text-anchor="end" class="ty">VARCHAR(254)</text><text x="52" y="162" class="at">telephone</text><text x="298" y="162" text-anchor="end" class="ty">VARCHAR(30)</text><text x="52" y="184" class="at">ville</text><text x="298" y="184" text-anchor="end" class="ty">VARCHAR(100)</text><text x="52" y="206" class="at">notes</text><text x="298" y="206" text-anchor="end" class="ty">TEXT</text><text x="52" y="228" class="at">created_at</text><text x="298" y="228" text-anchor="end" class="ty">DATETIME</text><text x="52" y="250" class="at">updated_at</text><text x="298" y="250" text-anchor="end" class="ty">DATETIME</text></g><g><rect x="40" y="360" width="270" height="240" rx="7" style="fill:var(--carte)" stroke="#1565C0" stroke-width="2"/><path d="M40,367 a7,7 0 0 1 7,-7 h256 a7,7 0 0 1 7,7 v25 h-270 z" fill="#1565C0"/><text x="175.0" y="381" text-anchor="middle" class="mh">utilisateur</text><text x="52" y="412" class="pk">id_utilisateur</text><text x="298" y="412" text-anchor="end" class="ty">INT</text><text x="52" y="434" class="at">nom</text><text x="298" y="434" text-anchor="end" class="ty">VARCHAR(100)</text><text x="52" y="456" class="at">prenom</text><text x="298" y="456" text-anchor="end" class="ty">VARCHAR(100)</text><text x="52" y="478" class="at">email</text><text x="298" y="478" text-anchor="end" class="ty">VARCHAR(254)</text><text x="52" y="500" class="at">mot_de_passe_hash</text><text x="298" y="500" text-anchor="end" class="ty">VARCHAR(255)</text><text x="52" y="522" class="at">role</text><text x="298" y="522" text-anchor="end" class="ty">ENUM</text><text x="52" y="544" class="at">actif</text><text x="298" y="544" text-anchor="end" class="ty">BOOLEAN</text><text x="52" y="566" class="at">created_at</text><text x="298" y="566" text-anchor="end" class="ty">DATETIME</text><text x="52" y="588" class="at">updated_at</text><text x="298" y="588" text-anchor="end" class="ty">DATETIME</text></g><g><rect x="470" y="0" width="270" height="328" rx="7" style="fill:var(--carte)" stroke="#6A1B9A" stroke-width="2"/><path d="M470,7 a7,7 0 0 1 7,-7 h256 a7,7 0 0 1 7,7 v25 h-270 z" fill="#6A1B9A"/><text x="605.0" y="21" text-anchor="middle" class="mh">affaire</text><text x="482" y="52" class="pk">id_affaire</text><text x="728" y="52" text-anchor="end" class="ty">INT</text><text x="482" y="74" class="fk" fill="#2E7D32">#id_client</text><text x="728" y="74" text-anchor="end" class="ty">INT</text><text x="482" y="96" class="fk" fill="#E65100">#id_produit</text><text x="728" y="96" text-anchor="end" class="ty">INT  ∅</text><text x="482" y="118" class="fk" fill="#1565C0">#id_utilisateur</text><text x="728" y="118" text-anchor="end" class="ty">INT</text><text x="482" y="140" class="at">etape</text><text x="728" y="140" text-anchor="end" class="ty">ENUM</text><text x="482" y="162" class="at">besoin</text><text x="728" y="162" text-anchor="end" class="ty">TEXT</text><text x="482" y="184" class="at">prime_mensuelle</text><text x="728" y="184" text-anchor="end" class="ty">DECIMAL(10,2)</text><text x="482" y="206" class="at">date_devis</text><text x="728" y="206" text-anchor="end" class="ty">DATE</text><text x="482" y="228" class="at">date_signature</text><text x="728" y="228" text-anchor="end" class="ty">DATE</text><text x="482" y="250" class="at">numero_contrat</text><text x="728" y="250" text-anchor="end" class="ty">VARCHAR(60)</text><text x="482" y="272" class="at">motif_perte</text><text x="728" y="272" text-anchor="end" class="ty">VARCHAR(255)</text><text x="482" y="294" class="at">created_at</text><text x="728" y="294" text-anchor="end" class="ty">DATETIME</text><text x="482" y="316" class="at">updated_at</text><text x="728" y="316" text-anchor="end" class="ty">DATETIME</text></g><g><rect x="470" y="380" width="270" height="174" rx="7" style="fill:var(--carte)" stroke="#6A1B9A" stroke-width="2"/><path d="M470,387 a7,7 0 0 1 7,-7 h256 a7,7 0 0 1 7,7 v25 h-270 z" fill="#6A1B9A"/><text x="605.0" y="401" text-anchor="middle" class="mh">historique_etape</text><text x="482" y="432" class="pk">id_historique</text><text x="728" y="432" text-anchor="end" class="ty">INT</text><text x="482" y="454" class="fk" fill="#6A1B9A">#id_affaire</text><text x="728" y="454" text-anchor="end" class="ty">INT</text><text x="482" y="476" class="fk" fill="#1565C0">#id_utilisateur</text><text x="728" y="476" text-anchor="end" class="ty">INT</text><text x="482" y="498" class="at">ancienne_etape</text><text x="728" y="498" text-anchor="end" class="ty">ENUM</text><text x="482" y="520" class="at">nouvelle_etape</text><text x="728" y="520" text-anchor="end" class="ty">ENUM</text><text x="482" y="542" class="at">date_changement</text><text x="728" y="542" text-anchor="end" class="ty">DATETIME</text></g><g><rect x="900" y="44" width="270" height="174" rx="7" style="fill:var(--carte)" stroke="#E65100" stroke-width="2"/><path d="M900,51 a7,7 0 0 1 7,-7 h256 a7,7 0 0 1 7,7 v25 h-270 z" fill="#E65100"/><text x="1035.0" y="65" text-anchor="middle" class="mh">produit</text><text x="912" y="96" class="pk">id_produit</text><text x="1158" y="96" text-anchor="end" class="ty">INT</text><text x="912" y="118" class="fk" fill="#E65100">#id_compagnie</text><text x="1158" y="118" text-anchor="end" class="ty">INT</text><text x="912" y="140" class="at">libelle</text><text x="1158" y="140" text-anchor="end" class="ty">VARCHAR(160)</text><text x="912" y="162" class="at">type_assurance</text><text x="1158" y="162" text-anchor="end" class="ty">VARCHAR(60)</text><text x="912" y="184" class="at">taux_commission</text><text x="1158" y="184" text-anchor="end" class="ty">DECIMAL(5,2)</text><text x="912" y="206" class="at">actif</text><text x="1158" y="206" text-anchor="end" class="ty">BOOLEAN</text></g><g><rect x="900" y="260" width="270" height="108" rx="7" style="fill:var(--carte)" stroke="#E65100" stroke-width="2"/><path d="M900,267 a7,7 0 0 1 7,-7 h256 a7,7 0 0 1 7,7 v25 h-270 z" fill="#E65100"/><text x="1035.0" y="281" text-anchor="middle" class="mh">compagnie</text><text x="912" y="312" class="pk">id_compagnie</text><text x="1158" y="312" text-anchor="end" class="ty">INT</text><text x="912" y="334" class="at">nom</text><text x="1158" y="334" text-anchor="end" class="ty">VARCHAR(160)</text><text x="912" y="356" class="at">actif</text><text x="1158" y="356" text-anchor="end" class="ty">BOOLEAN</text></g></svg>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>12</span></div>
     </section>
 
-    <!-- 13. La base en action -->
+    <!-- 13. Le script SQL -->
+    <section class="slide cab" data-notes="Voici un extrait du script SQL : la table affaire, la plus importante.&#10;On y retrouve le MLD : la clé primaire et les clés étrangères.&#10;Et des règles que MySQL vérifie tout seul : l&#x27;étape est dans une liste fermée, et la prime ne peut pas être négative.&#10;&#10;• id_produit accepte NULL : c&#x27;est le 0,1 du MCD, le produit est choisi au moment du devis.&#10;• DECIMAL et pas FLOAT : FLOAT arrondit, et on ne veut pas d&#x27;erreur sur de l&#x27;argent.&#10;• Sans clé étrangère, on pourrait créer une affaire pour un client qui n&#x27;existe pas : là, MySQL refuse.&#10;• InnoDB, c&#x27;est le moteur de MySQL qui gère les clés étrangères et les transactions.&#10;• Le script complet crée les six tables, dans l&#x27;ordre : d&#x27;abord celles qui sont référencées.&#10;• À la fin, le compte MySQL de l&#x27;API n&#x27;a que SELECT, INSERT, UPDATE et DELETE : il ne peut pas supprimer de table.">
+      <div class="k">La base de données · le script SQL</div>
+      <h2 class="titre">Le MLD écrit en SQL : la table affaire</h2>
+      <div class="scr">
+<pre class="carte">CREATE TABLE affaire (
+  id_affaire     INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  id_client      INT UNSIGNED NOT NULL,
+<mark>  id_produit     INT UNSIGNED NULL,</mark><b class="nb">1</b>
+  id_utilisateur INT UNSIGNED NOT NULL,
+<mark>  etape ENUM('prospect','qualifie','devis_envoye',
+             'signe','perdu') NOT NULL DEFAULT 'prospect',</mark><b class="nb">2</b>
+<mark>  prime_mensuelle DECIMAL(10,2) NULL,</mark><b class="nb">3</b>
+  <i>… dates, numéro de contrat, motif de perte …</i>
+  PRIMARY KEY (id_affaire),
+<mark>  CONSTRAINT fk_affaire_client
+    FOREIGN KEY (id_client) REFERENCES client(id_client),</mark><b class="nb">4</b>
+  <i>… même chose pour produit et utilisateur …</i>
+<mark>  CONSTRAINT chk_affaire_prime
+    CHECK (prime_mensuelle IS NULL OR prime_mensuelle &gt;= 0)</mark><b class="nb">5</b>
+) ENGINE=InnoDB;</pre>
+        <ol class="regles">
+          <li><span><b>NULL</b> : pas encore de produit au stade prospect</span></li>
+          <li><span><b>ENUM</b> : seulement les 5 étapes du tunnel</span></li>
+          <li><span><b>DECIMAL</b> : un montant exact, sans arrondi</span></li>
+          <li><span><b>FOREIGN KEY</b> : pas d'affaire sans vrai client</span></li>
+          <li><span><b>CHECK</b> : pas de prime négative</span></li>
+        </ol>
+      </div>
+      <p class="gris" style="position:absolute;left:58px;top:578px;margin:0;font-size:18px">Script complet : 6 tables + le compte MySQL de l'API (SELECT, INSERT, UPDATE, DELETE seulement).</p>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>13</span></div>
+    </section>
+
+    <!-- 14. La base en action -->
     <section class="slide cab" data-notes="Voici la base en action, avec des données fictives.&#10;Pour chaque écran, l&#x27;API lance une requête SQL.&#10;Sur le mobile, « Mes affaires » : une jointure entre affaire et client, filtrée sur le mandataire connecté.&#10;« Mes chiffres » : la somme des commissions de ses affaires signées.&#10;Au bureau, le tableau de bord compte les affaires par étape.&#10;&#10;• Le point d&#x27;interrogation est rempli par l&#x27;API avec l&#x27;identifiant de l&#x27;utilisateur connecté : c&#x27;est une requête préparée, contre l&#x27;injection SQL.&#10;• La commission, c&#x27;est prime fois taux divisé par 100 : par exemple 61,20 € à 30 %, soit 18,36 €.&#10;• Le taux de transformation : les affaires signées divisées par les affaires créées, ici 3 sur 8, soit 37,5 %.">
       <div class="k">La base de données · en action</div>
       <h2 class="titre">Un écran, une requête</h2>
@@ -467,10 +510,10 @@ GROUP BY etape;</pre>
         </div>
       </div>
       <p class="gris" style="position:absolute;left:58px;top:470px;margin:0;font-size:18px">Le <b>?</b> est rempli par l'API avec l'utilisateur connecté : c'est une requête préparée.</p>
-      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>13</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>14</span></div>
     </section>
 
-    <!-- 14. Sécurité -->
+    <!-- 15. Sécurité -->
     <section class="slide cab" data-notes="Chaque requête passe trois contrôles dans l&#x27;API.&#10;Le jeton est-il valide ? Le rôle est-il autorisé ? La donnée lui appartient-elle ?&#10;Par exemple, un mandataire qui demande le client d&#x27;un collègue est refusé.&#10;&#10;• 401 : on ne sait pas qui tu es. 403 : on sait qui tu es, mais tu n&#x27;as pas le droit.&#10;• Les mots de passe sont hachés avec bcrypt, jamais en clair.&#10;• Les requêtes préparées empêchent l&#x27;injection SQL.&#10;• Le compte MySQL de l&#x27;API ne peut pas créer ni supprimer de table.&#10;• Le mot de passe de la base et la clé JWT sont dans un fichier d&#x27;environnement, jamais sur GitHub.">
       <div class="k">La sécurité</div>
       <h2 class="titre">La sécurité est sur le serveur, pas dans l'application</h2>
@@ -482,10 +525,10 @@ GROUP BY etape;</pre>
       </div>
       <p style="position:absolute;left:58px;top:400px;margin:0;font-size:20px">À chaque requête, dans l'API.</p>
       <p class="gris" style="position:absolute;left:58px;top:470px;margin:0;font-size:19px">Et aussi : mots de passe hachés · requêtes préparées · secrets hors du code</p>
-      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>14</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>15</span></div>
     </section>
 
-    <!-- 15. Mettre à disposition -->
+    <!-- 16. Mettre à disposition -->
     <section class="slide cab" data-notes="Pour installer : un fichier Docker Compose lance la base MySQL et l&#x27;API, en une seule commande.&#10;Pour tester : chaque route, quand c&#x27;est autorisé et quand c&#x27;est refusé, puis une recette avec le client.&#10;Pour accompagner : un guide pour le mandataire et un guide pour le gérant.&#10;&#10;• La commande : docker compose up -d. Pour vérifier : docker compose ps.&#10;• La sauvegarde, c&#x27;est un mysqldump, et on teste la restauration.&#10;• Pour la démo : le serveur sur mon poste, l&#x27;application bureau sous Windows, l&#x27;application mobile sur un émulateur Android, avec des données fictives.">
       <div class="k">Mettre à disposition</div>
       <h2 class="titre">Installer, tester, accompagner</h2>
@@ -495,10 +538,10 @@ GROUP BY etape;</pre>
         <div class="carte"><div class="h">Accompagner</div><ul><li>Guide du mandataire</li><li>Guide du gérant</li><li>Prise en main</li></ul></div>
       </div>
       <div class="rgpd"><div class="h">Démo</div><div>Serveur sur mon poste · bureau sous Windows · mobile sur émulateur Android · données fictives</div></div>
-      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>15</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>16</span></div>
     </section>
 
-    <!-- 16. Où j'en suis -->
+    <!-- 17. Où j'en suis -->
     <section class="slide cab" data-notes="Où j&#x27;en suis.&#10;Le cahier des charges, le cahier technique, le MCD, le MLD et le script SQL sont faits.&#10;La suite : des données fictives, puis l&#x27;API et ses tests, puis les écrans, puis la recette.&#10;&#10;• Je ne promets pas de date de fin.&#10;• Je peux ouvrir le script SQL et l&#x27;expliquer table par table.">
       <div class="k">Où j'en suis</div>
       <h2 class="titre">La conception et la base sont faites, l'API commence</h2>
@@ -511,10 +554,10 @@ GROUP BY etape;</pre>
         <div><i></i><small>À venir</small><b>Écrans mobile et bureau</b></div>
         <div><i></i><small>À venir</small><b>Tests et recette</b></div>
       </div>
-      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>16</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>17</span></div>
     </section>
 
-    <!-- 17. Veille -->
+    <!-- 18. Veille -->
     <section class="slide" data-notes="Ma veille a un objectif : devenir DevOps.&#10;Des sources choisies, un tri, une lecture critique, et une trace sur mon portfolio.&#10;En ce moment : PHP2Shell, deux failles critiques dans PHP.&#10;&#10;• Les failles ont été annoncées le 20 octobre et corrigées le 21. Une simple requête peut suffire à exécuter du code. La parade : mettre à jour.&#10;• Je prépare deux certifications : GitLab 101 et Terraform Associate.">
       <div class="k">Développement professionnel</div>
       <h2 class="titre">Ma veille a un cap : devenir DevOps</h2>
@@ -526,10 +569,10 @@ GROUP BY etape;</pre>
       </div>
       <div class="une"><div class="k">À la une · 20 octobre 2026</div><div class="h">PHP2Shell : deux failles critiques dans PHP</div><p class="gris" style="font-size:15px;margin:14px 0 0">Annoncées le 20, corrigées le 21. Trois de mes projets tournent sur PHP.</p></div>
       <div class="carte cap"><div class="k">Mon cap</div><div class="h">Une alternance, puis un bachelor DevOps</div></div>
-      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>17</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>18</span></div>
     </section>
 
-    <!-- 18. Questions -->
+    <!-- 19. Questions -->
     <section class="slide sombre" data-notes="Merci.&#10;Je suis prêt pour vos questions.&#10;Je peux ouvrir les cahiers, le MCD, le MLD ou le script SQL.">
       <div style="position:absolute;left:58px;top:163px">
         <div class="k">Merci</div>

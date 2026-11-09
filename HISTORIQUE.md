@@ -68,3 +68,7 @@ Le détail de chaque modification est dans l'historique Git (`git log`). Ici, l'
 - MCD redessiné en pleine largeur (entités, associations et cardinalités en grand) ; légende retirée du MLD.
 - Nouvelle diapo 13 « La base en action » : trois écrans des applications et la requête SQL de chacun,
   avec le résultat sur des données fictives. 18 diapos, environ 9 min 45.
+
+## 2026-11-09 — Présentation : diapo « Le script SQL »
+- Nouvelle diapo 13 entre le MLD et « La base en action » : extrait commenté du `CREATE TABLE affaire` (NULL, ENUM, DECIMAL, FOREIGN KEY, CHECK). 19 diapos, environ 10 min.
+- Script complet de la version 1 ajouté en annexe : `assets/annexes/gestion-cabinet/schema-bdd-courtage-v1.sql`.
