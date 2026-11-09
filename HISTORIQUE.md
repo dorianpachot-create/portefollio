@@ -71,4 +71,11 @@ Le détail de chaque modification est dans l'historique Git (`git log`). Ici, l'
 
 ## 2026-11-09 — Présentation : diapo « Le script SQL »
 - Nouvelle diapo 13 entre le MLD et « La base en action » : extrait commenté du `CREATE TABLE affaire` (NULL, ENUM, DECIMAL, FOREIGN KEY, CHECK). 19 diapos, environ 10 min.
-- Script complet de la version 1 ajouté en annexe : `assets/annexes/gestion-cabinet/schema-bdd-courtage-v1.sql`.
+- Script complet de la version 1 mis en annexe : `assets/annexes/gestion-cabinet/schema-bdd-courtage.sql`.
+
+## 2026-11-09 — Page « Gestion de cabinet » passée à la version 1 (tunnel de vente)
+- `app/contenu/projets.yaml` : textes réécrits d'après les cahiers du 21 octobre (6 tables, deux applications, tunnel de vente), nouvelles sections « Le tunnel de vente », « Deux applications, deux rôles », « Une requête par écran ».
+- Images : nouveau schéma d'architecture (`assets/meta/shot-cabinet`), MCD et MLD (`assets/gestion-cabinet/mcd.jpg`, `mld.jpg`) ; l'ancien schéma à 19 tables est retiré.
+- Annexes : cahier des charges, cahier technique, MCD, MLD, schéma relationnel et script SQL remplacés par la version 1 ; fiche E5 refaite.
+- `SectionProjet.html.twig` : nouvelle clé `figures` (plusieurs images dans une section).
+- Export refait (petites différences d'espaces dans toutes les pages, sans effet visible).

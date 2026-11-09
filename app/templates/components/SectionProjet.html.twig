@@ -4,6 +4,7 @@
   et s'affichent dans cet ordre :
     paragraphes  liste de paragraphes
     figure       { fichier, alt, legende } : une image (schéma...), cliquable pour l'agrandir
+    figures      liste de { fichier, alt, legende } : plusieurs images à la suite (ex. MCD puis MLD)
     tableau      { entetes: [...], lignes: [[...], [...]] }
     liste        liste à puces
   La section "en-bref" est mise en avant automatiquement.
@@ -11,9 +12,9 @@
 {% props section %}
 <twig:Panneau :id="section.id" :titre="section.titre" :callout="section.id == 'en-bref'">
   {% for paragraphe in section.paragraphes ?? [] %}<p>{{ paragraphe|raw }}</p>{% endfor %}
-  {% if section.figure is defined %}
-    <figure class="schema"><a href="{{ lien(section.figure.fichier) }}" target="_blank" rel="noopener"><img src="{{ lien(section.figure.fichier) }}" alt="{{ section.figure.alt }}" loading="lazy" width="1200" height="590" /></a><figcaption>{{ section.figure.legende|raw }}</figcaption></figure>
-  {% endif %}
+  {% for figure in section.figure is defined ? [section.figure] : (section.figures ?? []) %}
+    <figure class="schema"><a href="{{ lien(figure.fichier) }}" target="_blank" rel="noopener"><img src="{{ lien(figure.fichier) }}" alt="{{ figure.alt }}" loading="lazy" width="1200" height="590" /></a><figcaption>{{ figure.legende|raw }}</figcaption></figure>
+  {% endfor %}
   {% if section.tableau is defined %}
     <div class="table-wrap"><table>
       <thead><tr>{% for e in section.tableau.entetes %}<th scope="col">{{ e }}</th>{% endfor %}</tr></thead>

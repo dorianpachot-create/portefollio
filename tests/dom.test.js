@@ -48,7 +48,7 @@ const pc = load('pages/projets-cours.html');
 ok('projets encadrés détaillés (2e année)', ['tp0', 'tp1', 'tp2', 'tp3', 'tp4', 'tp5', 'vitasport'].every((id) => pc.getElementById(id)));
 ok('aucune page dorée restante', fs.readdirSync(path.join(ROOT, 'pages')).every((f) => !/class="foil/.test(fs.readFileSync(path.join(ROOT, 'pages', f), 'utf8'))));
 const gc = load('pages/gestion-cabinet.html');
-ok('gestion de cabinet : page du projet en cours', ['en-bref', 'contexte', 'fonctionnalites', 'architecture', 'securite', 'suite', 'competences'].every((id) => gc.getElementById(id)) && !!d.querySelector('#projets a[href="pages/gestion-cabinet.html"]'));
+ok('gestion de cabinet : page du projet en cours', ['en-bref', 'contexte', 'tunnel', 'fonctionnalites', 'architecture', 'base-de-donnees', 'requetes', 'securite', 'suite', 'competences'].every((id) => gc.getElementById(id)) && !!d.querySelector('#projets a[href="pages/gestion-cabinet.html"]'));
 ok('veille : alerte PHP du 20 octobre à la une', /PHP2Shell/.test(d.getElementById('une').textContent) && !!d.getElementById('art-clickfix'));
 ok('mode clair : bouton dans le menu et couleurs prévues', !!d.querySelector('[data-theme-toggle]') && /data-theme="light"/.test(fs.readFileSync(path.join(ROOT, 'css/site.css'), 'utf8')) && /b-theme/.test(fs.readFileSync(path.join(ROOT, 'pages/presentation.html'), 'utf8')));
 ok('recherche : bouton dans le menu et index des pages', !!d.querySelector('[data-search-open]') && JSON.parse(load('index.html').getElementById('index-recherche').textContent).some((e) => e.u === 'pages/gestion-cabinet.html'));

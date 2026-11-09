@@ -501,18 +501,18 @@ projets:
   nom: Gestion de cabinet
   couleur: '#F59E0B'
   titre_page: Application de gestion de cabinet de courtage, projet en cours | Dorian Pachot
-  description: 'Application Flutter (mobile et ordinateur) et API Node.js pour les cabinets de courtage en assurance et leurs mandataires. Projet de BTS en cours : cahiers et base de données terminés.'
+  description: "Deux applications Flutter (mobile pour les mandataires, bureau pour le gérant) et une API Node.js pour suivre les ventes d'un cabinet de courtage en assurance, du prospect au contrat signé. Projet de BTS en cours : cahiers et base de données terminés."
   cadre: Projet de deuxième année de BTS, en cours
-  intro: "Application de gestion pour les cabinets de courtage en assurance et leurs mandataires : clients, contrats et commissions dans un seul outil, sur téléphone comme sur ordinateur. Le cahier des charges, le cahier technique et le modèle de la base de données (MCD, MLD et script SQL de 19 tables) sont terminés ; le développement de l'API commence."
+  intro: "Application de suivi des ventes pour un cabinet de courtage en assurance : chaque vente avance du prospect au contrat signé, sur le terrain avec l'application mobile des mandataires et au bureau avec l'application du gérant. La version 1 est volontairement réduite à ce tunnel de vente. Le cahier des charges, le cahier technique et la base de données (MCD, MLD et script SQL de 6 tables) sont terminés ; le développement de l'API commence."
   fiche:
   - libelle: Cadre
-    valeur: Projet de BTS, 2<sup>e</sup> année
+    valeur: Projet de BTS, 2<sup>e</sup> année, client CRP
   - libelle: Début
-    valeur: Octobre 2026
+    valeur: 21 octobre 2026
   - libelle: Étape
     valeur: Conception et base de données terminées
-  - libelle: Mon rôle
-    valeur: Cahiers, MCD, MLD et script SQL
+  - libelle: Mes réalisations
+    valeur: Application mobile (mandataires) et application bureau (gérant)
   - libelle: Statut
     valeur: En cours
   technos:
@@ -524,8 +524,6 @@ projets:
   - Merise
   - Docker
   - JWT
-  - Scaleway
-  - Firebase
   # Le projet est en conception : les liens mènent aux cahiers (ajouter ici le dépôt ou l'application plus tard)
   liens:
   - texte: Cahier des charges (PDF)
@@ -534,8 +532,8 @@ projets:
   - texte: Cahier technique (PDF)
     url: assets/annexes/gestion-cabinet/cahier-technique.pdf
     style: secondaire
-  - texte: Modèle de données (PDF)
-    url: assets/annexes/gestion-cabinet/mld.pdf
+  - texte: Script SQL
+    url: assets/annexes/gestion-cabinet/schema-bdd-courtage.sql
     style: secondaire
   - texte: Fiche E5 (PDF)
     url: assets/annexes/fiches-e5/fiche-gestion-cabinet.pdf
@@ -543,100 +541,134 @@ projets:
   media:
     type: image
     image: assets/meta/shot-cabinet
-    alt: "Schéma d'architecture : l'application Flutter passe par un reverse proxy HTTPS vers l'API Node.js et la base MySQL du cabinet, dans Docker, avec le stockage, les e-mails et les notifications"
-    legende: "L'architecture prévue dans le cahier technique : une application pour tous les appareils, une installation isolée par cabinet."
+    alt: "Schéma d'architecture de la version 1 : l'application mobile des mandataires et l'application bureau du gérant passent en HTTPS, avec un jeton JWT, par la même API Node.js, seule à accéder à la base MySQL de 6 tables, le tout dans Docker Compose. À droite, les étapes d'une affaire : prospect, qualifié, devis envoyé, signé, ou perdu."
+    legende: "L'architecture de la version 1, tirée du cahier technique : deux applications, une seule API, une seule base."
   sections:
   - id: en-bref
     titre: En bref
     paragraphes:
-    - "Un cabinet de courtage travaille avec un réseau de mandataires, qui vendent des contrats d'assurance (prêt, habitation, automobile, prévoyance, santé) de plusieurs compagnies. Chaque contrat signé rapporte une commission, partagée entre le cabinet et le mandataire."
-    - "L'application doit réunir clients, contrats et commissions dans un seul outil. Elle est pensée pour <strong>n'importe quel cabinet</strong> : chacun la configure avec ses propres compagnies, produits et taux, sans toucher au code."
+    - "Un cabinet de courtage travaille avec des mandataires qui vendent des contrats d'assurance (prêt, habitation, automobile, prévoyance, santé) proposés par plusieurs compagnies. Chaque contrat signé rapporte une commission, calculée sur la prime payée par le client."
+    - "La version 1 se concentre sur l'essentiel : <strong>suivre chaque vente étape par étape</strong>, du premier contact jusqu'à la signature. Le mandataire le fait sur le terrain avec l'application mobile ; le gérant suit tout le cabinet depuis l'application bureau. Le document de départ du client était trop gros pour un premier livrable : avec le client et le professeur, on l'a recentré sur ce tunnel de vente."
   - id: contexte
     titre: Le problème à résoudre
     paragraphes:
-    - "Aujourd'hui, les informations sont dispersées entre les sites des compagnies, des fichiers Excel et des e-mails. La question posée dans le cahier des charges : <strong>comment permettre à un cabinet et à ses mandataires de suivre leurs clients, leurs contrats et leurs commissions depuis un outil unique ?</strong>"
+    - "Aujourd'hui, le suivi des prospects se fait sur papier, sur Excel ou de mémoire. La problématique du cahier des charges : <strong>comment permettre à un cabinet de courtage de suivre chaque vente, du prospect au contrat signé, depuis le terrain comme depuis le bureau ?</strong>"
     liste:
-    - Le mandataire ne sait pas précisément ce qui lui est dû, ce qu'il a perçu et ce qui manque.
-    - Pour connaître l'avancement d'un contrat, il faut consulter le site de chaque compagnie.
-    - Les relances (pièces manquantes, échéances, clients à rappeler) dépendent de la mémoire de chacun.
-    - Le gérant n'a aucun tableau de bord sur l'activité du cabinet.
+    - '<strong>Prospects perdus de vue</strong> : sans suivi, un prospect non relancé est un client perdu.'
+    - "<strong>Avancement des ventes inconnu</strong> : le gérant ne sait pas quelles ventes sont en cours, ni à quelle étape."
+    - '<strong>Aucun indicateur</strong> : ni taux de transformation, ni primes signées, ni commissions prévues.'
+  - id: tunnel
+    titre: Le tunnel de vente
+    paragraphes:
+    - "Chaque vente est une <strong>affaire</strong>, qui passe par quatre étapes. Elle peut être perdue à tout moment. Chaque changement d'étape est enregistré avec son auteur et sa date."
+    tableau:
+      entetes: [Étape, Ce qui se passe, Ce qu'on saisit]
+      lignes:
+      - [Prospect, Un contact intéressé est identifié, Le client et son besoin]
+      - [Qualifié, Le besoin est confirmé, Le besoin détaillé et le produit visé]
+      - [Devis envoyé, Une proposition chiffrée est remise, "Le produit, la prime mensuelle, la date du devis"]
+      - [Signé, Le client a signé le contrat, Le numéro de contrat et la date de signature]
+      - [Perdu, La vente est abandonnée, Le motif de la perte]
+    liste:
+    - "La commission d'une affaire signée se calcule : prime mensuelle × taux de commission du produit. Par exemple, 61,20 € à 30 % donnent 18,36 €."
+    - "Le taux de transformation, c'est le nombre d'affaires signées divisé par le nombre d'affaires créées."
   - id: fonctionnalites
-    titre: Ce que fera l'application
+    titre: Deux applications, deux rôles
+    paragraphes:
+    - "Le mandataire et le gérant n'ont ni les mêmes écrans ni les mêmes droits : il y a donc deux applications Flutter, une demande d'évolution du client."
+    tableau:
+      entetes: [Application mobile (Android), Application bureau (Windows)]
+      lignes:
+      - ["Pour le <strong>mandataire</strong> (rôle user), sur le terrain", "Pour le <strong>gérant</strong> (rôle admin), au bureau"]
+      - [Connexion, Connexion]
+      - ["Ses clients et prospects : création, modification, recherche", "Comptes des mandataires : création et désactivation"]
+      - [Ses affaires classées par étape, "Catalogue : compagnies et produits, avec leur taux de commission"]
+      - ["Détail d'une affaire : changement d'étape, devis, signature ou perte", "Toutes les affaires du cabinet, filtrées par étape et par mandataire, avec leur historique"]
+      - ["Mes chiffres : affaires par étape, signatures du mois, commissions estimées", "Tableau de bord : taux de transformation, primes signées, commissions, classement"]
     liste:
-    - '<strong>Deux rôles</strong> : le gérant (admin) paramètre le cabinet et voit tout ; le mandataire (user) consulte tout le catalogue et gère ses propres clients et contrats.'
-    - '<strong>Clients et contrats</strong>, avec le suivi du statut : en attente de pièces, envoyé à la compagnie, accepté, actif, résilié ou refusé.'
-    - '<strong>Commissions</strong> : calcul de ce qui est attendu, répartition entre cabinet et mandataire, rapprochement avec ce qui a été versé, prévision sur trois mois.'
-    - '<strong>Documents</strong> joints aux clients et aux contrats, avec la liste des pièces obligatoires par produit.'
-    - '<strong>Alertes</strong> : notifications push sur téléphone, alertes sur ordinateur, e-mails de relance et synthèse hebdomadaire pour le gérant.'
-    - '<strong>Tableau de bord</strong>, agenda des rendez-vous et comparateur d''offres d''assurance de prêt, avec export PDF.'
-    - '<strong>Journal d''audit</strong> : chaque action importante est enregistrée avec son auteur et sa date.'
+    - "Un mandataire ne voit que ses propres clients et ses propres affaires : c'est l'API qui filtre, pas l'application."
+    - "On désactive un compte au lieu de le supprimer, pour garder l'historique de ses affaires."
   - id: architecture
     titre: L'architecture et les choix techniques
     paragraphes:
-    - "Le cahier technique justifie chaque choix par trois principes : une seule base de code pour le mobile et l'ordinateur, des technologies que je maîtrise déjà (Flutter, Node.js, SQL), et des données hébergées en France."
+    - "Le cahier technique justifie chaque choix. Le principe : des technologies que je maîtrise déjà, et un seul point d'entrée vers les données."
     liste:
-    - '<strong>Flutter</strong> : une seule application pour Android, iOS, Windows et macOS. Je l''ai déjà utilisé pour SYNCRO.'
-    - '<strong>Node.js avec Express</strong> pour l''API : le serveur contrôle les droits et fait tous les calculs. L''application ne fait qu''afficher, car tout contrôle fait seulement côté application peut être contourné.'
-    - '<strong>MySQL</strong> : les données sont très liées (un client a des contrats, un contrat génère des commissions). Les montants sont en <code>DECIMAL</code>, jamais en <code>FLOAT</code>, pour éviter les erreurs d''arrondi.'
-    - '<strong>Une installation par cabinet</strong>, décrite avec Docker Compose : les données de deux cabinets ne sont jamais mélangées, et un nouveau cabinet s''installe en quelques commandes.'
-    - '<strong>Scaleway, à Paris</strong>, pour le serveur, le stockage des documents (compatible S3) et les e-mails : un seul fournisseur, et des données en France pour le RGPD.'
+    - "<strong>Flutter</strong> pour les deux applications : un seul langage, Dart, et une technologie déjà utilisée pendant mon stage (SYNCRO). Le code est rangé en écrans, modèles et services ; les écrans se mettent à jour avec Provider."
+    - "<strong>Node.js avec Express</strong> pour l'API : c'est le seul composant qui touche à la base. Il vérifie les droits, applique les règles du tunnel et fait les calculs. Express est minimaliste : chaque route et chaque contrôle sont écrits à la main."
+    - '<strong>MySQL</strong> : les données sont liées (un client a des affaires, une affaire porte sur un produit), et les clés étrangères garantissent la cohérence.'
+    - '<strong>Docker Compose</strong> lance la base et l''API en une seule commande, de la même façon sur n''importe quel poste.'
+    - "<strong>Les règles du tunnel</strong>, appliquées par l'API : produit et prime obligatoires au devis, numéro de contrat et date à la signature, motif en cas de perte ; une affaire signée ou perdue ne change plus d'étape."
   - id: base-de-donnees
     titre: La base de données
     paragraphes:
-    - "J'ai conçu le modèle de données avec la méthode Merise : le MCD, puis le MLD et le script SQL pour MySQL 8. La base compte <strong>19 tables</strong>, rangées en six blocs : utilisateurs et cabinet, clients et contrats, pièces et documents, commissions, agenda et alertes, comparateur d'offres de prêt."
-    figure:
-      fichier: assets/gestion-cabinet/schema-relationnel.jpg
-      alt: 'Schéma relationnel de la base : 19 tables reliées par leurs clés étrangères, colorées par bloc'
-      legende: "Le schéma relationnel (MLD) : chaque couleur correspond à un bloc de l'application. Le MCD, le MLD détaillé et le script SQL sont dans les annexes."
+    - "J'ai conçu la base avec la méthode Merise : le MCD, puis le MLD, puis le script SQL pour MySQL 8. La base <code>gestion_courtage</code> compte <strong>6 tables</strong>, partagées par les deux applications : <code>utilisateur</code>, <code>client</code>, <code>compagnie</code>, <code>produit</code>, <code>affaire</code> et <code>historique_etape</code>."
+    figures:
+    - fichier: assets/gestion-cabinet/mcd.jpg
+      alt: "MCD de la base : 6 entités (client, utilisateur, affaire, historique d'étape, produit, compagnie) et 7 associations avec leurs cardinalités"
+      legende: "Le MCD : 6 entités et 7 associations. Par exemple, un client a 0 à n affaires, une affaire concerne 1 et 1 seul client ; une affaire porte sur 0 ou 1 produit, car au stade prospect le produit n'est pas encore choisi."
+    - fichier: assets/gestion-cabinet/mld.jpg
+      alt: "MLD de la base : 6 tables avec leurs colonnes et leurs types, et 7 flèches qui relient chaque clé étrangère à la clé primaire qu'elle référence"
+      legende: "Le MLD : chaque association devient une clé étrangère (#) du côté 1,1. Chaque flèche part d'une clé étrangère et pointe vers la clé primaire qu'elle référence."
     liste:
-    - '<strong>Commission attendue et commission reçue</strong> sont deux tables séparées. Une vue SQL, <code>v_rapprochement_commission</code>, les compare et classe chaque commission : conforme, inférieure, supérieure ou manquante.'
-    - '<strong>Les taux sont recopiés dans la commission attendue</strong> au moment du calcul : si le gérant change un taux, les commissions passées ne bougent pas.'
-    - '<strong>Un historique des statuts</strong> de chaque contrat : qui l''a changé, quand, et de quel statut vers quel statut.'
-    - '<strong>Des contrôles dans la base</strong> : montants en <code>DECIMAL</code>, taux entre 0 et 100, un document toujours rattaché à un client ou à un contrat, une seule ligne de paramètres par cabinet.'
-    - '<strong>Rien de sensible en clair</strong> : mots de passe et jetons de renouvellement sont stockés hachés, et les documents restent sur le stockage S3 (la base ne garde que leur nom, leur type et leur taille).'
-    - '<strong>Pas de suppression qui casse l''historique</strong> : un client lié à des contrats ne peut pas être supprimé (<code>RESTRICT</code>), il est archivé.'
+    - '<strong>Des clés étrangères sur toutes les relations</strong> : une affaire ne peut pas exister sans client, et un client qui a des affaires ne peut pas être supprimé.'
+    - '<strong>Les montants en <code>DECIMAL</code></strong>, jamais en <code>FLOAT</code>, pour éviter les erreurs d''arrondi.'
+    - '<strong>Les étapes en <code>ENUM</code></strong> : une liste fermée de cinq valeurs, la base refuse une étape qui n''existe pas.'
+    - '<strong>Des contraintes <code>CHECK</code></strong> : le taux de commission est entre 0 et 100, la prime ne peut pas être négative.'
+    - '<strong>La commission n''est pas stockée</strong> : elle se calcule, pour ne jamais avoir une valeur fausse si la prime est corrigée.'
+    - "<strong>Un historique des étapes</strong> : chaque changement est écrit dans <code>historique_etape</code>, dans la même transaction que la mise à jour de l'affaire."
+  - id: requetes
+    titre: Une requête par écran
+    paragraphes:
+    - "Chaque écran correspond à une requête de l'API. Elles ont été testées sur un jeu de données fictives. Le <code>?</code> est rempli par l'API avec l'utilisateur connecté : ce sont des requêtes préparées."
+    tableau:
+      entetes: [Écran, Requête, Résultat sur les données fictives]
+      lignes:
+      - ["Mobile · Mes affaires", "<code>SELECT c.nom, a.etape FROM affaire a JOIN client c ON c.id_client = a.id_client WHERE a.id_utilisateur = ?;</code>", "Leroy, signé · Moreau, devis envoyé · Blanc, qualifié"]
+      - ["Mobile · Mes chiffres", "<code>SELECT SUM(a.prime_mensuelle * p.taux_commission / 100) FROM affaire a JOIN produit p ON p.id_produit = a.id_produit WHERE a.id_utilisateur = ? AND a.etape = 'signe';</code>", "21,66 € de commissions estimées"]
+      - ["Bureau · Tableau de bord", "<code>SELECT etape, COUNT(*) AS nb FROM affaire GROUP BY etape;</code>", "3 signées, 2 perdues, 1 prospect, 1 qualifiée, 1 devis envoyé"]
   - id: securite
     titre: La sécurité et le RGPD
     liste:
-    - Mots de passe hachés, jetons JWT de courte durée et nombre de tentatives de connexion limité.
-    - 'Trois contrôles à chaque requête : le jeton est-il valide, le rôle est-il autorisé, la donnée appartient-elle bien à cet utilisateur ?'
-    - Documents dans un espace de stockage privé, téléchargeables seulement par des liens temporaires.
-    - Sauvegarde automatique chaque jour, gardée trente jours, avec des tests de restauration.
-    - 'RGPD : en hébergeant les données des cabinets, nous sommes sous-traitants. Un contrat de sous-traitance est prévu avec chaque cabinet, et le développement se fait uniquement avec des données fictives.'
+    - "Trois contrôles à chaque requête : le jeton JWT est-il valide, le rôle est-il autorisé, la donnée appartient-elle à cet utilisateur ? Sinon, l'API répond 401 ou 403."
+    - Mots de passe hachés avec bcrypt, jamais stockés en clair.
+    - "Requêtes préparées uniquement, contre l'injection SQL. Le compte MySQL de l'API peut seulement lire et modifier les données : il ne peut ni créer ni supprimer de table."
+    - "Le mot de passe de la base et la clé JWT sont dans un fichier d'environnement, jamais dans le code ni sur GitHub. Les échanges passent en HTTPS."
+    - 'RGPD : seules les données utiles au suivi des ventes sont collectées (identité, coordonnées, besoin), et le développement comme la démonstration utilisent uniquement des données fictives.'
   - id: suite
     titre: Où en est le projet
     paragraphes:
-    - "Le cahier des charges et le cahier technique sont rédigés (octobre 2026). Le point qui restait à valider est tranché : chaque mandataire accède à tout le catalogue. Le modèle de la base de données est terminé (novembre 2026) : MCD, MLD et script SQL."
+    - "Le cahier des charges et le cahier technique de la version 1 sont rédigés (21 octobre 2026). La base de données est terminée : MCD, MLD, schéma relationnel et script SQL."
     liste:
-    - 'Prochaine étape : un jeu de données fictives, puis l''API Node.js et ses tests (cas autorisés et cas refusés pour chaque route).'
-    - Ensuite, les écrans Flutter.
-    - Pour la démonstration du BTS, les versions Android et Windows suffisent ; la version iOS demande un Mac et un compte développeur Apple.
+    - "Prochaine étape : un jeu de données fictives, puis l'API Node.js et ses tests (cas autorisés et cas refusés pour chaque route, règles du tunnel)."
+    - "Ensuite, les écrans des deux applications, puis la recette avec le client et les guides pour le gérant et le mandataire."
+    - "Évolutions prévues après la version 1 : pièces justificatives, suivi des commissions réellement versées, alertes et relances, agenda, versions iOS et macOS."
   - id: competences
     titre: Compétences mobilisées
     liste:
-    - Analyser un besoin et le traduire en cahier des charges.
+    - Analyser un besoin, le recentrer avec le client et le traduire en cahier des charges.
+    - Prendre en compte des demandes d'évolution (deux rôles, deux applications, version 1 réduite).
     - Choisir et justifier une architecture technique.
-    - 'Concevoir une base de données relationnelle : MCD, MLD, script SQL, contraintes et vue.'
-    - Prévoir la sécurité, les droits d'accès et la conformité RGPD dès la conception.
-    - Prévoir le déploiement, les sauvegardes et la mise à jour d'une application.
+    - 'Concevoir une base de données relationnelle : MCD, MLD, script SQL et contraintes.'
+    - Prévoir les habilitations, la sécurité et la conformité RGPD dès la conception.
+    - Prévoir l'installation avec Docker, les tests et l'accompagnement des utilisateurs.
   accueil:
     largeur_complete: true
     filtre: wip
     badge: En conception
     image: assets/meta/shot-cabinet
-    alt: Schéma d'architecture de l'application de gestion de cabinet
+    alt: Schéma d'architecture de l'application de gestion de cabinet, version 1
     statut: Projet de BTS en cours
-    resume: "Application Flutter, sur téléphone et sur ordinateur, pour qu'un cabinet de courtage en assurance et ses mandataires suivent leurs clients, leurs contrats et leurs commissions au même endroit. Cahiers et base de données (19 tables) terminés ; le développement de l'API commence."
+    resume: "Une application mobile pour les mandataires et une application bureau pour le gérant, reliées à la même API, pour suivre chaque vente d'un cabinet de courtage, du prospect au contrat signé. Cahiers et base de données (6 tables) terminés ; le développement de l'API commence."
     tags:
     - Flutter
     - Node.js
     - MySQL
+    - Merise
     - Docker
-    - RGPD
     lien_principal:
       texte: Lire la présentation
       url: pages/gestion-cabinet.html
   liste_projets:
     statut: Projet de BTS en cours
-    texte: Application Flutter et API Node.js pour les cabinets de courtage en assurance et leurs mandataires. Cahiers et base de données terminés, développement de l'API à venir.
-    alt: Schéma d'architecture de l'application de gestion de cabinet
+    texte: "Application mobile et application bureau en Flutter, avec une API Node.js, pour suivre les ventes d'un cabinet de courtage. Cahiers et base de données terminés, développement de l'API à venir."
+    alt: Schéma d'architecture de l'application de gestion de cabinet, version 1

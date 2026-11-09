@@ -38,33 +38,33 @@ groupes:
     type: PDF
     url: assets/annexes/fiches-e5/fiche-gestion-cabinet.pdf
   - titre: Cahier des charges
-    texte: Contexte, problématique, rôles, fonctionnalités, déploiement.
+    texte: "Version 1 : contexte, problématique, tunnel de vente, rôles et fonctionnalités des deux applications."
     type: PDF
     url: assets/annexes/gestion-cabinet/cahier-des-charges.pdf
   - titre: Cahier technique
-    texte: Architecture, choix justifiés, sécurité, RGPD, sauvegardes, tests.
+    texte: "Version 1 : architecture, choix justifiés, routes de l'API, base de données, sécurité, RGPD, tests."
     type: PDF
     url: assets/annexes/gestion-cabinet/cahier-technique.pdf
   - titre: MCD (modèle conceptuel de données)
-    texte: Les entités, les associations et leurs cardinalités.
+    texte: Les 6 entités, les 7 associations et leurs cardinalités.
     type: PDF
     url: assets/annexes/gestion-cabinet/mcd.pdf
   - titre: MLD (modèle logique de données)
-    texte: Les 19 relations, toutes les clés étrangères et leur comportement à la suppression.
+    texte: Les 6 relations et leurs 7 clés étrangères.
     type: PDF
     url: assets/annexes/gestion-cabinet/mld.pdf
   - titre: Schéma relationnel
-    texte: Les 19 tables avec leurs types, colorées par bloc fonctionnel.
+    texte: Les 6 tables avec leurs colonnes, leurs types et leurs liens.
     type: PDF
     url: assets/annexes/gestion-cabinet/schema-relationnel.pdf
   - titre: Script SQL de la base
-    texte: Création des tables, contraintes et vue de rapprochement des commissions (MySQL 8).
+    texte: "Création des 6 tables, clés étrangères, contraintes CHECK et compte MySQL de l'API (MySQL 8)."
     type: SQL
     url: assets/annexes/gestion-cabinet/schema-bdd-courtage.sql
   - titre: Schéma d'architecture
-    texte: L'application, l'API, la base et les services, pour une installation de cabinet.
+    texte: "Les deux applications, l'API et la base, dans Docker Compose."
     type: Image
-    url: assets/presentation/architecture.jpg
+    url: assets/meta/shot-cabinet.jpg
 
 - id: syncro
   titre: SYNCRO (stage chez Suitime)
