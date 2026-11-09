@@ -65,3 +65,4 @@ Le détail de chaque modification est dans l'historique Git (`git log`). Ici, l'
   chaque flèche part de la ligne de la clé étrangère pour arriver sur la ligne de la clé primaire.
 - Diapos simplifiées pour l'oral : pastilles retirées (les réponses sont dans les notes), textes raccourcis,
   polices agrandies, une idée par bloc.
+- MCD redessiné en pleine largeur (entités, associations et cardinalités en grand) ; légende retirée du MLD.
