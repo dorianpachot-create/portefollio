@@ -6,7 +6,7 @@
   pas indexée. On l'ouvre avec la touche P depuis n'importe quelle page du site.
 
   Même contenu que le PowerPoint assets/presentation/Presentation_E5_Dorian_Pachot.pptx
-  (bouton « PowerPoint » de la barre du bas). 15 diapositives, environ 8 min 40 de
+  (bouton « PowerPoint » de la barre du bas). 16 diapositives, environ 9 min de
   parole (temps conseillé de chaque diapo dans les notes), pour un oral de 10 minutes.
 
   Les pastilles (class="pastille") sont les points « survolés » : juste un mot-clé,
@@ -154,6 +154,35 @@
     .notes { position: fixed; left: 50%; bottom: 56px; transform: translateX(-50%); width: min(980px, 94vw); max-height: 46vh; overflow: auto; white-space: pre-line;
              background: var(--diapo); border: 1px solid var(--edge); border-radius: 12px; padding: 14px 18px; font-size: 15px; line-height: 1.5; color: var(--texte); display: none; box-shadow: 0 20px 50px -20px rgba(0,0,0,.5); }
     body.avec-notes .notes { display: block; }
+    /* Version 1 : tunnel de vente */
+    .tunnel { position: absolute; left: 533px; right: 58px; top: 128px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .et4 { position: relative; height: 128px; padding: 16px 14px; border-radius: 10px; border: 1px solid var(--ambre); background: color-mix(in srgb, var(--ambre) 10%, var(--carte)); }
+    .et4 b { display: block; font-size: 17px; } .et4 em { display: block; font-style: normal; color: var(--gris); font-size: 13.5px; margin-top: 10px; line-height: 1.3; }
+    .et4:not(.signe)::after { content: "→"; position: absolute; right: -19px; top: 48px; font-size: 18px; font-weight: 700; color: var(--ambre); }
+    .et4.signe { border-color: var(--vert); background: color-mix(in srgb, var(--vert) 12%, var(--carte)); } .et4.signe b { color: var(--vert); }
+    .tunnel .perdu { grid-column: 1 / -1; padding: 16px 20px; border: 1px dashed var(--rouge); border-radius: 10px; color: var(--rouge); font-size: 15px; }
+    .tunnel p { grid-column: 1 / -1; margin: 0; font-size: 15px; line-height: 1.4; }
+    .archi { position: absolute; left: 58px; right: 58px; top: 150px; display: grid; grid-template-columns: 320px 150px 1fr; align-items: center; }
+    .col-apps { display: grid; gap: 26px; }
+    .boite { padding: 18px 24px; } .boite b { display: block; font-size: 19px; } .boite em { display: block; font-style: normal; color: var(--gris); font-size: 14px; margin-top: 6px; }
+    .boite.fort { border-color: var(--ambre); }
+    .lien { display: flex; flex-direction: column; align-items: center; text-align: center; font-size: 13px; font-weight: 700; color: var(--gris); padding: 0 14px; }
+    .lien i { position: relative; display: block; width: 100%; height: 2px; background: var(--ambre); margin-top: 8px; }
+    .lien i::after { content: ""; position: absolute; right: -2px; top: -6px; border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 11px solid var(--ambre); }
+    .lien.v { flex-direction: row; justify-content: flex-start; gap: 14px; padding: 0 0 0 40px; margin: 6px 0; }
+    .lien.v i { width: 2px; height: 44px; margin: 0; }
+    .lien.v i::after { right: -6px; top: auto; bottom: -2px; border-left: 7px solid transparent; border-right: 7px solid transparent; border-top: 11px solid var(--ambre); border-bottom: 0; }
+    .docker { position: relative; border: 2px dashed var(--edge); border-radius: 14px; padding: 34px 24px 22px; }
+    .docker small { position: absolute; top: 10px; left: 18px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--bleu); }
+    .liens-bdd { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; color: var(--gris); pointer-events: none; }
+    .tb { position: absolute; width: 270px; border: 2px solid var(--cc); border-radius: 8px; background: var(--carte); font-size: 14px; overflow: hidden; padding-bottom: 6px; }
+    .tb b { display: block; background: var(--cc); color: #fff; padding: 6px 12px; font-size: 15px; margin-bottom: 4px; font-family: Arial, sans-serif; }
+    .tb span { display: block; padding: 0 12px; line-height: 22px; white-space: nowrap; }
+    .tb span i { font-style: normal; color: var(--gris); font-size: 12px; margin-left: 6px; }
+    .tb .pk { font-weight: 700; text-decoration: underline; } .tb .fk { color: var(--cc); }
+    .tb.u { --cc: #1565C0; } .tb.c { --cc: #2E7D32; } .tb.a { --cc: #6A1B9A; } .tb.p { --cc: #E65100; }
+    html[data-theme="dark"] .tb.u { --cc: #60A5FA; } html[data-theme="dark"] .tb.c { --cc: #4ADE80; } html[data-theme="dark"] .tb.a { --cc: #C084FC; } html[data-theme="dark"] .tb.p { --cc: #FB923C; }
+    html[data-theme="dark"] .tb b { color: #0B0D13; }
   </style>
 </head>
 <body>
@@ -161,7 +190,7 @@
   <div class="scene"><div class="stage" id="stage">
 
     <!-- 1. Titre -->
-    <section class="slide sombre" data-notes="[15 s] Bonjour. Je m&#x27;appelle Dorian Pachot, je suis en deuxième année de BTS SIO option SLAM à IRIS MediaSchool Rouen.&#10;Je vais présenter mes réalisations en suivant le tableau de synthèse, et je vais surtout détailler mon projet en cours : une application de gestion pour les cabinets de courtage en assurance. Je finirai par SYNCRO, mon stage, et la base de données de Pla&#x27;Net.&#10;&#10;DURÉE TOTALE PRÉVUE : environ 8 min 40, soit 1 min 20 de marge sur les 10 minutes.">
+    <section class="slide sombre" data-notes="[15 s] Bonjour. Je m&#x27;appelle Dorian Pachot, je suis en deuxième année de BTS SIO option SLAM à IRIS MediaSchool Rouen.&#10;Je vais présenter mes réalisations en suivant le tableau de synthèse, et je vais surtout détailler mon projet en cours : une application de gestion pour les cabinets de courtage en assurance. Je finirai par SYNCRO, mon stage.&#10;&#10;DURÉE TOTALE PRÉVUE : environ 9 min 05, soit 55 s de marge sur les 10 minutes.">
       <div style="position:absolute;left:58px;top:163px">
         <div class="k">BTS SIO · option SLAM · épreuve E5</div>
         <h1 class="grand-titre">Support et mise à disposition de services informatiques</h1>
@@ -188,7 +217,7 @@
     </section>
 
     <!-- 3. Tableau de synthèse -->
-    <section class="slide" data-notes="[30 s] Je vais présenter deux réalisations. La ligne orange, c&#x27;est le projet que je mène en ce moment : l&#x27;application de gestion de cabinet. La ligne rouge, c&#x27;est ma réalisation en milieu professionnel : SYNCRO, qui couvre à elle seule les six compétences. Mes autres réalisations sont sur le portfolio et dans le tableau complet, en annexe.&#10;&#10;SI ON ME DEMANDE (pourquoi ce point est coché)&#10;• SYNCRO, 01 Patrimoine : rôles et permissions par groupe, serveur Linux, script de déploiement qui supprime les fichiers obsolètes.&#10;• SYNCRO, 02 Incidents : refus de l&#x27;App Store (connexion cassée depuis cinq jours), notifications iPhone, double blocage des créneaux après minuit.&#10;• SYNCRO, 03 Présence en ligne : site vitrine appsyncro.fr et ses pages légales, fiches sur l&#x27;App Store et Google Play.&#10;• SYNCRO, 04 Mode projet : cahier des charges, maquettes, treize écrans maquettés pour cadrer une évolution avec les responsables.&#10;• SYNCRO, 05 Mise à disposition : mise en production (Nginx, PM2, HTTPS), test de connexion à chaque déploiement, publication sur les deux stores, back-office pour l&#x27;équipe.&#10;• SYNCRO, 06 Développement pro : c&#x27;est pendant ce stage que j&#x27;ai choisi le DevOps ; veille sur les règles des stores et les versions de Flutter ; lettre de recommandation.&#10;• Gestion de cabinet, 01 : rôles admin et user, contrôle des droits, sauvegardes quotidiennes testées. 04 : cahier des charges et cahier technique. 05 : déploiement Docker par cabinet, recette prévue avec le client. 06 : choix techniques appuyés sur une recherche (tarifs Scaleway, plateformes gérées par Firebase), sources citées dans le cahier technique.&#10;• Les autres réalisations (tableau complet en annexe) : Pla&#x27;Net (base de données, projet à cinq), CRP-Assurance (site client en PHP), TP Linux, Active Directory, parc informatique, audit SEO.">
+    <section class="slide" data-notes="[30 s] Je vais présenter deux réalisations. La ligne orange, c&#x27;est le projet que je mène en ce moment : l&#x27;application de gestion de cabinet. La ligne rouge, c&#x27;est ma réalisation en milieu professionnel : SYNCRO, qui couvre à elle seule les six compétences. Mes autres réalisations sont sur le portfolio et dans le tableau complet, en annexe.&#10;&#10;SI ON ME DEMANDE (pourquoi ce point est coché)&#10;• SYNCRO, 01 Patrimoine : rôles et permissions par groupe, serveur Linux, script de déploiement qui supprime les fichiers obsolètes.&#10;• SYNCRO, 02 Incidents : refus de l&#x27;App Store (connexion cassée depuis cinq jours), notifications iPhone, double blocage des créneaux après minuit.&#10;• SYNCRO, 03 Présence en ligne : site vitrine appsyncro.fr et ses pages légales, fiches sur l&#x27;App Store et Google Play.&#10;• SYNCRO, 04 Mode projet : cahier des charges, maquettes, treize écrans maquettés pour cadrer une évolution avec les responsables.&#10;• SYNCRO, 05 Mise à disposition : mise en production (Nginx, PM2, HTTPS), test de connexion à chaque déploiement, publication sur les deux stores, back-office pour l&#x27;équipe.&#10;• SYNCRO, 06 Développement pro : c&#x27;est pendant ce stage que j&#x27;ai choisi le DevOps ; veille sur les règles des stores et les versions de Flutter ; lettre de recommandation.&#10;• Gestion de cabinet, 01 : rôles admin et user, droits contrôlés par l&#x27;API, compte MySQL limité. 04 : cahier des charges, cahier technique, version 1 réduite au tunnel de vente. 05 : Docker Compose, démonstration avec des données fictives, recette prévue avec le client. 06 : choix techniques justifiés dans le cahier technique.&#10;• Les autres réalisations (tableau complet en annexe) : Pla&#x27;Net (base de données, projet à cinq), CRP-Assurance (site client en PHP), TP Linux, Active Directory, parc informatique, audit SEO.">
       <div class="k">Le tableau de synthèse</div>
       <h2 class="titre">Deux réalisations, les six compétences du bloc 1</h2>
       <table class="grille">
@@ -203,80 +232,117 @@
     </section>
 
     <!-- 4. Intercalaire -->
-    <section class="slide sombre" data-notes="[5 s] J&#x27;en viens au projet principal : une application de gestion pour les cabinets de courtage en assurance.">
+    <section class="slide sombre" data-notes="[5 s] J'en viens au projet principal : une application de gestion pour un cabinet de courtage en assurance. Je présente la version 1, volontairement réduite : le suivi des ventes.">
       <div style="position:absolute;left:58px;top:221px">
         <div class="k" style="color:#F59E0B">Projet principal · en cours</div>
         <h1 class="grand-titre" style="max-width:1100px">Une application de gestion pour les cabinets de courtage en assurance</h1>
-        <p class="sous">Projet de deuxième année · conception et base de données terminées, API à venir</p>
+        <p class="sous">Version 1 : le tunnel de vente · conception et base de données terminées, API à venir</p>
       </div>
     </section>
 
     <!-- 5. Le besoin -->
-    <section class="slide cab" data-notes="[45 s] Un cabinet de courtage travaille avec un réseau de mandataires, qui vendent des contrats d&#x27;assurance (prêt, habitation, auto, prévoyance, santé) de plusieurs compagnies. Chaque contrat signé rapporte une commission, partagée entre le cabinet et le mandataire.&#10;Aujourd&#x27;hui tout est dispersé : sites des compagnies, Excel, e-mails. D&#x27;où la problématique écrite dans le cahier des charges.&#10;&#10;SI ON ME DEMANDE&#10;• Commission partagée : l&#x27;application calcule la commission attendue (prime × taux du produit), puis la répartit entre le cabinet et le mandataire selon un pourcentage paramétrable. Ensuite on la compare à ce que la compagnie a vraiment versé.&#10;• ORIAS : le registre officiel des intermédiaires en assurance. Le numéro est obligatoire ; il fait partie du paramétrage du cabinet (nom, logo, coordonnées, ORIAS).&#10;• Pour tout cabinet : rien n&#x27;est écrit en dur. Chaque cabinet saisit ses compagnies, ses produits, ses taux et ses pièces obligatoires, sans toucher au code.">
+    <section class="slide cab" data-notes="[40 s] Un cabinet de courtage travaille avec des mandataires : ils trouvent des prospects, font des devis et signent des contrats d'assurance de plusieurs compagnies. Aujourd'hui, ce suivi se fait sur Excel ou de mémoire : on ne sait pas où en est chaque vente, et le gérant n'a aucune vue d'ensemble. D'où la problématique.&#10;&#10;SI ON ME DEMANDE&#10;• Mandataire : il vend pour le compte du cabinet. Le courtier compare les offres de plusieurs compagnies pour son client.&#10;• Commission : prime mensuelle × taux de commission du produit. Elle n'est pas stockée, elle se calcule.&#10;• Pourquoi une version 1 réduite : le cahier des charges complet (commissions reçues, documents, agenda…) était trop gros pour un premier livrable. La version 1 couvre le cœur du métier, le suivi d'une vente du premier contact à la signature ; le reste viendra ensuite.">
       <div class="k">Le besoin</div>
-      <h2 class="titre">Le problème : tout est dispersé</h2>
-      <div class="liste-num">
-        <div><span>1</span><p style="margin:0"><b>Informations dispersées</b><em>Sites des compagnies, fichiers Excel, e-mails</em></p></div>
-        <div><span>2</span><p style="margin:0"><b>Commissions difficiles à suivre</b><em>Ce qui est dû, ce qui est perçu, ce qui manque</em></p></div>
-        <div><span>3</span><p style="margin:0"><b>Suivi manuel des dossiers</b><em>Un site par compagnie pour savoir où en est un contrat</em></p></div>
-        <div><span>4</span><p style="margin:0"><b>Relances non automatisées</b><em>Pièces manquantes et échéances : de mémoire</em></p></div>
-        <div><span>5</span><p style="margin:0"><b>Aucune vue d'ensemble</b><em>Pas de tableau de bord pour le gérant</em></p></div>
+      <h2 class="titre">Le problème : on ne sait pas où en est chaque vente</h2>
+      <div class="liste-num" style="gap:34px;margin-top:44px">
+        <div><span>1</span><p style="margin:0"><b>Prospects suivis sur Excel ou de mémoire</b><em>Chaque mandataire a sa propre méthode</em></p></div>
+        <div><span>2</span><p style="margin:0"><b>Étape de chaque vente inconnue</b><em>Devis envoyé ? Signé ? Perdu, et pourquoi ?</em></p></div>
+        <div><span>3</span><p style="margin:0"><b>Aucune vue d'ensemble pour le gérant</b><em>Ni chiffre d'affaires, ni taux de transformation</em></p></div>
       </div>
-      <div class="probleme"><div class="k">La problématique</div><p>Comment permettre à un cabinet et à ses mandataires de suivre leurs clients, leurs contrats et leurs commissions depuis un outil unique ?</p></div>
-      <div class="pastilles" style="top:604px"><span class="pastille">Commission partagée</span><span class="pastille">Numéro ORIAS</span><span class="pastille">Pour tout cabinet</span></div>
+      <div class="probleme"><div class="k">La problématique</div><p>Comment suivre chaque vente d'un cabinet, du premier contact à la signature, avec un outil unique pour le gérant et ses mandataires ?</p></div>
+      <div class="pastilles" style="top:604px"><span class="pastille">Mandataire</span><span class="pastille">Commission = prime × taux</span><span class="pastille">Pourquoi une version 1 réduite</span></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>5</span></div>
     </section>
 
-    <!-- 6. Rôles et fonctionnalités -->
-    <section class="slide cab" data-notes="[50 s] Deux rôles : l&#x27;admin, c&#x27;est le gérant ; le user, c&#x27;est le mandataire, qui ne voit que ses propres clients. Dix fonctionnalités, de la fiche client jusqu&#x27;à l&#x27;agenda. Le cœur, ce sont les contrats, avec leur statut (en attente de pièces, envoyé à la compagnie, accepté, actif, résilié ou refusé), et les commissions.&#10;&#10;SI ON ME DEMANDE&#10;• Journal d&#x27;audit : chaque action importante (connexion, création, modification, suppression) est enregistrée avec son auteur et sa date, consultable par l&#x27;admin. C&#x27;est l&#x27;API qui l&#x27;alimente, pour qu&#x27;aucune action n&#x27;y échappe.&#10;• Rapprochement attendu / reçu : les commissions versées par les compagnies sont saisies ou importées en CSV, puis comparées aux commissions attendues ; l&#x27;application signale les écarts et les commissions manquantes. Elle prévoit aussi les trois prochains mois.&#10;• Le point qui était à valider : tous les mandataires ont-ils accès à tout le catalogue, ou le gérant choisit-il les produits de chacun ? C&#x27;est tranché : tout le catalogue pour chacun, ce qui simplifie les droits (le mandataire ne voit que SES clients et SES contrats, mais tous les produits).&#10;• Comparateur emprunteur : l&#x27;admin saisit les offres des compagnies, le user entre le profil (âge, montant, durée, fumeur ou non), l&#x27;application classe par coût total et exporte un PDF pour le client.">
-      <div class="k">Utilisateurs et fonctionnalités</div>
-      <h2 class="titre">Deux rôles, dix fonctionnalités</h2>
+    <!-- 6. Rôles et tunnel -->
+    <section class="slide cab" data-notes="[50 s] Deux rôles. L'admin, c'est le gérant, sur une application Windows : il gère les comptes, le catalogue des compagnies et des produits, et voit toutes les ventes. Le user, c'est le mandataire, sur une application Android : il ne voit que ses clients et ses affaires.&#10;Une affaire, c'est une vente. Elle avance dans un tunnel : prospect, qualifié, devis envoyé, signé ; elle peut être perdue à n'importe quelle étape. L'API vérifie les données obligatoires à chaque passage.&#10;&#10;SI ON ME DEMANDE&#10;• Une affaire signée ou perdue ne peut plus changer d'étape.&#10;• Chaque changement d'étape est enregistré dans historique_etape (qui, quand), dans la même transaction que la mise à jour de l'affaire : soit les deux sont écrits, soit aucun.&#10;• Prospect et client sont dans la même table : un client est d'abord un prospect ; il devient client quand une de ses affaires est signée.&#10;• Taux de transformation : nombre d'affaires signées / nombre d'affaires terminées (signées + perdues), calculé à partir de la base.">
+      <div class="k">Utilisateurs et fonctionnement</div>
+      <h2 class="titre">Deux rôles, une vente qui avance en 4 étapes</h2>
       <div class="roles">
-        <div class="carte"><div class="h">Admin<small><b>Le gérant du cabinet</b></small></div><p>Paramètre le cabinet, crée les comptes, voit tous les clients et contrats, saisit les commissions reçues.</p></div>
-        <div class="carte"><div class="h">User<small><b>Le mandataire</b></small></div><p>Gère ses propres clients et contrats, ajoute des documents, suit ses commissions et ses alertes.</p></div>
+        <div class="carte"><div class="h">Admin<small><b>Le gérant · application Windows</b></small></div><p>Crée les comptes, gère le catalogue (compagnies, produits, taux), voit toutes les affaires et le tableau de bord.</p></div>
+        <div class="carte"><div class="h">User<small><b>Le mandataire · application Android</b></small></div><p>Gère ses propres clients, crée ses affaires, les fait avancer d'étape et suit ses chiffres.</p></div>
       </div>
-      <div class="fcts">
-        <div>Connexion et rôles</div><div>Clients</div>
-        <div>Contrats et statuts</div><div>Commissions</div>
-        <div>Documents</div><div>Tableau de bord</div>
-        <div>Alertes et relances</div><div>Paramétrage du cabinet</div>
-        <div>Comparateur emprunteur</div><div>Agenda des rendez-vous</div>
+      <div class="tunnel">
+        <div class="et4"><b>Prospect</b><em>premier contact</em></div>
+        <div class="et4"><b>Qualifié</b><em>besoin noté</em></div>
+        <div class="et4"><b>Devis envoyé</b><em>produit + prime obligatoires</em></div>
+        <div class="et4 signe"><b>Signé</b><em>n° de contrat + date obligatoires</em></div>
+        <div class="perdu"><b>Perdu</b> possible depuis n'importe quelle étape · motif obligatoire</div>
+        <p class="gris">Chaque passage est enregistré (qui, quand). Une affaire signée ou perdue ne bouge plus.</p>
       </div>
-      <div class="pastilles" style="top:580px"><span class="pastille">Journal d'audit</span><span class="pastille">Rapprochement attendu / reçu</span><span class="pastille">Tout le catalogue pour chacun</span></div>
+      <div class="pastilles" style="top:580px"><span class="pastille">Historique dans une transaction</span><span class="pastille">Prospect = futur client</span><span class="pastille">Taux de transformation</span></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>6</span></div>
     </section>
 
     <!-- 7. Architecture -->
-    <section class="slide cab" data-notes="[45 s] Une seule application Flutter, compilée pour téléphone (Android, iOS) et ordinateur (Windows, macOS). Elle parle en HTTPS à l&#x27;API Node.js du cabinet. Chaque cabinet a sa propre installation dans Docker : son API et sa base MySQL. Autour, les services de Scaleway à Paris pour les documents et les e-mails, et Firebase pour les notifications sur téléphone.&#10;&#10;SI ON ME DEMANDE&#10;• Seule l&#x27;API touche à la base : l&#x27;application affiche et contrôle la saisie, mais les droits, les calculs et le catalogue viennent toujours du serveur. Sur l&#x27;appareil, on ne garde que le jeton de connexion, dans le stockage sécurisé du système.&#10;• Un chemin par cabinet : un seul domaine en HTTPS, par exemple nomdelapplication.fr/nomducabinet. Un reverse proxy, avec un certificat Let&#x27;s Encrypt, envoie chaque chemin vers l&#x27;API du bon cabinet. Au premier lancement, l&#x27;utilisateur saisit l&#x27;identifiant de son cabinet.&#10;• Jeton JWT : après la connexion, l&#x27;API donne un jeton de courte durée, envoyé avec chaque requête, et un jeton de renouvellement pour ne pas retaper le mot de passe.">
+    <section class="slide cab" data-notes="[40 s] Deux applications Flutter : le mobile pour les mandataires, le bureau pour le gérant. Elles envoient leurs demandes en HTTPS à la même API Node.js. C'est l'API, et elle seule, qui vérifie les droits, applique les règles du tunnel et lit ou écrit dans la base MySQL. Les deux applications voient donc toujours les mêmes données. L'API et la base tournent dans Docker.&#10;&#10;SI ON ME DEMANDE&#10;• Pourquoi seule l'API touche à la base : une application peut être copiée ou imitée ; si elle parlait directement à la base, il faudrait y mettre le mot de passe MySQL, et n'importe qui pourrait le récupérer.&#10;• Échanges : requêtes HTTPS (GET, POST, PUT), réponses en JSON. Routes : /auth, /clients, /affaires, /catalogue, /utilisateurs, /statistiques.&#10;• Jeton JWT : après la connexion, l'API donne un jeton signé à durée limitée, envoyé avec chaque requête. Sur l'appareil, seul ce jeton est gardé, dans le stockage sécurisé du système.">
       <div class="k">L'architecture</div>
-      <h2 class="titre">Une installation isolée par cabinet</h2>
-      <img class="img clair" src="../assets/presentation/architecture.jpg" alt="Architecture : application Flutter, reverse proxy HTTPS, API Node.js et base MySQL dans Docker, services Scaleway et Firebase" style="left:72px;top:168px;width:1133px" />
-      <div class="pastilles" style="top:624px"><span class="pastille">Seule l'API touche à la base</span><span class="pastille">Un chemin par cabinet</span><span class="pastille">Jeton JWT</span></div>
+      <h2 class="titre">Deux applications, une seule API, une seule base</h2>
+      <div class="archi">
+        <div class="col-apps">
+          <div class="carte boite"><b>Application mobile</b><em>Flutter · Android · les users</em></div>
+          <div class="carte boite"><b>Application bureau</b><em>Flutter · Windows · l'admin</em></div>
+        </div>
+        <div class="lien"><span>HTTPS<br>JSON</span><i></i></div>
+        <div class="docker"><small>Docker Compose</small>
+          <div class="carte boite fort"><b>API Node.js (Express)</b><em>vérifie le jeton, le rôle, la propriété · applique les règles du tunnel</em></div>
+          <div class="lien v"><i></i><span>SQL · requêtes préparées</span></div>
+          <div class="carte boite"><b>MySQL · gestion_courtage</b><em>6 tables</em></div>
+        </div>
+      </div>
+      <div class="pastilles" style="top:604px"><span class="pastille">Seule l'API touche à la base</span><span class="pastille">Routes de l'API</span><span class="pastille">Jeton JWT</span></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>7</span></div>
     </section>
 
     <!-- 8. Choix techniques -->
-    <section class="slide cab" data-notes="[45 s] Trois principes : une seule base de code pour le mobile et l&#x27;ordinateur, des technologies que je maîtrise déjà (Flutter, Node.js, SQL), et des données hébergées en France.&#10;&#10;SI ON ME DEMANDE&#10;• Compatible S3 : S3 est le format de stockage d&#x27;Amazon, devenu un standard. Scaleway le parle aussi : si on change de fournisseur, on ne réécrit pas le code. Prix : environ 0,016 € par Go et par mois à Paris.&#10;• SPF, DKIM, DMARC : trois réglages DNS qui prouvent que les e-mails viennent bien de notre domaine. Sans eux, les relances partent dans les spams.&#10;• Firebase ne gère pas Windows : sur ordinateur, l&#x27;application ouverte interroge l&#x27;API toutes les 5 minutes (et à l&#x27;ouverture), met à jour le compteur d&#x27;alertes et affiche une notification Windows ou macOS. Plus tard, on pourra passer en temps réel avec une WebSocket.&#10;• Pourquoi Express et pas un framework plus complet : il est minimaliste, les routes, les middlewares et les erreurs s&#x27;écrivent explicitement, donc je comprends tout ce qui se passe.&#10;• Gestion d&#x27;état Flutter : Provider, celle que présente la documentation officielle.">
+    <section class="slide cab" data-notes="[30 s] Des technologies que je maîtrise déjà, chacune justifiée dans le cahier technique. Flutter pour les deux applications, Node.js et Express pour l'API, MySQL parce que les données sont très liées, Docker pour tout démarrer en une commande.&#10;&#10;SI ON ME DEMANDE&#10;• Pourquoi MySQL et pas MongoDB : un client a des affaires, une affaire porte sur un produit, un produit appartient à une compagnie. Les clés étrangères garantissent qu'aucune affaire ne pointe vers un client qui n'existe pas.&#10;• Pourquoi Express : minimaliste, chaque route et chaque vérification s'écrivent explicitement, donc je comprends tout ce qui se passe.&#10;• Gestion d'état Flutter : Provider, la solution présentée par la documentation officielle.&#10;• Outils : VS Code, Android Studio pour l'émulateur, Postman ou Bruno pour tester l'API, Trello pour le suivi.">
       <div class="k">Les choix techniques</div>
       <h2 class="titre">Chaque choix est justifié dans le cahier technique</h2>
       <table class="choix">
         <thead><tr><th>Besoin</th><th>Choix</th><th>Pourquoi</th></tr></thead>
         <tbody>
-          <tr><td>Application</td><td>Flutter (Dart)</td><td>Une seule base de code pour 4 plateformes, déjà utilisée sur SYNCRO</td></tr>
-          <tr><td>Serveur (API)</td><td>Node.js et Express</td><td>Maîtrisé, minimaliste, le plus documenté</td></tr>
-          <tr><td>Base de données</td><td>MySQL dans Docker</td><td>Données très liées : les clés étrangères gardent la cohérence</td></tr>
-          <tr><td>Documents</td><td>Scaleway Object Storage</td><td>Payé à l'usage : le volume est impossible à prévoir</td></tr>
-          <tr><td>E-mails</td><td>Scaleway Transactional Email</td><td>Envoyés depuis le domaine de l'application</td></tr>
-          <tr><td>Notifications</td><td>Firebase + notifications locales</td><td>Push sur téléphone, alertes sur ordinateur</td></tr>
-          <tr><td>Hébergement</td><td>Scaleway, région Paris</td><td>Données en France, un seul fournisseur</td></tr>
+          <tr><td>Applications</td><td>Flutter (Dart), deux projets</td><td>Un seul langage pour le mobile et le bureau, déjà utilisé sur SYNCRO</td></tr>
+          <tr><td>Serveur (API)</td><td>Node.js et Express</td><td>Maîtrisé, minimaliste : tout est écrit explicitement</td></tr>
+          <tr><td>Base de données</td><td>MySQL 8</td><td>Données très liées : les clés étrangères gardent la cohérence</td></tr>
+          <tr><td>Exécution</td><td>Docker et Docker Compose</td><td>La base et l'API démarrent en une commande, sur n'importe quel poste</td></tr>
+          <tr><td>Versionnage</td><td>Git et GitHub</td><td>Historique du code et sauvegarde du travail</td></tr>
         </tbody>
       </table>
-      <div class="pastilles" style="top:604px"><span class="pastille">Compatible S3</span><span class="pastille">SPF · DKIM · DMARC</span><span class="pastille">Firebase ne gère pas Windows</span></div>
+      <div class="pastilles" style="top:560px"><span class="pastille">MySQL plutôt que MongoDB</span><span class="pastille">Pourquoi Express</span><span class="pastille">Provider</span></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>8</span></div>
     </section>
 
-    <!-- 9. Sécurité -->
-    <section class="slide cab" data-notes="[45 s] Chaque requête passe trois contrôles : le jeton, le rôle, puis la propriété de la donnée. Par exemple, un mandataire qui demande le client d&#x27;un autre mandataire est refusé, même avec un jeton valide.&#10;&#10;SI ON ME DEMANDE&#10;• 401 ou 403 : 401, on ne sait pas qui tu es (pas de jeton, ou jeton expiré) ; 403, on sait qui tu es mais tu n&#x27;as pas le droit. 404 sert à ne pas révéler qu&#x27;une donnée existe.&#10;• Mots de passe hachés : bcrypt ou argon2, jamais en clair.&#10;• Limite de tentatives : contre les attaques par force brute sur la connexion.&#10;• Requêtes préparées : contre l&#x27;injection SQL, aucune saisie n&#x27;est collée dans une requête.&#10;• Liens temporaires : les documents sont dans un espace privé ; après contrôle des droits, l&#x27;API génère une URL présignée valable quelques minutes. Les fichiers déposés sont contrôlés : PDF, JPEG ou PNG, 10 Mo maximum, et renommés avec un identifiant unique.&#10;• Clés hors du code : les clés S3, e-mail et Firebase sont dans des variables d&#x27;environnement, jamais dans le code ni sur GitHub.&#10;• Montants en DECIMAL : primes, taux et commissions en DECIMAL et jamais en FLOAT, pour éviter les erreurs d&#x27;arrondi sur de l&#x27;argent.">
+    <!-- 9. La base de données -->
+    <section class="slide cab" data-notes="[55 s] La base compte 6 tables en trois blocs. Les utilisateurs, avec leur rôle admin ou user. Le catalogue : une compagnie propose des produits, chacun avec son taux de commission. Et le tunnel : un client appartient à un mandataire, une affaire concerne un client et porte sur un produit, et chaque changement d'étape va dans historique_etape.&#10;Les flèches partent de la clé étrangère et pointent vers la clé primaire.&#10;&#10;SI ON ME DEMANDE&#10;• id_produit peut être vide : au stade prospect, le produit n'est pas encore choisi ; il devient obligatoire au devis (règle vérifiée par l'API).&#10;• Étapes en ENUM : une liste fermée, impossible d'écrire une étape qui n'existe pas.&#10;• DECIMAL et pas FLOAT : FLOAT stocke une approximation binaire (0,1 + 0,2 ne fait pas exactement 0,3) ; sur de l'argent, on veut des valeurs exactes.&#10;• La commission n'est pas stockée : prime_mensuelle × taux_commission / 100, calculée à la demande, donc jamais incohérente.&#10;• Contraintes CHECK : taux entre 0 et 100, prime positive. UNIQUE sur l'e-mail et sur le couple (compagnie, libellé du produit).&#10;• Cardinalités : un client a 0 à n affaires, une affaire concerne 1 et 1 seul client (1,1 côté affaire → la clé étrangère va dans affaire).&#10;• Compte MySQL de l'API : SELECT, INSERT, UPDATE, DELETE seulement, il ne peut ni créer ni supprimer de table.">
+      <div class="k">La base de données</div>
+      <h2 class="titre">6 tables, reliées par des clés étrangères</h2>
+      <div class="bdd">
+        <svg class="liens-bdd" viewBox="0 0 1280 720" aria-hidden="true">
+          <defs><marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+          <g fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M190 330 V268" marker-end="url(#fl)"/>
+            <path d="M505 200 H332" marker-end="url(#fl)"/>
+            <path d="M505 345 H332" marker-end="url(#fl)"/>
+            <path d="M775 320 H948" marker-end="url(#fl)"/>
+            <path d="M1087 290 V224" marker-end="url(#fl)"/>
+            <path d="M640 400 V356" marker-end="url(#fl)"/>
+            <path d="M505 470 H470 V240 H332" marker-end="url(#fl)" stroke-dasharray="5 4"/>
+          </g>
+        </svg>
+        <div class="tb u" style="left:58px;top:135px"><b>utilisateur</b><span class="pk">id_utilisateur</span><span>email</span><span>mot_de_passe_hash</span><span>role <i>admin / user</i></span></div>
+        <div class="tb c" style="left:58px;top:330px"><b>client</b><span class="pk">id_client</span><span class="fk">#id_utilisateur</span><span>nom, prenom</span><span>email, telephone</span><span>ville, notes</span></div>
+        <div class="tb a" style="left:505px;top:135px"><b>affaire</b><span class="pk">id_affaire</span><span class="fk">#id_client</span><span class="fk">#id_produit <i>vide au départ</i></span><span class="fk">#id_utilisateur</span><span>etape <i>ENUM</i></span><span>prime_mensuelle <i>DECIMAL</i></span><span>numero_contrat</span><span>motif_perte</span></div>
+        <div class="tb a" style="left:505px;top:400px"><b>historique_etape</b><span class="pk">id_historique</span><span class="fk">#id_affaire</span><span class="fk">#id_utilisateur</span><span>ancienne → nouvelle étape</span><span>date_changement</span></div>
+        <div class="tb p" style="left:952px;top:135px"><b>compagnie</b><span class="pk">id_compagnie</span><span>nom</span></div>
+        <div class="tb p" style="left:952px;top:290px"><b>produit</b><span class="pk">id_produit</span><span class="fk">#id_compagnie</span><span>libelle</span><span>taux_commission <i>DECIMAL</i></span></div>
+      </div>
+      <p class="gris" style="position:absolute;left:952px;top:452px;width:270px;margin:0;font-size:13px;line-height:1.45">Chaque flèche part de la clé étrangère (#) et pointe vers la clé primaire (soulignée). En pointillés : historique_etape → utilisateur.</p>
+      <div class="pastilles" style="top:604px"><span class="pastille">Produit vide au stade prospect</span><span class="pastille">ENUM et DECIMAL</span><span class="pastille">Commission calculée, pas stockée</span><span class="pastille">Cardinalités</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>9</span></div>
+    </section>
+
+    <!-- 10. Sécurité -->
+    <section class="slide cab" data-notes="[40 s] Chaque requête passe trois contrôles dans l'API : le jeton, le rôle, puis la propriété de la donnée. Par exemple, un mandataire qui demande le client d'un autre mandataire est refusé, même avec un jeton valide.&#10;&#10;SI ON ME DEMANDE&#10;• 401 ou 403 : 401, on ne sait pas qui tu es (pas de jeton, ou jeton expiré) ; 403, on sait qui tu es mais tu n'as pas le droit. 404 sert à ne pas révéler qu'une donnée existe.&#10;• Mots de passe : hachés avec bcrypt, jamais stockés en clair.&#10;• Requêtes préparées : contre l'injection SQL, aucune saisie n'est collée dans une requête.&#10;• Compte MySQL limité : l'API ne peut que lire et modifier les données, pas créer ni supprimer de table.&#10;• Secrets hors du code : mot de passe MySQL et clé JWT dans un fichier d'environnement, jamais sur GitHub.&#10;• RGPD : seules les données utiles au suivi des ventes sont collectées ; développement et démonstration avec des données fictives.">
       <div class="k">La sécurité</div>
       <h2 class="titre">La sécurité est sur le serveur, pas dans l'application</h2>
       <div class="controles">
@@ -287,49 +353,49 @@
       </div>
       <p style="position:absolute;left:58px;top:398px;margin:0;font-size:16px">Contrôlé à chaque requête : l'application peut être copiée ou imitée, donc tout contrôle fait seulement chez elle peut être contourné.</p>
       <p class="gris" style="position:absolute;left:58px;top:478px;margin:0;font-size:13px;font-weight:700">Et aussi</p>
-      <div class="pastilles" style="top:516px"><span class="pastille">Mots de passe hachés</span><span class="pastille">Limite de tentatives</span><span class="pastille">Requêtes préparées</span></div>
-      <div class="pastilles" style="top:568px"><span class="pastille">Liens temporaires</span><span class="pastille">Clés hors du code</span><span class="pastille">Montants en DECIMAL</span></div>
-      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>9</span></div>
-    </section>
-
-    <!-- 10. Mettre à disposition -->
-    <section class="slide cab" data-notes="[40 s] L&#x27;application est vendue aux cabinets, et nous hébergeons chaque installation. Une installation par cabinet, identique et reproductible grâce à Docker. Une mise à jour = une nouvelle image Docker, déployée cabinet par cabinet ; les migrations de la base s&#x27;exécutent au démarrage, sans perte de données.&#10;&#10;SI ON ME DEMANDE&#10;• Sous-traitant : en hébergeant les données des clients des cabinets, nous sommes sous-traitants au sens du RGPD. Un contrat de sous-traitance est signé avec chaque cabinet ; chaque cabinet tient son registre des traitements.&#10;• Trois environnements : développement sur mon poste, démonstration avec des données fictives, production (une par cabinet).&#10;• Une sauvegarde qui n&#x27;est pas testée… n&#x27;en est pas une : seul un test de restauration prouve qu&#x27;on peut s&#x27;en servir. Sauvegardes quotidiennes, rangées dans un autre espace S3, la plus ancienne supprimée après 30 jours.&#10;• Pourquoi pas une seule base pour tous les cabinets : l&#x27;isolement est plus simple à garantir et à expliquer au client ; une erreur de filtre ne peut pas mélanger deux cabinets.">
-      <div class="k">Mettre à disposition</div>
-      <h2 class="titre">Héberger, déployer, sauvegarder</h2>
-      <div class="trois">
-        <div class="carte"><div class="h">Héberger</div><ul><li>Scaleway, région Paris</li><li>Une installation par cabinet</li><li>Données jamais mélangées</li></ul></div>
-        <div class="carte"><div class="h">Déployer</div><ul><li>Docker Compose : un cabinet = une copie</li><li>Même version pour tous</li><li>Migrations au démarrage</li></ul></div>
-        <div class="carte"><div class="h">Sauvegarder</div><ul><li>Une sauvegarde par jour</li><li>Gardée 30 jours</li><li>Restauration testée</li></ul></div>
-      </div>
-      <div class="rgpd"><div class="h">RGPD</div><div>Données en France, collecte limitée au nécessaire, export et suppression sur demande, données fictives pour le développement et la démonstration.</div></div>
-      <div class="pastilles" style="top:604px"><span class="pastille">Sous-traitant</span><span class="pastille">Trois environnements</span><span class="pastille">Une sauvegarde qui n'est pas testée…</span></div>
+      <div class="pastilles" style="top:516px"><span class="pastille">Mots de passe hachés (bcrypt)</span><span class="pastille">Requêtes préparées</span><span class="pastille">Compte MySQL limité</span></div>
+      <div class="pastilles" style="top:568px"><span class="pastille">Secrets hors du code</span><span class="pastille">Données fictives (RGPD)</span></div>
       <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>10</span></div>
     </section>
 
-    <!-- 11. Où j'en suis -->
-    <section class="slide cab" data-notes="[35 s] Le cahier des charges et le cahier technique sont rédigés depuis le 21 octobre. Depuis, j&#x27;ai fait la base de données : le MCD, le MLD et le script SQL pour MySQL 8, avec 19 tables. La prochaine étape, c&#x27;est un jeu de données fictives, puis l&#x27;API avec ses tests, les écrans Flutter, et une recette avec le client.&#10;&#10;SI ON ME DEMANDE&#10;• La base : 19 tables en six blocs (utilisateurs et cabinet, clients et contrats, pièces et documents, commissions, agenda et alertes, comparateur emprunteur). Montants en DECIMAL, contraintes CHECK (taux entre 0 et 100, un document rattaché à un client OU à un contrat), une seule ligne de paramètres par cabinet.&#10;• Les commissions : deux tables, commission_attendue et commission_recue. La vue v_rapprochement_commission les relie par contrat et par période (LEFT JOIN) et classe chacune : conforme, inférieure, supérieure ou manquante. Les taux sont recopiés dans la commission attendue : si le gérant change un taux, le passé ne bouge pas.&#10;• Suppression : RESTRICT sur les clients et contrats liés (on archive un client avec archive_at), CASCADE sur les sessions et appareils d&#x27;un utilisateur, SET NULL sur le journal d&#x27;audit pour garder la trace.&#10;• Les tests prévus : tests unitaires sur les règles critiques (calcul et répartition des commissions, rapprochement, contrôle des droits), test de chaque route de l&#x27;API dans les cas autorisés ET refusés (avec Postman ou Bruno), tests des principaux écrans, et un cahier de recette avec le client.&#10;• iOS demande un Mac : la compilation et la publication iOS et macOS se font sur un Mac, avec un compte développeur Apple payant, idéalement au nom de l&#x27;éditeur. Pour la démonstration du BTS, Android et Windows suffisent.&#10;• Organisation : Git et GitHub avec une branche par fonctionnalité, Trello pour le suivi, VS Code et Android Studio.">
+    <!-- 11. Mettre à disposition -->
+    <section class="slide cab" data-notes="[35 s] Pour mettre l'application à disposition : un fichier Docker Compose lance deux conteneurs, MySQL avec le script de création de la base, et l'API. Une seule commande, le même résultat sur n'importe quel poste. Les mots de passe et la clé JWT sont dans un fichier d'environnement qui n'est pas versionné. Pour la démonstration : le serveur sur mon poste, l'application bureau sous Windows, l'application mobile sur un téléphone Android ou un émulateur, avec des données fictives.&#10;&#10;SI ON ME DEMANDE&#10;• La commande : docker compose up -d ; docker compose ps pour vérifier ; docker compose logs api pour lire les erreurs.&#10;• Sauvegarde : un mysqldump de la base, et un test de restauration ; une sauvegarde jamais restaurée n'est pas une sauvegarde.&#10;• Tests : chaque route de l'API dans les cas autorisés ET refusés (Postman ou Bruno), règles du tunnel, calcul des statistiques ; cahier de recette déroulé avec le client.&#10;• Plus tard : hébergement en ligne, version iOS (demande un Mac), pièces justificatives, notifications.">
+      <div class="k">Mettre à disposition</div>
+      <h2 class="titre">Installer, démontrer, tester</h2>
+      <div class="trois">
+        <div class="carte"><div class="h">Installer</div><ul><li>Docker Compose : 2 conteneurs</li><li>MySQL + script de la base</li><li>API Node.js</li><li>Une seule commande</li></ul></div>
+        <div class="carte"><div class="h">Démontrer</div><ul><li>Serveur sur le poste</li><li>Application bureau sous Windows</li><li>Mobile sur Android ou émulateur</li><li>Données fictives</li></ul></div>
+        <div class="carte"><div class="h">Tester</div><ul><li>Chaque route : autorisé et refusé</li><li>Règles du tunnel</li><li>Calcul des statistiques</li><li>Recette avec le client</li></ul></div>
+      </div>
+      <div class="rgpd"><div class="h">Secrets</div><div>Mot de passe MySQL et clé JWT dans un fichier d'environnement, jamais dans le code ni sur GitHub.</div></div>
+      <div class="pastilles" style="top:604px"><span class="pastille">docker compose up -d</span><span class="pastille">Sauvegarde mysqldump</span><span class="pastille">Les évolutions prévues</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>11</span></div>
+    </section>
+
+    <!-- 12. Où j'en suis -->
+    <section class="slide cab" data-notes="[30 s] Le cahier des charges et le cahier technique sont faits, la base aussi : MCD, MLD et script SQL de 6 tables. La prochaine étape, c'est un jeu de données fictives, puis l'API avec ses tests, les écrans Flutter, et une recette avec le client.&#10;&#10;SI ON ME DEMANDE&#10;• Combien de temps pour finir : je ne promets pas de date ; l'ordre est données fictives, API et tests, écrans, recette.&#10;• Montrer le MCD, le MLD, le script : ils sont dans mon dossier et en annexe ; je peux ouvrir le script SQL et l'expliquer table par table.&#10;• Organisation : Git et GitHub avec une branche par fonctionnalité, Trello pour le suivi.">
       <div class="k">Où j'en suis</div>
       <h2 class="titre">La conception et la base sont faites, l'API commence</h2>
       <div class="etapes">
         <div class="fait"><i></i><small>Fait</small><b>Cahier des charges</b></div>
         <div class="fait"><i></i><small>Fait</small><b>Cahier technique</b></div>
         <div class="fait"><i></i><small>Fait</small><b>MCD et MLD</b></div>
-        <div class="fait"><i></i><small>Fait</small><b>Script SQL (19 tables)</b></div>
+        <div class="fait"><i></i><small>Fait</small><b>Script SQL (6 tables)</b></div>
         <div class="suite"><i></i><small>Prochaine étape</small><b>Données fictives et API</b></div>
         <div><i></i><small>À venir</small><b>Tests de l'API</b></div>
         <div><i></i><small>À venir</small><b>Écrans Flutter et recette</b></div>
       </div>
       <div class="chiffres" style="top:370px;grid-template-columns:repeat(4,1fr)">
-        <div class="carte"><div class="gros">10</div><em>fonctionnalités</em></div>
         <div class="carte"><div class="gros">2</div><em>rôles</em></div>
-        <div class="carte"><div class="gros">4</div><em>plateformes</em></div>
-        <div class="carte"><div class="gros">19</div><em>tables en base</em></div>
+        <div class="carte"><div class="gros">2</div><em>applications</em></div>
+        <div class="carte"><div class="gros">5</div><em>étapes (dont perdu)</em></div>
+        <div class="carte"><div class="gros">6</div><em>tables en base</em></div>
       </div>
-      <div class="pastilles" style="top:576px"><span class="pastille">Rapprochement en SQL</span><span class="pastille">Les tests prévus</span><span class="pastille">iOS demande un Mac</span><span class="pastille">Démo : Android et Windows</span></div>
-      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>11</span></div>
+      <div class="pastilles" style="top:576px"><span class="pastille">Pas de date promise</span><span class="pastille">MCD, MLD, script en annexe</span><span class="pastille">Une branche par fonctionnalité</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>12</span></div>
     </section>
 
-    <!-- 12. SYNCRO, le produit -->
+    <!-- 13. SYNCRO, le produit -->
     <section class="slide rouge" data-notes="[45 s] SYNCRO, c&#x27;est ma réalisation en milieu professionnel. Une application de planning d&#x27;équipe : chaque membre saisit ses disponibilités, le responsable valide puis verrouille la semaine. Je l&#x27;ai développée pour Suitime d&#x27;avril à août 2026, d&#x27;abord en parallèle des cours puis en stage, et je m&#x27;en suis occupé de bout en bout : l&#x27;application Flutter, l&#x27;API, la base, le serveur et la publication sur les deux stores.&#10;&#10;SI ON ME DEMANDE&#10;• Valider puis verrouiller : le responsable valide les disponibilités, puis verrouille la semaine ; plus personne ne peut modifier, le planning devient la référence.&#10;• Invitations par QR code : le responsable affiche un QR code, le nouveau membre le scanne et rejoint directement le bon groupe.&#10;• Treize écrans maquettés : pour cadrer une évolution importante du produit avec les responsables avant de coder (mode projet).&#10;• Les choix : Flutter (une base de code pour Android et iOS), Next.js en TypeScript pour l&#x27;API (53 routes), MySQL / MariaDB avec index et déclencheurs, Firebase et APNs pour les notifications.&#10;• Organisation : des points réguliers avec les responsables de Suitime (besoin, maquettes, validation), 84 commits en cinq mois.">
       <div class="k">En milieu professionnel · stage chez Suitime</div>
       <h2 class="titre">SYNCRO, de la maquette aux deux stores</h2>
@@ -341,10 +407,10 @@
       </div>
       <div class="pastilles" style="top:524px"><span class="pastille">Valider puis verrouiller</span><span class="pastille">Invitations par QR code</span><span class="pastille">Treize écrans maquettés</span></div>
       <div class="phones"><img src="../assets/syncro/screens/screen-1.jpg" alt="SYNCRO : planning du groupe, couverture et vue équipe" /><img src="../assets/syncro/screens/screen-2.jpg" alt="SYNCRO : saisie des disponibilités" /><img src="../assets/syncro/screens/screen-3.jpg" alt="SYNCRO : un groupe, ses membres et les heures de la semaine" /></div>
-      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>12</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>13</span></div>
     </section>
 
-    <!-- 13. SYNCRO, la production -->
+    <!-- 14. SYNCRO, la production -->
     <section class="slide rouge" data-notes="[55 s] En stage, j&#x27;ai surtout appris à gérer de vrais incidents en production. Le plus marquant : Apple a refusé l&#x27;application parce que ses testeurs ne pouvaient pas se connecter. En cherchant, j&#x27;ai découvert que la connexion était cassée en production depuis cinq jours, à cause d&#x27;anciens fichiers restés sur le serveur. J&#x27;ai corrigé, puis j&#x27;ai changé le script de déploiement pour que ça ne puisse pas revenir : il supprime les fichiers obsolètes et teste la connexion à chaque mise en ligne. C&#x27;est ce qui m&#x27;a donné envie du DevOps.&#10;&#10;SI ON ME DEMANDE&#10;• Créneaux après minuit : un membre pouvait être bloqué deux fois sur le même créneau. La protection existait, mais elle était fausse pour les horaires qui passent minuit. J&#x27;ai écrit une nouvelle méthode, vérifiée sur les cent combinaisons possibles.&#10;• Notifications iPhone : elles n&#x27;avaient jamais marché, sans message d&#x27;erreur. J&#x27;ai comparé point par point avec une autre application de l&#x27;entreprise qui fonctionnait, et trouvé trois écarts.&#10;• Cloisonnement des groupes : en relisant les routes sensibles une par une, j&#x27;ai trouvé qu&#x27;un responsable pouvait agir hors de son groupe. Corrigé côté API.&#10;• Mise en production : serveur Linux, Nginx en reverse proxy, PM2 qui garde l&#x27;API en vie et la relance, HTTPS ; déploiement par Git.&#10;• Jetons : un jeton d&#x27;accès de 15 minutes et un jeton de renouvellement de 7 jours ; si le jeton d&#x27;accès est volé, il ne sert pas longtemps.&#10;• TypeScript : 14 modules et 53 routes migrés de JavaScript vers TypeScript, pour trouver les erreurs avant la mise en ligne plutôt qu&#x27;en production.&#10;• Comment l&#x27;auriez-vous vu plus tôt ? Avec une supervision : un test automatique de la connexion toutes les quelques minutes, qui alerte. C&#x27;est exactement ce que je veux apprendre en DevOps.">
       <div class="k">En milieu professionnel · stage chez Suitime</div>
       <h2 class="titre">Des incidents réels, corrigés pour de bon</h2>
@@ -356,10 +422,10 @@
       </div>
       <div class="carte prod"><div class="h">En production</div><ul><li>Serveur Linux, Nginx, PM2, HTTPS</li><li>Déploiement par Git, test de connexion</li><li>Jetons de 15 minutes et de 7 jours</li><li>API passée en TypeScript (53 routes)</li><li>Publiée sur l'App Store et Google Play</li></ul></div>
       <div class="pastilles" style="top:581px"><span class="pastille">Superviser pour voir plus tôt</span><span class="pastille">Lettre de recommandation</span><span class="pastille">Pourquoi le DevOps</span></div>
-      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>13</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>14</span></div>
     </section>
 
-    <!-- 14. Veille -->
+    <!-- 15. Veille -->
     <section class="slide" data-notes="[35 s] Ma veille a un objectif : devenir DevOps, et un bon DevOps. Quatre étapes : des sources choisies, un tri avec une seule question (est-ce que ça touche un projet, un cours ou le métier visé ?), une lecture critique, et une trace sur le portfolio.&#10;À la une en ce moment : PHP2Shell, deux failles critiques dans PHP.&#10;&#10;SI ON ME DEMANDE&#10;• PHP2Shell : CVE-2026-109618 et CVE-2026-109619, annoncées par PHP le 20 octobre et corrigées le 21 (versions 8.2.35, 8.3.36, 8.4.27, 8.5.12). Une requête HTTP sans être connecté peut suffire à exécuter du code. Touche PHP-FPM et Apache avec mod_php. La seule vraie parade : mettre à jour.&#10;• Mes projets en PHP : CRP-Assurance est sur un hébergement mutualisé LWS, c&#x27;est l&#x27;hébergeur qui corrige ; mon rôle est de vérifier la version de PHP active et de choisir une branche encore suivie. Pla&#x27;Net tourne avec PHP-FPM sur le serveur de l&#x27;école. Le portfolio est publié en HTML : aucun PHP ne tourne en ligne.&#10;• GitLab 101 et Terraform Associate : les deux certifications que je prépare, l&#x27;intégration continue et l&#x27;infrastructure décrite en code.&#10;• ClickFix : un faux CAPTCHA qui pousse la victime à coller elle-même une commande ; plus répandu que le phishing classique. La faille est souvent humaine.&#10;• NIS2 : directive européenne sur la cybersécurité ; l&#x27;ANSSI a publié le référentiel ReCyF pour accompagner la mise en conformité.">
       <div class="k">Développement professionnel</div>
       <h2 class="titre">Ma veille a un cap : devenir DevOps</h2>
@@ -372,10 +438,10 @@
       <div class="une"><div class="k">À la une · 20 octobre 2026</div><div class="h">PHP2Shell : deux failles critiques dans PHP</div><p class="gris" style="font-size:15px;margin:14px 0 0">Annoncées le 20, corrigées le 21. Trois de mes projets tournent sur PHP.</p></div>
       <div class="carte cap"><div class="k">Mon cap</div><div class="h">Une alternance, puis un bachelor DevOps</div></div>
       <div class="pastilles" style="top:581px"><span class="pastille">Mes projets en PHP</span><span class="pastille">GitLab 101 · Terraform</span><span class="pastille">ClickFix</span><span class="pastille">NIS2</span></div>
-      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>14</span></div>
+      <div class="pied"><span>Dorian Pachot · BTS SIO SLAM · Épreuve E5</span><span>15</span></div>
     </section>
 
-    <!-- 15. Questions -->
+    <!-- 16. Questions -->
     <section class="slide sombre" data-notes="[10 s] Merci. Je suis prêt pour vos questions et pour la partie pratique : je peux ouvrir SYNCRO, la page et les cahiers de l&#x27;application de gestion de cabinet, ses modèles de données, ou le portfolio.">
       <div style="position:absolute;left:58px;top:163px">
         <div class="k">Merci</div>

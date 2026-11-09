@@ -38,3 +38,12 @@ Le détail de chaque modification est dans l'historique Git (`git log`). Ici, l'
 - Présentation de l'oral recentrée sur deux réalisations : la gestion de cabinet et SYNCRO (qui
   couvrent à elles deux les six compétences). La diapo Pla'Net est remplacée par une seconde diapo
   SYNCRO sur les incidents en production ; le tableau de synthèse complet reste en annexe.
+
+## 9 novembre 2026 : présentation de l'oral sur la version 1 de la gestion de cabinet
+
+- Diapos 4 à 12 réécrites pour la version 1 (tunnel de vente, 6 tables) : besoin, rôles et tunnel,
+  architecture, choix techniques, nouvelle diapo « La base de données » (schéma des 6 tables),
+  sécurité, mise à disposition, avancement. Notes de l'orateur mises à jour.
+- 16 diapos, environ 9 min 05.
+- Reste à mettre à jour : le PowerPoint téléchargeable, la page « Gestion de cabinet » et ses annexes
+  (encore sur la version à 19 tables).
