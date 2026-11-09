@@ -22,7 +22,7 @@ groupes:
     type: PDF
     url: assets/annexes/tableau-de-synthese.pdf
   - titre: Présentation de l'oral
-    texte: Les 15 diapositives, avec les notes de l'orateur.
+    texte: Les 19 diapositives, avec les notes de l'orateur.
     type: PowerPoint
     url: assets/presentation/Presentation_E5_Dorian_Pachot.pptx
   - titre: Mode présentation

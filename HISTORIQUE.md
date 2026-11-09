@@ -79,3 +79,6 @@ Le détail de chaque modification est dans l'historique Git (`git log`). Ici, l'
 - Annexes : cahier des charges, cahier technique, MCD, MLD, schéma relationnel et script SQL remplacés par la version 1 ; fiche E5 refaite.
 - `SectionProjet.html.twig` : nouvelle clé `figures` (plusieurs images dans une section).
 - Export refait (petites différences d'espaces dans toutes les pages, sans effet visible).
+
+## 2026-11-09 — PowerPoint E5 refait
+- `assets/presentation/Presentation_E5_Dorian_Pachot.pptx` : même contenu que le mode présentation (19 diapositives, version 1 du projet, MCD/MLD, script SQL, requêtes), avec les notes de l'orateur. Diapositives modifiables (textes et tableaux natifs ; MCD et MLD en images).
