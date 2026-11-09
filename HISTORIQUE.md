@@ -56,3 +56,10 @@ Le détail de chaque modification est dans l'historique Git (`git log`). Ici, l'
 - Nouvelle diapo MCD (image `assets/presentation/mcd-v1.png`, cardinalités à lire) avant la diapo MLD.
 - Le besoin et le taux de transformation reprennent les termes du cahier des charges.
 - 17 diapos, environ 9 min 20.
+
+## 9 novembre 2026 (fin) : notes plus simples et MLD redessiné
+
+- Notes de l'orateur réécrites en phrases courtes, sans titres ni minutages : le texte à dire, puis les
+  réponses aux questions probables.
+- Diapo MLD redessinée en pleine largeur : les 6 tables avec toutes leurs colonnes et leurs types, et
+  chaque flèche part de la ligne de la clé étrangère pour arriver sur la ligne de la clé primaire.
