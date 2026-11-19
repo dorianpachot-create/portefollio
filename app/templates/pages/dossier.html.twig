@@ -1,0 +1,61 @@
+{#
+  PAGE "DOSSIER TECHNIQUE DU PORTFOLIO" : user stories, choix techniques, extraits de code,
+  qualité, organisation. Les textes et les extraits sont dans contenu/dossier.yaml.
+  Chaque fiche a une ancre (#id) et figure dans la recherche du menu (IndexRecherche).
+#}
+{% extends 'base.html.twig' %}
+
+{% block titre %}Dossier technique du portfolio | Dorian Pachot{% endblock %}
+{% block description %}Comment le portfolio de Dorian Pachot est construit : user stories, choix techniques, architecture Symfony, extraits de code commentés, tests, sécurité et mise en ligne.{% endblock %}
+{% block chemin %}pages/dossier-portfolio.html{% endblock %}
+{% block entete %}<twig:EnTete />{% endblock %}
+
+{% block contenu %}
+  <twig:EnTetePage cadre="Épreuve E5 · le portfolio comme réalisation" titre="Dossier technique du portfolio" retourUrl="pages/annexes.html" retourTexte="Retour aux annexes">
+    <p>Comment ce site est construit : le besoin en user stories, les choix techniques, l'architecture Symfony, les extraits de code importants, la qualité et la mise en ligne. Chaque fiche se retrouve avec la recherche du menu (Ctrl+K).</p>
+  </twig:EnTetePage>
+
+  <div class="px-5 pb-16 md:px-8">
+    <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_16rem]">
+      <div class="grid min-w-0 gap-5">
+        {% for groupe in dossier.groupes %}
+          {% if not loop.first %}<div class="h-6"></div>{% endif %}
+          <h2 id="{{ groupe.id }}" class="section-block reveal mt-4 font-display text-3xl font-extrabold tracking-tight text-bone">{{ groupe.titre }}</h2>
+          {% for fiche in groupe.fiches %}
+            <article id="{{ fiche.id }}" class="section-block panel reveal min-w-0 p-6 md:p-8">
+              <p class="label text-blood">{{ groupe.titre }}</p>
+              <div class="prose-red">
+                <h2 class="!mt-2 !text-2xl">{{ fiche.titre }}</h2>
+                {% for p in fiche.paragraphes ?? [] %}<p>{{ p|raw }}</p>{% endfor %}
+                {% if fiche.tableau is defined %}
+                  <div class="table-wrap"><table>
+                    <thead><tr>{% for e in fiche.tableau.entetes %}<th scope="col">{{ e }}</th>{% endfor %}</tr></thead>
+                    <tbody>{% for ligne in fiche.tableau.lignes %}<tr>{% for c in ligne %}<td>{{ c|raw }}</td>{% endfor %}</tr>{% endfor %}</tbody>
+                  </table></div>
+                {% endif %}
+                {% if fiche.liste is defined %}<ul>{% for point in fiche.liste %}<li>{{ point|raw }}</li>{% endfor %}</ul>{% endif %}
+                {% for c in fiche.code ?? [] %}
+                  <h3>{{ c.titre }}</h3>
+                  {% if c.fichier is defined %}<p class="code-fichier">{{ c.fichier }}</p>{% endif %}
+                  <pre class="code" data-langage="{{ c.langage }}"><code>{{ c.texte }}</code></pre>
+                {% endfor %}
+              </div>
+              <p class="mt-4 text-xs text-ash">Mots-clés : {{ fiche.mots_cles }}</p>
+            </article>
+          {% endfor %}
+        {% endfor %}
+      </div>
+
+      <aside class="hidden lg:sticky lg:top-24 lg:block lg:max-h-[calc(100vh-7rem)] lg:self-start lg:overflow-y-auto">
+        <nav class="toc" aria-label="Sommaire du dossier technique" data-toc>
+          <p class="label mb-2 px-3 text-ash">Sommaire</p>
+          {% for groupe in dossier.groupes %}
+            {% if not loop.first %}<div class="h-3"></div>{% endif %}
+            <a href="#{{ groupe.id }}" class="!font-semibold">{{ groupe.titre }}</a>
+            {% for fiche in groupe.fiches %}<a href="#{{ fiche.id }}" class="!pl-6 !text-[.8rem]">{{ fiche.titre }}</a>{% endfor %}
+          {% endfor %}
+        </nav>
+      </aside>
+    </div>
+  </div>
+{% endblock %}

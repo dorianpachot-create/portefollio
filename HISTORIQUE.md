@@ -88,3 +88,14 @@ Le détail de chaque modification est dans l'historique Git (`git log`). Ici, l'
 - Cinq PDF dans `assets/annexes/questions/` : gestion de cabinet (131 questions, dont 23 requêtes SQL
   prêtes et testées), SYNCRO (34), Pla'Net (16), CRP-Assurance (15) et questions générales de l'oral (45).
 - Liens ajoutés en tête de chaque groupe de la page Annexes et sur la page de chaque projet.
+
+## 19 novembre 2026 (suite) : plus de diaporama, un dossier technique du portfolio
+
+- Mode présentation (`pages/presentation.html`, touche P) et PowerPoint retirés du site : le portfolio
+  est présenté en entier, directement.
+- Nouvelle page `pages/dossier-portfolio.html` (textes : `app/contenu/dossier.yaml`, gabarit
+  `pages/dossier.html.twig`, route `dossier`) : 25 fiches, dont les user stories, les choix techniques,
+  l'architecture et les extraits de code commentés (contrôleur, service, export, lien(), composants,
+  recherche, JavaScript, tests).
+- Recherche du menu : chaque fiche du dossier et chaque annexe est indexée (Ctrl+K).
+- Annexes : nouveau groupe « Le portfolio » ; questions générales de l'oral complétées (51).

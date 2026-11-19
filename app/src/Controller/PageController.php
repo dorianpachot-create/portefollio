@@ -100,6 +100,15 @@ class PageController extends AbstractController
         ]);
     }
 
+    /** Le dossier technique du portfolio : user stories, choix, code (contenu/dossier.yaml). */
+    #[Route('/pages/dossier-portfolio.html', name: 'dossier')]
+    public function dossier(): Response
+    {
+        return $this->render('pages/dossier.html.twig', [
+            'dossier' => $this->contenu->get('dossier'),
+        ]);
+    }
+
     #[Route('/pages/cv.html', name: 'cv')]
     public function cv(): Response
     {

@@ -1,0 +1,671 @@
+<!doctype html>
+<!-- Page générée par Symfony (php bin/console app:export). Pour la modifier : dossier app/ -->
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dossier technique du portfolio | Dorian Pachot</title>
+  <meta name="description" content="Comment le portfolio de Dorian Pachot est construit : user stories, choix techniques, architecture Symfony, extraits de code commentés, tests, sécurité et mise en ligne." />
+  <meta name="author" content="Dorian Pachot" />
+  <link rel="canonical" href="https://dorianpachot-create.github.io/portefollio/pages/dossier-portfolio.html" />
+  <meta name="theme-color" content="#090A0F" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Dossier technique du portfolio | Dorian Pachot" />
+  <meta property="og:description" content="Comment le portfolio de Dorian Pachot est construit : user stories, choix techniques, architecture Symfony, extraits de code commentés, tests, sécurité et mise en ligne." />
+  <meta property="og:image" content="https://dorianpachot-create.github.io/portefollio/assets/meta/og-image.png" />
+  <link rel="icon" href="../assets/meta/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="../assets/meta/favicon-180.png" />
+    <script>(function(d,r){r.classList.add('js');var t;try{t=localStorage.getItem('theme')}catch(e){}if(t==='light')r.setAttribute('data-theme','light');function maj(){var c=r.getAttribute('data-theme')==='light';d.querySelectorAll('[data-theme-toggle]').forEach(function(b){b.setAttribute('aria-pressed',c);b.setAttribute('aria-label',c?'Passer en mode sombre':'Passer en mode clair')})}d.addEventListener('DOMContentLoaded',maj);d.addEventListener('click',function(e){if(!e.target.closest('[data-theme-toggle]'))return;var c=r.getAttribute('data-theme')!=='light';if(c)r.setAttribute('data-theme','light');else r.removeAttribute('data-theme');try{localStorage.setItem('theme',c?'light':'dark')}catch(e){}maj()})})(document,document.documentElement);</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/site.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+    <style type="text/tailwindcss">
+    @theme {
+      --color-void: #090A0F;
+      --color-panel: #10121A;
+      --color-edge: #1E2130;
+      --color-blood: #EF4444;
+      --color-volt: #22D3EE;
+      --color-go: #22C55E;
+      --color-ash: #9CA3AF;
+      --color-bone: #F1F2F6;
+      --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+      --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+      --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+  </style>
+</head>
+
+<body id="top">
+  <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-blood focus:px-4 focus:py-2 focus:text-white" href="#main">Aller au contenu</a>
+  <div class="bg-grid" aria-hidden="true"></div>
+    <div class="scroll-progress" aria-hidden="true"><span data-progress></span></div>
+  
+  <header class="topbar fixed inset-x-0 top-0 z-50 border-b border-transparent transition-colors" data-topbar>
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
+        <a href="../index.html" class="flex items-center gap-3" aria-label="Dorian Pachot, retour à l'accueil">
+      <span class="grid h-9 w-9 place-items-center rounded-lg bg-blood font-display text-sm font-extrabold text-white">DP</span>
+      <span class="hidden font-display text-[17px] font-bold tracking-tight text-bone sm:inline">Dorian Pachot</span>
+    </a>
+
+        <nav class="hidden items-center gap-6 text-sm font-medium xl:flex" aria-label="Navigation principale">
+              <a href="../index.html#parcours" class="nav-a text-ash transition hover:text-bone">Parcours</a>
+              <a href="../index.html#projets" class="nav-a text-ash transition hover:text-bone">Projets</a>
+              <a href="projets-cours.html" class="nav-a text-ash transition hover:text-bone">Cours</a>
+              <a href="../index.html#outils" class="nav-a text-ash transition hover:text-bone">Outils</a>
+              <a href="../index.html#veille" class="nav-a text-ash transition hover:text-bone">Veille</a>
+              <a href="documents.html" class="nav-a text-ash transition hover:text-bone">Documents</a>
+              <a href="annexes.html" class="nav-a text-ash transition hover:text-bone">Annexes</a>
+          </nav>
+
+    <div class="flex items-center gap-3">
+            <button class="search-btn" type="button" data-search-open aria-label="Rechercher dans le site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="hidden sm:inline">Rechercher</span><kbd class="hidden lg:inline">Ctrl K</kbd></button>
+            <button class="theme-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="Passer en mode clair" title="Mode clair / mode sombre"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <button class="btn btn-ghost btn-sm xl:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu">Menu</button>
+    </div>
+  </div>
+
+    <div class="mobile-menu border-t border-edge bg-void/95 backdrop-blur-xl xl:hidden" id="menu" data-menu>
+    <nav class="mx-auto grid max-w-6xl px-5 py-2 text-[15px] font-medium" aria-label="Navigation mobile">
+              <a href="../index.html#parcours" class="border-b border-edge py-3.5 text-bone">Parcours</a>
+              <a href="../index.html#projets" class="border-b border-edge py-3.5 text-bone">Projets</a>
+              <a href="projets-cours.html" class="border-b border-edge py-3.5 text-bone">Cours</a>
+              <a href="../index.html#outils" class="border-b border-edge py-3.5 text-bone">Outils</a>
+              <a href="../index.html#veille" class="border-b border-edge py-3.5 text-bone">Veille</a>
+              <a href="documents.html" class="border-b border-edge py-3.5 text-bone">Documents</a>
+              <a href="annexes.html" class="border-b border-edge py-3.5 text-bone">Annexes</a>
+            <a href="../index.html#contact" class="py-3.5 text-blood">Contact</a>
+    </nav>
+  </div>
+</header>
+
+  <main id="main">
+      <header class="px-5 pb-10 pt-28 md:px-8 md:pt-36">
+  <div class="mx-auto max-w-6xl">
+    <a class="inline-flex items-center gap-2 text-sm font-semibold text-ash transition hover:text-bone" href="annexes.html"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Retour aux annexes</a>
+    <p class="label mt-8 text-blood">Épreuve E5 · le portfolio comme réalisation</p>
+    <h1 class="mt-3 font-display text-[clamp(2.2rem,6vw,3.8rem)] font-extrabold leading-[1.05] tracking-[-.025em] text-bone">Dossier technique du portfolio</h1>
+    <div class="mt-5 max-w-2xl text-base leading-relaxed text-ash md:text-lg"><p>Comment ce site est construit : le besoin en user stories, les choix techniques, l'architecture Symfony, les extraits de code importants, la qualité et la mise en ligne. Chaque fiche se retrouve avec la recherche du menu (Ctrl+K).</p>
+  </div>
+      </div>
+</header>
+
+  <div class="px-5 pb-16 md:px-8">
+    <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_16rem]">
+      <div class="grid min-w-0 gap-5">
+<h2 id="projet" class="section-block reveal mt-4 font-display text-3xl font-extrabold tracking-tight text-bone">Le projet</h2>
+<article id="objectifs" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Le projet</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Pourquoi ce portfolio</h2>
+    <p>Le portfolio présente mon parcours de BTS SIO SLAM et mes réalisations au jury de l'épreuve E5 et aux entreprises qui recrutent en alternance. Il sert aussi de dossier : chaque projet a sa page, et les annexes regroupent les cahiers, fiches et comptes rendus.</p>
+    <p>C'est aussi un projet à part entière : une application Symfony organisée en composants, dont les textes sont séparés du code, exportée en pages HTML statiques et publiée gratuitement sur GitHub Pages.</p>
+    <ul><li><strong>Montrer</strong> : des réalisations concrètes, avec ce que j'ai fait moi-même, les difficultés et ce que j'en retiens.</li><li><strong>Prouver</strong> : chaque affirmation renvoie à un document (cahier des charges, fiche E5, compte rendu, capture).</li><li><strong>Être facile à faire évoluer</strong> : un texte se change dans un fichier YAML, sans toucher au HTML.</li><li><strong>Coûter zéro et ne présenter aucune faille côté serveur</strong> : site statique, aucun PHP ne tourne en ligne.</li></ul>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : objectif public cible jury recruteur alternance besoin</p>
+</article>
+<article id="user-stories" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Le projet</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Les user stories</h2>
+    <p>Le besoin écrit sous forme de user stories : « En tant que…, je veux…, afin de… », avec un critère d'acceptation vérifiable et l'endroit où c'est réalisé.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">En tant que…</th><th scope="col">je veux…</th><th scope="col">afin de…</th><th scope="col">Critère d&#039;acceptation</th><th scope="col">Réalisé par</th></tr></thead>
+      <tbody><tr><td>membre du jury</td><td>voir mes réalisations dès l'accueil</td><td>juger rapidement mon niveau</td><td>les projets sont à moins d'un défilement, chaque carte est cliquable</td><td>section Réalisations, cartes entièrement cliquables</td></tr><tr><td>membre du jury</td><td>ouvrir la preuve de ce qui est affirmé</td><td>vérifier le travail</td><td>chaque projet a ses documents à un clic</td><td>boutons de chaque page projet, page Annexes</td></tr><tr><td>membre du jury</td><td>retrouver un document ou un TP sans chercher</td><td>gagner du temps pendant l'oral</td><td>une recherche par mot donne le bon résultat</td><td>recherche Ctrl+K (accents et majuscules ignorés)</td></tr><tr><td>recruteur</td><td>comprendre mon parcours en une minute</td><td>savoir si mon profil correspond</td><td>une frise résume les étapes</td><td>section Mon parcours (frise horizontale)</td></tr><tr><td>recruteur</td><td>télécharger mon CV et me contacter</td><td>me proposer un entretien</td><td>CV en PDF et contact en un clic</td><td>section Mon dossier, section Contact, copie de l'adresse e-mail</td></tr><tr><td>visiteur sur téléphone</td><td>lire le site confortablement</td><td>le consulter n'importe où</td><td>aucune page ne déborde en largeur</td><td>mise en page adaptative (Tailwind), menu mobile</td></tr><tr><td>visiteur</td><td>lire en plein soleil ou dans une salle éclairée</td><td>voir correctement le contenu</td><td>un bouton passe en mode clair et s'en souvient</td><td>bouton soleil / lune, localStorage</td></tr><tr><td>visiteur malvoyant ou au clavier</td><td>naviguer sans souris</td><td>accéder à tout le contenu</td><td>lien d'évitement, textes alternatifs, frise au clavier</td><td>accessibilité (voir la fiche)</td></tr><tr><td>visiteur</td><td>jouer à Mission Orion sans rien installer</td><td>découvrir un projet personnel</td><td>le jeu se lance dans le navigateur</td><td>page Mini-jeu (WebAssembly)</td></tr><tr><td>moi, le jour de l'oral</td><td>modifier un texte en direct</td><td>répondre à une demande du jury</td><td>un texte se change dans un seul fichier YAML</td><td>contenu/*.yaml et GUIDE-MODIFICATIONS.md</td></tr><tr><td>moi, après une modification</td><td>savoir que je n'ai rien cassé</td><td>publier sans crainte</td><td>les tests passent avant le commit</td><td>tests/dom.test.js (42 tests, liens internes vérifiés)</td></tr></tbody>
+    </table></div>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : user story récit utilisateur besoin critère d acceptation agile en tant que</p>
+</article>
+<article id="fonctionnalites" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Le projet</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Les pages et les fonctionnalités</h2>
+    <ul><li><strong>Accueil</strong> (une seule longue page) : présentation, parcours en frise, réalisations avec filtre Tous / Livrés / En cours, projets encadrés, outils, qualités, veille, dossier (CV, lettres), contact.</li><li><strong>Une page par projet</strong> : SYNCRO, Pla'Net, CRP-Assurance, Mission Orion, Gestion de cabinet, avec fiche, sommaire, sections et documents.</li><li><strong>Projets encadrés</strong> : tous les TP des deux années, avec objectif, réalisation, ce que j'en retiens et compte rendu.</li><li><strong>Journal de stage</strong>, <strong>Annexes</strong> de l'E5, <strong>Documents</strong>, <strong>CV</strong>, <strong>Mini-jeu</strong>, <strong>Mentions légales</strong>, et ce dossier technique.</li><li><strong>Recherche</strong> (bouton du menu, Ctrl+K ou /), <strong>mode clair</strong>, barre de progression du défilement, menu mobile, sommaire qui suit la lecture.</li></ul>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : pages fonctionnalités accueil projets TP stage annexes documents CV jeu recherche mode clair filtre frise</p>
+</article>
+<article id="choix-techniques" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Le projet</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Les choix techniques</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">Besoin</th><th scope="col">Choix</th><th scope="col">Pourquoi</th><th scope="col">Écarté</th></tr></thead>
+      <tbody><tr><td>Organiser le code</td><td>Symfony 7.4</td><td>framework vu en cours, routes, contrôleur, services, commandes : une vraie structure d'application</td><td>HTML écrit à la main (première version, trop répétitif)</td></tr><tr><td>Ne pas répéter le HTML</td><td>Composants Twig (Symfony UX Twig Component)</td><td>une brique (bouton, carte, panneau) écrite une fois, réutilisée partout</td><td>copier-coller entre pages</td></tr><tr><td>Changer un texte facilement</td><td>Fichiers YAML (app/contenu/)</td><td>les textes sont séparés de la mise en page ; lisibles sans connaître le HTML</td><td>base de données (inutile pour un site de cette taille)</td></tr><tr><td>Héberger gratuitement et sans risque</td><td>Export en HTML statique + GitHub Pages</td><td>aucun PHP en ligne, donc aucune faille serveur ; HTTPS fourni ; publication par git push</td><td>hébergement PHP payant</td></tr><tr><td>Mettre en page vite et de façon cohérente</td><td>Tailwind CSS (version navigateur) + css/site.css</td><td>classes utilitaires, thème de couleurs centralisé</td><td>framework CSS complet (Bootstrap)</td></tr><tr><td>Interactions légères</td><td>JavaScript sans framework</td><td>quelques comportements seulement ; le site reste lisible sans JavaScript</td><td>React ou Vue (trop lourd pour le besoin)</td></tr><tr><td>Vérifier les pages</td><td>Node.js + jsdom</td><td>tests automatiques sur les pages générées, dont les liens internes</td><td>vérification à la main</td></tr><tr><td>Jouer au jeu Python dans le navigateur</td><td>pygbag (WebAssembly)</td><td>le jeu pygame tourne sans installation</td><td>vidéo du jeu</td></tr></tbody>
+    </table></div>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : choix technique justification Symfony Twig YAML statique GitHub Pages Tailwind JavaScript jsdom pourquoi alternative</p>
+</article>
+<div class="h-6"></div>
+<h2 id="architecture-code" class="section-block reveal mt-4 font-display text-3xl font-extrabold tracking-tight text-bone">Architecture et code</h2>
+<article id="architecture" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Architecture et code</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">L&#039;architecture</h2>
+    <p>Les textes (YAML) et la mise en page (gabarits Twig) sont séparés. Le contrôleur Symfony lit les textes avec le service Contenu et les passe aux gabarits. La commande app:export calcule chaque page comme si un visiteur la demandait et enregistre le HTML à la racine du dépôt. GitHub Pages publie ces fichiers.</p>
+    <p>C'est le modèle MVC : les fichiers YAML jouent le rôle du modèle (les données), les gabarits Twig la vue, PageController le contrôleur.</p>
+    <h3>Le chemin d&#039;une page</h3>
+    <pre class="code" data-langage="texte"><code>Fichier YAML (texte)  +  Gabarit Twig (mise en page)  +  Composants (briques)
+                    \            |            /
+                     PageController (Symfony)
+                               |
+                  php bin/console app:export
+                               |
+               index.html, pages/*.html  -&gt;  GitHub Pages</code></pre>
+    <h3>Le dossier app/</h3>
+    <pre class="code" data-langage="texte"><code>app/
+├── bin/console                  Ligne de commande Symfony
+├── public/index.php             Point d&#039;entrée (serveur de développement)
+├── config/                      Configuration (bundles, Twig, composants, services)
+├── contenu/*.yaml               LES TEXTES DU SITE
+├── src/
+│   ├── Controller/PageController.php   Une méthode par page
+│   ├── Service/Contenu.php             Lit les fichiers YAML (avec un cache)
+│   ├── Command/ExportCommand.php       La commande app:export
+│   ├── Twig/LienExtension.php          Fonction lien() : liens relatifs
+│   └── Twig/Components/EnTete.php      Composant avec classe (le menu)
+└── templates/
+    ├── base.html.twig           Structure commune
+    ├── accueil/                 L&#039;accueil, un fichier par section
+    ├── pages/                   Les pages secondaires
+    └── components/              Les composants : &lt;twig:Bouton&gt;, &lt;twig:Tag&gt;...</code></pre>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : architecture schéma fonctionnement export statique dossier arborescence MVC</p>
+</article>
+<article id="code-controleur" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Architecture et code</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Le contrôleur et les routes</h2>
+    <p>Une méthode = une page. L'attribut #[Route] donne l'adresse ; elle reprend exactement le nom du fichier exporté. La route des projets a un paramètre {slug} : une seule méthode sert les cinq pages projet. priority: -1 la fait passer après les autres routes de pages/, pour que /pages/stage.html ne soit pas pris pour un projet.</p>
+    <h3>L&#039;accueil</h3>
+    <p class="code-fichier">app/src/Controller/PageController.php</p>
+    <pre class="code" data-langage="php"><code>#[Route(&#039;/&#039;, name: &#039;accueil_racine&#039;)]
+#[Route(&#039;/index.html&#039;, name: &#039;accueil&#039;)]
+public function accueil(): Response
+{
+    return $this-&gt;render(&#039;accueil/index.html.twig&#039;, [
+        &#039;profil&#039; =&gt; $this-&gt;contenu-&gt;get(&#039;profil&#039;),
+        &#039;parcours&#039; =&gt; $this-&gt;contenu-&gt;get(&#039;parcours&#039;)[&#039;etapes&#039;],
+        // ... les autres textes de l&#039;accueil
+    ]);
+}</code></pre>
+    <h3>Une route, cinq pages projet</h3>
+    <p class="code-fichier">app/src/Controller/PageController.php</p>
+    <pre class="code" data-langage="php"><code>#[Route(&#039;/pages/{slug}.html&#039;, name: &#039;projet&#039;, requirements: [&#039;slug&#039; =&gt; &#039;[a-z0-9-]+&#039;], priority: -1)]
+public function projet(string $slug): Response
+{
+    return $this-&gt;render(&#039;pages/projet.html.twig&#039;, [
+        &#039;projet&#039; =&gt; $this-&gt;contenu-&gt;projet($slug),
+    ]);
+}</code></pre>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : contrôleur controller route attribut Route render slug priority PageController AbstractController</p>
+</article>
+<article id="code-service" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Architecture et code</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Le service Contenu (lecture des YAML)</h2>
+    <p>Le service lit un fichier YAML et le garde en mémoire (cache) pour ne pas le relire. Il est injecté automatiquement dans le contrôleur par son constructeur (injection de dépendances). Un projet inconnu déclenche une erreur 404.</p>
+    <h3>Lire un fichier, avec un cache</h3>
+    <p class="code-fichier">app/src/Service/Contenu.php</p>
+    <pre class="code" data-langage="php"><code>public function get(string $fichier): array
+{
+    if (!isset($this-&gt;cache[$fichier])) {
+        $chemin = $this-&gt;dossierContenu.&#039;/&#039;.$fichier.&#039;.yaml&#039;;
+        if (!is_file($chemin)) {
+            throw new \RuntimeException(sprintf(&#039;Fichier de contenu introuvable : %s&#039;, $chemin));
+        }
+        $this-&gt;cache[$fichier] = Yaml::parseFile($chemin);
+    }
+
+    return $this-&gt;cache[$fichier];
+}</code></pre>
+    <h3>Retrouver un projet par son slug</h3>
+    <p class="code-fichier">app/src/Service/Contenu.php</p>
+    <pre class="code" data-langage="php"><code>public function projet(string $slug): array
+{
+    foreach ($this-&gt;projets() as $projet) {
+        if ($projet[&#039;slug&#039;] === $slug) {
+            return $projet;
+        }
+    }
+
+    throw new NotFoundHttpException(sprintf(&#039;Aucun projet &quot;%s&quot; dans contenu/projets.yaml&#039;, $slug));
+}</code></pre>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : service Contenu YAML cache injection dépendance get projet 404 NotFoundHttpException</p>
+</article>
+<article id="code-injection" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Architecture et code</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">La configuration et l&#039;injection de dépendances</h2>
+    <p>autowire : Symfony fournit tout seul les objets demandés dans les constructeurs. bind : les paramètres $dossierContenu et $dossierExport reçoivent les chemins définis une seule fois. autoconfigure : la commande et l'extension Twig sont reconnues sans rien déclarer.</p>
+    <h3>config/services.yaml</h3>
+    <p class="code-fichier">app/config/services.yaml</p>
+    <pre class="code" data-langage="yaml"><code>parameters:
+    # Dossier des fichiers de contenu (textes du site, au format YAML).
+    app.dossier_contenu: &#039;%kernel.project_dir%/contenu&#039;
+    # Dossier où l&#039;export écrit les pages HTML : la racine du dépôt, servie par GitHub Pages.
+    app.dossier_export: &#039;%kernel.project_dir%/..&#039;
+
+services:
+    _defaults:
+        autowire: true      # les dépendances sont injectées automatiquement
+        autoconfigure: true # les commandes, extensions Twig, etc. sont reconnues automatiquement
+        bind:
+            $dossierContenu: &#039;%app.dossier_contenu%&#039;
+            $dossierExport: &#039;%app.dossier_export%&#039;
+
+    App\:
+        resource: &#039;../src/&#039;
+        exclude:
+            - &#039;../src/Kernel.php&#039;</code></pre>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : services.yaml autowire autoconfigure bind paramètre injection dépendance configuration</p>
+</article>
+<article id="code-export" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Architecture et code</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">La commande d&#039;export</h2>
+    <p>GitHub Pages ne sait pas exécuter de PHP. La commande joue chaque requête dans Symfony, sans serveur web, et enregistre le HTML. La liste des adresses est déduite des routes : ajouter une route suffit pour qu'elle soit exportée ; la route {slug} donne une page par projet.</p>
+    <h3>Calculer et enregistrer chaque page</h3>
+    <p class="code-fichier">app/src/Command/ExportCommand.php</p>
+    <pre class="code" data-langage="php"><code>foreach ($this-&gt;adressesAExporter() as $adresse) {
+    // On &quot;joue&quot; la requête dans Symfony, sans serveur web
+    $reponse = $this-&gt;kernel-&gt;handle(Request::create($adresse), HttpKernelInterface::MAIN_REQUEST, false);
+
+    if ($reponse-&gt;getStatusCode() !== 200) {
+        $io-&gt;error(sprintf(&#039;%s : erreur %d&#039;, $adresse, $reponse-&gt;getStatusCode()));
+        ++$erreurs;
+        continue;
+    }
+
+    $fichier = $this-&gt;dossierExport.$adresse;
+    if (!is_dir(dirname($fichier))) {
+        mkdir(dirname($fichier), 0777, true);
+    }
+    file_put_contents($fichier, $reponse-&gt;getContent());
+    $io-&gt;writeln(sprintf(&#039;  &lt;info&gt;ok&lt;/info&gt;  %s&#039;, ltrim($adresse, &#039;/&#039;)));
+}</code></pre>
+    <h3>Les adresses viennent des routes</h3>
+    <p class="code-fichier">app/src/Command/ExportCommand.php</p>
+    <pre class="code" data-langage="php"><code>foreach ($this-&gt;router-&gt;getRouteCollection() as $nom =&gt; $route) {
+    $chemin = $route-&gt;getPath();
+    if ($nom === &#039;accueil_racine&#039; || str_starts_with($nom, &#039;_&#039;)) {
+        continue; // &quot;/&quot; est un doublon de /index.html ; les routes internes de Symfony sont ignorées
+    }
+
+    if (str_contains($chemin, &#039;{slug}&#039;)) {
+        // Route des projets : une page par projet de contenu/projets.yaml
+        foreach ($this-&gt;contenu-&gt;projets() as $projet) {
+            $adresses[] = str_replace(&#039;{slug}&#039;, $projet[&#039;slug&#039;], $chemin);
+        }
+        continue;
+    }
+    $adresses[] = $chemin;
+}</code></pre>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : commande console app:export ExportCommand kernel handle Request statique GitHub Pages génération</p>
+</article>
+<article id="code-lien" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Architecture et code</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">L&#039;extension Twig lien()</h2>
+    <p>Les pages sont des fichiers : les liens doivent être relatifs, et ils ne s'écrivent pas pareil depuis index.html et depuis pages/. On écrit toujours le chemin depuis la racine ; lien() le convertit. Les adresses externes et les ancres ne changent pas.</p>
+    <h3>La conversion</h3>
+    <p class="code-fichier">app/src/Twig/LienExtension.php</p>
+    <pre class="code" data-langage="php"><code>public function lien(string $cible): string
+{
+    // Adresse externe ou ancre : rien à changer
+    if (preg_match(&#039;~^(https?:|mailto:|tel:|#)~&#039;, $cible)) {
+        return $cible;
+    }
+
+    if (!$this-&gt;estDansPages()) {
+        return $cible;
+    }
+
+    // On est dans pages/ : une autre page du même dossier, ou on remonte d&#039;un cran
+    return str_starts_with($cible, &#039;pages/&#039;) ? substr($cible, strlen(&#039;pages/&#039;)) : &#039;../&#039;.$cible;
+}</code></pre>
+    <h3>Utilisation dans un gabarit</h3>
+    <pre class="code" data-langage="twig"><code>{{ lien(&#039;assets/cv/CV.pdf&#039;) }}
+{# depuis index.html    -&gt; assets/cv/CV.pdf     #}
+{# depuis pages/cv.html -&gt; ../assets/cv/CV.pdf  #}</code></pre>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : extension Twig fonction lien liens relatifs chemin LienExtension TwigFunction</p>
+</article>
+<article id="code-composants" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Architecture et code</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Les composants Twig</h2>
+    <p>Un composant est une brique appelée comme une balise HTML. Ses paramètres sont déclarés par {% props %}. Le « : » devant un paramètre signifie « variable Twig » ; sans « : », c'est un texte. EnTete est un composant avec classe : la classe PHP prépare les liens du menu, le gabarit les affiche.</p>
+    <h3>Appeler des composants</h3>
+    <pre class="code" data-langage="twig"><code>&lt;twig:Bouton texte=&quot;Me contacter&quot; url=&quot;#contact&quot; /&gt;
+&lt;twig:ListeTags :tags=&quot;projet.technos&quot; /&gt;
+&lt;twig:Panneau id=&quot;contexte&quot; titre=&quot;Le contexte&quot;&gt;
+  &lt;p&gt;Texte libre à l&#039;intérieur.&lt;/p&gt;
+&lt;/twig:Panneau&gt;</code></pre>
+    <h3>Le composant Bouton</h3>
+    <p class="code-fichier">app/templates/components/Bouton.html.twig</p>
+    <pre class="code" data-langage="twig"><code>{% props texte, url = &#039;#&#039;, style = &#039;principal&#039;, petit = false, icone = null, telecharger = null, masque = null %}
+{%- set externe = url starts with &#039;http&#039; -%}
+&lt;a class=&quot;btn {{ style == &#039;principal&#039; ? &#039;btn-primary&#039; : &#039;btn-ghost&#039; }}{{ petit ? &#039; btn-sm&#039; }}&quot; {% if masque %}href=&quot;#&quot; data-lien=&quot;{{ masque }}&quot; rel=&quot;nofollow&quot;{% else %}href=&quot;{{ lien(url) }}&quot;{% endif %}
+  {%- if externe and not masque %} target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;{% elseif url ends with &#039;.pdf&#039; and not telecharger %} target=&quot;_blank&quot; rel=&quot;noopener&quot;{% endif %}
+  {%- if telecharger %} download=&quot;{{ telecharger }}&quot;{% endif %}&gt;
+  {%- if icone %}&lt;twig:Icone :nom=&quot;icone&quot; /&gt;{% endif %}{{ texte }}&lt;/a&gt;</code></pre>
+    <h3>Un composant avec classe : le menu</h3>
+    <p class="code-fichier">app/src/Twig/Components/EnTete.php</p>
+    <pre class="code" data-langage="php"><code>#[AsTwigComponent]
+class EnTete
+{
+    /** true sur l&#039;accueil : les liens pointent vers les sections de la page (#parcours...) */
+    public bool $accueil = false;
+
+    /** Texte du lien à mettre en surbrillance, ex. &quot;Projets&quot; */
+    public string $actif = &#039;&#039;;
+
+    public function __construct(private Contenu $contenu)
+    {
+    }
+
+    /**
+     * Liens du menu principal (écran large).
+     * Chaque lien : [&#039;texte&#039; =&gt; ..., &#039;cible&#039; =&gt; ...]. La cible est écrite depuis
+     * la racine du site ; le gabarit la passe dans lien() pour la rendre relative.
+     */
+    public function liens(): array
+    {
+        $profil = $this-&gt;contenu-&gt;get(&#039;profil&#039;);
+
+        if ($this-&gt;accueil) {
+            return array_map(
+                fn (array $l) =&gt; [&#039;texte&#039; =&gt; $l[&#039;texte&#039;], &#039;cible&#039; =&gt; &#039;#&#039;.$l[&#039;ancre&#039;]],
+                $profil[&#039;menu_accueil&#039;]
+            );
+        }
+
+        return $profil[&#039;menu_pages&#039;];
+    }
+}</code></pre>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : composant Twig component props twig:Bouton EnTete AsTwigComponent réutilisable brique</p>
+</article>
+<article id="code-yaml" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Architecture et code</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Les textes en YAML et la boucle Twig</h2>
+    <p>Chaque projet est un bloc de projets.yaml. Le gabarit de l'accueil parcourt la liste avec une boucle for et choisit le bon composant. Ajouter un projet = ajouter un bloc YAML, sans toucher au code. Piège du YAML : dans un texte entre apostrophes, une apostrophe se double (l''application).</p>
+    <h3>Un projet dans app/contenu/projets.yaml (extrait)</h3>
+    <p class="code-fichier">app/contenu/projets.yaml</p>
+    <pre class="code" data-langage="yaml"><code>- slug: gestion-cabinet
+  nom: Gestion de cabinet
+  couleur: &#039;#F59E0B&#039;
+  titre_page: Application de gestion de cabinet de courtage, projet en cours | Dorian Pachot
+  description: &quot;Deux applications Flutter (mobile pour les mandataires, bureau pour le gérant) et une API Node.js pour suivre les ventes d&#039;un cabinet de courtage en assurance, du prospect au contrat signé. Projet de BTS en cours : cahiers et base de données terminés.&quot;
+  cadre: Projet de deuxième année de BTS, en cours</code></pre>
+    <h3>La boucle de la section Réalisations</h3>
+    <p class="code-fichier">app/templates/accueil/_realisations.html.twig</p>
+    <pre class="code" data-langage="twig"><code>{% for projet in projets %}
+  {% if projet.accueil.grande_carte ?? false %}
+    &lt;twig:GrandeCarteProjet :projet=&quot;projet&quot; /&gt;
+  {% else %}
+    &lt;twig:CarteProjetAccueil :projet=&quot;projet&quot; /&gt;
+  {% endif %}
+{% endfor %}</code></pre>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : YAML contenu texte boucle for Twig projets.yaml apostrophe indentation</p>
+</article>
+<article id="code-base" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Architecture et code</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Le gabarit de base et le mode clair</h2>
+    <p>Chaque page hérite de base.html.twig ({% extends %}) et remplit ses blocs (titre, description, contenu, scripts). Le thème de couleurs est défini une seule fois. Le mode clair est remis avant l'affichage, pour éviter un flash sombre : le choix est gardé dans le localStorage du navigateur.</p>
+    <h3>Une page qui hérite de la base</h3>
+    <p class="code-fichier">app/templates/pages/cours.html.twig</p>
+    <pre class="code" data-langage="twig"><code>{% extends &#039;base.html.twig&#039; %}
+
+{% block titre %}Projets encadrés de BTS SIO | Dorian Pachot{% endblock %}
+{% block chemin %}pages/projets-cours.html{% endblock %}
+{% block entete %}&lt;twig:EnTete actif=&quot;Cours&quot; /&gt;{% endblock %}
+
+{% block contenu %}
+  ...
+{% endblock %}</code></pre>
+    <h3>Les couleurs du site</h3>
+    <p class="code-fichier">app/templates/base.html.twig</p>
+    <pre class="code" data-langage="css"><code>@theme {
+  --color-void: #090A0F;
+  --color-panel: #10121A;
+  --color-edge: #1E2130;
+  --color-blood: #EF4444;
+  --color-volt: #22D3EE;
+  --color-go: #22C55E;
+  --color-ash: #9CA3AF;
+  --color-bone: #F1F2F6;
+  ...
+}</code></pre>
+    <h3>Le mode clair (script lisible)</h3>
+    <p class="code-fichier">app/templates/base.html.twig</p>
+    <pre class="code" data-langage="javascript"><code>var t = localStorage.getItem(&#039;theme&#039;);            // choix précédent
+if (t === &#039;light&#039;) html.setAttribute(&#039;data-theme&#039;, &#039;light&#039;);
+
+// clic sur le bouton soleil / lune
+var clair = html.getAttribute(&#039;data-theme&#039;) !== &#039;light&#039;;
+if (clair) html.setAttribute(&#039;data-theme&#039;, &#039;light&#039;);
+else html.removeAttribute(&#039;data-theme&#039;);
+localStorage.setItem(&#039;theme&#039;, clair ? &#039;light&#039; : &#039;dark&#039;);
+
+/* css/site.css : html[data-theme=&quot;light&quot;] .panel { ... } */</code></pre>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : base.html.twig héritage extends block mode clair thème localStorage data-theme couleurs</p>
+</article>
+<article id="code-recherche" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Architecture et code</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">La recherche (Ctrl+K)</h2>
+    <p>Le composant IndexRecherche écrit dans chaque page la liste de tout ce qu'on peut trouver (sections, projets, TP, documents, articles, fiches de ce dossier), en JSON, à partir des YAML. js/recherche.js la lit, enlève accents et majuscules, et garde les entrées qui contiennent tous les mots tapés. Flèches pour choisir, Entrée pour ouvrir, Échap pour fermer.</p>
+    <h3>Ignorer accents et majuscules, puis filtrer</h3>
+    <p class="code-fichier">js/recherche.js</p>
+    <pre class="code" data-langage="javascript"><code>var simple = function (s) { return (s || &#039;&#039;).normalize(&#039;NFD&#039;).replace(/[̀-ͯ]/g, &#039;&#039;).toLowerCase(); };
+
+var mots = simple(input.value).split(/\s+/).filter(Boolean);
+if (!mots.length) {
+  resultats = entrees.filter(function (e) { return e.s === &#039;Projet&#039; || e.s === &#039;Document&#039;; });
+} else {
+  resultats = entrees.filter(function (e) { return mots.every(function (m) { return e._tout.indexOf(m) !== -1; }); })
+    .sort(function (a, b) { return (b._t.indexOf(mots[0]) !== -1) - (a._t.indexOf(mots[0]) !== -1); });
+}</code></pre>
+    <h3>Une entrée de l&#039;index, écrite par Twig</h3>
+    <p class="code-fichier">app/templates/components/IndexRecherche.html.twig</p>
+    <pre class="code" data-langage="twig"><code>{%- for p in contenu.projets() -%}
+  {%- set entrees = entrees|merge([{t: p.nom, s: &#039;Projet&#039;, u: &#039;pages/&#039; ~ p.slug ~ &#039;.html&#039;, k: p.technos|join(&#039; &#039;) ~ &#039; &#039; ~ p.description}]) -%}
+{%- endfor -%}
+...
+&lt;script type=&quot;application/json&quot; id=&quot;index-recherche&quot;&gt;{{ entrees|json_encode|raw }}&lt;/script&gt;</code></pre>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : recherche search Ctrl+K index JSON normalize accents filtre recherche.js IndexRecherche</p>
+</article>
+<article id="code-javascript" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Architecture et code</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Le JavaScript de l&#039;accueil</h2>
+    <p>Du JavaScript simple, sans framework : le site reste lisible sans lui. Les animations d'apparition utilisent IntersectionObserver et sont désactivées si le visiteur a demandé moins d'animations (prefers-reduced-motion). Le filtre des projets masque les cartes avec l'attribut hidden et met à jour aria-pressed pour les lecteurs d'écran.</p>
+    <h3>Le filtre Tous / Livrés / En cours</h3>
+    <p class="code-fichier">js/accueil.js</p>
+    <pre class="code" data-langage="javascript"><code>var projects = document.querySelectorAll(&#039;#projets [data-status]&#039;);
+document.querySelectorAll(&#039;[data-filter]&#039;).forEach(function (btn) {
+  btn.addEventListener(&#039;click&#039;, function () {
+    var f = btn.dataset.filter;
+    document.querySelectorAll(&#039;[data-filter]&#039;).forEach(function (x) { x.setAttribute(&#039;aria-pressed&#039;, x === btn); });
+    projects.forEach(function (p) { p.hidden = !(f === &#039;all&#039; || p.dataset.status === f); });
+  });
+});</code></pre>
+    <h3>Les apparitions au défilement</h3>
+    <p class="code-fichier">js/accueil.js</p>
+    <pre class="code" data-langage="javascript"><code>var els = document.querySelectorAll(&#039;.reveal&#039;);
+if (&#039;IntersectionObserver&#039; in window &amp;&amp; !reduce) {
+  var io = new IntersectionObserver(function (en) {
+    en.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add(&#039;is-in&#039;); fill(e.target); io.unobserve(e.target); } });
+  }, { threshold: .12, rootMargin: &#039;0px 0px -6% 0px&#039; });
+  els.forEach(function (el) { io.observe(el); });
+} else { els.forEach(function (el) { el.classList.add(&#039;is-in&#039;); }); fill(document); }</code></pre>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : JavaScript filtre projets IntersectionObserver animation prefers-reduced-motion frise clavier accueil.js</p>
+</article>
+<div class="h-6"></div>
+<h2 id="qualite" class="section-block reveal mt-4 font-display text-3xl font-extrabold tracking-tight text-bone">Qualité, sécurité et mise en ligne</h2>
+<article id="tests" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Qualité, sécurité et mise en ligne</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Les tests automatiques</h2>
+    <p>node tests/dom.test.js lance 42 vérifications sur les pages générées avec jsdom (un navigateur simulé) : un seul h1, toutes les sections présentes, images avec texte alternatif, liens externes en noopener, pages projet complètes, annexes, recherche, mode clair, et aucun lien interne cassé (fichiers et ancres).</p>
+    <h3>Le test des liens internes</h3>
+    <p class="code-fichier">tests/dom.test.js</p>
+    <pre class="code" data-langage="javascript"><code>pages.forEach((p) =&gt; {
+  const doc = load(p);
+  doc.querySelectorAll(&#039;a[href], img[src], source[srcset], link[href], script[src], iframe[src]&#039;).forEach((el) =&gt; {
+    const raw = el.getAttribute(&#039;href&#039;) || el.getAttribute(&#039;src&#039;) || el.getAttribute(&#039;srcset&#039;);
+    if (!raw || /^(https?:|mailto:|tel:|#|data:)/.test(raw)) return;
+    const [file, hash] = raw.split(&#039;#&#039;);
+    const target = path.resolve(path.dirname(path.join(ROOT, p)), file);
+    if (!fs.existsSync(target)) { broken.push(p + &#039; -&gt; &#039; + raw); return; }
+    if (hash &amp;&amp; target.endsWith(&#039;.html&#039;) &amp;&amp; !load(path.relative(ROOT, target)).getElementById(hash)) broken.push(p + &#039; -&gt; &#039; + raw + &#039; (ancre)&#039;);
+  });
+});
+ok(&#039;aucun lien interne cassé&#039;, broken.length === 0, broken.join(&#039;, &#039;));</code></pre>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : tests jsdom node dom.test.js qualité liens cassés vérification</p>
+</article>
+<article id="securite" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Qualité, sécurité et mise en ligne</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Sécurité et RGPD</h2>
+    <ul><li><strong>Aucun code serveur en ligne</strong> : le site est statique, il n'y a ni PHP, ni base, ni formulaire à attaquer.</li><li><strong>Échappement</strong> : Twig échappe tout par défaut (protection contre le XSS) ; |raw seulement sur mes propres textes.</li><li><strong>Liens externes</strong> en rel="noopener noreferrer" : la page ouverte ne peut pas contrôler l'onglet d'origine.</li><li><strong>HTTPS</strong> fourni par GitHub Pages ; aucun secret dans le dépôt.</li><li><strong>Liens masqués</strong> : l'adresse de Pla'Net (outil interne de l'école) est encodée et décodée au clic, pour ne pas être indexée.</li><li><strong>RGPD</strong> : pas de cookie, pas de mesure d'audience, pas de formulaire ; le localStorage ne garde que le choix du thème. Les polices viennent de Google Fonts, ce qui transmet l'adresse IP du visiteur à Google : les héberger sur le site serait une amélioration. Une page de mentions légales indique l'éditeur et l'hébergeur.</li></ul>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : sécurité RGPD XSS échappement noopener HTTPS données personnelles cookies mentions légales secret</p>
+</article>
+<article id="accessibilite" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Qualité, sécurité et mise en ligne</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">L&#039;accessibilité</h2>
+    <ul><li>Un lien « Aller au contenu » au début de chaque page, visible au clavier.</li><li>Un texte alternatif sur chaque image (vérifié par les tests) et des attributs aria (aria-pressed, aria-expanded, aria-label).</li><li>La frise du parcours se manipule aux flèches du clavier ; la recherche aussi.</li><li>Les animations s'arrêtent si le visiteur a demandé moins d'animations (prefers-reduced-motion).</li><li>Des contrastes forts, et un mode clair pour les écrans en plein soleil.</li></ul>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : accessibilité clavier lecteur d écran alt aria contraste reduced motion lien d évitement</p>
+</article>
+<article id="performance-seo" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Qualité, sécurité et mise en ligne</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Performance et référencement</h2>
+    <ul><li>Images en WebP avec une version JPG de secours (balise picture), chargées en différé (loading="lazy"), avec leurs dimensions pour éviter les sauts de mise en page.</li><li>Pages statiques : rien à calculer à chaque visite, affichage immédiat.</li><li>Pour chaque page : un titre, une description, une adresse canonique et des balises Open Graph (aperçu quand on partage le lien) ; un sitemap.xml ; un seul h1 par page.</li></ul>
+    <h3>Le composant Image</h3>
+    <p class="code-fichier">app/templates/components/Image.html.twig</p>
+    <pre class="code" data-langage="twig"><code>&lt;picture&gt;&lt;source srcset=&quot;{{ lien(fichier ~ &#039;.webp&#039;) }}&quot; type=&quot;image/webp&quot; /&gt;&lt;img class=&quot;{{ classe }}&quot; src=&quot;{{ lien(fichier ~ &#039;.jpg&#039;) }}&quot; alt=&quot;{{ alt }}&quot;{% if lazy %} loading=&quot;lazy&quot;{% endif %} width=&quot;{{ largeur }}&quot; height=&quot;{{ hauteur }}&quot; /&gt;&lt;/picture&gt;</code></pre>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : performance SEO référencement webp lazy loading sitemap canonical description Open Graph</p>
+</article>
+<article id="deploiement" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Qualité, sécurité et mise en ligne</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Travailler et mettre en ligne</h2>
+    <p>GitHub Pages publie automatiquement la branche principale : un git push suffit, le site est à jour en une minute environ.</p>
+    <h3>Les commandes</h3>
+    <p class="code-fichier">README.md</p>
+    <pre class="code" data-langage="bash"><code>cd app
+composer install                                 # une seule fois
+php -S 127.0.0.1:8000 -t .. public/index.php    # voir le site : http://127.0.0.1:8000
+php bin/console app:export                       # régénérer les pages HTML
+cd ..
+node tests/dom.test.js                           # vérifier
+git add -A &amp;&amp; git commit -m &quot;...&quot; &amp;&amp; git push    # mettre en ligne</code></pre>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : déploiement mise en ligne git commit push GitHub Pages commandes serveur local installation composer</p>
+</article>
+<div class="h-6"></div>
+<h2 id="organisation" class="section-block reveal mt-4 font-display text-3xl font-extrabold tracking-tight text-bone">Organisation et évolution</h2>
+<article id="historique" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Organisation et évolution</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Les grandes étapes</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">Date</th><th scope="col">Ce qui a changé</th></tr></thead>
+      <tbody><tr><td>Juillet 2026</td><td>Première version : HTML écrit à la main, page Documents, fiches de cours</td></tr><tr><td>Août 2026</td><td>Refontes du design, journal de stage, Mission Orion jouable en ligne, SYNCRO en production</td></tr><tr><td>Septembre 2026</td><td>Veille technologique, Pla'Net, nouvelle identité visuelle</td></tr><tr><td>13 octobre 2026</td><td>Design sombre et rouge, une page par projet, passage à Symfony 7.4 et aux composants Twig, textes en YAML, export HTML</td></tr><tr><td>23 octobre 2026</td><td>Veille PHP2Shell, projet Gestion de cabinet, mode clair, recherche, nettoyage du code mort, annexes</td></tr><tr><td>Novembre 2026</td><td>TP et fiches mis à jour, gestion de cabinet en version 1, questions et réponses pour l'oral, ce dossier technique</td></tr></tbody>
+    </table></div>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : historique versions étapes refonte évolution</p>
+</article>
+<article id="difficultes" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Organisation et évolution</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Les difficultés et leurs solutions</h2>
+    <ul><li><strong>GitHub Pages n'exécute pas de PHP</strong> : la commande app:export génère des pages HTML à partir de l'application Symfony.</li><li><strong>Des liens qui marchent partout</strong> (en ligne comme en ouvrant le fichier) : la fonction Twig lien() calcule les liens relatifs.</li><li><strong>Conflit de routes</strong> : /pages/stage.html était pris pour un projet « stage » ; priority: -1 sur la route des projets.</li><li><strong>Flash sombre au chargement en mode clair</strong> : le thème est remis par un petit script placé dans le head, avant l'affichage.</li><li><strong>YAML qui casse sur une apostrophe</strong> : la règle de l'apostrophe doublée, rappelée dans le guide.</li><li><strong>Du HTML répété partout</strong> dans la première version : découpage en composants Twig.</li></ul>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : difficultés problèmes solutions bug liens relatifs PHP GitHub Pages apostrophe route conflit flash</p>
+</article>
+<article id="evolutions" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Organisation et évolution</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Les évolutions possibles</h2>
+    <ul><li><strong>Intégration continue</strong> avec GitHub Actions : à chaque push, lancer app:export et les tests, et ne publier que si tout passe. C'est la suite logique de mon objectif DevOps.</li><li>Compiler Tailwind au lieu de le charger depuis un CDN, et héberger les polices sur le site (plus rapide, et plus rien n'est envoyé à Google).</li><li>Une version anglaise du site.</li><li>Mettre en ligne la gestion de cabinet une fois développée (compétence « présence en ligne »).</li></ul>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : évolutions améliorations CI CD GitHub Actions intégration continue Tailwind polices</p>
+</article>
+<article id="ia" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Organisation et évolution</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Le rôle de l&#039;IA</h2>
+    <p>J'utilise l'IA (Claude) comme assistant pour écrire, réorganiser et vérifier une partie du code et des textes ; c'est visible dans l'historique Git. C'est pour cette raison que tout est fait pour que je puisse l'expliquer et le modifier : code commenté en français, README, guide des modifications, tests automatiques avant chaque publication. Ma veille me le rappelle : plus le code arrive vite, plus la relecture et les tests comptent.</p>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : IA intelligence artificielle Claude assistant code généré relecture honnêteté</p>
+</article>
+<article id="modifications" class="section-block panel reveal min-w-0 p-6 md:p-8">
+  <p class="label text-blood">Organisation et évolution</p>
+  <div class="prose-red">
+    <h2 class="!mt-2 !text-2xl">Modifier le site en direct</h2>
+    <p>Puis : php bin/console app:export, node tests/dom.test.js, git add, commit, push. Le détail, recette par recette, est dans GUIDE-MODIFICATIONS.md sur GitHub.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">Je veux…</th><th scope="col">Fichier</th></tr></thead>
+      <tbody><tr><td>Changer la présentation, le contact, les menus</td><td>app/contenu/profil.yaml</td></tr><tr><td>Modifier une étape du parcours</td><td>app/contenu/parcours.yaml</td></tr><tr><td>Modifier un projet (carte et page)</td><td>app/contenu/projets.yaml</td></tr><tr><td>Ajouter ou modifier un TP</td><td>app/contenu/cours.yaml</td></tr><tr><td>Modifier la veille</td><td>app/contenu/veille.yaml</td></tr><tr><td>Ajouter une annexe</td><td>assets/annexes/ + app/contenu/annexes.yaml</td></tr><tr><td>Modifier ce dossier technique</td><td>app/contenu/dossier.yaml</td></tr><tr><td>Déplacer ou masquer une section de l'accueil</td><td>app/templates/accueil/index.html.twig</td></tr><tr><td>Changer une couleur</td><td>app/templates/base.html.twig (@theme) et css/site.css</td></tr><tr><td>Ajouter une page</td><td>une méthode #[Route] dans PageController + un gabarit dans templates/pages/</td></tr></tbody>
+    </table></div>
+  </div>
+  <p class="mt-4 text-xs text-ash">Mots-clés : modification direct texte projet ajouter section couleur page guide YAML recette</p>
+</article>
+
+                        </div>
+
+            <aside class="hidden lg:sticky lg:top-24 lg:block lg:max-h-[calc(100vh-7rem)] lg:self-start lg:overflow-y-auto">
+        <nav class="toc" aria-label="Sommaire du dossier technique" data-toc>
+          <p class="label mb-2 px-3 text-ash">Sommaire</p>
+<a href="#projet" class="!font-semibold">Le projet</a>
+<a href="#objectifs" class="!pl-6 !text-[.8rem]">Pourquoi ce portfolio</a><a href="#user-stories" class="!pl-6 !text-[.8rem]">Les user stories</a><a href="#fonctionnalites" class="!pl-6 !text-[.8rem]">Les pages et les fonctionnalités</a><a href="#choix-techniques" class="!pl-6 !text-[.8rem]">Les choix techniques</a>
+<div class="h-3"></div><a href="#architecture-code" class="!font-semibold">Architecture et code</a>
+<a href="#architecture" class="!pl-6 !text-[.8rem]">L&#039;architecture</a><a href="#code-controleur" class="!pl-6 !text-[.8rem]">Le contrôleur et les routes</a><a href="#code-service" class="!pl-6 !text-[.8rem]">Le service Contenu (lecture des YAML)</a><a href="#code-injection" class="!pl-6 !text-[.8rem]">La configuration et l&#039;injection de dépendances</a><a href="#code-export" class="!pl-6 !text-[.8rem]">La commande d&#039;export</a><a href="#code-lien" class="!pl-6 !text-[.8rem]">L&#039;extension Twig lien()</a><a href="#code-composants" class="!pl-6 !text-[.8rem]">Les composants Twig</a><a href="#code-yaml" class="!pl-6 !text-[.8rem]">Les textes en YAML et la boucle Twig</a><a href="#code-base" class="!pl-6 !text-[.8rem]">Le gabarit de base et le mode clair</a><a href="#code-recherche" class="!pl-6 !text-[.8rem]">La recherche (Ctrl+K)</a><a href="#code-javascript" class="!pl-6 !text-[.8rem]">Le JavaScript de l&#039;accueil</a>
+<div class="h-3"></div><a href="#qualite" class="!font-semibold">Qualité, sécurité et mise en ligne</a>
+<a href="#tests" class="!pl-6 !text-[.8rem]">Les tests automatiques</a><a href="#securite" class="!pl-6 !text-[.8rem]">Sécurité et RGPD</a><a href="#accessibilite" class="!pl-6 !text-[.8rem]">L&#039;accessibilité</a><a href="#performance-seo" class="!pl-6 !text-[.8rem]">Performance et référencement</a><a href="#deploiement" class="!pl-6 !text-[.8rem]">Travailler et mettre en ligne</a>
+<div class="h-3"></div><a href="#organisation" class="!font-semibold">Organisation et évolution</a>
+<a href="#historique" class="!pl-6 !text-[.8rem]">Les grandes étapes</a><a href="#difficultes" class="!pl-6 !text-[.8rem]">Les difficultés et leurs solutions</a><a href="#evolutions" class="!pl-6 !text-[.8rem]">Les évolutions possibles</a><a href="#ia" class="!pl-6 !text-[.8rem]">Le rôle de l&#039;IA</a><a href="#modifications" class="!pl-6 !text-[.8rem]">Modifier le site en direct</a>
+                  </nav>
+      </aside>
+    </div>
+  </div>
+  </main>
+
+  <footer class="px-5 pb-10 md:px-8">
+  <div class="mx-auto flex max-w-6xl flex-col gap-3 border-t border-edge pt-6 text-xs text-ash/80 sm:flex-row sm:items-center sm:justify-between">
+    <span>© 2026 Dorian Pachot, BTS SIO SLAM, IRIS MediaSchool Rouen</span>
+    <span class="flex gap-6">
+      <a class="hover:text-bone" href="mentions-legales.html">Mentions légales</a>
+      <a class="hover:text-bone" href="../index.html">Accueil</a>    </span>
+  </div>
+</footer>
+
+
+  <script src="../js/site.js"></script>    <script type="application/json" id="index-recherche">[{"t":"Mon parcours","s":"Accueil","u":"index.html#parcours","k":"handball reconversion \u00e9tudes"},{"t":"R\u00e9alisations","s":"Accueil","u":"index.html#projets","k":"projets"},{"t":"Projets encadr\u00e9s","s":"Accueil","u":"index.html#cours","k":"TP cours BTS"},{"t":"Mes outils de travail","s":"Accueil","u":"index.html#outils","k":"langages logiciels IA"},{"t":"Ce sur quoi je peux m'appuyer","s":"Accueil","u":"index.html#competences","k":"qualit\u00e9s m\u00e9thode"},{"t":"Ma veille","s":"Accueil","u":"index.html#veille","k":"veille technologique DevOps"},{"t":"Mon dossier","s":"Accueil","u":"index.html#documents","k":"documents CV lettres"},{"t":"Contact","s":"Accueil","u":"index.html#contact","k":"e-mail t\u00e9l\u00e9phone LinkedIn GitHub"},{"t":"Mes r\u00e9alisations","s":"Page","u":"pages\/projets-perso.html","k":"projets"},{"t":"Tous les projets encadr\u00e9s","s":"Page","u":"pages\/projets-cours.html","k":"TP comptes rendus"},{"t":"Annexes","s":"Page","u":"pages\/annexes.html","k":"E5 fiches tableau de synth\u00e8se cahier des charges cahier technique MCD MLD script SQL dossier de conception comptes rendus"},{"t":"Journal de stage","s":"Page","u":"pages\/stage.html","k":"Suitime SYNCRO semaines"},{"t":"Dossier technique du portfolio","s":"Page","u":"pages\/dossier-portfolio.html","k":"portfolio Symfony code user stories choix techniques architecture tests"},{"t":"Jouer \u00e0 Mission Orion","s":"Page","u":"pages\/mini-jeu.html","k":"jeu Python"},{"t":"Mentions l\u00e9gales","s":"Page","u":"pages\/mentions-legales.html","k":"RGPD h\u00e9bergement"},{"t":"SYNCRO","s":"Projet","u":"pages\/syncro.html","k":"Flutter Dart Next.js TypeScript MySQL JWT Nginx PM2 Firebase SYNCRO, application Flutter et API Next.js d\u00e9velopp\u00e9e pendant mon stage chez Suitime, publi\u00e9e sur l'App Store et Google Play."},{"t":"Pla'Net","s":"Projet","u":"pages\/planet.html","k":"Trello MariaDB SQL Symfony Doctrine Twig PHP 8 Pla'Net, application de planning des cours de MediaSchool Rouen, r\u00e9alis\u00e9e \u00e0 cinq en quatre jours : planification Trello, conception de la base de donn\u00e9es, puis d\u00e9veloppement Symfony."},{"t":"CRP-Assurance","s":"Projet","u":"pages\/crp-assurance.html","k":"PHP MySQL PDO HTML CSS JavaScript FTP RGPD CRP-Assurance.com, site PHP et MySQL d'un cabinet d'assurance avec back-office, espace client et mise en ligne sur h\u00e9bergement mutualis\u00e9."},{"t":"Mission Orion","s":"Projet","u":"pages\/mission-orion.html","k":"Python pygame pygbag WebAssembly asyncio Mission Orion, jeu spatial en Python et pygame compil\u00e9 en WebAssembly, jouable dans le navigateur."},{"t":"Gestion de cabinet","s":"Projet","u":"pages\/gestion-cabinet.html","k":"Flutter Dart Node.js Express MySQL Merise Docker JWT Deux applications Flutter (mobile pour les mandataires, bureau pour le g\u00e9rant) et une API Node.js pour suivre les ventes d'un cabinet de courtage en assurance, du prospect au contrat sign\u00e9. Projet de BTS en cours : cahiers et base de donn\u00e9es termin\u00e9s."},{"t":"Installer et prendre en main un serveur Ubuntu en ligne de commande","s":"Linux avanc\u00e9 (SISR), deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#tp0","k":"Ubuntu Server VMware SSH"},{"t":"D\u00e9ployer un serveur DHCP et un serveur DNS","s":"Linux avanc\u00e9 (SISR), deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#tp1","k":"Debian 12 isc-dhcp-server bind9 SSH"},{"t":"H\u00e9berger deux sites web et les publier en HTTPS","s":"Linux avanc\u00e9 (SISR), deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#tp2","k":"Apache HTTPS PHP Nginx Pare-feu"},{"t":"Partager des fichiers et ma\u00eetriser les journaux","s":"Linux avanc\u00e9 (SISR), deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#tp3","k":"Samba NFS rsyslog logrotate fail2ban"},{"t":"Automatiser l'administration du serveur","s":"Linux avanc\u00e9 (SISR), deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#tp4","k":"Bash cron systemd"},{"t":"L'intranet du service comptable","s":"Linux avanc\u00e9 (SISR), deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#tp5","k":"Droits Linux Apache Samba cron"},{"t":"VitaSport : concevoir, interroger et optimiser une base","s":"Bases de donn\u00e9es avanc\u00e9es (SLAM), deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#vitasport","k":"MySQL \/ MariaDB Merise Looping UML draw.io"},{"t":"Le Fournil : construire et interroger la base d'un click & collect","s":"Bases de donn\u00e9es avanc\u00e9es (SLAM), deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#fournil","k":"MySQL \/ MariaDB SQL Contraintes Vues"},{"t":"Inventaire du parc informatique en PowerShell","s":"PowerShell (SLAM), deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#powershell-tp1","k":"PowerShell 7 CSV Excel"},{"t":"Pla'Net, l'application de planning de l'\u00e9cole","s":"D\u00e9veloppement, deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#planet","k":"Symfony Twig MariaDB"},{"t":"PrivaMilk : pitch d'un produit en anglais","s":"Anglais, deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#privamilk","k":"Anglais Pitch"},{"t":"Les agents IA en entreprise : synth\u00e8se et recommandation","s":"Anglais, deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#agents-ia","k":"Anglais IA"},{"t":"Les faussaires sont-ils de vrais artistes ?","s":"Culture g\u00e9n\u00e9rale, deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#faussaires","k":"Expression Synth\u00e8se"},{"t":"Pafalan : application web PHP de collection de cartes","s":"D\u00e9veloppement, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#pafalan","k":"PHP PDO Sessions"},{"t":"Le Bistrot de Marcel : conception de base de donn\u00e9es","s":"D\u00e9veloppement, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#bistrot","k":"SQL MariaDB Debian"},{"t":"Jeu spatial en Python avec pygame","s":"D\u00e9veloppement, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#pygame","k":"Python pygame POO"},{"t":"Jeu de Bataille graphique en Python","s":"D\u00e9veloppement, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#bataille","k":"Python tkinter Dictionnaires"},{"t":"Audit SEO de deux sites","s":"D\u00e9veloppement, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#seo","k":"SEO PageSpeed"},{"t":"Infrastructure Active Directory sous Windows Server 2025","s":"Syst\u00e8mes, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#active-directory","k":"Windows Server Active Directory PowerShell"},{"t":"Infrastructure web avec r\u00e9partition de charge sur Scaleway","s":"Syst\u00e8mes, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#load-balancing","k":"HAProxy Nginx Scaleway"},{"t":"Gestion de parc informatique et ITIL","s":"Syst\u00e8mes, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#parc","k":"GLPI ITIL"},{"t":"TP Frantech : r\u00e9seau d'entreprise sous Packet Tracer","s":"R\u00e9seaux, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#frantech","k":"Cisco VLAN OSPF DHCP"},{"t":"S\u00e9curisation des acc\u00e8s r\u00e9seau","s":"R\u00e9seaux, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#securite-acces","k":"Port-security SSH"},{"t":"Cluster FortiGate en haute disponibilit\u00e9 sous GNS3","s":"Cybers\u00e9curit\u00e9, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#fortigate","k":"GNS3 FortiGate VLAN"},{"t":"Arithm\u00e9tique appliqu\u00e9e : les cl\u00e9s de contr\u00f4le","s":"Math\u00e9matiques, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#arithmetique","k":"Modulo"},{"t":"Algorithmique en Python","s":"Math\u00e9matiques, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#algo-python","k":"Python"},{"t":"\u00c9tude RSE : le cas Ankama","s":"CEJM, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#ankama","k":"RSE"},{"t":"Cas pratique : responsabilit\u00e9 de l'employeur","s":"CEJM, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#caissiere","k":"Droit du travail"},{"t":"Droit des marques et structures juridiques","s":"CEJM, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#droit","k":"Droit"},{"t":"Future of Work 2026","s":"Anglais, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#anglais","k":"Anglais"},{"t":"Expos\u00e9 : Le Chat Pott\u00e9","s":"Culture g\u00e9n\u00e9rale, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#chat-potte","k":"Expression"},{"t":"Expos\u00e9 : les animaux hybrides","s":"Culture g\u00e9n\u00e9rale, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#hybrides","k":"Expression"},{"t":"Curriculum vitae","s":"Document","u":"pages\/cv.html","k":"Mis \u00e0 jour le 7 ao\u00fbt 2026"},{"t":"Lettre de recommandation","s":"Document","u":"pages\/documents.html#reco","k":"Suitime, 20 juillet 2026"},{"t":"Bulletin de premi\u00e8re ann\u00e9e","s":"Document","u":"pages\/documents.html#bulletin","k":"BTS SIO, 2025-2026"},{"t":"Lettre de motivation","s":"Document","u":"pages\/documents.html#lm","k":"Adapt\u00e9e \u00e0 chaque entreprise"},{"t":"Pourquoi ce portfolio","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#objectifs","k":"objectif public cible jury recruteur alternance besoin"},{"t":"Les user stories","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#user-stories","k":"user story r\u00e9cit utilisateur besoin crit\u00e8re d acceptation agile en tant que"},{"t":"Les pages et les fonctionnalit\u00e9s","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#fonctionnalites","k":"pages fonctionnalit\u00e9s accueil projets TP stage annexes documents CV jeu recherche mode clair filtre frise"},{"t":"Les choix techniques","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#choix-techniques","k":"choix technique justification Symfony Twig YAML statique GitHub Pages Tailwind JavaScript jsdom pourquoi alternative"},{"t":"L'architecture","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#architecture","k":"architecture sch\u00e9ma fonctionnement export statique dossier arborescence MVC"},{"t":"Le contr\u00f4leur et les routes","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#code-controleur","k":"contr\u00f4leur controller route attribut Route render slug priority PageController AbstractController"},{"t":"Le service Contenu (lecture des YAML)","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#code-service","k":"service Contenu YAML cache injection d\u00e9pendance get projet 404 NotFoundHttpException"},{"t":"La configuration et l'injection de d\u00e9pendances","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#code-injection","k":"services.yaml autowire autoconfigure bind param\u00e8tre injection d\u00e9pendance configuration"},{"t":"La commande d'export","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#code-export","k":"commande console app:export ExportCommand kernel handle Request statique GitHub Pages g\u00e9n\u00e9ration"},{"t":"L'extension Twig lien()","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#code-lien","k":"extension Twig fonction lien liens relatifs chemin LienExtension TwigFunction"},{"t":"Les composants Twig","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#code-composants","k":"composant Twig component props twig:Bouton EnTete AsTwigComponent r\u00e9utilisable brique"},{"t":"Les textes en YAML et la boucle Twig","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#code-yaml","k":"YAML contenu texte boucle for Twig projets.yaml apostrophe indentation"},{"t":"Le gabarit de base et le mode clair","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#code-base","k":"base.html.twig h\u00e9ritage extends block mode clair th\u00e8me localStorage data-theme couleurs"},{"t":"La recherche (Ctrl+K)","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#code-recherche","k":"recherche search Ctrl+K index JSON normalize accents filtre recherche.js IndexRecherche"},{"t":"Le JavaScript de l'accueil","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#code-javascript","k":"JavaScript filtre projets IntersectionObserver animation prefers-reduced-motion frise clavier accueil.js"},{"t":"Les tests automatiques","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#tests","k":"tests jsdom node dom.test.js qualit\u00e9 liens cass\u00e9s v\u00e9rification"},{"t":"S\u00e9curit\u00e9 et RGPD","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#securite","k":"s\u00e9curit\u00e9 RGPD XSS \u00e9chappement noopener HTTPS donn\u00e9es personnelles cookies mentions l\u00e9gales secret"},{"t":"L'accessibilit\u00e9","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#accessibilite","k":"accessibilit\u00e9 clavier lecteur d \u00e9cran alt aria contraste reduced motion lien d \u00e9vitement"},{"t":"Performance et r\u00e9f\u00e9rencement","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#performance-seo","k":"performance SEO r\u00e9f\u00e9rencement webp lazy loading sitemap canonical description Open Graph"},{"t":"Travailler et mettre en ligne","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#deploiement","k":"d\u00e9ploiement mise en ligne git commit push GitHub Pages commandes serveur local installation composer"},{"t":"Les grandes \u00e9tapes","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#historique","k":"historique versions \u00e9tapes refonte \u00e9volution"},{"t":"Les difficult\u00e9s et leurs solutions","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#difficultes","k":"difficult\u00e9s probl\u00e8mes solutions bug liens relatifs PHP GitHub Pages apostrophe route conflit flash"},{"t":"Les \u00e9volutions possibles","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#evolutions","k":"\u00e9volutions am\u00e9liorations CI CD GitHub Actions int\u00e9gration continue Tailwind polices"},{"t":"Le r\u00f4le de l'IA","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#ia","k":"IA intelligence artificielle Claude assistant code g\u00e9n\u00e9r\u00e9 relecture honn\u00eatet\u00e9"},{"t":"Modifier le site en direct","s":"Dossier du portfolio","u":"pages\/dossier-portfolio.html#modifications","k":"modification direct texte projet ajouter section couleur page guide YAML recette"},{"t":"Questions et r\u00e9ponses pour l'oral","s":"Annexe, \u00c9preuve E5","u":"assets\/annexes\/questions\/oral-e5.pdf","k":"Parcours, les six comp\u00e9tences, veille, portfolio, notions g\u00e9n\u00e9rales et modifications en direct (51 questions)."},{"t":"Tableau de synth\u00e8se","s":"Annexe, \u00c9preuve E5","u":"assets\/annexes\/tableau-de-synthese.pdf","k":"Mes r\u00e9alisations face aux six comp\u00e9tences du bloc 1."},{"t":"Dossier technique du portfolio","s":"Annexe, Le portfolio","u":"pages\/dossier-portfolio.html","k":"Toutes les fiches : user stories, choix techniques, architecture, extraits de code, tests, s\u00e9curit\u00e9, mise en ligne."},{"t":"User stories","s":"Annexe, Le portfolio","u":"pages\/dossier-portfolio.html#user-stories","k":"Le besoin du site : en tant que\u2026, je veux\u2026, afin de\u2026, avec les crit\u00e8res d'acceptation."},{"t":"Choix techniques","s":"Annexe, Le portfolio","u":"pages\/dossier-portfolio.html#choix-techniques","k":"Symfony, composants Twig, YAML, export statique, GitHub Pages, Tailwind, JavaScript, tests."},{"t":"Architecture et extraits de code","s":"Annexe, Le portfolio","u":"pages\/dossier-portfolio.html#architecture-code","k":"Contr\u00f4leur, service Contenu, commande d'export, fonction lien(), composants, recherche, JavaScript."},{"t":"Modifier le site en direct","s":"Annexe, Le portfolio","u":"pages\/dossier-portfolio.html#modifications","k":"Quel fichier modifier pour chaque demande, puis exporter, tester et publier."},{"t":"Guide des modifications (GitHub)","s":"Annexe, Le portfolio","u":"https:\/\/github.com\/dorianpachot-create\/portefollio\/blob\/main\/GUIDE-MODIFICATIONS.md","k":"Les recettes pas \u00e0 pas pour l'oral et les erreurs courantes."},{"t":"Code source du portfolio (GitHub)","s":"Annexe, Le portfolio","u":"https:\/\/github.com\/dorianpachot-create\/portefollio","k":"Le d\u00e9p\u00f4t complet, avec le README et l'historique des modifications."},{"t":"Questions et r\u00e9ponses pour l'oral","s":"Annexe, Application de gestion de cabinet","u":"assets\/annexes\/questions\/gestion-cabinet.pdf","k":"131 questions : m\u00e9tier, besoin, architecture, base de donn\u00e9es, 23 requ\u00eates SQL pr\u00eates, s\u00e9curit\u00e9, Docker, tests, comp\u00e9tences."},{"t":"Fiche descriptive de la r\u00e9alisation","s":"Annexe, Application de gestion de cabinet","u":"assets\/annexes\/fiches-e5\/fiche-gestion-cabinet.pdf","k":"Cadre, comp\u00e9tences mobilis\u00e9es, ressources et productions."},{"t":"Cahier des charges","s":"Annexe, Application de gestion de cabinet","u":"assets\/annexes\/gestion-cabinet\/cahier-des-charges.pdf","k":"Version 1 : contexte, probl\u00e9matique, tunnel de vente, r\u00f4les et fonctionnalit\u00e9s des deux applications."},{"t":"Cahier technique","s":"Annexe, Application de gestion de cabinet","u":"assets\/annexes\/gestion-cabinet\/cahier-technique.pdf","k":"Version 1 : architecture, choix justifi\u00e9s, routes de l'API, base de donn\u00e9es, s\u00e9curit\u00e9, RGPD, tests."},{"t":"MCD (mod\u00e8le conceptuel de donn\u00e9es)","s":"Annexe, Application de gestion de cabinet","u":"assets\/annexes\/gestion-cabinet\/mcd.pdf","k":"Les 6 entit\u00e9s, les 7 associations et leurs cardinalit\u00e9s."},{"t":"MLD (mod\u00e8le logique de donn\u00e9es)","s":"Annexe, Application de gestion de cabinet","u":"assets\/annexes\/gestion-cabinet\/mld.pdf","k":"Les 6 relations et leurs 7 cl\u00e9s \u00e9trang\u00e8res."},{"t":"Sch\u00e9ma relationnel","s":"Annexe, Application de gestion de cabinet","u":"assets\/annexes\/gestion-cabinet\/schema-relationnel.pdf","k":"Les 6 tables avec leurs colonnes, leurs types et leurs liens."},{"t":"Script SQL de la base","s":"Annexe, Application de gestion de cabinet","u":"assets\/annexes\/gestion-cabinet\/schema-bdd-courtage.sql","k":"Cr\u00e9ation des 6 tables, cl\u00e9s \u00e9trang\u00e8res, contraintes CHECK et compte MySQL de l'API (MySQL 8)."},{"t":"Sch\u00e9ma d'architecture","s":"Annexe, Application de gestion de cabinet","u":"assets\/meta\/shot-cabinet.jpg","k":"Les deux applications, l'API et la base, dans Docker Compose."},{"t":"Questions et r\u00e9ponses pour l'oral","s":"Annexe, SYNCRO (stage chez Suitime)","u":"assets\/annexes\/questions\/syncro.pdf","k":"34 questions : fonctionnalit\u00e9s, choix techniques, incidents, publication sur les stores, comp\u00e9tences."},{"t":"Fiche descriptive de la r\u00e9alisation","s":"Annexe, SYNCRO (stage chez Suitime)","u":"assets\/annexes\/fiches-e5\/fiche-syncro.pdf","k":"Cadre, comp\u00e9tences mobilis\u00e9es, ressources et productions."},{"t":"Journal de stage","s":"Annexe, SYNCRO (stage chez Suitime)","u":"pages\/stage.html","k":"Les cinq semaines de stage, semaine par semaine."},{"t":"Lettre de recommandation","s":"Annexe, SYNCRO (stage chez Suitime)","u":"assets\/recommandation\/Lettre_recommandation_Suitime.pdf","k":"\u00c9crite par mon responsable de stage chez Suitime."},{"t":"SYNCRO sur l'App Store","s":"Annexe, SYNCRO (stage chez Suitime)","u":"https:\/\/apps.apple.com\/fr\/app\/syncro\/id6787898930","k":"L'application publi\u00e9e."},{"t":"SYNCRO sur Google Play","s":"Annexe, SYNCRO (stage chez Suitime)","u":"https:\/\/play.google.com\/store\/apps\/details?id=fr.appsyncro.mobile","k":"L'application publi\u00e9e."},{"t":"Questions et r\u00e9ponses pour l'oral","s":"Annexe, Pla'Net","u":"assets\/annexes\/questions\/planet.pdf","k":"16 questions : planification, base de donn\u00e9es, code g\u00e9n\u00e9r\u00e9 par l'IA, Symfony."},{"t":"Fiche descriptive de la r\u00e9alisation","s":"Annexe, Pla'Net","u":"assets\/annexes\/fiches-e5\/fiche-planet.pdf","k":"Cadre, comp\u00e9tences mobilis\u00e9es, ressources et productions."},{"t":"Dossier de conception","s":"Annexe, Pla'Net","u":"assets\/fiches-cours\/developpement\/planet-dossier-conception.pdf","k":"Les 45 cartes Trello, la carte D\u00c9CISION, le mod\u00e8le de donn\u00e9es, le bilan."},{"t":"Mod\u00e8le logique de la base","s":"Annexe, Pla'Net","u":"assets\/planet\/schema-bdd.svg","k":"Les 12 tables et leurs cl\u00e9s \u00e9trang\u00e8res."},{"t":"Questions et r\u00e9ponses pour l'oral","s":"Annexe, CRP-Assurance","u":"assets\/annexes\/questions\/crp-assurance.pdf","k":"15 questions : besoin du client, choix techniques, s\u00e9curit\u00e9, mise en ligne sans SSH."},{"t":"Fiche descriptive de la r\u00e9alisation","s":"Annexe, CRP-Assurance","u":"assets\/annexes\/fiches-e5\/fiche-crp-assurance.pdf","k":"Cadre, comp\u00e9tences mobilis\u00e9es, ressources et productions."},{"t":"Le site en ligne","s":"Annexe, CRP-Assurance","u":"https:\/\/crp-assurance.com","k":"crp-assurance.com"},{"t":"PHP2Shell : deux failles critiques dans PHP","s":"Veille, \u00e0 la une, alerte de s\u00e9curit\u00e9 php","u":"index.html#une","k":"Le 20 octobre 2026, l'\u00e9quipe de PHP a annonc\u00e9 deux failles critiques (CVE-2026-109618 et CVE-2026-109619), corrig\u00e9es en urgence le lendemain. Une simple requ\u00eate HTTP, sans \u00eatre connect\u00e9, peut suffire \u00e0 ex\u00e9cuter du code sur le serveur."},{"t":"NIS2, ReCyF et RGPD","s":"Veille, r\u00e9glementation","u":"index.html#art-nis2","k":"CRP-Assurance, CEJM"},{"t":"Wi-Fi 7, 5G et 6G","s":"Veille, r\u00e9seaux","u":"index.html#art-reseaux","k":"cours de r\u00e9seaux, TP GNS3"},{"t":"Frameworks et r\u00e8gles des stores","s":"Veille, mes outils","u":"index.html#art-outils","k":"SYNCRO, Pla'Net"},{"t":"Les attaques qui passent par l'utilisateur","s":"Veille, cybers\u00e9curit\u00e9","u":"index.html#art-clickfix","k":"SYNCRO, Pla'Net, TP FortiGate"},{"t":"Automatiser la mise en ligne","s":"Veille, devops","u":"index.html#art-devops","k":"stage chez Suitime, TP4 Linux"},{"t":"Les agents IA","s":"Veille, intelligence artificielle","u":"index.html#art-ia","k":"Mission Orion, mes outils"}]</script>
+
+  <script src="../js/recherche.js"></script>
+</body>
+</html>

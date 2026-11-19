@@ -18,21 +18,45 @@ groupes:
   titre: Épreuve E5
   documents:
   - titre: Questions et réponses pour l'oral
-    texte: "Parcours, les six compétences, veille, portfolio, notions générales et modifications en direct (45 questions)."
+    texte: "Parcours, les six compétences, veille, portfolio, notions générales et modifications en direct (51 questions)."
     type: PDF
     url: assets/annexes/questions/oral-e5.pdf
   - titre: Tableau de synthèse
     texte: Mes réalisations face aux six compétences du bloc 1.
     type: PDF
     url: assets/annexes/tableau-de-synthese.pdf
-  - titre: Présentation de l'oral
-    texte: Les 19 diapositives, avec les notes de l'orateur.
-    type: PowerPoint
-    url: assets/presentation/Presentation_E5_Dorian_Pachot.pptx
-  - titre: Mode présentation
-    texte: Les mêmes diapositives dans le navigateur (touche P sur n'importe quelle page).
+
+- id: portfolio
+  titre: Le portfolio
+  documents:
+  - titre: Dossier technique du portfolio
+    texte: "Toutes les fiches : user stories, choix techniques, architecture, extraits de code, tests, sécurité, mise en ligne."
     type: Page
-    url: pages/presentation.html
+    url: pages/dossier-portfolio.html
+  - titre: User stories
+    texte: "Le besoin du site : en tant que…, je veux…, afin de…, avec les critères d'acceptation."
+    type: Page
+    url: pages/dossier-portfolio.html#user-stories
+  - titre: Choix techniques
+    texte: Symfony, composants Twig, YAML, export statique, GitHub Pages, Tailwind, JavaScript, tests.
+    type: Page
+    url: pages/dossier-portfolio.html#choix-techniques
+  - titre: Architecture et extraits de code
+    texte: Contrôleur, service Contenu, commande d'export, fonction lien(), composants, recherche, JavaScript.
+    type: Page
+    url: pages/dossier-portfolio.html#architecture-code
+  - titre: Modifier le site en direct
+    texte: Quel fichier modifier pour chaque demande, puis exporter, tester et publier.
+    type: Page
+    url: pages/dossier-portfolio.html#modifications
+  - titre: Guide des modifications (GitHub)
+    texte: Les recettes pas à pas pour l'oral et les erreurs courantes.
+    type: Lien
+    url: https://github.com/dorianpachot-create/portefollio/blob/main/GUIDE-MODIFICATIONS.md
+  - titre: Code source du portfolio (GitHub)
+    texte: Le dépôt complet, avec le README et l'historique des modifications.
+    type: Lien
+    url: https://github.com/dorianpachot-create/portefollio
 
 - id: gestion-cabinet
   titre: Application de gestion de cabinet

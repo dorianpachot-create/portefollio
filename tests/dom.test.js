@@ -50,11 +50,13 @@ ok('aucune page dorée restante', fs.readdirSync(path.join(ROOT, 'pages')).every
 const gc = load('pages/gestion-cabinet.html');
 ok('gestion de cabinet : page du projet en cours', ['en-bref', 'contexte', 'tunnel', 'fonctionnalites', 'architecture', 'base-de-donnees', 'requetes', 'securite', 'suite', 'competences'].every((id) => gc.getElementById(id)) && !!d.querySelector('#projets a[href="pages/gestion-cabinet.html"]'));
 ok('veille : alerte PHP du 20 octobre à la une', /PHP2Shell/.test(d.getElementById('une').textContent) && !!d.getElementById('art-clickfix'));
-ok('mode clair : bouton dans le menu et couleurs prévues', !!d.querySelector('[data-theme-toggle]') && /data-theme="light"/.test(fs.readFileSync(path.join(ROOT, 'css/site.css'), 'utf8')) && /b-theme/.test(fs.readFileSync(path.join(ROOT, 'pages/presentation.html'), 'utf8')));
+ok('mode clair : bouton dans le menu et couleurs prévues', !!d.querySelector('[data-theme-toggle]') && /data-theme="light"/.test(fs.readFileSync(path.join(ROOT, 'css/site.css'), 'utf8')));
 ok('recherche : bouton dans le menu et index des pages', !!d.querySelector('[data-search-open]') && JSON.parse(load('index.html').getElementById('index-recherche').textContent).some((e) => e.u === 'pages/gestion-cabinet.html'));
 const an = load('pages/annexes.html');
 ok('annexes : fiches E5, cahiers et comptes rendus', ['e5', 'gestion-cabinet', 'syncro', 'planet', 'crp-assurance', 'comptes-rendus', 'personnels'].every((id) => an.getElementById(id)) && an.querySelectorAll('.annexe').length > 30);
 ok('veille : objectif DevOps', /Devenir DevOps/.test(text));
+const dp = load('pages/dossier-portfolio.html');
+ok('dossier technique : user stories, choix, code', ['user-stories', 'choix-techniques', 'architecture', 'code-controleur', 'tests'].every((id) => dp.getElementById(id)) && dp.querySelectorAll('pre.code').length >= 15 && !fs.existsSync(path.join(ROOT, 'pages/presentation.html')));
 
 console.log('\n--- liens internes ---');
 const pages = ['index.html', ...fs.readdirSync(path.join(ROOT, 'pages')).map((f) => 'pages/' + f)];

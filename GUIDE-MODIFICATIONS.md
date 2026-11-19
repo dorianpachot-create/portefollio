@@ -7,7 +7,7 @@ fichier, `Ctrl+Maj+F` pour chercher dans tout le dossier.
 Sommaire : [Avant l'oral](#avant-loral) · [Le cycle](#le-cycle-modifier-voir-publier) ·
 [Textes](#1-textes) · [Projets, TP, veille](#2-projets-tp-veille-documents) ·
 [Mise en page](#3-mise-en-page-et-style) · [Twig et Symfony](#4-twig-et-symfony) ·
-[Présentation](#5-présentation-de-loral) · [En cas de problème](#6-en-cas-de-problème)
+[Présenter le portfolio](#5-présenter-le-portfolio-à-loral) · [En cas de problème](#6-en-cas-de-problème)
 
 ---
 
@@ -238,15 +238,13 @@ Dans la méthode du contrôleur : `'stage' => $this->contenu->get('stage')`, pui
 
 ---
 
-## 5. Présentation de l'oral
+## 5. Présenter le portfolio à l'oral
 
-- **Dans le navigateur** : `pages/presentation.html` (touche **P** depuis le site). Une diapo = un
-  bloc `<section class="slide">`, avec un commentaire `<!-- 5. Le besoin -->` au-dessus. Les notes
-  sont dans `data-notes="..."`. Touches : flèches, **N** notes, **F** plein écran, **L** clair/sombre.
-- **PowerPoint** : `assets/presentation/Presentation_E5_Dorian_Pachot.pptx`, se modifie dans PowerPoint ;
-  les notes sont sous chaque diapo. Penser à garder les deux versions identiques.
-- Changer un point coché du tableau de synthèse : diapo 3 (`<table class="grille">`), puis la diapo 3
-  du PowerPoint, puis `assets/annexes/tableau-de-synthese.pdf`.
+- Il n'y a plus de diaporama : je présente le site lui-même, de l'accueil aux pages projet.
+- Le **dossier technique** (`pages/dossier-portfolio.html`, textes dans `app/contenu/dossier.yaml`)
+  regroupe user stories, choix techniques, architecture et extraits de code. Chaque fiche est trouvable
+  avec la recherche du menu (Ctrl+K), comme les annexes.
+- Changer un point coché du tableau de synthèse : `assets/annexes/tableau-de-synthese.pdf`.
 
 ---
 

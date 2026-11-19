@@ -46,7 +46,7 @@ cd app
 php -S 127.0.0.1:8000 -t .. public/index.php   # voir le site en direct : http://127.0.0.1:8000
 php bin/console app:export                      # régénérer les pages HTML
 cd ..
-node tests/dom.test.js                          # vérifier (40 tests)
+node tests/dom.test.js                          # vérifier (42 tests)
 git add -A && git commit -m "..." && git push   # mettre en ligne
 ```
 
@@ -75,7 +75,7 @@ rechargeant la page.
 | Les couleurs                                     | `app/templates/base.html.twig` (`@theme`) et `css/site.css` |
 | Le mode clair                                    | fin de `css/site.css` (`html[data-theme="light"]`) |
 | La recherche du menu                             | `js/recherche.js` et `components/IndexRecherche.html.twig` |
-| La présentation de l'oral (touche P)             | `pages/presentation.html` (écrit à la main) et le PowerPoint `assets/presentation/` |
+| Le dossier technique du portfolio                | `app/contenu/dossier.yaml`                      |
 
 ## Organisation du dossier app/
 
@@ -118,7 +118,6 @@ qui explique ses paramètres.
 
 ```
 index.html, pages/*.html   Pages générées par app:export (ne pas modifier à la main)
-pages/presentation.html    Exception : le mode présentation, écrit à la main
 css/site.css               Styles maison (le reste vient de Tailwind par CDN)
 js/accueil.js              JavaScript de l'accueil (carte de profil, frise, filtre, suivi de défilement)
 js/site.js                 JavaScript des pages secondaires (menu, sommaire, barre de progression)
