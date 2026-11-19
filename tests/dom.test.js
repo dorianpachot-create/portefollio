@@ -55,8 +55,7 @@ ok('recherche : bouton dans le menu et index des pages', !!d.querySelector('[dat
 const an = load('pages/annexes.html');
 ok('annexes : fiches E5, cahiers et comptes rendus', ['e5', 'gestion-cabinet', 'syncro', 'planet', 'crp-assurance', 'comptes-rendus', 'personnels'].every((id) => an.getElementById(id)) && an.querySelectorAll('.annexe').length > 30);
 ok('veille : objectif DevOps', /Devenir DevOps/.test(text));
-const dp = load('pages/dossier-portfolio.html');
-ok('dossier technique : user stories, choix, code', ['user-stories', 'choix-techniques', 'architecture', 'code-controleur', 'tests'].every((id) => dp.getElementById(id)) && dp.querySelectorAll('pre.code').length >= 15 && !fs.existsSync(path.join(ROOT, 'pages/presentation.html')));
+ok('annexes : fiches techniques (user stories, choix, code) par projet', ['user-stories', 'choix-techniques', 'code-controleur', 'gc-user-stories', 'gc-code-sql', 'sy-incidents', 'pn-user-stories', 'crp-choix-techniques'].every((id) => an.getElementById(id)) && an.querySelectorAll('pre.code').length >= 20 && !fs.existsSync(path.join(ROOT, 'pages/presentation.html')) && !fs.existsSync(path.join(ROOT, 'pages/dossier-portfolio.html')));
 
 console.log('\n--- liens internes ---');
 const pages = ['index.html', ...fs.readdirSync(path.join(ROOT, 'pages')).map((f) => 'pages/' + f)];

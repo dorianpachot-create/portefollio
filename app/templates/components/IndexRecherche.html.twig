@@ -2,7 +2,7 @@
   Composant IndexRecherche : la liste de tout ce que la barre de recherche du menu
   sait trouver (sections, projets, TP, documents, articles de veille, pages).
   Elle est écrite dans la page en JSON et lue par js/recherche.js.
-  Rien à faire pour ajouter un projet, un TP, une annexe ou une fiche du dossier : ils sont lus dans contenu/*.yaml.
+  Rien à faire pour ajouter un projet, un TP, une annexe ou une fiche d'annexe : ils sont lus dans contenu/*.yaml.
   Chaque entrée : t = titre, s = où c'est (petite ligne grise), u = adresse depuis
   la racine du site, k = mots-clés en plus (technos), pour élargir la recherche.
 #}
@@ -19,9 +19,8 @@
   ['Contact', 'Accueil', 'index.html#contact', 'e-mail téléphone LinkedIn GitHub'],
   ['Mes réalisations', 'Page', 'pages/projets-perso.html', 'projets'],
   ['Tous les projets encadrés', 'Page', 'pages/projets-cours.html', 'TP comptes rendus'],
-  ['Annexes', 'Page', 'pages/annexes.html', 'E5 fiches tableau de synthèse cahier des charges cahier technique MCD MLD script SQL dossier de conception comptes rendus'],
+  ['Annexes', 'Page', 'pages/annexes.html', 'E5 fiches tableau de synthèse cahier des charges cahier technique MCD MLD script SQL dossier de conception comptes rendus user stories choix techniques code'],
   ['Journal de stage', 'Page', 'pages/stage.html', 'Suitime SYNCRO semaines'],
-  ['Dossier technique du portfolio', 'Page', 'pages/dossier-portfolio.html', 'portfolio Symfony code user stories choix techniques architecture tests'],
   ['Jouer à Mission Orion', 'Page', 'pages/mini-jeu.html', 'jeu Python'],
   ['Mentions légales', 'Page', 'pages/mentions-legales.html', 'RGPD hébergement'],
 ] -%}
@@ -43,16 +42,13 @@
 {%- for d in contenu.get('documents').documents -%}
   {%- set entrees = entrees|merge([{t: d.titre, s: 'Document', u: d.page, k: d.sous_titre}]) -%}
 {%- endfor -%}
-{# Fiches du dossier technique du portfolio #}
-{%- for groupe in contenu.get('dossier').groupes -%}
-  {%- for f in groupe.fiches -%}
-    {%- set entrees = entrees|merge([{t: f.titre, s: 'Dossier du portfolio', u: 'pages/dossier-portfolio.html#' ~ f.id, k: f.mots_cles}]) -%}
-  {%- endfor -%}
-{%- endfor -%}
 {# Annexes (contenu/annexes.yaml) #}
 {%- for groupe in contenu.get('annexes').groupes -%}
   {%- for d in groupe.documents -%}
     {%- set entrees = entrees|merge([{t: d.titre, s: 'Annexe, ' ~ groupe.titre, u: d.url, k: d.texte ?? ''}]) -%}
+  {%- endfor -%}
+  {%- for f in groupe.fiches ?? [] -%}
+    {%- set entrees = entrees|merge([{t: f.titre, s: 'Annexe, ' ~ groupe.titre, u: 'pages/annexes.html#' ~ f.id, k: f.mots_cles}]) -%}
   {%- endfor -%}
 {%- endfor -%}
 {# Articles de veille #}

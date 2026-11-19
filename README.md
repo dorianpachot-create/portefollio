@@ -66,7 +66,7 @@ rechargeant la page.
 | La veille                                        | `app/contenu/veille.yaml`                       |
 | Les vignettes de documents                       | `app/contenu/documents.yaml`                    |
 | Le journal de stage                              | `app/contenu/stage.yaml`                        |
-| Les annexes (cahiers, maquettes, fiches E5)      | `app/contenu/annexes.yaml`                      |
+| Les annexes et les fiches techniques par projet  | `app/contenu/annexes.yaml`                      |
 | L'ordre des sections de l'accueil                | `app/templates/accueil/index.html.twig`         |
 | La mise en page d'une section de l'accueil       | `app/templates/accueil/_<section>.html.twig`    |
 | La mise en page des pages projet                 | `app/templates/pages/projet.html.twig`          |
@@ -75,7 +75,6 @@ rechargeant la page.
 | Les couleurs                                     | `app/templates/base.html.twig` (`@theme`) et `css/site.css` |
 | Le mode clair                                    | fin de `css/site.css` (`html[data-theme="light"]`) |
 | La recherche du menu                             | `js/recherche.js` et `components/IndexRecherche.html.twig` |
-| Le dossier technique du portfolio                | `app/contenu/dossier.yaml`                      |
 
 ## Organisation du dossier app/
 

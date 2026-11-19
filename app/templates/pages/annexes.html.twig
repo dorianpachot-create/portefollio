@@ -12,16 +12,39 @@
 
 {% block contenu %}
   <twig:EnTetePage cadre="Épreuve E5" titre="Annexes" retourUrl="index.html#documents" retourTexte="Retour à l'accueil">
-    <p>Tous les documents de mes réalisations au même endroit : fiches descriptives, cahiers, dossiers de conception, comptes rendus de TP et documents personnels.</p>
+    <p>Tous les documents de mes réalisations, rangés par projet : fiches descriptives, cahiers, questions et réponses, puis les fiches techniques (user stories, choix techniques, extraits de code), toutes indexées dans la recherche du menu (Ctrl+K).</p>
   </twig:EnTetePage>
 
-  <div class="px-5 pb-16 md:px-8"><div class="mx-auto grid max-w-4xl gap-5">
+  <div class="px-5 pb-16 md:px-8"><div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_16rem]"><div class="grid min-w-0 gap-5">
     {% for groupe in annexes.groupes %}
       <twig:Panneau :id="groupe.id" :titre="groupe.titre">
         <ul class="annexes">
           {% for d in groupe.documents %}<twig:LigneAnnexe :titre="d.titre" :texte="d.texte ?? ''" :type="d.type" :url="d.url" />{% endfor %}
         </ul>
       </twig:Panneau>
+      {# Fiches du groupe : user stories, choix techniques, extraits de code (indexées dans la recherche) #}
+      {% for fiche in groupe.fiches ?? [] %}
+        <article id="{{ fiche.id }}" class="section-block panel reveal min-w-0 p-6 md:p-8">
+          <p class="label text-blood">{{ groupe.titre }} · {{ fiche.rubrique }}</p>
+          <div class="prose-red">
+            <h2 class="!mt-2 !text-2xl">{{ fiche.titre }}</h2>
+            {% for p in fiche.paragraphes ?? [] %}<p>{{ p|raw }}</p>{% endfor %}
+            {% if fiche.tableau is defined %}
+              <div class="table-wrap"><table>
+                <thead><tr>{% for e in fiche.tableau.entetes %}<th scope="col">{{ e }}</th>{% endfor %}</tr></thead>
+                <tbody>{% for ligne in fiche.tableau.lignes %}<tr>{% for c in ligne %}<td>{{ c|raw }}</td>{% endfor %}</tr>{% endfor %}</tbody>
+              </table></div>
+            {% endif %}
+            {% if fiche.liste is defined %}<ul>{% for point in fiche.liste %}<li>{{ point|raw }}</li>{% endfor %}</ul>{% endif %}
+            {% for c in fiche.code ?? [] %}
+              <h3>{{ c.titre }}</h3>
+              {% if c.fichier is defined %}<p class="code-fichier">{{ c.fichier }}</p>{% endif %}
+              <pre class="code" data-langage="{{ c.langage }}"><code>{{ c.texte }}</code></pre>
+            {% endfor %}
+          </div>
+          <p class="mt-4 text-xs text-ash">Mots-clés : {{ fiche.mots_cles }}</p>
+        </article>
+      {% endfor %}
     {% endfor %}
 
     {# Comptes rendus de TP : un document par fichier de contenu/cours.yaml #}
@@ -39,5 +62,20 @@
         {% for d in documents %}<twig:LigneAnnexe :titre="d.titre" :texte="d.sous_titre" type="PDF" :url="d.pdf" />{% endfor %}
       </ul>
     </twig:Panneau>
+  </div>
+
+  <aside class="hidden lg:sticky lg:top-24 lg:block lg:max-h-[calc(100vh-7rem)] lg:self-start lg:overflow-y-auto">
+    <nav class="toc" aria-label="Sommaire des annexes" data-toc>
+      <p class="label mb-2 px-3 text-ash">Sommaire</p>
+      {% for groupe in annexes.groupes %}
+        {% if not loop.first %}<div class="h-3"></div>{% endif %}
+        <a href="#{{ groupe.id }}" class="!font-semibold">{{ groupe.titre }}</a>
+        {% for fiche in groupe.fiches ?? [] %}<a href="#{{ fiche.id }}" class="!pl-6 !text-[.8rem]">{{ fiche.titre }}</a>{% endfor %}
+      {% endfor %}
+      <div class="h-3"></div>
+      <a href="#comptes-rendus" class="!font-semibold">Comptes rendus de TP</a>
+      <a href="#personnels" class="!font-semibold">Documents personnels</a>
+    </nav>
+  </aside>
   </div></div>
 {% endblock %}

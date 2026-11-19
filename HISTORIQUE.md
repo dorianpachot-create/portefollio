@@ -99,3 +99,12 @@ Le détail de chaque modification est dans l'historique Git (`git log`). Ici, l'
   recherche, JavaScript, tests).
 - Recherche du menu : chaque fiche du dossier et chaque annexe est indexée (Ctrl+K).
 - Annexes : nouveau groupe « Le portfolio » ; questions générales de l'oral complétées (51).
+
+## 19 novembre 2026 (fin) : tout dans les annexes, rangé par projet
+
+- La page `dossier-portfolio.html` est supprimée : ses 25 fiches sont dans le groupe « Le portfolio » de
+  la page Annexes (clé `fiches` dans `app/contenu/annexes.yaml`, `dossier.yaml` supprimé).
+- Nouvelles fiches par projet, sous les documents de chaque groupe : user stories, choix techniques,
+  routes et règles de l'API, extraits du script SQL et requêtes (gestion de cabinet) ; user stories,
+  choix et incidents (SYNCRO) ; user stories et choix (Pla'Net, CRP-Assurance). 37 fiches en tout.
+- Page Annexes : sommaire à droite ; chaque fiche est indexée dans la recherche (Ctrl+K).

@@ -241,9 +241,9 @@ Dans la méthode du contrôleur : `'stage' => $this->contenu->get('stage')`, pui
 ## 5. Présenter le portfolio à l'oral
 
 - Il n'y a plus de diaporama : je présente le site lui-même, de l'accueil aux pages projet.
-- Le **dossier technique** (`pages/dossier-portfolio.html`, textes dans `app/contenu/dossier.yaml`)
-  regroupe user stories, choix techniques, architecture et extraits de code. Chaque fiche est trouvable
-  avec la recherche du menu (Ctrl+K), comme les annexes.
+- La page **Annexes** est rangée par projet : sous les documents de chaque projet, ses fiches techniques
+  (user stories, choix techniques, extraits de code). Textes : clé `fiches` de chaque groupe dans
+  `app/contenu/annexes.yaml`. Chaque fiche est trouvable avec la recherche du menu (Ctrl+K).
 - Changer un point coché du tableau de synthèse : `assets/annexes/tableau-de-synthese.pdf`.
 
 ---
