@@ -17,6 +17,10 @@ groupes:
 - id: e5
   titre: Épreuve E5
   documents:
+  - titre: Questions et réponses pour l'oral
+    texte: "Parcours, les six compétences, veille, portfolio, notions générales et modifications en direct (45 questions)."
+    type: PDF
+    url: assets/annexes/questions/oral-e5.pdf
   - titre: Tableau de synthèse
     texte: Mes réalisations face aux six compétences du bloc 1.
     type: PDF
@@ -33,6 +37,10 @@ groupes:
 - id: gestion-cabinet
   titre: Application de gestion de cabinet
   documents:
+  - titre: Questions et réponses pour l'oral
+    texte: "131 questions : métier, besoin, architecture, base de données, 23 requêtes SQL prêtes, sécurité, Docker, tests, compétences."
+    type: PDF
+    url: assets/annexes/questions/gestion-cabinet.pdf
   - titre: Fiche descriptive de la réalisation
     texte: Cadre, compétences mobilisées, ressources et productions.
     type: PDF
@@ -69,6 +77,10 @@ groupes:
 - id: syncro
   titre: SYNCRO (stage chez Suitime)
   documents:
+  - titre: Questions et réponses pour l'oral
+    texte: "34 questions : fonctionnalités, choix techniques, incidents, publication sur les stores, compétences."
+    type: PDF
+    url: assets/annexes/questions/syncro.pdf
   - titre: Fiche descriptive de la réalisation
     texte: Cadre, compétences mobilisées, ressources et productions.
     type: PDF
@@ -93,6 +105,10 @@ groupes:
 - id: planet
   titre: Pla'Net
   documents:
+  - titre: Questions et réponses pour l'oral
+    texte: "16 questions : planification, base de données, code généré par l'IA, Symfony."
+    type: PDF
+    url: assets/annexes/questions/planet.pdf
   - titre: Fiche descriptive de la réalisation
     texte: Cadre, compétences mobilisées, ressources et productions.
     type: PDF
@@ -109,6 +125,10 @@ groupes:
 - id: crp-assurance
   titre: CRP-Assurance
   documents:
+  - titre: Questions et réponses pour l'oral
+    texte: "15 questions : besoin du client, choix techniques, sécurité, mise en ligne sans SSH."
+    type: PDF
+    url: assets/annexes/questions/crp-assurance.pdf
   - titre: Fiche descriptive de la réalisation
     texte: Cadre, compétences mobilisées, ressources et productions.
     type: PDF

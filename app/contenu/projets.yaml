@@ -70,6 +70,9 @@ projets:
   - texte: Fiche E5 (PDF)
     url: assets/annexes/fiches-e5/fiche-syncro.pdf
     style: secondaire
+  - texte: Questions et réponses (PDF)
+    url: assets/annexes/questions/syncro.pdf
+    style: secondaire
   media:
     type: captures
     images:
@@ -204,6 +207,9 @@ projets:
   - texte: Fiche E5 (PDF)
     url: assets/annexes/fiches-e5/fiche-planet.pdf
     style: secondaire
+  - texte: Questions et réponses (PDF)
+    url: assets/annexes/questions/planet.pdf
+    style: secondaire
   media:
     type: image
     image: assets/meta/shot-planet
@@ -324,6 +330,9 @@ projets:
     style: principal
   - texte: Fiche E5 (PDF)
     url: assets/annexes/fiches-e5/fiche-crp-assurance.pdf
+    style: secondaire
+  - texte: Questions et réponses (PDF)
+    url: assets/annexes/questions/crp-assurance.pdf
     style: secondaire
   media:
     type: image
@@ -537,6 +546,9 @@ projets:
     style: secondaire
   - texte: Fiche E5 (PDF)
     url: assets/annexes/fiches-e5/fiche-gestion-cabinet.pdf
+    style: secondaire
+  - texte: Questions et réponses (PDF)
+    url: assets/annexes/questions/gestion-cabinet.pdf
     style: secondaire
   media:
     type: image

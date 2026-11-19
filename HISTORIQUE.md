@@ -82,3 +82,9 @@ Le détail de chaque modification est dans l'historique Git (`git log`). Ici, l'
 
 ## 2026-11-09 — PowerPoint E5 refait
 - `assets/presentation/Presentation_E5_Dorian_Pachot.pptx` : même contenu que le mode présentation (19 diapositives, version 1 du projet, MCD/MLD, script SQL, requêtes), avec les notes de l'orateur. Diapositives modifiables (textes et tableaux natifs ; MCD et MLD en images).
+
+## 19 novembre 2026 : questions et réponses pour l'oral
+
+- Cinq PDF dans `assets/annexes/questions/` : gestion de cabinet (131 questions, dont 23 requêtes SQL
+  prêtes et testées), SYNCRO (34), Pla'Net (16), CRP-Assurance (15) et questions générales de l'oral (45).
+- Liens ajoutés en tête de chaque groupe de la page Annexes et sur la page de chaque projet.
