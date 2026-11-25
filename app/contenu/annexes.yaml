@@ -128,7 +128,7 @@ groupes:
     mots_cles: pages fonctionnalités accueil projets TP stage annexes documents CV jeu recherche mode clair filtre frise
     liste:
     - '<strong>Accueil</strong> (une seule longue page) : présentation, parcours en frise, réalisations avec filtre Tous / Livrés / En cours, projets encadrés, outils, qualités, veille, dossier (CV, lettres), contact.'
-    - '<strong>Une page par projet</strong> : SYNCRO, Pla''Net, CRP-Assurance, Mission Orion, Gestion de cabinet, avec fiche, sommaire, sections et documents.'
+    - '<strong>Une page par projet</strong> : SYNCRO, Pla''Net, CRP-Assurance, Mission Orion, Venzy, avec fiche, sommaire, sections et documents.'
     - '<strong>Projets encadrés</strong> : tous les TP des deux années, avec objectif, réalisation, ce que j''en retiens et compte rendu.'
     - <strong>Journal de stage</strong>, <strong>Annexes</strong> de l'E5, <strong>Documents</strong>, <strong>CV</strong>, <strong>Mini-jeu</strong>, <strong>Mentions légales</strong>. Les annexes contiennent aussi ces fiches techniques, rangées par projet.
     - <strong>Recherche</strong> (bouton du menu, Ctrl+K ou /), <strong>mode clair</strong>, barre de progression du défilement, menu mobile, sommaire qui suit la lecture.
@@ -460,11 +460,11 @@ groupes:
       fichier: app/contenu/projets.yaml
       langage: yaml
       texte: |-
-        - slug: gestion-cabinet
-          nom: Gestion de cabinet
+        - slug: venzy
+          nom: Venzy
           couleur: '#F59E0B'
-          titre_page: Application de gestion de cabinet de courtage, projet en cours | Dorian Pachot
-          description: "Deux applications Flutter (mobile pour les mandataires, bureau pour le gérant) et une API Node.js pour suivre les ventes d'un cabinet de courtage en assurance, du prospect au contrat signé. Projet de BTS en cours : cahiers et base de données terminés."
+          titre_page: Venzy, application de suivi des ventes, projet en cours | Dorian Pachot
+          description: "Venzy : deux applications Flutter (mobile pour les mandataires, bureau pour le gérant) et une API Node.js pour suivre les ventes, du prospect au contrat signé. Premier client : un cabinet de courtage en assurance. Projet de BTS en cours : cahiers et base de données terminés."
           cadre: Projet de deuxième année de BTS, en cours
     - titre: La boucle de la section Réalisations
       fichier: app/templates/accueil/_realisations.html.twig
@@ -681,6 +681,8 @@ groupes:
         - Veille PHP2Shell, projet Gestion de cabinet, mode clair, recherche, nettoyage du code mort, annexes
       - - Novembre 2026
         - TP et fiches mis à jour, gestion de cabinet en version 1, questions et réponses pour l'oral, fiches techniques dans les annexes
+      - - 25 novembre 2026
+        - 'Projet « Gestion de cabinet » renommé Venzy : page, annexes, cahiers et fiches'
   - rubrique: Organisation et évolution
     id: difficultes
     titre: Les difficultés et leurs solutions
@@ -700,7 +702,7 @@ groupes:
     - '<strong>Intégration continue</strong> avec GitHub Actions : à chaque push, lancer app:export et les tests, et ne publier que si tout passe. C''est la suite logique de mon objectif DevOps.'
     - Compiler Tailwind au lieu de le charger depuis un CDN, et héberger les polices sur le site (plus rapide, et plus rien n'est envoyé à Google).
     - Une version anglaise du site.
-    - Mettre en ligne la gestion de cabinet une fois développée (compétence « présence en ligne »).
+    - Mettre en ligne Venzy une fois développée (compétence « présence en ligne »).
   - rubrique: Organisation et évolution
     id: ia
     titre: Le rôle de l'IA
@@ -738,49 +740,49 @@ groupes:
         - 'une méthode #[Route] dans PageController + un gabarit dans templates/pages/'
     paragraphes:
     - 'Puis : php bin/console app:export, node tests/dom.test.js, git add, commit, push. Le détail, recette par recette, est dans GUIDE-MODIFICATIONS.md sur GitHub.'
-- id: gestion-cabinet
-  titre: Application de gestion de cabinet
+- id: venzy
+  titre: Venzy, suivi des ventes
   documents:
   - titre: Questions et réponses pour l'oral
     texte: '131 questions : métier, besoin, architecture, base de données, 23 requêtes SQL prêtes, sécurité, Docker, tests, compétences.'
     type: PDF
-    url: assets/annexes/questions/gestion-cabinet.pdf
+    url: assets/annexes/questions/venzy.pdf
   - titre: Fiche descriptive de la réalisation
     texte: Cadre, compétences mobilisées, ressources et productions.
     type: PDF
-    url: assets/annexes/fiches-e5/fiche-gestion-cabinet.pdf
+    url: assets/annexes/fiches-e5/fiche-venzy.pdf
   - titre: Cahier des charges
     texte: 'Version 1 : contexte, problématique, tunnel de vente, rôles et fonctionnalités des deux applications.'
     type: PDF
-    url: assets/annexes/gestion-cabinet/cahier-des-charges.pdf
+    url: assets/annexes/venzy/cahier-des-charges.pdf
   - titre: Cahier technique
     texte: 'Version 1 : architecture, choix justifiés, routes de l''API, base de données, sécurité, RGPD, tests.'
     type: PDF
-    url: assets/annexes/gestion-cabinet/cahier-technique.pdf
+    url: assets/annexes/venzy/cahier-technique.pdf
   - titre: MCD (modèle conceptuel de données)
     texte: Les 6 entités, les 7 associations et leurs cardinalités.
     type: PDF
-    url: assets/annexes/gestion-cabinet/mcd.pdf
+    url: assets/annexes/venzy/mcd.pdf
   - titre: MLD (modèle logique de données)
     texte: Les 6 relations et leurs 7 clés étrangères.
     type: PDF
-    url: assets/annexes/gestion-cabinet/mld.pdf
+    url: assets/annexes/venzy/mld.pdf
   - titre: Schéma relationnel
     texte: Les 6 tables avec leurs colonnes, leurs types et leurs liens.
     type: PDF
-    url: assets/annexes/gestion-cabinet/schema-relationnel.pdf
+    url: assets/annexes/venzy/schema-relationnel.pdf
   - titre: Script SQL de la base
     texte: Création des 6 tables, clés étrangères, contraintes CHECK et compte MySQL de l'API (MySQL 8).
     type: SQL
-    url: assets/annexes/gestion-cabinet/schema-bdd-courtage.sql
+    url: assets/annexes/venzy/schema-bdd-courtage.sql
   - titre: Schéma d'architecture
     texte: Les deux applications, l'API et la base, dans Docker Compose.
     type: Image
-    url: assets/meta/shot-cabinet.jpg
+    url: assets/meta/shot-venzy.jpg
   fiches:
   - id: gc-user-stories
     rubrique: Le besoin
-    titre: 'Gestion de cabinet : les user stories'
+    titre: 'Venzy : les user stories'
     mots_cles: user story récit utilisateur en tant que mandataire gérant critère d acceptation besoin cahier des charges
     paragraphes:
     - Les fonctionnalités de la version 1 du cahier des charges, écrites en user stories. Le critère d'acceptation sert de test pour la recette avec le client.
@@ -825,7 +827,7 @@ groupes:
         - taux de transformation (signées ÷ créées), primes signées, commissions estimées, classement des mandataires
   - id: gc-choix-techniques
     rubrique: Les choix techniques
-    titre: 'Gestion de cabinet : les choix techniques'
+    titre: 'Venzy : les choix techniques'
     mots_cles: choix technique justification Flutter Dart Node.js Express MySQL Docker Git alternative MongoDB Symfony API architecture
     tableau:
       entetes:
@@ -868,7 +870,7 @@ groupes:
         - ''
   - id: gc-api-regles
     rubrique: Les choix techniques
-    titre: 'Gestion de cabinet : les routes de l''API et les règles'
+    titre: 'Venzy : les routes de l''API et les règles'
     mots_cles: API REST route endpoint droits rôle admin user 401 403 400 règles du tunnel JWT middleware contrôle
     tableau:
       entetes:
@@ -901,13 +903,13 @@ groupes:
     - 'L''API n''est pas encore écrite : ces routes et ces règles viennent du cahier technique.'
   - id: gc-code-sql
     rubrique: Le code
-    titre: 'Gestion de cabinet : extraits du script SQL'
+    titre: 'Venzy : extraits du script SQL'
     mots_cles: code SQL script CREATE TABLE clé primaire clé étrangère FOREIGN KEY ENUM DECIMAL CHECK InnoDB UNIQUE index NULL compte MySQL GRANT moindre privilège
     paragraphes:
     - Extraits recopiés du script de la base <code>gestion_courtage</code> (MySQL 8, 6 tables). Le script complet est dans les documents ci-dessus.
     code:
     - titre: 'La table affaire : le cœur du tunnel de vente'
-      fichier: assets/annexes/gestion-cabinet/schema-bdd-courtage.sql
+      fichier: assets/annexes/venzy/schema-bdd-courtage.sql
       langage: sql
       texte: |-
         CREATE TABLE IF NOT EXISTS affaire (
@@ -935,7 +937,7 @@ groupes:
             CONSTRAINT chk_affaire_prime CHECK (prime_mensuelle IS NULL OR prime_mensuelle >= 0)
         ) ENGINE=InnoDB;
     - titre: L'historique des étapes (qui, quand)
-      fichier: assets/annexes/gestion-cabinet/schema-bdd-courtage.sql
+      fichier: assets/annexes/venzy/schema-bdd-courtage.sql
       langage: sql
       texte: |-
         CREATE TABLE IF NOT EXISTS historique_etape (
@@ -953,7 +955,7 @@ groupes:
               FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id_utilisateur)
         ) ENGINE=InnoDB;
     - titre: 'Le produit : taux de commission contrôlé'
-      fichier: assets/annexes/gestion-cabinet/schema-bdd-courtage.sql
+      fichier: assets/annexes/venzy/schema-bdd-courtage.sql
       langage: sql
       texte: |-
         CREATE TABLE IF NOT EXISTS produit (
@@ -971,7 +973,7 @@ groupes:
             CONSTRAINT chk_produit_taux CHECK (taux_commission >= 0 AND taux_commission <= 100)
         ) ENGINE=InnoDB;
     - titre: 'L''utilisateur : rôle, compte actif, e-mail unique'
-      fichier: assets/annexes/gestion-cabinet/schema-bdd-courtage.sql
+      fichier: assets/annexes/venzy/schema-bdd-courtage.sql
       langage: sql
       texte: |-
         CREATE TABLE IF NOT EXISTS utilisateur (
@@ -988,7 +990,7 @@ groupes:
             UNIQUE KEY uq_utilisateur_email (email)
         ) ENGINE=InnoDB;
     - titre: 'Le compte MySQL de l''API : le moindre privilège'
-      fichier: assets/annexes/gestion-cabinet/schema-bdd-courtage.sql
+      fichier: assets/annexes/venzy/schema-bdd-courtage.sql
       langage: sql
       texte: |-
         -- L'API ne peut que lire et modifier les données : elle ne peut ni créer ni supprimer de table.
@@ -1000,7 +1002,7 @@ groupes:
     - 'Pas de <code>ON DELETE CASCADE</code> : impossible de supprimer un client qui a des affaires, l''historique est protégé.'
   - id: gc-code-requetes
     rubrique: Le code
-    titre: 'Gestion de cabinet : les requêtes des écrans'
+    titre: 'Venzy : les requêtes des écrans'
     mots_cles: code SQL requête SELECT JOIN GROUP BY SUM COUNT transaction START TRANSACTION COMMIT requête préparée injection taux de transformation classement commission
     paragraphes:
     - 'Une requête par écran, testées sur un jeu de données fictives. Le <code>?</code> est rempli par l''API avec l''utilisateur du jeton : ce sont des requêtes préparées, contre l''injection SQL.'

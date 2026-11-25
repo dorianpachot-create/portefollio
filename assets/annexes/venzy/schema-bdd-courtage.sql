@@ -1,4 +1,4 @@
--- Application de gestion de cabinet de courtage : tunnel de vente
+-- Venzy, application de suivi des ventes : tunnel de vente
 -- Version v6 (version 1 du projet, périmètre minimal) pour MySQL 8.0+
 -- Une seule base, partagée par l'application ordinateur (admin) et l'application mobile (users).
 -- Tunnel de vente d'une affaire : prospect -> qualifie -> devis_envoye -> signe (ou perdu)

@@ -1,0 +1,264 @@
+<!doctype html>
+<!-- Page générée par Symfony (php bin/console app:export). Pour la modifier : dossier app/ -->
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Venzy, application de suivi des ventes, projet en cours | Dorian Pachot</title>
+  <meta name="description" content="Venzy : deux applications Flutter (mobile pour les mandataires, bureau pour le gérant) et une API Node.js pour suivre les ventes, du prospect au contrat signé. Premier client : un cabinet de courtage en assurance. Projet de BTS en cours : cahiers et base de données terminés." />
+  <meta name="author" content="Dorian Pachot" />
+  <link rel="canonical" href="https://dorianpachot-create.github.io/portefollio/pages/venzy.html" />
+  <meta name="theme-color" content="#090A0F" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Venzy, application de suivi des ventes, projet en cours | Dorian Pachot" />
+  <meta property="og:description" content="Venzy : deux applications Flutter (mobile pour les mandataires, bureau pour le gérant) et une API Node.js pour suivre les ventes, du prospect au contrat signé. Premier client : un cabinet de courtage en assurance. Projet de BTS en cours : cahiers et base de données terminés." />
+  <meta property="og:image" content="https://dorianpachot-create.github.io/portefollio/assets/meta/og-image.png" />
+  <link rel="icon" href="../assets/meta/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="../assets/meta/favicon-180.png" />
+    <script>(function(d,r){r.classList.add('js');var t;try{t=localStorage.getItem('theme')}catch(e){}if(t==='light')r.setAttribute('data-theme','light');function maj(){var c=r.getAttribute('data-theme')==='light';d.querySelectorAll('[data-theme-toggle]').forEach(function(b){b.setAttribute('aria-pressed',c);b.setAttribute('aria-label',c?'Passer en mode sombre':'Passer en mode clair')})}d.addEventListener('DOMContentLoaded',maj);d.addEventListener('click',function(e){if(!e.target.closest('[data-theme-toggle]'))return;var c=r.getAttribute('data-theme')!=='light';if(c)r.setAttribute('data-theme','light');else r.removeAttribute('data-theme');try{localStorage.setItem('theme',c?'light':'dark')}catch(e){}maj()})})(document,document.documentElement);</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/site.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+    <style type="text/tailwindcss">
+    @theme {
+      --color-void: #090A0F;
+      --color-panel: #10121A;
+      --color-edge: #1E2130;
+      --color-blood: #EF4444;
+      --color-volt: #22D3EE;
+      --color-go: #22C55E;
+      --color-ash: #9CA3AF;
+      --color-bone: #F1F2F6;
+      --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+      --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+      --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+  </style>
+</head>
+
+<body id="top">
+  <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-blood focus:px-4 focus:py-2 focus:text-white" href="#main">Aller au contenu</a>
+  <div class="bg-grid" aria-hidden="true"></div>
+    <div class="scroll-progress" aria-hidden="true"><span data-progress></span></div>
+  
+  <header class="topbar fixed inset-x-0 top-0 z-50 border-b border-transparent transition-colors" data-topbar>
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
+        <a href="../index.html" class="flex items-center gap-3" aria-label="Dorian Pachot, retour à l'accueil">
+      <span class="grid h-9 w-9 place-items-center rounded-lg bg-blood font-display text-sm font-extrabold text-white">DP</span>
+      <span class="hidden font-display text-[17px] font-bold tracking-tight text-bone sm:inline">Dorian Pachot</span>
+    </a>
+
+        <nav class="hidden items-center gap-6 text-sm font-medium xl:flex" aria-label="Navigation principale">
+              <a href="../index.html#parcours" class="nav-a text-ash transition hover:text-bone">Parcours</a>
+              <a href="../index.html#projets" class="nav-a !text-bone transition hover:text-bone">Projets</a>
+              <a href="projets-cours.html" class="nav-a text-ash transition hover:text-bone">Cours</a>
+              <a href="../index.html#outils" class="nav-a text-ash transition hover:text-bone">Outils</a>
+              <a href="../index.html#veille" class="nav-a text-ash transition hover:text-bone">Veille</a>
+              <a href="documents.html" class="nav-a text-ash transition hover:text-bone">Documents</a>
+              <a href="annexes.html" class="nav-a text-ash transition hover:text-bone">Annexes</a>
+          </nav>
+
+    <div class="flex items-center gap-3">
+            <button class="search-btn" type="button" data-search-open aria-label="Rechercher dans le site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="hidden sm:inline">Rechercher</span><kbd class="hidden lg:inline">Ctrl K</kbd></button>
+            <button class="theme-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="Passer en mode clair" title="Mode clair / mode sombre"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <button class="btn btn-ghost btn-sm xl:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu">Menu</button>
+    </div>
+  </div>
+
+    <div class="mobile-menu border-t border-edge bg-void/95 backdrop-blur-xl xl:hidden" id="menu" data-menu>
+    <nav class="mx-auto grid max-w-6xl px-5 py-2 text-[15px] font-medium" aria-label="Navigation mobile">
+              <a href="../index.html#parcours" class="border-b border-edge py-3.5 text-bone">Parcours</a>
+              <a href="../index.html#projets" class="border-b border-edge py-3.5 text-bone">Projets</a>
+              <a href="projets-cours.html" class="border-b border-edge py-3.5 text-bone">Cours</a>
+              <a href="../index.html#outils" class="border-b border-edge py-3.5 text-bone">Outils</a>
+              <a href="../index.html#veille" class="border-b border-edge py-3.5 text-bone">Veille</a>
+              <a href="documents.html" class="border-b border-edge py-3.5 text-bone">Documents</a>
+              <a href="annexes.html" class="border-b border-edge py-3.5 text-bone">Annexes</a>
+            <a href="../index.html#contact" class="py-3.5 text-blood">Contact</a>
+    </nav>
+  </div>
+</header>
+
+  <main id="main">
+          <header class="px-5 pb-10 pt-28 md:px-8 md:pt-36">
+  <div class="mx-auto max-w-6xl">
+    <a class="inline-flex items-center gap-2 text-sm font-semibold text-ash transition hover:text-bone" href="../index.html#projets"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Retour aux projets</a>
+    <p class="label mt-8 text-blood">Projet de deuxième année de BTS, en cours</p>
+    <h1 class="mt-3 font-display text-[clamp(2.2rem,6vw,3.8rem)] font-extrabold leading-[1.05] tracking-[-.025em] text-bone"><span style="color:#F59E0B">V</span>enzy</h1>
+    <div class="mt-5 max-w-2xl text-base leading-relaxed text-ash md:text-lg"><p>Venzy est une application de suivi des ventes : chaque vente avance du prospect au contrat signé, sur le terrain avec l'application mobile des mandataires et au bureau avec l'application du gérant. C'est un outil générique, pensé pour être proposé à plusieurs cabinets, puis à d'autres métiers ; la version 1 est réalisée pour un premier client, un cabinet de courtage en assurance, et volontairement réduite au tunnel de vente. Le cahier des charges, le cahier technique et la base de données (MCD, MLD et script SQL de 6 tables) sont terminés ; le développement de l'API commence.</p>
+    </div>
+          <div class="mt-7 flex flex-wrap gap-2.5">
+                  <a class="btn btn-primary btn-sm" href="../assets/annexes/venzy/cahier-des-charges.pdf" target="_blank" rel="noopener">Cahier des charges (PDF)</a>
+
+                  <a class="btn btn-ghost btn-sm" href="../assets/annexes/venzy/cahier-technique.pdf" target="_blank" rel="noopener">Cahier technique (PDF)</a>
+
+                  <a class="btn btn-ghost btn-sm" href="../assets/annexes/venzy/schema-bdd-courtage.sql">Script SQL</a>
+
+                  <a class="btn btn-ghost btn-sm" href="../assets/annexes/fiches-e5/fiche-venzy.pdf" target="_blank" rel="noopener">Fiche E5 (PDF)</a>
+
+                  <a class="btn btn-ghost btn-sm" href="../assets/annexes/questions/venzy.pdf" target="_blank" rel="noopener">Questions et réponses (PDF)</a>
+
+              </div>
+      </div>
+</header>
+
+  <div class="px-5 pb-6 md:px-8"><div class="mx-auto max-w-6xl">  <figure class="reveal overflow-hidden rounded-2xl border border-edge bg-panel">
+    <picture><source srcset="../assets/meta/shot-venzy.webp" type="image/webp" /><img class="w-full" src="../assets/meta/shot-venzy.jpg" alt="Schéma d&#039;architecture de la version 1 : l&#039;application mobile des mandataires et l&#039;application bureau du gérant passent en HTTPS, avec un jeton JWT, par la même API Node.js, seule à accéder à la base MySQL de 6 tables, le tout dans Docker Compose. À droite, les étapes d&#039;une affaire : prospect, qualifié, devis envoyé, signé, ou perdu." width="1200" height="533" /></picture>
+
+    <figcaption class="border-t border-edge px-4 py-2.5 text-xs text-ash">L&#039;architecture de la version 1, tirée du cahier technique : deux applications, une seule API, une seule base.</figcaption>
+  </figure>
+</div></div>
+
+  <div class="px-5 pb-16 pt-6 md:px-8">
+    <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_18rem]">
+      <div class="grid min-w-0 gap-5">
+                  <section id="en-bref" class="section-block reveal callout p-6 md:p-8">
+  <div class="prose-red">
+    <h2>En bref</h2>
+    <p>Un cabinet de courtage travaille avec des mandataires qui vendent des contrats d'assurance (prêt, habitation, automobile, prévoyance, santé) proposés par plusieurs compagnies. Chaque contrat signé rapporte une commission, calculée sur la prime payée par le client.</p><p>Le nom <strong>Venzy</strong> vient de « vente » et de l'anglais <em>easy</em> (facile) : un nom court, facile à retenir, qui ne dépend d'aucun métier, pour pouvoir proposer l'outil à d'autres cabinets puis à d'autres secteurs.</p><p>La version 1 se concentre sur l'essentiel : <strong>suivre chaque vente étape par étape</strong>, du premier contact jusqu'à la signature. Le mandataire le fait sur le terrain avec l'application mobile ; le gérant suit tout le cabinet depuis l'application bureau. Le document de départ du client était trop gros pour un premier livrable : avec le client et le professeur, on l'a recentré sur ce tunnel de vente.</p>        </div>
+</section>
+
+                  <section id="contexte" class="section-block reveal panel p-6 md:p-8">
+  <div class="prose-red">
+    <h2>Le problème à résoudre</h2>
+    <p>Aujourd'hui, le suivi des prospects se fait sur papier, sur Excel ou de mémoire. La problématique du cahier des charges : <strong>comment permettre à un cabinet de courtage de suivre chaque vente, du prospect au contrat signé, depuis le terrain comme depuis le bureau ?</strong></p>          <ul><li><strong>Prospects perdus de vue</strong> : sans suivi, un prospect non relancé est un client perdu.</li><li><strong>Avancement des ventes inconnu</strong> : le gérant ne sait pas quelles ventes sont en cours, ni à quelle étape.</li><li><strong>Aucun indicateur</strong> : ni taux de transformation, ni primes signées, ni commissions prévues.</li></ul>
+    </div>
+</section>
+
+                  <section id="tunnel" class="section-block reveal panel p-6 md:p-8">
+  <div class="prose-red">
+    <h2>Le tunnel de vente</h2>
+    <p>Chaque vente est une <strong>affaire</strong>, qui passe par quatre étapes. Elle peut être perdue à tout moment. Chaque changement d'étape est enregistré avec son auteur et sa date.</p>        <div class="table-wrap"><table>
+      <thead><tr><th scope="col">Étape</th><th scope="col">Ce qui se passe</th><th scope="col">Ce qu&#039;on saisit</th></tr></thead>
+      <tbody><tr><td>Prospect</td><td>Un contact intéressé est identifié</td><td>Le client et son besoin</td></tr><tr><td>Qualifié</td><td>Le besoin est confirmé</td><td>Le besoin détaillé et le produit visé</td></tr><tr><td>Devis envoyé</td><td>Une proposition chiffrée est remise</td><td>Le produit, la prime mensuelle, la date du devis</td></tr><tr><td>Signé</td><td>Le client a signé le contrat</td><td>Le numéro de contrat et la date de signature</td></tr><tr><td>Perdu</td><td>La vente est abandonnée</td><td>Le motif de la perte</td></tr></tbody>
+    </table></div>
+        <ul><li>La commission d'une affaire signée se calcule : prime mensuelle × taux de commission du produit. Par exemple, 61,20 € à 30 % donnent 18,36 €.</li><li>Le taux de transformation, c'est le nombre d'affaires signées divisé par le nombre d'affaires créées.</li></ul>
+    </div>
+</section>
+
+                  <section id="fonctionnalites" class="section-block reveal panel p-6 md:p-8">
+  <div class="prose-red">
+    <h2>Deux applications, deux rôles</h2>
+    <p>Le mandataire et le gérant n'ont ni les mêmes écrans ni les mêmes droits : il y a donc deux applications Flutter, une demande d'évolution du client.</p>        <div class="table-wrap"><table>
+      <thead><tr><th scope="col">Application mobile (Android)</th><th scope="col">Application bureau (Windows)</th></tr></thead>
+      <tbody><tr><td>Pour le <strong>mandataire</strong> (rôle user), sur le terrain</td><td>Pour le <strong>gérant</strong> (rôle admin), au bureau</td></tr><tr><td>Connexion</td><td>Connexion</td></tr><tr><td>Ses clients et prospects : création, modification, recherche</td><td>Comptes des mandataires : création et désactivation</td></tr><tr><td>Ses affaires classées par étape</td><td>Catalogue : compagnies et produits, avec leur taux de commission</td></tr><tr><td>Détail d'une affaire : changement d'étape, devis, signature ou perte</td><td>Toutes les affaires du cabinet, filtrées par étape et par mandataire, avec leur historique</td></tr><tr><td>Mes chiffres : affaires par étape, signatures du mois, commissions estimées</td><td>Tableau de bord : taux de transformation, primes signées, commissions, classement</td></tr></tbody>
+    </table></div>
+        <ul><li>Un mandataire ne voit que ses propres clients et ses propres affaires : c'est l'API qui filtre, pas l'application.</li><li>On désactive un compte au lieu de le supprimer, pour garder l'historique de ses affaires.</li></ul>
+    </div>
+</section>
+
+                  <section id="architecture" class="section-block reveal panel p-6 md:p-8">
+  <div class="prose-red">
+    <h2>L&#039;architecture et les choix techniques</h2>
+    <p>Le cahier technique justifie chaque choix. Le principe : des technologies que je maîtrise déjà, et un seul point d'entrée vers les données.</p>          <ul><li><strong>Flutter</strong> pour les deux applications : un seul langage, Dart, et une technologie déjà utilisée pendant mon stage (SYNCRO). Le code est rangé en écrans, modèles et services ; les écrans se mettent à jour avec Provider.</li><li><strong>Node.js avec Express</strong> pour l'API : c'est le seul composant qui touche à la base. Il vérifie les droits, applique les règles du tunnel et fait les calculs. Express est minimaliste : chaque route et chaque contrôle sont écrits à la main.</li><li><strong>MySQL</strong> : les données sont liées (un client a des affaires, une affaire porte sur un produit), et les clés étrangères garantissent la cohérence.</li><li><strong>Docker Compose</strong> lance la base et l'API en une seule commande, de la même façon sur n'importe quel poste.</li><li><strong>Les règles du tunnel</strong>, appliquées par l'API : produit et prime obligatoires au devis, numéro de contrat et date à la signature, motif en cas de perte ; une affaire signée ou perdue ne change plus d'étape.</li></ul>
+    </div>
+</section>
+
+                  <section id="base-de-donnees" class="section-block reveal panel p-6 md:p-8">
+  <div class="prose-red">
+    <h2>La base de données</h2>
+    <p>J'ai conçu la base avec la méthode Merise : le MCD, puis le MLD, puis le script SQL pour MySQL 8. La base <code>gestion_courtage</code> compte <strong>6 tables</strong>, partagées par les deux applications : <code>utilisateur</code>, <code>client</code>, <code>compagnie</code>, <code>produit</code>, <code>affaire</code> et <code>historique_etape</code>.</p>      <figure class="schema"><a href="../assets/venzy/mcd.jpg" target="_blank" rel="noopener"><img src="../assets/venzy/mcd.jpg" alt="MCD de la base : 6 entités (client, utilisateur, affaire, historique d&#039;étape, produit, compagnie) et 7 associations avec leurs cardinalités" loading="lazy" width="1200" height="590" /></a><figcaption>Le MCD : 6 entités et 7 associations. Par exemple, un client a 0 à n affaires, une affaire concerne 1 et 1 seul client ; une affaire porte sur 0 ou 1 produit, car au stade prospect le produit n'est pas encore choisi.</figcaption></figure>
+      <figure class="schema"><a href="../assets/venzy/mld.jpg" target="_blank" rel="noopener"><img src="../assets/venzy/mld.jpg" alt="MLD de la base : 6 tables avec leurs colonnes et leurs types, et 7 flèches qui relient chaque clé étrangère à la clé primaire qu&#039;elle référence" loading="lazy" width="1200" height="590" /></a><figcaption>Le MLD : chaque association devient une clé étrangère (#) du côté 1,1. Chaque flèche part d'une clé étrangère et pointe vers la clé primaire qu'elle référence.</figcaption></figure>
+          <ul><li><strong>Des clés étrangères sur toutes les relations</strong> : une affaire ne peut pas exister sans client, et un client qui a des affaires ne peut pas être supprimé.</li><li><strong>Les montants en <code>DECIMAL</code></strong>, jamais en <code>FLOAT</code>, pour éviter les erreurs d'arrondi.</li><li><strong>Les étapes en <code>ENUM</code></strong> : une liste fermée de cinq valeurs, la base refuse une étape qui n'existe pas.</li><li><strong>Des contraintes <code>CHECK</code></strong> : le taux de commission est entre 0 et 100, la prime ne peut pas être négative.</li><li><strong>La commission n'est pas stockée</strong> : elle se calcule, pour ne jamais avoir une valeur fausse si la prime est corrigée.</li><li><strong>Un historique des étapes</strong> : chaque changement est écrit dans <code>historique_etape</code>, dans la même transaction que la mise à jour de l'affaire.</li></ul>
+    </div>
+</section>
+
+                  <section id="requetes" class="section-block reveal panel p-6 md:p-8">
+  <div class="prose-red">
+    <h2>Une requête par écran</h2>
+    <p>Chaque écran correspond à une requête de l'API. Elles ont été testées sur un jeu de données fictives. Le <code>?</code> est rempli par l'API avec l'utilisateur connecté : ce sont des requêtes préparées.</p>        <div class="table-wrap"><table>
+      <thead><tr><th scope="col">Écran</th><th scope="col">Requête</th><th scope="col">Résultat sur les données fictives</th></tr></thead>
+      <tbody><tr><td>Mobile · Mes affaires</td><td><code>SELECT c.nom, a.etape FROM affaire a JOIN client c ON c.id_client = a.id_client WHERE a.id_utilisateur = ?;</code></td><td>Leroy, signé · Moreau, devis envoyé · Blanc, qualifié</td></tr><tr><td>Mobile · Mes chiffres</td><td><code>SELECT SUM(a.prime_mensuelle * p.taux_commission / 100) FROM affaire a JOIN produit p ON p.id_produit = a.id_produit WHERE a.id_utilisateur = ? AND a.etape = 'signe';</code></td><td>21,66 € de commissions estimées</td></tr><tr><td>Bureau · Tableau de bord</td><td><code>SELECT etape, COUNT(*) AS nb FROM affaire GROUP BY etape;</code></td><td>3 signées, 2 perdues, 1 prospect, 1 qualifiée, 1 devis envoyé</td></tr></tbody>
+    </table></div>
+      </div>
+</section>
+
+                  <section id="securite" class="section-block reveal panel p-6 md:p-8">
+  <div class="prose-red">
+    <h2>La sécurité et le RGPD</h2>
+              <ul><li>Trois contrôles à chaque requête : le jeton JWT est-il valide, le rôle est-il autorisé, la donnée appartient-elle à cet utilisateur ? Sinon, l'API répond 401 ou 403.</li><li>Mots de passe hachés avec bcrypt, jamais stockés en clair.</li><li>Requêtes préparées uniquement, contre l'injection SQL. Le compte MySQL de l'API peut seulement lire et modifier les données : il ne peut ni créer ni supprimer de table.</li><li>Le mot de passe de la base et la clé JWT sont dans un fichier d'environnement, jamais dans le code ni sur GitHub. Les échanges passent en HTTPS.</li><li>RGPD : seules les données utiles au suivi des ventes sont collectées (identité, coordonnées, besoin), et le développement comme la démonstration utilisent uniquement des données fictives.</li></ul>
+    </div>
+</section>
+
+                  <section id="suite" class="section-block reveal panel p-6 md:p-8">
+  <div class="prose-red">
+    <h2>Où en est le projet</h2>
+    <p>Le cahier des charges et le cahier technique de la version 1 sont rédigés (21 octobre 2026). La base de données est terminée : MCD, MLD, schéma relationnel et script SQL.</p>          <ul><li>Prochaine étape : un jeu de données fictives, puis l'API Node.js et ses tests (cas autorisés et cas refusés pour chaque route, règles du tunnel).</li><li>Ensuite, les écrans des deux applications, puis la recette avec le client et les guides pour le gérant et le mandataire.</li><li>Évolutions prévues après la version 1 : pièces justificatives, suivi des commissions réellement versées, alertes et relances, agenda, versions iOS et macOS.</li></ul>
+    </div>
+</section>
+
+                  <section id="competences" class="section-block reveal panel p-6 md:p-8">
+  <div class="prose-red">
+    <h2>Compétences mobilisées</h2>
+              <ul><li>Analyser un besoin, le recentrer avec le client et le traduire en cahier des charges.</li><li>Prendre en compte des demandes d'évolution (deux rôles, deux applications, version 1 réduite).</li><li>Choisir et justifier une architecture technique.</li><li>Concevoir une base de données relationnelle : MCD, MLD, script SQL et contraintes.</li><li>Prévoir les habilitations, la sécurité et la conformité RGPD dès la conception.</li><li>Prévoir l'installation avec Docker, les tests et l'accompagnement des utilisateurs.</li></ul>
+    </div>
+</section>
+
+              </div>
+      <aside class="order-first lg:order-none lg:sticky lg:top-24 lg:self-start">
+  <div class="panel p-5">
+    <p class="label text-blood">Fiche du projet</p>
+    <dl class="mt-3 text-sm">
+              <div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Cadre</dt><dd class="text-right font-medium text-bone">Projet de BTS, 2<sup>e</sup> année, client CRP</dd></div>
+     <div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Nom</dt><dd class="text-right font-medium text-bone">Venzy (vente + <em>easy</em>)</dd></div>
+              <div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Début</dt><dd class="text-right font-medium text-bone">21 octobre 2026</dd></div>
+              <div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Étape</dt><dd class="text-right font-medium text-bone">Conception et base de données terminées</dd></div>
+              <div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Mes réalisations</dt><dd class="text-right font-medium text-bone">Application mobile (mandataires) et application bureau (gérant)</dd></div>
+              <div class="flex justify-between gap-4 border-b border-edge py-2.5 last:border-0"><dt class="text-ash">Statut</dt><dd class="text-right font-medium text-bone">En cours</dd></div>
+          </dl>
+    <ul class="mt-4 flex flex-wrap gap-1.5"><li class="tag">Flutter</li>
+<li class="tag">Dart</li>
+<li class="tag">Node.js</li>
+<li class="tag">Express</li>
+<li class="tag">MySQL</li>
+<li class="tag">Merise</li>
+<li class="tag">Docker</li>
+<li class="tag">JWT</li>
+</ul>
+
+  </div>
+    <nav class="toc mt-5 hidden lg:block" aria-label="Sommaire de la page" data-toc>
+    <p class="label mb-2 px-3 text-ash">Sommaire</p>
+    <a href="#en-bref">En bref</a><a href="#contexte">Le problème à résoudre</a><a href="#tunnel">Le tunnel de vente</a><a href="#fonctionnalites">Deux applications, deux rôles</a><a href="#architecture">L&#039;architecture et les choix techniques</a><a href="#base-de-donnees">La base de données</a><a href="#requetes">Une requête par écran</a><a href="#securite">La sécurité et le RGPD</a><a href="#suite">Où en est le projet</a><a href="#competences">Compétences mobilisées</a>  </nav>
+</aside>
+
+    </div>
+  </div>
+
+  <section class="px-5 pb-16 pt-10 md:px-8" aria-label="Contact">
+  <div class="mx-auto max-w-6xl">
+    <div class="panel relative overflow-hidden px-6 py-10 text-center md:px-12">
+      <div class="pointer-events-none absolute inset-x-0 -top-28 mx-auto h-56 w-[30rem] max-w-full rounded-full bg-blood/15 blur-3xl" aria-hidden="true"></div>
+      <p class="relative font-display text-2xl font-bold text-bone md:text-3xl">Une question sur ce projet&nbsp;?</p>
+      <p class="relative mx-auto mt-3 max-w-lg text-ash">Je serai ravi d'en parler plus en détail lors d'un échange.</p>
+      <div class="relative mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+        <a class="btn btn-primary" href="mailto:dorianpachot@gmail.com">dorianpachot@gmail.com</a>
+<button class="btn btn-ghost" type="button" data-copy="dorianpachot@gmail.com"><span data-copy-label>Copier l'adresse</span></button>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="px-5 pb-10 md:px-8">
+  <div class="mx-auto flex max-w-6xl flex-col gap-3 border-t border-edge pt-6 text-xs text-ash/80 sm:flex-row sm:items-center sm:justify-between">
+    <span>© 2026 Dorian Pachot, BTS SIO SLAM, IRIS MediaSchool Rouen</span>
+    <span class="flex gap-6">
+      <a class="hover:text-bone" href="mentions-legales.html">Mentions légales</a>
+      <a class="hover:text-bone" href="../index.html">Accueil</a>    </span>
+  </div>
+</footer>
+
+
+  <script src="../js/site.js"></script>    <script type="application/json" id="index-recherche">[{"t":"Mon parcours","s":"Accueil","u":"index.html#parcours","k":"handball reconversion \u00e9tudes"},{"t":"R\u00e9alisations","s":"Accueil","u":"index.html#projets","k":"projets"},{"t":"Projets encadr\u00e9s","s":"Accueil","u":"index.html#cours","k":"TP cours BTS"},{"t":"Mes outils de travail","s":"Accueil","u":"index.html#outils","k":"langages logiciels IA"},{"t":"Ce sur quoi je peux m'appuyer","s":"Accueil","u":"index.html#competences","k":"qualit\u00e9s m\u00e9thode"},{"t":"Ma veille","s":"Accueil","u":"index.html#veille","k":"veille technologique DevOps"},{"t":"Mon dossier","s":"Accueil","u":"index.html#documents","k":"documents CV lettres"},{"t":"Contact","s":"Accueil","u":"index.html#contact","k":"e-mail t\u00e9l\u00e9phone LinkedIn GitHub"},{"t":"Mes r\u00e9alisations","s":"Page","u":"pages\/projets-perso.html","k":"projets"},{"t":"Tous les projets encadr\u00e9s","s":"Page","u":"pages\/projets-cours.html","k":"TP comptes rendus"},{"t":"Annexes","s":"Page","u":"pages\/annexes.html","k":"E5 fiches tableau de synth\u00e8se cahier des charges cahier technique MCD MLD script SQL dossier de conception comptes rendus user stories choix techniques code"},{"t":"Journal de stage","s":"Page","u":"pages\/stage.html","k":"Suitime SYNCRO semaines"},{"t":"Jouer \u00e0 Mission Orion","s":"Page","u":"pages\/mini-jeu.html","k":"jeu Python"},{"t":"Mentions l\u00e9gales","s":"Page","u":"pages\/mentions-legales.html","k":"RGPD h\u00e9bergement"},{"t":"SYNCRO","s":"Projet","u":"pages\/syncro.html","k":"Flutter Dart Next.js TypeScript MySQL JWT Nginx PM2 Firebase SYNCRO, application Flutter et API Next.js d\u00e9velopp\u00e9e pendant mon stage chez Suitime, publi\u00e9e sur l'App Store et Google Play."},{"t":"Pla'Net","s":"Projet","u":"pages\/planet.html","k":"Trello MariaDB SQL Symfony Doctrine Twig PHP 8 Pla'Net, application de planning des cours de MediaSchool Rouen, r\u00e9alis\u00e9e \u00e0 cinq en quatre jours : planification Trello, conception de la base de donn\u00e9es, puis d\u00e9veloppement Symfony."},{"t":"CRP-Assurance","s":"Projet","u":"pages\/crp-assurance.html","k":"PHP MySQL PDO HTML CSS JavaScript FTP RGPD CRP-Assurance.com, site PHP et MySQL d'un cabinet d'assurance avec back-office, espace client et mise en ligne sur h\u00e9bergement mutualis\u00e9."},{"t":"Mission Orion","s":"Projet","u":"pages\/mission-orion.html","k":"Python pygame pygbag WebAssembly asyncio Mission Orion, jeu spatial en Python et pygame compil\u00e9 en WebAssembly, jouable dans le navigateur."},{"t":"Venzy","s":"Projet","u":"pages\/venzy.html","k":"Flutter Dart Node.js Express MySQL Merise Docker JWT Venzy : deux applications Flutter (mobile pour les mandataires, bureau pour le g\u00e9rant) et une API Node.js pour suivre les ventes, du prospect au contrat sign\u00e9. Premier client : un cabinet de courtage en assurance. Projet de BTS en cours : cahiers et base de donn\u00e9es termin\u00e9s."},{"t":"Installer et prendre en main un serveur Ubuntu en ligne de commande","s":"Linux avanc\u00e9 (SISR), deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#tp0","k":"Ubuntu Server VMware SSH"},{"t":"D\u00e9ployer un serveur DHCP et un serveur DNS","s":"Linux avanc\u00e9 (SISR), deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#tp1","k":"Debian 12 isc-dhcp-server bind9 SSH"},{"t":"H\u00e9berger deux sites web et les publier en HTTPS","s":"Linux avanc\u00e9 (SISR), deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#tp2","k":"Apache HTTPS PHP Nginx Pare-feu"},{"t":"Partager des fichiers et ma\u00eetriser les journaux","s":"Linux avanc\u00e9 (SISR), deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#tp3","k":"Samba NFS rsyslog logrotate fail2ban"},{"t":"Automatiser l'administration du serveur","s":"Linux avanc\u00e9 (SISR), deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#tp4","k":"Bash cron systemd"},{"t":"L'intranet du service comptable","s":"Linux avanc\u00e9 (SISR), deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#tp5","k":"Droits Linux Apache Samba cron"},{"t":"VitaSport : concevoir, interroger et optimiser une base","s":"Bases de donn\u00e9es avanc\u00e9es (SLAM), deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#vitasport","k":"MySQL \/ MariaDB Merise Looping UML draw.io"},{"t":"Le Fournil : construire et interroger la base d'un click & collect","s":"Bases de donn\u00e9es avanc\u00e9es (SLAM), deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#fournil","k":"MySQL \/ MariaDB SQL Contraintes Vues"},{"t":"Inventaire du parc informatique en PowerShell","s":"PowerShell (SLAM), deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#powershell-tp1","k":"PowerShell 7 CSV Excel"},{"t":"Pla'Net, l'application de planning de l'\u00e9cole","s":"D\u00e9veloppement, deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#planet","k":"Symfony Twig MariaDB"},{"t":"PrivaMilk : pitch d'un produit en anglais","s":"Anglais, deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#privamilk","k":"Anglais Pitch"},{"t":"Les agents IA en entreprise : synth\u00e8se et recommandation","s":"Anglais, deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#agents-ia","k":"Anglais IA"},{"t":"Les faussaires sont-ils de vrais artistes ?","s":"Culture g\u00e9n\u00e9rale, deuxi\u00e8me ann\u00e9e","u":"pages\/projets-cours.html#faussaires","k":"Expression Synth\u00e8se"},{"t":"Pafalan : application web PHP de collection de cartes","s":"D\u00e9veloppement, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#pafalan","k":"PHP PDO Sessions"},{"t":"Le Bistrot de Marcel : conception de base de donn\u00e9es","s":"D\u00e9veloppement, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#bistrot","k":"SQL MariaDB Debian"},{"t":"Jeu spatial en Python avec pygame","s":"D\u00e9veloppement, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#pygame","k":"Python pygame POO"},{"t":"Jeu de Bataille graphique en Python","s":"D\u00e9veloppement, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#bataille","k":"Python tkinter Dictionnaires"},{"t":"Audit SEO de deux sites","s":"D\u00e9veloppement, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#seo","k":"SEO PageSpeed"},{"t":"Infrastructure Active Directory sous Windows Server 2025","s":"Syst\u00e8mes, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#active-directory","k":"Windows Server Active Directory PowerShell"},{"t":"Infrastructure web avec r\u00e9partition de charge sur Scaleway","s":"Syst\u00e8mes, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#load-balancing","k":"HAProxy Nginx Scaleway"},{"t":"Gestion de parc informatique et ITIL","s":"Syst\u00e8mes, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#parc","k":"GLPI ITIL"},{"t":"TP Frantech : r\u00e9seau d'entreprise sous Packet Tracer","s":"R\u00e9seaux, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#frantech","k":"Cisco VLAN OSPF DHCP"},{"t":"S\u00e9curisation des acc\u00e8s r\u00e9seau","s":"R\u00e9seaux, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#securite-acces","k":"Port-security SSH"},{"t":"Cluster FortiGate en haute disponibilit\u00e9 sous GNS3","s":"Cybers\u00e9curit\u00e9, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#fortigate","k":"GNS3 FortiGate VLAN"},{"t":"Arithm\u00e9tique appliqu\u00e9e : les cl\u00e9s de contr\u00f4le","s":"Math\u00e9matiques, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#arithmetique","k":"Modulo"},{"t":"Algorithmique en Python","s":"Math\u00e9matiques, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#algo-python","k":"Python"},{"t":"\u00c9tude RSE : le cas Ankama","s":"CEJM, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#ankama","k":"RSE"},{"t":"Cas pratique : responsabilit\u00e9 de l'employeur","s":"CEJM, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#caissiere","k":"Droit du travail"},{"t":"Droit des marques et structures juridiques","s":"CEJM, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#droit","k":"Droit"},{"t":"Future of Work 2026","s":"Anglais, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#anglais","k":"Anglais"},{"t":"Expos\u00e9 : Le Chat Pott\u00e9","s":"Culture g\u00e9n\u00e9rale, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#chat-potte","k":"Expression"},{"t":"Expos\u00e9 : les animaux hybrides","s":"Culture g\u00e9n\u00e9rale, premi\u00e8re ann\u00e9e","u":"pages\/projets-cours.html#hybrides","k":"Expression"},{"t":"Curriculum vitae","s":"Document","u":"pages\/cv.html","k":"Mis \u00e0 jour le 7 ao\u00fbt 2026"},{"t":"Lettre de recommandation","s":"Document","u":"pages\/documents.html#reco","k":"Suitime, 20 juillet 2026"},{"t":"Bulletin de premi\u00e8re ann\u00e9e","s":"Document","u":"pages\/documents.html#bulletin","k":"BTS SIO, 2025-2026"},{"t":"Lettre de motivation","s":"Document","u":"pages\/documents.html#lm","k":"Adapt\u00e9e \u00e0 chaque entreprise"},{"t":"Questions et r\u00e9ponses pour l'oral","s":"Annexe, \u00c9preuve E5","u":"assets\/annexes\/questions\/oral-e5.pdf","k":"Parcours, les six comp\u00e9tences, veille, portfolio, notions g\u00e9n\u00e9rales et modifications en direct (51 questions)."},{"t":"Tableau de synth\u00e8se","s":"Annexe, \u00c9preuve E5","u":"assets\/annexes\/tableau-de-synthese.pdf","k":"Mes r\u00e9alisations face aux six comp\u00e9tences du bloc 1."},{"t":"Guide des modifications (GitHub)","s":"Annexe, Le portfolio","u":"https:\/\/github.com\/dorianpachot-create\/portefollio\/blob\/main\/GUIDE-MODIFICATIONS.md","k":"Les recettes pas \u00e0 pas pour l'oral et les erreurs courantes."},{"t":"Code source du portfolio (GitHub)","s":"Annexe, Le portfolio","u":"https:\/\/github.com\/dorianpachot-create\/portefollio","k":"Le d\u00e9p\u00f4t complet, avec le README et l'historique des modifications."},{"t":"Portfolio : pourquoi ce site","s":"Annexe, Le portfolio","u":"pages\/annexes.html#objectifs","k":"objectif public cible jury recruteur alternance besoin"},{"t":"Portfolio : les user stories","s":"Annexe, Le portfolio","u":"pages\/annexes.html#user-stories","k":"user story r\u00e9cit utilisateur besoin crit\u00e8re d acceptation agile en tant que"},{"t":"Portfolio : les pages et les fonctionnalit\u00e9s","s":"Annexe, Le portfolio","u":"pages\/annexes.html#fonctionnalites","k":"pages fonctionnalit\u00e9s accueil projets TP stage annexes documents CV jeu recherche mode clair filtre frise"},{"t":"Portfolio : les choix techniques","s":"Annexe, Le portfolio","u":"pages\/annexes.html#choix-techniques","k":"choix technique justification Symfony Twig YAML statique GitHub Pages Tailwind JavaScript jsdom pourquoi alternative"},{"t":"L'architecture","s":"Annexe, Le portfolio","u":"pages\/annexes.html#architecture","k":"architecture sch\u00e9ma fonctionnement export statique dossier arborescence MVC"},{"t":"Le contr\u00f4leur et les routes","s":"Annexe, Le portfolio","u":"pages\/annexes.html#code-controleur","k":"contr\u00f4leur controller route attribut Route render slug priority PageController AbstractController"},{"t":"Le service Contenu (lecture des YAML)","s":"Annexe, Le portfolio","u":"pages\/annexes.html#code-service","k":"service Contenu YAML cache injection d\u00e9pendance get projet 404 NotFoundHttpException"},{"t":"La configuration et l'injection de d\u00e9pendances","s":"Annexe, Le portfolio","u":"pages\/annexes.html#code-injection","k":"services.yaml autowire autoconfigure bind param\u00e8tre injection d\u00e9pendance configuration"},{"t":"La commande d'export","s":"Annexe, Le portfolio","u":"pages\/annexes.html#code-export","k":"commande console app:export ExportCommand kernel handle Request statique GitHub Pages g\u00e9n\u00e9ration"},{"t":"L'extension Twig lien()","s":"Annexe, Le portfolio","u":"pages\/annexes.html#code-lien","k":"extension Twig fonction lien liens relatifs chemin LienExtension TwigFunction"},{"t":"Les composants Twig","s":"Annexe, Le portfolio","u":"pages\/annexes.html#code-composants","k":"composant Twig component props twig:Bouton EnTete AsTwigComponent r\u00e9utilisable brique"},{"t":"Les textes en YAML et la boucle Twig","s":"Annexe, Le portfolio","u":"pages\/annexes.html#code-yaml","k":"YAML contenu texte boucle for Twig projets.yaml apostrophe indentation"},{"t":"Le gabarit de base et le mode clair","s":"Annexe, Le portfolio","u":"pages\/annexes.html#code-base","k":"base.html.twig h\u00e9ritage extends block mode clair th\u00e8me localStorage data-theme couleurs"},{"t":"La recherche (Ctrl+K)","s":"Annexe, Le portfolio","u":"pages\/annexes.html#code-recherche","k":"recherche search Ctrl+K index JSON normalize accents filtre recherche.js IndexRecherche"},{"t":"Le JavaScript de l'accueil","s":"Annexe, Le portfolio","u":"pages\/annexes.html#code-javascript","k":"JavaScript filtre projets IntersectionObserver animation prefers-reduced-motion frise clavier accueil.js"},{"t":"Les tests automatiques","s":"Annexe, Le portfolio","u":"pages\/annexes.html#tests","k":"tests jsdom node dom.test.js qualit\u00e9 liens cass\u00e9s v\u00e9rification"},{"t":"S\u00e9curit\u00e9 et RGPD","s":"Annexe, Le portfolio","u":"pages\/annexes.html#securite","k":"s\u00e9curit\u00e9 RGPD XSS \u00e9chappement noopener HTTPS donn\u00e9es personnelles cookies mentions l\u00e9gales secret"},{"t":"L'accessibilit\u00e9","s":"Annexe, Le portfolio","u":"pages\/annexes.html#accessibilite","k":"accessibilit\u00e9 clavier lecteur d \u00e9cran alt aria contraste reduced motion lien d \u00e9vitement"},{"t":"Performance et r\u00e9f\u00e9rencement","s":"Annexe, Le portfolio","u":"pages\/annexes.html#performance-seo","k":"performance SEO r\u00e9f\u00e9rencement webp lazy loading sitemap canonical description Open Graph"},{"t":"Travailler et mettre en ligne","s":"Annexe, Le portfolio","u":"pages\/annexes.html#deploiement","k":"d\u00e9ploiement mise en ligne git commit push GitHub Pages commandes serveur local installation composer"},{"t":"Les grandes \u00e9tapes","s":"Annexe, Le portfolio","u":"pages\/annexes.html#historique","k":"historique versions \u00e9tapes refonte \u00e9volution"},{"t":"Les difficult\u00e9s et leurs solutions","s":"Annexe, Le portfolio","u":"pages\/annexes.html#difficultes","k":"difficult\u00e9s probl\u00e8mes solutions bug liens relatifs PHP GitHub Pages apostrophe route conflit flash"},{"t":"Les \u00e9volutions possibles","s":"Annexe, Le portfolio","u":"pages\/annexes.html#evolutions","k":"\u00e9volutions am\u00e9liorations CI CD GitHub Actions int\u00e9gration continue Tailwind polices"},{"t":"Le r\u00f4le de l'IA","s":"Annexe, Le portfolio","u":"pages\/annexes.html#ia","k":"IA intelligence artificielle Claude assistant code g\u00e9n\u00e9r\u00e9 relecture honn\u00eatet\u00e9"},{"t":"Modifier le site en direct","s":"Annexe, Le portfolio","u":"pages\/annexes.html#modifications","k":"modification direct texte projet ajouter section couleur page guide YAML recette"},{"t":"Questions et r\u00e9ponses pour l'oral","s":"Annexe, Venzy, suivi des ventes","u":"assets\/annexes\/questions\/venzy.pdf","k":"131 questions : m\u00e9tier, besoin, architecture, base de donn\u00e9es, 23 requ\u00eates SQL pr\u00eates, s\u00e9curit\u00e9, Docker, tests, comp\u00e9tences."},{"t":"Fiche descriptive de la r\u00e9alisation","s":"Annexe, Venzy, suivi des ventes","u":"assets\/annexes\/fiches-e5\/fiche-venzy.pdf","k":"Cadre, comp\u00e9tences mobilis\u00e9es, ressources et productions."},{"t":"Cahier des charges","s":"Annexe, Venzy, suivi des ventes","u":"assets\/annexes\/venzy\/cahier-des-charges.pdf","k":"Version 1 : contexte, probl\u00e9matique, tunnel de vente, r\u00f4les et fonctionnalit\u00e9s des deux applications."},{"t":"Cahier technique","s":"Annexe, Venzy, suivi des ventes","u":"assets\/annexes\/venzy\/cahier-technique.pdf","k":"Version 1 : architecture, choix justifi\u00e9s, routes de l'API, base de donn\u00e9es, s\u00e9curit\u00e9, RGPD, tests."},{"t":"MCD (mod\u00e8le conceptuel de donn\u00e9es)","s":"Annexe, Venzy, suivi des ventes","u":"assets\/annexes\/venzy\/mcd.pdf","k":"Les 6 entit\u00e9s, les 7 associations et leurs cardinalit\u00e9s."},{"t":"MLD (mod\u00e8le logique de donn\u00e9es)","s":"Annexe, Venzy, suivi des ventes","u":"assets\/annexes\/venzy\/mld.pdf","k":"Les 6 relations et leurs 7 cl\u00e9s \u00e9trang\u00e8res."},{"t":"Sch\u00e9ma relationnel","s":"Annexe, Venzy, suivi des ventes","u":"assets\/annexes\/venzy\/schema-relationnel.pdf","k":"Les 6 tables avec leurs colonnes, leurs types et leurs liens."},{"t":"Script SQL de la base","s":"Annexe, Venzy, suivi des ventes","u":"assets\/annexes\/venzy\/schema-bdd-courtage.sql","k":"Cr\u00e9ation des 6 tables, cl\u00e9s \u00e9trang\u00e8res, contraintes CHECK et compte MySQL de l'API (MySQL 8)."},{"t":"Sch\u00e9ma d'architecture","s":"Annexe, Venzy, suivi des ventes","u":"assets\/meta\/shot-venzy.jpg","k":"Les deux applications, l'API et la base, dans Docker Compose."},{"t":"Venzy : les user stories","s":"Annexe, Venzy, suivi des ventes","u":"pages\/annexes.html#gc-user-stories","k":"user story r\u00e9cit utilisateur en tant que mandataire g\u00e9rant crit\u00e8re d acceptation besoin cahier des charges"},{"t":"Venzy : les choix techniques","s":"Annexe, Venzy, suivi des ventes","u":"pages\/annexes.html#gc-choix-techniques","k":"choix technique justification Flutter Dart Node.js Express MySQL Docker Git alternative MongoDB Symfony API architecture"},{"t":"Venzy : les routes de l'API et les r\u00e8gles","s":"Annexe, Venzy, suivi des ventes","u":"pages\/annexes.html#gc-api-regles","k":"API REST route endpoint droits r\u00f4le admin user 401 403 400 r\u00e8gles du tunnel JWT middleware contr\u00f4le"},{"t":"Venzy : extraits du script SQL","s":"Annexe, Venzy, suivi des ventes","u":"pages\/annexes.html#gc-code-sql","k":"code SQL script CREATE TABLE cl\u00e9 primaire cl\u00e9 \u00e9trang\u00e8re FOREIGN KEY ENUM DECIMAL CHECK InnoDB UNIQUE index NULL compte MySQL GRANT moindre privil\u00e8ge"},{"t":"Venzy : les requ\u00eates des \u00e9crans","s":"Annexe, Venzy, suivi des ventes","u":"pages\/annexes.html#gc-code-requetes","k":"code SQL requ\u00eate SELECT JOIN GROUP BY SUM COUNT transaction START TRANSACTION COMMIT requ\u00eate pr\u00e9par\u00e9e injection taux de transformation classement commission"},{"t":"Questions et r\u00e9ponses pour l'oral","s":"Annexe, SYNCRO (stage chez Suitime)","u":"assets\/annexes\/questions\/syncro.pdf","k":"34 questions : fonctionnalit\u00e9s, choix techniques, incidents, publication sur les stores, comp\u00e9tences."},{"t":"Fiche descriptive de la r\u00e9alisation","s":"Annexe, SYNCRO (stage chez Suitime)","u":"assets\/annexes\/fiches-e5\/fiche-syncro.pdf","k":"Cadre, comp\u00e9tences mobilis\u00e9es, ressources et productions."},{"t":"Journal de stage","s":"Annexe, SYNCRO (stage chez Suitime)","u":"pages\/stage.html","k":"Les cinq semaines de stage, semaine par semaine."},{"t":"Lettre de recommandation","s":"Annexe, SYNCRO (stage chez Suitime)","u":"assets\/recommandation\/Lettre_recommandation_Suitime.pdf","k":"\u00c9crite par mon responsable de stage chez Suitime."},{"t":"SYNCRO sur l'App Store","s":"Annexe, SYNCRO (stage chez Suitime)","u":"https:\/\/apps.apple.com\/fr\/app\/syncro\/id6787898930","k":"L'application publi\u00e9e."},{"t":"SYNCRO sur Google Play","s":"Annexe, SYNCRO (stage chez Suitime)","u":"https:\/\/play.google.com\/store\/apps\/details?id=fr.appsyncro.mobile","k":"L'application publi\u00e9e."},{"t":"SYNCRO : les user stories","s":"Annexe, SYNCRO (stage chez Suitime)","u":"pages\/annexes.html#sy-user-stories","k":"user story r\u00e9cit utilisateur en tant que membre responsable \u00e9quipe planning disponibilit\u00e9s crit\u00e8re d acceptation"},{"t":"SYNCRO : les choix techniques","s":"Annexe, SYNCRO (stage chez Suitime)","u":"pages\/annexes.html#sy-choix-techniques","k":"choix technique Flutter Next.js TypeScript MySQL MariaDB JWT jeton Nginx PM2 HTTPS Firebase APNs notifications serveur Linux d\u00e9ploiement Git"},{"t":"SYNCRO : les incidents et leur r\u00e9solution","s":"Annexe, SYNCRO (stage chez Suitime)","u":"pages\/annexes.html#sy-incidents","k":"incident bug panne App Store refus Apple connexion notifications iPhone cr\u00e9neaux minuit cloisonnement permissions cause correction pr\u00e9vention supervision"},{"t":"Questions et r\u00e9ponses pour l'oral","s":"Annexe, Pla'Net","u":"assets\/annexes\/questions\/planet.pdf","k":"16 questions : planification, base de donn\u00e9es, code g\u00e9n\u00e9r\u00e9 par l'IA, Symfony."},{"t":"Fiche descriptive de la r\u00e9alisation","s":"Annexe, Pla'Net","u":"assets\/annexes\/fiches-e5\/fiche-planet.pdf","k":"Cadre, comp\u00e9tences mobilis\u00e9es, ressources et productions."},{"t":"Dossier de conception","s":"Annexe, Pla'Net","u":"assets\/fiches-cours\/developpement\/planet-dossier-conception.pdf","k":"Les 45 cartes Trello, la carte D\u00c9CISION, le mod\u00e8le de donn\u00e9es, le bilan."},{"t":"Mod\u00e8le logique de la base","s":"Annexe, Pla'Net","u":"assets\/planet\/schema-bdd.svg","k":"Les 12 tables et leurs cl\u00e9s \u00e9trang\u00e8res."},{"t":"Pla'Net : les user stories","s":"Annexe, Pla'Net","u":"pages\/annexes.html#pn-user-stories","k":"user story r\u00e9cit utilisateur en tant que administrateur \u00e9tudiant intervenant planning cours crit\u00e8re fait quand"},{"t":"Pla'Net : choix techniques et base de donn\u00e9es","s":"Annexe, Pla'Net","u":"pages\/annexes.html#pn-choix-bdd","k":"choix technique Symfony Doctrine Twig PHP MariaDB base de donn\u00e9es colonne obsolete table de liaison seance_classe migration rejouable Trello carte d\u00e9cision IA"},{"t":"Questions et r\u00e9ponses pour l'oral","s":"Annexe, CRP-Assurance","u":"assets\/annexes\/questions\/crp-assurance.pdf","k":"15 questions : besoin du client, choix techniques, s\u00e9curit\u00e9, mise en ligne sans SSH."},{"t":"Fiche descriptive de la r\u00e9alisation","s":"Annexe, CRP-Assurance","u":"assets\/annexes\/fiches-e5\/fiche-crp-assurance.pdf","k":"Cadre, comp\u00e9tences mobilis\u00e9es, ressources et productions."},{"t":"Le site en ligne","s":"Annexe, CRP-Assurance","u":"https:\/\/crp-assurance.com","k":"crp-assurance.com"},{"t":"CRP-Assurance : les user stories","s":"Annexe, CRP-Assurance","u":"pages\/annexes.html#crp-user-stories","k":"user story r\u00e9cit utilisateur en tant que visiteur particulier professionnel client g\u00e9rant cabinet devis back-office crit\u00e8re d acceptation"},{"t":"CRP-Assurance : les choix techniques","s":"Annexe, CRP-Assurance","u":"pages\/annexes.html#crp-choix-techniques","k":"choix technique PHP MySQL PDO requ\u00eate pr\u00e9par\u00e9e CSRF h\u00e9bergement mutualis\u00e9 LWS FTP FileZilla SSH compatibilit\u00e9 PHP 7.1 s\u00e9curit\u00e9 journal erreurs"},{"t":"PHP2Shell : deux failles critiques dans PHP","s":"Veille, \u00e0 la une, alerte de s\u00e9curit\u00e9 php","u":"index.html#une","k":"Le 20 octobre 2026, l'\u00e9quipe de PHP a annonc\u00e9 deux failles critiques (CVE-2026-109618 et CVE-2026-109619), corrig\u00e9es en urgence le lendemain. Une simple requ\u00eate HTTP, sans \u00eatre connect\u00e9, peut suffire \u00e0 ex\u00e9cuter du code sur le serveur."},{"t":"NIS2, ReCyF et RGPD","s":"Veille, r\u00e9glementation","u":"index.html#art-nis2","k":"CRP-Assurance, CEJM"},{"t":"Wi-Fi 7, 5G et 6G","s":"Veille, r\u00e9seaux","u":"index.html#art-reseaux","k":"cours de r\u00e9seaux, TP GNS3"},{"t":"Frameworks et r\u00e8gles des stores","s":"Veille, mes outils","u":"index.html#art-outils","k":"SYNCRO, Pla'Net"},{"t":"Les attaques qui passent par l'utilisateur","s":"Veille, cybers\u00e9curit\u00e9","u":"index.html#art-clickfix","k":"SYNCRO, Pla'Net, TP FortiGate"},{"t":"Automatiser la mise en ligne","s":"Veille, devops","u":"index.html#art-devops","k":"stage chez Suitime, TP4 Linux"},{"t":"Les agents IA","s":"Veille, intelligence artificielle","u":"index.html#art-ia","k":"Mission Orion, mes outils"}]</script>
+
+  <script src="../js/recherche.js"></script>
+</body>
+</html>

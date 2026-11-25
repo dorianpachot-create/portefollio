@@ -108,3 +108,11 @@ Le détail de chaque modification est dans l'historique Git (`git log`). Ici, l'
   routes et règles de l'API, extraits du script SQL et requêtes (gestion de cabinet) ; user stories,
   choix et incidents (SYNCRO) ; user stories et choix (Pla'Net, CRP-Assurance). 37 fiches en tout.
 - Page Annexes : sommaire à droite ; chaque fiche est indexée dans la recherche (Ctrl+K).
+
+## 25 novembre 2026 : le projet « Gestion de cabinet » devient Venzy
+
+- Nom choisi : **Venzy** (vente + *easy*), générique pour pouvoir proposer l'outil à d'autres cabinets
+  puis à d'autres métiers ; venzy.fr et venzy.app libres, aucune marque à ce nom à l'INPI.
+- Page `pages/venzy.html` (l'ancienne adresse `pages/gestion-cabinet.html` redirige vers elle), cartes de
+  l'accueil et de « Mes réalisations », annexes rangées dans `assets/annexes/venzy/`, recherche, sitemap, tests.
+- Cahiers des charges et technique réexportés ; fiche E5, tableau de synthèse et PDF de questions corrigés.

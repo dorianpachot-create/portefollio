@@ -47,13 +47,13 @@ console.log('\n--- pages projets ---');
 const pc = load('pages/projets-cours.html');
 ok('projets encadrés détaillés (2e année)', ['tp0', 'tp1', 'tp2', 'tp3', 'tp4', 'tp5', 'vitasport'].every((id) => pc.getElementById(id)));
 ok('aucune page dorée restante', fs.readdirSync(path.join(ROOT, 'pages')).every((f) => !/class="foil/.test(fs.readFileSync(path.join(ROOT, 'pages', f), 'utf8'))));
-const gc = load('pages/gestion-cabinet.html');
-ok('gestion de cabinet : page du projet en cours', ['en-bref', 'contexte', 'tunnel', 'fonctionnalites', 'architecture', 'base-de-donnees', 'requetes', 'securite', 'suite', 'competences'].every((id) => gc.getElementById(id)) && !!d.querySelector('#projets a[href="pages/gestion-cabinet.html"]'));
+const gc = load('pages/venzy.html');
+ok('Venzy : page du projet en cours', ['en-bref', 'contexte', 'tunnel', 'fonctionnalites', 'architecture', 'base-de-donnees', 'requetes', 'securite', 'suite', 'competences'].every((id) => gc.getElementById(id)) && !!d.querySelector('#projets a[href="pages/venzy.html"]'));
 ok('veille : alerte PHP du 20 octobre à la une', /PHP2Shell/.test(d.getElementById('une').textContent) && !!d.getElementById('art-clickfix'));
 ok('mode clair : bouton dans le menu et couleurs prévues', !!d.querySelector('[data-theme-toggle]') && /data-theme="light"/.test(fs.readFileSync(path.join(ROOT, 'css/site.css'), 'utf8')));
-ok('recherche : bouton dans le menu et index des pages', !!d.querySelector('[data-search-open]') && JSON.parse(load('index.html').getElementById('index-recherche').textContent).some((e) => e.u === 'pages/gestion-cabinet.html'));
+ok('recherche : bouton dans le menu et index des pages', !!d.querySelector('[data-search-open]') && JSON.parse(load('index.html').getElementById('index-recherche').textContent).some((e) => e.u === 'pages/venzy.html'));
 const an = load('pages/annexes.html');
-ok('annexes : fiches E5, cahiers et comptes rendus', ['e5', 'gestion-cabinet', 'syncro', 'planet', 'crp-assurance', 'comptes-rendus', 'personnels'].every((id) => an.getElementById(id)) && an.querySelectorAll('.annexe').length > 30);
+ok('annexes : fiches E5, cahiers et comptes rendus', ['e5', 'venzy', 'syncro', 'planet', 'crp-assurance', 'comptes-rendus', 'personnels'].every((id) => an.getElementById(id)) && an.querySelectorAll('.annexe').length > 30);
 ok('veille : objectif DevOps', /Devenir DevOps/.test(text));
 ok('annexes : fiches techniques (user stories, choix, code) par projet', ['user-stories', 'choix-techniques', 'code-controleur', 'gc-user-stories', 'gc-code-sql', 'sy-incidents', 'pn-user-stories', 'crp-choix-techniques'].every((id) => an.getElementById(id)) && an.querySelectorAll('pre.code').length >= 20 && !fs.existsSync(path.join(ROOT, 'pages/presentation.html')) && !fs.existsSync(path.join(ROOT, 'pages/dossier-portfolio.html')));
 
